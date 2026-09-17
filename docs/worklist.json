@@ -46,12 +46,12 @@
         "verify"
       ],
       "title": "從開頭跑到結局，沒有未實作的服務",
-      "body": "目前只驗到主畫面，而且只有走過的路徑算數。要走完戰鬥、各區域、存讀檔（遊戲自己的存檔會寫檔）與結局，途中 `o.Unimplemented()` 必須是空的。",
+      "body": "目前重播推進到 11 段（`replay/title-to-first-save.json`，格式 `docs/spec/003`）：開機到第一個遭遇、以 F3 脫離第一場戰鬥、存檔 TEST、讀檔回到存檔時的畫面；11 段的未實作服務都是 0 種（docs/re/008）。還沒走到：打贏第一場戰鬥、與戰友會合、ESP Power／加速砲、其他區域與結局；dosgolem 還不能表達「按住按鍵」。",
       "acceptance": "一份可重播的全程輸入（或檢查點串），跑完沒有未實作服務，結局畫面解幀存證。",
       "blocked_by": "state-checkpoints",
       "verify": {
         "kind": "manual",
-        "note": "全程重播檔進版控後改綁它的檔名"
+        "note": "重播到結局後改綁重播檔最後一段的段名（例如 json 裡出現 ending）"
       },
       "issue": 8
     },

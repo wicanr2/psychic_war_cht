@@ -1,0 +1,180 @@
+{
+  "schema": "psychic-war-replay/1",
+  "note": "開機到第一次存讀檔的重播。格式見 docs/spec/003。",
+  "dosgolem": "psychic-war/m1-opl2",
+  "pw_exe_sha256": "88321206d5400b2276aba0f268e2daaa8355a733843dd9e89f9e7116ae690c49",
+  "segments": [
+    {
+      "name": "01-title",
+      "from": "",
+      "save_at": 12000000,
+      "keys": [],
+      "key_at": 0,
+      "key_every": 0,
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "comment": "標題，等按鍵"
+    },
+    {
+      "name": "02-match",
+      "from": "01-title",
+      "save_at": 15000000,
+      "keys": [
+        "space"
+      ],
+      "key_at": 12500000,
+      "key_every": 0,
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "comment": "防拷說明框"
+    },
+    {
+      "name": "03-protection",
+      "from": "02-match",
+      "save_at": 18000000,
+      "keys": [
+        "enter"
+      ],
+      "key_at": 15500000,
+      "key_every": 0,
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "comment": "防拷：ENTER ESP POWER"
+    },
+    {
+      "name": "04-cleared",
+      "from": "03-protection",
+      "save_at": 22000000,
+      "keys": [
+        "enter"
+      ],
+      "key_at": 18500000,
+      "key_every": 0,
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "comment": "空白答案 → YOU ARE CLEARED"
+    },
+    {
+      "name": "05-select",
+      "from": "04-cleared",
+      "save_at": 32000000,
+      "keys": [
+        "space"
+      ],
+      "key_at": 22500000,
+      "key_every": 0,
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "comment": "主畫面：NEW GAME／LOAD GAME"
+    },
+    {
+      "name": "06-name",
+      "from": "05-select",
+      "save_at": 35000000,
+      "keys": [
+        "enter"
+      ],
+      "key_at": 32500000,
+      "key_every": 0,
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "comment": "NEW GAME → ENTER YOUR NAME"
+    },
+    {
+      "name": "07-first-play",
+      "from": "06-name",
+      "save_at": 42000000,
+      "keys": [
+        "25",
+        "1E",
+        "17",
+        "enter"
+      ],
+      "key_at": 35500000,
+      "key_every": 500000,
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "comment": "名字 KAI → 第一人稱迷宮"
+    },
+    {
+      "name": "08-encounter",
+      "from": "07-first-play",
+      "save_at": 86000000,
+      "keys": [
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up"
+      ],
+      "key_at": 43000000,
+      "key_every": 4000000,
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "comment": "前進 11 步，遇到第一個敵人 Shulosu"
+    },
+    {
+      "name": "09-escaped",
+      "from": "08-encounter",
+      "save_at": 95000000,
+      "keys": [
+        "3D"
+      ],
+      "key_at": 86500000,
+      "key_every": 0,
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "comment": "F3 瞬間移位：脫離第一場戰鬥（撤退，不是勝利）"
+    },
+    {
+      "name": "10-saved",
+      "from": "09-escaped",
+      "save_at": 124000000,
+      "keys": [
+        "esc",
+        "down",
+        "down",
+        "down",
+        "enter",
+        "enter",
+        "enter",
+        "14",
+        "12",
+        "1F",
+        "14",
+        "enter",
+        "enter"
+      ],
+      "key_at": 95500000,
+      "key_every": 1000000,
+      "scratch": true,
+      "expect_same_frame_as": "",
+      "comment": "Esc → Options → Save Game → Definitely → 檔名 TEST → Absolutely"
+    },
+    {
+      "name": "11-loaded",
+      "from": "05-select",
+      "save_at": 60000000,
+      "keys": [
+        "down",
+        "enter",
+        "14",
+        "12",
+        "1F",
+        "14",
+        "enter"
+      ],
+      "key_at": 32500000,
+      "key_every": 1000000,
+      "scratch": true,
+      "expect_same_frame_as": "09-escaped",
+      "comment": "LOAD GAME → 檔名 TEST：應回到存檔時的畫面"
+    }
+  ]
+}

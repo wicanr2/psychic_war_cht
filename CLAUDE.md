@@ -120,7 +120,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 
 證據、指令與數字見 `docs/re/001-pw-exe-first-look.md`（實跑初探）、`002-pw-exe-function-census.md`（函式普查）、
 `003-checkpoints-and-dosboxx-reference.md`（檢查點與 DOSBox-X 參照）、`004-rng-and-determinism.md`（亂數）、
-`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）。
+`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、第一場戰鬥、存讀檔）。
 
 | 事實 | 等級 |
 |---|---|
@@ -139,7 +139,8 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | byte pattern 計數不能當 `INT` 證據；解壓後 IDA 認得的 `INT` 指令共 93 處（`21h` 74） | confirmed |
 | 遊戲只用 `AH=10h AL=00` 設屬性暫存器（200 線 RGBI 解讀），從不寫 DAC。dosgolem 修正後（分支 `psychic-war/m1-ega-palette`，未推上游）四個檢查點與遭遇戰的 RGB 與 DOSBox-X 逐像素一致 | confirmed |
 | 唯一的亂數產生器是 `sub_146B7`（狀態 `cs:41DF`，初值 `544Eh`），不讀時鐘；等待按鍵的迴圈每圈推進一次，所以「隨機」來自玩家反應時間。同一組輸入在 dosgolem 上逐位元組可重現 | confirmed |
-| 第一個遭遇（往前 11 步的 Shulosu）由位置決定，與亂數無關；遭遇畫面按住空白鍵攻擊 | confirmed |
+| 第一個遭遇（往前 11 步的 Shulosu）由位置決定，與亂數無關；空白鍵攻擊、Enter 防護盾、F3 脫離戰鬥。只用攻擊打不贏（32 種都輸），F3 可脫離 | confirmed |
+| 存檔 `<名>.DAT` 512 bytes；Esc → Options → Save Game → Definitely → 檔名。讀檔後畫面與存檔時相同 | confirmed |
 | 防拷題目由 `sub_1695C` 以亂數出題；空白答案會顯示 `YOU ARE CLEARED` | confirmed（行為），判定邏輯未讀 |
 
 ## 工作追蹤
@@ -157,7 +158,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/unexepack.py` | EXEPACK 解壓，`--verify` 對執行期傾印逐位元組比 |
 | `tools/ida.sh`＋`tools/ida/census.py` | IDA 建庫與函式普查（`workplace/ida/`）。批次跑一律驗輸出檔 |
 | `tools/census_report.py` | 普查 JSON＋覆蓋率 → 執行過的函式、`INT` 呼叫點表 |
-| `tools/states.sh [--check]` | 八段狀態檔檢查點（開機到第一個遭遇）；`--check` 驗畫面雜湊；另輸出解色 PNG |
+| `tools/states.sh [--check] [重播檔]` | 依重播檔（預設 `replay/title-to-first-save.json`，格式 `docs/spec/003`）產生 11 段狀態檔；`--check` 驗畫面雜湊；支援暫存層與畫面相等斷言 |
 | `tools/determinism.sh` | 第一場戰鬥：同輸入兩次逐位元組相同、晚按鍵必須不同 |
 | `tools/ida/dump.py` | 一次跑多個 IDA 查詢（xref／func／imm／callers／refs）；⚠ 少數位址反組譯引用端會讓 idat 異常結束，改用 `refs:` |
 | `tools/dosboxx-ref.sh` | DOSBox-X 走同樣四個畫面＋遭遇＋攻擊錄影，存 640×400 RGB |
