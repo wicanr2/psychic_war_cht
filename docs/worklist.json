@@ -40,26 +40,6 @@
       "issue": 5
     },
     {
-      "id": "pc-speaker-audio",
-      "milestone": "M1",
-      "labels": [
-        "audio",
-        "verify"
-      ],
-      "title": "PC 喇叭音樂路徑（`.IBM`）驗證",
-      "body": "沒有 AdLib 時遊戲載入 `.IBM` 並以 PIT 通道 2／埠 61h 發聲。dosgolem 已有 `-dump-wav`。要確認 `.IBM` 的格式與輸出波形正確，作為沒有 AdLib 時的後備。",
-      "acceptance": "標題音樂的 PC 喇叭 WAV 與 DOSBox-X 錄音比對一致；`.IBM` 格式寫進 docs/re/。",
-      "verify": {
-        "kind": "absent",
-        "paths": [
-          "docs/re"
-        ],
-        "pattern": "(?m)^# \\d{3}：.*\\.IBM 格式",
-        "note": "docs/re 出現以此為標題的文件就該關；格式文件出現後改成綁 WAV 比對結果"
-      },
-      "issue": 6
-    },
-    {
       "id": "full-run-no-gaps",
       "milestone": "M1",
       "labels": [
@@ -618,6 +598,13 @@
       "issue": 7,
       "title": "亂數來源與重播決定性",
       "evidence": "`docs/re/004-rng-and-determinism.md`；`tools/determinism.sh`",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "pc-speaker-audio",
+      "issue": 6,
+      "title": "PC 喇叭音樂路徑（`.IBM`）驗證",
+      "evidence": "`docs/re/006-ibm-music-format-and-pc-speaker-parity.md`；`docs/spec/001`；`tools/music_compare.py`；dosgolem 分支 `psychic-war/m1-pit-tone` `6cf8a1b`（未推上游）",
       "date": "2026-09-17"
     }
   ]

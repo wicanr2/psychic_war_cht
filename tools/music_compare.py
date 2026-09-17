@@ -1,0 +1,298 @@
+#!/usr/bin/env python3
+"""music_compare.py — PC 喇叭配樂比對（docs/spec/001）。
+
+    tools/py.sh tools/music_compare.py events <dosgolem 埠紀錄.tsv> <ibm 目錄> [--json out.json]
+    tools/py.sh tools/music_compare.py audio  <dosgolem.wav> <dosboxx.wav> [--json out.json]
+
+events（§2 A 層）：probe `-dump-ports "42,43,61=…"` 的紀錄解成音符事件，與 OPEN0.IBM、OPEN1.IBM…
+依序串接的記錄逐筆比對（頻率、刻數）。
+audio（§2 B 層）：兩個 WAV 用同一支分析器切成音符段，對齊後比音高與節奏（§3、§4）。
+"""
+import bisect
+import json
+import struct
+import sys
+from pathlib import Path
+
+PIT_HZ = 315e6 / 264
+TICK_S = 16571 / PIT_HZ  # 遊戲把通道 0 設成 16571 分頻
+
+
+# ---------------------------------------------------------------- A 層：事件
+
+DRIVER_PIT = 0x1234DC  # 驅動換算分頻值用的常數 1193180，捨去小數（docs/re/006 §3）
+
+
+def expected_divisor(hz):
+    return DRIVER_PIT // hz if hz else 0
+
+
+def port_events(tsv):
+    """回 [(步數, 分頻值或 0)]：每次 61h 寫入時的發聲狀態。與 dosgolem ToneEvents 同一套規則。
+
+    比分頻值不比 Hz：驅動用整數除法算分頻值，反算回 Hz 再四捨五入會差 1（988 → 989）。"""
+    rows = [line.rstrip("\n").split("\t") for line in Path(tsv).read_text().splitlines()[1:]]
+    out, lo, low_next, div, div_set = [], 0, True, 0, False
+    for step, port, val in rows:
+        s, v = int(step), int(val, 16)
+        if port == "043":
+            if v >> 6 & 3 == 2 and v >> 4 & 3:
+                low_next = True
+        elif port == "042":
+            if low_next:
+                lo, low_next = v, False
+            else:
+                div, div_set, low_next = lo | v << 8, True, True
+        elif port == "061":
+            on = v & 3 == 3 and div_set
+            out.append((s, (div or 65536) if on else 0))
+    return out
+
+
+def ibm_records(path):
+    b = Path(path).read_bytes()
+    if len(b) % 3:
+        raise SystemExit(f"{path}：{len(b)} bytes 不是 3 的倍數")
+    return [(struct.unpack_from("<H", b, i)[0], b[i + 2]) for i in range(0, len(b), 3)]
+
+
+def cmd_events(tsv, ibm_dir, out_json):
+    ev = port_events(tsv)
+    if not ev:
+        raise SystemExit("埠紀錄裡沒有 61h 寫入")
+    tick_steps = None
+    files = sorted(Path(ibm_dir).glob("OPEN[0-9].IBM"))
+    expected = []  # (累計刻數, 頻率, 檔名, 第幾筆)
+    t = 0
+    for f in files:
+        for k, (hz, dur) in enumerate(ibm_records(f)):
+            expected.append((t, hz, f.name, k))
+            t += dur
+    # 每個換檔點，驅動會多寫一次 61h ← 00（docs/re/006 §3），先把它濾掉：
+    # 規則是「關閉事件後，同一刻又有新的發聲事件」且預期序列在此沒有休止記錄。
+    first = ev[0][0]
+    # 一刻幾道指令：初值取 dosgolem 的時間模型（165,000 道對應分頻 17,000，換算到 16,571），
+    # 再用所有事件間隔最小平方微調。不用「間隔中位數 ÷ 某個刻數」：曲子裡哪種音長最多因曲而異。
+    t0 = 165000 * 16571 / 17000
+    gaps = [ev[i + 1][0] - ev[i][0] for i in range(1, len(ev) - 1)]  # 第一個音從一刻中途開始，不用
+    n_ticks = [round(g / t0) for g in gaps]
+    tick_steps = sum(g for g, n in zip(gaps, n_ticks) if n) / sum(n for n in n_ticks if n)
+    got = []
+    for i, (s, hz) in enumerate(ev):
+        tk = (s - first) / tick_steps
+        if hz == 0 and i + 1 < len(ev) and abs(ev[i + 1][0] - s) < tick_steps * 0.1:
+            continue  # 換檔時的額外關閉
+        got.append((tk, hz))
+    while got and got[-1][1] == 0:
+        got.pop()  # 曲子播完時的關閉，不是一筆休止記錄
+    n = min(len(got), len(expected))
+    unplayed = sorted({e[2] for e in expected[n:]})
+    # 第一個音從一刻的中途開始：以第二筆對齊時間
+    offset = expected[1][0] - got[1][0] if n > 1 else 0
+    mism = []
+    for i in range(n):
+        tk, dv = got[i]
+        et, ehz, fname, k = expected[i]
+        if dv != expected_divisor(ehz) or (i > 0 and abs(tk + offset - et) > 0.25):
+            mism.append({"i": i, "file": fname, "record": k, "expected_tick": et, "expected_hz": ehz,
+                         "expected_divisor": expected_divisor(ehz), "got_tick": round(tk + offset, 2),
+                         "got_divisor": dv})
+    covered_files = sorted({expected[i][2] for i in range(n)})
+    partial = [f for f in covered_files if f in unplayed]
+    result = {"layer": "events", "port_events": len(ev), "compared": n, "expected_records": len(expected),
+              "mismatches": len(mism), "first_mismatches": mism[:20], "ticks_per_step_estimate": tick_steps,
+              "files_covered": covered_files, "files_not_fully_played": unplayed}
+    print(f"事件層：比對 {n} 筆（預期共 {len(expected)} 筆，涵蓋 {', '.join(covered_files)}），不一致 {len(mism)}")
+    if unplayed:
+        print(f"  紀錄結束時還沒播到（或沒播完）的檔：{', '.join(unplayed)}"
+              + (f"；其中 {', '.join(partial)} 只播了一部分" if partial else ""))
+    for m in mism[:5]:
+        print("  ", m)
+    if out_json:
+        Path(out_json).write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return 1 if mism else 0
+
+
+# ---------------------------------------------------------------- B 層：聲音
+
+def read_wav(path):
+    b = Path(path).read_bytes()
+    if b[:4] != b"RIFF" or b[8:12] != b"WAVE":
+        raise SystemExit(f"{path}：不是 WAV")
+    i, fmt, data = 12, None, None
+    while i + 8 <= len(b):
+        cid, n = b[i:i + 4], struct.unpack_from("<I", b, i + 4)[0]
+        if cid == b"fmt ":
+            fmt = struct.unpack_from("<HHIIHH", b, i + 8)
+        elif cid == b"data":
+            data = b[i + 8:i + 8 + n]
+        i += 8 + n + (n & 1)
+    tag, ch, rate, _, _, bits = fmt
+    if tag != 1 or bits not in (8, 16):
+        raise SystemExit(f"{path}：只支援 PCM 8／16 位元（format={tag}、bits={bits}）")
+    if bits == 8:
+        s = [x - 128 for x in data]
+    else:
+        s = list(struct.unpack(f"<{len(data) // 2}h", data[:len(data) // 2 * 2]))
+    if ch > 1:
+        s = [sum(s[j:j + ch]) / ch for j in range(0, len(s) - ch + 1, ch)]
+    mean = sum(s) / len(s)
+    return [x - mean for x in s], rate
+
+
+def segments(samples, rate):
+    peak = max(abs(x) for x in samples) or 1
+    h = peak * 0.10
+    armed = False
+    cross = []
+    for i in range(1, len(samples)):
+        x = samples[i]
+        if x < -h:
+            armed = True
+        elif armed and x > h:
+            # 往回找過零點，線性內插
+            j = i
+            while j > 0 and samples[j - 1] > 0:
+                j -= 1
+            a, b2 = samples[j - 1], samples[j]
+            frac = (-a / (b2 - a)) if b2 != a else 0.0
+            cross.append((j - 1 + frac) / rate)
+            armed = False
+    segs = []
+    cur = [cross[0]] if cross else []
+    for t in cross[1:]:
+        p = t - cur[-1]
+        if len(cur) >= 2:
+            periods = sorted(cur[k + 1] - cur[k] for k in range(len(cur) - 1))
+            med = periods[len(periods) // 2]
+        else:
+            med = p
+        # 門檻取「4%」與「1.5 個取樣」較大者：硬邊方波的過零點只能落在取樣格上，
+        # 高音（988 Hz 一週期約 22.3 個取樣）的週期會在 22／23 之間跳，相差 4.5%。
+        if p > 0.040 or abs(p - med) > max(0.04 * med, 1.5 / rate):
+            segs.append(cur)
+            cur = [t]
+        else:
+            cur.append(t)
+    if cur:
+        segs.append(cur)
+    out = []
+    for c in segs:
+        if len(c) < 4:  # 少於 3 個週期
+            continue
+        span = c[-1] - c[0]
+        f = (len(c) - 1) / span
+        out.append({"start": c[0], "end": c[-1] + 1 / f, "hz": f})
+    return out
+
+
+def match(G, D, off, limit=None):
+    """在位移 off 下逐段配對（§4 第 2 項）。回 (配對, 未配對, 比對範圍終點)。
+
+    以**時間**找候選（二分搜尋 DOSBox-X 的起點），不以索引往後看幾段：
+    中間缺一整塊時，索引式的配對會卡住，之後完全正常的段也跟著全部失敗，看不出缺的是哪裡。"""
+    span_end = min(G[-1]["end"], D[-1]["end"] - off)
+    starts = [d["start"] - off for d in D]
+    used = set()
+    pairs, unmatched = [], []
+    for g in (G if limit is None else G[:limit]):
+        if g["start"] > span_end:
+            break
+        if g["start"] < starts[0] - 0.050:
+            continue  # DOSBox-X 還沒開始錄
+        k = bisect.bisect_left(starts, g["start"] - 0.050)
+        best = None
+        while k < len(D) and starts[k] <= g["start"] + 0.050:
+            if k not in used and abs(D[k]["hz"] - g["hz"]) / g["hz"] <= 0.02:
+                best = k
+                break
+            k += 1
+        if best is None:
+            unmatched.append({"t": round(g["start"], 3), "hz": round(g["hz"], 1)})
+        else:
+            used.add(best)
+            pairs.append((g, D[best]))
+    return pairs, unmatched, span_end
+
+
+def unmatched_dosboxx(D, pairs, off, span_start, span_end):
+    """DOSBox-X 在比對範圍內、沒有被任何 dosgolem 段配對到的段（dosgolem 漏掉的音）。"""
+    used = {id(d) for _, d in pairs}
+    return [{"t": round(d["start"] - off, 3), "hz": round(d["hz"], 1)} for d in D
+            if span_start - 0.050 <= d["start"] - off <= span_end and id(d) not in used]
+
+
+def cmd_audio(gwav, dwav, out_json):
+    gs, gr = read_wav(gwav)
+    ds, dr = read_wav(dwav)
+    G, D = segments(gs, gr), segments(ds, dr)
+    if not G or not D:
+        raise SystemExit(f"分析不出音符段：dosgolem {len(G)}、DOSBox-X {len(D)}")
+    # 對齊：兩邊開始錄的時間不同（DOSBox-X 常漏掉開頭幾個音），所以不假設第一段對第一段。
+    # 候選位移取兩邊前 10 段裡頻率相同的配對，挑讓前 50 段配對最多的那一個。
+    cands = {round(d["start"] - g["start"], 4) for g in G[:10] for d in D[:10]
+             if abs(d["hz"] - g["hz"]) / g["hz"] <= 0.02}
+    if not cands:
+        raise SystemExit("兩邊前 10 段沒有頻率相同的音，無法對齊")
+    off = max(cands, key=lambda o: len(match(G, D, o, limit=50)[0]))
+    pairs, unmatched, span_end = match(G, D, off)
+    if not pairs:
+        raise SystemExit(f"位移 {off:.3f} 秒下一段都沒配對到")
+    span_start = max(G[0]["start"], D[0]["start"] - off)
+    missing = unmatched_dosboxx(D, pairs, off, span_start, span_end)
+    total_g = len(pairs) + len(unmatched)
+    total_d = len(pairs) + len(missing)
+    rate_g = len(pairs) / total_g if total_g else 0
+    rate_d = len(pairs) / total_d if total_d else 0
+    rate_ok = min(rate_g, rate_d)
+    # 回歸
+    xs = [g["start"] for g, _ in pairs]
+    ys = [d["start"] for _, d in pairs]
+    n = len(xs)
+    mx, my = sum(xs) / n, sum(ys) / n
+    sxx = sum((x - mx) ** 2 for x in xs)
+    slope = sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / sxx if sxx else 1.0
+    icpt = my - slope * mx
+    res = sorted(abs(y - (slope * x + icpt)) for x, y in zip(xs, ys))
+    p95 = res[int(0.95 * (len(res) - 1))]
+    ferr = max(abs(d["hz"] - g["hz"]) / g["hz"] for g, d in pairs)
+    passed = rate_ok >= 0.98 and ferr <= 0.02 and abs(slope - 1) <= 0.005 and p95 <= 0.020
+    result = {
+        "layer": "audio", "golem_segments": len(G), "dosboxx_segments": len(D),
+        "offset_s": round(off, 4), "compared_span_s": round(span_end - max(G[0]["start"], D[0]["start"] - off), 2),
+        "matched": len(pairs), "unmatched_golem": len(unmatched), "unmatched_dosboxx": len(missing),
+        "match_rate_golem": round(rate_g, 4), "match_rate_dosboxx": round(rate_d, 4), "match_rate": round(rate_ok, 4),
+        "max_freq_error": round(ferr, 4), "slope": round(slope, 5),
+        "onset_residual_p95_ms": round(p95 * 1000, 2), "onset_residual_max_ms": round(res[-1] * 1000, 2),
+        "passed": passed, "first_unmatched_golem": unmatched[:20], "first_unmatched_dosboxx": missing[:20],
+    }
+    print(f"聲音層：dosgolem {len(G)} 段、DOSBox-X {len(D)} 段，比對範圍 {result['compared_span_s']} 秒")
+    print(f"  配對 {len(pairs)}：dosgolem 段 {rate_g:.1%}（未配對 {len(unmatched)}）、DOSBox-X 段 {rate_d:.1%}（未配對 {len(missing)}）；頻率誤差最大 {ferr:.2%}，"
+          f"斜率 {slope:.5f}，起點殘差 p95 {p95 * 1000:.1f} ms、最大 {res[-1] * 1000:.1f} ms")
+    print("  判定：", "通過" if passed else "不通過")
+    if unmatched:
+        print("  dosgolem 多出來、DOSBox-X 沒有的段（前 5）：", unmatched[:5])
+    if missing:
+        print("  DOSBox-X 有、dosgolem 沒有的段（前 5）：", missing[:5])
+    if out_json:
+        Path(out_json).write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return 0 if passed else 1
+
+
+def main(argv):
+    args = argv[1:]
+    out_json = None
+    if "--json" in args:
+        k = args.index("--json")
+        out_json = args[k + 1]
+        del args[k:k + 2]
+    if len(args) == 3 and args[0] == "events":
+        return cmd_events(args[1], args[2], out_json)
+    if len(args) == 3 and args[0] == "audio":
+        return cmd_audio(args[1], args[2], out_json)
+    print(__doc__)
+    return 2
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))
