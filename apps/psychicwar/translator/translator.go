@@ -26,6 +26,7 @@ const (
 	retLineLoop  = 0x628E // A1 迴圈呼叫 sub_16629 的返回位址（BX ＝ 字元）
 	retDSLoop    = 0x62AD // A2（迴圈先 inc bx：BX ＝ 字元 ＋1）
 	retCSLoop    = 0x62BB // A3（BX ＝ 字元 ＋1）
+	addrScroll   = 0x6273 // sub_16783 進入點：訊息框開始上移 2 像素（逐列搬動，可能跨好幾幀）
 	addrScrolled = 0x6276 // sub_16783 的 retn：訊息框已上移 2 像素
 	addrCursor   = 0x610E // 低位元組 Y、高位元組 X，單位 4 像素
 	addrSmall    = 0xB0F1 // B sub_1B601：AL 字碼、SI／DI 位置、[SS:SP] 返回位址
@@ -238,6 +239,7 @@ type Translator struct {
 	trackMenu, trackDS, trackCS xlate.LineTracker
 	active                      []printing
 	noted                       map[string]bool
+	scrolling                   bool // 訊息框捲動一步進行中（addrScroll 到 addrScrolled）
 }
 
 type printing struct {
@@ -401,7 +403,15 @@ func (t *Translator) Attach(o *oracle.Oracle) {
 	o.OnCall(at(addrDSLoop), func(o *oracle.Oracle) { t.onStringLoop(o, addrDSLoop) })
 	o.OnCall(at(addrCSLoop), func(o *oracle.Oracle) { t.onStringLoop(o, addrCSLoop) })
 	o.OnCall(at(addrGlyph), t.onGlyph)
-	o.OnCall(at(addrScrolled), func(*oracle.Oracle) { t.Layer.Scroll(boxX0, boxY0, boxX1, boxY1, -2) })
+	o.OnCall(at(addrScroll), func(*oracle.Oracle) { t.scrolling = true })
+	o.OnCall(at(addrScrolled), func(*oracle.Oracle) {
+		t.scrolling = false
+		t.Layer.Scroll(boxX0, boxY0, boxX1, boxY1, -2)
+	})
+	// 捲動一步沒做完時，訊息框裡是搬到一半的畫面，不能拿來判斷失效（spec 009 §4.6）。
+	t.Layer.Frozen = func(s *xlate.Stamp) bool {
+		return t.scrolling && s.X >= boxX0 && s.X < boxX1 && s.Y >= boxY0 && s.Y < boxY1
+	}
 	o.OnCall(at(addrSmall), t.onSmall)
 }
 

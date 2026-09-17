@@ -41,11 +41,11 @@ p.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")' "$first" "$
   fi
   timeout 20m docker run --rm --network none --memory 2g --cpus 2 --pids-limit 128 \
     --log-opt max-size=10m --log-opt max-file=3 -u "$(id -u):$(id -g)" -e HOME=/tmp \
-    -v "$ROOT:/src" -v "$ROOT/workplace/original:/src/workplace/original:ro" -w /src psychicwar-go-ebiten sh -c "
+    -v "$ROOT:/src" -v "$ROOT/workplace/original:/src/workplace/original:ro" -v "$ROOT/workplace/original:/orig:ro" -w /src psychicwar-go-ebiten sh -c "
       set -e
-      workplace/bin/step -exe workplace/original/psychic-war/PW.EXE -root workplace/original/psychic-war -scratch /tmp/s1 \
+      workplace/bin/step -exe /orig/psychic-war/PW.EXE -root /orig/psychic-war -scratch /tmp/s1 \
         -load-state workplace/$state -cycles 750 -do '$do' -shot $OUT/ref.png -scale 1 > $OUT/step.log 2>&1
-      workplace/bin/pwstep -orig workplace/original/psychic-war -scratch /tmp/s2 -load-state workplace/$state \
+      workplace/bin/pwstep -orig /orig/psychic-war -scratch /tmp/s2 -load-state workplace/$state \
         -do '$do' -text $TEXT -text-log $OUT/text.jsonl -shot $OUT/shot.png > $OUT/pwstep.log 2>&1
     "
   set +e

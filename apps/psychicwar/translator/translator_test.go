@@ -44,17 +44,17 @@ func TestMenuSourceAndFindLine(t *testing.T) {
 
 func testTranslator() *Translator {
 	entries := map[string]TextEntry{
-		"CODEH.BIN:02D5":   {Key: "CODEH.BIN:02D5", Kind: "inline", Original: "West    "},
-		"CODE3.BIN:0100":   {Key: "CODE3.BIN:0100", Kind: "inline", Original: "{17}{19}Hello"},
-		"I_MAP01.BIN:0228": {Key: "I_MAP01.BIN:0228", Kind: "place", Original: "{95}{A5}{B5}{C5}{D5}{96}{A6} "},
+		"CODEH.BIN:02D5":    {Key: "CODEH.BIN:02D5", Kind: "inline", Original: "West    "},
+		"CODE3.BIN:0100":    {Key: "CODE3.BIN:0100", Kind: "inline", Original: "{17}{19}Hello"},
+		"I_MAP01.BIN:0228":  {Key: "I_MAP01.BIN:0228", Kind: "place", Original: "{95}{A5}{B5}{C5}{D5}{96}{A6} "},
 		"I_ENMY00.BIN:0052": {Key: "I_ENMY00.BIN:0052", Kind: "enemy-name", Original: "Shulosu "},
-		"PW.EXE:cs:4AFB":   {Key: "PW.EXE:cs:4AFB", Kind: "inline", Original: "{18}{15}I..I Surrender!{17}"},
-		"PW.EXE:cs:65E5":   {Key: "PW.EXE:cs:65E5", Kind: "block", Width: 60, Original: "MATCH THE ALLY WITH   THE BASE TO GAIN   SECURITY CLEARANCE "},
-		"PW.EXE:cs:66F7":   {Key: "PW.EXE:cs:66F7", Kind: "names", Width: 8, Original: " ZUPREEN"},
-		"PW.EXE:cs:66FF":   {Key: "PW.EXE:cs:66FF", Kind: "names", Width: 8, Original: " SHULOSU"},
-		"PW.EXE:cs:8851":   {Key: "PW.EXE:cs:8851", Kind: "line", Width: 20, Original: "   INSERT DISK-?    "},
-		"PW.EXE:cs:B07D":   {Key: "PW.EXE:cs:B07D", Kind: "block", Width: 60, Original: "                       PRESS  ANY KEY        WHEN READY     "},
-		"PW.EXE:cs:0BD7":   {Key: "PW.EXE:cs:0BD7", Kind: "line", Width: 20, Original: "IBM VERSION by      "},
+		"PW.EXE:cs:4AFB":    {Key: "PW.EXE:cs:4AFB", Kind: "inline", Original: "{18}{15}I..I Surrender!{17}"},
+		"PW.EXE:cs:65E5":    {Key: "PW.EXE:cs:65E5", Kind: "block", Width: 60, Original: "MATCH THE ALLY WITH   THE BASE TO GAIN   SECURITY CLEARANCE "},
+		"PW.EXE:cs:66F7":    {Key: "PW.EXE:cs:66F7", Kind: "names", Width: 8, Original: " ZUPREEN"},
+		"PW.EXE:cs:66FF":    {Key: "PW.EXE:cs:66FF", Kind: "names", Width: 8, Original: " SHULOSU"},
+		"PW.EXE:cs:8851":    {Key: "PW.EXE:cs:8851", Kind: "line", Width: 20, Original: "   INSERT DISK-?    "},
+		"PW.EXE:cs:B07D":    {Key: "PW.EXE:cs:B07D", Kind: "block", Width: 60, Original: "                       PRESS  ANY KEY        WHEN READY     "},
+		"PW.EXE:cs:0BD7":    {Key: "PW.EXE:cs:0BD7", Kind: "line", Width: 20, Original: "IBM VERSION by      "},
 	}
 	return NewTranslator(entries, nil, nil, 3, nil)
 }

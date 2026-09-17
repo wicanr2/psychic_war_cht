@@ -52,7 +52,7 @@
     "surrender": {
       "path": "A3",
       "state": "overlay/surrender-before.state",
-      "do": "hold:Space:6000,wait:1000",
+      "do": "hold:Space:2000",
       "targets": [
         [
           "PW.EXE:cs:4AFB",
@@ -83,7 +83,16 @@
       "path": "B",
       "state": "states/02-match.state",
       "do": "tap:Return,wait:4000",
-      "targets": []
+      "targets": [
+        [
+          "PW.EXE:cs:6707",
+          0
+        ],
+        [
+          "PW.EXE:cs:677F",
+          0
+        ]
+      ]
     },
     "name": {
       "path": "B",

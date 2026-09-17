@@ -22,7 +22,8 @@ mkdir -p "$ROOT/workplace/gocache" "$ROOT/workplace/gomodcache"
 NET=(--network none)
 [[ "${PSYCHICWAR_GO_NETWORK:-}" == "1" ]] && NET=()
 ORIG=()
-[[ -d "$ROOT/workplace/original" ]] && ORIG=(-v "$ROOT/workplace/original:/src/workplace/original:ro")
+# 原版也掛在 /orig：probe 產生的狀態檔記著 /orig/psychic-war，載入後遊戲照那個路徑開檔
+[[ -d "$ROOT/workplace/original" ]] && ORIG=(-v "$ROOT/workplace/original:/src/workplace/original:ro" -v "$ROOT/workplace/original:/orig:ro")
 
 exec timeout "${PSYCHICWAR_TIMEOUT:-15m}" docker run --rm "${NET[@]}" \
   --memory "${PSYCHICWAR_MEMORY:-3g}" --cpus "${PSYCHICWAR_CPUS:-2}" --pids-limit 512 \

@@ -93,6 +93,15 @@
 
 `same_as` 不為空的一則，用根 key 的譯文。
 
+### 4.6 訊息框捲動
+
+`sub_16770` 呼叫 4 次 `sub_16783`（`6273`），每次把訊息框上移 2 像素；這一步是逐列搬動顯存，前端每幀跑的機器時間短時會跨好幾幀。
+
+- `6273` 命中：標記「捲動中」；訊息框內的疊字在標記期間不定色、不檢查指紋（dosgolem `xlate.Layer.Frozen`）。
+- `6276`（retn）命中：清除標記，疊字上移 2 像素，出框的移除。
+- 依據：前端 Xvfb 的 `wall` 情境，未凍結時第 1 行疊字在第 3 步捲動中被判為 `changed` 移除（2,774 個像素露出英文）；`pwstep` 每 16.7 ms 定一次色，沒有碰到。
+- 捲動中途存的狀態檔不保存標記；讀回後最多多出一次失效計數，不影響結果。
+
 ## 5. 工具
 
 - `apps/psychicwar`：`Translator` 改用 dosgolem `xlate`，掛上述四個位址；原本的 `apps/psychicwar/overlay` 移除。
@@ -113,7 +122,7 @@
    - A3：敵人名稱 `I_ENMY00.BIN:0052`（`08-encounter`）；`PW.EXE` 內嵌字串一則（實跑能到的，例如投降訊息）；
    - B：區塊 `PW.EXE:cs:65E5`（`02-match`）、有輸入框的 `PW.EXE:cs:8AEF`（`06-name` 之後輸入名字，透明格內是原版輸入的字）、盟友名與基地名（`03-protection`）。
    - 反向對照：每條路徑拿掉一則譯文，該行與原版英文放大 3 倍差 0。
-3. 前端（Xvfb）：A、B 各一個情境用 `tools/frontend-overlay-check.sh` 再驗一次，確認 Ebiten 合成與 `pwstep` 相同。
+3. 前端（Xvfb）：A（`wall`，含訊息框捲動）、B（`match`）各一個情境用 `tools/frontend-overlay-check.sh` 再驗一次，確認 Ebiten 合成與 `pwstep` 相同。
 
 ## 7. 不做
 

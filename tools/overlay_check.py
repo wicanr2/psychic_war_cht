@@ -107,6 +107,38 @@ def line_chars(e, line):
     return raw[start:start + widths[line]]
 
 
+def search(px, cm, n, cw, ch, skip):
+    hits = []
+    for y in range(0, 200 - ch + 1):
+        for x in range(0, 320 - cw * n + 1):
+            bg = fg = None
+            ok = True
+            for i in range(n):
+                if skip[i]:
+                    continue
+                for r in range(ch):
+                    for b in range(cw):
+                        v = px(x + i * cw + b, y + r)
+                        if cm[i][r][b]:
+                            if fg is None:
+                                fg = v
+                            elif v != fg:
+                                ok = False
+                                break
+                        elif bg is None:
+                            bg = v
+                        elif v != bg:
+                            ok = False
+                            break
+                    if not ok:
+                        break
+                if not ok:
+                    break
+            if ok and fg is not None and fg != bg:
+                hits.append((x, y))
+    return hits
+
+
 def main(argv):
     if len(argv) < 3:
         print(__doc__)
@@ -135,34 +167,9 @@ def main(argv):
         cells = cells.ljust(n)
         transparent = [cells[i] == " " and chars[i] == 0x20 for i in range(n)] if tr else [False] * n
         cm = [masks[e["font"]](c) for c in chars]
-        hits = []
-        for y in range(0, 200 - ch + 1):
-            for x in range(0, 320 - cw * n + 1):
-                bg = fg = None
-                ok = True
-                for i in range(n):
-                    if transparent[i]:
-                        continue
-                    for r in range(ch):
-                        for b in range(cw):
-                            v = px(x + i * cw + b, y + r)
-                            if cm[i][r][b]:
-                                if fg is None:
-                                    fg = v
-                                elif v != fg:
-                                    ok = False
-                                    break
-                            elif bg is None:
-                                bg = v
-                            elif v != bg:
-                                ok = False
-                                break
-                        if not ok:
-                            break
-                    if not ok:
-                        break
-                if ok and fg is not None and fg != bg:
-                    hits.append((x, y))
+        hits = search(px, cm, n, cw, ch, transparent)
+        if not hits:  # 輸入框裡有玩家打的字：原文是空白的格子不比對，再找一次
+            hits = search(px, cm, n, cw, ch, [chars[i] == 0x20 for i in range(n)])
         label = "%s 第 %d 行「%s」" % (key, line, bytes(chars).decode("latin-1"))
         if len(hits) != 1:
             print("%s：原版畫面上找到 %d 處，不是 1 處 %s" % (label, len(hits), hits[:4]))
