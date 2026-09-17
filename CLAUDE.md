@@ -120,7 +120,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 
 證據、指令與數字見 `docs/re/001-pw-exe-first-look.md`（實跑初探）、`002-pw-exe-function-census.md`（函式普查）、
 `003-checkpoints-and-dosboxx-reference.md`（檢查點與 DOSBox-X 參照）、`004-rng-and-determinism.md`（亂數）、
-`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）、`011-observation-addresses.md`（位置、朝向、區域、角色數值位址，地圖檔格式）、`012-opl2-event-layer.md`（OPL2 事件層）、`013-replay-route-samar-to-sivad.md`（重播路線）、`014-print-routine.md`（印字常式）、`015-text-formats.md`（文字格式）、`016-frontend-prototype.md`（前端雛形驗收）；
+`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）、`011-observation-addresses.md`（位置、朝向、區域、角色數值位址，地圖檔格式）、`012-opl2-event-layer.md`（OPL2 事件層）、`013-replay-route-samar-to-sivad.md`（重播路線）、`014-print-routine.md`（印字常式）、`015-text-formats.md`（文字格式）、`016-frontend-prototype.md`（前端雛形驗收）、`017-text-coverage.md`（文字覆蓋率）、`018-first-chinese-overlay.md`（第一句中文）；
 被推翻的斷言集中在 `000-overturned-claims.md`。
 
 | 事實 | 等級 |
@@ -134,9 +134,9 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | 音樂兩條路徑：偵測不到 AdLib 載 `.IBM`（PC 喇叭），有 AdLib 載 `.MID`（OPL2） | confirmed |
 | `.IBM` ＝ 每筆 3 bytes（頻率 Hz u16＋刻數 u8，0 ＝ 休止）；驅動以 `1193180÷Hz` 捨去算分頻值。標題播 `OPEN0→1→2` 不重播。dosgolem 事件逐筆相同，合成的 WAV 與 DOSBox-X 錄音音高／節奏比對通過 | confirmed |
 | 文字散在 `PW.EXE`、`I_MENUH.BIN`、`I_MENU00–11.BIN`、`I_ENMY00–11.BIN`、`CODEH／2／11.BIN`，固定寬度欄位 | confirmed（格式見下一列） |
-| `I_MENU*.BIN` 以 16 bytes 為一列：訊息 32 bytes（31 字＋類型位元組）；選單＝32 bytes 提示＋16 bytes 選項（6 bytes 條件＋10 字）＋結束列。`I_ENMY*.BIN` 80 bytes 一筆（名字 +2、HP +0Ch）；`CODE*.BIN` 以 81h 帶內嵌字串。重播實跑印出的 41 行訊息全部在抽取結果裡（`docs/re/015`） | confirmed（I_MENU）／強證據（I_ENMY、CODE） |
+| 文字來源與格式見 `docs/spec/007`（READY）：`I_MENU*`（16 bytes 一列，訊息 32 bytes＝31 字＋類型碼，選單＝提問＋10 字選項）、`I_ENMY*` 名字、`I_MAP*` 偏移 200h 的地點名稱（64×8）、`CODE*` 指令 81h 內嵌字串（`CODEnn` 只有前 700h、`CODEH` 只有前 1200h 會留在記憶體）、`PW.EXE` 內嵌文字。`text/` 共 1,389 則、要翻 1,313；重播 18 段觸發 52 則、不在文本檔 0（`docs/re/017`） | confirmed（I_MENU、CODE 指令語意）／強證據（I_ENMY、I_MAP） |
 | 操作面板文字畫在圖檔上（`SCREEN.PBL` 等） | 假說 |
-| 遊戲自己畫字：單字元 `sub_16629`（`0161:6119`，AL）→ 字模 `FONT.BIN`（8×8，從 20h 起，載入在 `ds:42C6`）。字串迴圈 `sub_16799`（ds:BX 共 CH 字）、`sub_167B2`（ds 到 0）、`sub_167BF`（cs 到 0）只涵蓋實跑約 25% 的字元，其餘從單字元層的其他呼叫點來（`docs/re/014`） | confirmed（動態監看） |
+| 遊戲自己畫字，**兩套字型**：介面用 `FONT.BIN`（8×8，單字元 `sub_16629`／`0161:6119`，字串迴圈 `sub_16799`、`sub_167B2`、`sub_167BF`）；防拷、選單、輸入名字、故事、製作群用程式內建 6×6 小字型（`sub_1B601`／`0161:B0F1`，60 bytes 區塊 `B016`）。重播 18 段的每個字都歸到呼叫端：文字字元全部來自字串層，其餘是游標閃爍、空白與箭頭（`docs/re/014`） | confirmed（動態監看＋呼叫端歸類） |
 | 開頭有手冊式防拷（盟友 ↔ ESP 數值） | confirmed（判定邏輯未讀） |
 | byte pattern 計數不能當 `INT` 證據；解壓後 IDA 認得的 `INT` 指令共 93 處（`21h` 74） | confirmed |
 | 遊戲只用 `AH=10h AL=00` 設屬性暫存器（200 線 RGBI 解讀），從不寫 DAC。dosgolem 修正後（分支 `psychic-war/m1-ega-palette`，未推上游）四個檢查點與遭遇戰的 RGB 與 DOSBox-X 逐像素一致 | confirmed |
@@ -150,6 +150,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | 存檔 `<名>.DAT` 512 bytes；Esc → Options → Save Game → Definitely → 檔名。讀檔後畫面與存檔時相同 | confirmed |
 | 防拷題目由 `sub_1695C` 以亂數出題；空白答案會顯示 `YOU ARE CLEARED` | confirmed（行為），判定邏輯未讀 |
 | 前端（Go／Ebiten，`docs/spec/006`）在 Xvfb 上畫面與檢查點逐像素相同、60 秒節拍誤差 0.000%、以 xdotool 從開機打贏第一場戰鬥；即時音訊只在無音效卡的 null 輸出驗過（`docs/re/016`） | confirmed |
+| 中文疊字雛形（`docs/spec/008`）：原版照畫英文，疊字層以該行英文的背景色蓋掉再畫 24×24 中文。撞牆訊息與出發平台選單逐像素對原版推算的期望值差 0（`docs/re/018`）。游標 `cs:610E`（高位元組 X、低位元組 Y，×4 像素） | confirmed |
 
 ## 工作追蹤
 
@@ -183,8 +184,12 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/frames.py` | 色號陣列的變化摘要與總覽圖 |
 | `tools/go-ebiten.sh` | 前端建置與 Xvfb 實跑（`PSYCHICWAR_SH` 在容器內執行指令；`PSYCHICWAR_GO_NETWORK=1` 抓 module） |
 | `tools/frontend-playthrough.sh` | Xvfb＋xdotool 從開機打贏第一場戰鬥（按鍵按住 0.15 秒、等檢查點畫面再送） |
-| `tools/print_trace.py plan\|report` | 重播各段記錄印字函式的暫存器與字串，合併逐字元命中（`docs/re/014` §4） |
-| `tools/text_extract.py menu\|enmy\|code` | 從原版 `I_MENU`／`I_ENMY`／`CODE` 抽字串與偏移；輸出只放 `workplace/` |
+| `tools/print_trace.py plan\|report` | 重播各段記錄印字函式的暫存器與字串，合併逐字元命中 |
+| `tools/char_callers.py [紀錄目錄]` | 單字元輸出的呼叫端與字碼分布（`-call-args` 紀錄，`docs/re/014` §4） |
+| `tools/text_coverage.sh [重播檔]`＋`tools/text_coverage.py` | 文字覆蓋率四個數字（`docs/spec/007` §6） |
+| `tools/font/bake.sh` | 烘製 `font/cjk24.bin`（倚天 24 點＋Noto 補字；來源放 `workplace/font-src/`） |
+| `tools/frontend-overlay-check.sh wall\|launchpad [--expect-english KEY]`＋`tools/overlay_check.py` | 中文疊字實跑驗收，期望值由原版畫面推算（`docs/spec/008` §4） |
+| `tools/text_extract.py build\|check\|stats <原版目錄>` | 產生／驗證 `text/`（`docs/spec/007`）；`menu\|enmy\|code` 是單檔除錯輸出 |
 
 ## 待決事項
 

@@ -28,10 +28,7 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #16 | `text-formats` | 文字資料格式：I_MENU*.BIN、I_ENMY*.BIN、CODE*.BIN、PW.EXE 字串表 | re, text | — | absent |
-| #17 | `text-extract` | 文本抽取工具：從玩家自備的原版產生文本檔 | text | #16 | absent |
 | #18 | `baked-text-graphics` | 圖檔內嵌文字：PBL 格式與含文字的圖清冊 | re, graphics, text | — | absent |
-| #19 | `runtime-text-coverage` | 文字覆蓋率量測：實跑觸發但不在文本檔的訊息數 | verify, text | #15、#17 | manual |
 
 ## M4：中文繪製與全文翻譯
 
@@ -40,7 +37,7 @@
 | #20 | `hires-overlay-canvas` | 放大畫布＋疊字層：原版畫面放大後在上面畫中文 | golem-upstream, graphics, text | #15、#10 | manual |
 | #21 | `cjk-font` | CJK 點陣字：依譯文烘製子集 | text, graphics | — | manual |
 | #22 | `layout-rules` | 固定寬度文字框的中文排版規則 | text, graphics | #20 | absent |
-| #23 | `glossary` | 譯名表：人名、地名、超能力名稱 | text | — | absent |
+| #23 | `glossary` | 譯名表：人名、地名、超能力名稱 | text | — | manual |
 | #24 | `translation-pass` | 全文翻譯 | text | #17、#23、#22 | manual |
 | #25 | `baked-text-replacement` | 圖檔內嵌文字的中文替換圖層 | graphics, text | #18、#20 | manual |
 | #26 | `name-entry` | 輸入名字：原版只收 ASCII，中文版怎麼處理 | text, input | #15 | manual |
@@ -78,3 +75,6 @@
 | #10 | `frontend-window` | 可遊玩前端：視窗顯示 320×200 EGA 畫面（整數倍放大） | `docs/spec/006`、`docs/re/016` §1–2；`cmd/psychicwar`；`03-protection`、`07-first-play` 截圖與檢查點不同像素 0 | 2026-09-17 |
 | #11 | `keyboard-input` | 鍵盤輸入：前端按鍵轉成 IRQ1 掃描碼 | `docs/re/016` §2.2；`apps/psychicwar/keymap.go`；`tools/frontend-playthrough.sh`（Xvfb＋xdotool：防拷、SELECT、名字、前進、按住空白鍵、轉向、Esc；F1 攔下畫面不變） | 2026-09-17 |
 | #15 | `print-routine` | 找出印字常式：FONT.BIN 字模與固定寬度文字框 | `docs/re/014-print-routine.md`（單字元 `sub_16629`、三支字串迴圈、字模 `FONT.BIN`、攔截點候選）；`tools/print_trace.py`。其餘 6 個單字元呼叫點由第 5 輪追蹤 | 2026-09-17 |
+| #16 | `text-formats` | 文字資料格式：I_MENU*.BIN、I_ENMY*.BIN、CODE*.BIN、PW.EXE 字串表 | `docs/spec/007`（READY：I_MENU、I_ENMY、I_MAP 地點名、CODE 81h＝sub_167B2 內嵌字串、PW_UNP.EXE 位址表；PW.EXE／PW_UNP.EXE SHA-256 與逐項位元組簽章）；`docs/re/014`、`015` | 2026-09-17 |
+| #17 | `text-extract` | 文本抽取工具：從玩家自備的原版產生文本檔 | `text/*.json` 1,389 則（要翻 1,313）；`tools/text_extract.py build／check／stats`；`tools/test_text_extract.py` 7 項通過（含雜湊不符停止、缺原版列出缺檔） | 2026-09-17 |
+| #19 | `runtime-text-coverage` | 文字覆蓋率量測：實跑觸發但不在文本檔的訊息數 | `tools/text_coverage.sh`、`tools/text_coverage.py`：重播 18 段 要翻 1,313、已翻 0→11、觸發 52、不在文本檔 0；反向對照拿掉一則變 2（`docs/re/017`、`tools/test_text_coverage.py`） | 2026-09-17 |

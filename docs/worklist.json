@@ -126,46 +126,6 @@
       "issue": 14
     },
     {
-      "id": "text-formats",
-      "milestone": "M3",
-      "labels": [
-        "re",
-        "text"
-      ],
-      "title": "文字資料格式：I_MENU*.BIN、I_ENMY*.BIN、CODE*.BIN、PW.EXE 字串表",
-      "body": "選單問句 16 字×2 行、選項 10 字、敵人名 8 字，後面接控制位元組（docs/re/001 §4.2）。`CODE0–10.BIN` 沒有 ASCII 字串，要判斷是腳本位元組碼還是含編碼文字。每種格式要寫出欄位定義與控制位元組語意。 ⚠ `PW.EXE` 是 EXEPACK 壓縮檔，字串表的位移要以解壓後的 `PW_UNP.EXE` 為準（docs/re/002 §3）。",
-      "acceptance": "每種文字檔的格式規格標 READY，附位元組簽章；`CODE*.BIN` 有結論。",
-      "verify": {
-        "kind": "absent",
-        "paths": [
-          "docs/spec"
-        ],
-        "pattern": "(?m)^# \\d{3}：.*I_MENU",
-        "note": "格式已解到能列出字串與偏移（docs/re/015：I_MENU 522 筆 0 列解不出、I_ENMY 60 名、CODE 134 則；實跑 41 行訊息全部核對一致），抽取工具 tools/text_extract.py。剩 docs/spec 的 READY 規格與位元組簽章（第 5 輪）；規格出現後改綁抽取工具"
-      },
-      "issue": 16
-    },
-    {
-      "id": "text-extract",
-      "milestone": "M3",
-      "labels": [
-        "text"
-      ],
-      "title": "文本抽取工具：從玩家自備的原版產生文本檔",
-      "body": "依格式規格抽出全部訊息到 `text/`，每則一筆：來源（檔名＋偏移）、原文、欄寬、譯文（空）。原文欄位是原版素材，工具要能在建置時從玩家的檔案重新產生。",
-      "acceptance": "`text/` 下有文本檔，筆數與格式規格的預期一致；工具在缺原版時明確報錯。",
-      "blocked_by": "text-formats",
-      "verify": {
-        "kind": "absent",
-        "paths": [
-          "text"
-        ],
-        "pattern": "\"source\"",
-        "note": "文本檔出現後改成 json_len 綁筆數"
-      },
-      "issue": 17
-    },
-    {
       "id": "baked-text-graphics",
       "milestone": "M3",
       "labels": [
@@ -182,26 +142,9 @@
           "docs/spec"
         ],
         "pattern": "(?m)^# \\d{3}：.*PBL",
-        "note": "規格出現後改綁清冊檔"
+        "note": "規格出現後改綁清冊檔；標題畫面兩套字型都沒有使用，推定是 OPEN.PBL 圖（docs/re/014 §5）"
       },
       "issue": 18
-    },
-    {
-      "id": "runtime-text-coverage",
-      "milestone": "M3",
-      "labels": [
-        "verify",
-        "text"
-      ],
-      "title": "文字覆蓋率量測：實跑觸發但不在文本檔的訊息數",
-      "body": "在訊息層掛鉤，記錄每一則實際顯示的訊息來源，對照文本檔。輸出四個數字：抽出幾則、翻了幾則、實跑觸發幾則、觸發了卻不在文本檔的幾則。",
-      "acceptance": "量測工具可以對任一重播檔輸出四個數字；「不在文本檔」必須是 0 才能關 M4。",
-      "blocked_by": "print-routine, text-extract",
-      "verify": {
-        "kind": "manual",
-        "note": "工具出現後改綁它的輸出欄位名"
-      },
-      "issue": 19
     },
     {
       "id": "hires-overlay-canvas",
@@ -217,7 +160,7 @@
       "blocked_by": "print-routine, frontend-window",
       "verify": {
         "kind": "manual",
-        "note": "上游完成後改綁"
+        "note": "雛形已通過（docs/spec/008、docs/re/018）：I_MENU 定長字串的訊息、提問、選項，撞牆 2 行與出發平台選單 7 行逐像素對原版推算的期望值差 0。剩：小字型、CODE 內嵌、PW.EXE 字串、敵人名與地點名的疊字；抽象成 dosgolem 通用套件（規格先寫）"
       },
       "issue": 20
     },
@@ -233,7 +176,7 @@
       "acceptance": "字型烘製腳本走 docker；譯文用到的字 100% 有字模，缺字時建置失敗。",
       "verify": {
         "kind": "manual",
-        "note": "沒有不會誤判的訊號；字型烘製腳本出現後改綁缺字檢查的輸出"
+        "note": "子集烘製已有（tools/font/bake.sh → font/cjk24.bin：倚天 24 點明體＋Noto 補標點，fallback 字數會印出）。剩：全文翻譯後的完整子集、小字型路徑用的字級、倚天字模散布授權（公開前）"
       },
       "issue": 21
     },
@@ -268,12 +211,8 @@
       "body": "優先沿用軟體世界代理版說明書的譯名（`175-銀河超能力戰記.rar`），PC-88 日文版當原文對照。譯名表是一份資料檔，翻譯與檢查都讀它。",
       "acceptance": "`text/glossary.json` 涵蓋文本中所有專有名詞；每筆標出處（說明書頁碼或自訂）。",
       "verify": {
-        "kind": "absent",
-        "paths": [
-          "text"
-        ],
-        "pattern": "glossary",
-        "note": "檔案出現後改成 json_len 綁條目數"
+        "kind": "manual",
+        "note": "text/glossary.json 已建（說明書第 21–23 頁的 4 個地名＋Celtac 暫譯）。剩：人名、超能力名稱、道具名與說明書其他頁；檔案出現後改綁 entries 數量"
       },
       "issue": 23
     },
@@ -567,6 +506,27 @@
       "issue": 15,
       "title": "找出印字常式：FONT.BIN 字模與固定寬度文字框",
       "evidence": "`docs/re/014-print-routine.md`（單字元 `sub_16629`、三支字串迴圈、字模 `FONT.BIN`、攔截點候選）；`tools/print_trace.py`。其餘 6 個單字元呼叫點由第 5 輪追蹤",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "text-formats",
+      "issue": 16,
+      "title": "文字資料格式：I_MENU*.BIN、I_ENMY*.BIN、CODE*.BIN、PW.EXE 字串表",
+      "evidence": "`docs/spec/007`（READY：I_MENU、I_ENMY、I_MAP 地點名、CODE 81h＝sub_167B2 內嵌字串、PW_UNP.EXE 位址表；PW.EXE／PW_UNP.EXE SHA-256 與逐項位元組簽章）；`docs/re/014`、`015`",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "text-extract",
+      "issue": 17,
+      "title": "文本抽取工具：從玩家自備的原版產生文本檔",
+      "evidence": "`text/*.json` 1,389 則（要翻 1,313）；`tools/text_extract.py build／check／stats`；`tools/test_text_extract.py` 7 項通過（含雜湊不符停止、缺原版列出缺檔）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "runtime-text-coverage",
+      "issue": 19,
+      "title": "文字覆蓋率量測：實跑觸發但不在文本檔的訊息數",
+      "evidence": "`tools/text_coverage.sh`、`tools/text_coverage.py`：重播 18 段 要翻 1,313、已翻 0→11、觸發 52、不在文本檔 0；反向對照拿掉一則變 2（`docs/re/017`、`tools/test_text_coverage.py`）",
       "date": "2026-09-17"
     }
   ]
