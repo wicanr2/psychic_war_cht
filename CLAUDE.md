@@ -120,7 +120,8 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 
 證據、指令與數字見 `docs/re/001-pw-exe-first-look.md`（實跑初探）、`002-pw-exe-function-census.md`（函式普查）、
 `003-checkpoints-and-dosboxx-reference.md`（檢查點與 DOSBox-X 參照）、`004-rng-and-determinism.md`（亂數）、
-`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP、CPU 速度）。
+`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）；
+被推翻的斷言集中在 `000-overturned-claims.md`。
 
 | 事實 | 等級 |
 |---|---|
@@ -141,7 +142,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | 唯一的亂數產生器是 `sub_146B7`（狀態 `cs:41DF`，初值 `544Eh`），不讀時鐘；等待按鍵的迴圈每圈推進一次，所以「隨機」來自玩家反應時間。同一組輸入在 dosgolem 上逐位元組可重現 | confirmed |
 | 第一個遭遇（往前 11 步的 Shulosu）由位置決定，與亂數無關。攻擊要**按住**空白鍵才打得贏（連按 32 種都輸）；DOSBox-X 同樣成立 | confirmed |
 | 敵人 HP 字組在線性 `0x509C`（`0161:3A8C`），改成 1 可一擊打贏 | 強證據 |
-| **戰鬥長短綁 CPU 指令數，不是計時器**：dosgolem 預設速度下約 1 秒、8088 級約 10.5 秒。給人玩必須用週期時鐘限速（`-cpuhz`） | confirmed |
+| **戰鬥敵我雙方的進度都綁 CPU，不是計時器**；單場長短主要看亂數與按鍵時機。速度用 DOSBox 相容 cycles（dosgolem `-cycles`，字串指令每次迭代算一個 cycle）；預設 750（AT 8 MHz），選項 240（XT），見 `docs/spec/004` | confirmed（主迴圈靜態＋成對實驗） |
 | 存檔 `<名>.DAT` 512 bytes；Esc → Options → Save Game → Definitely → 檔名。讀檔後畫面與存檔時相同 | confirmed |
 | 防拷題目由 `sub_1695C` 以亂數出題；空白答案會顯示 `YOU ARE CLEARED` | confirmed（行為），判定邏輯未讀 |
 
@@ -164,6 +165,9 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/determinism.sh` | 第一場戰鬥：同輸入兩次逐位元組相同、晚按鍵必須不同 |
 | `tools/ida/dump.py` | 一次跑多個 IDA 查詢（xref／func／imm／callers／refs）；⚠ 少數位址反組譯引用端會讓 idat 異常結束，改用 `refs:` |
 | `tools/dosboxx-ref.sh` | DOSBox-X 走同樣四個畫面＋遭遇＋攻擊錄影，存 640×400 RGB |
+| `tools/battle-pace.sh <cycles> [按住起點]` | dosgolem 量第一場戰鬥：DOSBox 相容 cycles、秒數、玩家 HP 寫入 |
+| `tools/dosboxx-battle-speed.sh <cycles>` | DOSBox-X 以 8000 cycles 走到遭遇（看畫面變化送鍵）、F12＋減號降速、按住攻擊錄影 |
+| `tools/battle_frames.py <rgb 目錄> [fps] [按下格]` | 戰鬥錄影判讀：敵人圖像消失的時點 |
 | `tools/frame_compare.py [--rgb]` | dosgolem vs DOSBox-X：預設比版面（色號對應），`--rgb` 直接比 RGB |
 | `tools/battle_palette_check.py` | 攻擊雷射上色號 2／A 的顏色驗證（時間軸不對齊時用） |
 | `tools/music_compare.py events\|audio\|opl` | 配樂比對：埠紀錄 vs `.IBM`（逐筆）；兩個 WAV 的音高與節奏（`docs/spec/001`）；OPL2 樂譜 vs WAV（`docs/spec/002`，方法分辨力不足，見 docs/re/007） |
