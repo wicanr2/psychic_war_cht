@@ -705,8 +705,8 @@
    "reachable": true,
    "same_as": "",
    "original": "         --           ENTER ESP POWER:   [                ] ",
-   "translation": "--\n請輸入超能力：\n [                ] ",
-   "note": ""
+   "translation": "         --\n      請輸入超能力：\n [                ] ",
+   "note": "（第 1 行的 -- 留在原文格位：左右兩側由防拷畫面畫盟友名與基地名）"
   },
   {
    "key": "PW.EXE:cs:65A9",

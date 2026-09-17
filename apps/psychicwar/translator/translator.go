@@ -59,6 +59,8 @@ type TextEntry struct {
 	Original    string `json:"original"`
 	Translation string `json:"translation"`
 	SameAs      string `json:"same_as"`
+	// Translatable 為 false：原文沒有可見字元（全是空白或控制碼），不需要譯文，照原版顯示。缺欄位視為 true。
+	Translatable *bool `json:"translatable"`
 }
 
 // LoadText 讀 text/ 下 schema 為 psychic-war-text/1 的檔。
@@ -410,7 +412,7 @@ func (t *Translator) Attach(o *oracle.Oracle) {
 	})
 	// 捲動一步沒做完時，訊息框裡是搬到一半的畫面，不能拿來判斷失效（spec 009 §4.6）。
 	t.Layer.Frozen = func(s *xlate.Stamp) bool {
-		return t.scrolling && s.X >= boxX0 && s.X < boxX1 && s.Y >= boxY0 && s.Y < boxY1
+		return t.scrolling && s.X >= boxX0 && s.X+s.Cells*s.CellW <= boxX1 && s.Y >= boxY0 && s.Y < boxY1
 	}
 	o.OnCall(at(addrSmall), t.onSmall)
 }
@@ -421,6 +423,9 @@ func area(o *oracle.Oracle) uint16 {
 
 // NewStamp 建一筆疊字（沒有譯文回 nil）；A 路徑 small=false，B 路徑 small=true（docs/spec/009 §2）。
 func (t *Translator) NewStamp(e TextEntry, line, x, y, cells int, small bool) *xlate.Stamp {
+	if e.Translatable != nil && !*e.Translatable {
+		return nil // 空白行（清掉舊字用）：原版像素照常顯示，不算缺譯文（docs/spec/009 §3）
+	}
 	tr := t.translation(e)
 	if tr == "" {
 		t.once("missing-translation", e.Key)

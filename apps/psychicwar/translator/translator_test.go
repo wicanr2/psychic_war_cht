@@ -1,6 +1,7 @@
 package translator
 
 import (
+	"bytes"
 	"reflect"
 	"testing"
 
@@ -171,5 +172,20 @@ func TestLineWidths(t *testing.T) {
 		if got := LineWidths(c.e); !reflect.DeepEqual(got, c.want) {
 			t.Errorf("%s：%v，要 %v", c.e.Kind, got, c.want)
 		}
+	}
+}
+
+// docs/spec/009 §3：不需譯文的空白行不建疊字、不記缺譯文；反向對照：可見原文缺譯文要記。
+func TestUntranslatableBlankLine(t *testing.T) {
+	no, yes := false, true
+	var log bytes.Buffer
+	tr := NewTranslator(map[string]TextEntry{}, nil, nil, 3, &log)
+	blank := TextEntry{Key: "CODEH.BIN:0053", Kind: "inline", Original: "          ", Translatable: &no}
+	if s := tr.NewStamp(blank, 0, 120, 132, 10, false); s != nil || log.Len() != 0 {
+		t.Fatalf("空白行：stamp=%v 紀錄=%q", s, log.String())
+	}
+	word := TextEntry{Key: "CODEH.BIN:02D5", Kind: "inline", Original: "West    ", Translatable: &yes}
+	if s := tr.NewStamp(word, 0, 120, 132, 8, false); s != nil || !bytes.Contains(log.Bytes(), []byte("missing-translation")) {
+		t.Fatalf("可見原文缺譯文要記：紀錄=%q", log.String())
 	}
 }

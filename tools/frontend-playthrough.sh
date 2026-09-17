@@ -3,7 +3,8 @@
 # 走完重播 01–09 段的流程並打第一場戰鬥。
 #
 #   tools/frontend-playthrough.sh [按住空白鍵秒數]
-#   產出 workplace/fe/play/：steps/NN-<鍵>.png（每一步）、checkpoints.txt（檢查點比對）、stats.jsonl、f1.txt、final.png
+#   PSYCHICWAR_PLAY_TEXT=0 tools/frontend-playthrough.sh   # 不開中文疊字（預設開，轉譯紀錄寫 text.jsonl）
+#   產出 workplace/fe/play/：steps/NN-<鍵>.png（每一步）、checkpoints.txt（檢查點比對）、stats.jsonl、f1.txt、final.png、text.jsonl
 #   勝負看 final.png（敵人消失、回到迷宮、玩家 HP 不為 0）
 #
 # 按鍵走 X → GLFW → Ebiten → inpututil → dosgolem KeyDown／KeyUp，與玩家在自己機器上按的是同一條路。
@@ -15,13 +16,16 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 HOLD="${1:-35}"
+TEXTARGS="-text text -font font -text-log workplace/fe/play/text.jsonl"; TOLMIN=3000
+# 檢查點是原版英文畫面；開疊字時中文區塊會多出上千個不同像素，檢查點只用來抓送鍵時機，所以容許值至少 3000
+if [[ "${PSYCHICWAR_PLAY_TEXT:-1}" == "0" ]]; then TEXTARGS="-text ''"; TOLMIN=0; fi
 [[ -x "$ROOT/workplace/bin/psychicwar" ]] || { echo "先 build 前端到 workplace/bin/psychicwar" >&2; exit 2; }
 rm -rf "$ROOT/workplace/fe/play"; mkdir -p "$ROOT/workplace/fe/play/steps"
 PSYCHICWAR_TIMEOUT=15m PSYCHICWAR_SH="
 set -eu
 cd /src
 OUT=workplace/fe/play
-workplace/bin/psychicwar -orig workplace/original/psychic-war -audio null -scratch /tmp/saves -stats \$OUT/stats.jsonl > \$OUT/frontend.log 2>&1 &
+workplace/bin/psychicwar -orig workplace/original/psychic-war -audio null -scratch /tmp/saves -stats \$OUT/stats.jsonl $TEXTARGS > \$OUT/frontend.log 2>&1 &
 PID=\$!
 for i in \$(seq 1 100); do W=\$(xdotool search --name 'Psychic War' 2>/dev/null | head -1 || true); [ -n \"\$W\" ] && break; sleep 0.1; done
 eval \"\$(xdotool getwindowgeometry --shell \"\$W\")\"
@@ -38,7 +42,7 @@ retries=0
 # 送鍵：等畫面靜止 → 按下 0.15 秒放開 → 5 秒內畫面沒變就重送（最多 3 次，像真人再按一次）
 key() { quiet; for try in 1 2 3; do h0=\$(shot); tap \"\$1\"; wait_change \"\$h0\" && break; retries=\$((retries + 1)); note \"key \$1 沒反應，重送\"; done; sleep \"\$2\"; n=\$((n + 1)); import -window \"\$W\" \$OUT/steps/\$(printf %02d \$n)-\$1.png; note \"key \$1\"; }
 # 等畫面與重播檢查點相符（縮回 320×200 後不同像素 ≤ 容許值，給閃爍的游標與箭頭），最多 90 秒
-wait_ref() { ref=workplace/states/\$1.rgb.png; tol=\$2; for i in \$(seq 1 180); do alive; import -window \"\$W\" /tmp/cur.png; convert /tmp/cur.png -sample 320x200! /tmp/cur320.png; d=\$(compare -metric AE \$ref /tmp/cur320.png null: 2>&1 || true); d=\${d%% *}; if [ \"\${d%.*}\" -le \"\$tol\" ] 2>/dev/null; then note \"畫面符合 \$1（差 \$d 像素）\"; echo \"\$1 \$d\" >> \$OUT/checkpoints.txt; return 0; fi; sleep 0.5; done; note \"等不到 \$1（最後差 \$d）\"; echo \"\$1 timeout \$d\" >> \$OUT/checkpoints.txt; }
+wait_ref() { ref=workplace/states/\$1.rgb.png; tol=\$2; [ \$tol -lt $TOLMIN ] && tol=$TOLMIN; for i in \$(seq 1 180); do alive; import -window \"\$W\" /tmp/cur.png; convert /tmp/cur.png -sample 320x200! /tmp/cur320.png; d=\$(compare -metric AE \$ref /tmp/cur320.png null: 2>&1 || true); d=\${d%% *}; if [ \"\${d%.*}\" -le \"\$tol\" ] 2>/dev/null; then note \"畫面符合 \$1（差 \$d 像素）\"; echo \"\$1 \$d\" >> \$OUT/checkpoints.txt; return 0; fi; sleep 0.5; done; note \"等不到 \$1（最後差 \$d）\"; echo \"\$1 timeout \$d\" >> \$OUT/checkpoints.txt; }
 press() { tap \"\$1\"; sleep \"\$2\"; n=\$((n + 1)); import -window \"\$W\" \$OUT/steps/\$(printf %02d \$n)-\$1.png; note \"key \$1\"; }
 sleep 20
 import -window \"\$W\" \$OUT/steps/00-title.png
