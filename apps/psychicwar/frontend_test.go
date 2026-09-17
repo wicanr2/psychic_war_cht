@@ -1,0 +1,73 @@
+package psychicwar
+
+import (
+	"testing"
+
+	"github.com/hajimehoshi/ebiten/v2"
+)
+
+// docs/spec/006 §4 第 1 項。
+
+func TestPacer(t *testing.T) {
+	p := &Pacer{PerMs: 750}
+	if got := p.Cycles(1000, 999); got != 750 {
+		t.Errorf("落後 1 ms 給 %d cycles，要 750", got)
+	}
+	if got := p.Cycles(1000, 1000); got != 0 {
+		t.Errorf("沒落後卻給 %d", got)
+	}
+	p = &Pacer{PerMs: 750}
+	if got := p.Cycles(1000, 0); got != 75_000 || p.DroppedMs != 900 {
+		t.Errorf("落後 1000 ms：給 %d、放棄 %.0f ms，要 75000、900", got, p.DroppedMs)
+	}
+	// 放棄的量之後不再追：機器跑到 100 ms 後、牆上 1016 ms，只差 16 ms。
+	if got := p.Cycles(1016, 100); got != 12_000 {
+		t.Errorf("放棄追趕後給 %d，要 12000", got)
+	}
+}
+
+func TestRingUnderrun(t *testing.T) {
+	q := NewRing(4096)
+	in := make([]int16, 1000)
+	for i := range in {
+		in[i] = int16(i + 1)
+	}
+	q.Write(in)
+	out := make([]int16, 1500)
+	if k := q.Read(out); k != 1000 || out[999] != 1000 || out[1000] != 0 || out[1499] != 0 || q.Underruns != 1 {
+		t.Errorf("讀 1500：真實 %d、第 1000 筆 %d、欠載 %d", k, out[1000], q.Underruns)
+	}
+	// 反向對照：夠讀時不算欠載。
+	q = NewRing(4096)
+	q.Write(in)
+	if k := q.Read(make([]int16, 1000)); k != 1000 || q.Underruns != 0 {
+		t.Errorf("讀 1000：真實 %d、欠載 %d", k, q.Underruns)
+	}
+}
+
+func TestRingOverflowDropsOldest(t *testing.T) {
+	q := NewRing(3)
+	q.Write([]int16{1, 2, 3, 4})
+	out := make([]int16, 3)
+	q.Read(out)
+	if out[0] != 2 || out[2] != 4 || q.Overflows != 1 {
+		t.Errorf("溢位後讀到 %v，溢位 %d", out, q.Overflows)
+	}
+}
+
+func TestKeyMap(t *testing.T) {
+	for k, want := range map[ebiten.Key]uint8{
+		ebiten.KeyArrowUp: 0x48, ebiten.KeyArrowDown: 0x50, ebiten.KeyArrowLeft: 0x4B, ebiten.KeyArrowRight: 0x4D,
+		ebiten.KeyNumpad8: 0x48, ebiten.KeyNumpad2: 0x50, ebiten.KeySpace: 0x39, ebiten.KeyEnter: 0x1C, ebiten.KeyEscape: 0x01,
+		ebiten.KeyA: 0x1E, ebiten.KeyZ: 0x2C, ebiten.KeyK: 0x25, ebiten.KeyI: 0x17, ebiten.KeyT: 0x14, ebiten.KeyDigit0: 0x0B, ebiten.KeyDigit9: 0x0A,
+	} {
+		if got, ok := ScanCode(k); !ok || got != want {
+			t.Errorf("%v → %02X（%v），要 %02X", k, got, ok, want)
+		}
+	}
+	for _, k := range []ebiten.Key{ebiten.KeyF1, ebiten.KeyF2, ebiten.KeyF3, ebiten.KeyF10} {
+		if _, ok := ScanCode(k); ok || !Intercepted(k) {
+			t.Errorf("%v 應該被攔下", k)
+		}
+	}
+}

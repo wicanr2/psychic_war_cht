@@ -1,0 +1,13 @@
+# Ebiten 在 Linux 上要 cgo 連 X11／OpenGL，golang 官方 image 沒有那些標頭檔。
+# 這是**本專案自己的 image**（`psychicwar-go-ebiten`），不動任何共用資源。
+#
+# `xdotool` ＋ `imagemagick` 是給 `tools/frontend-playthrough.sh` 用的：
+# 把前端跑在 Xvfb 裡、用真正的 X 鍵盤事件操作、用 `import` 截圖。
+# **不是除錯捷徑**——按鍵一樣走 X → GLFW → Ebiten → `inpututil`，
+# 與玩家在自己機器上按的是同一條路（`docs/spec/006` §4 第 5 項驗這一條）。
+FROM golang:1.24-bookworm
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libx11-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev libxxf86vm-dev \
+        libgl1-mesa-dev libasound2-dev pkg-config xvfb xauth libgl1 libglx-mesa0 \
+        xdotool imagemagick \
+    && rm -rf /var/lib/apt/lists/*
