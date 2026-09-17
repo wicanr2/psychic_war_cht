@@ -33,17 +33,18 @@
 
 **MVP 的定義是「一般玩家能從開頭玩到結尾，所有遊戲內文字都是中文」**，不是對拍通過。
 
-| 期 | 內容 | 驗收 |
-|---:|---|---|
-| 0 | `cmd/probe` 跑 `PW.EXE`，列出缺的 DOS／BIOS 服務與顯示模式 | `o.Unimplemented()` 清單進 `docs/spec/` |
-| 1 | 補齊 dosgolem 讓原版能跑到標題、開場、第一個可操作畫面 | 快照解幀與 DOSBox-X 同一時點比對一致 |
-| 2 | 可互動前端：畫面、鍵盤、滑鼠、音效，時序以牆上時間節拍 | 人可以操作，輸入可錄成重播檔 |
-| 3 | 文字攔截：找到印字常式，抽出全部文本成可編輯的文本檔 | 文本檔涵蓋率有數字（見下方「完整性」）|
-| 4 | 中文繪製：放大畫布＋CJK 點陣，依訊息替換 | 正常玩家路徑走完沒有漏網英文 |
-| 5 | 輔助功能：F1 說明、F2 切換語言、F10 即時存檔、F3 地圖、作弊 | 各自有 spec 與測試 |
-| 6 | 主題替換、跨平台打包 | 見 `rulebook/82` |
+| 期 | 目標 |
+|---|---|
+| M0 | 探勘與基線：IDA 普查、狀態檔檢查點、DOSBox-X 參照 |
+| M1 | 原版在 golem 上完整可跑：色盤、OPL2、PC 喇叭、決定性、全程無缺口 |
+| M2 | 可遊玩前端：節拍、視窗、鍵盤、滑鼠、音訊、輸入錄放 |
+| M3 | 文字攔截與文本抽取 |
+| M4 | 中文繪製與全文翻譯 |
+| M5 | 輔助功能：防拷、F1／F2／F3／F10、作弊 |
+| M6 | 主題、打包、授權與發行 |
 
-期數之間的依賴是硬的：沒有第 3 期的文本清單就不做第 4 期的排版。
+各期的完成定義與量測指標在 `docs/goal/`，逐條工作在 `docs/worklist.json`。
+依賴是硬的：沒有 M3 的文本清單就不做 M4 的排版。
 
 ## 分層與程式碼歸屬（使用者定案 2026-09-17）
 
@@ -115,27 +116,37 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
   觸發了卻不在文本檔裡的有幾則。最後一項必須是 0。
 - 譯名統一：人名、地名、超能力名稱集中在一份譯名表，優先沿用軟體世界說明書的用法。
 
-## 目前已知（2026-09-17，靜態掃描，未反組譯）
+## 目前已知
 
-| 事實 | 等級 | 證據 |
-|---|---|---|
-| 主程式 `PW.EXE` 58,649 bytes，MZ 格式；另有 `LOGO.EXE` 23,136 bytes | confirmed | MZ 標頭 |
-| 版本是 Kyodai Software 1989 的英文移植（IBM VERSION） | confirmed | `PW.EXE` 內的版權與工作人員字串 |
-| 部分遊戲文字直接放在 `PW.EXE` 裡（開場故事、Game Over、工作人員名單） | confirmed | 字串掃描 |
-| 其餘對白可能在 `CODE0.BIN`～`CODE11.BIN`、`CODEH.BIN` | 假說 | 檔名與大小；開頭 bytes 看起來像指標表，尚未解讀 |
-| `FONT.BIN` 2,048 bytes 是自帶的 8×8 字型（256 字 × 8 bytes） | 假說 | 只從大小推算。若成立，原版自己畫字，不走 BIOS，攔截點是印字常式 |
-| `.MID` 是標準 MIDI 檔（`MThd`）；`.IBM` 格式未知，可能是 PC 喇叭版樂譜 | `.MID` confirmed，`.IBM` 假說 | 檔頭 |
-| `PW.EXE` 內 `CD 75`（`INT 75h`）byte pattern 出現 55 次，`INT 21h` 76 次、`INT 10h` 9 次 | 未知 | byte pattern 計數，不是反組譯，可能混入資料 |
-| 顯示模式（CGA／EGA／其他）、音效裝置 | 未知 | 第 0 期 `cmd/probe` 回答 |
+完整證據、指令與數字見 `docs/re/001-pw-exe-first-look.md`。
+
+| 事實 | 等級 |
+|---|---|
+| `PW.EXE` 在 dosgolem 上可跑到主畫面（EXEC `LOGO.EXE` → 標誌 → 標題 → 防拷 → 輸入名字） | confirmed |
+| 版本是 Kyodai Software 1989 的英文移植（IBM VERSION） | confirmed |
+| 顯示模式 EGA 0Dh（320×200 16 色），色盤用 `INT 10h AH=10h` 設屬性控制器 | confirmed |
+| 自掛 `INT 08h`（PIT ≈72 Hz）與 `INT 09h`（直接讀掃描碼） | confirmed |
+| 音樂兩條路徑：偵測不到 AdLib 載 `.IBM`（PC 喇叭），有 AdLib 載 `.MID`（OPL2） | confirmed |
+| 文字散在 `PW.EXE`、`I_MENUH.BIN`、`I_MENU00–11.BIN`、`I_ENMY00–11.BIN`、`CODEH／2／11.BIN`，固定寬度欄位 | confirmed（格式未解） |
+| 操作面板文字畫在圖檔上（`SCREEN.PBL` 等） | 假說 |
+| `FONT.BIN` 是 8×8 字模，遊戲自己畫字 | 假說 |
+| 開頭有手冊式防拷（盟友 ↔ ESP 數值） | confirmed（判定邏輯未讀） |
+| `CD 75` 55 處都沒有被執行，抽查 6 處為 `DEC CH; JNZ`；byte pattern 計數不能當 `INT` 證據 | confirmed |
+
+## 工作追蹤
+
+- **未完成項的權威**：`docs/worklist.json`（每條對應一個 GitHub issue）。
+  `tools/py.sh tools/worklist.py verify` 逐條檢查；`render` 產生 `docs/worklist.md`（不要手改）。
+  條目做完就改 JSON 與關 issue，不在 markdown 打勾。
+- **分期目標與驗收**：`docs/goal/`。只寫目標，不記進度。
+- **Python 工具走 `tools/py.sh`**（docker）；dosgolem 的 Go 工具走 `worktrees/dosgolem/tools/go.sh`。
+- 原版解壓到 `workplace/original/`，probe 輸出放 `workplace/probe/`（都 gitignore）。
+  ⚠ probe 的 `-shots` 輸出是 64,000 bytes 色號陣列，不是 PNG。
 
 ## 待決事項
 
-- 音樂走 MIDI（需要 MPU／MT-32 或軟體合成）還是 PC 喇叭，還是兩者並存。
 - 前端框架（預設 Go／Ebiten）與目標平台清單。
-- F10 即時存檔的格式：golem 的 `Save()` 是記憶體內快照，落地到檔案需要序列化規格。
-- F3 地圖的資料來源：`I_MAP*.BIN`／`MAZE.BIN` 的格式，或直接讀執行時的記憶體。
-- 公開時機與授權：remake／中文化專案一律採 RRSAL-1.0（`rulebook/85`，已定案不重問）。
-  `LICENSE` 尚未放入。
+- 公開時機。授權一律採 RRSAL-1.0（`rulebook/85`，已定案不重問），放入 `LICENSE` 由 #36 追蹤。
 
 ## 按需載入
 

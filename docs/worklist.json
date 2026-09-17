@@ -1,0 +1,678 @@
+{
+  "schema": "psychic-war-worklist/1",
+  "note": "未完成項的權威。docs/worklist.md 由 tools/worklist.py render 產生，不要手改。verify 為真＝仍未完成。",
+  "milestones": {
+    "M0": "探勘與基線：證據、狀態檔、參照畫面",
+    "M1": "原版在 golem 上完整可跑：畫面、音樂、決定性",
+    "M2": "可遊玩前端：視窗、鍵盤、滑鼠、音訊、節拍",
+    "M3": "文字攔截與文本抽取",
+    "M4": "中文繪製與全文翻譯",
+    "M5": "輔助功能：F1／F2／F3／F10、防拷、作弊",
+    "M6": "主題、打包、授權與發行"
+  },
+  "labels": {
+    "re": "反組譯與格式解讀",
+    "golem-upstream": "通用機制，做完送回 dosgolem",
+    "graphics": "畫面與圖檔",
+    "audio": "音樂與音效",
+    "input": "鍵盤與滑鼠",
+    "frontend": "可遊玩的主程式",
+    "text": "文本抽取、翻譯與排版",
+    "assist": "原版沒有的輔助功能",
+    "verify": "對原版驗證",
+    "release": "打包與發行"
+  },
+  "items": [
+    {
+      "id": "ida-baseline",
+      "milestone": "M0",
+      "labels": [
+        "re"
+      ],
+      "title": "建立 PW.EXE／LOGO.EXE 的 IDA 資料庫並做函式普查",
+      "body": "用 `ida-pro-9.4-idapython:locked-v1` 建 `.i64`，以 probe 的 `-coverage` 當程式碼種子。先分出 compiler／runtime helper 與產品碼，再列函式數、已執行比例與 `INT` 呼叫點。`CD 75` 的 55 處都沒被執行，抽查 6 處為 `DEC CH; JNZ`（docs/re/001 §4.1），byte pattern 計數不能當函式證據。",
+      "acceptance": "docs/re/ 有一份函式普查：函式總數、helper 數、已執行數、所有真正的 INT 呼叫點（位址＋operand＋bytes）；輸入檔 SHA-256 寫在文件裡。",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "docs/re"
+        ],
+        "pattern": "(?m)^# \\d{3}：.*函式普查",
+        "note": "docs/re 出現以此為標題的文件就該關；普查文件出現後這條就該關"
+      },
+      "issue": 1
+    },
+    {
+      "id": "state-checkpoints",
+      "milestone": "M0",
+      "labels": [
+        "verify"
+      ],
+      "title": "固定的狀態檔檢查點：標題、防拷、輸入名字、第一個可操作畫面",
+      "body": "probe 已支援 `-save-state`／`-load-state`（dosgolem `internal/state`）。把到達各畫面的輸入序列寫成可重跑腳本，產出狀態檔到 `workplace/states/`，之後每個實驗從檢查點展開，不必每次從開機跑幾億步。",
+      "acceptance": "`tools/states.sh` 一次產出四個檢查點；每個檢查點附一張解幀畫面，並記下到達的指令數。",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "tools"
+        ],
+        "pattern": "save-state",
+        "note": "腳本出現後改綁腳本內的檢查點名稱"
+      },
+      "issue": 2
+    },
+    {
+      "id": "dosbox-reference-frames",
+      "milestone": "M0",
+      "labels": [
+        "verify",
+        "graphics"
+      ],
+      "title": "DOSBox-X 參照畫面：同一個畫面的正確顏色與版面",
+      "body": "dosgolem 畫出來的每一張都要拿交叉 oracle 驗過才算數。在 DOSBox-X 以相同輸入走到 M0 的四個檢查點，取索引畫面與色盤，當 M1 色盤修正與 M4 疊字的比對基準。只用快照解幀，不拿截圖量像素。",
+      "acceptance": "四個檢查點各有一份 DOSBox-X 參照（色號陣列＋色盤），與 dosgolem 的色號逐像素比對結果寫進 docs/re/。",
+      "verify": {
+        "kind": "manual",
+        "note": "參照檔在 workplace/（不進版控）；比對文件出現後改綁 docs/re 的文件標題"
+      },
+      "issue": 3
+    },
+    {
+      "id": "ega-palette-output",
+      "milestone": "M1",
+      "labels": [
+        "golem-upstream",
+        "graphics"
+      ],
+      "title": "EGA mode 0Dh 的畫面輸出沒有套用遊戲設定的色盤",
+      "body": "遊戲只用 `INT 10h AH=10h` 設屬性控制器，不寫 DAC（DAC 全部 ≤ 1）。`-dump-screen-png` 因此輸出全黑，`-dump-ega` 則固定用 EGA 預設 16 色。圖形正確，顏色未驗證（docs/re/001 §4.3）。修正屬於 dosgolem 的機器層：mode 0Dh 的色號要經屬性控制器對到 EGA 64 色。",
+      "acceptance": "dosgolem 的畫面輸出在四個檢查點與 DOSBox-X 參照的 RGB 一致；dosgolem 端有對應測試。",
+      "blocked_by": "dosbox-reference-frames",
+      "verify": {
+        "kind": "manual",
+        "note": "修在 worktrees/dosgolem（gitignore）；上游合併後改綁本 repo 引用的 dosgolem 版本"
+      },
+      "issue": 4
+    },
+    {
+      "id": "opl2-synth",
+      "milestone": "M1",
+      "labels": [
+        "golem-upstream",
+        "audio"
+      ],
+      "title": "OPL2（AdLib）合成：`.MID` 音樂路徑目前只有暫存器紀錄",
+      "body": "開 `-adlib` 時遊戲改載 `.MID` 並寫 OPL2 暫存器（主畫面前 1,751 筆），但 dosgolem 只記錄、不合成。需要一個 YM3812 合成器（可參考 DOSBox-X 的 OPL 實作），輸入是 `-opl-log` 同格式的時序化暫存器序列。",
+      "acceptance": "標題音樂可合成成 WAV；與 DOSBox-X 同段錄音比對音高與節奏一致（比對方法寫進 spec）。",
+      "verify": {
+        "kind": "manual",
+        "note": "上游完成後改綁 dosgolem 版本"
+      },
+      "issue": 5
+    },
+    {
+      "id": "pc-speaker-audio",
+      "milestone": "M1",
+      "labels": [
+        "audio",
+        "verify"
+      ],
+      "title": "PC 喇叭音樂路徑（`.IBM`）驗證",
+      "body": "沒有 AdLib 時遊戲載入 `.IBM` 並以 PIT 通道 2／埠 61h 發聲。dosgolem 已有 `-dump-wav`。要確認 `.IBM` 的格式與輸出波形正確，作為沒有 AdLib 時的後備。",
+      "acceptance": "標題音樂的 PC 喇叭 WAV 與 DOSBox-X 錄音比對一致；`.IBM` 格式寫進 docs/re/。",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "docs/re"
+        ],
+        "pattern": "(?m)^# \\d{3}：.*\\.IBM 格式",
+        "note": "docs/re 出現以此為標題的文件就該關；格式文件出現後改成綁 WAV 比對結果"
+      },
+      "issue": 6
+    },
+    {
+      "id": "determinism-rng",
+      "milestone": "M1",
+      "labels": [
+        "re",
+        "verify"
+      ],
+      "title": "亂數來源與重播決定性",
+      "body": "`INT 1Ah` 有 5 處但這段路徑沒有執行。要找出遊戲的亂數種子從哪來（計時器計數、按鍵時間或 `INT 1Ah`），確認同一組輸入在 golem 上永遠得到同一個結果。這是輸入錄放與即時存檔的前提。",
+      "acceptance": "亂數常式位址與種子來源寫進 docs/re/；同一組輸入跑兩次，戰鬥結果逐項相同的測試。",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "docs/re"
+        ],
+        "pattern": "(?m)^# \\d{3}：.*亂數",
+        "note": "docs/re 出現以此為標題的文件就該關；文件出現後改綁決定性測試名稱"
+      },
+      "issue": 7
+    },
+    {
+      "id": "full-run-no-gaps",
+      "milestone": "M1",
+      "labels": [
+        "verify"
+      ],
+      "title": "從開頭跑到結局，沒有未實作的服務",
+      "body": "目前只驗到主畫面，而且只有走過的路徑算數。要走完戰鬥、各區域、存讀檔（遊戲自己的存檔會寫檔）與結局，途中 `o.Unimplemented()` 必須是空的。",
+      "acceptance": "一份可重播的全程輸入（或檢查點串），跑完沒有未實作服務，結局畫面解幀存證。",
+      "blocked_by": "state-checkpoints",
+      "verify": {
+        "kind": "manual",
+        "note": "全程重播檔進版控後改綁它的檔名"
+      },
+      "issue": 8
+    },
+    {
+      "id": "realtime-pacing",
+      "milestone": "M2",
+      "labels": [
+        "golem-upstream",
+        "frontend"
+      ],
+      "title": "牆上時間節拍：讓 72 Hz 的遊戲以原速執行",
+      "body": "golem 的時鐘是指令數。遊戲自掛 `INT 08h`，PIT 約 72 Hz；目前實測 11.7–16.4 M 道指令／秒。互動遊玩需要把「每個計時器中斷之間跑幾道指令」與牆上時間對齊，同時保留指令數時鐘給重播用。速度要以原機（8088／286）為參考，不是跑越快越好。",
+      "acceptance": "spec 定案每 tick 指令數的依據；前端執行時計時器中斷穩定在 72 Hz ±1%，CPU 用量有量測數字。",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "docs/spec"
+        ],
+        "pattern": "(?m)^# \\d{3}：.*節拍",
+        "note": "spec 出現後改綁前端的節拍程式碼"
+      },
+      "issue": 9
+    },
+    {
+      "id": "frontend-window",
+      "milestone": "M2",
+      "labels": [
+        "frontend",
+        "graphics"
+      ],
+      "title": "可遊玩前端：視窗顯示 320×200 EGA 畫面（整數倍放大）",
+      "body": "`cmd/psychicwar` 主程式，import dosgolem 與 `apps/psychicwar`。預設 Go／Ebiten，框架定案寫進 spec。畫面 nearest 整數倍放大，保留之後疊中文字的圖層。",
+      "acceptance": "能開視窗看到標題畫面且顏色正確；Linux 上可建置（docker）。",
+      "blocked_by": "ega-palette-output",
+      "verify": {
+        "kind": "manual",
+        "note": "沒有不會誤判的訊號；主程式出現後改綁視窗初始化的函式名"
+      },
+      "issue": 10
+    },
+    {
+      "id": "keyboard-input",
+      "milestone": "M2",
+      "labels": [
+        "input",
+        "frontend"
+      ],
+      "title": "鍵盤輸入：前端按鍵轉成 IRQ1 掃描碼",
+      "body": "遊戲自掛 `INT 09h`（`0161:B4FE`）直接讀掃描碼，不走 `INT 16h`。前端要送 make／break 掃描碼，包含方向鍵與 ESC。F1／F2／F3／F10 由前端攔下，不送進遊戲。",
+      "acceptance": "可用鍵盤完成防拷、輸入名字、移動與選單操作；保留給輔助功能的按鍵不會漏進遊戲。",
+      "blocked_by": "frontend-window",
+      "verify": {
+        "kind": "manual",
+        "note": "前端按鍵對應表出現後改綁該表"
+      },
+      "issue": 11
+    },
+    {
+      "id": "mouse-input",
+      "milestone": "M2",
+      "labels": [
+        "input",
+        "re"
+      ],
+      "title": "滑鼠：確認原版是否支援，並在前端提供點選操作",
+      "body": "執行檔有 1 處 `CD 33`，4 億步內沒有執行，可能是偵測滑鼠或不是指令。先確認原版有沒有滑鼠路徑；沒有的話，前端把點擊選單項目、方向箭頭轉成按鍵。",
+      "acceptance": "docs/re/ 寫明原版的滑鼠支援結論；前端可以用滑鼠選選單項目與移動。",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "docs/re"
+        ],
+        "pattern": "(?m)^# \\d{3}：.*滑鼠",
+        "note": "docs/re 出現以此為標題的文件就該關；結論文件出現後改綁前端滑鼠對應程式碼"
+      },
+      "issue": 12
+    },
+    {
+      "id": "audio-output",
+      "milestone": "M2",
+      "labels": [
+        "audio",
+        "frontend"
+      ],
+      "title": "即時音訊輸出（OPL2 與 PC 喇叭）",
+      "body": "把 M1 的合成接到前端音訊輸出，與節拍同步。可選擇 AdLib 或 PC 喇叭版。",
+      "acceptance": "遊玩時聽得到標題與遊戲中音樂，沒有明顯斷音或速度偏差；可切換音源。",
+      "blocked_by": "opl2-synth, realtime-pacing",
+      "verify": {
+        "kind": "manual",
+        "note": "前端音訊程式碼出現後改綁"
+      },
+      "issue": 13
+    },
+    {
+      "id": "input-record-replay",
+      "milestone": "M2",
+      "labels": [
+        "golem-upstream",
+        "verify"
+      ],
+      "title": "輸入錄放：以指令數記錄按鍵，可重播重現",
+      "body": "互動時把每個輸入事件連同指令數記下來，存成重播檔。重播時不需要牆上時間。用途：回報 bug、回歸測試、全程跑測（`full-run-no-gaps`）。",
+      "acceptance": "錄一段遊玩後重播，終點畫面與記憶體逐位元組相同。",
+      "blocked_by": "determinism-rng",
+      "verify": {
+        "kind": "manual",
+        "note": "重播格式 spec 出現後改綁"
+      },
+      "issue": 14
+    },
+    {
+      "id": "print-routine",
+      "milestone": "M3",
+      "labels": [
+        "re",
+        "text"
+      ],
+      "title": "找出印字常式：FONT.BIN 字模與固定寬度文字框",
+      "body": "文字不走 BIOS，推定遊戲以 `FONT.BIN`（2,048 bytes，256×8）自己畫 8×8 字。用讀取監看找出讀字模的常式，往上追到接收字串指標的那一層。轉譯層要攔的是「一則訊息」那一層，不是單一字元。",
+      "acceptance": "docs/re/ 寫明印字常式與訊息層常式的位址、參數（字串指標、座標、顏色、寬度）與呼叫點；`FONT.BIN` 格式確認。",
+      "blocked_by": "ida-baseline",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "docs/re"
+        ],
+        "pattern": "(?m)^# \\d{3}：.*印字常式",
+        "note": "docs/re 出現以此為標題的文件就該關；文件出現後改綁 apps/psychicwar 的攔截點常數"
+      },
+      "issue": 15
+    },
+    {
+      "id": "text-formats",
+      "milestone": "M3",
+      "labels": [
+        "re",
+        "text"
+      ],
+      "title": "文字資料格式：I_MENU*.BIN、I_ENMY*.BIN、CODE*.BIN、PW.EXE 字串表",
+      "body": "選單問句 16 字×2 行、選項 10 字、敵人名 8 字，後面接控制位元組（docs/re/001 §4.2）。`CODE0–10.BIN` 沒有 ASCII 字串，要判斷是腳本位元組碼還是含編碼文字。每種格式要寫出欄位定義與控制位元組語意。",
+      "acceptance": "每種文字檔的格式規格標 READY，附位元組簽章；`CODE*.BIN` 有結論。",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "docs/spec"
+        ],
+        "pattern": "(?m)^# \\d{3}：.*I_MENU",
+        "note": "規格出現後改綁抽取工具"
+      },
+      "issue": 16
+    },
+    {
+      "id": "text-extract",
+      "milestone": "M3",
+      "labels": [
+        "text"
+      ],
+      "title": "文本抽取工具：從玩家自備的原版產生文本檔",
+      "body": "依格式規格抽出全部訊息到 `text/`，每則一筆：來源（檔名＋偏移）、原文、欄寬、譯文（空）。原文欄位是原版素材，工具要能在建置時從玩家的檔案重新產生。",
+      "acceptance": "`text/` 下有文本檔，筆數與格式規格的預期一致；工具在缺原版時明確報錯。",
+      "blocked_by": "text-formats",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "text"
+        ],
+        "pattern": "\"source\"",
+        "note": "文本檔出現後改成 json_len 綁筆數"
+      },
+      "issue": 17
+    },
+    {
+      "id": "baked-text-graphics",
+      "milestone": "M3",
+      "labels": [
+        "re",
+        "graphics",
+        "text"
+      ],
+      "title": "圖檔內嵌文字：PBL 格式與含文字的圖清冊",
+      "body": "操作面板上的「ADVANCE」「LOOK ASIDE」「TURN」「OPERATION」在任何檔案的 ASCII 裡都找不到，推定畫在 `SCREEN.PBL` 等圖上。要解 `.PBL` 格式，列出所有含文字的圖與位置，供 M4 以圖層替換。",
+      "acceptance": "`.PBL` 格式規格 READY；含文字圖片清冊（檔名、座標、原文）完成。",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "docs/spec"
+        ],
+        "pattern": "(?m)^# \\d{3}：.*PBL",
+        "note": "規格出現後改綁清冊檔"
+      },
+      "issue": 18
+    },
+    {
+      "id": "runtime-text-coverage",
+      "milestone": "M3",
+      "labels": [
+        "verify",
+        "text"
+      ],
+      "title": "文字覆蓋率量測：實跑觸發但不在文本檔的訊息數",
+      "body": "在訊息層掛鉤，記錄每一則實際顯示的訊息來源，對照文本檔。輸出四個數字：抽出幾則、翻了幾則、實跑觸發幾則、觸發了卻不在文本檔的幾則。",
+      "acceptance": "量測工具可以對任一重播檔輸出四個數字；「不在文本檔」必須是 0 才能關 M4。",
+      "blocked_by": "print-routine, text-extract",
+      "verify": {
+        "kind": "manual",
+        "note": "工具出現後改綁它的輸出欄位名"
+      },
+      "issue": 19
+    },
+    {
+      "id": "hires-overlay-canvas",
+      "milestone": "M4",
+      "labels": [
+        "golem-upstream",
+        "graphics",
+        "text"
+      ],
+      "title": "放大畫布＋疊字層：原版畫面放大後在上面畫中文",
+      "body": "依 `rulebook/81`：原版 320×200 nearest 整數倍放大，中文點陣畫在放大後的畫布。攔到訊息時，原版那一塊文字區不畫字（或遮掉），改由疊字層畫中文。機制通用，送 dosgolem；位址與版面規則留本 repo。",
+      "acceptance": "spec READY；一則訊息在放大畫布上以中文顯示，底圖與原版一致、沒有英文殘影。",
+      "blocked_by": "print-routine, frontend-window",
+      "verify": {
+        "kind": "manual",
+        "note": "上游完成後改綁"
+      },
+      "issue": 20
+    },
+    {
+      "id": "cjk-font",
+      "milestone": "M4",
+      "labels": [
+        "text",
+        "graphics"
+      ],
+      "title": "CJK 點陣字：依譯文烘製子集",
+      "body": "依譯文實際用字烘製 16×16 或 24×24 點陣子集，字型授權要允許再散布並記在 README。尺寸依放大倍率與文字框大小定案。",
+      "acceptance": "字型烘製腳本走 docker；譯文用到的字 100% 有字模，缺字時建置失敗。",
+      "verify": {
+        "kind": "manual",
+        "note": "沒有不會誤判的訊號；字型烘製腳本出現後改綁缺字檢查的輸出"
+      },
+      "issue": 21
+    },
+    {
+      "id": "layout-rules",
+      "milestone": "M4",
+      "labels": [
+        "text",
+        "graphics"
+      ],
+      "title": "固定寬度文字框的中文排版規則",
+      "body": "原版選單問句 16 字×2 行、選項 10 字。中文字寬不同，要定案：每框可容幾個中文字、換行規則、超長處理（報錯而不是截斷）、選項游標位置對應。",
+      "acceptance": "排版規格 READY；超出版面的譯文在建置時被列出。",
+      "blocked_by": "hires-overlay-canvas",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "docs/spec"
+        ],
+        "pattern": "(?m)^# \\d{3}：.*排版",
+        "note": "規格出現後改綁超長檢查"
+      },
+      "issue": 22
+    },
+    {
+      "id": "glossary",
+      "milestone": "M4",
+      "labels": [
+        "text"
+      ],
+      "title": "譯名表：人名、地名、超能力名稱",
+      "body": "優先沿用軟體世界代理版說明書的譯名（`175-銀河超能力戰記.rar`），PC-88 日文版當原文對照。譯名表是一份資料檔，翻譯與檢查都讀它。",
+      "acceptance": "`text/glossary.json` 涵蓋文本中所有專有名詞；每筆標出處（說明書頁碼或自訂）。",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "text"
+        ],
+        "pattern": "glossary",
+        "note": "檔案出現後改成 json_len 綁條目數"
+      },
+      "issue": 23
+    },
+    {
+      "id": "translation-pass",
+      "milestone": "M4",
+      "labels": [
+        "text"
+      ],
+      "title": "全文翻譯",
+      "body": "依 kb `workflows/batch-subagent-localization.md` 分批翻譯，譯名與語氣一致。英文版是主要原文，日文版用來確認原意。",
+      "acceptance": "文本檔譯文欄全部非空；譯名檢查與排版檢查通過。",
+      "blocked_by": "text-extract, glossary, layout-rules",
+      "verify": {
+        "kind": "manual",
+        "note": "文本檔出現後改綁「譯文為空的筆數」"
+      },
+      "issue": 24
+    },
+    {
+      "id": "baked-text-replacement",
+      "milestone": "M4",
+      "labels": [
+        "graphics",
+        "text"
+      ],
+      "title": "圖檔內嵌文字的中文替換圖層",
+      "body": "依 `baked-text-graphics` 清冊，為每個含文字的圖區製作中文替換圖，在放大畫布上蓋在原位。替換圖是自製素材，可進版控。",
+      "acceptance": "清冊內每一項都有替換圖；四個檢查點畫面沒有英文圖字。",
+      "blocked_by": "baked-text-graphics, hires-overlay-canvas",
+      "verify": {
+        "kind": "manual",
+        "note": "替換圖目錄出現後改綁清冊與替換圖的數量比對"
+      },
+      "issue": 25
+    },
+    {
+      "id": "name-entry",
+      "milestone": "M4",
+      "labels": [
+        "text",
+        "input"
+      ],
+      "title": "輸入名字：原版只收 ASCII，中文版怎麼處理",
+      "body": "「ENTER YOUR NAME」由原版讀按鍵存成 ASCII。選項：保留英文名、或前端另存中文顯示名並在顯示時替換。需要先確認名字存放位置與長度。",
+      "acceptance": "決定寫進 spec；實作後存讀檔後名字顯示正確。",
+      "blocked_by": "print-routine",
+      "verify": {
+        "kind": "manual",
+        "note": "spec 出現後改綁"
+      },
+      "issue": 26
+    },
+    {
+      "id": "playtest-cht",
+      "milestone": "M4",
+      "labels": [
+        "verify",
+        "text"
+      ],
+      "title": "中文版正常玩家路徑試玩",
+      "body": "依 kb `retro-cht/retro-game-playtest`：以一般玩家方式從開頭玩到結局，含存讀檔，記錄漏譯、破版、錯字。",
+      "acceptance": "試玩紀錄進 docs/；`runtime-text-coverage` 的「不在文本檔」為 0，沒有破版。",
+      "blocked_by": "translation-pass, baked-text-replacement",
+      "verify": {
+        "kind": "manual",
+        "note": "試玩紀錄出現後改綁其結論欄"
+      },
+      "issue": 27
+    },
+    {
+      "id": "copy-protection",
+      "milestone": "M5",
+      "labels": [
+        "assist",
+        "re",
+        "text"
+      ],
+      "title": "防拷：翻譯、F1 查表、略過選項",
+      "body": "主畫面前有手冊式防拷（配對盟友與基地、輸入 ESP 數值）。三件事都做：(1) 畫面中文化；(2) F1 說明可查答案，資料來自說明書；(3) 設定裡提供略過。略過要攔在判定常式，不改原版檔案。先讀判定邏輯與失敗分支。",
+      "acceptance": "判定常式寫進 docs/re/；三種用法各有測試（照答、查表、略過）。",
+      "blocked_by": "ida-baseline",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "docs/re"
+        ],
+        "pattern": "(?m)^# \\d{3}：.*防拷判定",
+        "note": "docs/re 出現以此為標題的文件就該關；文件出現後改綁略過選項的設定鍵名"
+      },
+      "issue": 28
+    },
+    {
+      "id": "f1-help",
+      "milestone": "M5",
+      "labels": [
+        "assist",
+        "frontend"
+      ],
+      "title": "F1 說明頁",
+      "body": "暫停遊戲，顯示操作說明與遊戲說明（依說明書重寫，不直接用掃描檔）。說明內容是本 repo 的文件資料，不寫死在程式裡。",
+      "acceptance": "F1 在任何畫面都能開關，不影響遊戲狀態（開關前後記憶體相同）。",
+      "blocked_by": "hires-overlay-canvas",
+      "verify": {
+        "kind": "manual",
+        "note": "實作後改綁熱鍵分派表"
+      },
+      "issue": 29
+    },
+    {
+      "id": "f2-language",
+      "milestone": "M5",
+      "labels": [
+        "assist",
+        "text"
+      ],
+      "title": "F2 切換語言（中文／英文原文）",
+      "body": "即時切換疊字層開關；英文模式就是原版畫面。之後可擴充其他語言文本檔。",
+      "acceptance": "在任一畫面切換，文字立即換語言且遊戲狀態不變。",
+      "blocked_by": "hires-overlay-canvas",
+      "verify": {
+        "kind": "manual",
+        "note": "實作後改綁"
+      },
+      "issue": 30
+    },
+    {
+      "id": "f10-quicksave",
+      "milestone": "M5",
+      "labels": [
+        "assist",
+        "golem-upstream"
+      ],
+      "title": "F10 即時存檔／讀檔",
+      "body": "dosgolem `internal/state` 已能把機器與 DOS 狀態存成檔案。要補的是：存檔槽、版本標記（golem 版本與原版 SHA-256）、前端操作介面、不相容時明確拒絕。",
+      "acceptance": "存檔後重開程式讀回，畫面與記憶體與存檔時相同；golem 版本不符時拒絕並說明。",
+      "blocked_by": "determinism-rng",
+      "verify": {
+        "kind": "manual",
+        "note": "實作後改綁存檔格式的版本欄位名"
+      },
+      "issue": 31
+    },
+    {
+      "id": "f3-map",
+      "milestone": "M5",
+      "labels": [
+        "assist",
+        "re"
+      ],
+      "title": "F3 自動地圖",
+      "body": "資料來源二選一：解 `I_MAP00–11.BIN`／`MAZE.BIN` 格式，或從記憶體讀目前區域與位置。至少要能標出玩家位置與朝向。",
+      "acceptance": "地圖格式或記憶體位址寫進 docs/re/；F3 顯示目前區域地圖與玩家位置，與實際移動一致。",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "docs/re"
+        ],
+        "pattern": "(?m)^# \\d{3}：.*地圖格式",
+        "note": "docs/re 出現以此為標題的文件就該關；文件出現後改綁地圖繪製程式碼"
+      },
+      "issue": 32
+    },
+    {
+      "id": "cheats",
+      "milestone": "M5",
+      "labels": [
+        "assist",
+        "re"
+      ],
+      "title": "作弊功能",
+      "body": "需要先找到角色狀態（HP、ESP、道具、金錢）的記憶體位置。作弊一律透過 golem 寫記憶體，不改原版檔案；位址表放 `apps/psychicwar`。",
+      "acceptance": "狀態位址表有證據（讀寫點）；至少提供回復 HP／ESP 與防拷略過，開啟時畫面有標示。",
+      "verify": {
+        "kind": "manual",
+        "note": "位址表出現後改綁"
+      },
+      "issue": 33
+    },
+    {
+      "id": "theme",
+      "milestone": "M6",
+      "labels": [
+        "graphics"
+      ],
+      "title": "主題替換",
+      "body": "在放大畫布上提供替換 UI 框線、配色或圖檔的機制。原版畫面永遠是預設主題。",
+      "acceptance": "主題是資料檔；切換後四個檢查點畫面正常、遊戲狀態不變。",
+      "blocked_by": "hires-overlay-canvas",
+      "verify": {
+        "kind": "manual",
+        "note": "主題格式 spec 出現後改綁"
+      },
+      "issue": 34
+    },
+    {
+      "id": "cross-platform-package",
+      "milestone": "M6",
+      "labels": [
+        "release"
+      ],
+      "title": "跨平台打包：Linux／Windows／macOS",
+      "body": "依 `rulebook/82` 驗證每個平台的封包。發行包不含原版素材，玩家自備 DOS 版檔案；啟動時檢查 SHA-256。",
+      "acceptance": "三個平台各自能從乾淨環境解開、指定原版目錄、玩到主畫面；驗證紀錄進 docs/。",
+      "blocked_by": "playtest-cht",
+      "verify": {
+        "kind": "manual",
+        "note": "CI 工作流程出現後改綁"
+      },
+      "issue": 35
+    },
+    {
+      "id": "license-readme",
+      "milestone": "M6",
+      "labels": [
+        "release"
+      ],
+      "title": "LICENSE（RRSAL-1.0）與 README",
+      "body": "依 `rulebook/85` 放入 RRSAL-1.0 全文，第 2 條 (c) 點名本專案的灰色地帶（文本檔的原文欄位、從原版量出的位址表、參照截圖）。README 依 `rulebook/80` 撰寫，寫清楚玩家要自備哪個版本。",
+      "acceptance": "LICENSE 與 README 進版控；README 寫明原版取得方式與 SHA-256。",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "LICENSE"
+        ],
+        "pattern": "RRSAL-1.0",
+        "note": "檔案不存在時 hit 為空＝仍未完成"
+      },
+      "issue": 36
+    }
+  ]
+}
