@@ -480,8 +480,8 @@
    "reachable": true,
    "same_as": "",
    "original": " ESP",
-   "translation": "ESP",
-   "note": ""
+   "translation": " ESP",
+   "note": "保留原文：ESP 是數值標籤，原文靠右對齊"
   },
   {
    "key": "CODEH.BIN:0DF2",

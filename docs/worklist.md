@@ -34,11 +34,7 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #20 | `hires-overlay-canvas` | 放大畫布＋疊字層：原版畫面放大後在上面畫中文 | golem-upstream, graphics, text | #15、#10 | manual |
 | #21 | `cjk-font` | CJK 點陣字：依譯文烘製子集 | text, graphics | — | manual |
-| #22 | `layout-rules` | 固定寬度文字框的中文排版規則 | text, graphics | #20 | absent |
-| #23 | `glossary` | 譯名表：人名、地名、超能力名稱 | text | — | manual |
-| #24 | `translation-pass` | 全文翻譯 | text | #17、#23、#22 | manual |
 | #25 | `baked-text-replacement` | 圖檔內嵌文字的中文替換圖層 | graphics, text | #18、#20 | manual |
 | #26 | `name-entry` | 輸入名字：原版只收 ASCII，中文版怎麼處理 | text, input | #15 | manual |
 | #27 | `playtest-cht` | 中文版正常玩家路徑試玩 | verify, text | #24、#25 | manual |
@@ -78,3 +74,7 @@
 | #16 | `text-formats` | 文字資料格式：I_MENU*.BIN、I_ENMY*.BIN、CODE*.BIN、PW.EXE 字串表 | `docs/spec/007`（READY：I_MENU、I_ENMY、I_MAP 地點名、CODE 81h＝sub_167B2 內嵌字串、PW_UNP.EXE 位址表；PW.EXE／PW_UNP.EXE SHA-256 與逐項位元組簽章）；`docs/re/014`、`015` | 2026-09-17 |
 | #17 | `text-extract` | 文本抽取工具：從玩家自備的原版產生文本檔 | `text/*.json` 1,389 則（要翻 1,313）；`tools/text_extract.py build／check／stats`；`tools/test_text_extract.py` 7 項通過（含雜湊不符停止、缺原版列出缺檔） | 2026-09-17 |
 | #19 | `runtime-text-coverage` | 文字覆蓋率量測：實跑觸發但不在文本檔的訊息數 | `tools/text_coverage.sh`、`tools/text_coverage.py`：重播 18 段 要翻 1,313、已翻 0→11、觸發 52、不在文本檔 0；反向對照拿掉一則變 2（`docs/re/017`、`tools/test_text_coverage.py`） | 2026-09-17 |
+| #20 | `hires-overlay-canvas` | 放大畫布＋疊字層：原版畫面放大後在上面畫中文 | `docs/spec/009`（READY）＋dosgolem 規格 `202-translation-overlay`（`xlate` 套件）：A1／A2／A3／小字型四條印字路徑。`pwstep` 8 情境 13 行逐像素差 0、反向對照差 0；前端 Xvfb `wall`（含訊息框捲動）、`match` 5 行差 0（`docs/re/019`） | 2026-09-17 |
+| #22 | `layout-rules` | 固定寬度文字框的中文排版規則 | `docs/spec/009` §3：各種類行寬（訊息 16＋15、選項 10、區塊每行 20、其餘依原文可印字數）、一格一字、透明格、保留原文；`tools/text_extract.py lint` 列出過長譯文，1,313 則過長 0（`docs/re/021`）。選單游標與反白沿用原版像素，不另排 | 2026-09-17 |
+| #23 | `glossary` | 譯名表：人名、地名、超能力名稱 | `text/glossary.json` 119 筆：說明書對照 40（記頁碼）、自訂 79（標 provisional，敵人名稱全部）；翻譯指令與 `tools/l10n_batches.py sweep` 都讀它（`docs/re/021`） | 2026-09-17 |
+| #24 | `translation-pass` | 全文翻譯 | 要翻 1,313、已翻 1,313（保留原文 38）；10 批子代理＋合併核對＋一致性修正；lint 過長 0、非 Big5 0；字型子集 873 字（`docs/re/021`） | 2026-09-17 |

@@ -30,7 +30,7 @@
    "en": "Celtac",
    "zh": "塞爾塔克",
    "kind": "place",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
@@ -49,28 +49,28 @@
    "en": "Emperor Quila",
    "zh": "奎拉皇帝",
    "kind": "person",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Koorak",
    "zh": "庫拉克",
    "kind": "ally",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Loran",
    "zh": "羅蘭",
    "kind": "ally",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "ChiaB",
    "zh": "琪亞B",
    "kind": "ally",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
@@ -95,21 +95,21 @@
    "en": "Century Parody",
    "zh": "世紀諧擬號",
    "kind": "org",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Shua",
    "zh": "舒亞",
    "kind": "base",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Melser",
    "zh": "梅爾瑟",
    "kind": "base",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
@@ -194,7 +194,7 @@
    "en": "Magnify",
    "zh": "放大",
    "kind": "power",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
@@ -225,21 +225,21 @@
    "en": "Trogan",
    "zh": "特洛根",
    "kind": "item",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Ramzes",
    "zh": "拉姆西斯",
    "kind": "item",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Sheek",
    "zh": "席克",
    "kind": "item",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
@@ -258,21 +258,21 @@
    "en": "Gamera",
    "zh": "卡美拉",
    "kind": "item",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Rodan",
    "zh": "拉頓",
    "kind": "item",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Mothra",
    "zh": "摩斯拉",
    "kind": "item",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
@@ -285,21 +285,21 @@
    "en": "Tears Crystal",
    "zh": "淚之水晶",
    "kind": "item",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Blood Crystal",
    "zh": "血之水晶",
    "kind": "item",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Sweat Crystal",
    "zh": "汗之水晶",
    "kind": "item",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
@@ -324,7 +324,7 @@
    "en": "BEEFUN",
    "zh": "畢方",
    "kind": "item",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
@@ -379,420 +379,420 @@
    "en": "Kasuruji",
    "zh": "卡蘇魯基",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Shulosu",
    "zh": "舒洛蘇",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Minton",
    "zh": "敏頓",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Jiftok",
    "zh": "吉夫托克",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Pospopoi",
    "zh": "波斯波伊",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Machipi",
    "zh": "馬奇皮",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Paluka",
    "zh": "帕魯卡",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Oogus",
    "zh": "歐格斯",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Flegu",
    "zh": "弗雷古",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Paimus",
    "zh": "派馬斯",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Ander-MT",
    "zh": "安德爾-MT",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Tezmoxaa",
    "zh": "特茲莫克薩",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "MOT-38",
    "zh": "MOT-38",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Zuleene",
    "zh": "祖琳",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Houzz",
    "zh": "霍茲",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Zikkead",
    "zh": "齊克德",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Gregorin",
    "zh": "葛雷戈林",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Miltee",
    "zh": "米爾蒂",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Utcham",
    "zh": "烏特強姆",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Tatooman",
    "zh": "塔圖曼",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Zekmaron",
    "zh": "澤克馬隆",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Jaxemo",
    "zh": "賈克斯莫",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Gestinti",
    "zh": "蓋斯汀提",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Zejraf",
    "zh": "澤傑拉夫",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Gorrfys",
    "zh": "高爾菲斯",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Burox",
    "zh": "布洛克斯",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Buzebott",
    "zh": "巴茲波特",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Zertar",
    "zh": "澤塔爾",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Jixmay",
    "zh": "吉克斯梅",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Dekto",
    "zh": "戴克托",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Ulsten",
    "zh": "烏爾斯坦",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Zuboibo",
    "zh": "祖波伊波",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "DOS-51",
    "zh": "DOS-51",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Desdemon",
    "zh": "黛絲德蒙",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Zukfrige",
    "zh": "祖克弗里吉",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "B-9L1",
    "zh": "B-9L1",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Segmund",
    "zh": "塞格蒙德",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "IIno-2",
    "zh": "IIno-2",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Pionn",
    "zh": "皮昂",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Rugoron",
    "zh": "魯格隆",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Zilfaim",
    "zh": "齊爾法姆",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "ARB-7",
    "zh": "ARB-7",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Ungfried",
    "zh": "昂弗里德",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "SOLT-2",
    "zh": "SOLT-2",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Anbaddin",
    "zh": "安巴丁",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Wixtan 6",
    "zh": "威克斯坦6號",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Zuutaim",
    "zh": "祖泰姆",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Katjym",
    "zh": "卡特金",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Pyfax",
    "zh": "派法克斯",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Zupreen",
    "zh": "祖普林",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Khezhik",
    "zh": "克茲克",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Zuroky",
    "zh": "祖洛基",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Uudon",
    "zh": "烏頓",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Xyimide",
    "zh": "希伊麥德",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Venufly",
    "zh": "維努夫萊",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Zilvok",
    "zh": "齊爾沃克",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Xyzok",
    "zh": "希佐克",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Jipugee",
    "zh": "吉普吉",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Pajiix",
    "zh": "帕吉克斯",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   },
   {
    "en": "Yazpy",
    "zh": "雅茲皮",
    "kind": "enemy",
-   "source": "",
+   "source": "自訂（說明書對照頁沒有）",
    "provisional": true
   }
  ]

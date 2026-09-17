@@ -51,7 +51,7 @@
       "blocked_by": "state-checkpoints",
       "verify": {
         "kind": "manual",
-        "note": "重播已到 Sivad（區域 1，18 段，docs/re/013）；Sivad 碰撞座標偏移 +3／+5 已解、探路掃描可用（docs/re/011 §3.5）；遭遇計數器位址未找到（重開條件見 docs/re/011 §4）。重播到結局後改綁重播檔最後一段的段名"
+        "note": "重播到 Zellwal（區域 3，19 段，docs/re/013、docs/re/019 §4）；Sivad 碰撞座標偏移 +3／+5 已解、探路掃描可用（docs/re/011 §3.5）；遭遇計數器位址未找到（重開條件見 docs/re/011 §4）。重播到結局後改綁重播檔最後一段的段名"
       },
       "issue": 8
     },
@@ -67,7 +67,7 @@
       "acceptance": "spec 定案 `CPUHz` 與依據（敵人攻擊的時間基準＋DOSBox-X 固定 cycles 的戰鬥時間參照）；前端執行時計時器中斷穩定在 72 Hz ±1%、每秒週期數 ±2%，第一場戰鬥的持續時間與參照相差 ≤ 10%。",
       "verify": {
         "kind": "manual",
-        "note": "前端牆上時間對齊已通過（docs/re/016 §2.1）。第一場戰鬥：DOSBox-X 750 cycles 有效 3 場平均 17.75 秒、dosgolem 12 組平均 17.84 秒（−0.5%，docs/re/010 §4.6），樣本不足不定案；DOSBox-X 走位改成等檢查點後補到 ≥ 5 場再關"
+        "note": "前端牆上時間對齊已通過（docs/re/016 §2.1）。第一場戰鬥：DOSBox-X 750 cycles 有效 3 場平均 17.75 秒、dosgolem 12 組平均 17.84 秒（−0.5%，docs/re/010 §4.6），樣本不足不定案。2026-09-17 主機 load 18（14 核）不能量；重開條件：load 連續 5 分鐘 < 2，DOSBox-X 走位改成等檢查點後補到 ≥ 5 場（docs/re/019 §6）"
       },
       "issue": 9
     },
@@ -147,24 +147,6 @@
       "issue": 18
     },
     {
-      "id": "hires-overlay-canvas",
-      "milestone": "M4",
-      "labels": [
-        "golem-upstream",
-        "graphics",
-        "text"
-      ],
-      "title": "放大畫布＋疊字層：原版畫面放大後在上面畫中文",
-      "body": "依 `rulebook/81`：原版 320×200 nearest 整數倍放大，中文點陣畫在放大後的畫布。攔到訊息時，原版那一塊文字區不畫字（或遮掉），改由疊字層畫中文。機制通用，送 dosgolem；位址與版面規則留本 repo。",
-      "acceptance": "spec READY；一則訊息在放大畫布上以中文顯示，底圖與原版一致、沒有英文殘影。",
-      "blocked_by": "print-routine, frontend-window",
-      "verify": {
-        "kind": "manual",
-        "note": "雛形已通過（docs/spec/008、docs/re/018）：I_MENU 定長字串的訊息、提問、選項，撞牆 2 行與出發平台選單 7 行逐像素對原版推算的期望值差 0。剩：小字型、CODE 內嵌、PW.EXE 字串、敵人名與地點名的疊字；抽象成 dosgolem 通用套件（規格先寫）"
-      },
-      "issue": 20
-    },
-    {
       "id": "cjk-font",
       "milestone": "M4",
       "labels": [
@@ -176,61 +158,9 @@
       "acceptance": "字型烘製腳本走 docker；譯文用到的字 100% 有字模，缺字時建置失敗。",
       "verify": {
         "kind": "manual",
-        "note": "子集烘製已有（tools/font/bake.sh → font/cjk24.bin：倚天 24 點明體＋Noto 補標點，fallback 字數會印出）。剩：全文翻譯後的完整子集、小字型路徑用的字級、倚天字模散布授權（公開前）"
+        "note": "烘製走 docker（tools/font/bake.sh → font/cjk24.golemfnt、cjk16.golemfnt，873 字）；兩套字型都沒有的字結束碼 1、不寫輸出檔；實跑缺字 0（docs/re/019 §5）。剩：倚天字模散布授權，選項在 docs/re/020 等使用者決定；決定後改綁 README 的字型授權段"
       },
       "issue": 21
-    },
-    {
-      "id": "layout-rules",
-      "milestone": "M4",
-      "labels": [
-        "text",
-        "graphics"
-      ],
-      "title": "固定寬度文字框的中文排版規則",
-      "body": "原版選單問句 16 字×2 行、選項 10 字。中文字寬不同，要定案：每框可容幾個中文字、換行規則、超長處理（報錯而不是截斷）、選項游標位置對應。",
-      "acceptance": "排版規格 READY；超出版面的譯文在建置時被列出。",
-      "blocked_by": "hires-overlay-canvas",
-      "verify": {
-        "kind": "absent",
-        "paths": [
-          "docs/spec"
-        ],
-        "pattern": "(?m)^# \\d{3}：.*排版",
-        "note": "規格出現後改綁超長檢查"
-      },
-      "issue": 22
-    },
-    {
-      "id": "glossary",
-      "milestone": "M4",
-      "labels": [
-        "text"
-      ],
-      "title": "譯名表：人名、地名、超能力名稱",
-      "body": "優先沿用軟體世界代理版說明書的譯名（`175-銀河超能力戰記.rar`），PC-88 日文版當原文對照。譯名表是一份資料檔，翻譯與檢查都讀它。",
-      "acceptance": "`text/glossary.json` 涵蓋文本中所有專有名詞；每筆標出處（說明書頁碼或自訂）。",
-      "verify": {
-        "kind": "manual",
-        "note": "text/glossary.json 已建（說明書第 21–23 頁的 4 個地名＋Celtac 暫譯）。剩：人名、超能力名稱、道具名與說明書其他頁；檔案出現後改綁 entries 數量"
-      },
-      "issue": 23
-    },
-    {
-      "id": "translation-pass",
-      "milestone": "M4",
-      "labels": [
-        "text"
-      ],
-      "title": "全文翻譯",
-      "body": "依 kb `workflows/batch-subagent-localization.md` 分批翻譯，譯名與語氣一致。英文版是主要原文，日文版用來確認原意。",
-      "acceptance": "文本檔譯文欄全部非空；譯名檢查與排版檢查通過。",
-      "blocked_by": "text-extract, glossary, layout-rules",
-      "verify": {
-        "kind": "manual",
-        "note": "文本檔出現後改綁「譯文為空的筆數」"
-      },
-      "issue": 24
     },
     {
       "id": "baked-text-replacement",
@@ -279,7 +209,7 @@
       "blocked_by": "translation-pass, baked-text-replacement",
       "verify": {
         "kind": "manual",
-        "note": "試玩紀錄出現後改綁其結論欄"
+        "note": "前端開機到第一場戰鬥：轉譯紀錄三種問題 0、文字路徑英文殘留 0（docs/re/019 §5）；模擬玩家看截圖試玩到出發平台（docs/re/022）。剩：到結局、存讀檔、圖檔內嵌文字（#18、#25）"
       },
       "issue": 27
     },
@@ -313,7 +243,7 @@
         "frontend"
       ],
       "title": "F1 說明頁",
-      "body": "暫停遊戲，顯示操作說明與遊戲說明（依說明書重寫，不直接用掃描檔）。說明內容是本 repo 的文件資料，不寫死在程式裡。",
+      "body": "暫停遊戲，顯示操作說明與遊戲說明（依說明書重寫，不直接用掃描檔）。說明內容是本 repo 的文件資料，不寫死在程式裡。 說明頁要寫明「發射台（Launch Pad）才能選目的地，降落平台（Landing Pad）不行」：模擬試玩在兩者之間繞了約 50 步（docs/re/022 §4 第 6 條）。",
       "acceptance": "F1 在任何畫面都能開關，不影響遊戲狀態（開關前後記憶體相同）。",
       "blocked_by": "hires-overlay-canvas",
       "verify": {
@@ -527,6 +457,34 @@
       "issue": 19,
       "title": "文字覆蓋率量測：實跑觸發但不在文本檔的訊息數",
       "evidence": "`tools/text_coverage.sh`、`tools/text_coverage.py`：重播 18 段 要翻 1,313、已翻 0→11、觸發 52、不在文本檔 0；反向對照拿掉一則變 2（`docs/re/017`、`tools/test_text_coverage.py`）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "hires-overlay-canvas",
+      "issue": 20,
+      "title": "放大畫布＋疊字層：原版畫面放大後在上面畫中文",
+      "evidence": "`docs/spec/009`（READY）＋dosgolem 規格 `202-translation-overlay`（`xlate` 套件）：A1／A2／A3／小字型四條印字路徑。`pwstep` 8 情境 13 行逐像素差 0、反向對照差 0；前端 Xvfb `wall`（含訊息框捲動）、`match` 5 行差 0（`docs/re/019`）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "layout-rules",
+      "issue": 22,
+      "title": "固定寬度文字框的中文排版規則",
+      "evidence": "`docs/spec/009` §3：各種類行寬（訊息 16＋15、選項 10、區塊每行 20、其餘依原文可印字數）、一格一字、透明格、保留原文；`tools/text_extract.py lint` 列出過長譯文，1,313 則過長 0（`docs/re/021`）。選單游標與反白沿用原版像素，不另排",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "glossary",
+      "issue": 23,
+      "title": "譯名表：人名、地名、超能力名稱",
+      "evidence": "`text/glossary.json` 119 筆：說明書對照 40（記頁碼）、自訂 79（標 provisional，敵人名稱全部）；翻譯指令與 `tools/l10n_batches.py sweep` 都讀它（`docs/re/021`）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "translation-pass",
+      "issue": 24,
+      "title": "全文翻譯",
+      "evidence": "要翻 1,313、已翻 1,313（保留原文 38）；10 批子代理＋合併核對＋一致性修正；lint 過長 0、非 Big5 0；字型子集 873 字（`docs/re/021`）",
       "date": "2026-09-17"
     }
   ]

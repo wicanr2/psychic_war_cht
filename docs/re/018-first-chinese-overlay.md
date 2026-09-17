@@ -26,7 +26,7 @@
 
 ## 3. 驗證方法（期望值不用前端自己的紀錄）
 
-`tools/frontend-overlay-check.sh wall|launchpad [--expect-english KEY]`：
+`tools/frontend-overlay-check.sh wall|launchpad [--expect-english KEY]`（第 5 輪的介面；現行工具與情境見 `docs/re/019` §2、§3）：
 
 1. probe 跑同一狀態與按鍵，存原版色號畫面與 RGB（撞牆 61,000,000 步、選單 565,000,000 步）。
 2. `tools/overlay_check.py`：把該行英文原文用 `FONT.BIN` 字模排成遮罩，在原版色號畫面上找唯一符合的位置；背景、前景取該行出現最多與第二多的色號，RGB 從原版取；

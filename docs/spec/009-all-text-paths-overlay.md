@@ -118,10 +118,11 @@
    - 透明格：譯文「`  [  ]`」配原文「`  [  ]`」的格子透明，字元格不透明；透明格變動不影響指紋。
    - A2／A3／B 的來源換算：用表列位址造出各種呼叫，換算到正確 key、行、欄（含 `B07D` 第 1 行的內容比對、腳本緩衝區的地點名稱、敵人名稱）。
    - `lint` 行寬：每種 `kind` 各一則剛好放得下、多一字過長。
-2. 逐像素（`pwstep`＋`tools/overlay_check.py`，期望值由原版畫面推算）：每條路徑至少一則，差 0：
-   - A2：方位 `CODEH.BIN:02B4`（`07-first-play`）、地點名稱 `I_MAP01.BIN:0228`（`16-sivad`）；
-   - A3：敵人名稱 `I_ENMY00.BIN:0052`（`08-encounter`）；`PW.EXE` 內嵌字串一則（實跑能到的，例如投降訊息）；
-   - B：區塊 `PW.EXE:cs:65E5`（`02-match`）、有輸入框的 `PW.EXE:cs:8AEF`（`06-name` 之後輸入名字，透明格內是原版輸入的字）、盟友名與基地名（`03-protection`）。
+2. 逐像素（`pwstep`＋`tools/overlay_check.py`，期望值由原版畫面推算）：每條路徑至少一則，差 0。情境與起始狀態在 `tools/overlay_cases.json`：
+   - A1：撞牆訊息 `I_MENUH.BIN:0530`（含訊息框捲動）；
+   - A2：方位 `CODEH.BIN:02D5`（`07-first-play` 左轉）、地點名稱 `I_MAP03.BIN:0238`（抵達 Zellwal）；
+   - A3：敵人名稱 `I_ENMY00.BIN:0052`（遭遇 Shulosu）；`PW.EXE` 內嵌字串 `PW.EXE:cs:4AFB`（投降訊息）；
+   - B：區塊 `PW.EXE:cs:65E5`（`02-match`）、有輸入框的 `PW.EXE:cs:8AEF`（`05-select` 之後輸入名字，透明格內是原版輸入的字）、盟友名與基地名 `PW.EXE:cs:6707`、`677F`（`03-protection`）。
    - 反向對照：每條路徑拿掉一則譯文，該行與原版英文放大 3 倍差 0。
 3. 前端（Xvfb）：A（`wall`，含訊息框捲動）、B（`match`）各一個情境用 `tools/frontend-overlay-check.sh` 再驗一次，確認 Ebiten 合成與 `pwstep` 相同。
 

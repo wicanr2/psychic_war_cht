@@ -1,6 +1,6 @@
 # 008：轉譯疊字層雛形（第一句中文）
 
-狀態：**READY**
+狀態：**READY**（範圍擴充、實作套件與工具介面以 `docs/spec/009` 為準：疊字層改用 dosgolem `xlate`，`apps/psychicwar/overlay` 已移除，字型改 `font/cjk24.golemfnt`）
 日期：2026-09-17
 對應：issue #20（放大畫布＋疊字層）、#21（CJK 點陣字）；文本檔 `docs/spec/007`；印字路徑 `docs/re/014`；前端 `docs/spec/006`；dosgolem 規格 `200-hook-register-write`
 

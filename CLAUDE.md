@@ -120,7 +120,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 
 證據、指令與數字見 `docs/re/001-pw-exe-first-look.md`（實跑初探）、`002-pw-exe-function-census.md`（函式普查）、
 `003-checkpoints-and-dosboxx-reference.md`（檢查點與 DOSBox-X 參照）、`004-rng-and-determinism.md`（亂數）、
-`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）、`011-observation-addresses.md`（位置、朝向、區域、角色數值位址，地圖檔格式）、`012-opl2-event-layer.md`（OPL2 事件層）、`013-replay-route-samar-to-sivad.md`（重播路線）、`014-print-routine.md`（印字常式）、`015-text-formats.md`（文字格式）、`016-frontend-prototype.md`（前端雛形驗收）、`017-text-coverage.md`（文字覆蓋率）、`018-first-chinese-overlay.md`（第一句中文）；
+`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）、`011-observation-addresses.md`（位置、朝向、區域、角色數值位址，地圖檔格式）、`012-opl2-event-layer.md`（OPL2 事件層）、`013-replay-route-samar-to-sivad.md`（重播路線）、`014-print-routine.md`（印字常式）、`015-text-formats.md`（文字格式）、`016-frontend-prototype.md`（前端雛形驗收）、`017-text-coverage.md`（文字覆蓋率）、`018-first-chinese-overlay.md`（第一句中文）、`019-all-paths-overlay-verification.md`（所有路徑疊字、覆蓋率、前端實跑）、`020-font-license-options.md`（字型授權選項，待決）、`021-translation-first-pass.md`（全文翻譯第一版）、`022-simulated-player-playtest.md`（模擬玩家試玩）；
 被推翻的斷言集中在 `000-overturned-claims.md`。
 
 | 事實 | 等級 |
@@ -134,7 +134,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | 音樂兩條路徑：偵測不到 AdLib 載 `.IBM`（PC 喇叭），有 AdLib 載 `.MID`（OPL2） | confirmed |
 | `.IBM` ＝ 每筆 3 bytes（頻率 Hz u16＋刻數 u8，0 ＝ 休止）；驅動以 `1193180÷Hz` 捨去算分頻值。標題播 `OPEN0→1→2` 不重播。dosgolem 事件逐筆相同，合成的 WAV 與 DOSBox-X 錄音音高／節奏比對通過 | confirmed |
 | 文字散在 `PW.EXE`、`I_MENUH.BIN`、`I_MENU00–11.BIN`、`I_ENMY00–11.BIN`、`CODEH／2／11.BIN`，固定寬度欄位 | confirmed（格式見下一列） |
-| 文字來源與格式見 `docs/spec/007`（READY）：`I_MENU*`（16 bytes 一列，訊息 32 bytes＝31 字＋類型碼，選單＝提問＋10 字選項）、`I_ENMY*` 名字、`I_MAP*` 偏移 200h 的地點名稱（64×8）、`CODE*` 指令 81h 內嵌字串（`CODEnn` 只有前 700h、`CODEH` 只有前 1200h 會留在記憶體）、`PW.EXE` 內嵌文字。`text/` 共 1,389 則、要翻 1,313；重播 18 段觸發 52 則、不在文本檔 0（`docs/re/017`） | confirmed（I_MENU、CODE 指令語意）／強證據（I_ENMY、I_MAP） |
+| 文字來源與格式見 `docs/spec/007`（READY）：`I_MENU*`（16 bytes 一列，訊息 32 bytes＝31 字＋類型碼，選單＝提問＋10 字選項）、`I_ENMY*` 名字、`I_MAP*` 偏移 200h 的地點名稱（64×8）、`CODE*` 指令 81h 內嵌字串（`CODEnn` 只有前 700h、`CODEH` 只有前 1200h 會留在記憶體）、`PW.EXE` 內嵌文字。`text/` 共 1,389 則、要翻 1,313；重播 19 段觸發 55 則、不在文本檔 0（`docs/re/017`、`docs/re/019` §4） | confirmed（I_MENU、CODE 指令語意）／強證據（I_ENMY、I_MAP） |
 | 操作面板文字畫在圖檔上（`SCREEN.PBL` 等） | 假說 |
 | 遊戲自己畫字，**兩套字型**：介面用 `FONT.BIN`（8×8，單字元 `sub_16629`／`0161:6119`，字串迴圈 `sub_16799`、`sub_167B2`、`sub_167BF`）；防拷、選單、輸入名字、故事、製作群用程式內建 6×6 小字型（`sub_1B601`／`0161:B0F1`，60 bytes 區塊 `B016`）。重播 18 段的每個字都歸到呼叫端：文字字元全部來自字串層，其餘是游標閃爍、空白與箭頭（`docs/re/014`） | confirmed（動態監看＋呼叫端歸類） |
 | 開頭有手冊式防拷（盟友 ↔ ESP 數值） | confirmed（判定邏輯未讀） |
@@ -150,7 +150,9 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | 存檔 `<名>.DAT` 512 bytes；Esc → Options → Save Game → Definitely → 檔名。讀檔後畫面與存檔時相同 | confirmed |
 | 防拷題目由 `sub_1695C` 以亂數出題；空白答案會顯示 `YOU ARE CLEARED` | confirmed（行為），判定邏輯未讀 |
 | 前端（Go／Ebiten，`docs/spec/006`）在 Xvfb 上畫面與檢查點逐像素相同、60 秒節拍誤差 0.000%、以 xdotool 從開機打贏第一場戰鬥；即時音訊只在無音效卡的 null 輸出驗過（`docs/re/016`） | confirmed |
-| 中文疊字雛形（`docs/spec/008`）：原版照畫英文，疊字層以該行英文的背景色蓋掉再畫 24×24 中文。撞牆訊息與出發平台選單逐像素對原版推算的期望值差 0（`docs/re/018`）。游標 `cs:610E`（高位元組 X、低位元組 Y，×4 像素） | confirmed |
+| 中文疊字（`docs/spec/009`，疊字層是 dosgolem `xlate`，規格 `202-translation-overlay`）：原版照畫英文，疊字層以該行英文的背景色蓋掉再畫中文。四條印字路徑：A1 `6289`、A2 `62A2`、A3 `62AF`（`FONT.BIN` 8×8 → 24×24）、小字型 `B0F1`（6×7 → 18×21，字 16×15）。游標 `cs:610E`（高位元組 X、低位元組 Y，×4 像素）。8 情境 13 行逐像素差 0、反向對照差 0、前端 A／B 差 0；訊息框捲動（`6273`–`6276`）期間框內疊字凍結（`docs/re/019`） | confirmed |
+| 全文翻譯第一版：1,313 則全部有譯文（保留原文 38）、過長 0、非 Big5 0；譯名表 119 筆（說明書 40、暫譯 79）；字型子集 873 字（`docs/re/021`）。重播 19 段到 Zellwal 觸發 55 則、不在文本檔 0；前端開機到第一場戰鬥的轉譯紀錄缺譯文／過長／缺字 0，剩下的英文都在圖檔上（#18） | confirmed（數字）；譯文品質未逐則對畫面 |
+| 模擬玩家（Sonnet 子代理只看 `pwstep` 截圖）84 步完成開機 → 打贏第一場 → 發射台選目的地，沒用攻略；卡住 1 次（降落平台與發射台的分辨）。找到的問號裁字、音效／音樂、BBS室已修（`docs/re/022`） | confirmed（一條路線） |
 
 ## 工作追蹤
 
@@ -167,7 +169,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/unexepack.py` | EXEPACK 解壓，`--verify` 對執行期傾印逐位元組比 |
 | `tools/ida.sh`＋`tools/ida/census.py` | IDA 建庫與函式普查（`workplace/ida/`）。批次跑一律驗輸出檔 |
 | `tools/census_report.py` | 普查 JSON＋覆蓋率 → 執行過的函式、`INT` 呼叫點表 |
-| `tools/states.sh [--check] [重播檔]` | 依重播檔（預設 `replay/title-to-first-save.json`，格式 `docs/spec/003`）產生 18 段狀態檔；`--check` 驗畫面雜湊；支援按住按鍵、暫存層、畫面與記憶體相等斷言 |
+| `tools/states.sh [--check] [重播檔]` | 依重播檔（預設 `replay/title-to-first-save.json`，格式 `docs/spec/003`）產生 19 段狀態檔（到 Zellwal）；`--check` 驗畫面雜湊；支援按住按鍵、暫存層、畫面與記憶體相等斷言 |
 | `tools/route_keys.py <朝向> <路線>` | 迷宮路線（NESW 字串）轉成按鍵序列 |
 | `tools/determinism.sh` | 第一場戰鬥：同輸入兩次逐位元組相同、晚按鍵必須不同 |
 | `tools/ida/dump.py` | 一次跑多個 IDA 查詢（xref／func／imm／callers／refs／dis）；⚠ 少數位址（例：14CE4、128C1）會讓 idat 異常結束，改用 `refs:` 或讀 `workplace/ida/PW_UNP.EXE.asm` |
@@ -183,12 +185,16 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/opl_events.py <opl-log> <.dro>` | OPL2 事件層逐筆比對（`docs/spec/005`），含原判準與修訂判準 |
 | `tools/frames.py` | 色號陣列的變化摘要與總覽圖 |
 | `tools/go-ebiten.sh` | 前端建置與 Xvfb 實跑（`PSYCHICWAR_SH` 在容器內執行指令；`PSYCHICWAR_GO_NETWORK=1` 抓 module） |
-| `tools/frontend-playthrough.sh` | Xvfb＋xdotool 從開機打贏第一場戰鬥（按鍵按住 0.15 秒、等檢查點畫面再送） |
+| `tools/frontend-playthrough.sh` | Xvfb＋xdotool 從開機打贏第一場戰鬥（按鍵按住 0.15 秒、等檢查點畫面再送）；預設開中文疊字，轉譯紀錄在 `workplace/fe/play/text.jsonl` |
 | `tools/print_trace.py plan\|report` | 重播各段記錄印字函式的暫存器與字串，合併逐字元命中 |
 | `tools/char_callers.py [紀錄目錄]` | 單字元輸出的呼叫端與字碼分布（`-call-args` 紀錄，`docs/re/014` §4） |
 | `tools/text_coverage.sh [重播檔]`＋`tools/text_coverage.py` | 文字覆蓋率四個數字（`docs/spec/007` §6） |
-| `tools/font/bake.sh` | 烘製 `font/cjk24.bin`（倚天 24 點＋Noto 補字；來源放 `workplace/font-src/`） |
-| `tools/frontend-overlay-check.sh wall\|launchpad [--expect-english KEY]`＋`tools/overlay_check.py` | 中文疊字實跑驗收，期望值由原版畫面推算（`docs/spec/008` §4） |
+| `tools/font/bake.sh` | 烘製 `font/cjk24.golemfnt`、`cjk16.golemfnt`（倚天＋Noto 補字；來源放 `workplace/font-src/`）；兩套字型都沒有的字結束碼 1 |
+| `tools/overlay_run.sh [情境…]`＋`tools/overlay_cases.json`＋`tools/overlay_check.py` | 疊字逐像素驗收：`cmd/step` 出原版參照、`pwstep` 出中文截圖；`PSYCHICWAR_WITHOUT=1` 反向對照（`docs/spec/009` §6） |
+| `tools/frontend-overlay-check.sh <情境> <xdotool 鍵>` | 同一情境改在 Xvfb 前端上驗 |
+| `cmd/pwstep`、`tools/playstep.sh <試玩名> new\|next\|from NNN "<動作>"` | 逐步操作（dosgolem 規格 `201-step-actions`）加轉譯層：一步一個狀態檔＋960×600 中文截圖＋轉譯紀錄；模擬玩家試玩用，代理指令範本 `tools/playtest-instructions.md`（`docs/re/022`） |
+| `tools/l10n_batches.py prep\|merge\|sweep`、`tools/l10n_check.py` | 分批翻譯、合併核對、一致性掃描；譯者自我檢查（`docs/re/021`） |
+| `tools/text_extract.py lint` | 譯文行寬與 Big5 檢查（`docs/spec/009` §3） |
 | `tools/text_extract.py build\|check\|stats <原版目錄>` | 產生／驗證 `text/`（`docs/spec/007`）；`menu\|enmy\|code` 是單檔除錯輸出 |
 
 ## 待決事項

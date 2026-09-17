@@ -8,6 +8,7 @@
 - 16×15：Big5 漢字用倚天 STDFONT.15、全形符號用 SPCFONT.15；其餘用 Noto 點陣化。
 - 驗證 oracle：兩份倚天字型的「一」都只有一到三列有筆畫，「中」印出來看。
 - **fallback 字數是品質指標**，兩種尺寸都會印出來。
+- **缺字就失敗**（結束碼 1）：Noto 也沒有的字（點陣化結果是空白，或與 Noto 的缺字方框 U+E000 相同）列出來，不寫輸出檔。
 - 輸出 GOLEMFNT（dosgolem 規格 202 §2.1）：`GOLEMFNT`、u16 W、u16 H、u32 字數，每字 u32 碼點、u8 來源（0 倚天、1 Noto）、字模（每列 (W+7)/8 bytes，MSB 在左）。
   檔名 cjk24.golemfnt、cjk16.golemfnt，另寫字集清單 charset.txt。
 
@@ -65,7 +66,10 @@ def noto_glyph(font, ch, w, h):
     d = ImageDraw.Draw(img)
     box = d.textbbox((0, 0), ch, font=font)
     x = (w - (box[2] - box[0])) // 2 - box[0]
-    d.text((x, 0), ch, font=font, fill=255)
+    # 垂直位置以「中」的字框置中，所有補字共用同一條基線（句點、底線不會被推出字格）
+    em = d.textbbox((0, 0), "中", font=font)
+    y = (h - (em[3] - em[1])) // 2 - em[1]
+    d.text((x, y), ch, font=font, fill=255)
     rb = (w + 7) // 8
     out = bytearray(rb * h)
     for y in range(h):
@@ -119,7 +123,7 @@ def main(argv):
     noto24 = ImageFont.truetype(noto, 22)
     noto16 = ImageFont.truetype(noto, 14)
     out.mkdir(parents=True, exist_ok=True)
-    report = []
+    report, missing, baked = [], set(), []
     for name, w, h, noto_font in (("cjk24", 24, 24, noto24), ("cjk16", 16, 15, noto16)):
         glyphs, fallback = [], []
         for ch in chars:
@@ -134,13 +138,21 @@ def main(argv):
             if g is not None:
                 glyphs.append((ord(ch), 0, g))
             else:
-                glyphs.append((ord(ch), 1, noto_glyph(noto_font, ch, w, h)))
+                g = noto_glyph(noto_font, ch, w, h)
+                if not any(g) or g == noto_glyph(noto_font, "\ue000", w, h):
+                    missing.add(ch)
+                glyphs.append((ord(ch), 1, g))
                 fallback.append(ch)
-        write(out / (name + ".golemfnt"), w, h, glyphs)
+        baked.append((name, w, h, glyphs))
         report.append("%s：%d 字，倚天 %d、Noto fallback %d（%s）" % (name, len(glyphs), len(glyphs) - len(fallback), len(fallback), "".join(fallback)))
         zhong = next((g for cp, _, g in glyphs if cp == ord("中")), None)
         if zhong:
             report.append("「中」%d×%d：\n%s" % (w, h, art(zhong, w, h)))
+    if missing:
+        print("缺字 %d：%s（兩套字型都沒有，沒有寫輸出檔）" % (len(missing), " ".join("%s U+%04X" % (c, ord(c)) for c in sorted(missing))))
+        return 1
+    for name, w, h, glyphs in baked:  # 兩種尺寸都沒有缺字才寫，不留半套輸出
+        write(out / (name + ".golemfnt"), w, h, glyphs)
     (out / "charset.txt").write_text("".join(chars) + "\n", encoding="utf-8")
     print("\n".join(report))
     return 0
