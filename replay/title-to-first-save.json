@@ -379,6 +379,30 @@
       "expect_same_frame_as": "",
       "expect_same_memory_as": "17-saved2",
       "comment": "從主選單讀 TEST2：回到 Sivad（區域 1）(5,6)、HP 28、能量 6。畫面訊息區與存檔前不同，改以記憶體斷言"
+    },
+    {
+      "name": "19-zellwal",
+      "from": "15-minton2",
+      "save_at": 620000000,
+      "keys": [
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "left",
+        "up",
+        "down",
+        "down",
+        "enter"
+      ],
+      "key_at": 520500000,
+      "key_every": 3000000,
+      "holds": [],
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "expect_same_memory_as": "",
+      "comment": "同 16-sivad 走到 Launch Pad (15,14)，目的地多按一次 down 選 Zellwal：開 I_MAP03／CODE3／I_MENU03，區域編號 0→3，抵達 Zellwal 降落平台"
     }
   ]
 }

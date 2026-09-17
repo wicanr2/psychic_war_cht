@@ -25,7 +25,8 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 	"github.com/wicanr2/dosgolem/oracle"
 	"github.com/wicanr2/psychic_war_cht/apps/psychicwar"
-	"github.com/wicanr2/psychic_war_cht/apps/psychicwar/overlay"
+	"github.com/wicanr2/psychic_war_cht/apps/psychicwar/translator"
+	"github.com/wicanr2/dosgolem/xlate"
 )
 
 const sampleRate = 44100
@@ -52,8 +53,7 @@ type game struct {
 	intercepted int
 	exitErr     error
 
-	tr      *psychicwar.Translator // -text：中文疊字（docs/spec/008），nil ＝ 停用
-	font    overlay.Font
+	tr      *translator.Translator // -text：中文疊字（docs/spec/008、009），nil ＝ 停用
 	over    *ebiten.Image
 	overPix []byte
 }
@@ -150,7 +150,7 @@ func (g *game) Draw(dst *ebiten.Image) {
 	dst.DrawImage(g.screen, &op)
 	if g.tr != nil {
 		clear(g.overPix)
-		if g.tr.Layer.Draw(g.overPix, g.scale, g.font, g.tr.MissingGlyph) {
+		if g.tr.Layer.Draw(g.overPix, g.scale, g.tr.MissingGlyph) {
 			g.over.WritePixels(g.overPix)
 			dst.DrawImage(g.over, nil)
 		}
@@ -260,7 +260,7 @@ func main() {
 	quitAfter := flag.Duration("quit-after", 0, "牆上時間到了自己結束（自動驗收用）")
 	wavPath := flag.String("wav", "", "把送給音效卡的取樣另存成 WAV（驗證聲音內容用）")
 	textDir := flag.String("text", "text", "文本檔目錄（docs/spec/007）；空字串停用中文疊字")
-	fontPath := flag.String("font", "font/cjk24.bin", "中文字型子集（tools/font/bake.sh）")
+	fontDir := flag.String("font", "font", "中文字型子集目錄：cjk24.golemfnt、cjk16.golemfnt（tools/font/bake.sh）")
 	textLog := flag.String("text-log", "", "轉譯紀錄（JSON Lines）")
 	flag.Parse()
 	if *orig == "" {
@@ -299,11 +299,16 @@ func main() {
 		if *scale%3 != 0 {
 			log.Printf("-scale %d 不是 3 的倍數，停用中文疊字（docs/spec/008 §3.5）", *scale)
 		} else {
-			entries, err := psychicwar.LoadText(*textDir)
+			entries, err := translator.LoadText(*textDir)
 			if err != nil {
 				log.Fatal(err)
 			}
-			if g.font, err = overlay.LoadFont(*fontPath); err != nil {
+			f24, err := xlate.LoadFont(filepath.Join(*fontDir, "cjk24.golemfnt"))
+			if err != nil {
+				log.Fatal(err)
+			}
+			f16, err := xlate.LoadFont(filepath.Join(*fontDir, "cjk16.golemfnt"))
+			if err != nil {
 				log.Fatal(err)
 			}
 			var w io.Writer
@@ -315,7 +320,7 @@ func main() {
 				defer f.Close()
 				w = f
 			}
-			g.tr = psychicwar.NewTranslator(entries, w)
+			g.tr = translator.NewTranslator(entries, f24, f16, *scale, w)
 			g.tr.Attach(o)
 			g.over = ebiten.NewImage(320**scale, 200**scale)
 			g.overPix = make([]byte, 4*320**scale*200**scale)

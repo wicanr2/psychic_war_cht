@@ -6,6 +6,7 @@
     tools/py.sh tools/text_extract.py build <原版目錄> [--text text]   # 產生／合併 text/*.json（docs/spec/007）
     tools/py.sh tools/text_extract.py check <原版目錄> [--text text]   # 原文逐筆可重建
     tools/py.sh tools/text_extract.py stats [--text text]
+    tools/py.sh tools/text_extract.py lint [--text text]          # 譯文排版與字元檢查（docs/spec/009 §3）
 
 格式（docs/re/015 §2）：以 16 bytes 為一列。
 - 訊息：32 bytes ＝ 31 字元文字 ＋ 1 byte 類型碼（'0'、'p'、'P' 等）。
@@ -336,6 +337,90 @@ def to_translate(have):
     return [e for e in have.values() if e["translatable"] and e.get("reachable", True) and not e["same_as"] and not e.get("orphan")]
 
 
+def decode_shown(shown):
+    raw, i = bytearray(), 0
+    while i < len(shown):
+        if shown[i] == "{" and shown[i + 3:i + 4] == "}":
+            raw.append(int(shown[i + 1:i + 3], 16))
+            i += 4
+        else:
+            raw.append(ord(shown[i]))
+            i += 1
+    return bytes(raw)
+
+
+def line_widths(e):
+    """一則譯文可用的行寬（格數，一個字元一格；docs/spec/009 §3）。"""
+    k = e["kind"]
+    if k in ("message", "menu"):
+        return [16, 15]
+    if k == "option":
+        return [10]
+    if k == "block":
+        return [20] * (e["width"] // 20)
+    if k in ("enemy-name", "inline", "line", "place", "names"):
+        cells = sum(1 for c in decode_shown(e["original"]) if c >= 0x20)
+        return [cells]
+    raise ValueError(e["kind"])
+
+
+def layout(text, widths):
+    """與 apps/psychicwar/overlay.Layout 相同：依序填滿、`\n` 強制換行；回（各行, 放不下）。"""
+    out, line, too_long = [[] for _ in widths], 0, False
+    for ch in text:
+        if line >= len(widths):
+            too_long = True
+            break
+        if ch == "\n":
+            line += 1
+            continue
+        if len(out[line]) == widths[line]:
+            line += 1
+            if line >= len(widths):
+                too_long = True
+                break
+        out[line].append(ch)
+    return ["".join(x) for x in out], too_long
+
+
+def bad_chars(text):
+    """字型子集做不出來的字元：非 ASCII 可印字元、又不能用 Big5 編碼的。"""
+    out = []
+    for ch in text:
+        if ch == "\n" or 0x20 <= ord(ch) < 0x7F:
+            continue
+        try:
+            if len(ch.encode("big5")) != 2:
+                out.append(ch)
+        except UnicodeEncodeError:
+            out.append(ch)
+    return out
+
+
+def cmd_lint(text_dir):
+    have = load_text(text_dir)
+    todo = to_translate(have)
+    done = [e for e in todo if e["translation"]]
+    long_, chars = [], []
+    for e in done:
+        if e["translation"] == e["original"]:
+            continue  # 保留原文：不疊字，原版像素照常顯示（docs/spec/009 §3）
+        _, too = layout(e["translation"], line_widths(e))
+        if too:
+            long_.append(e)
+        bc = bad_chars(e["translation"])
+        if bc:
+            chars.append((e, bc))
+    same = sum(1 for e in have.values() if e["same_as"] and have.get(e["same_as"], {}).get("translation"))
+    print("要翻 %d、已翻 %d、譯文過長 %d、非 Big5 字元 %d 則；重複則會沿用根譯文 %d 則" % (len(todo), len(done), len(long_), len(chars), same))
+    for e in long_[:30]:
+        print("  過長 %s（行寬 %s）：%s" % (e["key"], line_widths(e), e["translation"].replace("\n", "⏎")))
+    for e, bc in chars[:30]:
+        print("  非 Big5 %s：%s" % (e["key"], "".join(bc)))
+    if long_ or chars:
+        raise Fail("lint 不通過")
+
+
 def cmd_stats(text_dir):
     have = load_text(text_dir)
     tr = to_translate(have)
@@ -358,6 +443,9 @@ def main(argv):
             return 0
         if argv[:1] == ["check"] and len(argv) == 2:
             cmd_check(argv[1], text_dir)
+            return 0
+        if argv == ["lint"]:
+            cmd_lint(text_dir)
             return 0
         if argv == ["stats"]:
             cmd_stats(text_dir)

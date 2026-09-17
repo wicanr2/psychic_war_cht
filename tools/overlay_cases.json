@@ -1,0 +1,37 @@
+{
+  "note": "docs/spec/009 §6 第 2 項的驗收情境。state 是起始狀態檔（workplace/ 底下）；do 是 dosgolem 規格 201 的動作腳本（毫秒是 750 cycles 的機器時間）；targets 是 [key, 第幾行]。參照與截圖都由 tools/overlay_run.sh 以同一狀態、同一動作產生。",
+  "cases": {
+    "wall": {
+      "path": "A1", "state": "overlay/wall-before.state", "do": "tap:Up,wait:4000",
+      "targets": [["I_MENUH.BIN:0530", 0], ["I_MENUH.BIN:0530", 1]]
+    },
+    "direction": {
+      "path": "A2", "state": "states/07-first-play.state", "do": "tap:Left,wait:2500",
+      "targets": [["CODEH.BIN:02D5", 0]]
+    },
+    "place": {
+      "path": "A2", "state": "states/19-zellwal.state", "do": "tap:Up,wait:3000",
+      "targets": []
+    },
+    "enemy": {
+      "path": "A3", "state": "overlay/encounter-before.state", "do": "wait:4000",
+      "targets": [["I_ENMY00.BIN:0052", 0]]
+    },
+    "surrender": {
+      "path": "A3", "state": "overlay/surrender-before.state", "do": "hold:Space:6000,wait:1000",
+      "targets": [["PW.EXE:cs:4AFB", 0]]
+    },
+    "match": {
+      "path": "B", "state": "states/01-title.state", "do": "tap:Space,wait:4000",
+      "targets": [["PW.EXE:cs:65E5", 0], ["PW.EXE:cs:65E5", 1], ["PW.EXE:cs:65E5", 2]]
+    },
+    "protection": {
+      "path": "B", "state": "states/02-match.state", "do": "tap:Return,wait:4000",
+      "targets": []
+    },
+    "name": {
+      "path": "B", "state": "states/05-select.state", "do": "tap:Return,wait:3000,type:kai,wait:1500",
+      "targets": [["PW.EXE:cs:8AEF", 0], ["PW.EXE:cs:8AEF", 2]]
+    }
+  }
+}
