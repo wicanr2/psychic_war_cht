@@ -1,0 +1,29 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "CODE0.BIN",
+ "sha256": "aa63c878c000f5be875d56a44947446c9c008b9b1dbcb14141af12c7db2b78ae",
+ "entries": [
+  {
+   "key": "CODE0.BIN:0088",
+   "kind": "inline",
+   "font": "font8",
+   "width": 1,
+   "translatable": true,
+   "same_as": "",
+   "original": "A",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE0.BIN:0488",
+   "kind": "inline",
+   "font": "font8",
+   "width": 1,
+   "translatable": true,
+   "same_as": "CODE0.BIN:0088",
+   "original": "A",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

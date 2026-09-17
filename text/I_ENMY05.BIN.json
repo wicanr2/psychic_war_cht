@@ -1,0 +1,62 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_ENMY05.BIN",
+ "sha256": "64ab7987cf55f25195d40f3b1bd337cf53bb15b399d44fafc1199dbe5b65f07a",
+ "entries": [
+  {
+   "key": "I_ENMY05.BIN:0002",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Burox   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY05.BIN:0052",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Buzebott",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY05.BIN:00A2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Zertar  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY05.BIN:00F2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Jixmay  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY05.BIN:0142",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Dekto   ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

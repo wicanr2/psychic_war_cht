@@ -1,0 +1,62 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_ENMY00.BIN",
+ "sha256": "392bc263316c66bf735f67fe1978e2ee615f638c842855bdfe9c6b703f0ae636",
+ "entries": [
+  {
+   "key": "I_ENMY00.BIN:0002",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Kasuruji",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY00.BIN:0052",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Shulosu ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY00.BIN:00A2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Minton  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY00.BIN:00F2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Jiftok  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY00.BIN:0142",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Pospopoi",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

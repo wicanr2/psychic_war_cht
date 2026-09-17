@@ -1,0 +1,62 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_ENMY03.BIN",
+ "sha256": "0d0e2b211d74c1d6c48f168c4204d38cb36151286665b9d8058787c40f15a355",
+ "entries": [
+  {
+   "key": "I_ENMY03.BIN:0002",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Zikkead ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY03.BIN:0052",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Gregorin",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY03.BIN:00A2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Miltee  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY03.BIN:00F2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Utcham  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY03.BIN:0142",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Tatooman",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

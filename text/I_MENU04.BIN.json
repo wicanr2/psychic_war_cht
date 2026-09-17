@@ -1,0 +1,599 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_MENU04.BIN",
+ "sha256": "566f4f31502346d37f0274a208a8d67445648571fa7906b08f9088e69cdc8349",
+ "entries": [
+  {
+   "key": "I_MENU04.BIN:0000",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Any brilliant   flashes?       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0020",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU04.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0030",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU04.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Break Safe",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0040",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU04.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Talk to it",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0050",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU04.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Use Card  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0070",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "We have two goodoptions-decide!",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0090",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU04.BIN:0070",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:00A0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU04.BIN:0070",
+   "translatable": true,
+   "same_as": "",
+   "original": "Check room",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:00C0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Don't give up   yet! Try these:",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:00E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU04.BIN:00C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:00F0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU04.BIN:00C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Examine it",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0110",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bogus! The safe is empty.      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0130",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Outstanding! It is the RON Map.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0150",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Shoot! The alarmis ringing.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0170",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The alarm's off.Let's split.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0190",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We found a safe.Bodacious!     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:01B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The ADAK Map is in the safe!   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:01D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The TATU Map is in the safe!   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:01F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We've been seen.It's locked!   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0210",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We can't do it. It's locked.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0230",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": " ",
+   "translatable": true,
+   "same_as": "",
+   "original": "We've scammed a cartridge!     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0250",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Rats! It's      empty.         ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0270",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We can't break  the lock.      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0290",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This is a hang  out for allies.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:02B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Empty. Like yourwallet.        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:02D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "There are 10    Yontry here!   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:02F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "It's a jump     device!        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0310",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We can't jump   from here.     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0330",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Listen! Find theTurboGun here. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0350",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "The point sensoris my creation.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0370",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "This is a big,  3 story base.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0390",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "A {94}{A4}{B4}{C4} {96}{A6} is on the 1st floor. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:03B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Many maps are   hidden here.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:03D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Kayla's Point   Sensor is here.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:03F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Check out the   2nd floor.     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0410",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Are you a here  or what, dude? ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0430",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Oh, no! The map is half baked. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0450",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This is Rustek's{95}{A5}{B5}{C5}{D5}{96}{A6}.       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU04.BIN:0470",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Wow! The GAMERA cartridge.     ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

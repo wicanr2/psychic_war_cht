@@ -1,0 +1,1283 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_MENU00.BIN",
+ "sha256": "84a0fff27199064b477aa0ee93f14c00556e42d608cecaf4b77a2fd0eb0259b0",
+ "entries": [
+  {
+   "key": "I_MENU00.BIN:0000",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "Q",
+   "translatable": true,
+   "same_as": "",
+   "original": "Is this ally a  bud or what?   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0020",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Absolutely",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0030",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Not now   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0040",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Pick again",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0050",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0070",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "Q",
+   "translatable": true,
+   "same_as": "",
+   "original": "Is this the mostexcellent team?",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0090",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0070",
+   "translatable": true,
+   "same_as": "",
+   "original": "Not yet   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:00A0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0070",
+   "translatable": true,
+   "same_as": "",
+   "original": "Definitely",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:00C0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "Q",
+   "translatable": true,
+   "same_as": "",
+   "original": "What do you wantto do, soldier?",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:00E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:00C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Get healed",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:00F0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:00C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0110",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "Q",
+   "translatable": true,
+   "same_as": "",
+   "original": "Lay three Yontryon me, Ok?     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0130",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0110",
+   "translatable": true,
+   "same_as": "",
+   "original": "No way    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0140",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0110",
+   "translatable": true,
+   "same_as": "",
+   "original": "Sure      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0160",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "Q",
+   "translatable": true,
+   "same_as": "",
+   "original": "Wanna give me   3 Yontry?      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0180",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0160",
+   "translatable": true,
+   "same_as": "",
+   "original": "You bet   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0190",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0160",
+   "translatable": true,
+   "same_as": "",
+   "original": "Sorry     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:01B0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "Q",
+   "translatable": true,
+   "same_as": "",
+   "original": "Wanna give that to me?         ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:01D0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:01B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Never     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:01E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:01B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Certainly ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0200",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "Q",
+   "translatable": true,
+   "same_as": "",
+   "original": "OK, it's up to  you to decide. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0220",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0200",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0230",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0200",
+   "translatable": true,
+   "same_as": "",
+   "original": "Use device",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0250",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "Q",
+   "translatable": true,
+   "same_as": "",
+   "original": "Do you want to  set the E pack?",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0270",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0250",
+   "translatable": true,
+   "same_as": "",
+   "original": "Wait a bit",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0280",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0250",
+   "translatable": true,
+   "same_as": "",
+   "original": "OK, set it",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:02A0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "Q",
+   "translatable": true,
+   "same_as": "",
+   "original": "Whadd'ya want,  soldier?       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:02C0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:02A0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Nothing   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:02D0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:02A0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Advise    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:02E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:02A0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Set Parts ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0300",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "Q",
+   "translatable": true,
+   "same_as": "",
+   "original": "You got it! Now what?          ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0320",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0300",
+   "translatable": true,
+   "same_as": "",
+   "original": "Nothing   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0330",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0300",
+   "translatable": true,
+   "same_as": "",
+   "original": "SecretCode",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0340",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0300",
+   "translatable": true,
+   "same_as": "",
+   "original": "Sensor    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0350",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0300",
+   "translatable": true,
+   "same_as": "",
+   "original": "Map{BA}{CA}{DA}{EA}{FA}  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0370",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Your allies can be kept here.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0390",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "We can keep 3 ofyour allies.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:03B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Welcome to the  BF system.     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:03D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "I'll give you   three Yontry!  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:03F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Come again!                    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0410",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Without any, we can do nothing.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0430",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Why don't you   come again?    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0450",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Save games oftenor be bummed.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0470",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Look for Yontry on Sivad, OK?  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0490",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Thanks. Here is the PET Map.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:04B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "It works! Most  outstanding!   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:04D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "It looks like   the PY Map.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:04F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Jump immediatelywith an E Pack.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0510",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Without Yontry, I can't work.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0530",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Too bad. Please come again.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0550",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "You came before.Come on in.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0570",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Hey, you want a jump device?   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0590",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "I got one in theback room.     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:05B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Want some good  information?   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:05D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Get me the PY   Map.           ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:05F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Jump devices    need an E Pack.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0610",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "The Loran is nowset up.        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0630",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Chia B is now   set up.        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0650",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Kayla is missingsome parts.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0670",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Koorak decipherssecret codes.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0690",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Loran displays  your location. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:06B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Want to know    where you are? ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:06D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Chia B selects  correct maps.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:06F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Catch'ya later.                ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0710",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Koorak is now   set up.        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0730",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Remember where  the BIO {91}{A1}{B1} is!",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0750",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Free HOUZZ from jail on Sivad! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0770",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Learn how to usethe {8E}{9E} {88}{98}{A8} {91}{A1}{B1}.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0790",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Our mission...  destroy Melser!",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:07B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "A {8D}{9D}{AD} {92}{A2}{B2} owner keeps a secret.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:07D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "A repair room isone floor down.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:07F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "{94}{A4}{B4}{C4} {96}{A6} leads toenemy bases.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0810",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Sivad's defencesare very weak. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0830",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Zellwal's NRS   {91}{A1}{B1} has Yontry!",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0850",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Look for the VIProom on Sivad. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0870",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bonus! A device!Any ideas?     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0890",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0870",
+   "translatable": true,
+   "same_as": "",
+   "original": "Examine it",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:08A0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0870",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:08C0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Agh! A receivingdevice instead.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:08E0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This is Samar's {95}{A5}{B5}{C5}{D5}{96}{A6}.       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0900",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Set Koorak and  decipher codes.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0920",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Get Konbaas to  show locations.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0940",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Get Chia B to   select maps.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0960",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "You need it to  be powerful.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:0980",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "Q",
+   "translatable": true,
+   "same_as": "",
+   "original": "Won't you come  back again?    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:09A0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0980",
+   "translatable": true,
+   "same_as": "",
+   "original": "Maybe     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU00.BIN:09B0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU00.BIN:0980",
+   "translatable": true,
+   "same_as": "",
+   "original": "Probably  ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

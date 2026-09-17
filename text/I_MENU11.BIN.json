@@ -1,0 +1,1391 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_MENU11.BIN",
+ "sha256": "2563edd3337c407f3201195d9c7cf4b8808e19b881b7d735fdbd66e4eade48fa",
+ "entries": [
+  {
+   "key": "I_MENU11.BIN:0000",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "We're gonna win!What next?     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0020",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0030",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Smash It  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0050",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Which crystal   should be set? ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0070",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0050",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0080",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0050",
+   "translatable": true,
+   "same_as": "",
+   "original": "TEARS     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0090",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0050",
+   "translatable": true,
+   "same_as": "",
+   "original": "BLOOD     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:00A0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0050",
+   "translatable": true,
+   "same_as": "",
+   "original": "SWEAT     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:00C0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Hang in there!  What next?     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:00E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:00C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:00F0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:00C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Check Room",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0110",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "One step from   victory...     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0130",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0110",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0140",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0110",
+   "translatable": true,
+   "same_as": "",
+   "original": "Use BEEFUN",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0160",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Most triumphant!We've won!!    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0180",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0160",
+   "translatable": true,
+   "same_as": "",
+   "original": "Go Back   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0190",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0160",
+   "translatable": true,
+   "same_as": "",
+   "original": "Go Home   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:01B0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Stupendous! Whatshould we do?  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:01D0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:01B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:01E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:01B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Play Slots",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0200",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The controls arealready broken.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0220",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bonus! The {C2}{D2}{E2}{F2} {C1}{D1}{E1}{F1}, at last! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0240",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Yea! The controlpanel's wasted!",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0260",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The Psycho {C2}{D2}{E2}{F2} is toasted!    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0280",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The controls arealready fried! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:02A0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "It's up to the  WHITE level.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:02C0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "No crystals!    Let's split.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:02E0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Good! The SWEAT crystal is set.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0300",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "We're going to  level BLUE.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0320",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bogus! It's the wrong crystal. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0340",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "We're already atlevel BLUE...  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0360",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "We can't turn   back now...    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0380",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "We are at Level BLUE...        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:03A0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Excellent! BLOODcrystal is set.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:03C0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "We're going to  level YELLOW.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:03E0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "We're already atlevel YELLOW...",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0400",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "We aren't yet atlevel BLUE.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0420",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "We aren't yet atlevel YELLOW.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0440",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "We are reaching level YELLOW.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0460",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": " ",
+   "translatable": true,
+   "same_as": "",
+   "original": "OK! The TEARS   crystal is set.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0480",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "We are going to level RED...   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:04A0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "We've reached   level RED.     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:04C0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bonus! A slot   machine {C7}{D7}{E7}{F7}.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:04E0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "We're not yet atlevel RED.     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0500",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "The bomb's set. Get out fast...",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0520",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "It looks like a kind of lab.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0540",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "BEEFUN! Split tothe SE corner!!",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0560",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "There is nothinghere. Bummer.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0580",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This looks like an escape pad! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:05A0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We need BEEFUN  to open it.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:05C0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The escape pad  door opened!   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:05E0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "A hotel! Let's  rest our bones.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0600",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Melser's map hasa hidden clue. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0620",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Go North, after the HOTEL...   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0640",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bogus! Zapped bythe Psycho {C2}{D2}{E2}{F2}",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0660",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "What do you wantto do?         ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0680",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0660",
+   "translatable": true,
+   "same_as": "",
+   "original": "Sleep     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0690",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0660",
+   "translatable": true,
+   "same_as": "",
+   "original": "Slip Out  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:06A0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0660",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:06C0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Most excellent! A warm bed.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:06E0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Sleep's totally what we need.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0700",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "ZZZ.                           ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0720",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "I know what you are dreaming...",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0740",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "ZZZ.                           ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0760",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Time's short!   Better wake up.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0780",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "It's all in yourimagination.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:07A0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "I'm dreaming we wasted Quila.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:07C0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "I could sleep   forever...     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:07E0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "It's a computer console!!      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0800",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Darn! Nothing   happened...    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0820",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Let's try a     different code.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0840",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Do you want to  keep sleeping? ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0860",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0840",
+   "translatable": true,
+   "same_as": "",
+   "original": "Yes...    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0870",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0840",
+   "translatable": true,
+   "same_as": "",
+   "original": "Dream On  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0880",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0840",
+   "translatable": true,
+   "same_as": "",
+   "original": "OK        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0890",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0840",
+   "translatable": true,
+   "same_as": "",
+   "original": "No        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:08B0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Our options are dwindling...   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:08D0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:08B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:08E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:08B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Talk to It",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0900",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "3",
+   "translatable": true,
+   "same_as": "",
+   "original": "What password doyou want?      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0920",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:0900",
+   "translatable": true,
+   "same_as": "",
+   "original": "NODICE!!  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0940",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Tough luck! Try system 3 times.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0960",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "You want to use this console?!?",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0980",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Emperor Quila   must say OK... ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:09A0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "BEEFUN! But it'swired to blow! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:09C0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "q",
+   "translatable": true,
+   "same_as": "",
+   "original": "Pick a system tooperate slots. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:09E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:09C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "A System  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:09F0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:09C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "B System  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0A00",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:09C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "C System  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0A10",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:09C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "D System  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0A20",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:09C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "E System  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0A30",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU11.BIN:09C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0A50",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "To get BEEFUN,  1st set slots. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU11.BIN:0A70",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Slots are south of the GAME{91}{A1}{B1}.",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

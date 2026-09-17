@@ -1,0 +1,707 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_MENU06.BIN",
+ "sha256": "b68c6dd894b3f500848b97670129c911bd1e0851e572b9c56701321c0a851173",
+ "entries": [
+  {
+   "key": "I_MENU06.BIN:0000",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Way to go,cosmicsoldiers!      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0020",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0030",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Use Device",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0040",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "See Device",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0060",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Think of what todo - quickly!  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0080",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:0060",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0090",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:0060",
+   "translatable": true,
+   "same_as": "",
+   "original": "Search    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:00B0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Such a deal.Whatshould we do?  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:00D0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:00B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:00E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:00B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Smash Safe",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:00F0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:00B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Talk to It",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0100",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:00B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Use Card  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0120",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Most excellent! A data device! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0140",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Darn! The outputis scrambled.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0160",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "I can't decipherany of it.     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0180",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "  A message!       NODICE!!    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:01A0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bonus! We have  the password.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:01C0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We can get the  data we need.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:01E0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Checking the eyepattern...     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0200",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "OK. Please pass through.       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0220",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Incorrect ID.   You can't pass.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0240",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Yea! Another onebites the dust!",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0260",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bogus. Nothing'shere.          ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0280",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Look! Something from the enemy!",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:02A0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bonus! The TEARSCrystal!       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:02C0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bag it. The lockwon't come off.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:02E0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Argh! It locked.We're busted.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0300",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Locked tight... Now what?      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0320",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We snagged a guncartridge!     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0340",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Darn it! The    safe is empty. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0360",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Most terrific!  A safe!        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0380",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "An E-Pack is on the 4th floor. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:03A0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Lever B-Rusteck Lever C-Sivad  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:03C0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Lever D-Zellwal Lever P-Shua   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:03E0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "PsychoOFF? On  nthe 11th floor.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0400",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "The base's doorsare confusing. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0420",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Watch it. Strongbeasts lurk.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0440",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This is Celtac's{95}{A5}{B5}{C5}{D5}{96}{A6}.       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0460",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "It's the RODAN  cartridge.     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0480",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Look for a jump device.        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:04A0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "A jump device   uses an E Pack.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:04C0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "The choice is   yours,spaceman!",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:04E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:04C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:04F0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:04C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Use Device",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0510",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "E Pack is set...Want to jump?  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0530",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:0510",
+   "translatable": true,
+   "same_as": "",
+   "original": "Not yet   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU06.BIN:0540",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU06.BIN:0510",
+   "translatable": true,
+   "same_as": "",
+   "original": "You bet   ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

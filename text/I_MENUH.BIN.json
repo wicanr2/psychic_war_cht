@@ -1,0 +1,1811 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_MENUH.BIN",
+ "sha256": "5c3ca372de335aa707091969a5cb47a8ccf610794b2d2a1f17a47e6e9c6b56f3",
+ "entries": [
+  {
+   "key": "I_MENUH.BIN:0000",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "q",
+   "translatable": true,
+   "same_as": "",
+   "original": "What do you wantto do?         ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0020",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Ask Kayla ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0030",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Sip Yontry",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0040",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "See Maps  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0050",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "See Items ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0060",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Turbogun  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0070",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "ESP Power ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0080",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Options   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0090",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:00B0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "2",
+   "translatable": true,
+   "same_as": "",
+   "original": "Who should drinkthe Yontry?    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:00D0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:00B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "#1        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:00E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:00B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "#2        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:00F0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:00B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "#3        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0100",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:00B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "#4        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0110",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:00B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0130",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Which cartridge,soldier?       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0150",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0130",
+   "translatable": true,
+   "same_as": "",
+   "original": "GAMERA    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0160",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0130",
+   "translatable": true,
+   "same_as": "",
+   "original": "RODAN     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0170",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0130",
+   "translatable": true,
+   "same_as": "",
+   "original": "MOTHRA    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0180",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0130",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:01A0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Psychic Soldier,make a choice. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:01C0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:01A0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Save game ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:01D0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:01A0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Sound     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:01E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:01A0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0200",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "q",
+   "translatable": true,
+   "same_as": "",
+   "original": "Do you want to  save now?      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0220",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0200",
+   "translatable": true,
+   "same_as": "",
+   "original": "Definitely",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0230",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0200",
+   "translatable": true,
+   "same_as": "",
+   "original": "No way    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0250",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "q",
+   "translatable": true,
+   "same_as": "",
+   "original": "Do you want to  keep playing?  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0270",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0250",
+   "translatable": true,
+   "same_as": "",
+   "original": "Absolutely",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0280",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0250",
+   "translatable": true,
+   "same_as": "",
+   "original": "No way    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:02A0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "q",
+   "translatable": true,
+   "same_as": "",
+   "original": "Do you want     sound?         ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:02C0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:02A0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Yes       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:02D0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:02A0",
+   "translatable": true,
+   "same_as": "",
+   "original": "No        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:02F0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Want this map,  space soldier? ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0310",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:02F0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Totally   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0320",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:02F0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Negative  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0340",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Pick a function,space warrior. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0360",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0340",
+   "translatable": true,
+   "same_as": "",
+   "original": "Mapper    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0370",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0340",
+   "translatable": true,
+   "same_as": "",
+   "original": "Sensor    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0380",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0340",
+   "translatable": true,
+   "same_as": "",
+   "original": "Decoder   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0390",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0340",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:03B0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "What ESP power  do you want?   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:03D0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:03B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Empathy   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:03E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:03B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Marker    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:03F0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:03B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Mind Jump ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0400",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:03B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Duplicate ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0410",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:03B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0430",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "2",
+   "translatable": true,
+   "same_as": "",
+   "original": "Which soldier   should you ask?",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0450",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0430",
+   "translatable": true,
+   "same_as": "",
+   "original": "#1        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0460",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0430",
+   "translatable": true,
+   "same_as": "",
+   "original": "#2        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0470",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0430",
+   "translatable": true,
+   "same_as": "",
+   "original": "#3        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0480",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0430",
+   "translatable": true,
+   "same_as": "",
+   "original": "#4        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0490",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0430",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:04B0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "2",
+   "translatable": true,
+   "same_as": "",
+   "original": "Who do you want to heal?       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:04D0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:04B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "#1        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:04E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:04B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "#2        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:04F0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:04B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "#3        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0500",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:04B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "#4        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0510",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:04B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0530",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "You can't move  forward here.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0550",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "It's fry time! Aflame thrower. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0570",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Chill out! The  freeze gun.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0590",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Wow! This gun   melts enemies. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:05B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Righteous! Game saved.         ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:05D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Ok. Game is     history.       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:05F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "The tunes are   cranked!       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0610",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Ok. Tunes are   off.           ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0630",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Don't be flaky! Be decisive.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0650",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "No luck-It's notactivated yet. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0670",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We didn't scam  that map yet.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0690",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "I picked the mapfor this base. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:06B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "I turned off thesensor.        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:06D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "I turned on the sensor.        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:06F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "It now will worklike a charm.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0710",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Use the team's  ESP powers...  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0730",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We must memorizewhere we are.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0750",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "THIS should makeus stronger.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0770",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This ally can't use that ESP.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0790",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "I have memorizedthe image!     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:07B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "I hope you know where to jump. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:07D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Without a markerwe can't jump. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:07F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This ally has   power to heal. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0810",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Excellent! We'restrong again.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0830",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Most Excellent. Strong again.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0850",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "You're on space station Samar. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0870",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Watch it. Enemy territory!     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0890",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Ok! We're headedfor Samar.     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:08B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Outstanding. Offto Sivad!      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:08D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Let's make a runfor Zellwal.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:08F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Rusteck!Straightahead,warriors.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0910",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Watch it Celtac!Here we come.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0930",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Drag. Satellite attack!        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0950",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Gigs up! Head   back to Samar. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0970",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bummer city. No more Yontry.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0990",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "I knew it... No Psychic Power! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:09B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Move it, PsychicSoldier!       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:09D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bogus! We can't teleport there.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:09F0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Our destination is up to you...",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0A10",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:09F0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Exit Port ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0A20",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:09F0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Samar     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0A30",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:09F0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Sivad     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0A40",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:09F0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Sivad     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0A50",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:09F0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Zellwal   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0A60",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:09F0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Zellwal   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0A70",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:09F0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Rusteck   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0A80",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:09F0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Rusteck   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0A90",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:09F0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Celtac    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0AB0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "q",
+   "translatable": true,
+   "same_as": "",
+   "original": "An elevator!    Think fast.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0AD0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0AB0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0AE0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0AB0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Go up     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0B00",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "q",
+   "translatable": true,
+   "same_as": "",
+   "original": "An elevator! Nowwhich way?     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0B20",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0B00",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0B30",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0B00",
+   "translatable": true,
+   "same_as": "",
+   "original": "Go down   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0B50",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "2",
+   "translatable": true,
+   "same_as": "",
+   "original": "Tough choice.Whogets ditched?  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0B70",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0B50",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0B80",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0B50",
+   "translatable": true,
+   "same_as": "",
+   "original": "#2        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0B90",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0B50",
+   "translatable": true,
+   "same_as": "",
+   "original": "#3        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0BA0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0B50",
+   "translatable": true,
+   "same_as": "",
+   "original": "#4        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0BC0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "3",
+   "translatable": true,
+   "same_as": "",
+   "original": "Give this ally aname, soldier! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0BF0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Make up your    mind, spaceman.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0C10",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0BF0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Talk      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0C20",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0BF0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Team up   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0C30",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0BF0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Duplicate ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0C50",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Do you want to  see more?      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0C70",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0C50",
+   "translatable": true,
+   "same_as": "",
+   "original": "Definitely",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0C80",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENUH.BIN:0C50",
+   "translatable": true,
+   "same_as": "",
+   "original": "Forget it ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0CA0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The bomb is now set.           ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0CC0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Hey. There's no time for that. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0CE0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "It's our awesomeselves again!  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENUH.BIN:0D00",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Get the enemy   to surrender.  ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

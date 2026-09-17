@@ -1,0 +1,62 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_ENMY11.BIN",
+ "sha256": "e2379b9e486cb29fdbb9707e18d77cf2878a2aa33b1b15f761b72b3ce9563b30",
+ "entries": [
+  {
+   "key": "I_ENMY11.BIN:0002",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Zilvok  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY11.BIN:0052",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Xyzok   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY11.BIN:00A2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Jipugee ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY11.BIN:00F2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Pajiix  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY11.BIN:0142",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Yazpy   ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

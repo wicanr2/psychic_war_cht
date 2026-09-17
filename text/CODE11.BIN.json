@@ -1,0 +1,227 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "CODE11.BIN",
+ "sha256": "64badd9495abb7204ead21ca21d641d187d5a4bb6fdb419b69ae10ae260cd373",
+ "entries": [
+  {
+   "key": "CODE11.BIN:04F8",
+   "kind": "inline",
+   "font": "font8",
+   "width": 21,
+   "translatable": true,
+   "same_as": "",
+   "original": "{17}{19}Get Emperor Quila's",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:0512",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "",
+   "original": "permission to use  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:052A",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "",
+   "original": "the console.Find 5 ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:0542",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "",
+   "original": "slots. Faces will  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:055A",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "",
+   "original": "appear. Different  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:0572",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "",
+   "original": "systems produce    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:058A",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "",
+   "original": "different faces.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:05A2",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "",
+   "original": "Match 5 slots with ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:05BB",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "",
+   "original": "Quila's face to get",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:05D4",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "",
+   "original": "permission,and.... ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:08F8",
+   "kind": "inline",
+   "font": "font8",
+   "width": 21,
+   "translatable": true,
+   "same_as": "CODE11.BIN:04F8",
+   "original": "{17}{19}Get Emperor Quila's",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:0912",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "CODE11.BIN:0512",
+   "original": "permission to use  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:092A",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "CODE11.BIN:052A",
+   "original": "the console.Find 5 ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:0942",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "CODE11.BIN:0542",
+   "original": "slots. Faces will  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:095A",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "CODE11.BIN:055A",
+   "original": "appear. Different  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:0972",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "CODE11.BIN:0572",
+   "original": "systems produce    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:098A",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "CODE11.BIN:058A",
+   "original": "different faces.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:09A2",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "CODE11.BIN:05A2",
+   "original": "Match 5 slots with ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:09BB",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "CODE11.BIN:05BB",
+   "original": "Quila's face to get",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE11.BIN:09D4",
+   "kind": "inline",
+   "font": "font8",
+   "width": 19,
+   "translatable": true,
+   "same_as": "CODE11.BIN:05D4",
+   "original": "permission,and.... ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

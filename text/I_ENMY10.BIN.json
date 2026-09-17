@@ -1,0 +1,62 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_ENMY10.BIN",
+ "sha256": "58233c3772b4adc09d65b31f6fec0ff53672950e51b288f20b5003416b56e4b4",
+ "entries": [
+  {
+   "key": "I_ENMY10.BIN:0002",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Khezhik ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY10.BIN:0052",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Zuroky  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY10.BIN:00A2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Uudon   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY10.BIN:00F2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Xyimide ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY10.BIN:0142",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Venufly ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

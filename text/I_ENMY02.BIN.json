@@ -1,0 +1,62 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_ENMY02.BIN",
+ "sha256": "e447dfc454821002c86f987173c0fa585d0c0f1fff06455a085645f1a421ca81",
+ "entries": [
+  {
+   "key": "I_ENMY02.BIN:0002",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Ander-MT",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY02.BIN:0052",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Tezmoxaa",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY02.BIN:00A2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "MOT-38  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY02.BIN:00F2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Zuleene ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY02.BIN:0142",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Houzz   ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

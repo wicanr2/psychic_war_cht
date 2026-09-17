@@ -1,0 +1,667 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_MENU01.BIN",
+ "sha256": "a3004bb9af019801add0cc31e2d8951a86092416b1a29c494860daaca3b4b3c0",
+ "entries": [
+  {
+   "key": "I_MENU01.BIN:0000",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Make a choice,  space hero.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0020",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU01.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave {91}{A1}{B1} ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0030",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU01.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Search {91}{A1}{B1}",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0050",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Any terrific    ideas?         ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0070",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU01.BIN:0050",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0080",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU01.BIN:0050",
+   "translatable": true,
+   "same_as": "",
+   "original": "Break Safe",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0090",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU01.BIN:0050",
+   "translatable": true,
+   "same_as": "",
+   "original": "Talk To It",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:00A0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU01.BIN:0050",
+   "translatable": true,
+   "same_as": "",
+   "original": "Use Card  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:00C0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Know what you   want to do?    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:00E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU01.BIN:00C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:00F0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU01.BIN:00C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Smash Lock",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0100",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU01.BIN:00C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Talk To It",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0110",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU01.BIN:00C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Use Card  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0130",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "3",
+   "translatable": true,
+   "same_as": "",
+   "original": "Hey,dude! What'sthe password?  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0150",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU01.BIN:0130",
+   "translatable": true,
+   "same_as": "",
+   "original": "NOSHIRT!  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0170",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This looks like a medical room.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0190",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Darn! There's   nothing here!  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:01B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We find ten     Yontry.        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:01D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Most wonderful! A safe.        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:01F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Unbelievable!   It's empty.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0210",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The PET Map is  in the safe!   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0230",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bogus! The alarmis going off.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0250",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Let's bail. The alarm stopped. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0270",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cool! We found  Map PO.        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0290",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This is an enemyOfficer's {91}{A1}{B1}! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:02B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Alright! The {91}{A1}{B1}is ours.       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:02D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Most outrageous!A card.        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:02F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bummer. The gateis locked.     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0310",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Sound input {90}{A0}{B0}{C0}is operational.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0330",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Password is OK. Gate will open.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0350",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bogus. We can't destroy it.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0370",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Nothing happens.               ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0390",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Maybe we need a different code.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:03B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We can't put thecard anywhere. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:03D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Most heinous!   It's locked.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:03F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Yontry makes a  body stronger. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0410",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "The commander   loves to drink.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0430",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "An officer holdsa key item.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0450",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "An android part is at a LAB.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0470",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Rescue allies ina jail.        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:0490",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Eat spinach. Be like Popeye.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:04B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Look. Get a map of the base.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:04D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "I miss Yort,    Evad and Nod.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU01.BIN:04F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This is Sivad's {95}{A5}{B5}{C5}{D5}{96}{A6}.       ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

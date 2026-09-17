@@ -1,0 +1,62 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_ENMY01.BIN",
+ "sha256": "a6b7faff0c70d408788f8569560dbd176ae37525ffe47096767d90925c81d640",
+ "entries": [
+  {
+   "key": "I_ENMY01.BIN:0002",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Machipi ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY01.BIN:0052",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Paluka  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY01.BIN:00A2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Oogus   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY01.BIN:00F2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Flegu   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY01.BIN:0142",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Paimus  ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

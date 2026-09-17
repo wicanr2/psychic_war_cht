@@ -1,0 +1,62 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_ENMY06.BIN",
+ "sha256": "0f5b70a92753b722ff25d57e4f25e61d345268d5d68bf6bd1def3e158544aab6",
+ "entries": [
+  {
+   "key": "I_ENMY06.BIN:0002",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Ulsten  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY06.BIN:0052",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Zuboibo ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY06.BIN:00A2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "DOS-51  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY06.BIN:00F2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Desdemon",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY06.BIN:0142",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Zukfrige",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

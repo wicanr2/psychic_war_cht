@@ -1,0 +1,62 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_ENMY07.BIN",
+ "sha256": "db4f2f7a84431e65fc1cb3d99736f343488f7db9ce1d6b94755cf90f85abe92e",
+ "entries": [
+  {
+   "key": "I_ENMY07.BIN:0002",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "B-9L1   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY07.BIN:0052",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Segmund ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY07.BIN:00A2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "IIno-2  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY07.BIN:00F2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Pionn   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY07.BIN:0142",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Rugoron ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

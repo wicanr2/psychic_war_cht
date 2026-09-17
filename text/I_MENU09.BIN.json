@@ -1,0 +1,979 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_MENU09.BIN",
+ "sha256": "66c234a6a206b4f2cdea1575f3f2b02c1a3e22db51e58ac809810bf0095db49d",
+ "entries": [
+  {
+   "key": "I_MENU09.BIN:0000",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "It's up to you, Psychic Soldier",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0020",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0030",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Break Safe",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0040",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Talk to It",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0050",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:0000",
+   "translatable": true,
+   "same_as": "",
+   "original": "Use Card  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0070",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Your destiny    awaits...      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0090",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:0070",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:00A0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:0070",
+   "translatable": true,
+   "same_as": "",
+   "original": "Break It  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:00C0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Hang tough,spacewarrior...     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:00E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:00C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:00F0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:00C0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Search    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0110",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Don't stop now; Better decide. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0130",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:0110",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0140",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:0110",
+   "translatable": true,
+   "same_as": "",
+   "original": "Check Body",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0160",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "What next,cosmicsoldier?       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0180",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:0160",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0190",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:0160",
+   "translatable": true,
+   "same_as": "",
+   "original": "Use {C7}{D7}{E7}{F7}  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:01B0",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Be wise. Many   hope you lose. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:01D0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:01B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Leave     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:01E0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:01B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "See Device",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:01F0",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:01B0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Use Device",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0210",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bogus! The safe is empty!      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0230",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "An IRA Map is inthe safe!      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0250",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Bogus! The alarmwent off.      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0270",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Alarm's off...  let's hit it.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0290",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Jackpot! There'sa safe here.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:02B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "An E Pack is in the safe!      ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:02D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "It's already    destroyed.     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:02F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The security    lock is on.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0310",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We can't destroyit. Bummer.    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0330",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "A weapon storageroom! Cool!    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0350",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The PsychoGun.  Excellent!     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0370",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "There is nothinginside.Too bad.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0390",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Good going. A   jump device!   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:03B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "No luck. This isa receiving {96}{A6}.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:03D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The controls    appear broken. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:03F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This must be a  control panel. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0410",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We wasted the   control panel! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0430",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The controls arealready fried! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0450",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Another day,    another enemy! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0470",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Give it up!     Nothing's here.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0490",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Better stop. Theroom's empty.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:04B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Look! Near the  body...        ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:04D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "It's a SWEAT    crystal!       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:04F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Hmm. Must be a  sort of {C7}{D7}{E7}{F7}.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0510",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "Conducting a CPUpattern match..",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0530",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "OK. Here's an IDBadge.         ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0550",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "p",
+   "translatable": true,
+   "same_as": "",
+   "original": "No match.  No   such ID exists.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0570",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Jump devices    need an E Pack.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0590",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This is a       security room. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:05B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "This opens the  Armor {91}{A1}{B1} lock.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:05D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "The lock is     opening.       ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:05F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Looks like the  lock is open.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0610",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "We passed some  kind of sensor.",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0630",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Find Melser's   Security Room. ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0650",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Get a clue. Go  to a VIP room! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0670",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "Get to Melser   from {8D}{9D}{AD} {92}{A2}{B2}.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0690",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "PsychoOFF is in the basement.  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:06B0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "An ID Badge is  hidden here.   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:06D0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "P",
+   "translatable": true,
+   "same_as": "",
+   "original": "A cystal is in  the NE corner! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:06F0",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Zapped by the   Psycho Shield! ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0710",
+   "kind": "menu",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "1",
+   "translatable": true,
+   "same_as": "",
+   "original": "Don't give up   yet! What next?",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0730",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:0710",
+   "translatable": true,
+   "same_as": "",
+   "original": "Cancel    ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0740",
+   "kind": "option",
+   "font": "font8",
+   "width": 10,
+   "menu": "I_MENU09.BIN:0710",
+   "translatable": true,
+   "same_as": "",
+   "original": "Do It     ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_MENU09.BIN:0760",
+   "kind": "message",
+   "font": "font8",
+   "width": 31,
+   "lines": [
+    16,
+    15
+   ],
+   "type": "0",
+   "translatable": true,
+   "same_as": "",
+   "original": "Yea!We fried thePsycho Shield!!",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

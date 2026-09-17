@@ -1,0 +1,62 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_ENMY09.BIN",
+ "sha256": "5f986ae1db12d481925792812fe1b5ab0390f55e9e8f4ad8d054636315ec2858",
+ "entries": [
+  {
+   "key": "I_ENMY09.BIN:0002",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Wixtan 6",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY09.BIN:0052",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Zuutaim ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY09.BIN:00A2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Katjym  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY09.BIN:00F2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Pyfax   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY09.BIN:0142",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Zupreen ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

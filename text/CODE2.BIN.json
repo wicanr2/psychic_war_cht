@@ -1,0 +1,51 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "CODE2.BIN",
+ "sha256": "cd25bfa82ca578b84d16db271e48a2152107ec83f0e704f80c55874402cdbc26",
+ "entries": [
+  {
+   "key": "CODE2.BIN:01C4",
+   "kind": "inline",
+   "font": "font8",
+   "width": 1,
+   "translatable": true,
+   "same_as": "",
+   "original": "A",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE2.BIN:01F4",
+   "kind": "inline",
+   "font": "font8",
+   "width": 18,
+   "translatable": true,
+   "same_as": "",
+   "original": "{17}{18} It is a trap !!",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE2.BIN:05C4",
+   "kind": "inline",
+   "font": "font8",
+   "width": 1,
+   "translatable": true,
+   "same_as": "CODE2.BIN:01C4",
+   "original": "A",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "CODE2.BIN:05F4",
+   "kind": "inline",
+   "font": "font8",
+   "width": 18,
+   "translatable": true,
+   "same_as": "CODE2.BIN:01F4",
+   "original": "{17}{18} It is a trap !!",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

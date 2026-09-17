@@ -1,0 +1,62 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_ENMY08.BIN",
+ "sha256": "0164d8e70175065632e760ad842502fd96e54dfee71be96e9dd8fdbb155bd616",
+ "entries": [
+  {
+   "key": "I_ENMY08.BIN:0002",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Zilfaim ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY08.BIN:0052",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "ARB-7   ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY08.BIN:00A2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Ungfried",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY08.BIN:00F2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "SOLT-2  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY08.BIN:0142",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Anbaddin",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+{
+ "schema": "psychic-war-text/1",
+ "source": "I_ENMY04.BIN",
+ "sha256": "65ee4110d5ff8ed71461c659671a90ed749ac35163f18aadd24d3110700c72e1",
+ "entries": [
+  {
+   "key": "I_ENMY04.BIN:0002",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Zekmaron",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY04.BIN:0052",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Jaxemo  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY04.BIN:00A2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Gestinti",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY04.BIN:00F2",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Zejraf  ",
+   "translation": "",
+   "note": ""
+  },
+  {
+   "key": "I_ENMY04.BIN:0142",
+   "kind": "enemy-name",
+   "font": "font8",
+   "width": 10,
+   "translatable": true,
+   "same_as": "",
+   "original": "Gorrfys ",
+   "translation": "",
+   "note": ""
+  }
+ ]
+}
