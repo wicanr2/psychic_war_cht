@@ -36,6 +36,7 @@
 | 1 | [M0](M0-baseline.md) | 探勘與基線 |
 | 2 | [M1](M1-golem-runs-original.md) §本輪完成條件 | 亂數、色盤、PC 喇叭、OPL2 雛形、重播到第一場戰鬥 |
 | 3 | [R3](R3-full-run-and-pacing.md) | CPU 速度定案、觀測位址、重播推進到離開起始區域、OPL2 事件層 |
+| 4 | [R4](R4-playable-frontend-and-text.md) | 可遊玩前端雛形（750 cycles、視窗、鍵盤、音訊）、印字常式、文字格式、第 3 輪開放項 |
 
 依賴關係：M0 → M1 → M2；M3 可以在 M1 之後與 M2 並行；M4 需要 M2 的前端與 M3 的文本；M5 大多需要 M4 的疊字層；M6 最後。
 逐條的前置關係以 issue 的「前置」欄與 [`docs/worklist.json`](../worklist.json) 為準。
