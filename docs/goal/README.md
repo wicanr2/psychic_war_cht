@@ -39,6 +39,7 @@
 | 4 | [R4](R4-playable-frontend-and-text.md) | 可遊玩前端雛形（750 cycles、視窗、鍵盤、音訊）、印字常式、文字格式、第 3 輪開放項 |
 | 5 | [R5](R5-text-capture-and-first-chinese.md) | 印字路徑收齊、文字格式規格、文本檔、覆蓋率量測、前端畫出第一句中文 |
 | 6 | [R6](R6-all-text-paths-and-translation.md) | 所有印字路徑疊字、通用部分抽回 dosgolem、全文翻譯第一版、逐步操作與模擬玩家試玩 |
+| 7 | [R7](R7-baked-text-and-assist-features.md) | 圖檔文字清冊與中文替換、F2 切換語言、F10 即時存檔、F1 說明頁、模擬試玩推進到第二個區域 |
 | 6 | [R6](R6-all-text-paths-and-translation.md) | 所有印字路徑的疊字、通用疊字層抽回 dosgolem、全文翻譯第一版、覆蓋率推進一個區域 |
 
 依賴關係：M0 → M1 → M2；M3 可以在 M1 之後與 M2 並行；M4 需要 M2 的前端與 M3 的文本；M5 大多需要 M4 的疊字層；M6 最後。
