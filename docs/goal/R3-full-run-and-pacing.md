@@ -20,17 +20,21 @@
 | 色盤、PC 喇叭已與 DOSBox-X 對齊 | `docs/re/005`、`006` |
 | OPL2 雛形（比對未通過） | `docs/re/007` |
 
-dosgolem 本機分支鏈（依序疊加，都未推上游）：
+dosgolem 分支鏈（依序疊加；已推成 `wicanr2/dosgolem` 的遠端分支，未開 PR）：
 `psychic-war/m1-ega-palette` → `m1-pit-tone` → `m1-opl2`（含 `-scratch`）→ `m1-key-hold`（含 `-cpuhz` 修正）。
 
 ## 本輪完成條件
 
 以下全部成立才算完成：
 
-1. **CPU 速度（#9）**
-   - 讀出敵人攻擊的時間基準（計時器或 CPU），寫進 `docs/re/`，附位址與證據等級。
-   - DOSBox-X 以至少兩種固定 `cycles` 量第一場戰鬥（按住攻擊）的持續時間與玩家損失 HP，當參照。
-   - 規格 READY：給人玩的 `CPUHz` 目標值與依據；dosgolem 在該 `CPUHz` 下同一場戰鬥的持續時間（以計時器刻數換算秒）與參照相差 ≤ 10%，玩家損失 HP 與參照相符。
+1. **CPU 速度（#9）：以說明書建議的機型為準**（使用者定案 2026-09-17）
+   - 說明書「硬體配備」：IBM PC XT／AT 或 100% 相容機型、記憶體 384K、MGA／CGA／EGA。
+     對應的速度參照取 DOSBox-X 自己的機型預設：**8088 XT 4.77 MHz ≈ 240 cycles**、**286 AT 8 MHz ≈ 750 cycles**。
+   - DOSBox-X 以這兩種 `cycles` 量第一場戰鬥（按住攻擊）的持續時間與玩家損失 HP，當參照。
+   - dosgolem 補「每秒指令數」的速度設定（對應 DOSBox cycles；規格 READY），在同樣兩種速度下同一場戰鬥的持續時間
+     與參照相差 ≤ 10%，玩家損失 HP 與參照相符。
+   - 讀出敵人攻擊的時間基準（計時器或 CPU），寫進 `docs/re/`，附位址與證據等級，解釋兩種速度下的結果。
+   - 規格定案給人玩的預設速度（XT 或 AT）與理由。
 2. **觀測位址（#8、#33 的前置）**：玩家 HP、能量、目前位置（座標或格子）、朝向、區域編號的記憶體位址，
    每一個都用「改值後畫面或行為跟著變」驗證，寫進 `docs/re/`。
 3. **全程推進（#8）**
@@ -43,7 +47,7 @@ dosgolem 本機分支鏈（依序疊加，都未推上游）：
 
 ## 量測指標
 
-- 第一場戰鬥持續時間：dosgolem（目標 `CPUHz`）vs DOSBox-X 參照，差 ≤ 10%。
+- 第一場戰鬥持續時間：dosgolem vs DOSBox-X，在 XT（240 cycles）與 AT（750 cycles）兩種速度下各差 ≤ 10%。
 - 重播段數與涵蓋的區域檔；新路段沒實作的服務數：0。
 - 每個位址的驗證方式與證據等級。
 - OPL2 事件層：逐筆不一致數。
@@ -51,7 +55,7 @@ dosgolem 本機分支鏈（依序疊加，都未推上游）：
 ## 工作邊界
 
 - SDD：改 dosgolem 前先寫規格標 READY；本 repo 的格式與方法寫 `docs/spec/`。
-- dosgolem 修改只疊在 `worktrees/dosgolem` 的本機分支，**不 push、不開 PR**；每次改完跑 dosgolem 全套測試。
+- dosgolem 修改疊在 `worktrees/dosgolem` 的分支上（接在 `m1-key-hold` 之後開新分支）；**推分支前先問，PR 等整個遊戲移植完成再一次發**；每次改完跑 dosgolem 全套測試。
   碰到 EGA／VGA 顯示的修改，另外用 `worktrees/eob1-base`／`eob1-pal` 的方式跑 eob1 真實資料回歸（`docs/re/009` §6）。
 - 全部走 docker；只清理自己建立的 container，禁止 prune／`rmi`。
 - 原版與說明書掃描只在 `workplace/`；文件只摘要說明書，不轉錄。
