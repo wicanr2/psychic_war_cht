@@ -1,0 +1,16 @@
+# 原版素材由使用者自備，不進版控
+*.zip
+*.rar
+*.d88
+*.hfe
+*.mfi
+*.scp
+/psychic-war/
+/original/
+
+# 相關 repo 的本地 clone
+/worktrees/
+
+# 解開的原版、快照、暫存輸出
+/workplace/
+/.out/
