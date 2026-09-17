@@ -60,12 +60,18 @@ def still_open(item, root=ROOT):
 
 
 def check_schema(data):
+    done_ids = set()
+    for d in data.get("done", []):
+        for key in ("id", "issue", "title", "evidence", "date"):
+            if key not in d:
+                raise ValueError(f'done {d.get("id", "?")} 缺欄位 {key}')
+        done_ids.add(d["id"])
     ids = set()
     for item in data["items"]:
         for key in ("id", "milestone", "labels", "title", "body", "acceptance", "verify"):
             if key not in item:
                 raise ValueError(f'{item.get("id", "?")} 缺欄位 {key}')
-        if item["id"] in ids:
+        if item["id"] in ids or item["id"] in done_ids:
             raise ValueError(f'id 重複：{item["id"]}')
         ids.add(item["id"])
         if item["milestone"] not in data["milestones"]:
@@ -75,7 +81,7 @@ def check_schema(data):
                 raise ValueError(f'{item["id"]}：label {label} 沒定義')
     for item in data["items"]:
         for dep in split_deps(item.get("blocked_by", "")):
-            if dep not in ids:
+            if dep not in ids and dep not in done_ids:
                 raise ValueError(f'{item["id"]}：blocked_by {dep} 不存在')
 
 
@@ -99,7 +105,7 @@ def cmd_verify(data):
 
 
 def issue_ref(data, item_id):
-    for item in data["items"]:
+    for item in data["items"] + data.get("done", []):
         if item["id"] == item_id and item.get("issue"):
             return f'#{item["issue"]}'
     return f"`{item_id}`"
@@ -147,6 +153,12 @@ def cmd_render(data):
             deps = "、".join(issue_ref(data, d) for d in split_deps(i.get("blocked_by", ""))) or "—"
             kind = i["verify"]["kind"]
             out.append(f'| {num} | `{i["id"]}` | {i["title"]} | {", ".join(i["labels"])} | {deps} | {kind} |')
+        out.append("")
+    done = data.get("done", [])
+    if done:
+        out += ["## 已完成", "", "| issue | id | 標題 | 證據 | 日期 |", "|---|---|---|---|---|"]
+        for d in done:
+            out.append(f'| #{d["issue"]} | `{d["id"]}` | {d["title"]} | {d["evidence"]} | {d["date"]} |')
         out.append("")
     (ROOT / "docs/worklist.md").write_text("\n".join(out), encoding="utf-8")
     print("寫出 docs/worklist.md")

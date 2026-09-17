@@ -118,11 +118,14 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 
 ## 目前已知
 
-完整證據、指令與數字見 `docs/re/001-pw-exe-first-look.md`。
+證據、指令與數字見 `docs/re/001-pw-exe-first-look.md`（實跑初探）、`002-pw-exe-function-census.md`（函式普查）、
+`003-checkpoints-and-dosboxx-reference.md`（檢查點與 DOSBox-X 參照）。
 
 | 事實 | 等級 |
 |---|---|
-| `PW.EXE` 在 dosgolem 上可跑到主畫面（EXEC `LOGO.EXE` → 標誌 → 標題 → 防拷 → 輸入名字） | confirmed |
+| `PW.EXE` 是 Microsoft EXEPACK 壓縮檔；靜態解壓結果與執行期解壓逐位元組相同。**反組譯與位址一律用解壓後的 `PW_UNP.EXE`** | confirmed |
+| `PW.EXE` 在 dosgolem 上可走到第一人稱迷宮（標題 → 防拷 → SELECT 選單 → 輸入名字 → 迷宮），畫面版面與 DOSBox-X 逐像素一致 | confirmed |
+| 以 Microsoft C 1988 年版程式庫連結；另連結 Covox 1989 年音效函式庫。函式 419 個：遊戲本體 263、C 啟動碼與程式庫 61、其他模組 95 | 強推論（分群邊界） |
 | 版本是 Kyodai Software 1989 的英文移植（IBM VERSION） | confirmed |
 | 顯示模式 EGA 0Dh（320×200 16 色），色盤用 `INT 10h AH=10h` 設屬性控制器 | confirmed |
 | 自掛 `INT 08h`（PIT ≈72 Hz）與 `INT 09h`（直接讀掃描碼） | confirmed |
@@ -131,7 +134,9 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | 操作面板文字畫在圖檔上（`SCREEN.PBL` 等） | 假說 |
 | `FONT.BIN` 是 8×8 字模，遊戲自己畫字 | 假說 |
 | 開頭有手冊式防拷（盟友 ↔ ESP 數值） | confirmed（判定邏輯未讀） |
-| `CD 75` 55 處都沒有被執行，抽查 6 處為 `DEC CH; JNZ`；byte pattern 計數不能當 `INT` 證據 | confirmed |
+| byte pattern 計數不能當 `INT` 證據；解壓後 IDA 認得的 `INT` 指令共 93 處（`21h` 74） | confirmed |
+| 遊戲把色號 8 設成黑色（EGA 預設深灰）；dosgolem 的畫面輸出還沒套用遊戲色盤 | confirmed（DOSBox-X 參照，25 像素） |
+| 防拷問哪位盟友會隨按鍵時機改變；空白答案會顯示 `YOU ARE CLEARED` | confirmed（行為），判定邏輯未讀 |
 
 ## 工作追蹤
 
@@ -141,7 +146,17 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 - **分期目標與驗收**：`docs/goal/`。只寫目標，不記進度。
 - **Python 工具走 `tools/py.sh`**（docker）；dosgolem 的 Go 工具走 `worktrees/dosgolem/tools/go.sh`。
 - 原版解壓到 `workplace/original/`，probe 輸出放 `workplace/probe/`（都 gitignore）。
-  ⚠ probe 的 `-shots` 輸出是 64,000 bytes 色號陣列，不是 PNG。
+  ⚠ probe 的 `-shots` 輸出是 64,000 bytes 色號陣列，不是 PNG；看圖用 `tools/frames.py montage`。
+
+| 工具 | 用途 |
+|---|---|
+| `tools/unexepack.py` | EXEPACK 解壓，`--verify` 對執行期傾印逐位元組比 |
+| `tools/ida.sh`＋`tools/ida/census.py` | IDA 建庫與函式普查（`workplace/ida/`）。批次跑一律驗輸出檔 |
+| `tools/census_report.py` | 普查 JSON＋覆蓋率 → 執行過的函式、`INT` 呼叫點表 |
+| `tools/states.sh [--check]` | 七段狀態檔檢查點（19 秒）；`--check` 驗畫面雜湊（決定性） |
+| `tools/dosboxx-ref.sh` | DOSBox-X 走同樣四個畫面，存 640×400 RGB |
+| `tools/frame_compare.py` | dosgolem 色號 vs DOSBox-X RGB 的版面比對，輸出色號 → RGB |
+| `tools/frames.py` | 色號陣列的變化摘要與總覽圖 |
 
 ## 待決事項
 

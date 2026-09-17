@@ -56,6 +56,8 @@ tools/go.sh run ./cmd/probe -exe /orig/psychic-war/PW.EXE -root /orig/psychic-wa
 
 ### 4.1 `CD 75` 不能當中斷的證據
 
+⚠ 本節與 §4.2 的位移都是在 **EXEPACK 壓縮檔**上量的；解壓後的位址與 `INT` 指令見 `docs/re/002`。
+
 `PW.EXE` 裡 `CD 75` 出現 55 次，覆蓋率顯示沒有一處被當指令執行。抽查前 6 處，前後文都是
 `FE CD 75 xx`，即 `DEC CH` 後接 `JNZ`。**這 55 處不能當 `INT 75h` 的證據**；其餘 49 處的解讀留給 IDA 普查（#1）。
 

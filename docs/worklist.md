@@ -7,9 +7,6 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #1 | `ida-baseline` | 建立 PW.EXE／LOGO.EXE 的 IDA 資料庫並做函式普查 | re | — | absent |
-| #2 | `state-checkpoints` | 固定的狀態檔檢查點：標題、防拷、輸入名字、第一個可操作畫面 | verify | — | absent |
-| #3 | `dosbox-reference-frames` | DOSBox-X 參照畫面：同一個畫面的正確顏色與版面 | verify, graphics | — | manual |
 
 ## M1：原版在 golem 上完整可跑：畫面、音樂、決定性
 
@@ -73,3 +70,11 @@
 | #34 | `theme` | 主題替換 | graphics | #20 | manual |
 | #35 | `cross-platform-package` | 跨平台打包：Linux／Windows／macOS | release | #27 | manual |
 | #36 | `license-readme` | LICENSE（RRSAL-1.0）與 README | release | — | absent |
+
+## 已完成
+
+| issue | id | 標題 | 證據 | 日期 |
+|---|---|---|---|---|
+| #1 | `ida-baseline` | 建立 PW.EXE／LOGO.EXE 的 IDA 資料庫並做函式普查 | `docs/re/002-pw-exe-function-census.md` | 2026-09-17 |
+| #2 | `state-checkpoints` | 固定的狀態檔檢查點：標題、防拷、輸入名字、第一個可操作畫面 | `docs/re/003-checkpoints-and-dosboxx-reference.md` §2；`tools/states.sh --check` | 2026-09-17 |
+| #3 | `dosbox-reference-frames` | DOSBox-X 參照畫面：同一個畫面的正確顏色與版面 | `docs/re/003-checkpoints-and-dosboxx-reference.md` §3；`tools/dosboxx-ref.sh`、`tools/frame_compare.py` | 2026-09-17 |

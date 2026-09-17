@@ -73,6 +73,32 @@ class VerifyTest(unittest.TestCase):
         self.assertTrue(worklist.still_open(item("manual", note="n"), self.root)[0])
 
 
+class SchemaTest(unittest.TestCase):
+    def base(self):
+        return {
+            "milestones": {"M0": "m"}, "labels": {"re": "r"},
+            "items": [{"id": "a", "milestone": "M0", "labels": ["re"], "title": "t", "body": "b",
+                       "acceptance": "c", "blocked_by": "z", "verify": {"kind": "manual", "note": "n"}}],
+            "done": [{"id": "z", "issue": 1, "title": "t", "evidence": "e", "date": "2026-09-17"}],
+        }
+
+    def test_dependency_on_done_item_is_valid(self):
+        worklist.check_schema(self.base())
+
+    def test_missing_dependency_rejected(self):
+        d = self.base()
+        d["done"] = []
+        with self.assertRaises(ValueError):
+            worklist.check_schema(d)
+
+    def test_id_in_both_items_and_done_rejected(self):
+        d = self.base()
+        d["done"][0]["id"] = "a"
+        d["items"][0]["blocked_by"] = ""
+        with self.assertRaises(ValueError):
+            worklist.check_schema(d)
+
+
 class RepoWorklistTest(unittest.TestCase):
     def test_schema_valid(self):
         worklist.check_schema(worklist.load())
