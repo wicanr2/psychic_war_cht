@@ -1,7 +1,7 @@
 {
   "schema": "psychic-war-replay/1",
-  "note": "開機到第一次存讀檔的重播。格式見 docs/spec/003。",
-  "dosgolem": "psychic-war/m1-opl2",
+  "note": "開機到打贏第一場戰鬥並存讀檔的重播。格式見 docs/spec/003。",
+  "dosgolem": "psychic-war/m1-key-hold",
   "pw_exe_sha256": "88321206d5400b2276aba0f268e2daaa8355a733843dd9e89f9e7116ae690c49",
   "segments": [
     {
@@ -13,7 +13,8 @@
       "key_every": 0,
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "標題，等按鍵"
+      "comment": "標題，等按鍵",
+      "holds": []
     },
     {
       "name": "02-match",
@@ -26,7 +27,8 @@
       "key_every": 0,
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "防拷說明框"
+      "comment": "防拷說明框",
+      "holds": []
     },
     {
       "name": "03-protection",
@@ -39,7 +41,8 @@
       "key_every": 0,
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "防拷：ENTER ESP POWER"
+      "comment": "防拷：ENTER ESP POWER",
+      "holds": []
     },
     {
       "name": "04-cleared",
@@ -52,7 +55,8 @@
       "key_every": 0,
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "空白答案 → YOU ARE CLEARED"
+      "comment": "空白答案 → YOU ARE CLEARED",
+      "holds": []
     },
     {
       "name": "05-select",
@@ -65,7 +69,8 @@
       "key_every": 0,
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "主畫面：NEW GAME／LOAD GAME"
+      "comment": "主畫面：NEW GAME／LOAD GAME",
+      "holds": []
     },
     {
       "name": "06-name",
@@ -78,7 +83,8 @@
       "key_every": 0,
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "NEW GAME → ENTER YOUR NAME"
+      "comment": "NEW GAME → ENTER YOUR NAME",
+      "holds": []
     },
     {
       "name": "07-first-play",
@@ -94,7 +100,8 @@
       "key_every": 500000,
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "名字 KAI → 第一人稱迷宮"
+      "comment": "名字 KAI → 第一人稱迷宮",
+      "holds": []
     },
     {
       "name": "08-encounter",
@@ -117,25 +124,27 @@
       "key_every": 4000000,
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "前進 11 步，遇到第一個敵人 Shulosu"
+      "comment": "前進 11 步，遇到第一個敵人 Shulosu",
+      "holds": []
     },
     {
-      "name": "09-escaped",
+      "name": "09-battle-won",
       "from": "08-encounter",
-      "save_at": 95000000,
-      "keys": [
-        "3D"
-      ],
-      "key_at": 86500000,
+      "save_at": 112000000,
+      "keys": [],
+      "key_at": 0,
       "key_every": 0,
+      "holds": [
+        "space@86500000+3000ms"
+      ],
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "F3 瞬間移位：脫離第一場戰鬥（撤退，不是勝利）"
+      "comment": "按住空白鍵 3 秒（dosgolem 時間軸）連續發射超能波，打贏 Shulosu，玩家 HP 40 未損"
     },
     {
       "name": "10-saved",
-      "from": "09-escaped",
-      "save_at": 124000000,
+      "from": "09-battle-won",
+      "save_at": 141000000,
       "keys": [
         "esc",
         "down",
@@ -151,8 +160,9 @@
         "enter",
         "enter"
       ],
-      "key_at": 95500000,
+      "key_at": 112500000,
       "key_every": 1000000,
+      "holds": [],
       "scratch": true,
       "expect_same_frame_as": "",
       "comment": "Esc → Options → Save Game → Definitely → 檔名 TEST → Absolutely"
@@ -160,7 +170,7 @@
     {
       "name": "11-loaded",
       "from": "05-select",
-      "save_at": 60000000,
+      "save_at": 57000000,
       "keys": [
         "down",
         "enter",
@@ -172,9 +182,10 @@
       ],
       "key_at": 32500000,
       "key_every": 1000000,
+      "holds": [],
       "scratch": true,
-      "expect_same_frame_as": "09-escaped",
-      "comment": "LOAD GAME → 檔名 TEST：應回到存檔時的畫面"
+      "expect_same_frame_as": "09-battle-won",
+      "comment": "LOAD GAME → 檔名 TEST：應回到存檔時（戰勝後）的畫面。迷宮畫面約每 600 萬步閃爍一次（25 像素），存檔時點要落在同一相位"
     }
   ]
 }

@@ -2,6 +2,8 @@
 
 狀態：量測紀錄（2026-09-17）。對應 issue #8（本輪完成一部分，issue 仍開著）。
 
+> 現況：第一場戰鬥要**按住**空白鍵才打得贏，重播已改成正常打贏，見 `docs/re/009`。
+
 ## 1. 結論
 
 - 重播格式定案（`docs/spec/003`），`tools/states.sh` 改讀 `replay/title-to-first-save.json`；原有八段的畫面雜湊不變。

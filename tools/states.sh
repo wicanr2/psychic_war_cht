@@ -37,26 +37,27 @@ probe() {
     "$GOLEM/tools/go.sh" run ./cmd/probe -exe /orig/psychic-war/PW.EXE -root /orig/psychic-war "$@"
 }
 
-# 重播檔 → 一段一列：名稱、從哪段、存檔步數、按鍵、第一鍵、鍵距、暫存層、應相同的段
+# 重播檔 → 一段一列：名稱、從哪段、存檔步數、按鍵、第一鍵、鍵距、暫存層、應相同的段、按住
 ROWS=$("$ROOT/tools/py.sh" -c '
 import json, sys
 d = json.load(open(sys.argv[1], encoding="utf-8"))
 assert d.get("schema") == "psychic-war-replay/1", "schema 不對"
 names = set()
 for s in d["segments"]:
+    s.setdefault("holds", [])
     for k in ("name", "from", "save_at", "keys", "key_at", "key_every", "scratch", "expect_same_frame_as"):
         assert k in s, "%s 缺 %s" % (s.get("name"), k)
     assert not s["from"] or s["from"] in names, "%s 的 from 還沒出現" % s["name"]
     assert not s["expect_same_frame_as"] or s["expect_same_frame_as"] in names, "%s 的 expect_same_frame_as 還沒出現" % s["name"]
     names.add(s["name"])
     print("|".join([s["name"], s["from"], str(s["save_at"]), ",".join(s["keys"]), str(s["key_at"]),
-                    str(s["key_every"]), "1" if s["scratch"] else "", s["expect_same_frame_as"]]))
+                    str(s["key_every"]), "1" if s["scratch"] else "", s["expect_same_frame_as"], ",".join(s["holds"])]))
 ' "$REPLAY")
 
 manifest="$OUT/manifest.tsv"
 : > "$manifest"
 fail=0
-while IFS='|' read -r name from at keys key_at every scratch same; do
+while IFS='|' read -r name from at keys key_at every scratch same holds; do
   [[ -n "$name" ]] || continue
   args=(-steps "$((at + 1))" -save-state "$at:/wp/states/$name.state" -shots "$at:/wp/states/$name.frame"
         -dump-at "$at:/wp/states/$name.rgb.png")
@@ -65,8 +66,9 @@ while IFS='|' read -r name from at keys key_at every scratch same; do
     args+=(-press "$keys" -press-at "$key_at")
     [[ "$every" != "0" ]] && args+=(-press-every "$every")
   fi
+  [[ -n "$holds" ]] && args+=(-hold "$holds")
   [[ -n "$scratch" ]] && args+=(-scratch /wp/states/scratch)
-  echo "[$name] 從 ${from:-開機} 跑到第 $at 道指令（按鍵：${keys:-無}${scratch:+；暫存層}）" >&2
+  echo "[$name] 從 ${from:-開機} 跑到第 $at 道指令（按鍵：${keys:-無}${holds:+；按住 $holds}${scratch:+；暫存層}）" >&2
   probe "${args[@]}" > "$OUT/$name.log" 2>&1 || { tail -20 "$OUT/$name.log" >&2; die "$name 失敗"; }
   [[ -s "$OUT/$name.state" && -s "$OUT/$name.frame" && -s "$OUT/$name.rgb.png" ]] || die "$name 沒有產出狀態檔或畫面（見 $OUT/$name.log）"
   hash=$(sha256sum "$OUT/$name.frame" | cut -c1-16)

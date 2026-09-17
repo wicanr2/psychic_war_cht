@@ -4,7 +4,7 @@
 #   tools/dosboxx-ref.sh              # 產出 workplace/dosboxx/<檢查點>[-變體].{x11.png,rgb}
 #
 # 走的畫面與 tools/states.sh 相同（標題 → 防拷 → 輸入名字 → 第一個可操作畫面 → 第一個遭遇），
-# 最後按攻擊並連續錄 6 秒存到 battle/（色號 2、A 只出現在攻擊的雷射上）。
+# 最後按住攻擊並連續錄 8 秒存到 battle/（色號 2、A 只出現在攻擊的雷射上）。
 # 但 DOSBox-X 以牆上時間送鍵，**亂數不會對齊**：防拷問的盟友多半與 dosgolem 不同。
 # 比對時把那一塊文字區當成已知差異（tools/frame_compare.py）。
 #
@@ -31,6 +31,7 @@ docker image inspect "$IMAGE" >/dev/null 2>&1 || { echo "tools/dosboxx-ref.sh：
 mkdir -p "$OUT"
 rm -rf "$OUT"/*.png "$OUT"/*.rgb "$OUT"/battle 2>/dev/null || true
 
+BATTLE_HOLD="${PSYCHICWAR_BATTLE_HOLD:-3}"
 cat > "$OUT/.run.sh" <<'EOF'
 set -euo pipefail
 export HOME=/tmp DISPLAY=:99
@@ -98,14 +99,15 @@ for t in a b c; do snap "07-first-play-$t"; sleep 0.7; done
 for i in $(seq 1 11); do key Up 1.5; done
 sleep 2
 for t in a b c; do snap "08-encounter-$t"; sleep 0.7; done
-# 攻擊的雷射只出現在幾個瞬間（色號 2、A 只在這裡出現），所以連續錄 6 秒、30 fps 逐格存
+# 攻擊的雷射只出現在幾個瞬間（色號 2、A 只在這裡出現），所以連續錄 8 秒、30 fps 逐格存
 mkdir -p /out/battle
 ffmpeg -loglevel error -f x11grab -framerate 30 -video_size ${WIDTH}x${HEIGHT} -i ":99.0+${X},${Y}" \
-  -t 6 -start_number 0 "/out/battle/%03d.png" &
+  -t 8 -start_number 0 "/out/battle/%03d.png" &
 FF=$!
 sleep 0.3
-# 遭遇畫面檢查的是「按鍵正被按住」：xdotool key 的點按只有幾毫秒，實測 4 秒內戰鬥都沒開始。按住 0.4 秒。
-xdotool keydown space; sleep 0.4; xdotool keyup space
+# 遭遇畫面檢查的是「按鍵正被按住」：xdotool key 的點按只有幾毫秒，戰鬥不會開始。
+# 按住秒數由 PSYCHICWAR_BATTLE_HOLD 決定（預設 3）：0.4 秒會開打但會輸，要持續按住才打得贏（docs/re/009）。
+xdotool keydown space; sleep ${BATTLE_HOLD}; xdotool keyup space
 wait $FF || true
 for f in /out/battle/*.png; do convert "$f" -depth 8 "rgb:${f%.png}.rgb"; done
 echo "[09-battle] 錄到 $(ls /out/battle/*.png | wc -l) 格" >&2
@@ -119,6 +121,6 @@ timeout "${PSYCHICWAR_DOSBOXX_TIMEOUT:-400}" docker run --rm --network none \
   --log-opt max-size=10m --log-opt max-file=3 \
   -u "$(id -u):$(id -g)" \
   -v "$GAME:/orig:ro" -v "$OUT:/out" \
-  "$IMAGE" bash /out/.run.sh 2>&1 | grep -v -E 'XGetInputFocus|^$' || true
+  -e BATTLE_HOLD="$BATTLE_HOLD" "$IMAGE" bash /out/.run.sh 2>&1 | grep -v -E 'XGetInputFocus|^$' || true
 rm -f "$OUT/.run.sh"
 ls -l "$OUT"
