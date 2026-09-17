@@ -95,7 +95,7 @@ key k 1; key a 1; key i 1
 key Return 15                 # → 第一人稱迷宮
 # 迷宮畫面有週期性閃爍：抓三張，比對時挑相位一致的那張
 for t in a b c; do snap "07-first-play-$t"; sleep 0.7; done
-# 前進 11 步到第一個遭遇（位置固定，與亂數無關：docs/re/004 §5）
+# 送 11 次前進：第 6 次移動必定遭遇（docs/re/011 §2），多送的在遭遇畫面被忽略
 for i in $(seq 1 11); do key Up 1.5; done
 sleep 2
 for t in a b c; do snap "08-encounter-$t"; sleep 0.7; done

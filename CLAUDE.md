@@ -120,7 +120,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 
 證據、指令與數字見 `docs/re/001-pw-exe-first-look.md`（實跑初探）、`002-pw-exe-function-census.md`（函式普查）、
 `003-checkpoints-and-dosboxx-reference.md`（檢查點與 DOSBox-X 參照）、`004-rng-and-determinism.md`（亂數）、
-`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）；
+`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）、`011-observation-addresses.md`（位置、朝向、區域、角色數值位址，地圖檔格式）、`012-opl2-event-layer.md`（OPL2 事件層）、`013-replay-route-samar-to-sivad.md`（重播路線）；
 被推翻的斷言集中在 `000-overturned-claims.md`。
 
 | 事實 | 等級 |
@@ -140,9 +140,12 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | byte pattern 計數不能當 `INT` 證據；解壓後 IDA 認得的 `INT` 指令共 93 處（`21h` 74） | confirmed |
 | 遊戲只用 `AH=10h AL=00` 設屬性暫存器（200 線 RGBI 解讀），從不寫 DAC。dosgolem 修正後（分支 `psychic-war/m1-ega-palette`，未推上游）四個檢查點與遭遇戰的 RGB 與 DOSBox-X 逐像素一致 | confirmed |
 | 唯一的亂數產生器是 `sub_146B7`（狀態 `cs:41DF`，初值 `544Eh`），不讀時鐘；等待按鍵的迴圈每圈推進一次，所以「隨機」來自玩家反應時間。同一組輸入在 dosgolem 上逐位元組可重現 | confirmed |
-| 第一個遭遇（往前 11 步的 Shulosu）由位置決定，與亂數無關。攻擊要**按住**空白鍵才打得贏（連按 32 種都輸）；DOSBox-X 同樣成立 | confirmed |
+| 第一個遭遇 Shulosu 固定在第 6 次移動，與位置、亂數無關（`docs/re/011` §2）。攻擊要**按住**空白鍵才打得贏（連按 32 種都輸）；DOSBox-X 同樣成立 | confirmed |
 | 敵人 HP 字組在線性 `0x509C`（`0161:3A8C`），改成 1 可一擊打贏 | 強證據 |
 | **戰鬥敵我雙方的進度都綁 CPU，不是計時器**；單場長短主要看亂數與按鍵時機。速度用 DOSBox 相容 cycles（dosgolem `-cycles`，字串指令每次迭代算一個 cycle）；預設 750（AT 8 MHz），選項 240（XT），見 `docs/spec/004` | confirmed（主迴圈靜態＋成對實驗） |
+| 遊戲邏輯跑在位元組碼直譯器 `sub_12766`；腳本變數在 `0x16916 ＋ 2n`：區域 `0x16966`、X `0x16968`、Y `0x1696A`、朝向 `0x16970`、前方可否通行 `0x16976`、地點 `0x16978`、HP `0x16990`、能量 `0x16994`（`docs/re/011`） | 強證據（改值驗證） |
+| AdLib 驅動寫進 OPL2 的暫存器序列與 DOSBox-X 逐筆相同（5,599 筆；`docs/re/012`） | confirmed |
+| 重播推進到 Sivad（區域 1）：Samar 的 Launch Pad (15,14) 選 Sivad 即可，不需道具；遭遇看步數（`docs/re/013`） | confirmed |
 | 存檔 `<名>.DAT` 512 bytes；Esc → Options → Save Game → Definitely → 檔名。讀檔後畫面與存檔時相同 | confirmed |
 | 防拷題目由 `sub_1695C` 以亂數出題；空白答案會顯示 `YOU ARE CLEARED` | confirmed（行為），判定邏輯未讀 |
 
@@ -161,9 +164,10 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/unexepack.py` | EXEPACK 解壓，`--verify` 對執行期傾印逐位元組比 |
 | `tools/ida.sh`＋`tools/ida/census.py` | IDA 建庫與函式普查（`workplace/ida/`）。批次跑一律驗輸出檔 |
 | `tools/census_report.py` | 普查 JSON＋覆蓋率 → 執行過的函式、`INT` 呼叫點表 |
-| `tools/states.sh [--check] [重播檔]` | 依重播檔（預設 `replay/title-to-first-save.json`，格式 `docs/spec/003`）產生 11 段狀態檔；`--check` 驗畫面雜湊；支援按住按鍵、暫存層與畫面相等斷言 |
+| `tools/states.sh [--check] [重播檔]` | 依重播檔（預設 `replay/title-to-first-save.json`，格式 `docs/spec/003`）產生 18 段狀態檔；`--check` 驗畫面雜湊；支援按住按鍵、暫存層、畫面與記憶體相等斷言 |
+| `tools/route_keys.py <朝向> <路線>` | 迷宮路線（NESW 字串）轉成按鍵序列 |
 | `tools/determinism.sh` | 第一場戰鬥：同輸入兩次逐位元組相同、晚按鍵必須不同 |
-| `tools/ida/dump.py` | 一次跑多個 IDA 查詢（xref／func／imm／callers／refs）；⚠ 少數位址反組譯引用端會讓 idat 異常結束，改用 `refs:` |
+| `tools/ida/dump.py` | 一次跑多個 IDA 查詢（xref／func／imm／callers／refs／dis）；⚠ 少數位址（例：14CE4、128C1）會讓 idat 異常結束，改用 `refs:` 或讀 `workplace/ida/PW_UNP.EXE.asm` |
 | `tools/dosboxx-ref.sh` | DOSBox-X 走同樣四個畫面＋遭遇＋攻擊錄影，存 640×400 RGB |
 | `tools/battle-pace.sh <cycles> [按住起點]` | dosgolem 量第一場戰鬥：DOSBox 相容 cycles、秒數、玩家 HP 寫入 |
 | `tools/dosboxx-battle-speed.sh <cycles>` | DOSBox-X 以 8000 cycles 走到遭遇（看畫面變化送鍵）、F12＋減號降速、按住攻擊錄影 |
@@ -172,6 +176,8 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/battle_palette_check.py` | 攻擊雷射上色號 2／A 的顏色驗證（時間軸不對齊時用） |
 | `tools/music_compare.py events\|audio\|opl` | 配樂比對：埠紀錄 vs `.IBM`（逐筆）；兩個 WAV 的音高與節奏（`docs/spec/001`）；OPL2 樂譜 vs WAV（`docs/spec/002`，方法分辨力不足，見 docs/re/007） |
 | `tools/dosboxx-audio.sh [秒] [speaker\|adlib]` | DOSBox-X 錄標題音樂 |
+| `tools/dosboxx-opl.sh [秒]` | DOSBox-X 擷取 raw OPL（`DX-CAPTURE /O`），走進迷宮後 Ctrl+Q 收尾 |
+| `tools/opl_events.py <opl-log> <.dro>` | OPL2 事件層逐筆比對（`docs/spec/005`），含原判準與修訂判準 |
 | `tools/frames.py` | 色號陣列的變化摘要與總覽圖 |
 
 ## 待決事項

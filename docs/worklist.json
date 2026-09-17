@@ -35,7 +35,7 @@
       "acceptance": "暫存器序列與 DOSBox-X raw OPL 擷取逐筆一致；標題音樂 WAV 比對通過（方法以 dosgolem 自我比對當正對照定案）。",
       "verify": {
         "kind": "manual",
-        "note": "雛形已在 dosgolem 分支；比對通過後改綁 docs/re 的通過紀錄"
+        "note": "事件層已通過（docs/re/012：暫存器序列與 DOSBox-X 逐筆相同）；剩合成器品質與 WAV 層比對（docs/re/007）。WAV 層通過後改綁 docs/re 的通過紀錄"
       },
       "issue": 5
     },
@@ -51,7 +51,7 @@
       "blocked_by": "state-checkpoints",
       "verify": {
         "kind": "manual",
-        "note": "重播到結局後改綁重播檔最後一段的段名（例如 json 裡出現 ending）"
+        "note": "重播已到 Sivad（區域 1，18 段，docs/re/013）；Sivad 內探路掃描待解碰撞座標。重播到結局後改綁重播檔最後一段的段名（例如 json 裡出現 ending）"
       },
       "issue": 8
     },
@@ -492,7 +492,7 @@
           "docs/re"
         ],
         "pattern": "(?m)^# \\d{3}：.*地圖格式",
-        "note": "docs/re 出現以此為標題的文件就該關；文件出現後改綁地圖繪製程式碼"
+        "note": "地圖檔地點格已解（docs/re/011 §3），牆壁格未解；docs/re 出現以此為標題的文件就該關；文件出現後改綁地圖繪製程式碼"
       },
       "issue": 32
     },
@@ -508,7 +508,7 @@
       "acceptance": "狀態位址表有證據（讀寫點）；至少提供回復 HP／ESP 與防拷略過，開啟時畫面有標示。",
       "verify": {
         "kind": "manual",
-        "note": "位址表出現後改綁"
+        "note": "位址表已有（docs/re/011：HP、能量、座標、區域、敵人 HP）；作弊功能實作後改綁熱鍵或設定鍵名"
       },
       "issue": 33
     },

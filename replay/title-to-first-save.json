@@ -1,6 +1,9 @@
 {
   "schema": "psychic-war-replay/1",
-  "note": "開機到打贏第一場戰鬥並存讀檔的重播。格式見 docs/spec/003。",
+  "note": "開機 → 第一場戰鬥 → 存讀檔 → Samar 內再打三場（Kasuruji、Minton ×2）並治療 → 搭 Launch Pad 抵達 Sivad → 存讀檔。格式見 docs/spec/003，路線見 docs/re/013。",
+  "memory_ranges": [
+    "lin:16966:52"
+  ],
   "dosgolem": "psychic-war/m1-key-hold",
   "pw_exe_sha256": "88321206d5400b2276aba0f268e2daaa8355a733843dd9e89f9e7116ae690c49",
   "segments": [
@@ -11,10 +14,11 @@
       "keys": [],
       "key_at": 0,
       "key_every": 0,
+      "holds": [],
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "標題，等按鍵",
-      "holds": []
+      "expect_same_memory_as": "",
+      "comment": "標題，等按鍵"
     },
     {
       "name": "02-match",
@@ -25,10 +29,11 @@
       ],
       "key_at": 12500000,
       "key_every": 0,
+      "holds": [],
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "防拷說明框",
-      "holds": []
+      "expect_same_memory_as": "",
+      "comment": "防拷說明框"
     },
     {
       "name": "03-protection",
@@ -39,10 +44,11 @@
       ],
       "key_at": 15500000,
       "key_every": 0,
+      "holds": [],
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "防拷：ENTER ESP POWER",
-      "holds": []
+      "expect_same_memory_as": "",
+      "comment": "防拷：ENTER ESP POWER"
     },
     {
       "name": "04-cleared",
@@ -53,10 +59,11 @@
       ],
       "key_at": 18500000,
       "key_every": 0,
+      "holds": [],
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "空白答案 → YOU ARE CLEARED",
-      "holds": []
+      "expect_same_memory_as": "",
+      "comment": "空白答案 → YOU ARE CLEARED"
     },
     {
       "name": "05-select",
@@ -67,10 +74,11 @@
       ],
       "key_at": 22500000,
       "key_every": 0,
+      "holds": [],
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "主畫面：NEW GAME／LOAD GAME",
-      "holds": []
+      "expect_same_memory_as": "",
+      "comment": "主畫面：NEW GAME／LOAD GAME"
     },
     {
       "name": "06-name",
@@ -81,10 +89,11 @@
       ],
       "key_at": 32500000,
       "key_every": 0,
+      "holds": [],
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "NEW GAME → ENTER YOUR NAME",
-      "holds": []
+      "expect_same_memory_as": "",
+      "comment": "NEW GAME → ENTER YOUR NAME"
     },
     {
       "name": "07-first-play",
@@ -98,10 +107,11 @@
       ],
       "key_at": 35500000,
       "key_every": 500000,
+      "holds": [],
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "名字 KAI → 第一人稱迷宮",
-      "holds": []
+      "expect_same_memory_as": "",
+      "comment": "名字 KAI → 第一人稱迷宮"
     },
     {
       "name": "08-encounter",
@@ -122,10 +132,11 @@
       ],
       "key_at": 43000000,
       "key_every": 4000000,
+      "holds": [],
       "scratch": false,
       "expect_same_frame_as": "",
-      "comment": "前進 11 步，遇到第一個敵人 Shulosu",
-      "holds": []
+      "expect_same_memory_as": "",
+      "comment": "前進 11 步，遇到第一個敵人 Shulosu"
     },
     {
       "name": "09-battle-won",
@@ -139,6 +150,7 @@
       ],
       "scratch": false,
       "expect_same_frame_as": "",
+      "expect_same_memory_as": "",
       "comment": "按住空白鍵 3 秒（dosgolem 時間軸）連續發射超能波，打贏 Shulosu，玩家 HP 40 未損"
     },
     {
@@ -165,6 +177,7 @@
       "holds": [],
       "scratch": true,
       "expect_same_frame_as": "",
+      "expect_same_memory_as": "",
       "comment": "Esc → Options → Save Game → Definitely → 檔名 TEST → Absolutely"
     },
     {
@@ -185,7 +198,187 @@
       "holds": [],
       "scratch": true,
       "expect_same_frame_as": "09-battle-won",
+      "expect_same_memory_as": "09-battle-won",
       "comment": "LOAD GAME → 檔名 TEST：應回到存檔時（戰勝後）的畫面。迷宮畫面約每 600 萬步閃爍一次（25 像素），存檔時點要落在同一相位"
+    },
+    {
+      "name": "12-battle2",
+      "from": "10-saved",
+      "save_at": 280000000,
+      "keys": [
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "right",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "right",
+        "up",
+        "up"
+      ],
+      "key_at": 141500000,
+      "key_every": 3000000,
+      "holds": [
+        "space@238000000+30000000"
+      ],
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "expect_same_memory_as": "",
+      "comment": "Samar：從 (1,8) 往北 7、往東 6、往南 2 走進 (7,3) 固定遭遇格，按住空白鍵打贏 Kasuruji（敵人 HP 70 → 0，玩家 40 → 23）。路線見 docs/re/013"
+    },
+    {
+      "name": "13-healed",
+      "from": "12-battle2",
+      "save_at": 345000000,
+      "keys": [
+        "down",
+        "up",
+        "up",
+        "right",
+        "up",
+        "up",
+        "right",
+        "up",
+        "enter"
+      ],
+      "key_at": 280500000,
+      "key_every": 3000000,
+      "holds": [],
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "expect_same_memory_as": "",
+      "comment": "往北 2、往東 2 到 (9,1)，往南進 Bio Room (9,2)，選 Get healed：HP 28→40、能量 6→30，得到 Yontry 3 瓶"
+    },
+    {
+      "name": "14-minton1",
+      "from": "13-healed",
+      "save_at": 420000000,
+      "keys": [
+        "up",
+        "right",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up"
+      ],
+      "key_at": 345500000,
+      "key_every": 3000000,
+      "holds": [
+        "space@382200000+30000000"
+      ],
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "expect_same_memory_as": "",
+      "comment": "出房間到 (9,1)，往東 5 步；戰後第 10 步在 (14,1) 遇到 Minton（HP 42），按住空白鍵打贏，玩家 40"
+    },
+    {
+      "name": "15-minton2",
+      "from": "14-minton1",
+      "save_at": 520000000,
+      "keys": [
+        "right",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "up"
+      ],
+      "key_at": 420500000,
+      "key_every": 3000000,
+      "holds": [
+        "space@469200000+40000000"
+      ],
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "expect_same_memory_as": "",
+      "comment": "往南 8 步在 (14,9) 又遇到 Minton，按住空白鍵打贏，玩家 40→22、能量 0"
+    },
+    {
+      "name": "16-sivad",
+      "from": "15-minton2",
+      "save_at": 614000000,
+      "keys": [
+        "up",
+        "up",
+        "up",
+        "up",
+        "up",
+        "left",
+        "up",
+        "down",
+        "enter"
+      ],
+      "key_at": 520500000,
+      "key_every": 3000000,
+      "holds": [],
+      "scratch": false,
+      "expect_same_frame_as": "",
+      "expect_same_memory_as": "",
+      "comment": "往南 5、往東 1 到 Launch Pad (15,14)，選 Sivad：開 I_MAP01／CODE1 等，區域編號 0→1，抵達 Sivad 降落平台 (5,7)"
+    },
+    {
+      "name": "17-saved2",
+      "from": "16-sivad",
+      "save_at": 655000000,
+      "keys": [
+        "up",
+        "esc",
+        "down",
+        "down",
+        "down",
+        "down",
+        "enter",
+        "enter",
+        "enter",
+        "14",
+        "12",
+        "1F",
+        "14",
+        "03",
+        "enter",
+        "enter"
+      ],
+      "key_at": 614500000,
+      "key_every": 1000000,
+      "holds": [],
+      "scratch": true,
+      "expect_same_frame_as": "",
+      "expect_same_memory_as": "",
+      "comment": "在 Sivad 存檔：Esc → Options（有 Yontry 後選單多兩項，Options 是第 5 項）→ Save Game → Definitely → 檔名 TEST2 → Absolutely。降落平台剛抵達時 Esc 不會開選單，先按一次 up"
+    },
+    {
+      "name": "18-loaded2",
+      "from": "05-select",
+      "save_at": 58000000,
+      "keys": [
+        "down",
+        "enter",
+        "14",
+        "12",
+        "1F",
+        "14",
+        "03",
+        "enter"
+      ],
+      "key_at": 32500000,
+      "key_every": 1000000,
+      "holds": [],
+      "scratch": true,
+      "expect_same_frame_as": "",
+      "expect_same_memory_as": "17-saved2",
+      "comment": "從主選單讀 TEST2：回到 Sivad（區域 1）(5,6)、HP 28、能量 6。畫面訊息區與存檔前不同，改以記憶體斷言"
     }
   ]
 }

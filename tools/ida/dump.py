@@ -8,6 +8,7 @@
 #   imm:<值>           掃全部指令，列出 operand 立即數或位移等於此值的指令
 #   callers:<ea>       列出呼叫 ea 的指令
 #   refs:<ea>          只列引用端的位址與 xref 型別（不反組譯引用端）
+#   dis:<起>-<迄>      反組譯一段位址（不管有沒有函式；func: 會讓 idat 異常結束的位址用這個）
 #
 # ⚠ 已知：對 PW_UNP.EXE.i64 的 14CE4、141B2 下 callers:／xref: 會讓 idat 異常結束
 #   （rc=1、輸出 0 bytes、scratch 殘留 .id0），可穩定重現。先用 refs: 分辨是
@@ -90,11 +91,22 @@ def q_refs(arg, out):
         out.append("  %05X type=%d iscode=%d" % (x.frm, x.type, x.iscode))
 
 
+def q_dis(arg, out):
+    lo, hi = [int(x, 16) for x in arg.split("-")]
+    out.append("## dis %05X-%05X" % (lo, hi))
+    ea = lo
+    while ea < hi:
+        out.append("  %s  [%s]" % (line(ea), fname(ea)))
+        ea = idc.next_head(ea, hi + 1)
+        if ea == idc.BADADDR:
+            break
+
+
 def main():
     ida_auto.auto_wait()
     out_path = idc.ARGV[1]
     out = []
-    handlers = {"xref": q_xref, "func": q_func, "imm": q_imm, "callers": q_callers, "refs": q_refs}
+    handlers = {"xref": q_xref, "func": q_func, "imm": q_imm, "callers": q_callers, "refs": q_refs, "dis": q_dis}
     for q in idc.ARGV[2:]:
         kind, _, arg = q.partition(":")
         try:

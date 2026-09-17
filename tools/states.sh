@@ -6,6 +6,7 @@
 # 每一段從上一段的狀態檔接著跑、送一組按鍵、在固定指令數存狀態（-save-state）並存一格畫面，
 # 另存經屬性暫存器與 DAC 解色的 <段>.rgb.png。--check 比對 tools/states.expected（決定性檢查）。
 # `expect_same_frame_as` 有值時，這一段的畫面必須與指定段完全相同（例如讀檔後回到存檔時的畫面）。
+# `expect_same_memory_as` 有值時，這一段在 save_at 傾印的 `memory_ranges` 必須與指定段完全相同（<段>.mem）。
 #
 # ⚠ 按鍵時機就是亂數的一部分（docs/re/004）：改任何一段，之後所有段的畫面都可能變，要一起更新期望值。
 # ⚠ 狀態檔綁 dosgolem 版本。換版本後先跑 --check。
@@ -37,27 +38,34 @@ probe() {
     "$GOLEM/tools/go.sh" run ./cmd/probe -exe /orig/psychic-war/PW.EXE -root /orig/psychic-war "$@"
 }
 
-# 重播檔 → 一段一列：名稱、從哪段、存檔步數、按鍵、第一鍵、鍵距、暫存層、應相同的段、按住
+# 重播檔 → 一段一列：名稱、從哪段、存檔步數、按鍵、第一鍵、鍵距、暫存層、應相同的段、按住、記憶體應相同的段、傾印範圍
 ROWS=$("$ROOT/tools/py.sh" -c '
 import json, sys
 d = json.load(open(sys.argv[1], encoding="utf-8"))
 assert d.get("schema") == "psychic-war-replay/1", "schema 不對"
 names = set()
+ranges = d.get("memory_ranges", [])
+for r in ranges:
+    kind, addr, length = r.split(":")
+    assert kind == "lin" and int(addr, 16) >= 0 and int(length) > 0, "memory_ranges 格式不對：%s" % r
 for s in d["segments"]:
     s.setdefault("holds", [])
+    s.setdefault("expect_same_memory_as", "")
+    assert not s["expect_same_memory_as"] or (s["expect_same_memory_as"] in names and ranges), "%s 的 expect_same_memory_as 還沒出現或沒有 memory_ranges" % s["name"]
     for k in ("name", "from", "save_at", "keys", "key_at", "key_every", "scratch", "expect_same_frame_as"):
         assert k in s, "%s 缺 %s" % (s.get("name"), k)
     assert not s["from"] or s["from"] in names, "%s 的 from 還沒出現" % s["name"]
     assert not s["expect_same_frame_as"] or s["expect_same_frame_as"] in names, "%s 的 expect_same_frame_as 還沒出現" % s["name"]
     names.add(s["name"])
     print("|".join([s["name"], s["from"], str(s["save_at"]), ",".join(s["keys"]), str(s["key_at"]),
-                    str(s["key_every"]), "1" if s["scratch"] else "", s["expect_same_frame_as"], ",".join(s["holds"])]))
+                    str(s["key_every"]), "1" if s["scratch"] else "", s["expect_same_frame_as"], ",".join(s["holds"]),
+                    s["expect_same_memory_as"], ";".join(ranges)]))
 ' "$REPLAY")
 
 manifest="$OUT/manifest.tsv"
 : > "$manifest"
 fail=0
-while IFS='|' read -r name from at keys key_at every scratch same holds; do
+while IFS='|' read -r name from at keys key_at every scratch same holds memsame ranges; do
   [[ -n "$name" ]] || continue
   args=(-steps "$((at + 1))" -save-state "$at:/wp/states/$name.state" -shots "$at:/wp/states/$name.frame"
         -dump-at "$at:/wp/states/$name.rgb.png")
@@ -68,9 +76,20 @@ while IFS='|' read -r name from at keys key_at every scratch same holds; do
   fi
   [[ -n "$holds" ]] && args+=(-hold "$holds")
   [[ -n "$scratch" ]] && args+=(-scratch /wp/states/scratch)
+  memshots=(); i=0
+  if [[ -n "$ranges" ]]; then
+    IFS=';' read -ra rs <<< "$ranges"
+    for r in "${rs[@]}"; do memshots+=("$at:$r:/wp/states/$name.mem$i"); i=$((i + 1)); done
+    args+=(-dump-mem-at "$(IFS=';'; echo "${memshots[*]}")")
+  fi
   echo "[$name] 從 ${from:-開機} 跑到第 $at 道指令（按鍵：${keys:-無}${holds:+；按住 $holds}${scratch:+；暫存層}）" >&2
   probe "${args[@]}" > "$OUT/$name.log" 2>&1 || { tail -20 "$OUT/$name.log" >&2; die "$name 失敗"; }
   [[ -s "$OUT/$name.state" && -s "$OUT/$name.frame" && -s "$OUT/$name.rgb.png" ]] || die "$name 沒有產出狀態檔或畫面（見 $OUT/$name.log）"
+  if [[ -n "$ranges" ]]; then
+    : > "$OUT/$name.mem"
+    for ((j = 0; j < i; j++)); do cat "$OUT/$name.mem$j" >> "$OUT/$name.mem" && rm -f "$OUT/$name.mem$j"; done
+    [[ -s "$OUT/$name.mem" ]] || die "$name 沒有產出記憶體傾印"
+  fi
   hash=$(sha256sum "$OUT/$name.frame" | cut -c1-16)
   printf '%s\t%s\t%s\n' "$name" "$at" "$hash" >> "$manifest"
   if [[ -n "$same" ]]; then
@@ -79,6 +98,15 @@ while IFS='|' read -r name from at keys key_at every scratch same holds; do
       echo "[$name] 畫面與 $same 相同（$hash）" >&2
     else
       echo "[$name] ✗ 畫面應與 $same 相同：$hash ≠ $other" >&2
+      fail=1
+    fi
+  fi
+  if [[ -n "$memsame" ]]; then
+    if cmp -s "$OUT/$name.mem" "$OUT/$memsame.mem"; then
+      echo "[$name] 記憶體（$ranges）與 $memsame 相同" >&2
+    else
+      echo "[$name] ✗ 記憶體應與 $memsame 相同：" >&2
+      cmp -l "$OUT/$name.mem" "$OUT/$memsame.mem" | head -5 >&2 || true
       fail=1
     fi
   fi
@@ -91,7 +119,7 @@ while IFS='|' read -r name _; do
 done <<< "$ROWS"
 
 column -t "$manifest"
-(( fail == 0 )) || die "expect_same_frame_as 檢查失敗"
+(( fail == 0 )) || die "expect_same_frame_as／expect_same_memory_as 檢查失敗"
 
 if (( CHECK )); then
   [[ -f "$EXPECTED" ]] || die "沒有 $EXPECTED"
