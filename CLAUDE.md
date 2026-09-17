@@ -120,7 +120,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 
 證據、指令與數字見 `docs/re/001-pw-exe-first-look.md`（實跑初探）、`002-pw-exe-function-census.md`（函式普查）、
 `003-checkpoints-and-dosboxx-reference.md`（檢查點與 DOSBox-X 參照）、`004-rng-and-determinism.md`（亂數）、
-`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）。
+`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）。
 
 | 事實 | 等級 |
 |---|---|
@@ -163,8 +163,8 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/dosboxx-ref.sh` | DOSBox-X 走同樣四個畫面＋遭遇＋攻擊錄影，存 640×400 RGB |
 | `tools/frame_compare.py [--rgb]` | dosgolem vs DOSBox-X：預設比版面（色號對應），`--rgb` 直接比 RGB |
 | `tools/battle_palette_check.py` | 攻擊雷射上色號 2／A 的顏色驗證（時間軸不對齊時用） |
-| `tools/dosboxx-audio.sh` | DOSBox-X 不按鍵錄標題音樂（Ctrl+Alt+W） |
-| `tools/music_compare.py events\|audio` | 配樂比對：埠紀錄 vs `.IBM`（逐筆）；兩個 WAV 的音高與節奏（`docs/spec/001`） |
+| `tools/music_compare.py events\|audio\|opl` | 配樂比對：埠紀錄 vs `.IBM`（逐筆）；兩個 WAV 的音高與節奏（`docs/spec/001`）；OPL2 樂譜 vs WAV（`docs/spec/002`，方法分辨力不足，見 docs/re/007） |
+| `tools/dosboxx-audio.sh [秒] [speaker\|adlib]` | DOSBox-X 錄標題音樂 |
 | `tools/frames.py` | 色號陣列的變化摘要與總覽圖 |
 
 ## 待決事項

@@ -3,13 +3,17 @@
 
     tools/py.sh tools/music_compare.py events <dosgolem 埠紀錄.tsv> <ibm 目錄> [--json out.json]
     tools/py.sh tools/music_compare.py audio  <dosgolem.wav> <dosboxx.wav> [--json out.json]
+    tools/py.sh tools/music_compare.py opl    <dosgolem opl-log.txt> <dosgolem.wav> <dosboxx.wav> [--json out.json]
 
 events（§2 A 層）：probe `-dump-ports "42,43,61=…"` 的紀錄解成音符事件，與 OPEN0.IBM、OPEN1.IBM…
 依序串接的記錄逐筆比對（頻率、刻數）。
 audio（§2 B 層）：兩個 WAV 用同一支分析器切成音符段，對齊後比音高與節奏（§3、§4）。
+opl：OPL2（AdLib）複音配樂，以暫存器序列為樂譜檢查兩份 WAV 的起音與音高（docs/spec/002）。
 """
+import array
 import bisect
 import json
+import math
 import struct
 import sys
 from pathlib import Path
@@ -116,6 +120,7 @@ def cmd_events(tsv, ibm_dir, out_json):
 # ---------------------------------------------------------------- B 層：聲音
 
 def read_wav(path):
+    """回 (去直流的單聲道浮點取樣, 取樣率)。用 array 讀，長的立體聲錄音才不會吃光記憶體。"""
     b = Path(path).read_bytes()
     if b[:4] != b"RIFF" or b[8:12] != b"WAVE":
         raise SystemExit(f"{path}：不是 WAV")
@@ -131,11 +136,17 @@ def read_wav(path):
     if tag != 1 or bits not in (8, 16):
         raise SystemExit(f"{path}：只支援 PCM 8／16 位元（format={tag}、bits={bits}）")
     if bits == 8:
-        s = [x - 128 for x in data]
+        raw = array.array("B", data)
+        centre = 128
     else:
-        s = list(struct.unpack(f"<{len(data) // 2}h", data[:len(data) // 2 * 2]))
-    if ch > 1:
-        s = [sum(s[j:j + ch]) / ch for j in range(0, len(s) - ch + 1, ch)]
+        raw = array.array("h")
+        raw.frombytes(data[:len(data) // 2 * 2])
+        centre = 0
+    if ch == 1:
+        s = [x - centre for x in raw]
+    else:
+        chans = [raw[k::ch] for k in range(ch)]
+        s = [(sum(v) / ch) - centre for v in zip(*chans)]
     mean = sum(s) / len(s)
     return [x - mean for x in s], rate
 
@@ -279,6 +290,140 @@ def cmd_audio(gwav, dwav, out_json):
     return 0 if passed else 1
 
 
+# ---------------------------------------------------------------- OPL2（docs/spec/002）
+
+STEPS_PER_SECOND = 165000 * PIT_HZ / 17000  # 與 dosgolem machine.StepsPerSecond 相同
+
+
+def opl_score(path):
+    """-opl-log → [(秒, 聲道, Hz)]，時間以第一個 Key-On 為 0。"""
+    fnum, block, on = [0] * 9, [0] * 9, [False] * 9
+    ev = []
+    for line in Path(path).read_text().splitlines():
+        if line.startswith("#") or not line.strip():
+            continue
+        step, reg, val = line.split()
+        step, reg, val = int(step), int(reg, 16), int(val, 16)
+        if 0xA0 <= reg <= 0xA8:
+            c = reg - 0xA0
+            fnum[c] = fnum[c] & 0x300 | val
+        elif 0xB0 <= reg <= 0xB8:
+            c = reg - 0xB0
+            fnum[c] = fnum[c] & 0xFF | (val & 3) << 8
+            block[c] = val >> 2 & 7
+            k = bool(val & 0x20)
+            if k and not on[c]:
+                ev.append((step, c, fnum[c] * 49716 / 2 ** (20 - block[c])))
+            on[c] = k
+    if not ev:
+        raise SystemExit("樂譜沒有 Key-On")
+    t0 = ev[0][0]
+    return [((s - t0) / STEPS_PER_SECOND, c, hz) for s, c, hz in ev]
+
+
+def onset_function(x, rate):
+    hop = rate // 100
+    le = []
+    for k in range(0, len(x) - 2 * hop, hop):
+        e = sum(v * v for v in x[k:k + 2 * hop])
+        le.append(math.log(e + 1e-9))
+    return [0.0] + [max(0.0, le[k] - le[k - 1]) for k in range(1, len(le))]
+
+
+def goertzel(x, start, n, hz, rate, hann):
+    if start < 0 or start + n > len(x):
+        return 0.0
+    coeff = 2 * math.cos(2 * math.pi * hz / rate)
+    s1 = s2 = 0.0
+    for k in range(n):
+        s0 = x[start + k] * hann[k] + coeff * s1 - s2
+        s2, s1 = s1, s0
+    return s1 * s1 + s2 * s2 - coeff * s1 * s2
+
+
+def opl_check(score, groups, wav):
+    x, rate = read_wav(wav)
+    o = onset_function(x, rate)
+    pos = sorted(v for v in o if v > 0)
+    thr = pos[int(0.75 * (len(pos) - 1))] if pos else 0.0
+    frames = [round(g * 100) for g in groups]
+
+    def local_max(idx):
+        lo, hi = max(0, idx - 3), min(len(o), idx + 4)
+        if lo >= hi:
+            return -1, 0.0
+        k = max(range(lo, hi), key=lambda j: o[j])
+        return k, o[k]
+
+    # 對齊：-5 到 +15 秒
+    best_lag, best = 0, -1.0
+    for lag in range(-500, 1501):
+        sc = sum(local_max(f + lag)[1] for f in frames)
+        if sc > best:
+            best, best_lag = sc, lag
+    hits, miss = [], []
+    for g, f in zip(groups, frames):
+        k, v = local_max(f + best_lag)
+        if k >= 0 and v >= thr:
+            hits.append((g, k / 100))
+        else:
+            miss.append({"t": round(g, 3)})
+    xs = [g for g, _ in hits]
+    ys = [t for _, t in hits]
+    n = len(xs)
+    if n >= 2:
+        mx, my = sum(xs) / n, sum(ys) / n
+        sxx = sum((u - mx) ** 2 for u in xs)
+        slope = sum((u - mx) * (w - my) for u, w in zip(xs, ys)) / sxx
+        icpt = my - slope * mx
+        res = sorted(abs(w - (slope * u + icpt)) for u, w in zip(xs, ys))
+        p95 = res[int(0.95 * (len(res) - 1))]
+    else:
+        slope, icpt, p95 = 0.0, best_lag / 100, float("inf")
+    nwin = int(0.100 * rate)
+    hann = [0.5 - 0.5 * math.cos(2 * math.pi * k / (nwin - 1)) for k in range(nwin)]
+    present, absent, counted = 0, [], 0
+    semi = 2 ** (1 / 12)
+    for t, c, hz in score:
+        if hz < 60 or hz > 4000:
+            continue
+        counted += 1
+        start = int((slope * t + icpt + 0.030) * rate)
+        p = goertzel(x, start, nwin, hz, rate, hann)
+        ref = (goertzel(x, start, nwin, hz / semi, rate, hann) + goertzel(x, start, nwin, hz * semi, rate, hann)) / 2
+        if p >= 2 * ref and p > 0:
+            present += 1
+        else:
+            absent.append({"t": round(t, 3), "hz": round(hz, 1)})
+    return {
+        "wav": Path(wav).name, "offset_s": round(best_lag / 100, 2),
+        "onset_hit_rate": round(len(hits) / len(groups), 4), "onset_threshold": round(thr, 4),
+        "pitch_present_rate": round(present / counted, 4) if counted else 0.0, "pitch_counted": counted,
+        "slope": round(slope, 5), "onset_residual_p95_ms": round(p95 * 1000, 1),
+        "passed": len(hits) / len(groups) >= 0.90 and counted and present / counted >= 0.80 and abs(slope - 1) <= 0.005,
+        "first_missed_onsets": miss[:20], "first_absent_pitches": absent[:20],
+    }
+
+
+def cmd_opl(log, gwav, dwav, out_json):
+    score = opl_score(log)
+    groups = []
+    for t, _, _ in score:
+        if not groups or t - groups[-1] > 0.015:
+            groups.append(t)
+    result = {"layer": "opl", "key_ons": len(score), "onset_groups": len(groups),
+              "golem": opl_check(score, groups, gwav), "dosboxx": opl_check(score, groups, dwav)}
+    print(f"OPL2：樂譜 {len(score)} 個 Key-On、{len(groups)} 個起音群組")
+    for name in ("golem", "dosboxx"):
+        r = result[name]
+        print(f"  {name}：位移 {r['offset_s']} 秒；起音命中 {r['onset_hit_rate']:.1%}；音高在場 {r['pitch_present_rate']:.1%}"
+              f"（{r['pitch_counted']} 個音）；斜率 {r['slope']}；起音殘差 p95 {r['onset_residual_p95_ms']} ms；"
+              f"{'通過' if r['passed'] else '不通過'}")
+    if out_json:
+        Path(out_json).write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return 0 if result["dosboxx"]["passed"] and result["golem"]["passed"] else 1
+
+
 def main(argv):
     args = argv[1:]
     out_json = None
@@ -290,6 +435,8 @@ def main(argv):
         return cmd_events(args[1], args[2], out_json)
     if len(args) == 3 and args[0] == "audio":
         return cmd_audio(args[1], args[2], out_json)
+    if len(args) == 4 and args[0] == "opl":
+        return cmd_opl(args[1], args[2], args[3], out_json)
     print(__doc__)
     return 2
 

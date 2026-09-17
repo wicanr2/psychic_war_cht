@@ -31,11 +31,11 @@
         "audio"
       ],
       "title": "OPL2（AdLib）合成：`.MID` 音樂路徑目前只有暫存器紀錄",
-      "body": "開 `-adlib` 時遊戲改載 `.MID` 並寫 OPL2 暫存器（主畫面前 1,751 筆），但 dosgolem 只記錄、不合成。需要一個 YM3812 合成器（可參考 DOSBox-X 的 OPL 實作），輸入是 `-opl-log` 同格式的時序化暫存器序列。",
-      "acceptance": "標題音樂可合成成 WAV；與 DOSBox-X 同段錄音比對音高與節奏一致（比對方法寫進 spec）。",
+      "body": "開 `-adlib` 時遊戲改載 `.MID` 並寫 OPL2 暫存器。dosgolem 已有合成雛形（分支 `psychic-war/m1-opl2` `a70be7f`，規格 `196`，未推上游），標題音樂可合成成 WAV。依 `docs/spec/002` 比對不通過，且 dosgolem 自己的 WAV 對自己的樂譜也不通過——比對方法分辨力不足，雛形也缺 KSL／震音／顫音（docs/re/007）。下一步：DOSBox-X raw OPL 擷取與 `-opl-log` 逐筆比；改成雙 WAV 直接比；補雛形。",
+      "acceptance": "暫存器序列與 DOSBox-X raw OPL 擷取逐筆一致；標題音樂 WAV 比對通過（方法以 dosgolem 自我比對當正對照定案）。",
       "verify": {
         "kind": "manual",
-        "note": "上游完成後改綁 dosgolem 版本"
+        "note": "雛形已在 dosgolem 分支；比對通過後改綁 docs/re 的通過紀錄"
       },
       "issue": 5
     },
