@@ -58,8 +58,12 @@ xdotool keydown space; sleep $HOLD; xdotool keyup space
 note \"放開\"
 sleep 3
 import -window \"\$W\" \$OUT/final.png
+# 轉向與 Esc 選單：畫面要變（方位名稱、選單框），截圖留給人看
+h1=\$(shot); press Left 3; h2=\$(shot); press Escape 3; h3=\$(shot)
+cp \$OUT/steps/\$(printf %02d \$((n - 1)))-Left.png \$OUT/turn.png; cp \$OUT/steps/\$(printf %02d \$n)-Escape.png \$OUT/esc.png
+{ [ \"\$h1\" != \"\$h2\" ] && echo '轉向後畫面變了' || echo '轉向後畫面沒變'; [ \"\$h2\" != \"\$h3\" ] && echo 'Esc 後畫面變了' || echo 'Esc 後畫面沒變'; } > \$OUT/turn-esc.txt
 kill \$PID; wait \$PID 2>/dev/null || true
 note 完成
 " "$ROOT/tools/go-ebiten.sh"
 tail -1 "$ROOT/workplace/fe/play/stats.jsonl"
-cat "$ROOT/workplace/fe/play/f1.txt"
+cat "$ROOT/workplace/fe/play/f1.txt" "$ROOT/workplace/fe/play/turn-esc.txt"

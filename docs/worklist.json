@@ -51,7 +51,7 @@
       "blocked_by": "state-checkpoints",
       "verify": {
         "kind": "manual",
-        "note": "重播已到 Sivad（區域 1，18 段，docs/re/013）；Sivad 內探路掃描待解碰撞座標。重播到結局後改綁重播檔最後一段的段名（例如 json 裡出現 ending）"
+        "note": "重播已到 Sivad（區域 1，18 段，docs/re/013）；Sivad 碰撞座標偏移 +3／+5 已解、探路掃描可用（docs/re/011 §3.5）；遭遇計數器位址未找到（重開條件見 docs/re/011 §4）。重播到結局後改綁重播檔最後一段的段名"
       },
       "issue": 8
     },
@@ -66,48 +66,10 @@
       "body": "golem 預設是指令數時鐘。實測第一場戰鬥的長短由 CPU 指令數決定（約 1,193 萬道），計時器刻數隨 CPU 速度差十倍：預設速度下約 1 秒、8088 級約 10.5 秒；DOSBox-X 中玩家會被打掉 10 點、dosgolem 預設速度下不掉（docs/re/009 §5）。前端要用週期時鐘把 `CPUHz` 限在原版目標機器的等級（8088–286），以牆上時間對齊，並保留指令數給重播。",
       "acceptance": "spec 定案 `CPUHz` 與依據（敵人攻擊的時間基準＋DOSBox-X 固定 cycles 的戰鬥時間參照）；前端執行時計時器中斷穩定在 72 Hz ±1%、每秒週期數 ±2%，第一場戰鬥的持續時間與參照相差 ≤ 10%。",
       "verify": {
-        "kind": "absent",
-        "paths": [
-          "docs/spec"
-        ],
-        "pattern": "(?m)^# \\d{3}：.*節拍",
-        "note": "速度的值已定案（docs/spec/004：預設 750 cycles、選項 240）；本條剩前端牆上時間對齊。spec 出現後改綁前端的節拍程式碼"
+        "kind": "manual",
+        "note": "前端牆上時間對齊已通過（docs/re/016 §2.1：60 秒誤差 0.000%、72.001 Hz、1.86 核）。剩「第一場戰鬥與 DOSBox-X 相差 ≤ 10%」：單場結果隨按鍵時機與計時器相位變動 ±30%（docs/re/010 §4.2、§4.5），DOSBox-X 每速度只有一場；要多錄幾場 DOSBox-X 比分布才能關"
       },
       "issue": 9
-    },
-    {
-      "id": "frontend-window",
-      "milestone": "M2",
-      "labels": [
-        "frontend",
-        "graphics"
-      ],
-      "title": "可遊玩前端：視窗顯示 320×200 EGA 畫面（整數倍放大）",
-      "body": "`cmd/psychicwar` 主程式，import dosgolem 與 `apps/psychicwar`。預設 Go／Ebiten，框架定案寫進 spec。畫面 nearest 整數倍放大，保留之後疊中文字的圖層。",
-      "acceptance": "能開視窗看到標題畫面且顏色正確；Linux 上可建置（docker）。",
-      "blocked_by": "ega-palette-output",
-      "verify": {
-        "kind": "manual",
-        "note": "沒有不會誤判的訊號；主程式出現後改綁視窗初始化的函式名"
-      },
-      "issue": 10
-    },
-    {
-      "id": "keyboard-input",
-      "milestone": "M2",
-      "labels": [
-        "input",
-        "frontend"
-      ],
-      "title": "鍵盤輸入：前端按鍵轉成 IRQ1 掃描碼",
-      "body": "遊戲自掛 `INT 09h`（`0161:B4FE`）直接讀掃描碼，不走 `INT 16h`。前端要送 make／break 掃描碼，包含方向鍵與 ESC。F1／F2／F3／F10 由前端攔下，不送進遊戲。",
-      "acceptance": "可用鍵盤完成防拷、輸入名字、移動與選單操作；保留給輔助功能的按鍵不會漏進遊戲。",
-      "blocked_by": "frontend-window",
-      "verify": {
-        "kind": "manual",
-        "note": "前端按鍵對應表出現後改綁該表"
-      },
-      "issue": 11
     },
     {
       "id": "mouse-input",
@@ -142,7 +104,7 @@
       "blocked_by": "opl2-synth, realtime-pacing",
       "verify": {
         "kind": "manual",
-        "note": "前端音訊程式碼出現後改綁"
+        "note": "前端串流音訊已做：null 輸出 60 秒欠載 0；-wav 另存的標題音樂與 DOSBox-X 聲音層配對 628／628（docs/re/016 §2.3）。剩：有音效卡的機器實際發聲、AdLib 在前端實跑與比對、音源切換"
       },
       "issue": 13
     },
@@ -164,27 +126,6 @@
       "issue": 14
     },
     {
-      "id": "print-routine",
-      "milestone": "M3",
-      "labels": [
-        "re",
-        "text"
-      ],
-      "title": "找出印字常式：FONT.BIN 字模與固定寬度文字框",
-      "body": "文字不走 BIOS，推定遊戲以 `FONT.BIN`（2,048 bytes，256×8）自己畫 8×8 字。用讀取監看找出讀字模的常式，往上追到接收字串指標的那一層。轉譯層要攔的是「一則訊息」那一層，不是單一字元。",
-      "acceptance": "docs/re/ 寫明印字常式與訊息層常式的位址、參數（字串指標、座標、顏色、寬度）與呼叫點；`FONT.BIN` 格式確認。",
-      "blocked_by": "ida-baseline",
-      "verify": {
-        "kind": "absent",
-        "paths": [
-          "docs/re"
-        ],
-        "pattern": "(?m)^# \\d{3}：.*印字常式",
-        "note": "docs/re 出現以此為標題的文件就該關；文件出現後改綁 apps/psychicwar 的攔截點常數"
-      },
-      "issue": 15
-    },
-    {
       "id": "text-formats",
       "milestone": "M3",
       "labels": [
@@ -200,7 +141,7 @@
           "docs/spec"
         ],
         "pattern": "(?m)^# \\d{3}：.*I_MENU",
-        "note": "規格出現後改綁抽取工具"
+        "note": "格式已解到能列出字串與偏移（docs/re/015：I_MENU 522 筆 0 列解不出、I_ENMY 60 名、CODE 134 則；實跑 41 行訊息全部核對一致），抽取工具 tools/text_extract.py。剩 docs/spec 的 READY 規格與位元組簽章（第 5 輪）；規格出現後改綁抽取工具"
       },
       "issue": 16
     },
@@ -605,6 +546,27 @@
       "issue": 6,
       "title": "PC 喇叭音樂路徑（`.IBM`）驗證",
       "evidence": "`docs/re/006-ibm-music-format-and-pc-speaker-parity.md`；`docs/spec/001`；`tools/music_compare.py`；dosgolem 分支 `psychic-war/m1-pit-tone` `6cf8a1b`（未推上游）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "frontend-window",
+      "issue": 10,
+      "title": "可遊玩前端：視窗顯示 320×200 EGA 畫面（整數倍放大）",
+      "evidence": "`docs/spec/006`、`docs/re/016` §1–2；`cmd/psychicwar`；`03-protection`、`07-first-play` 截圖與檢查點不同像素 0",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "keyboard-input",
+      "issue": 11,
+      "title": "鍵盤輸入：前端按鍵轉成 IRQ1 掃描碼",
+      "evidence": "`docs/re/016` §2.2；`apps/psychicwar/keymap.go`；`tools/frontend-playthrough.sh`（Xvfb＋xdotool：防拷、SELECT、名字、前進、按住空白鍵、轉向、Esc；F1 攔下畫面不變）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "print-routine",
+      "issue": 15,
+      "title": "找出印字常式：FONT.BIN 字模與固定寬度文字框",
+      "evidence": "`docs/re/014-print-routine.md`（單字元 `sub_16629`、三支字串迴圈、字模 `FONT.BIN`、攔截點候選）；`tools/print_trace.py`。其餘 6 個單字元呼叫點由第 5 輪追蹤",
       "date": "2026-09-17"
     }
   ]

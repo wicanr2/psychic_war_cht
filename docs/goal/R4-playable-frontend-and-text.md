@@ -17,7 +17,7 @@
 | OPL2 事件層與 DOSBox-X 逐筆相同 | `docs/re/012`、`docs/spec/005` |
 | 地圖檔地點格格式；探路掃描做法 | `docs/re/011` §3 |
 
-dosgolem 本機分支鏈：`psychic-war/m1-ega-palette` → `m1-pit-tone` → `m1-opl2` → `m1-key-hold`（已推成遠端分支）→ `r3-ips`（未推，含 `-cycles`）。
+dosgolem 分支鏈：`psychic-war/m1-ega-palette` → `m1-pit-tone` → `m1-opl2` → `m1-key-hold` → `r3-ips`（含 `-cycles`；以上都已推成遠端分支，未開 PR）。
 
 ## 本輪完成條件
 

@@ -8,6 +8,9 @@
 # `expect_same_frame_as` 有值時，這一段的畫面必須與指定段完全相同（例如讀檔後回到存檔時的畫面）。
 # `expect_same_memory_as` 有值時，這一段在 save_at 傾印的 `memory_ranges` 必須與指定段完全相同（<段>.mem）。
 #
+# PSYCHICWAR_PROBE_EXTRA：每段額外加的 probe 參數（觀測用，不改變執行），`{name}` 代換成段名。
+#   例：PSYCHICWAR_PROBE_EXTRA='-regs-at 0161:6289 -regs-max 5000' tools/states.sh（tools/print_trace.py 用）
+# PSYCHICWAR_PROBE_ARGS_DIR：repo 內的目錄；有 <段名>.args（一行一個參數）就附加到該段。
 # ⚠ 按鍵時機就是亂數的一部分（docs/re/004）：改任何一段，之後所有段的畫面都可能變，要一起更新期望值。
 # ⚠ 狀態檔綁 dosgolem 版本。換版本後先跑 --check。
 # ⚠ 暫存層（遊戲存檔）每次執行前清空，重播必須自己產生它要讀的存檔。
@@ -76,12 +79,24 @@ while IFS='|' read -r name from at keys key_at every scratch same holds memsame 
   fi
   [[ -n "$holds" ]] && args+=(-hold "$holds")
   [[ -n "$scratch" ]] && args+=(-scratch /wp/states/scratch)
+  dumpspecs=()   # -dump-mem-at 只能給一次（Go 旗標保留最後一個），所有來源合併成一個
+  if [[ -n "${PSYCHICWAR_PROBE_ARGS_DIR:-}" && -f "$ROOT/$PSYCHICWAR_PROBE_ARGS_DIR/$name.args" ]]; then
+    mapfile -t extra < "$ROOT/$PSYCHICWAR_PROBE_ARGS_DIR/$name.args"   # 一行一個參數
+    for ((j = 0; j < ${#extra[@]}; j++)); do
+      if [[ "${extra[j]}" == "-dump-mem-at" ]]; then dumpspecs+=("${extra[j+1]}"); j=$((j + 1)); else args+=("${extra[j]}"); fi
+    done
+  fi
+  if [[ -n "${PSYCHICWAR_PROBE_EXTRA:-}" ]]; then
+    read -ra extra <<< "${PSYCHICWAR_PROBE_EXTRA//\{name\}/$name}"
+    args+=("${extra[@]}")
+  fi
   memshots=(); i=0
   if [[ -n "$ranges" ]]; then
     IFS=';' read -ra rs <<< "$ranges"
     for r in "${rs[@]}"; do memshots+=("$at:$r:/wp/states/$name.mem$i"); i=$((i + 1)); done
-    args+=(-dump-mem-at "$(IFS=';'; echo "${memshots[*]}")")
+    dumpspecs+=("$(IFS=';'; echo "${memshots[*]}")")
   fi
+  [[ ${#dumpspecs[@]} -gt 0 ]] && args+=(-dump-mem-at "$(IFS=';'; echo "${dumpspecs[*]}")")
   echo "[$name] 從 ${from:-開機} 跑到第 $at 道指令（按鍵：${keys:-無}${holds:+；按住 $holds}${scratch:+；暫存層}）" >&2
   probe "${args[@]}" > "$OUT/$name.log" 2>&1 || { tail -20 "$OUT/$name.log" >&2; die "$name 失敗"; }
   [[ -s "$OUT/$name.state" && -s "$OUT/$name.frame" && -s "$OUT/$name.rgb.png" ]] || die "$name 沒有產出狀態檔或畫面（見 $OUT/$name.log）"

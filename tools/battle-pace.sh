@@ -16,7 +16,9 @@ GOLEM="${PSYCHICWAR_DOSGOLEM:-$ROOT/worktrees/dosgolem}"
 WP="$ROOT/workplace"
 SPEED="${1:?要給 cycles（數字或 xt／at8／at12）}"
 PRESS="${2:-86500000}"
+TYPEMATIC="${PSYCHICWAR_HOLD_TYPEMATIC:-true}"   # false：按住時不送重複按下碼（docs/re/010 §4.2 分岔的驗證用）
 OUT="$WP/pace/$SPEED/$PRESS"
+[[ "$TYPEMATIC" == "true" ]] || OUT="$WP/pace/$SPEED-notypematic/$PRESS"
 [[ -s "$WP/states/08-encounter.state" ]] || { echo "找不到 08-encounter.state，先跑 tools/states.sh" >&2; exit 2; }
 mkdir -p "$OUT"
 
@@ -24,7 +26,7 @@ probe() {
   DOSGOLEM_ORIG="$WP/original" DOSGOLEM_EXTRA_MOUNT="$WP:/wp" \
   DOSGOLEM_CPUS="${PSYCHICWAR_CPUS:-2}" DOSGOLEM_TIMEOUT="${PSYCHICWAR_TIMEOUT:-15m}" \
     "$GOLEM/tools/go.sh" run ./cmd/probe -exe /orig/psychic-war/PW.EXE -root /orig/psychic-war \
-    -load-state /wp/states/08-encounter.state -cycles "$SPEED" "$@"
+    -load-state /wp/states/08-encounter.state -cycles "$SPEED" -hold-typematic="$TYPEMATIC" "$@"
 }
 
 # 按住 3,000 萬步：比任何速度下的戰鬥都長（戰鬥約 1,200 萬步）

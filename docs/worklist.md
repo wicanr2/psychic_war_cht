@@ -19,9 +19,7 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #9 | `realtime-pacing` | 牆上時間節拍：讓 72 Hz 的遊戲以原速執行 | golem-upstream, frontend | — | absent |
-| #10 | `frontend-window` | 可遊玩前端：視窗顯示 320×200 EGA 畫面（整數倍放大） | frontend, graphics | #4 | manual |
-| #11 | `keyboard-input` | 鍵盤輸入：前端按鍵轉成 IRQ1 掃描碼 | input, frontend | #10 | manual |
+| #9 | `realtime-pacing` | 牆上時間節拍：讓 72 Hz 的遊戲以原速執行 | golem-upstream, frontend | — | manual |
 | #12 | `mouse-input` | 滑鼠：確認原版是否支援，並在前端提供點選操作 | input, re | — | absent |
 | #13 | `audio-output` | 即時音訊輸出（OPL2 與 PC 喇叭） | audio, frontend | #5、#9 | manual |
 | #14 | `input-record-replay` | 輸入錄放：以指令數記錄按鍵，可重播重現 | golem-upstream, verify | #7 | manual |
@@ -30,7 +28,6 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #15 | `print-routine` | 找出印字常式：FONT.BIN 字模與固定寬度文字框 | re, text | #1 | absent |
 | #16 | `text-formats` | 文字資料格式：I_MENU*.BIN、I_ENMY*.BIN、CODE*.BIN、PW.EXE 字串表 | re, text | — | absent |
 | #17 | `text-extract` | 文本抽取工具：從玩家自備的原版產生文本檔 | text | #16 | absent |
 | #18 | `baked-text-graphics` | 圖檔內嵌文字：PBL 格式與含文字的圖清冊 | re, graphics, text | — | absent |
@@ -78,3 +75,6 @@
 | #4 | `ega-palette-output` | EGA mode 0Dh 的畫面輸出沒有套用遊戲設定的色盤 | `docs/re/005-ega-palette-rgb-parity.md`；dosgolem 分支 `psychic-war/m1-ega-palette` `509a639`（未推上游） | 2026-09-17 |
 | #7 | `determinism-rng` | 亂數來源與重播決定性 | `docs/re/004-rng-and-determinism.md`；`tools/determinism.sh` | 2026-09-17 |
 | #6 | `pc-speaker-audio` | PC 喇叭音樂路徑（`.IBM`）驗證 | `docs/re/006-ibm-music-format-and-pc-speaker-parity.md`；`docs/spec/001`；`tools/music_compare.py`；dosgolem 分支 `psychic-war/m1-pit-tone` `6cf8a1b`（未推上游） | 2026-09-17 |
+| #10 | `frontend-window` | 可遊玩前端：視窗顯示 320×200 EGA 畫面（整數倍放大） | `docs/spec/006`、`docs/re/016` §1–2；`cmd/psychicwar`；`03-protection`、`07-first-play` 截圖與檢查點不同像素 0 | 2026-09-17 |
+| #11 | `keyboard-input` | 鍵盤輸入：前端按鍵轉成 IRQ1 掃描碼 | `docs/re/016` §2.2；`apps/psychicwar/keymap.go`；`tools/frontend-playthrough.sh`（Xvfb＋xdotool：防拷、SELECT、名字、前進、按住空白鍵、轉向、Esc；F1 攔下畫面不變） | 2026-09-17 |
+| #15 | `print-routine` | 找出印字常式：FONT.BIN 字模與固定寬度文字框 | `docs/re/014-print-routine.md`（單字元 `sub_16629`、三支字串迴圈、字模 `FONT.BIN`、攔截點候選）；`tools/print_trace.py`。其餘 6 個單字元呼叫點由第 5 輪追蹤 | 2026-09-17 |

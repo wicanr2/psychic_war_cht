@@ -44,6 +44,8 @@ type game struct {
 	startCyc  uint64
 	quitAfter time.Duration
 
+	wav         *os.File // -wav：送出的取樣全部另存（16 位元單聲道 PCM，結束時補檔頭）
+	wavSamples  int
 	stats       *os.File
 	lastStat    time.Time
 	intercepted int
@@ -88,7 +90,12 @@ func (g *game) Update() error {
 			return err
 		}
 	}
-	g.ring.Write(g.audio.Render())
+	pcm := g.audio.Render()
+	g.ring.Write(pcm)
+	if g.wav != nil {
+		_ = binary.Write(g.wav, binary.LittleEndian, pcm)
+		g.wavSamples += len(pcm)
+	}
 	if g.stats != nil && time.Since(g.lastStat) >= time.Second {
 		g.writeStats(wall)
 	}
@@ -187,6 +194,28 @@ func nullSink(ring *psychicwar.Ring, stop <-chan struct{}) {
 	}
 }
 
+// finishWAV 補上 WAV 檔頭（44 bytes，16 位元單聲道）。
+func finishWAV(g *game) {
+	h := make([]byte, 0, 44)
+	put32 := func(v uint32) { h = binary.LittleEndian.AppendUint32(h, v) }
+	put16 := func(v uint16) { h = binary.LittleEndian.AppendUint16(h, v) }
+	data := uint32(2 * g.wavSamples)
+	h = append(h, "RIFF"...)
+	put32(36 + data)
+	h = append(h, "WAVEfmt "...)
+	put32(16)
+	put16(1)
+	put16(1)
+	put32(sampleRate)
+	put32(2 * sampleRate)
+	put16(2)
+	put16(16)
+	h = append(h, "data"...)
+	put32(data)
+	_, _ = g.wav.WriteAt(h, 0)
+	_ = g.wav.Close()
+}
+
 func parseCycles(s string) (uint64, error) {
 	switch strings.ToLower(s) {
 	case "xt":
@@ -213,6 +242,7 @@ func main() {
 	audioOut := flag.String("audio", "ebiten", "ebiten（音效卡）或 null（照牆上時間丟棄）")
 	statsPath := flag.String("stats", "", "每秒寫一行 JSON 量測")
 	quitAfter := flag.Duration("quit-after", 0, "牆上時間到了自己結束（自動驗收用）")
+	wavPath := flag.String("wav", "", "把送給音效卡的取樣另存成 WAV（驗證聲音內容用）")
 	flag.Parse()
 	if *orig == "" {
 		flag.Usage()
@@ -252,6 +282,14 @@ func main() {
 			log.Fatal(err)
 		}
 		defer g.stats.Close()
+	}
+
+	if *wavPath != "" {
+		if g.wav, err = os.Create(*wavPath); err != nil {
+			log.Fatal(err)
+		}
+		_, _ = g.wav.Write(make([]byte, 44)) // 檔頭結束時補
+		defer finishWAV(g)
 	}
 
 	stop := make(chan struct{})
