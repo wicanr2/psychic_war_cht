@@ -17,7 +17,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Make a choice,  space hero.    ",
-   "translation": "",
+   "translation": "做個選擇吧，太空英雄。",
    "note": ""
   },
   {
@@ -30,7 +30,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave {91}{A1}{B1} ",
-   "translation": "",
+   "translation": "離開房間",
    "note": ""
   },
   {
@@ -43,7 +43,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Search {91}{A1}{B1}",
-   "translation": "",
+   "translation": "搜查房間",
    "note": ""
   },
   {
@@ -60,7 +60,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Any terrific    ideas?         ",
-   "translation": "",
+   "translation": "有什麼好點子？",
    "note": ""
   },
   {
@@ -73,7 +73,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -86,7 +86,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Break Safe",
-   "translation": "",
+   "translation": "砸開保險箱",
    "note": ""
   },
   {
@@ -99,7 +99,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Talk To It",
-   "translation": "",
+   "translation": "跟它說話",
    "note": ""
   },
   {
@@ -112,7 +112,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use Card  ",
-   "translation": "",
+   "translation": "使用卡片",
    "note": ""
   },
   {
@@ -129,7 +129,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Know what you   want to do?    ",
-   "translation": "",
+   "translation": "知道要做什麼嗎？",
    "note": ""
   },
   {
@@ -142,7 +142,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -155,7 +155,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Smash Lock",
-   "translation": "",
+   "translation": "砸開鎖頭",
    "note": ""
   },
   {
@@ -168,7 +168,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Talk To It",
-   "translation": "",
+   "translation": "跟它說話",
    "note": ""
   },
   {
@@ -181,7 +181,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use Card  ",
-   "translation": "",
+   "translation": "使用卡片",
    "note": ""
   },
   {
@@ -198,7 +198,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Hey,dude! What'sthe password?  ",
-   "translation": "",
+   "translation": "嘿，老兄！密碼是什麼？",
    "note": ""
   },
   {
@@ -211,7 +211,7 @@
    "reachable": true,
    "same_as": "",
    "original": "NOSHIRT!  ",
-   "translation": "",
+   "translation": "NOSHIRT!",
    "note": ""
   },
   {
@@ -228,7 +228,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This looks like a medical room.",
-   "translation": "",
+   "translation": "這裡看起來像醫務室。",
    "note": ""
   },
   {
@@ -245,7 +245,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Darn! There's   nothing here!  ",
-   "translation": "",
+   "translation": "可惡！這裡什麼都沒有！",
    "note": ""
   },
   {
@@ -262,7 +262,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We find ten     Yontry.        ",
-   "translation": "",
+   "translation": "我們找到十份體力恢復劑。",
    "note": ""
   },
   {
@@ -279,7 +279,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Most wonderful! A safe.        ",
-   "translation": "",
+   "translation": "太棒了！是個保險箱。",
    "note": ""
   },
   {
@@ -296,7 +296,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Unbelievable!   It's empty.    ",
-   "translation": "",
+   "translation": "真不敢相信！裡面是空的。",
    "note": ""
   },
   {
@@ -313,7 +313,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The PET Map is  in the safe!   ",
-   "translation": "",
+   "translation": "保險箱裡有PET地圖！",
    "note": ""
   },
   {
@@ -330,7 +330,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bogus! The alarmis going off.  ",
-   "translation": "",
+   "translation": "糟了！警報響起來了。",
    "note": ""
   },
   {
@@ -347,7 +347,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Let's bail. The alarm stopped. ",
-   "translation": "",
+   "translation": "快閃吧。警報停了。",
    "note": ""
   },
   {
@@ -364,7 +364,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cool! We found  Map PO.        ",
-   "translation": "",
+   "translation": "酷！我們找到了PO地圖。",
    "note": ""
   },
   {
@@ -381,8 +381,8 @@
    "reachable": true,
    "same_as": "",
    "original": "This is an enemyOfficer's {91}{A1}{B1}! ",
-   "translation": "",
-   "note": ""
+   "translation": "這是敵方軍官的房間！",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU01.BIN:02B0",
@@ -398,8 +398,8 @@
    "reachable": true,
    "same_as": "",
    "original": "Alright! The {91}{A1}{B1}is ours.       ",
-   "translation": "",
-   "note": ""
+   "translation": "太好了！\n這個房間歸我們了。",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU01.BIN:02D0",
@@ -415,7 +415,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Most outrageous!A card.        ",
-   "translation": "",
+   "translation": "太離譜了！一張卡片。",
    "note": ""
   },
   {
@@ -432,7 +432,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bummer. The gateis locked.     ",
-   "translation": "",
+   "translation": "衰！閘門鎖住了。",
    "note": ""
   },
   {
@@ -449,8 +449,8 @@
    "reachable": true,
    "same_as": "",
    "original": "Sound input {90}{A0}{B0}{C0}is operational.",
-   "translation": "",
-   "note": ""
+   "translation": "音效輸入系統運作正常。",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU01.BIN:0330",
@@ -466,7 +466,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Password is OK. Gate will open.",
-   "translation": "",
+   "translation": "密碼正確。閘門即將打開。",
    "note": ""
   },
   {
@@ -483,7 +483,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bogus. We can't destroy it.    ",
-   "translation": "",
+   "translation": "糟了，我們沒辦法破壞它。",
    "note": ""
   },
   {
@@ -500,7 +500,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Nothing happens.               ",
-   "translation": "",
+   "translation": "什麼都沒發生。",
    "note": ""
   },
   {
@@ -517,7 +517,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Maybe we need a different code.",
-   "translation": "",
+   "translation": "也許我們需要換個密碼。",
    "note": ""
   },
   {
@@ -534,7 +534,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We can't put thecard anywhere. ",
-   "translation": "",
+   "translation": "這張卡片沒地方可以放。",
    "note": ""
   },
   {
@@ -551,7 +551,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Most heinous!   It's locked.   ",
-   "translation": "",
+   "translation": "太惡劣了！被鎖住了。",
    "note": ""
   },
   {
@@ -568,7 +568,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Yontry makes a  body stronger. ",
-   "translation": "",
+   "translation": "體力恢復劑能讓身體變強壯。",
    "note": ""
   },
   {
@@ -585,7 +585,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The commander   loves to drink.",
-   "translation": "",
+   "translation": "指揮官很愛喝這個。",
    "note": ""
   },
   {
@@ -602,7 +602,7 @@
    "reachable": true,
    "same_as": "",
    "original": "An officer holdsa key item.    ",
-   "translation": "",
+   "translation": "某位軍官持有關鍵道具。",
    "note": ""
   },
   {
@@ -619,7 +619,7 @@
    "reachable": true,
    "same_as": "",
    "original": "An android part is at a LAB.   ",
-   "translation": "",
+   "translation": "生化複合人的零件在實驗室。",
    "note": ""
   },
   {
@@ -636,7 +636,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Rescue allies ina jail.        ",
-   "translation": "",
+   "translation": "在牢房裡救出夥伴。",
    "note": ""
   },
   {
@@ -653,7 +653,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Eat spinach. Be like Popeye.   ",
-   "translation": "",
+   "translation": "吃菠菜，像大力水手一樣。",
    "note": ""
   },
   {
@@ -670,7 +670,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Look. Get a map of the base.   ",
-   "translation": "",
+   "translation": "看看，去拿基地的地圖。",
    "note": ""
   },
   {
@@ -687,7 +687,7 @@
    "reachable": true,
    "same_as": "",
    "original": "I miss Yort,    Evad and Nod.  ",
-   "translation": "",
+   "translation": "我想念約特、伊瓦德和諾德。",
    "note": ""
   },
   {
@@ -704,7 +704,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This is Sivad's {95}{A5}{B5}{C5}{D5}{96}{A6}.       ",
-   "translation": "",
+   "translation": "這是賽瓦德的降落平台。",
    "note": ""
   }
  ]

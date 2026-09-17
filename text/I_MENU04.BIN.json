@@ -17,7 +17,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Any brilliant   flashes?       ",
-   "translation": "",
+   "translation": "有什麼妙點子嗎？",
    "note": ""
   },
   {
@@ -30,7 +30,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -43,7 +43,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Break Safe",
-   "translation": "",
+   "translation": "撬保險箱",
    "note": ""
   },
   {
@@ -56,7 +56,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Talk to it",
-   "translation": "",
+   "translation": "跟它說話",
    "note": ""
   },
   {
@@ -69,7 +69,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use Card  ",
-   "translation": "",
+   "translation": "使用卡片",
    "note": ""
   },
   {
@@ -86,7 +86,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We have two goodoptions-decide!",
-   "translation": "",
+   "translation": "我們有兩個好選擇，快決定！",
    "note": ""
   },
   {
@@ -99,7 +99,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -112,7 +112,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Check room",
-   "translation": "",
+   "translation": "查看房間",
    "note": ""
   },
   {
@@ -129,7 +129,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Don't give up   yet! Try these:",
-   "translation": "",
+   "translation": "先別放棄！試試看：",
    "note": ""
   },
   {
@@ -142,7 +142,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -155,7 +155,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Examine it",
-   "translation": "",
+   "translation": "檢查它",
    "note": ""
   },
   {
@@ -172,7 +172,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bogus! The safe is empty.      ",
-   "translation": "",
+   "translation": "唬爛！保險箱是空的。",
    "note": ""
   },
   {
@@ -189,7 +189,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Outstanding! It is the RON Map.",
-   "translation": "",
+   "translation": "太厲害了！是RON地圖。",
    "note": ""
   },
   {
@@ -206,7 +206,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Shoot! The alarmis ringing.    ",
-   "translation": "",
+   "translation": "糟了！警報響了。",
    "note": ""
   },
   {
@@ -223,7 +223,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The alarm's off.Let's split.   ",
-   "translation": "",
+   "translation": "警報解除了，快閃吧。",
    "note": ""
   },
   {
@@ -240,7 +240,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We found a safe.Bodacious!     ",
-   "translation": "",
+   "translation": "我們找到保險箱了，酷！",
    "note": ""
   },
   {
@@ -257,7 +257,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The ADAK Map is in the safe!   ",
-   "translation": "",
+   "translation": "ADAK地圖在保險箱裡！",
    "note": ""
   },
   {
@@ -274,7 +274,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The TATU Map is in the safe!   ",
-   "translation": "",
+   "translation": "TATU地圖在保險箱裡！",
    "note": ""
   },
   {
@@ -291,7 +291,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We've been seen.It's locked!   ",
-   "translation": "",
+   "translation": "我們被發現了，鎖住了！",
    "note": ""
   },
   {
@@ -308,7 +308,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We can't do it. It's locked.   ",
-   "translation": "",
+   "translation": "辦不到，鎖住了。",
    "note": ""
   },
   {
@@ -325,7 +325,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We've scammed a cartridge!     ",
-   "translation": "",
+   "translation": "我們騙到一個能量匣！",
    "note": ""
   },
   {
@@ -342,7 +342,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Rats! It's      empty.         ",
-   "translation": "",
+   "translation": "可惡！是空的。",
    "note": ""
   },
   {
@@ -359,7 +359,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We can't break  the lock.      ",
-   "translation": "",
+   "translation": "我們打不開這個鎖。",
    "note": ""
   },
   {
@@ -376,7 +376,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This is a hang  out for allies.",
-   "translation": "",
+   "translation": "這是夥伴聚集的地方。",
    "note": ""
   },
   {
@@ -393,7 +393,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Empty. Like yourwallet.        ",
-   "translation": "",
+   "translation": "空的，跟你的錢包一樣。",
    "note": ""
   },
   {
@@ -410,7 +410,7 @@
    "reachable": true,
    "same_as": "",
    "original": "There are 10    Yontry here!   ",
-   "translation": "",
+   "translation": "這裡有10瓶體力恢復劑！",
    "note": ""
   },
   {
@@ -427,7 +427,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's a jump     device!        ",
-   "translation": "",
+   "translation": "是一台跳躍裝置！",
    "note": ""
   },
   {
@@ -444,7 +444,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We can't jump   from here.     ",
-   "translation": "",
+   "translation": "我們沒辦法從這裡跳躍。",
    "note": ""
   },
   {
@@ -461,7 +461,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Listen! Find theTurboGun here. ",
-   "translation": "",
+   "translation": "聽好！這裡有強力加速砲。",
    "note": ""
   },
   {
@@ -478,7 +478,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The point sensoris my creation.",
-   "translation": "",
+   "translation": "定位感應器是我發明的。",
    "note": ""
   },
   {
@@ -495,7 +495,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This is a big,  3 story base.  ",
-   "translation": "",
+   "translation": "這是一座三層樓的大基地。",
    "note": ""
   },
   {
@@ -512,7 +512,7 @@
    "reachable": true,
    "same_as": "",
    "original": "A {94}{A4}{B4}{C4} {96}{A6} is on the 1st floor. ",
-   "translation": "",
+   "translation": "一樓有發射台。",
    "note": ""
   },
   {
@@ -529,7 +529,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Many maps are   hidden here.   ",
-   "translation": "",
+   "translation": "這裡藏了很多地圖。",
    "note": ""
   },
   {
@@ -546,7 +546,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Kayla's Point   Sensor is here.",
-   "translation": "",
+   "translation": "凱拉的定位感應器在這裡。",
    "note": ""
   },
   {
@@ -563,7 +563,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Check out the   2nd floor.     ",
-   "translation": "",
+   "translation": "去看看二樓吧。",
    "note": ""
   },
   {
@@ -580,7 +580,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Are you a here  or what, dude? ",
-   "translation": "",
+   "translation": "你到底行不行啊，老兄？",
    "note": ""
   },
   {
@@ -597,7 +597,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Oh, no! The map is half baked. ",
-   "translation": "",
+   "translation": "糟了！地圖只有一半。",
    "note": ""
   },
   {
@@ -614,7 +614,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This is Rustek's{95}{A5}{B5}{C5}{D5}{96}{A6}.       ",
-   "translation": "",
+   "translation": "這裡是魯斯德克的降落平台。",
    "note": ""
   },
   {
@@ -631,7 +631,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Wow! The GAMERA cartridge.     ",
-   "translation": "",
+   "translation": "哇！卡美拉能量匣。",
    "note": ""
   }
  ]

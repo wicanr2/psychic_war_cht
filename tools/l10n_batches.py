@@ -100,7 +100,7 @@ def cmd_merge():
             updates[k] = tr
     by_file = {}
     for k in updates:
-        by_file.setdefault(k.rsplit(":", 1)[0], []).append(k)
+        by_file.setdefault(k.split(":")[0], []).append(k)
     for src, keys in by_file.items():
         path = ROOT / "text" / (src + ".json")
         doc = json.loads(path.read_text(encoding="utf-8"))

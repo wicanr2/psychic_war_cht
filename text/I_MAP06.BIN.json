@@ -13,7 +13,7 @@
    "reachable": true,
    "same_as": "",
    "original": "CPU Room",
-   "translation": "",
+   "translation": "電腦室",
    "note": ""
   },
   {
@@ -26,7 +26,7 @@
    "reachable": true,
    "same_as": "",
    "original": "GATE   ",
-   "translation": "",
+   "translation": "閘門",
    "note": ""
   },
   {
@@ -39,7 +39,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{8B}{9B}{91}{A1}{B1}   ",
-   "translation": "",
+   "translation": "貴賓室",
    "note": ""
   },
   {
@@ -52,7 +52,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{AF}{BF}{CF}{DF}{91}{A1}{B1} ",
-   "translation": "",
+   "translation": "儲藏室",
    "note": ""
   },
   {
@@ -65,7 +65,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{95}{A5}{B5}{C5}{D5}{96}{A6} ",
-   "translation": "",
+   "translation": "降落平台",
    "note": ""
   },
   {
@@ -78,7 +78,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{AB}{BB}{CB}{DB}{EB}{FB}  ",
-   "translation": "",
+   "translation": "運輸站",
    "note": ""
   },
   {
@@ -91,7 +91,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{89}{99}{A9}{B9}{91}{A1}{B1} ",
-   "translation": "",
+   "translation": "雷達室",
    "note": ""
   },
   {
@@ -104,7 +104,7 @@
    "reachable": true,
    "same_as": "",
    "original": "FastFood",
-   "translation": "",
+   "translation": "速食店",
    "note": ""
   },
   {
@@ -117,7 +117,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Study   ",
-   "translation": "",
+   "translation": "書房",
    "note": ""
   },
   {
@@ -130,7 +130,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Zoo     ",
-   "translation": "",
+   "translation": "動物園",
    "note": ""
   },
   {
@@ -143,7 +143,7 @@
    "reachable": true,
    "same_as": "",
    "original": "PR Room ",
-   "translation": "",
+   "translation": "公關室",
    "note": ""
   },
   {
@@ -156,7 +156,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{87}{97}{A7}{B7}{91}{A1}{B1} ",
-   "translation": "",
+   "translation": "記者室",
    "note": ""
   },
   {
@@ -169,7 +169,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Oxygen ",
-   "translation": "",
+   "translation": "氧氣室",
    "note": ""
   },
   {
@@ -182,7 +182,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Radio{91}{A1}{B1}",
-   "translation": "",
+   "translation": "廣播室",
    "note": ""
   },
   {
@@ -195,7 +195,7 @@
    "reachable": true,
    "same_as": "",
    "original": "EO Room",
-   "translation": "",
+   "translation": "工程室",
    "note": ""
   },
   {
@@ -208,7 +208,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Power{91}{A1}{B1}",
-   "translation": "",
+   "translation": "動力室",
    "note": ""
   },
   {
@@ -221,7 +221,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Gym    ",
-   "translation": "",
+   "translation": "健身房",
    "note": ""
   },
   {
@@ -234,7 +234,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{8A}{9A}{AA}{91}{A1}{B1} ",
-   "translation": "",
+   "translation": "BBS室",
    "note": ""
   },
   {
@@ -247,7 +247,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Library",
-   "translation": "",
+   "translation": "圖書室",
    "note": ""
   },
   {
@@ -260,7 +260,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Storage",
-   "translation": "",
+   "translation": "倉庫",
    "note": ""
   },
   {
@@ -273,7 +273,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{8F}{9F}{91}{A1}{B1}  ",
-   "translation": "",
+   "translation": "臥室",
    "note": ""
   },
   {
@@ -286,7 +286,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{94}{A4}{B4}{C4} {96}{A6} ",
-   "translation": "",
+   "translation": "發射台",
    "note": ""
   },
   {
@@ -299,7 +299,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Elevator",
-   "translation": "",
+   "translation": "電梯",
    "note": ""
   },
   {
@@ -312,7 +312,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Elevator",
-   "translation": "",
+   "translation": "電梯",
    "note": ""
   },
   {
@@ -325,7 +325,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Elevator",
-   "translation": "",
+   "translation": "電梯",
    "note": ""
   },
   {
@@ -338,7 +338,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Elevator",
-   "translation": "",
+   "translation": "電梯",
    "note": ""
   }
  ]

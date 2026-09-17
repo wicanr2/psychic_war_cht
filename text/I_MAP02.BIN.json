@@ -13,7 +13,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Stock{91}{A1}{B1}",
-   "translation": "",
+   "translation": "儲藏室",
    "note": ""
   },
   {
@@ -26,7 +26,7 @@
    "reachable": true,
    "same_as": "",
    "original": "DEF COM ",
-   "translation": "",
+   "translation": "防衛指揮室",
    "note": ""
   },
   {
@@ -39,7 +39,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{AB}{BB}{CB}{DB}{EB}{FB}  ",
-   "translation": "",
+   "translation": "運輸站",
    "note": ""
   },
   {
@@ -52,7 +52,7 @@
    "reachable": true,
    "same_as": "",
    "original": "LAB    ",
-   "translation": "",
+   "translation": "實驗室",
    "note": ""
   },
   {
@@ -65,7 +65,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Jail   ",
-   "translation": "",
+   "translation": "監獄",
    "note": ""
   },
   {
@@ -78,7 +78,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Command ",
-   "translation": "",
+   "translation": "指揮室",
    "note": ""
   },
   {
@@ -91,7 +91,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Press{91}{A1}{B1}",
-   "translation": "",
+   "translation": "記者室",
    "note": ""
   },
   {
@@ -104,7 +104,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Shop    ",
-   "translation": "",
+   "translation": "商店",
    "note": ""
   },
   {
@@ -117,7 +117,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Lounge  ",
-   "translation": "",
+   "translation": "休息室",
    "note": ""
   },
   {
@@ -130,7 +130,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Guest{91}{A1}{B1}",
-   "translation": "",
+   "translation": "訪客室",
    "note": ""
   },
   {
@@ -143,7 +143,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Storage",
-   "translation": "",
+   "translation": "倉庫",
    "note": ""
   },
   {
@@ -156,7 +156,7 @@
    "reachable": true,
    "same_as": "",
    "original": "SushiBar",
-   "translation": "",
+   "translation": "壽司吧",
    "note": ""
   },
   {
@@ -169,7 +169,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bakery  ",
-   "translation": "",
+   "translation": "麵包店",
    "note": ""
   },
   {
@@ -182,7 +182,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Deli   ",
-   "translation": "",
+   "translation": "熟食店",
    "note": ""
   },
   {
@@ -195,7 +195,7 @@
    "reachable": true,
    "same_as": "",
    "original": "VIP {91}{A1}{B1}",
-   "translation": "",
+   "translation": "貴賓室",
    "note": ""
   },
   {
@@ -208,7 +208,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Morgue ",
-   "translation": "",
+   "translation": "停屍間",
    "note": ""
   },
   {
@@ -221,7 +221,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Shower ",
-   "translation": "",
+   "translation": "淋浴間",
    "note": ""
   },
   {
@@ -234,7 +234,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{94}{A4}{B4}{C4} {96}{A6} ",
-   "translation": "",
+   "translation": "發射台",
    "note": ""
   },
   {
@@ -247,7 +247,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Elevator",
-   "translation": "",
+   "translation": "電梯",
    "note": ""
   },
   {
@@ -260,7 +260,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Elevator",
-   "translation": "",
+   "translation": "電梯",
    "note": ""
   },
   {
@@ -273,7 +273,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Elevator",
-   "translation": "",
+   "translation": "電梯",
    "note": ""
   },
   {
@@ -286,7 +286,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Elevator",
-   "translation": "",
+   "translation": "電梯",
    "note": ""
   }
  ]

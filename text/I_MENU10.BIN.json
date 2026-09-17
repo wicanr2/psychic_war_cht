@@ -17,7 +17,7 @@
    "reachable": true,
    "same_as": "",
    "original": "What next,cosmicsoldier?       ",
-   "translation": "",
+   "translation": "接下來呢，宇宙戰士？",
    "note": ""
   },
   {
@@ -30,7 +30,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -43,7 +43,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Search    ",
-   "translation": "",
+   "translation": "搜尋",
    "note": ""
   },
   {
@@ -60,7 +60,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Think fast,     psychic soldier",
-   "translation": "",
+   "translation": "快點想，超能戰士",
    "note": ""
   },
   {
@@ -73,7 +73,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -86,7 +86,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Break It  ",
-   "translation": "",
+   "translation": "打破它",
    "note": ""
   },
   {
@@ -103,7 +103,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Outstanding! A  jump device!   ",
-   "translation": "",
+   "translation": "太厲害了！跳躍裝置！",
    "note": ""
   },
   {
@@ -120,8 +120,8 @@
    "reachable": true,
    "same_as": "",
    "original": "Sorry. It's a   receiving {96}{A6}.  ",
-   "translation": "",
-   "note": ""
+   "translation": "抱歉，這是接收平台。",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU10.BIN:00E0",
@@ -137,7 +137,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The control     panel is fried.",
-   "translation": "",
+   "translation": "控制面板燒壞了。",
    "note": ""
   },
   {
@@ -154,7 +154,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Whoa! A Psychic Shield device! ",
-   "translation": "",
+   "translation": "哇！是超能防護盾裝置！",
    "note": ""
   },
   {
@@ -171,7 +171,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We've destroyed the controls.  ",
-   "translation": "",
+   "translation": "我們破壞了控制台。",
    "note": ""
   },
   {
@@ -188,7 +188,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The Psycho {C2}{D2}{E2}{F2} is wasted!     ",
-   "translation": "",
+   "translation": "超能防護盾被摧毀了！",
    "note": ""
   },
   {
@@ -205,7 +205,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The controls arealready fried. ",
-   "translation": "",
+   "translation": "控制台已經燒壞了。",
    "note": ""
   },
   {
@@ -222,7 +222,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Controls for thebase's defense!",
-   "translation": "",
+   "translation": "基地防禦系統的控制台！",
    "note": ""
   },
   {
@@ -239,7 +239,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Find BEEFUN or  you'll die!    ",
-   "translation": "",
+   "translation": "找到畢方，不然會死！",
    "note": ""
   },
   {
@@ -256,7 +256,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Play the slots  at Security.   ",
-   "translation": "",
+   "translation": "去保全室玩拉霸機。",
    "note": ""
   },
   {
@@ -273,7 +273,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Go to the hotel or you'll lose!",
-   "translation": "",
+   "translation": "去旅館，不然你會輸！",
    "note": ""
   },
   {
@@ -290,7 +290,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Where to psychicsoldier?       ",
-   "translation": "",
+   "translation": "要去哪，超能戰士？",
    "note": ""
   },
   {
@@ -303,7 +303,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -316,7 +316,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Samar     ",
-   "translation": "",
+   "translation": "薩瑪",
    "note": ""
   },
   {
@@ -329,7 +329,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Sivad     ",
-   "translation": "",
+   "translation": "賽瓦德",
    "note": ""
   },
   {
@@ -342,7 +342,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Zellwall  ",
-   "translation": "",
+   "translation": "濟爾沃",
    "note": ""
   },
   {
@@ -355,7 +355,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Rusteck   ",
-   "translation": "",
+   "translation": "魯斯德克",
    "note": ""
   },
   {
@@ -368,7 +368,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Celtac    ",
-   "translation": "",
+   "translation": "塞爾塔克",
    "note": ""
   },
   {
@@ -385,7 +385,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Roger. Departingfor Samar...   ",
-   "translation": "",
+   "translation": "收到，前往薩瑪…",
    "note": ""
   },
   {
@@ -402,7 +402,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Roger. Departingfor Sivad...   ",
-   "translation": "",
+   "translation": "收到，前往賽瓦德…",
    "note": ""
   },
   {
@@ -419,7 +419,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Roger. Departingfor ZellWall...",
-   "translation": "",
+   "translation": "收到，前往濟爾沃…",
    "note": ""
   },
   {
@@ -436,7 +436,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Roger. Departingfor Rusteck... ",
-   "translation": "",
+   "translation": "收到，前往魯斯德克…",
    "note": ""
   },
   {
@@ -453,7 +453,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Roger. Departingfor Celtac...  ",
-   "translation": "",
+   "translation": "收到，前往塞爾塔克…",
    "note": ""
   },
   {
@@ -470,7 +470,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Imperial forces are in control.",
-   "translation": "",
+   "translation": "帝國軍已經掌控了。",
    "note": ""
   },
   {
@@ -487,7 +487,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Oh,no! An attackby a satellite!",
-   "translation": "",
+   "translation": "糟了！衛星發動攻擊了！",
    "note": ""
   },
   {
@@ -504,7 +504,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Get a life. Go  back to Samar. ",
-   "translation": "",
+   "translation": "振作點，回薩瑪吧。",
    "note": ""
   },
   {
@@ -521,7 +521,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We're doomed... the bomb...    ",
-   "translation": "",
+   "translation": "完蛋了…那顆炸彈…",
    "note": ""
   },
   {
@@ -538,7 +538,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The Psycho {C2}{D2}{E2}{F2} zapped us!     ",
-   "translation": "",
+   "translation": "超能防護盾電到我們了！",
    "note": ""
   },
   {
@@ -555,7 +555,7 @@
    "reachable": true,
    "same_as": "",
    "original": "WARNING! Psycho Shield's on... ",
-   "translation": "",
+   "translation": "警告！超能防護盾啟動了…",
    "note": ""
   },
   {
@@ -572,7 +572,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Hm!We can't MindJump on base.  ",
-   "translation": "",
+   "translation": "嗯！我們不能在基地用記憶跳躍。",
    "note": ""
   }
  ]

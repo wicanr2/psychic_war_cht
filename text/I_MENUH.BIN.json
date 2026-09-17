@@ -17,7 +17,7 @@
    "reachable": true,
    "same_as": "",
    "original": "What do you wantto do?         ",
-   "translation": "",
+   "translation": "你想做什麼？",
    "note": ""
   },
   {
@@ -30,7 +30,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Ask Kayla ",
-   "translation": "",
+   "translation": "問凱拉",
    "note": ""
   },
   {
@@ -43,7 +43,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Sip Yontry",
-   "translation": "",
+   "translation": "喝體力恢復劑",
    "note": ""
   },
   {
@@ -56,7 +56,7 @@
    "reachable": true,
    "same_as": "",
    "original": "See Maps  ",
-   "translation": "",
+   "translation": "看地圖",
    "note": ""
   },
   {
@@ -69,7 +69,7 @@
    "reachable": true,
    "same_as": "",
    "original": "See Items ",
-   "translation": "",
+   "translation": "看道具",
    "note": ""
   },
   {
@@ -82,7 +82,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Turbogun  ",
-   "translation": "",
+   "translation": "強力加速砲",
    "note": ""
   },
   {
@@ -95,7 +95,7 @@
    "reachable": true,
    "same_as": "",
    "original": "ESP Power ",
-   "translation": "",
+   "translation": "超能力",
    "note": ""
   },
   {
@@ -108,7 +108,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Options   ",
-   "translation": "",
+   "translation": "選項",
    "note": ""
   },
   {
@@ -121,7 +121,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -138,7 +138,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Who should drinkthe Yontry?    ",
-   "translation": "",
+   "translation": "誰要喝體力恢復劑？",
    "note": ""
   },
   {
@@ -151,7 +151,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#1        ",
-   "translation": "",
+   "translation": "#1",
    "note": ""
   },
   {
@@ -164,7 +164,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#2        ",
-   "translation": "",
+   "translation": "#2",
    "note": ""
   },
   {
@@ -177,7 +177,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#3        ",
-   "translation": "",
+   "translation": "#3",
    "note": ""
   },
   {
@@ -190,7 +190,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#4        ",
-   "translation": "",
+   "translation": "#4",
    "note": ""
   },
   {
@@ -203,7 +203,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -220,7 +220,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Which cartridge,soldier?       ",
-   "translation": "",
+   "translation": "要用哪個能量匣，\n戰士？",
    "note": ""
   },
   {
@@ -233,7 +233,7 @@
    "reachable": true,
    "same_as": "",
    "original": "GAMERA    ",
-   "translation": "",
+   "translation": "卡美拉",
    "note": ""
   },
   {
@@ -246,7 +246,7 @@
    "reachable": true,
    "same_as": "",
    "original": "RODAN     ",
-   "translation": "",
+   "translation": "拉頓",
    "note": ""
   },
   {
@@ -259,7 +259,7 @@
    "reachable": true,
    "same_as": "",
    "original": "MOTHRA    ",
-   "translation": "",
+   "translation": "摩斯拉",
    "note": ""
   },
   {
@@ -272,7 +272,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -289,7 +289,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Psychic Soldier,make a choice. ",
-   "translation": "",
+   "translation": "超能戰士，做個選擇吧。",
    "note": ""
   },
   {
@@ -302,7 +302,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Save game ",
-   "translation": "",
+   "translation": "存檔",
    "note": ""
   },
   {
@@ -315,7 +315,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Sound     ",
-   "translation": "",
+   "translation": "音效",
    "note": ""
   },
   {
@@ -328,7 +328,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -345,7 +345,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Do you want to  save now?      ",
-   "translation": "",
+   "translation": "你要現在存檔嗎？",
    "note": ""
   },
   {
@@ -358,7 +358,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Definitely",
-   "translation": "",
+   "translation": "當然要",
    "note": ""
   },
   {
@@ -371,7 +371,7 @@
    "reachable": true,
    "same_as": "",
    "original": "No way    ",
-   "translation": "",
+   "translation": "才不要",
    "note": ""
   },
   {
@@ -388,7 +388,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Do you want to  keep playing?  ",
-   "translation": "",
+   "translation": "你要繼續玩嗎？",
    "note": ""
   },
   {
@@ -401,7 +401,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Absolutely",
-   "translation": "",
+   "translation": "沒問題",
    "note": ""
   },
   {
@@ -414,7 +414,7 @@
    "reachable": true,
    "same_as": "",
    "original": "No way    ",
-   "translation": "",
+   "translation": "才不要",
    "note": ""
   },
   {
@@ -431,7 +431,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Do you want     sound?         ",
-   "translation": "",
+   "translation": "你要開音效嗎？",
    "note": ""
   },
   {
@@ -444,7 +444,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Yes       ",
-   "translation": "",
+   "translation": "要",
    "note": ""
   },
   {
@@ -457,7 +457,7 @@
    "reachable": true,
    "same_as": "",
    "original": "No        ",
-   "translation": "",
+   "translation": "不要",
    "note": ""
   },
   {
@@ -474,7 +474,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Want this map,  space soldier? ",
-   "translation": "",
+   "translation": "要這張地圖嗎，太空戰士？",
    "note": ""
   },
   {
@@ -487,7 +487,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Totally   ",
-   "translation": "",
+   "translation": "當然要",
    "note": ""
   },
   {
@@ -500,7 +500,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Negative  ",
-   "translation": "",
+   "translation": "不要",
    "note": ""
   },
   {
@@ -517,7 +517,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Pick a function,space warrior. ",
-   "translation": "",
+   "translation": "選一個功能，太空勇士。",
    "note": ""
   },
   {
@@ -530,7 +530,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Mapper    ",
-   "translation": "",
+   "translation": "選圖器",
    "note": ""
   },
   {
@@ -543,7 +543,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Sensor    ",
-   "translation": "",
+   "translation": "感應器",
    "note": ""
   },
   {
@@ -556,7 +556,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Decoder   ",
-   "translation": "",
+   "translation": "解碼器",
    "note": ""
   },
   {
@@ -569,7 +569,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -586,7 +586,7 @@
    "reachable": true,
    "same_as": "",
    "original": "What ESP power  do you want?   ",
-   "translation": "",
+   "translation": "你想要什麼超能力？",
    "note": ""
   },
   {
@@ -599,7 +599,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Empathy   ",
-   "translation": "",
+   "translation": "自療",
    "note": ""
   },
   {
@@ -612,7 +612,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Marker    ",
-   "translation": "",
+   "translation": "標記",
    "note": ""
   },
   {
@@ -625,7 +625,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Mind Jump ",
-   "translation": "",
+   "translation": "記憶跳躍",
    "note": ""
   },
   {
@@ -638,7 +638,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Duplicate ",
-   "translation": "",
+   "translation": "複製",
    "note": ""
   },
   {
@@ -651,7 +651,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -668,7 +668,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Which soldier   should you ask?",
-   "translation": "",
+   "translation": "要問哪位戰士？",
    "note": ""
   },
   {
@@ -681,7 +681,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#1        ",
-   "translation": "",
+   "translation": "#1",
    "note": ""
   },
   {
@@ -694,7 +694,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#2        ",
-   "translation": "",
+   "translation": "#2",
    "note": ""
   },
   {
@@ -707,7 +707,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#3        ",
-   "translation": "",
+   "translation": "#3",
    "note": ""
   },
   {
@@ -720,7 +720,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#4        ",
-   "translation": "",
+   "translation": "#4",
    "note": ""
   },
   {
@@ -733,7 +733,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -750,7 +750,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Who do you want to heal?       ",
-   "translation": "",
+   "translation": "你要治療誰？",
    "note": ""
   },
   {
@@ -763,7 +763,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#1        ",
-   "translation": "",
+   "translation": "#1",
    "note": ""
   },
   {
@@ -776,7 +776,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#2        ",
-   "translation": "",
+   "translation": "#2",
    "note": ""
   },
   {
@@ -789,7 +789,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#3        ",
-   "translation": "",
+   "translation": "#3",
    "note": ""
   },
   {
@@ -802,7 +802,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#4        ",
-   "translation": "",
+   "translation": "#4",
    "note": ""
   },
   {
@@ -815,7 +815,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -849,7 +849,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's fry time! Aflame thrower. ",
-   "translation": "",
+   "translation": "烤肉時間到！火焰噴射器。",
    "note": ""
   },
   {
@@ -866,7 +866,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Chill out! The  freeze gun.    ",
-   "translation": "",
+   "translation": "涼一下！這把是冷凍槍。",
    "note": ""
   },
   {
@@ -883,7 +883,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Wow! This gun   melts enemies. ",
-   "translation": "",
+   "translation": "哇！這把槍融化敵人。",
    "note": ""
   },
   {
@@ -900,7 +900,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Righteous! Game saved.         ",
-   "translation": "",
+   "translation": "帥啊！遊戲已存檔。",
    "note": ""
   },
   {
@@ -917,7 +917,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Ok. Game is     history.       ",
-   "translation": "",
+   "translation": "好。這局就此結束。",
    "note": ""
   },
   {
@@ -934,7 +934,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The tunes are   cranked!       ",
-   "translation": "",
+   "translation": "音樂開到最大聲！",
    "note": ""
   },
   {
@@ -951,7 +951,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Ok. Tunes are   off.           ",
-   "translation": "",
+   "translation": "好，音樂關掉了。",
    "note": ""
   },
   {
@@ -968,7 +968,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Don't be flaky! Be decisive.   ",
-   "translation": "",
+   "translation": "別再猶豫了！果斷一點。",
    "note": ""
   },
   {
@@ -985,7 +985,7 @@
    "reachable": true,
    "same_as": "",
    "original": "No luck-It's notactivated yet. ",
-   "translation": "",
+   "translation": "沒用，還沒啟動呢。",
    "note": ""
   },
   {
@@ -1002,7 +1002,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We didn't scam  that map yet.  ",
-   "translation": "",
+   "translation": "我們還沒弄到那張地圖。",
    "note": ""
   },
   {
@@ -1019,7 +1019,7 @@
    "reachable": true,
    "same_as": "",
    "original": "I picked the mapfor this base. ",
-   "translation": "",
+   "translation": "我選了這個基地的地圖。",
    "note": ""
   },
   {
@@ -1036,7 +1036,7 @@
    "reachable": true,
    "same_as": "",
    "original": "I turned off thesensor.        ",
-   "translation": "",
+   "translation": "我把感應器關掉了。",
    "note": ""
   },
   {
@@ -1053,7 +1053,7 @@
    "reachable": true,
    "same_as": "",
    "original": "I turned on the sensor.        ",
-   "translation": "",
+   "translation": "我把感應器打開了。",
    "note": ""
   },
   {
@@ -1070,7 +1070,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It now will worklike a charm.  ",
-   "translation": "",
+   "translation": "現在會順順利利的了。",
    "note": ""
   },
   {
@@ -1087,7 +1087,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use the team's  ESP powers...  ",
-   "translation": "",
+   "translation": "運用隊伍的超能力…",
    "note": ""
   },
   {
@@ -1104,7 +1104,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We must memorizewhere we are.  ",
-   "translation": "",
+   "translation": "我們得記住現在的位置。",
    "note": ""
   },
   {
@@ -1121,7 +1121,7 @@
    "reachable": true,
    "same_as": "",
    "original": "THIS should makeus stronger.   ",
-   "translation": "",
+   "translation": "這應該能讓我們變強。",
    "note": ""
   },
   {
@@ -1138,7 +1138,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This ally can't use that ESP.  ",
-   "translation": "",
+   "translation": "這位夥伴不能用那種超能力。",
    "note": ""
   },
   {
@@ -1155,7 +1155,7 @@
    "reachable": true,
    "same_as": "",
    "original": "I have memorizedthe image!     ",
-   "translation": "",
+   "translation": "我已經記住那個畫面了！",
    "note": ""
   },
   {
@@ -1172,7 +1172,7 @@
    "reachable": true,
    "same_as": "",
    "original": "I hope you know where to jump. ",
-   "translation": "",
+   "translation": "希望你知道要跳去哪裡。",
    "note": ""
   },
   {
@@ -1189,7 +1189,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Without a markerwe can't jump. ",
-   "translation": "",
+   "translation": "沒有標記就沒辦法跳躍。",
    "note": ""
   },
   {
@@ -1206,7 +1206,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This ally has   power to heal. ",
-   "translation": "",
+   "translation": "這位夥伴有治療的能力。",
    "note": ""
   },
   {
@@ -1223,7 +1223,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Excellent! We'restrong again.  ",
-   "translation": "",
+   "translation": "太好了！我們又變強了。",
    "note": ""
   },
   {
@@ -1240,7 +1240,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Most Excellent. Strong again.  ",
-   "translation": "",
+   "translation": "太棒了。又變強了。",
    "note": ""
   },
   {
@@ -1257,7 +1257,7 @@
    "reachable": true,
    "same_as": "",
    "original": "You're on space station Samar. ",
-   "translation": "",
+   "translation": "你現在在薩瑪太空站。",
    "note": ""
   },
   {
@@ -1274,7 +1274,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Watch it. Enemy territory!     ",
-   "translation": "",
+   "translation": "小心點，敵方地盤！",
    "note": ""
   },
   {
@@ -1291,7 +1291,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Ok! We're headedfor Samar.     ",
-   "translation": "",
+   "translation": "好！我們前往薩瑪。",
    "note": ""
   },
   {
@@ -1308,7 +1308,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Outstanding. Offto Sivad!      ",
-   "translation": "",
+   "translation": "太猛了！出發前往賽瓦德！",
    "note": ""
   },
   {
@@ -1325,7 +1325,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Let's make a runfor Zellwal.   ",
-   "translation": "",
+   "translation": "衝吧，前往濟爾沃！",
    "note": ""
   },
   {
@@ -1342,7 +1342,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Rusteck!Straightahead,warriors.",
-   "translation": "",
+   "translation": "魯斯德克！勇士們，直直前進！",
    "note": ""
   },
   {
@@ -1359,7 +1359,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Watch it Celtac!Here we come.  ",
-   "translation": "",
+   "translation": "小心了，塞爾塔克！我們來了。",
    "note": ""
   },
   {
@@ -1376,7 +1376,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Drag. Satellite attack!        ",
-   "translation": "",
+   "translation": "討厭，衛星攻擊來了！",
    "note": ""
   },
   {
@@ -1393,7 +1393,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Gigs up! Head   back to Samar. ",
-   "translation": "",
+   "translation": "完蛋了！回薩瑪去吧。",
    "note": ""
   },
   {
@@ -1410,7 +1410,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bummer city. No more Yontry.   ",
-   "translation": "",
+   "translation": "有夠衰，沒有體力恢復劑了。",
    "note": ""
   },
   {
@@ -1427,7 +1427,7 @@
    "reachable": true,
    "same_as": "",
    "original": "I knew it... No Psychic Power! ",
-   "translation": "",
+   "translation": "早知道了…沒有超能力了！",
    "note": ""
   },
   {
@@ -1444,7 +1444,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Move it, PsychicSoldier!       ",
-   "translation": "",
+   "translation": "快點，超能戰士！",
    "note": ""
   },
   {
@@ -1461,7 +1461,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bogus! We can't teleport there.",
-   "translation": "",
+   "translation": "唬爛！沒辦法瞬間移位到那裡。",
    "note": ""
   },
   {
@@ -1612,7 +1612,7 @@
    "reachable": true,
    "same_as": "",
    "original": "An elevator!    Think fast.    ",
-   "translation": "",
+   "translation": "電梯！快點決定。",
    "note": ""
   },
   {
@@ -1625,7 +1625,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -1638,7 +1638,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Go up     ",
-   "translation": "",
+   "translation": "往上",
    "note": ""
   },
   {
@@ -1655,7 +1655,7 @@
    "reachable": true,
    "same_as": "",
    "original": "An elevator! Nowwhich way?     ",
-   "translation": "",
+   "translation": "電梯！這次要往哪？",
    "note": ""
   },
   {
@@ -1668,7 +1668,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -1681,7 +1681,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Go down   ",
-   "translation": "",
+   "translation": "往下",
    "note": ""
   },
   {
@@ -1698,7 +1698,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Tough choice.Whogets ditched?  ",
-   "translation": "",
+   "translation": "難選啊，要丟下誰？",
    "note": ""
   },
   {
@@ -1711,7 +1711,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -1724,7 +1724,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#2        ",
-   "translation": "",
+   "translation": "#2",
    "note": ""
   },
   {
@@ -1737,7 +1737,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#3        ",
-   "translation": "",
+   "translation": "#3",
    "note": ""
   },
   {
@@ -1750,7 +1750,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#4        ",
-   "translation": "",
+   "translation": "#4",
    "note": ""
   },
   {
@@ -1767,7 +1767,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Give this ally aname, soldier! ",
-   "translation": "",
+   "translation": "幫這位夥伴取個名字吧，戰士！",
    "note": ""
   },
   {
@@ -1784,7 +1784,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Make up your    mind, spaceman.",
-   "translation": "",
+   "translation": "拿定主意吧，太空人。",
    "note": ""
   },
   {
@@ -1797,7 +1797,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Talk      ",
-   "translation": "",
+   "translation": "交談",
    "note": ""
   },
   {
@@ -1810,7 +1810,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Team up   ",
-   "translation": "",
+   "translation": "組隊",
    "note": ""
   },
   {
@@ -1823,7 +1823,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Duplicate ",
-   "translation": "",
+   "translation": "複製",
    "note": ""
   },
   {
@@ -1840,7 +1840,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Do you want to  see more?      ",
-   "translation": "",
+   "translation": "你想再看下去嗎？",
    "note": ""
   },
   {
@@ -1853,7 +1853,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Definitely",
-   "translation": "",
+   "translation": "當然要",
    "note": ""
   },
   {
@@ -1866,7 +1866,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Forget it ",
-   "translation": "",
+   "translation": "算了",
    "note": ""
   },
   {
@@ -1883,7 +1883,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The bomb is now set.           ",
-   "translation": "",
+   "translation": "炸彈已經設置好了。",
    "note": ""
   },
   {
@@ -1900,7 +1900,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Hey. There's no time for that. ",
-   "translation": "",
+   "translation": "喂，沒時間搞這個了。",
    "note": ""
   },
   {
@@ -1917,7 +1917,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's our awesomeselves again!  ",
-   "translation": "",
+   "translation": "又是我們超猛的自己了！",
    "note": ""
   },
   {
@@ -1934,7 +1934,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Get the enemy   to surrender.  ",
-   "translation": "",
+   "translation": "讓敵人投降吧。",
    "note": ""
   }
  ]

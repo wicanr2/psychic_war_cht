@@ -17,7 +17,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We're gonna win!What next?     ",
-   "translation": "",
+   "translation": "我們要贏了！接下來呢？",
    "note": ""
   },
   {
@@ -30,7 +30,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -43,7 +43,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Smash It  ",
-   "translation": "",
+   "translation": "打爛它",
    "note": ""
   },
   {
@@ -60,7 +60,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Which crystal   should be set? ",
-   "translation": "",
+   "translation": "要裝哪顆水晶？",
    "note": ""
   },
   {
@@ -73,7 +73,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -86,7 +86,7 @@
    "reachable": true,
    "same_as": "",
    "original": "TEARS     ",
-   "translation": "",
+   "translation": "淚之水晶",
    "note": ""
   },
   {
@@ -99,7 +99,7 @@
    "reachable": true,
    "same_as": "",
    "original": "BLOOD     ",
-   "translation": "",
+   "translation": "血之水晶",
    "note": ""
   },
   {
@@ -112,7 +112,7 @@
    "reachable": true,
    "same_as": "",
    "original": "SWEAT     ",
-   "translation": "",
+   "translation": "汗之水晶",
    "note": ""
   },
   {
@@ -129,7 +129,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Hang in there!  What next?     ",
-   "translation": "",
+   "translation": "撐住！接下來呢？",
    "note": ""
   },
   {
@@ -142,7 +142,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -155,7 +155,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Check Room",
-   "translation": "",
+   "translation": "檢查房間",
    "note": ""
   },
   {
@@ -172,7 +172,7 @@
    "reachable": true,
    "same_as": "",
    "original": "One step from   victory...     ",
-   "translation": "",
+   "translation": "只差一步就贏了…",
    "note": ""
   },
   {
@@ -185,7 +185,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -198,7 +198,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use BEEFUN",
-   "translation": "",
+   "translation": "使用畢方",
    "note": ""
   },
   {
@@ -215,7 +215,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Most triumphant!We've won!!    ",
-   "translation": "",
+   "translation": "太棒了！我們贏了！！",
    "note": ""
   },
   {
@@ -228,7 +228,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Go Back   ",
-   "translation": "",
+   "translation": "返回",
    "note": ""
   },
   {
@@ -241,7 +241,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Go Home   ",
-   "translation": "",
+   "translation": "回家",
    "note": ""
   },
   {
@@ -258,7 +258,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Stupendous! Whatshould we do?  ",
-   "translation": "",
+   "translation": "太驚人了！接下來做什麼？",
    "note": ""
   },
   {
@@ -271,7 +271,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -284,7 +284,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Play Slots",
-   "translation": "",
+   "translation": "玩拉霸機",
    "note": ""
   },
   {
@@ -301,7 +301,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The controls arealready broken.",
-   "translation": "",
+   "translation": "控制台已經壞了。",
    "note": ""
   },
   {
@@ -318,8 +318,8 @@
    "reachable": true,
    "same_as": "",
    "original": "Bonus! The {C2}{D2}{E2}{F2} {C1}{D1}{E1}{F1}, at last! ",
-   "translation": "",
-   "note": ""
+   "translation": "太好了！終於找到防護盾控制室！",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU11.BIN:0240",
@@ -335,7 +335,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Yea! The controlpanel's wasted!",
-   "translation": "",
+   "translation": "耶！控制面板被摧毀了！",
    "note": ""
   },
   {
@@ -352,7 +352,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The Psycho {C2}{D2}{E2}{F2} is toasted!    ",
-   "translation": "",
+   "translation": "超能防護盾被烤焦了！",
    "note": ""
   },
   {
@@ -369,7 +369,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The controls arealready fried! ",
-   "translation": "",
+   "translation": "控制台已經燒壞了！",
    "note": ""
   },
   {
@@ -386,7 +386,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's up to the  WHITE level.   ",
-   "translation": "",
+   "translation": "警戒已經到白色等級了。",
    "note": ""
   },
   {
@@ -403,7 +403,7 @@
    "reachable": true,
    "same_as": "",
    "original": "No crystals!    Let's split.   ",
-   "translation": "",
+   "translation": "沒有水晶了！快閃吧。",
    "note": ""
   },
   {
@@ -420,7 +420,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Good! The SWEAT crystal is set.",
-   "translation": "",
+   "translation": "好！裝上汗之水晶了。",
    "note": ""
   },
   {
@@ -437,7 +437,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We're going to  level BLUE.    ",
-   "translation": "",
+   "translation": "警戒要進入藍色等級了。",
    "note": ""
   },
   {
@@ -454,7 +454,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bogus! It's the wrong crystal. ",
-   "translation": "",
+   "translation": "唬爛！水晶裝錯了。",
    "note": ""
   },
   {
@@ -471,7 +471,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We're already atlevel BLUE...  ",
-   "translation": "",
+   "translation": "警戒已經是藍色等級了…",
    "note": ""
   },
   {
@@ -488,7 +488,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We can't turn   back now...    ",
-   "translation": "",
+   "translation": "現在沒辦法回頭了…",
    "note": ""
   },
   {
@@ -505,7 +505,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We are at Level BLUE...        ",
-   "translation": "",
+   "translation": "警戒現在是藍色等級…",
    "note": ""
   },
   {
@@ -522,7 +522,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Excellent! BLOODcrystal is set.",
-   "translation": "",
+   "translation": "太好了！裝上血之水晶了。",
    "note": ""
   },
   {
@@ -539,7 +539,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We're going to  level YELLOW.  ",
-   "translation": "",
+   "translation": "警戒要進入黃色等級了。",
    "note": ""
   },
   {
@@ -556,7 +556,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We're already atlevel YELLOW...",
-   "translation": "",
+   "translation": "警戒已經是黃色等級了…",
    "note": ""
   },
   {
@@ -573,7 +573,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We aren't yet atlevel BLUE.    ",
-   "translation": "",
+   "translation": "警戒還沒到藍色等級。",
    "note": ""
   },
   {
@@ -590,7 +590,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We aren't yet atlevel YELLOW.  ",
-   "translation": "",
+   "translation": "警戒還沒到黃色等級。",
    "note": ""
   },
   {
@@ -607,7 +607,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We are reaching level YELLOW.  ",
-   "translation": "",
+   "translation": "警戒快到黃色等級了。",
    "note": ""
   },
   {
@@ -624,7 +624,7 @@
    "reachable": true,
    "same_as": "",
    "original": "OK! The TEARS   crystal is set.",
-   "translation": "",
+   "translation": "好！裝上淚之水晶了。",
    "note": ""
   },
   {
@@ -641,7 +641,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We are going to level RED...   ",
-   "translation": "",
+   "translation": "警戒要進入紅色等級了…",
    "note": ""
   },
   {
@@ -658,7 +658,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We've reached   level RED.     ",
-   "translation": "",
+   "translation": "警戒已經到紅色等級了。",
    "note": ""
   },
   {
@@ -675,8 +675,8 @@
    "reachable": true,
    "same_as": "",
    "original": "Bonus! A slot   machine {C7}{D7}{E7}{F7}.  ",
-   "translation": "",
-   "note": ""
+   "translation": "紅利！是吃角子老虎機的主機。",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU11.BIN:04E0",
@@ -692,7 +692,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We're not yet atlevel RED.     ",
-   "translation": "",
+   "translation": "警戒還沒到紅色等級。",
    "note": ""
   },
   {
@@ -709,7 +709,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The bomb's set. Get out fast...",
-   "translation": "",
+   "translation": "炸彈設好了，快逃！",
    "note": ""
   },
   {
@@ -726,7 +726,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It looks like a kind of lab.   ",
-   "translation": "",
+   "translation": "看起來像某種實驗室。",
    "note": ""
   },
   {
@@ -743,7 +743,7 @@
    "reachable": true,
    "same_as": "",
    "original": "BEEFUN! Split tothe SE corner!!",
-   "translation": "",
+   "translation": "畢方！快去東南角！！",
    "note": ""
   },
   {
@@ -760,7 +760,7 @@
    "reachable": true,
    "same_as": "",
    "original": "There is nothinghere. Bummer.  ",
-   "translation": "",
+   "translation": "這裡什麼都沒有，真衰。",
    "note": ""
   },
   {
@@ -777,7 +777,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This looks like an escape pad! ",
-   "translation": "",
+   "translation": "這看起來像逃生艙！",
    "note": ""
   },
   {
@@ -794,7 +794,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We need BEEFUN  to open it.    ",
-   "translation": "",
+   "translation": "得用畢方才能打開它。",
    "note": ""
   },
   {
@@ -811,7 +811,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The escape pad  door opened!   ",
-   "translation": "",
+   "translation": "逃生艙門開了！",
    "note": ""
   },
   {
@@ -828,7 +828,7 @@
    "reachable": true,
    "same_as": "",
    "original": "A hotel! Let's  rest our bones.",
-   "translation": "",
+   "translation": "旅館到了！好好休息一下吧。",
    "note": ""
   },
   {
@@ -845,7 +845,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Melser's map hasa hidden clue. ",
-   "translation": "",
+   "translation": "梅爾瑟的地圖上有隱藏線索。",
    "note": ""
   },
   {
@@ -862,7 +862,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Go North, after the HOTEL...   ",
-   "translation": "",
+   "translation": "經過旅館後，往北走…",
    "note": ""
   },
   {
@@ -879,7 +879,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bogus! Zapped bythe Psycho {C2}{D2}{E2}{F2}",
-   "translation": "",
+   "translation": "唬爛！被超能防護盾電到了！",
    "note": ""
   },
   {
@@ -896,7 +896,7 @@
    "reachable": true,
    "same_as": "",
    "original": "What do you wantto do?         ",
-   "translation": "",
+   "translation": "你想做什麼？",
    "note": ""
   },
   {
@@ -909,7 +909,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Sleep     ",
-   "translation": "",
+   "translation": "睡覺",
    "note": ""
   },
   {
@@ -922,7 +922,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Slip Out  ",
-   "translation": "",
+   "translation": "偷溜出去",
    "note": ""
   },
   {
@@ -935,7 +935,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -952,7 +952,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Most excellent! A warm bed.    ",
-   "translation": "",
+   "translation": "太棒了！溫暖的床鋪。",
    "note": ""
   },
   {
@@ -969,7 +969,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Sleep's totally what we need.  ",
-   "translation": "",
+   "translation": "睡覺正是我們需要的。",
    "note": ""
   },
   {
@@ -986,7 +986,7 @@
    "reachable": true,
    "same_as": "",
    "original": "ZZZ.                           ",
-   "translation": "",
+   "translation": "ZZZ.",
    "note": ""
   },
   {
@@ -1003,7 +1003,7 @@
    "reachable": true,
    "same_as": "",
    "original": "I know what you are dreaming...",
-   "translation": "",
+   "translation": "我知道你在夢什麼…",
    "note": ""
   },
   {
@@ -1020,7 +1020,7 @@
    "reachable": true,
    "same_as": "",
    "original": "ZZZ.                           ",
-   "translation": "",
+   "translation": "ZZZ.",
    "note": ""
   },
   {
@@ -1037,7 +1037,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Time's short!   Better wake up.",
-   "translation": "",
+   "translation": "時間不多了！最好起床。",
    "note": ""
   },
   {
@@ -1054,7 +1054,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's all in yourimagination.   ",
-   "translation": "",
+   "translation": "這都只是你的想像。",
    "note": ""
   },
   {
@@ -1071,7 +1071,7 @@
    "reachable": true,
    "same_as": "",
    "original": "I'm dreaming we wasted Quila.  ",
-   "translation": "",
+   "translation": "我夢到我們幹掉了奎拉。",
    "note": ""
   },
   {
@@ -1088,7 +1088,7 @@
    "reachable": true,
    "same_as": "",
    "original": "I could sleep   forever...     ",
-   "translation": "",
+   "translation": "我可以一直睡下去…",
    "note": ""
   },
   {
@@ -1105,7 +1105,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's a computer console!!      ",
-   "translation": "",
+   "translation": "是一台電腦主機！！",
    "note": ""
   },
   {
@@ -1122,7 +1122,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Darn! Nothing   happened...    ",
-   "translation": "",
+   "translation": "可惡！什麼都沒發生…",
    "note": ""
   },
   {
@@ -1139,7 +1139,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Let's try a     different code.",
-   "translation": "",
+   "translation": "換個密碼試試看。",
    "note": ""
   },
   {
@@ -1156,7 +1156,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Do you want to  keep sleeping? ",
-   "translation": "",
+   "translation": "你想繼續睡嗎？",
    "note": ""
   },
   {
@@ -1169,7 +1169,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Yes...    ",
-   "translation": "",
+   "translation": "要…",
    "note": ""
   },
   {
@@ -1182,7 +1182,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Dream On  ",
-   "translation": "",
+   "translation": "繼續做夢",
    "note": ""
   },
   {
@@ -1195,7 +1195,7 @@
    "reachable": true,
    "same_as": "",
    "original": "OK        ",
-   "translation": "",
+   "translation": "好",
    "note": ""
   },
   {
@@ -1208,7 +1208,7 @@
    "reachable": true,
    "same_as": "",
    "original": "No        ",
-   "translation": "",
+   "translation": "不要",
    "note": ""
   },
   {
@@ -1225,7 +1225,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Our options are dwindling...   ",
-   "translation": "",
+   "translation": "我們的選擇不多了…",
    "note": ""
   },
   {
@@ -1238,7 +1238,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -1251,7 +1251,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Talk to It",
-   "translation": "",
+   "translation": "跟它說話",
    "note": ""
   },
   {
@@ -1268,7 +1268,7 @@
    "reachable": true,
    "same_as": "",
    "original": "What password doyou want?      ",
-   "translation": "",
+   "translation": "你想要什麼密碼？",
    "note": ""
   },
   {
@@ -1281,7 +1281,7 @@
    "reachable": true,
    "same_as": "",
    "original": "NODICE!!  ",
-   "translation": "",
+   "translation": "NODICE!!",
    "note": ""
   },
   {
@@ -1298,7 +1298,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Tough luck! Try system 3 times.",
-   "translation": "",
+   "translation": "運氣不好！系統只能試三次。",
    "note": ""
   },
   {
@@ -1315,7 +1315,7 @@
    "reachable": true,
    "same_as": "",
    "original": "You want to use this console?!?",
-   "translation": "",
+   "translation": "你想用這台主機？！？",
    "note": ""
   },
   {
@@ -1332,7 +1332,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Emperor Quila   must say OK... ",
-   "translation": "",
+   "translation": "得由奎拉皇帝下令才行…",
    "note": ""
   },
   {
@@ -1349,7 +1349,7 @@
    "reachable": true,
    "same_as": "",
    "original": "BEEFUN! But it'swired to blow! ",
-   "translation": "",
+   "translation": "畢方！但接了引爆線！",
    "note": ""
   },
   {
@@ -1366,7 +1366,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Pick a system tooperate slots. ",
-   "translation": "",
+   "translation": "選一個系統來操作插槽。",
    "note": ""
   },
   {
@@ -1379,7 +1379,7 @@
    "reachable": true,
    "same_as": "",
    "original": "A System  ",
-   "translation": "",
+   "translation": "A系統",
    "note": ""
   },
   {
@@ -1392,7 +1392,7 @@
    "reachable": true,
    "same_as": "",
    "original": "B System  ",
-   "translation": "",
+   "translation": "B系統",
    "note": ""
   },
   {
@@ -1405,7 +1405,7 @@
    "reachable": true,
    "same_as": "",
    "original": "C System  ",
-   "translation": "",
+   "translation": "C系統",
    "note": ""
   },
   {
@@ -1418,7 +1418,7 @@
    "reachable": true,
    "same_as": "",
    "original": "D System  ",
-   "translation": "",
+   "translation": "D系統",
    "note": ""
   },
   {
@@ -1431,7 +1431,7 @@
    "reachable": true,
    "same_as": "",
    "original": "E System  ",
-   "translation": "",
+   "translation": "E系統",
    "note": ""
   },
   {
@@ -1444,7 +1444,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -1461,7 +1461,7 @@
    "reachable": true,
    "same_as": "",
    "original": "To get BEEFUN,  1st set slots. ",
-   "translation": "",
+   "translation": "要拿到畢方，先設定插槽。",
    "note": ""
   },
   {
@@ -1478,7 +1478,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Slots are south of the GAME{91}{A1}{B1}.",
-   "translation": "",
+   "translation": "插槽在遊樂室的南邊。",
    "note": ""
   }
  ]

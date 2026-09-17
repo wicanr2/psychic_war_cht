@@ -17,7 +17,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's up to you, Psychic Soldier",
-   "translation": "",
+   "translation": "就看你的了，超能戰士",
    "note": ""
   },
   {
@@ -30,7 +30,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -43,7 +43,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Break Safe",
-   "translation": "",
+   "translation": "打破保險箱",
    "note": ""
   },
   {
@@ -56,7 +56,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Talk to It",
-   "translation": "",
+   "translation": "跟它說話",
    "note": ""
   },
   {
@@ -69,7 +69,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use Card  ",
-   "translation": "",
+   "translation": "使用卡片",
    "note": ""
   },
   {
@@ -86,7 +86,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Your destiny    awaits...      ",
-   "translation": "",
+   "translation": "命運在等著你…",
    "note": ""
   },
   {
@@ -99,7 +99,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -112,7 +112,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Break It  ",
-   "translation": "",
+   "translation": "打破它",
    "note": ""
   },
   {
@@ -129,7 +129,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Hang tough,spacewarrior...     ",
-   "translation": "",
+   "translation": "撐住點，太空勇士…",
    "note": ""
   },
   {
@@ -142,7 +142,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -155,7 +155,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Search    ",
-   "translation": "",
+   "translation": "搜索",
    "note": ""
   },
   {
@@ -172,7 +172,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Don't stop now; Better decide. ",
-   "translation": "",
+   "translation": "別停下來，快做決定。",
    "note": ""
   },
   {
@@ -185,7 +185,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -198,7 +198,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Check Body",
-   "translation": "",
+   "translation": "檢查屍體",
    "note": ""
   },
   {
@@ -215,7 +215,7 @@
    "reachable": true,
    "same_as": "",
    "original": "What next,cosmicsoldier?       ",
-   "translation": "",
+   "translation": "接下來呢，宇宙戰士？",
    "note": ""
   },
   {
@@ -228,7 +228,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -241,7 +241,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use {C7}{D7}{E7}{F7}  ",
-   "translation": "",
+   "translation": "使用主機",
    "note": ""
   },
   {
@@ -258,7 +258,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Be wise. Many   hope you lose. ",
-   "translation": "",
+   "translation": "放聰明點，很多人希望你輸。",
    "note": ""
   },
   {
@@ -271,7 +271,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -284,7 +284,7 @@
    "reachable": true,
    "same_as": "",
    "original": "See Device",
-   "translation": "",
+   "translation": "查看裝置",
    "note": ""
   },
   {
@@ -297,7 +297,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use Device",
-   "translation": "",
+   "translation": "使用裝置",
    "note": ""
   },
   {
@@ -314,7 +314,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bogus! The safe is empty!      ",
-   "translation": "",
+   "translation": "唬爛！保險箱是空的！",
    "note": ""
   },
   {
@@ -331,7 +331,7 @@
    "reachable": true,
    "same_as": "",
    "original": "An IRA Map is inthe safe!      ",
-   "translation": "",
+   "translation": "保險箱裡有IRA地圖！",
    "note": ""
   },
   {
@@ -348,7 +348,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bogus! The alarmwent off.      ",
-   "translation": "",
+   "translation": "唬爛！警報器響了。",
    "note": ""
   },
   {
@@ -365,7 +365,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Alarm's off...  let's hit it.  ",
-   "translation": "",
+   "translation": "警報解除了…動手吧。",
    "note": ""
   },
   {
@@ -382,7 +382,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Jackpot! There'sa safe here.   ",
-   "translation": "",
+   "translation": "中獎了！這裡有保險箱。",
    "note": ""
   },
   {
@@ -399,7 +399,7 @@
    "reachable": true,
    "same_as": "",
    "original": "An E Pack is in the safe!      ",
-   "translation": "",
+   "translation": "保險箱裡有能量包！",
    "note": ""
   },
   {
@@ -416,7 +416,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's already    destroyed.     ",
-   "translation": "",
+   "translation": "已經被破壞了。",
    "note": ""
   },
   {
@@ -433,7 +433,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The security    lock is on.    ",
-   "translation": "",
+   "translation": "保全鎖已啟動。",
    "note": ""
   },
   {
@@ -450,7 +450,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We can't destroyit. Bummer.    ",
-   "translation": "",
+   "translation": "毀不了它，真衰。",
    "note": ""
   },
   {
@@ -467,7 +467,7 @@
    "reachable": true,
    "same_as": "",
    "original": "A weapon storageroom! Cool!    ",
-   "translation": "",
+   "translation": "武器倉庫！酷！",
    "note": ""
   },
   {
@@ -484,7 +484,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The PsychoGun.  Excellent!     ",
-   "translation": "",
+   "translation": "超能砲。太棒了！",
    "note": ""
   },
   {
@@ -501,7 +501,7 @@
    "reachable": true,
    "same_as": "",
    "original": "There is nothinginside.Too bad.",
-   "translation": "",
+   "translation": "裡面什麼都沒有，可惜。",
    "note": ""
   },
   {
@@ -518,7 +518,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Good going. A   jump device!   ",
-   "translation": "",
+   "translation": "做得好。一個跳躍裝置！",
    "note": ""
   },
   {
@@ -535,8 +535,8 @@
    "reachable": true,
    "same_as": "",
    "original": "No luck. This isa receiving {96}{A6}.",
-   "translation": "",
-   "note": ""
+   "translation": "沒用，這只是接收平台。",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU09.BIN:03D0",
@@ -552,7 +552,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The controls    appear broken. ",
-   "translation": "",
+   "translation": "控制台似乎壞了。",
    "note": ""
   },
   {
@@ -569,7 +569,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This must be a  control panel. ",
-   "translation": "",
+   "translation": "這應該是控制面板。",
    "note": ""
   },
   {
@@ -586,7 +586,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We wasted the   control panel! ",
-   "translation": "",
+   "translation": "我們破壞了控制面板！",
    "note": ""
   },
   {
@@ -603,7 +603,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The controls arealready fried! ",
-   "translation": "",
+   "translation": "控制台已經燒壞了！",
    "note": ""
   },
   {
@@ -620,7 +620,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Another day,    another enemy! ",
-   "translation": "",
+   "translation": "又是新的一天，新的敵人！",
    "note": ""
   },
   {
@@ -637,7 +637,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Give it up!     Nothing's here.",
-   "translation": "",
+   "translation": "放棄吧！這裡什麼都沒有。",
    "note": ""
   },
   {
@@ -654,7 +654,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Better stop. Theroom's empty.  ",
-   "translation": "",
+   "translation": "還是算了，房間是空的。",
    "note": ""
   },
   {
@@ -671,7 +671,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Look! Near the  body...        ",
-   "translation": "",
+   "translation": "看！在屍體附近…",
    "note": ""
   },
   {
@@ -688,7 +688,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's a SWEAT    crystal!       ",
-   "translation": "",
+   "translation": "是汗之水晶！",
    "note": ""
   },
   {
@@ -705,8 +705,8 @@
    "reachable": true,
    "same_as": "",
    "original": "Hmm. Must be a  sort of {C7}{D7}{E7}{F7}.  ",
-   "translation": "",
-   "note": ""
+   "translation": "嗯，應該是某種主機。",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU09.BIN:0510",
@@ -722,7 +722,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Conducting a CPUpattern match..",
-   "translation": "",
+   "translation": "電腦正在比對圖樣…",
    "note": ""
   },
   {
@@ -739,7 +739,7 @@
    "reachable": true,
    "same_as": "",
    "original": "OK. Here's an IDBadge.         ",
-   "translation": "",
+   "translation": "好，這是身份徽章。",
    "note": ""
   },
   {
@@ -756,7 +756,7 @@
    "reachable": true,
    "same_as": "",
    "original": "No match.  No   such ID exists.",
-   "translation": "",
+   "translation": "沒有比對到，查無此ID。",
    "note": ""
   },
   {
@@ -773,7 +773,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Jump devices    need an E Pack.",
-   "translation": "",
+   "translation": "跳躍裝置需要能量包。",
    "note": ""
   },
   {
@@ -790,7 +790,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This is a       security room. ",
-   "translation": "",
+   "translation": "這裡是保全室。",
    "note": ""
   },
   {
@@ -807,7 +807,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This opens the  Armor {91}{A1}{B1} lock.",
-   "translation": "",
+   "translation": "這能打開護甲室的鎖。",
    "note": ""
   },
   {
@@ -824,7 +824,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The lock is     opening.       ",
-   "translation": "",
+   "translation": "鎖正在打開。",
    "note": ""
   },
   {
@@ -841,7 +841,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Looks like the  lock is open.  ",
-   "translation": "",
+   "translation": "看來鎖已經打開了。",
    "note": ""
   },
   {
@@ -858,7 +858,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We passed some  kind of sensor.",
-   "translation": "",
+   "translation": "我們通過了某種感應器。",
    "note": ""
   },
   {
@@ -875,7 +875,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Find Melser's   Security Room. ",
-   "translation": "",
+   "translation": "找到梅爾瑟的保全室。",
    "note": ""
   },
   {
@@ -892,7 +892,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Get a clue. Go  to a VIP room! ",
-   "translation": "",
+   "translation": "要拿線索，去VIP室！",
    "note": ""
   },
   {
@@ -909,8 +909,8 @@
    "reachable": true,
    "same_as": "",
    "original": "Get to Melser   from {8D}{9D}{AD} {92}{A2}{B2}.  ",
-   "translation": "",
-   "note": ""
+   "translation": "從文物店前往梅爾瑟。",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU09.BIN:0690",
@@ -926,7 +926,7 @@
    "reachable": true,
    "same_as": "",
    "original": "PsychoOFF is in the basement.  ",
-   "translation": "",
+   "translation": "超能控制室在地下室。",
    "note": ""
   },
   {
@@ -943,7 +943,7 @@
    "reachable": true,
    "same_as": "",
    "original": "An ID Badge is  hidden here.   ",
-   "translation": "",
+   "translation": "這裡藏著身份徽章。",
    "note": ""
   },
   {
@@ -960,7 +960,7 @@
    "reachable": true,
    "same_as": "",
    "original": "A cystal is in  the NE corner! ",
-   "translation": "",
+   "translation": "水晶在東北角！",
    "note": ""
   },
   {
@@ -977,7 +977,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Zapped by the   Psycho Shield! ",
-   "translation": "",
+   "translation": "被超能防護盾電到了！",
    "note": ""
   },
   {
@@ -994,7 +994,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Don't give up   yet! What next?",
-   "translation": "",
+   "translation": "先別放棄！接下來呢？",
    "note": ""
   },
   {
@@ -1007,7 +1007,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cancel    ",
-   "translation": "",
+   "translation": "取消",
    "note": ""
   },
   {
@@ -1020,7 +1020,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Do It     ",
-   "translation": "",
+   "translation": "動手",
    "note": ""
   },
   {
@@ -1037,7 +1037,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Yea!We fried thePsycho Shield!!",
-   "translation": "",
+   "translation": "耶！我們燒毀超能防護盾了！！",
    "note": ""
   }
  ]

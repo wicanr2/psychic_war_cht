@@ -17,7 +17,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Any great ideas,comrades?      ",
-   "translation": "",
+   "translation": "有什麼好主意嗎，夥伴們？",
    "note": ""
   },
   {
@@ -30,7 +30,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -43,7 +43,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Break safe",
-   "translation": "",
+   "translation": "撬開保險箱",
    "note": ""
   },
   {
@@ -56,7 +56,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Talk to it",
-   "translation": "",
+   "translation": "跟它說話",
    "note": ""
   },
   {
@@ -69,7 +69,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use card  ",
-   "translation": "",
+   "translation": "使用卡片",
    "note": ""
   },
   {
@@ -86,7 +86,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Know a password we should use? ",
-   "translation": "",
+   "translation": "知道我們該用的密碼嗎？",
    "note": ""
   },
   {
@@ -99,7 +99,7 @@
    "reachable": true,
    "same_as": "",
    "original": "NOSHOES!  ",
-   "translation": "",
+   "translation": "NOSHOES!",
    "note": ""
   },
   {
@@ -116,7 +116,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Let's not waste time, soldiers.",
-   "translation": "",
+   "translation": "別浪費時間了，戰士們。",
    "note": ""
   },
   {
@@ -129,7 +129,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -142,8 +142,8 @@
    "reachable": true,
    "same_as": "",
    "original": "Smash {C7}{D7}{E7}{F7}",
-   "translation": "",
-   "note": ""
+   "translation": "砸毀主機",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU02.BIN:0100",
@@ -159,7 +159,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Not a lot of    options here...",
-   "translation": "",
+   "translation": "這裡的選項不多…",
    "note": ""
   },
   {
@@ -172,7 +172,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -185,7 +185,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Search    ",
-   "translation": "",
+   "translation": "搜尋",
    "note": ""
   },
   {
@@ -202,7 +202,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We've got to do something!     ",
-   "translation": "",
+   "translation": "我們得做點什麼！",
    "note": ""
   },
   {
@@ -215,7 +215,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -228,7 +228,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Check room",
-   "translation": "",
+   "translation": "檢查房間",
    "note": ""
   },
   {
@@ -245,7 +245,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Hey! What do yousay, soldiers? ",
-   "translation": "",
+   "translation": "嘿！你們怎麼看，戰士們？",
    "note": ""
   },
   {
@@ -258,7 +258,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -271,7 +271,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Help out  ",
-   "translation": "",
+   "translation": "幫忙",
    "note": ""
   },
   {
@@ -288,7 +288,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's empty 'cuz we took it.    ",
-   "translation": "",
+   "translation": "空了，因為被我們拿走了。",
    "note": ""
   },
   {
@@ -305,7 +305,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's locked! We were detected. ",
-   "translation": "",
+   "translation": "被鎖住了！我們被發現了。",
    "note": ""
   },
   {
@@ -322,7 +322,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bummer! The safeis empty.      ",
-   "translation": "",
+   "translation": "衰！保險箱是空的。",
    "note": ""
   },
   {
@@ -339,7 +339,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Aaugh! It's in  tiny pieces.   ",
-   "translation": "",
+   "translation": "啊啊！碎成一堆小碎片了。",
    "note": ""
   },
   {
@@ -356,7 +356,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Whatever it was is useless now.",
-   "translation": "",
+   "translation": "不管那是什麼，現在都沒用了。",
    "note": ""
   },
   {
@@ -373,7 +373,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We have Map PY, so it's OK.    ",
-   "translation": "",
+   "translation": "我們有PY地圖，沒問題。",
    "note": ""
   },
   {
@@ -390,7 +390,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Shoot. It's beendestroyed.     ",
-   "translation": "",
+   "translation": "可惡，已經被摧毀了。",
    "note": ""
   },
   {
@@ -407,7 +407,7 @@
    "reachable": true,
    "same_as": "",
    "original": "No way. It can'tbe destroyed.  ",
-   "translation": "",
+   "translation": "不可能，它沒辦法被摧毀。",
    "note": ""
   },
   {
@@ -424,7 +424,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Hmm.  Nothing   happens.       ",
-   "translation": "",
+   "translation": "嗯，什麼都沒發生。",
    "note": ""
   },
   {
@@ -441,7 +441,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Maybe it's the  wrong password.",
-   "translation": "",
+   "translation": "也許密碼不對。",
    "note": ""
   },
   {
@@ -458,7 +458,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's no use.It'ssealed tight.  ",
-   "translation": "",
+   "translation": "沒用的，被封死了。",
    "note": ""
   },
   {
@@ -475,7 +475,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's busted, so it won't work. ",
-   "translation": "",
+   "translation": "壞掉了，沒辦法用。",
    "note": ""
   },
   {
@@ -492,7 +492,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cool! We found  map PY.        ",
-   "translation": "",
+   "translation": "酷！我們找到了PY地圖。",
    "note": ""
   },
   {
@@ -509,7 +509,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We found a safe.Excellent work!",
-   "translation": "",
+   "translation": "我們找到保險箱，做得好！",
    "note": ""
   },
   {
@@ -526,8 +526,8 @@
    "reachable": true,
    "same_as": "",
    "original": "It's Celtac's   Defense {C1}{D1}{E1}{F1}!  ",
-   "translation": "",
-   "note": ""
+   "translation": "這是塞爾塔克的防禦控制室！",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU02.BIN:03D0",
@@ -543,7 +543,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Now we can reachCeltac easily! ",
-   "translation": "",
+   "translation": "現在能輕鬆到塞爾塔克了！",
    "note": ""
   },
   {
@@ -560,7 +560,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We can land on  Celtac freely! ",
-   "translation": "",
+   "translation": "現在能自由降落塞爾塔克！",
    "note": ""
   },
   {
@@ -577,8 +577,8 @@
    "reachable": true,
    "same_as": "",
    "original": "Attack {C7}{D7}{E7}{F7} is  already toast. ",
-   "translation": "",
-   "note": ""
+   "translation": "攻擊主機已經報廢了。",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU02.BIN:0430",
@@ -594,7 +594,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We found a jump device!        ",
-   "translation": "",
+   "translation": "我們找到跳躍裝置了！",
    "note": ""
   },
   {
@@ -611,7 +611,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We can't jump   from here.     ",
-   "translation": "",
+   "translation": "這裡沒辦法跳躍。",
    "note": ""
   },
   {
@@ -628,7 +628,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Chia-B was in   the back room! ",
-   "translation": "",
+   "translation": "琪亞B就在後面的房間裡！",
    "note": ""
   },
   {
@@ -645,7 +645,7 @@
    "reachable": true,
    "same_as": "",
    "original": "What a drag. Theroom's empty.  ",
-   "translation": "",
+   "translation": "真掃興，房間是空的。",
    "note": ""
   },
   {
@@ -662,7 +662,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This room looks like a lab.    ",
-   "translation": "",
+   "translation": "這房間看起來像實驗室。",
    "note": ""
   },
   {
@@ -679,7 +679,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The capsule has someone in it. ",
-   "translation": "",
+   "translation": "膠囊裡有人。",
    "note": ""
   },
   {
@@ -696,7 +696,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Reach more basesusing {94}{A4}{B4}{C4} {96}{A6}s.",
-   "translation": "",
+   "translation": "運用發射台前往更多基地。",
    "note": ""
   },
   {
@@ -713,7 +713,7 @@
    "reachable": true,
    "same_as": "",
    "original": "To reach Celtac,smash DEF COM. ",
-   "translation": "",
+   "translation": "要到塞爾塔克，得砸毀DEF COM。",
    "note": ""
   },
   {
@@ -730,7 +730,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Look for clues  in the west.   ",
-   "translation": "",
+   "translation": "去西邊找線索。",
    "note": ""
   },
   {
@@ -747,7 +747,7 @@
    "reachable": true,
    "same_as": "",
    "original": "At Zellwal, you can get armor. ",
-   "translation": "",
+   "translation": "在濟爾沃可以拿到護甲。",
    "note": ""
   },
   {
@@ -764,8 +764,8 @@
    "reachable": true,
    "same_as": "",
    "original": "Take Map PY to  the {8D}{9D}{AD} {92}{A2}{B2}... ",
-   "translation": "",
-   "note": ""
+   "translation": "把PY地圖拿去文物店…",
+   "note": "自訂字模依 workplace/l10n/glyph-words.json 修正"
   },
   {
    "key": "I_MENU02.BIN:0590",
@@ -781,7 +781,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Watch out for   BioBeasts!     ",
-   "translation": "",
+   "translation": "小心生化合成獸！",
    "note": ""
   }
  ]

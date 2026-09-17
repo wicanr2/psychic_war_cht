@@ -17,7 +17,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Way to go,cosmicsoldiers!      ",
-   "translation": "",
+   "translation": "做得好，太空戰士們！",
    "note": ""
   },
   {
@@ -30,7 +30,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -43,7 +43,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use Device",
-   "translation": "",
+   "translation": "使用裝置",
    "note": ""
   },
   {
@@ -56,7 +56,7 @@
    "reachable": true,
    "same_as": "",
    "original": "See Device",
-   "translation": "",
+   "translation": "查看裝置",
    "note": ""
   },
   {
@@ -73,7 +73,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Think of what todo - quickly!  ",
-   "translation": "",
+   "translation": "快想想該怎麼做！",
    "note": ""
   },
   {
@@ -86,7 +86,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -99,7 +99,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Search    ",
-   "translation": "",
+   "translation": "搜尋",
    "note": ""
   },
   {
@@ -116,7 +116,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Such a deal.Whatshould we do?  ",
-   "translation": "",
+   "translation": "真划算，該怎麼辦？",
    "note": ""
   },
   {
@@ -129,7 +129,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -142,7 +142,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Smash Safe",
-   "translation": "",
+   "translation": "砸保險箱",
    "note": ""
   },
   {
@@ -155,7 +155,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Talk to It",
-   "translation": "",
+   "translation": "跟它說話",
    "note": ""
   },
   {
@@ -168,7 +168,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use Card  ",
-   "translation": "",
+   "translation": "使用卡片",
    "note": ""
   },
   {
@@ -185,7 +185,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Most excellent! A data device! ",
-   "translation": "",
+   "translation": "太棒了！是資料裝置！",
    "note": ""
   },
   {
@@ -202,7 +202,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Darn! The outputis scrambled.  ",
-   "translation": "",
+   "translation": "可惡！輸出資料是亂碼。",
    "note": ""
   },
   {
@@ -219,7 +219,7 @@
    "reachable": true,
    "same_as": "",
    "original": "I can't decipherany of it.     ",
-   "translation": "",
+   "translation": "我完全看不懂這些。",
    "note": ""
   },
   {
@@ -236,7 +236,7 @@
    "reachable": true,
    "same_as": "",
    "original": "  A message!       NODICE!!    ",
-   "translation": "",
+   "translation": "有訊息！NODICE!!",
    "note": ""
   },
   {
@@ -253,7 +253,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bonus! We have  the password.  ",
-   "translation": "",
+   "translation": "賺到！我們拿到密碼了。",
    "note": ""
   },
   {
@@ -270,7 +270,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We can get the  data we need.  ",
-   "translation": "",
+   "translation": "我們能拿到需要的資料。",
    "note": ""
   },
   {
@@ -287,7 +287,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Checking the eyepattern...     ",
-   "translation": "",
+   "translation": "正在核對眼紋…",
    "note": ""
   },
   {
@@ -304,7 +304,7 @@
    "reachable": true,
    "same_as": "",
    "original": "OK. Please pass through.       ",
-   "translation": "",
+   "translation": "好，請通過。",
    "note": ""
   },
   {
@@ -321,7 +321,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Incorrect ID.   You can't pass.",
-   "translation": "",
+   "translation": "身份錯誤，不能通過。",
    "note": ""
   },
   {
@@ -338,7 +338,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Yea! Another onebites the dust!",
-   "translation": "",
+   "translation": "耶！又幹掉一個！",
    "note": ""
   },
   {
@@ -355,7 +355,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bogus. Nothing'shere.          ",
-   "translation": "",
+   "translation": "唬爛，這裡什麼都沒有。",
    "note": ""
   },
   {
@@ -372,7 +372,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Look! Something from the enemy!",
-   "translation": "",
+   "translation": "看！是敵人的東西！",
    "note": ""
   },
   {
@@ -389,7 +389,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bonus! The TEARSCrystal!       ",
-   "translation": "",
+   "translation": "賺到！是淚之水晶！",
    "note": ""
   },
   {
@@ -406,7 +406,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bag it. The lockwon't come off.",
-   "translation": "",
+   "translation": "算了，這個鎖打不開。",
    "note": ""
   },
   {
@@ -423,7 +423,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Argh! It locked.We're busted.  ",
-   "translation": "",
+   "translation": "啊！鎖住了，我們被逮到了。",
    "note": ""
   },
   {
@@ -440,7 +440,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Locked tight... Now what?      ",
-   "translation": "",
+   "translation": "鎖得死緊…現在怎麼辦？",
    "note": ""
   },
   {
@@ -457,7 +457,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We snagged a guncartridge!     ",
-   "translation": "",
+   "translation": "我們弄到一個槍械卡帶！",
    "note": ""
   },
   {
@@ -474,7 +474,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Darn it! The    safe is empty. ",
-   "translation": "",
+   "translation": "可惡！保險箱是空的。",
    "note": ""
   },
   {
@@ -491,7 +491,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Most terrific!  A safe!        ",
-   "translation": "",
+   "translation": "太棒了！是保險箱！",
    "note": ""
   },
   {
@@ -508,7 +508,7 @@
    "reachable": true,
    "same_as": "",
    "original": "An E-Pack is on the 4th floor. ",
-   "translation": "",
+   "translation": "四樓有能量包。",
    "note": ""
   },
   {
@@ -525,7 +525,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Lever B-Rusteck Lever C-Sivad  ",
-   "translation": "",
+   "translation": "B桿-魯斯德克\nC桿-賽瓦德",
    "note": ""
   },
   {
@@ -542,7 +542,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Lever D-Zellwal Lever P-Shua   ",
-   "translation": "",
+   "translation": "D桿-濟爾沃\nP桿-舒亞",
    "note": ""
   },
   {
@@ -559,7 +559,7 @@
    "reachable": true,
    "same_as": "",
    "original": "PsychoOFF? On  nthe 11th floor.",
-   "translation": "",
+   "translation": "超能控制室？在11樓。",
    "note": ""
   },
   {
@@ -576,7 +576,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The base's doorsare confusing. ",
-   "translation": "",
+   "translation": "這個基地的門很讓人搞混。",
    "note": ""
   },
   {
@@ -593,7 +593,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Watch it. Strongbeasts lurk.   ",
-   "translation": "",
+   "translation": "小心，這裡潛伏著強悍的怪獸。",
    "note": ""
   },
   {
@@ -610,7 +610,7 @@
    "reachable": true,
    "same_as": "",
    "original": "This is Celtac's{95}{A5}{B5}{C5}{D5}{96}{A6}.       ",
-   "translation": "",
+   "translation": "這裡是塞爾塔克的降落平台。",
    "note": ""
   },
   {
@@ -627,7 +627,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It's the RODAN  cartridge.     ",
-   "translation": "",
+   "translation": "是拉頓能量匣。",
    "note": ""
   },
   {
@@ -644,7 +644,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Look for a jump device.        ",
-   "translation": "",
+   "translation": "找找跳躍裝置。",
    "note": ""
   },
   {
@@ -661,7 +661,7 @@
    "reachable": true,
    "same_as": "",
    "original": "A jump device   uses an E Pack.",
-   "translation": "",
+   "translation": "跳躍裝置需要能量包。",
    "note": ""
   },
   {
@@ -678,7 +678,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The choice is   yours,spaceman!",
-   "translation": "",
+   "translation": "太空人，由你決定了！",
    "note": ""
   },
   {
@@ -691,7 +691,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -704,7 +704,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use Device",
-   "translation": "",
+   "translation": "使用裝置",
    "note": ""
   },
   {
@@ -721,7 +721,7 @@
    "reachable": true,
    "same_as": "",
    "original": "E Pack is set...Want to jump?  ",
-   "translation": "",
+   "translation": "能量包裝好了…\n要跳躍嗎？",
    "note": ""
   },
   {
@@ -734,7 +734,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Not yet   ",
-   "translation": "",
+   "translation": "還沒",
    "note": ""
   },
   {
@@ -747,7 +747,7 @@
    "reachable": true,
    "same_as": "",
    "original": "You bet   ",
-   "translation": "",
+   "translation": "當然",
    "note": ""
   }
  ]

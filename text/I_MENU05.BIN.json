@@ -17,7 +17,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Ok. Here's what we can do...   ",
-   "translation": "",
+   "translation": "好，我們可以這麼做…",
    "note": ""
   },
   {
@@ -30,7 +30,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -43,7 +43,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Search    ",
-   "translation": "",
+   "translation": "搜尋",
    "note": ""
   },
   {
@@ -60,7 +60,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Let's see you   figure it out. ",
-   "translation": "",
+   "translation": "讓我們瞧瞧你怎麼解決。",
    "note": ""
   },
   {
@@ -73,7 +73,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -86,7 +86,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Break Safe",
-   "translation": "",
+   "translation": "撬保險箱",
    "note": ""
   },
   {
@@ -99,7 +99,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Talk to it",
-   "translation": "",
+   "translation": "跟它說話",
    "note": ""
   },
   {
@@ -112,7 +112,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use Card  ",
-   "translation": "",
+   "translation": "使用卡片",
    "note": ""
   },
   {
@@ -129,7 +129,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Don't blow it   now...         ",
-   "translation": "",
+   "translation": "現在別搞砸了…",
    "note": ""
   },
   {
@@ -142,7 +142,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -155,7 +155,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Take Armor",
-   "translation": "",
+   "translation": "拿走護甲",
    "note": ""
   },
   {
@@ -172,7 +172,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Who needs       protection?    ",
-   "translation": "",
+   "translation": "誰需要護甲？",
    "note": ""
   },
   {
@@ -185,7 +185,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Nobody    ",
-   "translation": "",
+   "translation": "沒有人",
    "note": ""
   },
   {
@@ -198,7 +198,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#1        ",
-   "translation": "",
+   "translation": "#1",
    "note": ""
   },
   {
@@ -211,7 +211,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#2        ",
-   "translation": "",
+   "translation": "#2",
    "note": ""
   },
   {
@@ -224,7 +224,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#3        ",
-   "translation": "",
+   "translation": "#3",
    "note": ""
   },
   {
@@ -237,7 +237,7 @@
    "reachable": true,
    "same_as": "",
    "original": "#4        ",
-   "translation": "",
+   "translation": "#4",
    "note": ""
   },
   {
@@ -254,7 +254,7 @@
    "reachable": true,
    "same_as": "",
    "original": "An excellent    opportunity!   ",
-   "translation": "",
+   "translation": "大好機會！",
    "note": ""
   },
   {
@@ -267,7 +267,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Leave     ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -280,7 +280,7 @@
    "reachable": true,
    "same_as": "",
    "original": "See Device",
-   "translation": "",
+   "translation": "查看裝置",
    "note": ""
   },
   {
@@ -293,7 +293,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Use Device",
-   "translation": "",
+   "translation": "使用裝置",
    "note": ""
   },
   {
@@ -310,7 +310,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Isn't this a    pharmacy?      ",
-   "translation": "",
+   "translation": "這裡不是藥局嗎？",
    "note": ""
   },
   {
@@ -327,7 +327,7 @@
    "reachable": true,
    "same_as": "",
    "original": "What a waste;   nothing's here.",
-   "translation": "",
+   "translation": "真浪費，這裡什麼都沒有。",
    "note": ""
   },
   {
@@ -344,7 +344,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bonus! 10 more  Yontry!        ",
-   "translation": "",
+   "translation": "賺到！又拿到10瓶體力恢復劑！",
    "note": ""
   },
   {
@@ -361,7 +361,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Smooth move!    A safe!        ",
-   "translation": "",
+   "translation": "漂亮！是保險箱！",
    "note": ""
   },
   {
@@ -378,7 +378,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Rats! We can't  break the lock.",
-   "translation": "",
+   "translation": "可惡！撬不開這個鎖。",
    "note": ""
   },
   {
@@ -395,7 +395,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cool! We got theTurboGun!      ",
-   "translation": "",
+   "translation": "酷！拿到強力加速砲了！",
    "note": ""
   },
   {
@@ -412,7 +412,7 @@
    "reachable": true,
    "same_as": "",
    "original": "There's nothing inside. Shoot! ",
-   "translation": "",
+   "translation": "裡面什麼都沒有，糟了！",
    "note": ""
   },
   {
@@ -429,7 +429,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Locked! We've   been spotted!  ",
-   "translation": "",
+   "translation": "鎖住了！我們被發現了！",
    "note": ""
   },
   {
@@ -446,7 +446,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Now we can't do anything. Argh!",
-   "translation": "",
+   "translation": "現在什麼都做不了，啊！",
    "note": ""
   },
   {
@@ -463,7 +463,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Look over there!Some armor!    ",
-   "translation": "",
+   "translation": "看那邊！有護甲！",
    "note": ""
   },
   {
@@ -480,7 +480,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Great! RAMZES 6 armor.         ",
-   "translation": "",
+   "translation": "太好了！拉姆西斯6號護甲。",
    "note": ""
   },
   {
@@ -497,7 +497,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It looks like wehave output!   ",
-   "translation": "",
+   "translation": "看來我們有輸出資料了！",
    "note": ""
   },
   {
@@ -514,7 +514,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The password!      NOSHOES!    ",
-   "translation": "",
+   "translation": "密碼是：NOSHOES！",
    "note": ""
   },
   {
@@ -531,7 +531,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Hey! Snag Koorakoff of the CPU.",
-   "translation": "",
+   "translation": "嘿！把庫拉克從電腦裡弄出來。",
    "note": ""
   },
   {
@@ -548,7 +548,7 @@
    "reachable": true,
    "same_as": "",
    "original": "We can scam somedata here.     ",
-   "translation": "",
+   "translation": "我們可以在這裡弄到一些資料。",
    "note": ""
   },
   {
@@ -565,7 +565,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It must be a    data device!   ",
-   "translation": "",
+   "translation": "這一定是資料裝置！",
    "note": ""
   },
   {
@@ -582,7 +582,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Oh,no!The outputis scrambled!  ",
-   "translation": "",
+   "translation": "糟了！輸出資料亂碼了！",
    "note": ""
   },
   {
@@ -599,7 +599,7 @@
    "reachable": true,
    "same_as": "",
    "original": "It doesn't make any sense.     ",
-   "translation": "",
+   "translation": "完全看不懂。",
    "note": ""
   },
   {
@@ -616,7 +616,7 @@
    "reachable": true,
    "same_as": "",
    "original": "BioBeasts can bedefeated here. ",
-   "translation": "",
+   "translation": "這裡能打倒生化合成獸。",
    "note": ""
   },
   {
@@ -633,7 +633,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Watch your step,Psychic Soldier",
-   "translation": "",
+   "translation": "小心腳下，超能戰士。",
    "note": ""
   },
   {
@@ -650,7 +650,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Kayla's Decoder is hidden here.",
-   "translation": "",
+   "translation": "凱拉的解碼器藏在這裡。",
    "note": ""
   },
   {
@@ -667,7 +667,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Psychic Soldiersneed turboguns.",
-   "translation": "",
+   "translation": "超能戰士需要強力加速砲。",
    "note": ""
   },
   {
@@ -684,7 +684,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The jump device needs a E Pack.",
-   "translation": "",
+   "translation": "跳躍裝置需要能量包。",
    "note": ""
   },
   {
@@ -701,7 +701,7 @@
    "reachable": true,
    "same_as": "",
    "original": "There is armor  on this base.  ",
-   "translation": "",
+   "translation": "這個基地裡有護甲。",
    "note": ""
   },
   {
@@ -718,7 +718,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Look for a      computer room. ",
-   "translation": "",
+   "translation": "找找看電腦室在哪。",
    "note": ""
   },
   {
@@ -735,7 +735,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Yontry does a   body good.     ",
-   "translation": "",
+   "translation": "體力恢復劑對身體很好。",
    "note": ""
   }
  ]

@@ -13,7 +13,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{D4}{E4}{F4}{91}{A1}{B1} ",
-   "translation": "",
+   "translation": "NRS室",
    "note": ""
   },
   {
@@ -26,7 +26,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{AF}{BF}{CF}{DF}{91}{A1}{B1} ",
-   "translation": "",
+   "translation": "儲藏室",
    "note": ""
   },
   {
@@ -39,7 +39,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{AF}{BF}{CF}{DF}{91}{A1}{B1} ",
-   "translation": "",
+   "translation": "儲藏室",
    "note": ""
   },
   {
@@ -52,7 +52,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{8B}{9B}{91}{A1}{B1}  ",
-   "translation": "",
+   "translation": "貴賓室",
    "note": ""
   },
   {
@@ -65,7 +65,7 @@
    "reachable": true,
    "same_as": "",
    "original": "GATE   ",
-   "translation": "",
+   "translation": "閘門",
    "note": ""
   },
   {
@@ -78,7 +78,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{95}{A5}{B5}{C5}{D5}{96}{A6}",
-   "translation": "",
+   "translation": "降落平台",
    "note": ""
   },
   {
@@ -91,7 +91,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Bank    ",
-   "translation": "",
+   "translation": "銀行",
    "note": ""
   },
   {
@@ -104,7 +104,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{8F}{9F} {91}{A1}{B1} ",
-   "translation": "",
+   "translation": "臥室",
    "note": ""
   },
   {
@@ -117,7 +117,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Lounge  ",
-   "translation": "",
+   "translation": "休息室",
    "note": ""
   },
   {
@@ -130,7 +130,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Library",
-   "translation": "",
+   "translation": "圖書室",
    "note": ""
   },
   {
@@ -143,7 +143,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Gym     ",
-   "translation": "",
+   "translation": "健身房",
    "note": ""
   },
   {
@@ -156,7 +156,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Storage",
-   "translation": "",
+   "translation": "倉庫",
    "note": ""
   },
   {
@@ -169,7 +169,7 @@
    "reachable": true,
    "same_as": "",
    "original": "I/O Room",
-   "translation": "",
+   "translation": "I/O室",
    "note": ""
   },
   {
@@ -182,7 +182,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Jail   ",
-   "translation": "",
+   "translation": "監獄",
    "note": ""
   },
   {
@@ -195,7 +195,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Cafe    ",
-   "translation": "",
+   "translation": "咖啡廳",
    "note": ""
   },
   {
@@ -208,7 +208,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Disco  ",
-   "translation": "",
+   "translation": "舞廳",
    "note": ""
   },
   {
@@ -221,7 +221,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{89}{99}{A9}{B9}{91}{A1}{B1} ",
-   "translation": "",
+   "translation": "雷達室",
    "note": ""
   },
   {
@@ -234,7 +234,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Kiosk  ",
-   "translation": "",
+   "translation": "販賣亭",
    "note": ""
   },
   {
@@ -247,7 +247,7 @@
    "reachable": true,
    "same_as": "",
    "original": "{94}{A4}{B4}{C4} {96}{A6} ",
-   "translation": "",
+   "translation": "發射台",
    "note": ""
   },
   {
@@ -260,7 +260,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Elevator",
-   "translation": "",
+   "translation": "電梯",
    "note": ""
   },
   {
@@ -273,7 +273,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Elevator",
-   "translation": "",
+   "translation": "電梯",
    "note": ""
   },
   {
@@ -286,7 +286,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Elevator",
-   "translation": "",
+   "translation": "電梯",
    "note": ""
   },
   {
@@ -299,7 +299,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Elevator",
-   "translation": "",
+   "translation": "電梯",
    "note": ""
   }
  ]
