@@ -1,0 +1,37 @@
+{
+ "schema": "psychic-war-glossary/1",
+ "note": "人名、地名、超能力名稱。優先沿用軟體世界代理版說明書；說明書沒有的標 provisional。",
+ "entries": [
+  {
+   "en": "Samar",
+   "zh": "薩瑪",
+   "kind": "place",
+   "source": "說明書 p.21「薩瑪貿易站（SAMAR）」"
+  },
+  {
+   "en": "Sivad",
+   "zh": "賽瓦德",
+   "kind": "place",
+   "source": "說明書 p.22「賽瓦德衛星站（SIVAD）」"
+  },
+  {
+   "en": "Zellwal",
+   "zh": "濟爾沃",
+   "kind": "place",
+   "source": "說明書 p.22「濟爾沃衛星站（ZELLWAL）」"
+  },
+  {
+   "en": "Rusteck",
+   "zh": "魯斯德克",
+   "kind": "place",
+   "source": "說明書 p.23「魯斯德克Ⅰ衛星站（RUSTECK I）」"
+  },
+  {
+   "en": "Celtac",
+   "zh": "塞爾塔克",
+   "kind": "place",
+   "source": "",
+   "provisional": true
+  }
+ ]
+}

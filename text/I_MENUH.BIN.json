@@ -832,7 +832,7 @@
    "reachable": true,
    "same_as": "",
    "original": "You can't move  forward here.  ",
-   "translation": "",
+   "translation": "這裡無法前進。",
    "note": ""
   },
   {
@@ -1478,7 +1478,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Our destination is up to you...",
-   "translation": "",
+   "translation": "要去哪裡，由你決定……",
    "note": ""
   },
   {
@@ -1491,7 +1491,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Exit Port ",
-   "translation": "",
+   "translation": "離開",
    "note": ""
   },
   {
@@ -1504,7 +1504,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Samar     ",
-   "translation": "",
+   "translation": "薩瑪",
    "note": ""
   },
   {
@@ -1517,7 +1517,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Sivad     ",
-   "translation": "",
+   "translation": "賽瓦德",
    "note": ""
   },
   {
@@ -1530,7 +1530,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Sivad     ",
-   "translation": "",
+   "translation": "賽瓦德",
    "note": ""
   },
   {
@@ -1543,7 +1543,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Zellwal   ",
-   "translation": "",
+   "translation": "濟爾沃",
    "note": ""
   },
   {
@@ -1556,7 +1556,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Zellwal   ",
-   "translation": "",
+   "translation": "濟爾沃",
    "note": ""
   },
   {
@@ -1569,7 +1569,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Rusteck   ",
-   "translation": "",
+   "translation": "魯斯德克",
    "note": ""
   },
   {
@@ -1582,7 +1582,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Rusteck   ",
-   "translation": "",
+   "translation": "魯斯德克",
    "note": ""
   },
   {
@@ -1595,8 +1595,8 @@
    "reachable": true,
    "same_as": "",
    "original": "Celtac    ",
-   "translation": "",
-   "note": ""
+   "translation": "塞爾塔克",
+   "note": "Celtac 在說明書第 21–23 頁沒有出現，暫譯"
   },
   {
    "key": "I_MENUH.BIN:0AB0",

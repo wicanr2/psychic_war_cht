@@ -300,9 +300,10 @@ def cmd_build(orig, text_dir):
 def load_text(text_dir):
     out = {}
     for p in sorted(pathlib.Path(text_dir).glob("*.json")):
-        if p.name == "sources.json":
-            continue
-        for e in json.loads(p.read_text(encoding="utf-8"))["entries"]:
+        doc = json.loads(p.read_text(encoding="utf-8"))
+        if doc.get("schema") != "psychic-war-text/1":
+            continue  # sources.json、glossary.json 等不是文本檔
+        for e in doc["entries"]:
             out[e["key"]] = e
     return out
 

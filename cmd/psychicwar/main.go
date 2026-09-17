@@ -25,6 +25,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 	"github.com/wicanr2/dosgolem/oracle"
 	"github.com/wicanr2/psychic_war_cht/apps/psychicwar"
+	"github.com/wicanr2/psychic_war_cht/apps/psychicwar/overlay"
 )
 
 const sampleRate = 44100
@@ -50,6 +51,11 @@ type game struct {
 	lastStat    time.Time
 	intercepted int
 	exitErr     error
+
+	tr      *psychicwar.Translator // -text：中文疊字（docs/spec/008），nil ＝ 停用
+	font    overlay.Font
+	over    *ebiten.Image
+	overPix []byte
 }
 
 func (g *game) machineMs() float64 {
@@ -89,6 +95,9 @@ func (g *game) Update() error {
 			g.exitErr = err
 			return err
 		}
+	}
+	if g.tr != nil {
+		g.tr.Frame(g.o)
 	}
 	pcm := g.audio.Render()
 	g.ring.Write(pcm)
@@ -139,6 +148,13 @@ func (g *game) Draw(dst *ebiten.Image) {
 	op.GeoM.Scale(float64(g.scale), float64(g.scale))
 	op.Filter = ebiten.FilterNearest
 	dst.DrawImage(g.screen, &op)
+	if g.tr != nil {
+		clear(g.overPix)
+		if g.tr.Layer.Draw(g.overPix, g.scale, g.font, g.tr.MissingGlyph) {
+			g.over.WritePixels(g.overPix)
+			dst.DrawImage(g.over, nil)
+		}
+	}
 }
 
 func (g *game) Layout(int, int) (int, int) { return 320 * g.scale, 200 * g.scale }
@@ -243,6 +259,9 @@ func main() {
 	statsPath := flag.String("stats", "", "每秒寫一行 JSON 量測")
 	quitAfter := flag.Duration("quit-after", 0, "牆上時間到了自己結束（自動驗收用）")
 	wavPath := flag.String("wav", "", "把送給音效卡的取樣另存成 WAV（驗證聲音內容用）")
+	textDir := flag.String("text", "text", "文本檔目錄（docs/spec/007）；空字串停用中文疊字")
+	fontPath := flag.String("font", "font/cjk24.bin", "中文字型子集（tools/font/bake.sh）")
+	textLog := flag.String("text-log", "", "轉譯紀錄（JSON Lines）")
 	flag.Parse()
 	if *orig == "" {
 		flag.Usage()
@@ -276,6 +295,32 @@ func main() {
 		quitAfter: *quitAfter,
 	}
 	g.audio = o.NewAudio(sampleRate)
+	if *textDir != "" {
+		if *scale%3 != 0 {
+			log.Printf("-scale %d 不是 3 的倍數，停用中文疊字（docs/spec/008 §3.5）", *scale)
+		} else {
+			entries, err := psychicwar.LoadText(*textDir)
+			if err != nil {
+				log.Fatal(err)
+			}
+			if g.font, err = overlay.LoadFont(*fontPath); err != nil {
+				log.Fatal(err)
+			}
+			var w io.Writer
+			if *textLog != "" {
+				f, err := os.Create(*textLog)
+				if err != nil {
+					log.Fatal(err)
+				}
+				defer f.Close()
+				w = f
+			}
+			g.tr = psychicwar.NewTranslator(entries, w)
+			g.tr.Attach(o)
+			g.over = ebiten.NewImage(320**scale, 200**scale)
+			g.overPix = make([]byte, 4*320**scale*200**scale)
+		}
+	}
 	g.ring.Write(make([]int16, sampleRate/20)) // 預填 50 ms 靜音
 	if *statsPath != "" {
 		if g.stats, err = os.Create(*statsPath); err != nil {

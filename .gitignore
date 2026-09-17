@@ -14,3 +14,6 @@
 # 解開的原版、快照、暫存輸出
 /workplace/
 /.out/
+
+# Python 快取
+__pycache__/
