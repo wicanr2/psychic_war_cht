@@ -160,98 +160,100 @@ dosgolem 的覆蓋率記的是**指令起點**，不是 byte；「執行過的�
 
 ## 附錄 A：PW_UNP.EXE 全部 `INT` 呼叫點
 
+「段:位移」以段基底計，與執行期 `CS:IP` 的位移相同（`seg002` → `0161`、`seg001` → `0143`、`seg000` → `0110`）。
+
 | IDA 位址 | 段:位移 | 中斷 | bytes | 函式 | 這次執行過 | 反組譯 |
 |---|---|---|---|---|---|---|
-| `1041D` | `seg001:00E4` | `21h` | `cd21` | sub_10403 | 是 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1046D` | `seg001:0134` | `10h` | `cd10` | sub_1044D | 是 | `int 10h; - VIDEO - ALTERNATE FUNCTION SELECT (PS, EGA, VGA, MCGA) - GET EGA INFO` |
-| `104D0` | `seg001:0197` | `21h` | `cd21` | — | 否 | `int 21h; DOS - 3+ - GET PSP ADDRESS` |
-| `10645` | `seg002:0129` | `10h` | `cd10` | sub_1053C | 否 | `int 10h; - VIDEO - SET VIDEO MODE` |
-| `17650` | `seg002:7134` | `10h` | `cd10` | sub_1AB5B | 是 | `int 10h; - VIDEO - SET VIDEO MODE` |
-| `17685` | `seg002:7169` | `10h` | `cd10` | sub_1767D | 是 | `int 10h; - VIDEO - SET PALETTE REGISTER (Jr, PS, TANDY 1000, EGA, VGA)` |
-| `17C4B` | `seg002:772F` | `10h` | `cd10` | sub_1AB5B | 否 | `int 10h; - VIDEO - SET VIDEO MODE` |
-| `17C54` | `seg002:7738` | `10h` | `cd10` | sub_1ABA3 | 否 | `int 10h; - VIDEO - SET COLOR PALETTE` |
-| `18075` | `seg002:7B59` | `10h` | `cd10` | sub_1ABA3 | 否 | `int 10h; - VIDEO - SET COLOR PALETTE` |
-| `184DD` | `seg002:7FC1` | `10h` | `cd10` | sub_1AB5B | 否 | `int 10h; - VIDEO - SET VIDEO MODE` |
-| `18512` | `seg002:7FF6` | `10h` | `cd10` | sub_1850A | 否 | `int 10h; - VIDEO - SET PALETTE REGISTER (Jr, PS, TANDY 1000, EGA, VGA)` |
-| `188A9` | `seg002:838D` | `21h` | `cd21` | sub_18884 | 是 | `int 21h; DOS - 2+ - OPEN DISK FILE WITH HANDLE` |
-| `188BA` | `seg002:839E` | `21h` | `cd21` | sub_18884 | 是 | `int 21h; DOS - 2+ - READ FROM FILE WITH HANDLE` |
-| `188BE` | `seg002:83A2` | `21h` | `cd21` | sub_18884 | 是 | `int 21h; DOS - 2+ - CLOSE A FILE WITH HANDLE` |
-| `1890C` | `seg002:83F0` | `21h` | `cd21` | sub_188E1 | 否 | `int 21h; DOS - 2+ - FIND FIRST ASCIZ (FINDFIRST)` |
-| `18936` | `seg002:841A` | `21h` | `cd21` | sub_1892C | 否 | `int 21h; DOS - 2+ - OPEN DISK FILE WITH HANDLE` |
-| `18941` | `seg002:8425` | `21h` | `cd21` | sub_1892C | 否 | `int 21h; DOS - 2+ - READ FROM FILE WITH HANDLE` |
-| `18945` | `seg002:8429` | `21h` | `cd21` | sub_1892C | 否 | `int 21h; DOS - 2+ - CLOSE A FILE WITH HANDLE` |
-| `1899D` | `seg002:8481` | `21h` | `cd21` | sub_18991 | 否 | `int 21h; DOS - 2+ - CREATE A FILE WITH HANDLE (CREAT)` |
-| `189A9` | `seg002:848D` | `21h` | `cd21` | sub_18991 | 否 | `int 21h; DOS - 2+ - WRITE TO FILE WITH HANDLE` |
-| `189B4` | `seg002:8498` | `21h` | `cd21` | sub_18991 | 否 | `int 21h; DOS - 2+ - CLOSE A FILE WITH HANDLE` |
-| `189E5` | `seg002:84C9` | `21h` | `cd21` | sub_189BF | 是 | `int 21h; DOS - 2+ - OPEN DISK FILE WITH HANDLE` |
-| `189F3` | `seg002:84D7` | `21h` | `cd21` | sub_189BF | 是 | `int 21h; DOS - 2+ - READ FROM FILE WITH HANDLE` |
-| `18A0E` | `seg002:84F2` | `21h` | `cd21` | sub_189BF | 是 | `int 21h; DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)` |
-| `18A18` | `seg002:84FC` | `21h` | `cd21` | sub_189BF | 是 | `int 21h; DOS - 2+ - READ FROM FILE WITH HANDLE` |
-| `18A1E` | `seg002:8502` | `21h` | `cd21` | sub_189BF | 是 | `int 21h; DOS - 2+ - CLOSE A FILE WITH HANDLE` |
-| `18CA1` | `seg002:8785` | `21h` | `cd21` | sub_18C9E | 是 | `int 21h; DOS - GET ALLOCATION TABLE INFORMATION FOR DEFAULT DRIVE` |
-| `18CDF` | `seg002:87C3` | `21h` | `cd21` | sub_18CCC | 是 | `int 21h; DOS - 2+ - FIND FIRST ASCIZ (FINDFIRST)` |
-| `18CEF` | `seg002:87D3` | `21h` | `cd21` | sub_18CCC | 是 | `int 21h; DOS - 2+ - FIND FIRST ASCIZ (FINDFIRST)` |
-| `190B3` | `seg002:8B97` | `21h` | `cd21` | sub_1904B | 否 | `int 21h; DOS - GET DISK TRANSFER AREA ADDRESS` |
-| `19165` | `seg002:8C49` | `21h` | `cd21` | sub_19152 | 否 | `int 21h; DOS - 2+ - FIND FIRST ASCIZ (FINDFIRST)` |
-| `19172` | `seg002:8C56` | `21h` | `cd21` | sub_19152 | 否 | `int 21h; DOS - 2+ - FIND NEXT ASCIZ (FINDNEXT)` |
-| `191D5` | `seg002:8CB9` | `21h` | `cd21` | sub_19187 | 是 | `int 21h; DOS - 2+ - OPEN DISK FILE WITH HANDLE` |
-| `191E5` | `seg002:8CC9` | `21h` | `cd21` | sub_19187 | 是 | `int 21h; DOS - 2+ - READ FROM FILE WITH HANDLE` |
-| `191F3` | `seg002:8CD7` | `21h` | `cd21` | sub_19187 | 是 | `int 21h; DOS - 2+ - CLOSE A FILE WITH HANDLE` |
-| `1B9D6` | `seg002:B4BA` | `21h` | `cd21` | sub_1B9D0 | 是 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
-| `1B9EC` | `seg002:B4D0` | `21h` | `cd21` | sub_1B9D0 | 是 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1BA09` | `seg002:B4ED` | `21h` | `cd21` | sub_1B9F8 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1BCD8` | `seg002:B7BC` | `21h` | `cd21` | start | 是 | `int 21h; DOS - GET DOS VERSION` |
-| `1BCDE` | `seg002:B7C2` | `20h` | `cd20` | start | 否 | `int 20h; DOS - PROGRAM TERMINATION` |
-| `1BD0E` | `seg002:B7F2` | `21h` | `cd21` | start | 否 | `int 21h; DOS - 2+ - QUIT WITH EXIT CODE (EXIT)` |
-| `1BD36` | `seg002:B81A` | `21h` | `cd21` | start | 是 | `int 21h; DOS - 2+ - ADJUST MEMORY BLOCK SIZE (SETBLOCK)` |
-| `1BD9E` | `seg002:B882` | `21h` | `cd21` | sub_1BD9C | 是 | `int 21h; DOS - GET DOS VERSION` |
-| `1BDA6` | `seg002:B88A` | `21h` | `cd21` | sub_1BD9C | 是 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
-| `1BDB8` | `seg002:B89C` | `21h` | `cd21` | sub_1BD9C | 是 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1BE3C` | `seg002:B920` | `21h` | `cd21` | sub_1BD9C | 是 | `int 21h; DOS - 2+ - IOCTL - GET DEVICE INFORMATION` |
-| `1BEAF` | `seg002:B993` | `21h` | `cd21` | sub_1BE77 | 否 | `int 21h; DOS - 2+ - CLOSE A FILE WITH HANDLE` |
-| `1BEBC` | `seg002:B9A0` | `21h` | `cd21` | sub_1BE77 | 否 | `int 21h; DOS - 2+ - QUIT WITH EXIT CODE (EXIT)` |
-| `1BED3` | `seg002:B9B7` | `21h` | `cd21` | sub_1BEBE | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1BEE7` | `seg002:B9CB` | `21h` | `cd21` | sub_1BEBE | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1C1BF` | `seg002:BCA3` | `21h` | `cd21` | sub_1C19D | 否 | `int 21h; DOS - 2+ - WRITE TO FILE WITH HANDLE` |
-| `1C1F0` | `seg002:BCD4` | `21h` | `cd21` | sub_1C1C8 | 否 | `int 21h; DOS - 2+ - ADJUST MEMORY BLOCK SIZE (SETBLOCK)` |
-| `1CF4A` | `seg002:CA2E` | `21h` | `cd21` | sub_1CF22 | 否 | `int 21h; DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)` |
-| `1CF6E` | `seg002:CA52` | `21h` | `cd21` | sub_1CF22 | 否 | `int 21h; DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)` |
-| `1CF81` | `seg002:CA65` | `21h` | `cd21` | sub_1CF22 | 否 | `int 21h; DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)` |
-| `1CF90` | `seg002:CA74` | `21h` | `cd21` | sub_1CF22 | 否 | `int 21h; DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)` |
-| `1CFC0` | `seg002:CAA4` | `21h` | `cd21` | sub_1CF9C | 否 | `int 21h; DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)` |
-| `1D052` | `seg002:CB36` | `21h` | `cd21` | sub_1D044 | 否 | `int 21h; DOS - 2+ - WRITE TO FILE WITH HANDLE` |
-| `1D0A3` | `seg002:CB87` | `21h` | `cd21` | sub_1CF9C | 否 | `int 21h; DOS - 2+ - WRITE TO FILE WITH HANDLE` |
-| `1D3C7` | `seg002:CEAB` | `21h` | `cd21` | sub_1D370 | 否 | `int 21h; DOS - 2+ - ALLOCATE MEMORY` |
-| `1D422` | `seg002:CF06` | `21h` | `cd21` | sub_1D3DE | 否 | `int 21h; DOS - 2+ - ADJUST MEMORY BLOCK SIZE (SETBLOCK)` |
-| `1D877` | `seg002:D35B` | `21h` | `cd21` | sub_1D834 | 是 | `int 21h; DOS - PARSE FILENAME` |
-| `1D87F` | `seg002:D363` | `21h` | `cd21` | sub_1D834 | 是 | `int 21h; DOS - PARSE FILENAME` |
-| `1D8C1` | `seg002:D3A5` | `21h` | `cd21` | sub_1D834 | 是 | `int 21h; DOS - CHECK STANDARD INPUT STATUS` |
-| `1D8CF` | `seg002:D3B3` | `21h` | `cd21` | sub_1D834 | 是 | `int 21h; DOS - 2+ - LOAD OR EXECUTE (EXEC)` |
-| `1D8D6` | `seg002:D3BA` | `21h` | `cd21` | sub_1D834 | 是 | `int 21h; DOS - GET DOS VERSION` |
-| `1D910` | `seg002:D3F4` | `21h` | `cd21` | sub_1D834 | 是 | `int 21h; DOS - 2+ - GET EXIT CODE OF SUBPROGRAM (WAIT)` |
-| `1DBF4` | `seg003:012E` | `21h` | `cd21` | sub_1DBB7 | 是 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
-| `1DC12` | `seg003:014C` | `21h` | `cd21` | sub_1DBB7 | 是 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1DC88` | `seg003:01C2` | `21h` | `cd21` | sub_1DC80 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1E536` | `seg003:0A70` | `15h` | `cd15` | sub_1E3AD | 否 | `int 15h; SYSTEM - GET CONFIGURATION (XT after 1/10/86,AT mdl 3x9,CONV,XT286,PS)` |
-| `1E776` | `seg003:0CB0` | `1Ah` | `cd1a` | — | 否 | `int 1Ah` |
-| `1E7AB` | `seg003:0CE5` | `1Ah` | `cd1a` | — | 否 | `int 1Ah` |
-| `1E7F4` | `seg003:0D2E` | `1Ah` | `cd1a` | sub_1E7D8 | 否 | `int 1Ah` |
-| `1E809` | `seg003:0D43` | `1Ah` | `cd1a` | sub_1E7D8 | 否 | `int 1Ah` |
-| `1E8E8` | `seg003:0E22` | `1Ah` | `cd1a` | sub_1E827 | 否 | `int 1Ah` |
-| `1E92B` | `seg003:0E65` | `08h` | `cd08` | sub_1E908 | 是 | `int 8; - IRQ0 - TIMER INTERRUPT` |
-| `1F0E3` | `seg006:0032` | `21h` | `cd21` | sub_1F0B2 | 否 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
-| `1F0F7` | `seg006:0046` | `21h` | `cd21` | sub_1F0B2 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1F10A` | `seg006:0059` | `21h` | `cd21` | sub_1F0B2 | 否 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
-| `1F11E` | `seg006:006D` | `21h` | `cd21` | sub_1F0B2 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1F1B0` | `seg006:00FF` | `21h` | `cd21` | sub_1F168 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1F311` | `seg006:0260` | `21h` | `cd21` | sub_1F2C9 | 否 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
-| `1F325` | `seg006:0274` | `21h` | `cd21` | sub_1F2C9 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1F336` | `seg006:0285` | `21h` | `cd21` | sub_1F2C9 | 否 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
-| `1F34A` | `seg006:0299` | `21h` | `cd21` | sub_1F2C9 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1F3EE` | `seg006:033D` | `21h` | `cd21` | sub_1F2C9 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1F406` | `seg006:0355` | `21h` | `cd21` | sub_1F2C9 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
-| `1F5C9` | `seg006:0518` | `15h` | `cd15` | — | 否 | `int 15h; OS HOOK - SET FLAG AND COMPLETE INTERRUPT (AT,XT2,XT286,CONV,PS)` |
-| `1F616` | `seg006:0565` | `15h` | `cd15` | — | 否 | `int 15h; OS HOOK - SET FLAG AND COMPLETE INTERRUPT (AT,XT2,XT286,CONV,PS)` |
+| `1041D` | `seg001:00ED` | `21h` | `cd21` | sub_10403 | 是 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1046D` | `seg001:013D` | `10h` | `cd10` | sub_1044D | 是 | `int 10h; - VIDEO - ALTERNATE FUNCTION SELECT (PS, EGA, VGA, MCGA) - GET EGA INFO` |
+| `104D0` | `seg001:01A0` | `21h` | `cd21` | — | 否 | `int 21h; DOS - 3+ - GET PSP ADDRESS` |
+| `10645` | `seg002:0135` | `10h` | `cd10` | sub_1053C | 否 | `int 10h; - VIDEO - SET VIDEO MODE` |
+| `17650` | `seg002:7140` | `10h` | `cd10` | sub_1AB5B | 是 | `int 10h; - VIDEO - SET VIDEO MODE` |
+| `17685` | `seg002:7175` | `10h` | `cd10` | sub_1767D | 是 | `int 10h; - VIDEO - SET PALETTE REGISTER (Jr, PS, TANDY 1000, EGA, VGA)` |
+| `17C4B` | `seg002:773B` | `10h` | `cd10` | sub_1AB5B | 否 | `int 10h; - VIDEO - SET VIDEO MODE` |
+| `17C54` | `seg002:7744` | `10h` | `cd10` | sub_1ABA3 | 否 | `int 10h; - VIDEO - SET COLOR PALETTE` |
+| `18075` | `seg002:7B65` | `10h` | `cd10` | sub_1ABA3 | 否 | `int 10h; - VIDEO - SET COLOR PALETTE` |
+| `184DD` | `seg002:7FCD` | `10h` | `cd10` | sub_1AB5B | 否 | `int 10h; - VIDEO - SET VIDEO MODE` |
+| `18512` | `seg002:8002` | `10h` | `cd10` | sub_1850A | 否 | `int 10h; - VIDEO - SET PALETTE REGISTER (Jr, PS, TANDY 1000, EGA, VGA)` |
+| `188A9` | `seg002:8399` | `21h` | `cd21` | sub_18884 | 是 | `int 21h; DOS - 2+ - OPEN DISK FILE WITH HANDLE` |
+| `188BA` | `seg002:83AA` | `21h` | `cd21` | sub_18884 | 是 | `int 21h; DOS - 2+ - READ FROM FILE WITH HANDLE` |
+| `188BE` | `seg002:83AE` | `21h` | `cd21` | sub_18884 | 是 | `int 21h; DOS - 2+ - CLOSE A FILE WITH HANDLE` |
+| `1890C` | `seg002:83FC` | `21h` | `cd21` | sub_188E1 | 否 | `int 21h; DOS - 2+ - FIND FIRST ASCIZ (FINDFIRST)` |
+| `18936` | `seg002:8426` | `21h` | `cd21` | sub_1892C | 否 | `int 21h; DOS - 2+ - OPEN DISK FILE WITH HANDLE` |
+| `18941` | `seg002:8431` | `21h` | `cd21` | sub_1892C | 否 | `int 21h; DOS - 2+ - READ FROM FILE WITH HANDLE` |
+| `18945` | `seg002:8435` | `21h` | `cd21` | sub_1892C | 否 | `int 21h; DOS - 2+ - CLOSE A FILE WITH HANDLE` |
+| `1899D` | `seg002:848D` | `21h` | `cd21` | sub_18991 | 否 | `int 21h; DOS - 2+ - CREATE A FILE WITH HANDLE (CREAT)` |
+| `189A9` | `seg002:8499` | `21h` | `cd21` | sub_18991 | 否 | `int 21h; DOS - 2+ - WRITE TO FILE WITH HANDLE` |
+| `189B4` | `seg002:84A4` | `21h` | `cd21` | sub_18991 | 否 | `int 21h; DOS - 2+ - CLOSE A FILE WITH HANDLE` |
+| `189E5` | `seg002:84D5` | `21h` | `cd21` | sub_189BF | 是 | `int 21h; DOS - 2+ - OPEN DISK FILE WITH HANDLE` |
+| `189F3` | `seg002:84E3` | `21h` | `cd21` | sub_189BF | 是 | `int 21h; DOS - 2+ - READ FROM FILE WITH HANDLE` |
+| `18A0E` | `seg002:84FE` | `21h` | `cd21` | sub_189BF | 是 | `int 21h; DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)` |
+| `18A18` | `seg002:8508` | `21h` | `cd21` | sub_189BF | 是 | `int 21h; DOS - 2+ - READ FROM FILE WITH HANDLE` |
+| `18A1E` | `seg002:850E` | `21h` | `cd21` | sub_189BF | 是 | `int 21h; DOS - 2+ - CLOSE A FILE WITH HANDLE` |
+| `18CA1` | `seg002:8791` | `21h` | `cd21` | sub_18C9E | 是 | `int 21h; DOS - GET ALLOCATION TABLE INFORMATION FOR DEFAULT DRIVE` |
+| `18CDF` | `seg002:87CF` | `21h` | `cd21` | sub_18CCC | 是 | `int 21h; DOS - 2+ - FIND FIRST ASCIZ (FINDFIRST)` |
+| `18CEF` | `seg002:87DF` | `21h` | `cd21` | sub_18CCC | 是 | `int 21h; DOS - 2+ - FIND FIRST ASCIZ (FINDFIRST)` |
+| `190B3` | `seg002:8BA3` | `21h` | `cd21` | sub_1904B | 否 | `int 21h; DOS - GET DISK TRANSFER AREA ADDRESS` |
+| `19165` | `seg002:8C55` | `21h` | `cd21` | sub_19152 | 否 | `int 21h; DOS - 2+ - FIND FIRST ASCIZ (FINDFIRST)` |
+| `19172` | `seg002:8C62` | `21h` | `cd21` | sub_19152 | 否 | `int 21h; DOS - 2+ - FIND NEXT ASCIZ (FINDNEXT)` |
+| `191D5` | `seg002:8CC5` | `21h` | `cd21` | sub_19187 | 是 | `int 21h; DOS - 2+ - OPEN DISK FILE WITH HANDLE` |
+| `191E5` | `seg002:8CD5` | `21h` | `cd21` | sub_19187 | 是 | `int 21h; DOS - 2+ - READ FROM FILE WITH HANDLE` |
+| `191F3` | `seg002:8CE3` | `21h` | `cd21` | sub_19187 | 是 | `int 21h; DOS - 2+ - CLOSE A FILE WITH HANDLE` |
+| `1B9D6` | `seg002:B4C6` | `21h` | `cd21` | sub_1B9D0 | 是 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
+| `1B9EC` | `seg002:B4DC` | `21h` | `cd21` | sub_1B9D0 | 是 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1BA09` | `seg002:B4F9` | `21h` | `cd21` | sub_1B9F8 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1BCD8` | `seg002:B7C8` | `21h` | `cd21` | start | 是 | `int 21h; DOS - GET DOS VERSION` |
+| `1BCDE` | `seg002:B7CE` | `20h` | `cd20` | start | 否 | `int 20h; DOS - PROGRAM TERMINATION` |
+| `1BD0E` | `seg002:B7FE` | `21h` | `cd21` | start | 否 | `int 21h; DOS - 2+ - QUIT WITH EXIT CODE (EXIT)` |
+| `1BD36` | `seg002:B826` | `21h` | `cd21` | start | 是 | `int 21h; DOS - 2+ - ADJUST MEMORY BLOCK SIZE (SETBLOCK)` |
+| `1BD9E` | `seg002:B88E` | `21h` | `cd21` | sub_1BD9C | 是 | `int 21h; DOS - GET DOS VERSION` |
+| `1BDA6` | `seg002:B896` | `21h` | `cd21` | sub_1BD9C | 是 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
+| `1BDB8` | `seg002:B8A8` | `21h` | `cd21` | sub_1BD9C | 是 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1BE3C` | `seg002:B92C` | `21h` | `cd21` | sub_1BD9C | 是 | `int 21h; DOS - 2+ - IOCTL - GET DEVICE INFORMATION` |
+| `1BEAF` | `seg002:B99F` | `21h` | `cd21` | sub_1BE77 | 否 | `int 21h; DOS - 2+ - CLOSE A FILE WITH HANDLE` |
+| `1BEBC` | `seg002:B9AC` | `21h` | `cd21` | sub_1BE77 | 否 | `int 21h; DOS - 2+ - QUIT WITH EXIT CODE (EXIT)` |
+| `1BED3` | `seg002:B9C3` | `21h` | `cd21` | sub_1BEBE | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1BEE7` | `seg002:B9D7` | `21h` | `cd21` | sub_1BEBE | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1C1BF` | `seg002:BCAF` | `21h` | `cd21` | sub_1C19D | 否 | `int 21h; DOS - 2+ - WRITE TO FILE WITH HANDLE` |
+| `1C1F0` | `seg002:BCE0` | `21h` | `cd21` | sub_1C1C8 | 否 | `int 21h; DOS - 2+ - ADJUST MEMORY BLOCK SIZE (SETBLOCK)` |
+| `1CF4A` | `seg002:CA3A` | `21h` | `cd21` | sub_1CF22 | 否 | `int 21h; DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)` |
+| `1CF6E` | `seg002:CA5E` | `21h` | `cd21` | sub_1CF22 | 否 | `int 21h; DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)` |
+| `1CF81` | `seg002:CA71` | `21h` | `cd21` | sub_1CF22 | 否 | `int 21h; DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)` |
+| `1CF90` | `seg002:CA80` | `21h` | `cd21` | sub_1CF22 | 否 | `int 21h; DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)` |
+| `1CFC0` | `seg002:CAB0` | `21h` | `cd21` | sub_1CF9C | 否 | `int 21h; DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)` |
+| `1D052` | `seg002:CB42` | `21h` | `cd21` | sub_1D044 | 否 | `int 21h; DOS - 2+ - WRITE TO FILE WITH HANDLE` |
+| `1D0A3` | `seg002:CB93` | `21h` | `cd21` | sub_1CF9C | 否 | `int 21h; DOS - 2+ - WRITE TO FILE WITH HANDLE` |
+| `1D3C7` | `seg002:CEB7` | `21h` | `cd21` | sub_1D370 | 否 | `int 21h; DOS - 2+ - ALLOCATE MEMORY` |
+| `1D422` | `seg002:CF12` | `21h` | `cd21` | sub_1D3DE | 否 | `int 21h; DOS - 2+ - ADJUST MEMORY BLOCK SIZE (SETBLOCK)` |
+| `1D877` | `seg002:D367` | `21h` | `cd21` | sub_1D834 | 是 | `int 21h; DOS - PARSE FILENAME` |
+| `1D87F` | `seg002:D36F` | `21h` | `cd21` | sub_1D834 | 是 | `int 21h; DOS - PARSE FILENAME` |
+| `1D8C1` | `seg002:D3B1` | `21h` | `cd21` | sub_1D834 | 是 | `int 21h; DOS - CHECK STANDARD INPUT STATUS` |
+| `1D8CF` | `seg002:D3BF` | `21h` | `cd21` | sub_1D834 | 是 | `int 21h; DOS - 2+ - LOAD OR EXECUTE (EXEC)` |
+| `1D8D6` | `seg002:D3C6` | `21h` | `cd21` | sub_1D834 | 是 | `int 21h; DOS - GET DOS VERSION` |
+| `1D910` | `seg002:D400` | `21h` | `cd21` | sub_1D834 | 是 | `int 21h; DOS - 2+ - GET EXIT CODE OF SUBPROGRAM (WAIT)` |
+| `1DBF4` | `seg003:0134` | `21h` | `cd21` | sub_1DBB7 | 是 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
+| `1DC12` | `seg003:0152` | `21h` | `cd21` | sub_1DBB7 | 是 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1DC88` | `seg003:01C8` | `21h` | `cd21` | sub_1DC80 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1E536` | `seg003:0A76` | `15h` | `cd15` | sub_1E3AD | 否 | `int 15h; SYSTEM - GET CONFIGURATION (XT after 1/10/86,AT mdl 3x9,CONV,XT286,PS)` |
+| `1E776` | `seg003:0CB6` | `1Ah` | `cd1a` | — | 否 | `int 1Ah` |
+| `1E7AB` | `seg003:0CEB` | `1Ah` | `cd1a` | — | 否 | `int 1Ah` |
+| `1E7F4` | `seg003:0D34` | `1Ah` | `cd1a` | sub_1E7D8 | 否 | `int 1Ah` |
+| `1E809` | `seg003:0D49` | `1Ah` | `cd1a` | sub_1E7D8 | 否 | `int 1Ah` |
+| `1E8E8` | `seg003:0E28` | `1Ah` | `cd1a` | sub_1E827 | 否 | `int 1Ah` |
+| `1E92B` | `seg003:0E6B` | `08h` | `cd08` | sub_1E908 | 是 | `int 8; - IRQ0 - TIMER INTERRUPT` |
+| `1F0E3` | `seg006:0033` | `21h` | `cd21` | sub_1F0B2 | 否 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
+| `1F0F7` | `seg006:0047` | `21h` | `cd21` | sub_1F0B2 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1F10A` | `seg006:005A` | `21h` | `cd21` | sub_1F0B2 | 否 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
+| `1F11E` | `seg006:006E` | `21h` | `cd21` | sub_1F0B2 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1F1B0` | `seg006:0100` | `21h` | `cd21` | sub_1F168 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1F311` | `seg006:0261` | `21h` | `cd21` | sub_1F2C9 | 否 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
+| `1F325` | `seg006:0275` | `21h` | `cd21` | sub_1F2C9 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1F336` | `seg006:0286` | `21h` | `cd21` | sub_1F2C9 | 否 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
+| `1F34A` | `seg006:029A` | `21h` | `cd21` | sub_1F2C9 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1F3EE` | `seg006:033E` | `21h` | `cd21` | sub_1F2C9 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1F406` | `seg006:0356` | `21h` | `cd21` | sub_1F2C9 | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
+| `1F5C9` | `seg006:0519` | `15h` | `cd15` | — | 否 | `int 15h; OS HOOK - SET FLAG AND COMPLETE INTERRUPT (AT,XT2,XT286,CONV,PS)` |
+| `1F616` | `seg006:0566` | `15h` | `cd15` | — | 否 | `int 15h; OS HOOK - SET FLAG AND COMPLETE INTERRUPT (AT,XT2,XT286,CONV,PS)` |
 | `201CD` | `seg015:002D` | `21h` | `cd21` | — | 否 | `int 21h; DOS - 2+ - GET INTERRUPT VECTOR` |
 | `201E1` | `seg015:0041` | `21h` | `cd21` | — | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |
 | `20233` | `seg015:0093` | `21h` | `cd21` | — | 否 | `int 21h; DOS - SET INTERRUPT VECTOR` |

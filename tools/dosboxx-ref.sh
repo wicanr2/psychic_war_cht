@@ -3,7 +3,8 @@
 #
 #   tools/dosboxx-ref.sh              # 產出 workplace/dosboxx/<檢查點>[-變體].{x11.png,rgb}
 #
-# 走的畫面與 tools/states.sh 相同（標題 → 防拷 → 輸入名字 → 第一個可操作畫面），
+# 走的畫面與 tools/states.sh 相同（標題 → 防拷 → 輸入名字 → 第一個可操作畫面 → 第一個遭遇），
+# 最後按攻擊並連續錄 6 秒存到 battle/（色號 2、A 只出現在攻擊的雷射上）。
 # 但 DOSBox-X 以牆上時間送鍵，**亂數不會對齊**：防拷問的盟友多半與 dosgolem 不同。
 # 比對時把那一塊文字區當成已知差異（tools/frame_compare.py）。
 #
@@ -28,7 +29,7 @@ OUT="$ROOT/workplace/dosboxx"
 [[ -f "$GAME/PW.EXE" ]] || { echo "tools/dosboxx-ref.sh：找不到 $GAME/PW.EXE" >&2; exit 2; }
 docker image inspect "$IMAGE" >/dev/null 2>&1 || { echo "tools/dosboxx-ref.sh：找不到 image $IMAGE" >&2; exit 2; }
 mkdir -p "$OUT"
-rm -f "$OUT"/*.png "$OUT"/*.rgb 2>/dev/null || true
+rm -rf "$OUT"/*.png "$OUT"/*.rgb "$OUT"/battle 2>/dev/null || true
 
 cat > "$OUT/.run.sh" <<'EOF'
 set -euo pipefail
@@ -93,6 +94,21 @@ key k 1; key a 1; key i 1
 key Return 15                 # → 第一人稱迷宮
 # 迷宮畫面有週期性閃爍：抓三張，比對時挑相位一致的那張
 for t in a b c; do snap "07-first-play-$t"; sleep 0.7; done
+# 前進 11 步到第一個遭遇（位置固定，與亂數無關：docs/re/004 §5）
+for i in $(seq 1 11); do key Up 1.5; done
+sleep 2
+for t in a b c; do snap "08-encounter-$t"; sleep 0.7; done
+# 攻擊的雷射只出現在幾個瞬間（色號 2、A 只在這裡出現），所以連續錄 6 秒、30 fps 逐格存
+mkdir -p /out/battle
+ffmpeg -loglevel error -f x11grab -framerate 30 -video_size ${WIDTH}x${HEIGHT} -i ":99.0+${X},${Y}" \
+  -t 6 -start_number 0 "/out/battle/%03d.png" &
+FF=$!
+sleep 0.3
+# 遭遇畫面檢查的是「按鍵正被按住」：xdotool key 的點按只有幾毫秒，實測 4 秒內戰鬥都沒開始。按住 0.4 秒。
+xdotool keydown space; sleep 0.4; xdotool keyup space
+wait $FF || true
+for f in /out/battle/*.png; do convert "$f" -depth 8 "rgb:${f%.png}.rgb"; done
+echo "[09-battle] 錄到 $(ls /out/battle/*.png | wc -l) 格" >&2
 echo "視窗 ${WIDTH}x${HEIGHT}" >&2
 kill $DBX 2>/dev/null || true
 EOF

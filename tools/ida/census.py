@@ -71,7 +71,7 @@ def int_sites():
             f = ida_funcs.get_func(head)
             out.append({
                 "ea": head,
-                "segoff": "%s:%04X" % (ida_segment.get_segm_name(seg), head - seg.start_ea),
+                "segoff": "%s:%04X" % (ida_segment.get_segm_name(seg), head - ida_segment.get_segm_base(seg)),
                 "operand": insn.Op1.value,
                 "bytes": ida_bytes.get_bytes(head, insn.size).hex(),
                 "func": ida_funcs.get_func_name(f.start_ea) if f else None,

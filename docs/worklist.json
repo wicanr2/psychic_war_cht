@@ -24,23 +24,6 @@
   },
   "items": [
     {
-      "id": "ega-palette-output",
-      "milestone": "M1",
-      "labels": [
-        "golem-upstream",
-        "graphics"
-      ],
-      "title": "EGA mode 0Dh 的畫面輸出沒有套用遊戲設定的色盤",
-      "body": "遊戲只用 `INT 10h AH=10h` 設屬性控制器，不寫 DAC（DAC 全部 ≤ 1）。`-dump-screen-png` 因此輸出全黑，`-dump-ega` 則固定用 EGA 預設 16 色。DOSBox-X 參照顯示遊戲把色號 8 設成黑色（EGA 預設深灰），dosgolem 沒有反映（docs/re/003 §3.4）。修正屬於 dosgolem 的機器層：mode 0Dh 的色號要經屬性控制器對到 EGA 64 色。",
-      "acceptance": "dosgolem 的畫面輸出在四個檢查點與 DOSBox-X 參照的 RGB 一致（docs/re/003 §3.4 的色號對應表）；dosgolem 端有對應測試。",
-      "blocked_by": "dosbox-reference-frames",
-      "verify": {
-        "kind": "manual",
-        "note": "修在 worktrees/dosgolem（gitignore）；上游合併後改綁本 repo 引用的 dosgolem 版本"
-      },
-      "issue": 4
-    },
-    {
       "id": "opl2-synth",
       "milestone": "M1",
       "labels": [
@@ -75,26 +58,6 @@
         "note": "docs/re 出現以此為標題的文件就該關；格式文件出現後改成綁 WAV 比對結果"
       },
       "issue": 6
-    },
-    {
-      "id": "determinism-rng",
-      "milestone": "M1",
-      "labels": [
-        "re",
-        "verify"
-      ],
-      "title": "亂數來源與重播決定性",
-      "body": "`INT 1Ah` 有 5 處但這段路徑沒有執行。要找出遊戲的亂數種子從哪來（計時器計數、按鍵時間或 `INT 1Ah`），確認同一組輸入在 golem 上永遠得到同一個結果。這是輸入錄放與即時存檔的前提。 已觀察到：防拷問哪位盟友會隨按鍵的指令數改變（docs/re/003 §2.2）。",
-      "acceptance": "亂數常式位址與種子來源寫進 docs/re/；同一組輸入跑兩次，戰鬥結果逐項相同的測試。",
-      "verify": {
-        "kind": "absent",
-        "paths": [
-          "docs/re"
-        ],
-        "pattern": "(?m)^# \\d{3}：.*亂數",
-        "note": "docs/re 出現以此為標題的文件就該關；文件出現後改綁決定性測試名稱"
-      },
-      "issue": 7
     },
     {
       "id": "full-run-no-gaps",
@@ -641,6 +604,20 @@
       "issue": 3,
       "title": "DOSBox-X 參照畫面：同一個畫面的正確顏色與版面",
       "evidence": "`docs/re/003-checkpoints-and-dosboxx-reference.md` §3；`tools/dosboxx-ref.sh`、`tools/frame_compare.py`",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "ega-palette-output",
+      "issue": 4,
+      "title": "EGA mode 0Dh 的畫面輸出沒有套用遊戲設定的色盤",
+      "evidence": "`docs/re/005-ega-palette-rgb-parity.md`；dosgolem 分支 `psychic-war/m1-ega-palette` `509a639`（未推上游）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "determinism-rng",
+      "issue": 7,
+      "title": "亂數來源與重播決定性",
+      "evidence": "`docs/re/004-rng-and-determinism.md`；`tools/determinism.sh`",
       "date": "2026-09-17"
     }
   ]

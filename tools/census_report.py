@@ -77,6 +77,16 @@ def main(argv):
         size["<16" if f["size"] < 16 else "<64" if f["size"] < 64 else "<256" if f["size"] < 256 else ">=256"] += 1
     print("函式大小分布：", dict(size))
 
+    segs = census["segments"]
+
+    def segoff(ea):
+        # 段:位移以段基底（base_para×16）計，與執行期 CS:IP 的位移相同。
+        # 不用 JSON 裡的 segoff：舊版 census.py 以區段 start_ea 算，基底與起點不同的區段會差幾個 byte。
+        for g in segs:
+            if g["start"] <= ea < g["end"]:
+                return "%s:%04X" % (g["name"], ea - g["base_para"] * 16)
+        return "?"
+
     sites = snap["int_sites"]
     by_op = collections.Counter("%02Xh" % s["operand"] for s in sites)
     ex_op = collections.Counter("%02Xh" % s["operand"] for s in sites if s["ea"] in executed)
@@ -88,7 +98,7 @@ def main(argv):
         print("| IDA 位址 | 段:位移 | 中斷 | bytes | 函式 | 這次執行過 | 反組譯 |")
         print("|---|---|---|---|---|---|---|")
         for s in sorted(sites, key=lambda s: s["ea"]):
-            print(f'| `{s["ea"]:05X}` | `{s["segoff"]}` | `{s["operand"]:02X}h` | `{s["bytes"]}` | '
+            print(f'| `{s["ea"]:05X}` | `{segoff(s["ea"])}` | `{s["operand"]:02X}h` | `{s["bytes"]}` | '
                   f'{s["func"] or "—"} | {"是" if s["ea"] in executed else "否"} | `{" ".join(s["disasm"].split())}` |')
     return 0
 

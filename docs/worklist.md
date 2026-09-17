@@ -12,10 +12,8 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #4 | `ega-palette-output` | EGA mode 0Dh 的畫面輸出沒有套用遊戲設定的色盤 | golem-upstream, graphics | #3 | manual |
 | #5 | `opl2-synth` | OPL2（AdLib）合成：`.MID` 音樂路徑目前只有暫存器紀錄 | golem-upstream, audio | — | manual |
 | #6 | `pc-speaker-audio` | PC 喇叭音樂路徑（`.IBM`）驗證 | audio, verify | — | absent |
-| #7 | `determinism-rng` | 亂數來源與重播決定性 | re, verify | — | absent |
 | #8 | `full-run-no-gaps` | 從開頭跑到結局，沒有未實作的服務 | verify | #2 | manual |
 
 ## M2：可遊玩前端：視窗、鍵盤、滑鼠、音訊、節拍
@@ -78,3 +76,5 @@
 | #1 | `ida-baseline` | 建立 PW.EXE／LOGO.EXE 的 IDA 資料庫並做函式普查 | `docs/re/002-pw-exe-function-census.md` | 2026-09-17 |
 | #2 | `state-checkpoints` | 固定的狀態檔檢查點：標題、防拷、輸入名字、第一個可操作畫面 | `docs/re/003-checkpoints-and-dosboxx-reference.md` §2；`tools/states.sh --check` | 2026-09-17 |
 | #3 | `dosbox-reference-frames` | DOSBox-X 參照畫面：同一個畫面的正確顏色與版面 | `docs/re/003-checkpoints-and-dosboxx-reference.md` §3；`tools/dosboxx-ref.sh`、`tools/frame_compare.py` | 2026-09-17 |
+| #4 | `ega-palette-output` | EGA mode 0Dh 的畫面輸出沒有套用遊戲設定的色盤 | `docs/re/005-ega-palette-rgb-parity.md`；dosgolem 分支 `psychic-war/m1-ega-palette` `509a639`（未推上游） | 2026-09-17 |
+| #7 | `determinism-rng` | 亂數來源與重播決定性 | `docs/re/004-rng-and-determinism.md`；`tools/determinism.sh` | 2026-09-17 |
