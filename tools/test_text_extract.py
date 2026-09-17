@@ -47,6 +47,7 @@ class TextExtractTest(unittest.TestCase):
         self.assertEqual(kinds[("I_MENU", "menu")], 95)
         self.assertEqual(kinds[("I_MENU", "option")], 273)
         self.assertEqual(kinds[("I_ENMY", "enemy-name")], 60)
+        self.assertEqual(kinds[("I_MAP0", "place")] + kinds[("I_MAP1", "place")], 293)
         self.assertEqual(sum(v for (g, k), v in kinds.items() if g.startswith("CODE")), 146)
         self.assertEqual(sum(v for (g, k), v in kinds.items() if g == "PW.EXE"), len(te.EXE_ITEMS))
 
@@ -97,6 +98,15 @@ class TextExtractTest(unittest.TestCase):
             self.assertIn("cs:%04X" % (addr + 1), str(cm.exception))
         finally:
             te.EXE_ITEMS = saved
+
+    def test_7_code_window(self):
+        have = self.entries()
+        self.assertFalse(have["CODEH.BIN:32B4"]["reachable"])
+        self.assertTrue(have["CODEH.BIN:02B4"]["reachable"])
+        beyond = [e for e in have.values() if not e.get("reachable", True)]
+        self.assertTrue(all(e["kind"] == "inline" and e["key"].startswith("CODE") for e in beyond))
+        roots = {have[k]["original"] for k in have if have[k].get("reachable", True)}
+        self.assertTrue(all(e["original"] in roots for e in beyond), "視窗外的內容都要在視窗內出現過")
 
     @unittest.skipUnless(TRACE.is_file(), "沒有 workplace/print/trace.json（tools/print_trace.py report）")
     def test_6_runtime_lines_have_keys(self):

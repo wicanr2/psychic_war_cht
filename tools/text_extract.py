@@ -96,7 +96,9 @@ PW_EXE_SHA256 = "88321206d5400b2276aba0f268e2daaa8355a733843dd9e89f9e7116ae690c4
 PW_UNP_SHA256 = "fd5115b91f014c47a1fb1a6e2ecfd645e293264fe614a4b350e92637cad2fbd9"
 MENU_FILES = ["I_MENUH.BIN"] + ["I_MENU%02d.BIN" % i for i in range(12)]
 ENMY_FILES = ["I_ENMY%02d.BIN" % i for i in range(12)]
+MAP_FILES = ["I_MAP%02d.BIN" % i for i in range(12)]
 CODE_FILES = ["CODEH.BIN"] + ["CODE%d.BIN" % i for i in range(12)]
+CODE_WINDOW = {"CODEH.BIN": 0x1200}  # 其餘 CODEnn 0x700（docs/spec/007 §3.3：後載入的 I_MENUnn／FONT.BIN 蓋掉尾端）
 SEG_BASE = 0x510  # PW_UNP.EXE 映像內，執行期段 0161 的起點（IDA 10510h）
 
 # docs/spec/007 §3.4：（位址, 種類, 長度（None ＝ 到 00）, 行寬, 字型, 簽章）
@@ -140,7 +142,7 @@ def entry(key, kind, font, raw, lines=None, **extra):
     if lines:
         e["lines"] = lines
     e.update(extra)
-    e.update({"translatable": translatable(raw), "same_as": "", "original": text(raw), "translation": "", "note": ""})
+    e.update({"translatable": translatable(raw), "reachable": True, "same_as": "", "original": text(raw), "translation": "", "note": ""})
     return e
 
 
@@ -170,6 +172,19 @@ def extract_enmy(data, name):
     return out, []
 
 
+def extract_map(data, name):
+    """地點名稱表：偏移 200h 起 64 × 8 bytes（docs/spec/007 §3.5）。"""
+    out = []
+    for i in range(64):
+        pos = 0x200 + 8 * i
+        raw = data[pos:pos + 8].split(b"\x00")[0]
+        if raw.strip(b" "):
+            e = entry("%s:%04X" % (name, pos), "place", "font8", raw, place=i)
+            e["width"] = 8
+            out.append(e)
+    return out, []
+
+
 def extract_code(data, name):
     out, bad, seen = [], [], {}
     for pos, c in enumerate(data):
@@ -181,6 +196,7 @@ def extract_code(data, name):
             bad.append(pos)
             continue
         e = entry("%s:%04X" % (name, pos + 1), "inline", "font8", body)
+        e["reachable"] = pos + 1 < CODE_WINDOW.get(name, 0x700)
         if body in seen and translatable(body):
             e["same_as"] = seen[body]
         seen.setdefault(body, e["key"])
@@ -225,12 +241,12 @@ def extract_exe(pw_exe):
 
 def extract_all(orig):
     orig = pathlib.Path(orig)
-    need = ["PW.EXE"] + MENU_FILES + ENMY_FILES + CODE_FILES
+    need = ["PW.EXE"] + MENU_FILES + ENMY_FILES + MAP_FILES + CODE_FILES
     missing = [f for f in need if not (orig / f).is_file()]
     if missing:
         raise Fail("原版目錄 %s 缺檔：%s" % (orig, "、".join(missing)))
     sources = {"PW.EXE": (sha((orig / "PW.EXE").read_bytes()), extract_exe((orig / "PW.EXE").read_bytes()), [])}
-    for files, fn in ((MENU_FILES, extract_menu), (ENMY_FILES, extract_enmy), (CODE_FILES, extract_code)):
+    for files, fn in ((MENU_FILES, extract_menu), (ENMY_FILES, extract_enmy), (MAP_FILES, extract_map), (CODE_FILES, extract_code)):
         for f in files:
             data = (orig / f).read_bytes()
             items, unknown = fn(data, f)
@@ -262,7 +278,7 @@ def cmd_build(orig, text_dir):
         for e in items:
             new_keys.add(e["key"])
             if e["key"] in old:
-                e["translation"] = old[e["key"]].get("translation", "")
+                e["translation"] = old[e["key"]].get("translation", "")  # 譯文與備註以 key 保留
                 e["note"] = old[e["key"]].get("note", "")
         for k, e in old.items():
             if k not in new_keys:
@@ -314,12 +330,19 @@ def cmd_check(orig, text_dir):
     print("check 通過：%d 則原文可由原版重建" % len(fresh))
 
 
+def to_translate(have):
+    """要翻的則：有文字、在載入視窗內、不是別則的重複、不是孤兒（docs/spec/007 §5）。"""
+    return [e for e in have.values() if e["translatable"] and e.get("reachable", True) and not e["same_as"] and not e.get("orphan")]
+
+
 def cmd_stats(text_dir):
     have = load_text(text_dir)
-    tr = [e for e in have.values() if e["translatable"] and not e.get("orphan")]
+    tr = to_translate(have)
     done = [e for e in tr if e["translation"]]
-    print("總則數 %d、可翻 %d、已翻 %d（%.1f%%）、孤兒 %d" % (
-        len(have), len(tr), len(done), 100.0 * len(done) / len(tr) if tr else 0, sum(1 for e in have.values() if e.get("orphan"))))
+    print("總則數 %d、要翻 %d、已翻 %d（%.1f%%）、不在載入視窗 %d、重複 %d、孤兒 %d" % (
+        len(have), len(tr), len(done), 100.0 * len(done) / len(tr) if tr else 0,
+        sum(1 for e in have.values() if not e.get("reachable", True)), sum(1 for e in have.values() if e["same_as"]),
+        sum(1 for e in have.values() if e.get("orphan"))))
 
 
 def main(argv):
