@@ -197,22 +197,6 @@
       "issue": 32
     },
     {
-      "id": "cheats",
-      "milestone": "M5",
-      "labels": [
-        "assist",
-        "re"
-      ],
-      "title": "作弊功能",
-      "body": "作弊一律透過 golem 寫記憶體，不改原版檔案；位址表放 `apps/psychicwar`。已找到：敵人 HP 字組在線性 `0x509C`（執行期 `0161:3A8C`），遭遇時改成 1 可一擊打贏（docs/re/009 §3，強證據）。玩家 HP、能量位址未找到。",
-      "acceptance": "狀態位址表有證據（讀寫點）；至少提供回復 HP／ESP 與防拷略過，開啟時畫面有標示。",
-      "verify": {
-        "kind": "manual",
-        "note": "位址表已有（docs/re/011：HP、能量、座標、區域、敵人 HP）；作弊功能實作後改綁熱鍵或設定鍵名"
-      },
-      "issue": 33
-    },
-    {
       "id": "theme",
       "milestone": "M6",
       "labels": [
@@ -417,6 +401,13 @@
       "issue": 28,
       "title": "防拷：翻譯、F1 查表、略過選項",
       "evidence": "`docs/spec/013`（READY）＋`docs/re/028`：出題與答案表讀出來（11×7，答案在 `cs:66E5`）；**這一版的比對被一個位元組關掉**，任何答案都會過。三種用法：畫面中文化（`docs/spec/009` 的疊字）、F1 查表（從玩家自己的執行檔即時讀，掛在輸入常式上判斷狀態）、略過（不必做，空白就會過）。反向對照：迷宮畫面按 F1 沒有那一行（差 0）",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "cheats",
+      "issue": 33,
+      "title": "作弊功能",
+      "evidence": "`docs/spec/014`（READY）＋`docs/re/029`：`-cheat` 打開 F5（HP 與能量補滿）、F6（敵人剩 1 點），一律寫記憶體、位址表在 `apps/psychicwar/cheat.go`。實跑 HP 23→40、能量 1→30、敵人 38→1；不給 `-cheat` 時完全沒變（反向對照）",
       "date": "2026-09-18"
     }
   ]

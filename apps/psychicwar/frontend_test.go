@@ -161,3 +161,29 @@ func TestProtectionAnswer(t *testing.T) {
 		t.Errorf("長度不足 16 要回空字串，卻回 %q", got)
 	}
 }
+
+// docs/spec/014 §4 第 1 項：作弊的純函式。
+func TestCheatValues(t *testing.T) {
+	if got := FullValue(10, 40); got != 40 {
+		t.Errorf("補到上限：%d", got)
+	}
+	if got := FullValue(40, 40); got != 0 {
+		t.Errorf("already full 不用寫：%d", got)
+	}
+	if got := FullValue(10, 0); got != 0 {
+		t.Errorf("上限 0（還沒開始遊戲）不要寫：%d", got)
+	}
+	if got := FullValue(10, 60000); got != 0 {
+		t.Errorf("上限不合理時不要寫：%d", got)
+	}
+	for _, v := range []uint16{0, 1000, 65535} {
+		if EnemyHPSane(v) {
+			t.Errorf("%d 不該當成戰鬥中", v)
+		}
+	}
+	for _, v := range []uint16{1, 38, 120, 999} {
+		if !EnemyHPSane(v) {
+			t.Errorf("%d 應該算戰鬥中", v)
+		}
+	}
+}

@@ -69,6 +69,40 @@ type game struct {
 	baked     []translator.BakedEntry
 	fontHelp  *xlate.Font
 	helpLines []string
+	cheat     bool // -cheat：打開 F5／F6（docs/spec/014）
+}
+
+// word 讀一個線性位址的字組。
+func (g *game) word(lin uint32) uint16 {
+	return g.o.Word(oracle.Addr{Seg: uint16(lin >> 4), Off: uint16(lin & 0xF)})
+}
+
+func (g *game) setWord(lin uint32, v uint16) {
+	g.o.SetWord(oracle.Addr{Seg: uint16(lin >> 4), Off: uint16(lin & 0xF)}, v)
+}
+
+// cheatFull 把 HP 與能量補到上限（docs/spec/014 §3）。
+func (g *game) cheatFull() string {
+	done := 0
+	for _, p := range [][2]uint32{{psychicwar.AddrHP, psychicwar.AddrHPMax}, {psychicwar.AddrEnergy, psychicwar.AddrEnergyMax}} {
+		if v := psychicwar.FullValue(g.word(p[0]), g.word(p[1])); v != 0 {
+			g.setWord(p[0], v)
+			done++
+		}
+	}
+	if done == 0 {
+		return "沒東西可補"
+	}
+	return "HP 與能量補滿"
+}
+
+// cheatWeakenEnemy 把敵人 HP 設成 1（只在戰鬥中）。
+func (g *game) cheatWeakenEnemy() string {
+	if !psychicwar.EnemyHPSane(g.word(psychicwar.AddrEnemyHP)) {
+		return "現在不是戰鬥"
+	}
+	g.setWord(psychicwar.AddrEnemyHP, 1)
+	return "敵人剩 1 點"
 }
 
 // 狀態檔格式的版本字串：dosgolem 沒有版本常數，格式換了就手動升這個版號（docs/spec/012 §4）。
@@ -83,6 +117,16 @@ func (g *game) hotkeys(k ebiten.Key) bool {
 	case ebiten.KeyF2:
 		g.english = !g.english
 		g.showToast(map[bool]string{true: "英文原文", false: "中文"}[g.english])
+		return true
+	case ebiten.KeyF5:
+		if g.cheat {
+			g.showToast(g.cheatFull())
+		}
+		return true
+	case ebiten.KeyF6:
+		if g.cheat {
+			g.showToast(g.cheatWeakenEnemy())
+		}
 		return true
 	case ebiten.KeyF10:
 		g.showToast(g.quickSave())
@@ -403,6 +447,7 @@ func main() {
 	textDir := flag.String("text", "text", "文本檔目錄（docs/spec/007）；空字串停用中文疊字")
 	fontDir := flag.String("font", "font", "中文字型子集目錄：cjk24.golemfnt、cjk16.golemfnt（tools/font/bake.sh）")
 	textLog := flag.String("text-log", "", "轉譯紀錄（JSON Lines）")
+	cheat := flag.Bool("cheat", false, "打開作弊熱鍵 F5（補滿 HP 與能量）、F6（敵人剩 1 點），docs/spec/014")
 	flag.Parse()
 	if *orig == "" {
 		flag.Usage()
@@ -437,6 +482,7 @@ func main() {
 	}
 	g.audio = o.NewAudio(sampleRate)
 	g.quickDir, g.origDir, g.textDir = *scratch, *orig, *textDir
+	g.cheat = *cheat
 	if lines, err := psychicwar.LoadHelp(*textDir); err != nil { // 排不下或讀不到就不要進畫面（docs/spec/012 §5）
 		log.Printf("讀不到說明頁（F1 停用）：%v", err)
 	} else {
