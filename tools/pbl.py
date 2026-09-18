@@ -150,19 +150,24 @@ def read_png(path):
     return w, h, ch, rows, plte
 
 
-def screen_indices(path):
-    """畫面 PNG → 色號陣列（用 EGA 預設 16 色反查；出現別的顏色就報錯）。"""
+def screen_indices(path, scale=1):
+    """畫面 PNG → 色號陣列（用 EGA 預設 16 色反查；出現別的顏色就報錯）。
+
+    `scale` > 1 時每 scale 個像素取一個，把放大過的前端截圖還原成 320×200 的色號陣列。
+    """
     w, h, ch, rows, plte = read_png(path)
     back = {c: i for i, c in enumerate(EGA)}
-    px = bytearray(w * h)
-    for y in range(h):
-        r = rows[y]
-        for x in range(w):
-            c = plte[r[x]] if ch == 1 else (r[ch * x], r[ch * x + 1], r[ch * x + 2])
+    ow, oh = w // scale, h // scale
+    px = bytearray(ow * oh)
+    for y in range(oh):
+        r = rows[y * scale]
+        for x in range(ow):
+            sx = x * scale
+            c = plte[r[sx]] if ch == 1 else (r[ch * sx], r[ch * sx + 1], r[ch * sx + 2])
             if c not in back:
-                raise SystemExit("畫面有非 EGA 預設色：(%d,%d) %s" % (x, y, c))
-            px[y * w + x] = back[c]
-    return w, h, px
+                raise SystemExit("畫面有非 EGA 預設色：(%d,%d) %s" % (sx, y * scale, c))
+            px[y * ow + x] = back[c]
+    return ow, oh, px
 
 
 def cmd_list(paths):
@@ -229,7 +234,9 @@ def cmd_check(paths):
 
 
 def cmd_find(ref, paths):
-    sw, sh, spx = screen_indices(ref)
+    # 放大過的前端截圖（960×600）先還原成 320×200，否則一張都比不中。
+    w0 = read_png(ref)[0]
+    sw, sh, spx = screen_indices(ref, max(w0 // 320, 1))
     for p in paths:
         data = pathlib.Path(p).read_bytes()
         for i, off, _ in images(data):
