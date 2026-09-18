@@ -24,7 +24,7 @@
 | 做法 | 為什麼選它 |
 |---|---|
 | 掛 `/run/user/<uid>/pulse/native`，ALSA 走 pulse plugin | 不獨佔音效卡，主機的其他聲音照常。時序由 PipeWire 決定，是真的 |
-| ~~掛 `/dev/snd` 直接開 `hw:0`~~ | 會跟主機的音訊伺服器搶裝置 |
+| ~~掛 `/dev/snd` 直接開 `hw:0`~~ | 會跟主機的音訊伺服器搶裝置。實測（2026-09-18，`--device /dev/snd --group-add audio`）：`oto: ALSA error at snd_pcm_hw_params: Invalid argument`，連開都開不起來 |
 | ~~ALSA 的 `null` PCM~~ | 不按時序消耗（§1） |
 
 容器需要 `libasound2-plugins`（ALSA 的 pulse plugin），已加進 `tools/docker/go-ebiten.Dockerfile`。
