@@ -77,7 +77,10 @@ def merge_strings(hits):
     for step, rt, al, bx, cx, ds in hits:
         lin = (CS_LIN + bx) if rt == "62AF" else ds * 16 + bx
         ch = cx >> 8
-        if out:
+        # AL ＝ 0 表示上一個字串的結尾剛被讀掉：這一次是**新的字串**的開頭。
+        # 不擋的話，記憶體裡相鄰的下一個字串（起點 ＝ 上一個位址 ＋1）會被併成同一次印字，
+        # 觸發則數少算（Game Over 的三行只算一則）。
+        if out and al != 0:
             o = out[-1]
             if o["rt"] == rt and lin == o["last"] + 1 and (rt != "6289" or ch == o["ch"] - 1):
                 o["chars"].append(al)
