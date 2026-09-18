@@ -3,6 +3,702 @@
  "note": "圖檔內嵌文字的中文疊字（docs/spec/011）。region、text 是圖內座標；screen 是這張圖畫在畫面上的左上角（docs/re/023 的實跑觀測）。原文欄位只給清冊看，程式不讀。",
  "entries": [
   {
+   "key": "ROOM0.PBL:5:elevator",
+   "file": "ROOM0.PBL",
+   "image": 5,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    8,
+    11,
+    37,
+    5
+   ],
+   "text": [
+    8,
+    10,
+    7
+   ],
+   "original": "ELEVATOR",
+   "translation": "   電梯  ",
+   "font": "cjk16",
+   "note": "電梯房間，左側牆面紅字招牌，無邊框，直接畫在青色控制面板上"
+  },
+  {
+   "key": "ROOM0.PBL:18:danger",
+   "file": "ROOM0.PBL",
+   "image": 18,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    20,
+    10,
+    31,
+    7
+   ],
+   "text": [
+    20,
+    10,
+    5
+   ],
+   "original": "DANGER",
+   "translation": " 危險  ",
+   "font": "cjk16",
+   "note": "房間招牌：藍底黃字的警示牌"
+  },
+  {
+   "key": "ROOM0.PBL:19:danger",
+   "file": "ROOM0.PBL",
+   "image": 19,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    20,
+    22,
+    31,
+    7
+   ],
+   "text": [
+    20,
+    22,
+    5
+   ],
+   "original": "DANGER",
+   "translation": " 危險  ",
+   "font": "cjk16",
+   "note": "與 #18 同一招牌圖案，位置下移 12px"
+  },
+  {
+   "key": "ROOM0.PBL:23:guard-left",
+   "file": "ROOM0.PBL",
+   "image": 23,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    1,
+    10,
+    24,
+    7
+   ],
+   "text": [
+    1,
+    10,
+    4
+   ],
+   "original": "GUARD",
+   "translation": " 警衛 ",
+   "font": "cjk16",
+   "note": "警衛室左側，大型數字造型招牌內的青字（背景色塊挖空成字）"
+  },
+  {
+   "key": "ROOM0.PBL:23:guard-right",
+   "file": "ROOM0.PBL",
+   "image": 23,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    49,
+    58,
+    23,
+    7
+   ],
+   "text": [
+    48,
+    58,
+    4
+   ],
+   "original": "GUARD",
+   "translation": " 警衛 ",
+   "font": "cjk16",
+   "note": "警衛室右側招牌，貼齊畫面右緣（字跡最右到 x=71，中文格向左延伸 1px 以留在圖內）"
+  },
+  {
+   "key": "ROOM0.PBL:24:guard-left",
+   "file": "ROOM0.PBL",
+   "image": 24,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    14,
+    10,
+    24,
+    7
+   ],
+   "text": [
+    14,
+    10,
+    4
+   ],
+   "original": "GUARD",
+   "translation": " 警衛 ",
+   "font": "cjk16",
+   "note": "與 #23 同房間、色調不同版本；左側招牌位置實測與 #23 不同（x14 非 x1）"
+  },
+  {
+   "key": "ROOM0.PBL:24:guard-right",
+   "file": "ROOM0.PBL",
+   "image": 24,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    34,
+    57,
+    24,
+    7
+   ],
+   "text": [
+    34,
+    57,
+    4
+   ],
+   "original": "GUARD",
+   "translation": " 警衛 ",
+   "font": "cjk16",
+   "note": "右側招牌，位置與 #23 的右側招牌不同（x34/y57 非 x48/y58）"
+  },
+  {
+   "key": "ROOM0.PBL:27:data",
+   "file": "ROOM0.PBL",
+   "image": 27,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    36,
+    21,
+    19,
+    5
+   ],
+   "text": [
+    36,
+    20,
+    4
+   ],
+   "original": "DATA",
+   "translation": " 資料 ",
+   "font": "cjk16",
+   "note": "終端機房間，右上白字藍底招牌"
+  },
+  {
+   "key": "ROOM0.PBL:28:compute",
+   "file": "ROOM0.PBL",
+   "image": 28,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    36,
+    21,
+    35,
+    5
+   ],
+   "text": [
+    36,
+    20,
+    6
+   ],
+   "original": "COMPUTE",
+   "translation": "  電腦  ",
+   "font": "cjk16",
+   "note": "與 #27 同系列房間；原文被畫面右緣裁到只剩 COMPUTE（推斷完整字是 COMPUTER），譯文照完整字意譯"
+  },
+  {
+   "key": "ROOM0.PBL:29:inform",
+   "file": "ROOM0.PBL",
+   "image": 29,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    36,
+    21,
+    29,
+    5
+   ],
+   "text": [
+    36,
+    20,
+    5
+   ],
+   "original": "INFORM",
+   "translation": " 資訊  ",
+   "font": "cjk16",
+   "note": "與 #27 同系列房間；原文被裁到只剩 INFORM（推斷完整字是 INFORMATION），依指示範例縮短譯為「資訊」"
+  },
+  {
+   "key": "ROOM1.PBL:2:computer",
+   "file": "ROOM1.PBL",
+   "image": 2,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    2,
+    2,
+    40,
+    5
+   ],
+   "text": [
+    2,
+    1,
+    7
+   ],
+   "original": "COMPUTER",
+   "translation": "   電腦  ",
+   "font": "cjk16",
+   "note": "電腦終端機房間，上方黃底紫字招牌"
+  },
+  {
+   "key": "ROOM1.PBL:2:imperial",
+   "file": "ROOM1.PBL",
+   "image": 2,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    7,
+    61,
+    47,
+    5
+   ],
+   "text": [
+    7,
+    60,
+    8
+   ],
+   "original": "IMPERIAL CO.",
+   "translation": " 帝國有限公司 ",
+   "font": "cjk16",
+   "note": "公司名兩行「IMPERIAL CO.」+「LTD.」，只譯第一行為完整公司名；第二行 LTD. 未譯，見任務回報「不確定/限制」說明（兩行間距只有 1px，cjk16 7px 字高無法在不重疊的前提下分開覆蓋兩行）"
+  },
+  {
+   "key": "ROOM1.PBL:3:computer",
+   "file": "ROOM1.PBL",
+   "image": 3,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    2,
+    2,
+    40,
+    5
+   ],
+   "text": [
+    2,
+    1,
+    7
+   ],
+   "original": "COMPUTER",
+   "translation": "   電腦  ",
+   "font": "cjk16",
+   "note": "與 #2 相同房間、色調變化版本，位置實測相同"
+  },
+  {
+   "key": "ROOM1.PBL:3:imperial",
+   "file": "ROOM1.PBL",
+   "image": 3,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    7,
+    61,
+    47,
+    5
+   ],
+   "text": [
+    7,
+    60,
+    8
+   ],
+   "original": "IMPERIAL CO.",
+   "translation": " 帝國有限公司 ",
+   "font": "cjk16",
+   "note": "同 #2，只譯 IMPERIAL CO. 這行，LTD. 未譯（同一理由）"
+  },
+  {
+   "key": "ROOM1.PBL:4:computer",
+   "file": "ROOM1.PBL",
+   "image": 4,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    2,
+    2,
+    40,
+    5
+   ],
+   "text": [
+    2,
+    1,
+    7
+   ],
+   "original": "COMPUTER",
+   "translation": "   電腦  ",
+   "font": "cjk16",
+   "note": "與 #2 相同房間、色調變化版本，位置實測相同"
+  },
+  {
+   "key": "ROOM1.PBL:4:imperial",
+   "file": "ROOM1.PBL",
+   "image": 4,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    7,
+    61,
+    47,
+    5
+   ],
+   "text": [
+    7,
+    60,
+    8
+   ],
+   "original": "IMPERIAL CO.",
+   "translation": " 帝國有限公司 ",
+   "font": "cjk16",
+   "note": "同 #2，只譯 IMPERIAL CO. 這行，LTD. 未譯（同一理由）"
+  },
+  {
+   "key": "ROOM1.PBL:10:danger",
+   "file": "ROOM1.PBL",
+   "image": 10,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    1,
+    10,
+    28,
+    5
+   ],
+   "text": [
+    1,
+    9,
+    5
+   ],
+   "original": "DANGER",
+   "translation": " 危險  ",
+   "font": "cjk16",
+   "note": "左上白字黑底警示牌"
+  },
+  {
+   "key": "ROOM1.PBL:12:gate",
+   "file": "ROOM1.PBL",
+   "image": 12,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    50,
+    12,
+    20,
+    5
+   ],
+   "text": [
+    46,
+    11,
+    4
+   ],
+   "original": "GATE",
+   "translation": " 閘門 ",
+   "font": "cjk16",
+   "note": "告示牌兩行「GATE」＋「OPEN」第一行"
+  },
+  {
+   "key": "ROOM1.PBL:12:open",
+   "file": "ROOM1.PBL",
+   "image": 12,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    50,
+    18,
+    19,
+    5
+   ],
+   "text": [
+    46,
+    18,
+    4
+   ],
+   "original": "OPEN",
+   "translation": " 開啟 ",
+   "font": "cjk16",
+   "note": "GATE OPEN 第二行；與第一行緊鄰但有黑色間隔列，可分開覆蓋不重疊"
+  },
+  {
+   "key": "ROOM1.PBL:13:danger",
+   "file": "ROOM1.PBL",
+   "image": 13,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    18,
+    29,
+    24,
+    4
+   ],
+   "text": [
+    18,
+    27,
+    4
+   ],
+   "original": "DANGER",
+   "translation": " 危險 ",
+   "font": "cjk16",
+   "note": "上方中央紅字黑底小招牌，字高僅4px；中文格上下各touch一行相鄰牆面裝飾（無法完全避開）"
+  },
+  {
+   "key": "ROOM1.PBL:14:danger",
+   "file": "ROOM1.PBL",
+   "image": 14,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    18,
+    29,
+    24,
+    4
+   ],
+   "text": [
+    18,
+    27,
+    4
+   ],
+   "original": "DANGER",
+   "translation": " 危險 ",
+   "font": "cjk16",
+   "note": "與 #13 同房間，招牌改綠字，位置相同"
+  },
+  {
+   "key": "ROOM1.PBL:15:danger",
+   "file": "ROOM1.PBL",
+   "image": 15,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    27,
+    28,
+    29,
+    5
+   ],
+   "text": [
+    27,
+    27,
+    5
+   ],
+   "original": "DANGER",
+   "translation": " 危險  ",
+   "font": "cjk16",
+   "note": "與 #13/#14 同房間但招牌改黃字且位置不同（實測 x27/y28，非 x18/y29），不可沿用 #13 座標"
+  },
+  {
+   "key": "ROOM1.PBL:16:danger",
+   "file": "ROOM1.PBL",
+   "image": 16,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    27,
+    28,
+    29,
+    5
+   ],
+   "text": [
+    27,
+    27,
+    5
+   ],
+   "original": "DANGER",
+   "translation": " 危險  ",
+   "font": "cjk16",
+   "note": "綠字招牌；位置與 #15 完全相同（雖然清冊註記為不同房間造型）"
+  },
+  {
+   "key": "ROOM1.PBL:17:danger",
+   "file": "ROOM1.PBL",
+   "image": 17,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    30,
+    29,
+    23,
+    4
+   ],
+   "text": [
+    30,
+    28,
+    4
+   ],
+   "original": "DANGER",
+   "translation": " 危險 ",
+   "font": "cjk16",
+   "note": "青字招牌，字高4px；與 #16 房間相近但招牌位置不同（x30/y29）"
+  },
+  {
+   "key": "ROOM1.PBL:18:danger",
+   "file": "ROOM1.PBL",
+   "image": 18,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    30,
+    29,
+    23,
+    4
+   ],
+   "text": [
+    30,
+    28,
+    4
+   ],
+   "original": "DANGER",
+   "translation": " 危險 ",
+   "font": "cjk16",
+   "note": "與 #17 同房間、色調變化版本，位置相同"
+  },
+  {
+   "key": "ROOM1.PBL:25:danger",
+   "file": "ROOM1.PBL",
+   "image": 25,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    34,
+    16,
+    28,
+    5
+   ],
+   "text": [
+    34,
+    14,
+    5
+   ],
+   "original": "DANGER",
+   "translation": " 危險  ",
+   "font": "cjk16",
+   "note": "白字黑底招牌，上方為紅色裝飾條，中文格往上多蓋2列裝飾條以避開招牌下方的綠色小圖示"
+  },
+  {
+   "key": "ROOM1.PBL:26:escape",
+   "file": "ROOM1.PBL",
+   "image": 26,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    22,
+    12,
+    29,
+    5
+   ],
+   "text": [
+    22,
+    12,
+    5
+   ],
+   "original": "ESCAPE",
+   "translation": " 逃生道 ",
+   "font": "cjk16",
+   "note": "逃生通道房間，黃字招牌；「口」不在字型子集，改用「逃生道」（原建議「逃生口」）"
+  },
+  {
+   "key": "ROOM1.PBL:27:escape",
+   "file": "ROOM1.PBL",
+   "image": 27,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    22,
+    12,
+    29,
+    5
+   ],
+   "text": [
+    22,
+    12,
+    5
+   ],
+   "original": "ESCAPE",
+   "translation": " 逃生道 ",
+   "font": "cjk16",
+   "note": "與 #26 同房間，招牌改綠字，位置相同"
+  },
+  {
+   "key": "ROOM1.PBL:28:escape",
+   "file": "ROOM1.PBL",
+   "image": 28,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    22,
+    12,
+    29,
+    5
+   ],
+   "text": [
+    22,
+    12,
+    5
+   ],
+   "original": "ESCAPE",
+   "translation": " 逃生道 ",
+   "font": "cjk16",
+   "note": "與 #26/#27 同房間，位置相同"
+  },
+  {
    "key": "SCREEN.PBL:0:advance",
    "file": "SCREEN.PBL",
    "image": 0,
@@ -139,30 +835,6 @@
    "original": "DIRECTION",
    "translation": " 方向 ",
    "note": "狀態欄標籤；值由遊戲畫在右邊；比對範圍避開右邊的方位值"
-  },
-  {
-   "key": "ROOM0.PBL:18:danger",
-   "file": "ROOM0.PBL",
-   "image": 18,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    20,
-    10,
-    31,
-    7
-   ],
-   "text": [
-    20,
-    10,
-    5
-   ],
-   "original": "DANGER",
-   "translation": " 危險  ",
-   "font": "cjk16",
-   "note": "房間招牌：藍底黃字的警示牌"
   }
  ]
 }
