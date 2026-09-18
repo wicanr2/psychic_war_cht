@@ -24,22 +24,6 @@
  },
  "items": [
   {
-   "id": "opl2-synth",
-   "milestone": "M1",
-   "labels": [
-    "golem-upstream",
-    "audio"
-   ],
-   "title": "OPL2（AdLib）合成：`.MID` 音樂路徑目前只有暫存器紀錄",
-   "body": "開 `-adlib` 時遊戲改載 `.MID` 並寫 OPL2 暫存器。dosgolem 已有合成雛形（分支 `psychic-war/m1-opl2` `a70be7f`，規格 `196`，未推上游），標題音樂可合成成 WAV。依 `docs/spec/002` 比對不通過，且 dosgolem 自己的 WAV 對自己的樂譜也不通過——比對方法分辨力不足，雛形也缺 KSL／震音／顫音（docs/re/007）。下一步：DOSBox-X raw OPL 擷取與 `-opl-log` 逐筆比；改成雙 WAV 直接比；補雛形。",
-   "acceptance": "暫存器序列與 DOSBox-X raw OPL 擷取逐筆一致；標題音樂 WAV 比對通過（方法以 dosgolem 自我比對當正對照定案）。",
-   "verify": {
-    "kind": "manual",
-    "note": "判準（docs/spec/016）**三項全部通過**：spec 0.9117、env 0.8119、chroma 0.9836（門檻 0.8350／0.7548／0.9603）。根因是相位單位——真機一個正弦週期是 1024 個索引不是 512，FM 少一半、回授多一倍，兩個方向相反所以逐項開關測不出來（docs/re/032）。剩：驗收要求的第二段「迷宮曲」還沒比（要先做能走到迷宮再錄音的腳本）；env 在 20–30 秒仍偏低（0.07–0.22）。"
-   },
-   "issue": 5
-  },
-  {
    "id": "realtime-pacing",
    "milestone": "M2",
    "labels": [
@@ -373,6 +357,13 @@
    "title": "即時音訊輸出（OPL2 與 PC 喇叭）",
    "evidence": "docs/spec/020、docs/re/026 §6：真實裝置（PipeWire 的 pulse socket）上 AdLib 與 PC 喇叭各 65 秒，欠載都是 6 次全在開場第 1 秒、第 2 秒之後 0；機器／牆上 0.9978（反向對照）",
    "date": "2026-09-18"
+  },
+  {
+   "id": "opl2-synth",
+   "issue": 5,
+   "title": "OPL2（AdLib）合成：`.MID` 音樂路徑目前只有暫存器紀錄",
+   "evidence": "docs/spec/016 三項全過：spec 0.9117、env 0.8119、chroma 0.9836（門檻 0.8350／0.7548／0.9603）。根因是相位單位——真機一個正弦週期 1024 個索引不是 512，FM 少一半、回授多一倍（docs/re/032）。驗收的第二段「迷宮曲」依使用者定案 2026-09-19 不做",
+   "date": "2026-09-19"
   }
  ],
  "dropped": [
