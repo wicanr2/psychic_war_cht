@@ -25,6 +25,13 @@ ORIG=()
 # 原版也掛在 /orig：probe 產生的狀態檔記著 /orig/psychic-war，載入後遊戲照那個路徑開檔
 [[ -d "$ROOT/workplace/original" ]] && ORIG=(-v "$ROOT/workplace/original:/src/workplace/original:ro" -v "$ROOT/workplace/original:/orig:ro")
 
+# PSYCHICWAR_DOCKER_EXTRA：額外的 docker run 參數（空白分隔），給需要接主機資源的量測用。
+# 目前唯一的用途是音訊：掛主機的 PipeWire／PulseAudio socket 進來（`docs/spec/020`）。
+# ⚠ 掛什麼進去要在呼叫端寫清楚——這個變數等於在硬規則的「預設 --network none、
+# 不碰共用資源」上開一個口，開口要小而且看得見。
+EXTRA=()
+[[ -n "${PSYCHICWAR_DOCKER_EXTRA:-}" ]] && read -ra EXTRA <<< "$PSYCHICWAR_DOCKER_EXTRA"
+
 exec timeout "${PSYCHICWAR_TIMEOUT:-15m}" docker run --rm "${NET[@]}" \
   --memory "${PSYCHICWAR_MEMORY:-3g}" --cpus "${PSYCHICWAR_CPUS:-2}" --pids-limit 512 \
   --log-opt max-size=10m --log-opt max-file=3 \
@@ -33,6 +40,7 @@ exec timeout "${PSYCHICWAR_TIMEOUT:-15m}" docker run --rm "${NET[@]}" \
   -v "$ROOT/workplace/gocache:/gocache" -v "$ROOT/workplace/gomodcache:/gomodcache" \
   -e GOCACHE=/gocache -e GOMODCACHE=/gomodcache -e HOME=/tmp -e GOFLAGS=-mod=mod \
   -e PSYCHICWAR_SH="${PSYCHICWAR_SH:-}" \
+  "${EXTRA[@]}" \
   -w /src "$IMAGE" sh -c '
     set -eu
     mkdir -p /tmp/.X11-unix

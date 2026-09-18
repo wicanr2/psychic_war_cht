@@ -5,9 +5,14 @@
 # 把前端跑在 Xvfb 裡、用真正的 X 鍵盤事件操作、用 `import` 截圖。
 # **不是除錯捷徑**——按鍵一樣走 X → GLFW → Ebiten → `inpututil`，
 # 與玩家在自己機器上按的是同一條路（`docs/spec/006` §4 第 5 項驗這一條）。
+#
+# `libasound2-plugins` 是給真實裝置上的音訊量測用的（`docs/spec/020`）：
+# 它提供 ALSA 的 pulse plugin，讓容器經由主機的 PipeWire／PulseAudio socket 出聲，
+# **不獨佔音效卡**。直接掛 /dev/snd 會跟主機的音訊伺服器搶裝置。
 FROM golang:1.24-bookworm
 RUN apt-get update && apt-get install -y --no-install-recommends \
         libx11-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev libxxf86vm-dev \
         libgl1-mesa-dev libasound2-dev pkg-config xvfb xauth libgl1 libglx-mesa0 \
         xdotool imagemagick \
+        libasound2-plugins alsa-utils \
     && rm -rf /var/lib/apt/lists/*
