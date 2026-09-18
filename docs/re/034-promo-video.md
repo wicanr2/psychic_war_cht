@@ -12,7 +12,8 @@
 | 分鏡 | 9 段：標題卡、中英對照、開場星圖字幕、開場故事、迷宮面板、對白選單、戰鬥、輔助功能、結尾卡 |
 | 配樂 | `workplace/dosboxx-audio/title-adlib.wav` ── **DOSBox-X 跑原版錄下來的輸出** |
 | 畫面 | 全部是實跑截圖（`pwstep`、前端 Xvfb），沒有 mockup、沒有重畫 |
-| 音軌驗證 | 來源 mean −18.0 dB／max −1.1 dB；成片 mean −17.4 dB／max −1.1 dB（差在淡入淡出與剪裁），無 clipping |
+| 音軌驗證 | 來源 mean −18.0 dB／max −1.1 dB；成片 mean −17.4 dB／max −1.1 dB，差在淡入淡出與剪裁，無 clipping |
+| 可重現 | 本專案的 `psychicwar-video` 與借用的同類 image，產出 1,929,460 bytes 逐位元組相同 |
 
 **影片不進版控。** 它含原版的畫面與音樂，`workplace/` 已經 gitignore。
 要對外公開之前先看 §4。
@@ -56,7 +57,7 @@
 | 標題與英文副標疊在一起 | `-annotate +0+0-110` 不是「y ＝ 0−110」。ImageMagick 的幾何是 `+x+y`，負號直接寫在 y：`+0-110`。多出來的那一段會被吃掉，不報錯 |
 | `concat` 說 `Impossible to open 'tmp/tmp/s_00.mp4'` | concat demuxer 的 `file` 路徑是**相對 list 檔所在目錄**，不是相對 cwd。list 裡寫檔名就好 |
 | 抽出來的幀全黑 | 每段之間淡出到黑再淡入，剛好抽在交界。抽幀要避開段落邊界 |
-| 工具 image 建不起來 | 容器內 `apt-get update` 60 秒跑不完，`fonts-noto-cjk-extra` 那一包又特別大。改成只裝 `fonts-noto-cjk`；這台機器上已經有別的專案建好的同類 image，`PSYCHICWAR_VIDEO_IMAGE` 可以指過去（**只執行，不清理也不覆寫**） |
+| 工具 image 要等很久 | 這台機器的容器網路很慢，`apt-get update` 60 秒跑不完。`fonts-noto-cjk-extra` 只提供用不到的字重，拿掉。急著要結果時可以用 `PSYCHICWAR_VIDEO_IMAGE` 指向別的專案建好的同類 image（**只執行，不清理也不覆寫**）；兩者產出的檔案逐位元組相同 |
 
 沒有用 `zoompan`（skill 的雷 #1：它的 `d` 是「每個輸入幀輸出 d 幀」，配上前置 `fps` 會把 6 秒算成兩萬多幀）。
 靜態圖加淡入淡出就夠。
