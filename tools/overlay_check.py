@@ -162,8 +162,12 @@ def check_baked(argv):
     sw, sh, shot = read_png(ROOT / shot_png)
     assert (rw, rh, sw, sh) == (320, 200, 960, 600), (rw, rh, sw, sh)
     px = lambda x, y: ref[3 * (y * 320 + x):3 * (y * 320 + x) + 3]  # noqa: E731
-    fw, fh, glyphs = load_golemfnt(ROOT / "font/cjk24.golemfnt")
-    rb = (fw + 7) // 8
+    # 兩套字型：cjk24 一格 8×8、字模對齊格左上；cjk16 一格 6×7、字模偏移 (1,3)
+    # （apps/psychicwar/translator/baked.go 的 bakedStamp，幾何同 docs/spec/009 的 B 路徑）。
+    FONTS = {
+        "cjk24": (8, 8, 0, 0) + (load_golemfnt(ROOT / "font/cjk24.golemfnt"),),
+        "cjk16": (6, 7, 1, 3) + (load_golemfnt(ROOT / "font/cjk16.golemfnt"),),
+    }
     failed = 0
     for e in doc["entries"]:
         if only and e["key"] not in only:
@@ -175,7 +179,8 @@ def check_baked(argv):
         cells = e["text"][2]
         x = e["screen"][0] + e["text"][0]
         y = e["screen"][1] + e["text"][1]
-        cw = ch = 8
+        cw, ch, gx0, gy0, (fw, fh, glyphs) = FONTS[e.get("font") or "cjk24"]
+        rb = (fw + 7) // 8
         counts = {}
         for r in range(ch):
             for b in range(cells * cw):
@@ -198,8 +203,12 @@ def check_baked(argv):
                 for r in range(fh):
                     for b in range(fw):
                         if g[r * rb + b // 8] & (0x80 >> (b % 8)):
-                            xx, yy = i * cw * S + b, r
-                            if xx < (i + 1) * cw * S and yy < bh:
+                            # 字模畫在「格左上 ＋ (GlyphX, GlyphY)」，超出格緣的點不畫（spec 202 §2.4）
+                            lx, ly = gx0 + b, gy0 + r
+                            if lx >= cw * S or ly >= ch * S:
+                                continue
+                            xx, yy = i * cw * S + lx, ly
+                            if xx < bw and yy < bh:
                                 exp[3 * (yy * bw + xx):3 * (yy * bw + xx) + 3] = fg
         bad = sum(1 for yy in range(bh) for xx in range(bw)
                   if exp[3 * (yy * bw + xx):3 * (yy * bw + xx) + 3] != shot[3 * ((y * S + yy) * 960 + x * S + xx):3 * ((y * S + yy) * 960 + x * S + xx) + 3])
