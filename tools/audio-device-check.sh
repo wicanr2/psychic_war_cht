@@ -25,6 +25,15 @@ esac
 SOCK="/run/user/$(id -u)/pulse/native"
 [[ -S "$SOCK" ]] || { echo "找不到 PulseAudio socket：$SOCK（主機有在跑 PipeWire 或 PulseAudio 嗎）" >&2; exit 2; }
 
+# image 少了 pulse plugin 的話，前端會噴 ALSA 的參數錯誤，看不出真正的原因。先擋下來。
+if ! docker run --rm --network none --memory 256m --cpus 1 --pids-limit 32 \
+     --log-opt max-size=10m --log-opt max-file=3 -u "$(id -u):$(id -g)" -e HOME=/tmp \
+     psychicwar-go-ebiten test -e /usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so; then
+  echo "image 裡沒有 ALSA 的 pulse plugin。重建：" >&2
+  echo "  docker build -t psychicwar-go-ebiten -f tools/docker/go-ebiten.Dockerfile tools/docker" >&2
+  exit 2
+fi
+
 OUT="workplace/audio-device/$MODE"
 rm -rf "$ROOT/$OUT"; mkdir -p "$ROOT/$OUT/saves"
 uptime | tee "$ROOT/$OUT/load-before.txt"
