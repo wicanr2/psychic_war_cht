@@ -180,10 +180,43 @@ def main(argv):
     mva, mvb = median(va) or 1.0, median(vb) or 1.0
     env = pearson([v / mva for v in va], [v / mvb for v in vb])
 
+    if "--drift" in argv:
+        # 分段對齊：如果兩邊的播放速度不同，最佳位移會隨時間單調漂移。
+        # 整段只做一次對齊的話，這種差異會偽裝成「音色不像」——chroma 不受影響、spec 與 env 掉下來。
+        seg = int(5 * rate)
+        rows = []
+        for k in range(0, n - seg + 1, seg):
+            sa, sb = envelope(xa[k:k + seg], rate), envelope(xb[k:k + seg], rate)
+            sh, r = align(sa, sb, int(3.0 * 1000 / ENV_MS))
+            rows.append((k / rate, sh * ENV_MS, r))
+        print("  分段對齊（每 5 秒）：")
+        for t, ms, r in rows:
+            print("    %5.1f 秒  位移 %+6.0f ms  相關 %.3f" % (t, ms, r))
+        if len(rows) >= 2:
+            slope = (rows[-1][1] - rows[0][1]) / (rows[-1][0] - rows[0][0])
+            print("    位移斜率 %+.1f ms/秒（%+.3f%% 速度差）" % (slope, slope / 10))
+        out_drift = [{"t": t, "shift_ms": ms, "r": r} for t, ms, r in rows]
+    else:
+        out_drift = None
+    if "--segments" in argv:
+        # 逐段算三個指標：整段一個數字看不出「哪一段不像」，而那正是定位問題的第一步。
+        # chroma 掉 → 音高或時間軸對不上；chroma 高但 spec 掉 → 音色（音量平衡、包絡）的問題。
+        seg = int(5 * rate)
+        print("  分段指標（每 5 秒）：")
+        for k in range(0, n - seg + 1, seg):
+            ga, gb = frames(xa[k:k + seg]), frames(xb[k:k + seg])
+            mm = min(len(ga), len(gb))
+            sp = median([cosine(ga[i], gb[i]) for i in range(mm)])
+            ch = median([cosine(chroma_of(ga[i], rate), chroma_of(gb[i], rate)) for i in range(mm)])
+            ea2, eb2 = envelope(xa[k:k + seg], rate), envelope(xb[k:k + seg], rate)
+            m1, m2 = median(ea2) or 1.0, median(eb2) or 1.0
+            en = pearson([v / m1 for v in ea2], [v / m2 for v in eb2])
+            print("    %5.1f 秒  spec %.4f  env %+.4f  chroma %.4f" % (k / rate, sp, en, ch))
     out = {
         "a": paths[0], "b": paths[1], "rate": rate, "seconds": round(n / rate, 2),
         "shift_ms": round(shift * ENV_MS, 1), "shift_r": round(shift_r, 4),
         "spec": round(spec, 4), "env": round(env, 4), "chroma": round(chroma, 4),
+        "drift": out_drift,
     }
     print("%s vs %s" % (paths[0], paths[1]))
     print("  對齊位移 %+.0f ms（相關 %.3f），共同區間 %.1f 秒 @ %d Hz"
