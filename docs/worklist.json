@@ -84,48 +84,9 @@
       "blocked_by": "playtest-cht",
       "verify": {
         "kind": "manual",
-        "note": "CI 工作流程出現後改綁"
+        "note": "Linux tar.gz 與 AppImage 已通過 docs/spec/021 §5 第 1–4 項：解開產物從別的 cwd 執行、畫面與 repo 建置逐像素差 0、解開處零寫入、存檔落在 XDG 目錄、字型改名後明確報錯（反向對照）。macOS universal 只過靜態驗收五道（docs/re/033），**沒有 Mac 可以實跑**，這一項在拿到 Mac 或 macOS CI 之前結不掉。Windows 還沒做。"
       },
       "issue": 35
-    },
-    {
-      "id": "license-readme",
-      "milestone": "M6",
-      "labels": [
-        "release"
-      ],
-      "title": "LICENSE（RRSAL-1.0）與 README",
-      "body": "依 `rulebook/85` 放入 RRSAL-1.0 全文，第 2 條 (c) 點名本專案的灰色地帶（文本檔的原文欄位、從原版量出的位址表、參照截圖）。README 依 `rulebook/80` 撰寫，寫清楚玩家要自備哪個版本。 README 另要寫明中文字模來源是倚天中文系統 3.53 的點陣子集（使用者定案 2026-09-18，docs/re/020 §4）與下架聯絡方式。",
-      "acceptance": "LICENSE 與 README 進版控；README 寫明原版取得方式與 SHA-256。",
-      "verify": {
-        "kind": "absent",
-        "paths": [
-          "README.md"
-        ],
-        "pattern": "RRSAL",
-        "note": "LICENSE（RRSAL-1.0）已放入 repo 並依實際內容填好占位符；剩 README 的授權段與字型來源聲明，README 本身由 #37 追蹤。README.md 出現 RRSAL 字樣就該關。"
-      },
-      "issue": 36
-    },
-    {
-      "id": "readme",
-      "milestone": "M6",
-      "labels": [
-        "release"
-      ],
-      "issue": 37,
-      "title": "README.md：遊戲介紹、中文截圖、怎麼玩",
-      "body": "repo 目前沒有 README。要寫遊戲介紹、中文截圖、建置與執行、熱鍵表、進度、授權與素材來源。",
-      "acceptance": "README.md 涵蓋上述章節；截圖取自試玩產出；依 rulebook/80、90、91 寫。⚠ 先決定截圖算不算散布原版素材。",
-      "blocked_by": "license-readme",
-      "verify": {
-        "kind": "absent",
-        "paths": [
-          "README.md"
-        ],
-        "pattern": "(?m)^## ",
-        "note": "repo 根目錄出現有章節的 README.md 就該關。⚠ 先決定截圖算不算散布原版素材。"
-      }
     },
     {
       "id": "walkthrough-1989",
@@ -353,6 +314,20 @@
       "issue": 25,
       "title": "圖檔內嵌文字的中文替換圖層",
       "evidence": "含文字 50 張已疊 48 張、125 塊（tools/baked_report.py）；沒疊的只有 LOGO.PBL 與 KGDLOGO.PBL 兩張標題美術字，docs/spec/011 §6 定案保留。lint 0 問題、合成畫面測試 125 筆全過。開場字幕條 OPEN.PBL #7–#10 的畫面座標由實跑截圖逐像素定出（差 0），四行中文實跑觸發並蓋上；字比底密的兩行用 text/baked.json 的 swap_colors 對調定色（dosgolem xlate，規格 202 §2.3）。見 docs/re/024 §6",
+      "date": "2026-09-19"
+    },
+    {
+      "id": "license-readme",
+      "issue": 36,
+      "title": "LICENSE（RRSAL-1.0）與 README",
+      "evidence": "LICENSE 是 RRSAL-1.0 全文；README 的授權段摘要第 2、6、12 條，寫明授權不涵蓋原版素材、中文字模來自倚天中文系統 3.53 的點陣子集與下架聯絡方式（wicanr2@gmail.com），並列出 PW.EXE 與 LOGO.EXE 的 SHA-256（取得管道刻意不寫）",
+      "date": "2026-09-19"
+    },
+    {
+      "id": "readme",
+      "issue": 37,
+      "title": "README.md：遊戲介紹、中文截圖、怎麼玩",
+      "evidence": "README.md 173 行，五張中文截圖在 docs/images/（由 pwstep 以當前 HEAD 重跑產生）。涵蓋遊戲介紹、中文化做法、完成度數字（出處全部連到 docs/re/）、抽測試玩三次、輔助功能表、怎麼跑、發行包狀態、文件索引、授權與字型來源。截圖只含遊戲畫面，原版檔案沒有進版控",
       "date": "2026-09-19"
     }
   ],

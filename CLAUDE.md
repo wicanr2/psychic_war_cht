@@ -156,6 +156,8 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | 圖檔文字：`.PBL` ＝ 偏移表＋每張 `[寬÷8][高÷8][16 bytes CGA 表]`＋RLE，4bpp 逐列；貼圖位置 ＝ `CH×4`、`CL×4`。26 檔 537 張，含文字 50 張（`docs/re/023`、`024`） | confirmed |
 | 圖檔內嵌文字的中文以「畫面內容比對」觸發（dosgolem `xlate.Watcher`）：面板與狀態欄 6 塊逐像素差 0；F1 說明、F2 中英切換、F10／F11 即時存檔都通過（`docs/re/024`、`025`） | confirmed |
 | 防拷：出題 `sub_1695C`、答案表 `cs:6787`（11×7）、正確答案在 `cs:66E5`；**這一版的比對被一個位元組關掉**（`cmp` 之後是無條件跳躍），任何答案都會過（`docs/re/028`） | confirmed |
+| 圖檔內嵌文字**收尾**：含文字 50 張已疊 **48 張、125 塊**；沒疊的只剩 `LOGO.PBL`／`KGDLOGO.PBL` 兩張標題美術字（`docs/spec/011` §6 定案保留）。開場字幕條 `OPEN.PBL` #7–#10 在 (24,120/128/136/144)，字比底密的兩行用 `swap_colors` 對調定色（`docs/re/024` §6） | confirmed |
+| 發行包（`docs/spec/021`）：Linux tar.gz 與 AppImage 通過「解開產物從別的 cwd 跑」的驗收（畫面差 0、解開處零寫入、存檔落在使用者資料目錄、字型改名報錯）；macOS universal 只過靜態驗收五道，**沒有 Mac 可以實跑**（`docs/re/033`） | confirmed（Linux／AppImage）／結構驗證（macOS） |
 | 疊字失效是**逐格**判斷（原版會在一行的一部分上面畫別的東西）；watcher 的疊字例外，整筆失效再由 watcher 重蓋（`docs/re/027`） | confirmed |
 | 疊字失效另有**錨定格**規則：定色時壓在原文墨跡上的格子全部失效就整筆移除。中文比原文寬時多出來的格子壓在純色背景上，指紋永遠不變，只靠逐格判斷會留下孤字（`docs/re/031` §7.3） | confirmed（重現前後對照） |
 | 圖檔文字：含文字 50 張已疊 45 張、122 塊（面板 3、房間招牌 23、道具圖鑑 17、開場字幕 1，另 `MENU.PBL` 由 `SCREEN.PBL` 的 watcher 等價涵蓋）。剩 `OPEN.PBL` #7–#9（字是從雜訊底挖空的，要疊字層的新畫法）與兩張標題美術字（定案保留）（`docs/re/031`） | confirmed |
@@ -217,6 +219,11 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/baked_find.py <截圖…>` | 哪一張截圖上有哪張圖：拿 `.PBL` 解出的原版圖塊比 `screen` 座標的像素。招牌多半在還沒走到的房間，逐像素驗收前要先知道去哪裡驗 |
 | `tools/baked_merge.py <來源.json…>` | 分頭寫的疊字資料合併進 `text/baked.json`（排序後寫，diff 看得懂） |
 | `tools/playtest-sampling-instructions.md` | 抽測試玩的代理指令範本（`docs/re/027`） |
+| `tools/package.sh linux\|appimage\|macos\|all` | 發行包（`docs/spec/021`），產物在 `dist/`（gitignore） |
+| `tools/package-check.sh <產物>` | 發行包驗收：解開後從**別的 cwd** 跑，比畫面、比解開處有沒有被寫入、字型改名的反向對照 |
+| `tools/macos-pack.sh`、`tools/macos-verify.sh` | macOS universal（osxcross 兩弧＋lipo）與五道靜態驗收（`docs/re/033`） |
+| `tools/appimagetool.sh`、`tools/appicon.py` | AppDir → AppImage（type2 runtime 串 squashfs）；自製圖示（不用原版 Logo） |
+| `tools/video.sh`、`tools/promo/make.sh`、`tools/promo/theme.sh` | 推廣片合成（ffmpeg／ImageMagick，skill `game-promo-video-ffmpeg`）。⚠ 配樂只能用 `workplace/dosboxx-audio/title-adlib.wav`（DOSBox-X 錄的原版輸出），**不可以用自寫合成器的 `workplace/audio/golem-opl-title.wav`**（`rulebook/93`） |
 | `tools/l10n_batches.py prep\|merge\|sweep`、`tools/l10n_check.py` | 分批翻譯、合併核對、一致性掃描；譯者自我檢查（`docs/re/021`） |
 | `tools/text_extract.py lint` | 譯文行寬與 Big5 檢查（`docs/spec/009` §3） |
 | `tools/text_extract.py build\|check\|stats <原版目錄>` | 產生／驗證 `text/`（`docs/spec/007`）；`menu\|enmy\|code` 是單檔除錯輸出 |
