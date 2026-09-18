@@ -138,7 +138,7 @@
       "blocked_by": "baked-text-graphics, hires-overlay-canvas",
       "verify": {
         "kind": "manual",
-        "note": "機制完成（`docs/spec/011` READY、dosgolem 規格 203、`xlate.Watcher`）：操作面板 4 則、狀態欄 2 則逐像素差 0，反向對照與前端都差 0（docs/re/024）。四個檢查點只剩標題美術字（決定保留）。剩：MAP.PBL 17 張的道具圖鑑與拾獲地圖、ROOM0／ROOM1 23 張房間招牌、OPEN.PBL 4 張開場字幕（docs/re/024 §6）"
+        "note": "機制完成（`docs/spec/011` READY、dosgolem 規格 203、`xlate.Watcher`）：面板 4 塊、狀態欄 2 塊逐像素差 0，反向對照與前端都差 0（docs/re/024）；四個檢查點只剩標題美術字（決定保留）。試玩修正見 docs/re/027 §2.3。剩：MAP.PBL 17 張、ROOM0／ROOM1 23 張、OPEN.PBL 4 張（docs/re/024 §6、第 8 輪）"
       },
       "issue": 25
     },
@@ -172,7 +172,7 @@
       "blocked_by": "translation-pass, baked-text-replacement",
       "verify": {
         "kind": "manual",
-        "note": "前端開機到第一場戰鬥：轉譯紀錄三種問題 0、文字路徑英文殘留 0（docs/re/019 §5）；模擬玩家看截圖試玩到出發平台（docs/re/022）。剩：再抽測幾段（存讀檔、第二個區域），不必走完全程"
+        "note": "抽測（使用者定案）：第一次 84 步到發射台（docs/re/022），第二次 238 步做存檔、抵達賽瓦德、8 場戰鬥（docs/re/027）。找到 3 個缺陷都已修並重現驗證，2 類暫態寫明不修。剩：賽瓦德以後的地點（角色等級不夠打不過）、讀檔入口（原版選單會逾時）"
       },
       "issue": 27
     },
