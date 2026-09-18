@@ -35,7 +35,7 @@
    "acceptance": "暫存器序列與 DOSBox-X raw OPL 擷取逐筆一致；標題音樂 WAV 比對通過（方法以 dosgolem 自我比對當正對照定案）。",
    "verify": {
     "kind": "manual",
-    "note": "判準已定案（docs/spec/016 READY）：spec ≥ 0.8350、env ≥ 0.7548、chroma ≥ 0.9603，門檻由 DOSBox-X 錄兩次的上界與兩種下界推出。合成器補上 KSL、震音、顫音、指數起音（dosgolem 196 修訂）。現況（docs/re/032）：全曲前 30 秒 spec 0.8086、env 0.7007、chroma 0.9730，只有 chroma 過；但**前 15 秒三項全部大幅超過門檻**（0.9502／0.8669／0.9798），15 秒之後掉下來而 chroma 仍高 → 純音色問題。已排除 KSL、震音、顫音、指數起音、時間軸速度差、段落間隔、混音截幅。下一步是逐聲道渲染。"
+    "note": "判準（docs/spec/016）**三項全部通過**：spec 0.9117、env 0.8119、chroma 0.9836（門檻 0.8350／0.7548／0.9603）。根因是相位單位——真機一個正弦週期是 1024 個索引不是 512，FM 少一半、回授多一倍，兩個方向相反所以逐項開關測不出來（docs/re/032）。剩：驗收要求的第二段「迷宮曲」還沒比（要先做能走到迷宮再錄音的腳本）；env 在 20–30 秒仍偏低（0.07–0.22）。"
    },
    "issue": 5
   },
@@ -54,23 +54,6 @@
     "note": "前端牆上時間對齊已通過（docs/re/016 §2.1）。第一場戰鬥：DOSBox-X 750 cycles 有效 3 場平均 17.75 秒、dosgolem 12 組平均 17.84 秒（−0.5%，docs/re/010 §4.6），樣本不足不定案。2026-09-17 主機 load 18（14 核）不能量；重開條件：load 連續 5 分鐘 < 2，DOSBox-X 走位改成等檢查點後補到 ≥ 5 場（docs/re/019 §6、docs/re/026 §3）"
    },
    "issue": 9
-  },
-  {
-   "id": "audio-output",
-   "milestone": "M2",
-   "labels": [
-    "audio",
-    "frontend"
-   ],
-   "title": "即時音訊輸出（OPL2 與 PC 喇叭）",
-   "body": "把 M1 的合成接到前端音訊輸出，與節拍同步。可選擇 AdLib 或 PC 喇叭版。",
-   "acceptance": "遊玩時聽得到標題與遊戲中音樂，沒有明顯斷音或速度偏差；可切換音源。",
-   "blocked_by": "opl2-synth, realtime-pacing",
-   "verify": {
-    "kind": "manual",
-    "note": "null 輸出路徑第 2–65 秒欠載 0（docs/re/026 §5，量測時每核負載 0.36）。真實裝置上的數字這台機器量不到（docs/re/026 §6）：容器沒有 /dev/snd，而 ALSA 的 null PCM 不按時序消耗資料、立刻吸收，量到 29 萬次欠載是它自己的行為不是待測系統的。要 snd-dummy 或 PulseAudio null sink，得在有音效卡的機器上做。"
-   },
-   "issue": 13
   },
   {
    "id": "baked-text-replacement",
@@ -382,6 +365,13 @@
    "issue": 26,
    "title": "輸入名字：原版只收 ASCII，中文版怎麼處理",
    "evidence": "docs/spec/017、tools/frontend-name-check.sh：名字欄位 play3 正確、送非 ASCII 之後逐位元組相同、NonASCII 單元測試通過",
+   "date": "2026-09-18"
+  },
+  {
+   "id": "audio-output",
+   "issue": 13,
+   "title": "即時音訊輸出（OPL2 與 PC 喇叭）",
+   "evidence": "docs/spec/020、docs/re/026 §6：真實裝置（PipeWire 的 pulse socket）上 AdLib 與 PC 喇叭各 65 秒，欠載都是 6 次全在開場第 1 秒、第 2 秒之後 0；機器／牆上 0.9978（反向對照）",
    "date": "2026-09-18"
   }
  ],

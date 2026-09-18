@@ -19,7 +19,6 @@
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
 | #9 | `realtime-pacing` | 牆上時間節拍：讓 72 Hz 的遊戲以原速執行 | golem-upstream, frontend | — | manual |
-| #13 | `audio-output` | 即時音訊輸出（OPL2 與 PC 喇叭） | audio, frontend | #5、#9 | manual |
 
 ## M3：文字攔截與文本抽取
 
@@ -85,3 +84,4 @@
 | #12 | `mouse-input` | 滑鼠：確認原版是否支援，並在前端提供點選操作 | docs/spec/018、tools/frontend-mouse-check.sh：點「前進」與按 Up 之後的觀測變數逐位元組相同、點熱區外與不點相同 | 2026-09-18 |
 | #14 | `input-record-replay` | 輸入錄放：以指令數記錄按鍵，可重播重現 | docs/spec/019、tools/record-replay-check.sh：錄 8 筆事件，重播後觀測變數逐位元組相同，反向對照不同 | 2026-09-18 |
 | #26 | `name-entry` | 輸入名字：原版只收 ASCII，中文版怎麼處理 | docs/spec/017、tools/frontend-name-check.sh：名字欄位 play3 正確、送非 ASCII 之後逐位元組相同、NonASCII 單元測試通過 | 2026-09-18 |
+| #13 | `audio-output` | 即時音訊輸出（OPL2 與 PC 喇叭） | docs/spec/020、docs/re/026 §6：真實裝置（PipeWire 的 pulse socket）上 AdLib 與 PC 喇叭各 65 秒，欠載都是 6 次全在開場第 1 秒、第 2 秒之後 0；機器／牆上 0.9978（反向對照） | 2026-09-18 |
