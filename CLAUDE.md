@@ -208,6 +208,8 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/frontend-map-check.sh`、`tools/map_check.py` | F3 自動地圖驗收（`docs/spec/015`）：座標由存檔推、逐格比顏色 |
 | `tools/baked_boxes.py`、`tools/baked_lint.py`、`tools/baked_preview.py` | 圖檔疊字的資料：量文字框、檢查一筆一筆、畫預覽（`tools/baked-authoring-instructions.md`）|
 | `tools/baked_report.py` | 圖檔內嵌文字的覆蓋率（清冊 vs 已疊中文） |
+| `tools/baked_find.py <截圖…>` | 哪一張截圖上有哪張圖：拿 `.PBL` 解出的原版圖塊比 `screen` 座標的像素。招牌多半在還沒走到的房間，逐像素驗收前要先知道去哪裡驗 |
+| `tools/baked_merge.py <來源.json…>` | 分頭寫的疊字資料合併進 `text/baked.json`（排序後寫，diff 看得懂） |
 | `tools/playtest-sampling-instructions.md` | 抽測試玩的代理指令範本（`docs/re/027`） |
 | `tools/l10n_batches.py prep\|merge\|sweep`、`tools/l10n_check.py` | 分批翻譯、合併核對、一致性掃描；譯者自我檢查（`docs/re/021`） |
 | `tools/text_extract.py lint` | 譯文行寬與 Big5 檢查（`docs/spec/009` §3） |
