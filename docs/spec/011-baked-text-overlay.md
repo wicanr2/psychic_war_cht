@@ -52,9 +52,12 @@ dosgolem 規格 `203-baked-text-watchers`（`xlate.Watcher`）、`202-translatio
 | `text` | 中文要蓋的位置與格數，**圖內座標** `[x, y, 格數]`；一格 8×8 原版像素（放大 3 倍後 24×24） |
 | `original` | 圖上的英文（清冊用，程式不看） |
 | `translation` | 譯文；空字串＝還沒翻，記 `missing-translation`，不蓋 |
+| `swap_colors` | 定色時把背景與前景對調（dosgolem `202-translation-overlay` §2.3）。整條橫幅被字填滿時，字的像素比底多，「最多的當背景」會反過來 |
 
 - 畫面座標 ＝ `screen` ＋ 區塊或文字的圖內座標。
 - 顏色由疊字層自己從區塊像素取（背景 ＝ 最多的色號、前景 ＝ 第二多），與 `docs/spec/009` 相同。
+  取色看的是**疊字自己蓋住的那塊**（`screen` ＋ `text` 起算，格數 × 格寬），不是 `region`。
+  字比底密時設 `swap_colors`。底紋的顏色比字色還多時，前景會抓到底紋——這種區塊目前沒有指定色號的辦法。
 - 譯文長度超過格數：記 `too-long`，該筆不蓋（與 `009` 一致）。
 
 ## 4. 執行期

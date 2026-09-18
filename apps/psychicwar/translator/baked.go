@@ -26,7 +26,10 @@ type BakedEntry struct {
 	// Font：cjk24（一格 8×8，預設）或 cjk16（一格 6×7，字模 16×15 偏移 (1,3)）——
 	// 招牌上的字常常只有 5 像素高，用大格會蓋掉上下的美術（docs/spec/011 §3）。
 	Font string `json:"font"`
-	Note string `json:"note"`
+	// SwapColors：定色時把背景與前景對調（dosgolem `202-translation-overlay` §2.3）。
+	// 用在字比底密的區塊——整條橫幅被字填滿時，字的像素多於底，「最多的當背景」會反過來。
+	SwapColors bool   `json:"swap_colors,omitempty"`
+	Note       string `json:"note"`
 }
 
 type bakedFile struct {
@@ -117,6 +120,7 @@ func (t *Translator) bakedStamp(e BakedEntry) *xlate.Stamp {
 		Key: e.Key, X: e.Screen[0] + e.Text[0], Y: e.Screen[1] + e.Text[1],
 		Cells: cells, CellW: bakedCell, CellH: bakedCell,
 		Font: t.Font24, GlyphScale: t.Scale / 3, Text: text, State: xlate.Pending,
+		SwapColors: e.SwapColors,
 	}
 	if e.Font == "cjk16" { // 小字型：與 docs/spec/009 的 B 路徑同一套幾何
 		s.CellW, s.CellH, s.Font = smallCellW, smallCellH, t.Font16

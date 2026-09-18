@@ -28,7 +28,6 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #25 | `baked-text-replacement` | 圖檔內嵌文字的中文替換圖層 | graphics, text | #18、#20 | manual |
 | #27 | `playtest-cht` | 中文版正常玩家路徑試玩 | verify, text | #24、#25 | manual |
 
 ## M5：輔助功能：F1／F2／F3／F10、防拷、作弊
@@ -85,3 +84,4 @@
 | #26 | `name-entry` | 輸入名字：原版只收 ASCII，中文版怎麼處理 | docs/spec/017、tools/frontend-name-check.sh：名字欄位 play3 正確、送非 ASCII 之後逐位元組相同、NonASCII 單元測試通過 | 2026-09-18 |
 | #13 | `audio-output` | 即時音訊輸出（OPL2 與 PC 喇叭） | docs/spec/020、docs/re/026 §6：真實裝置（PipeWire 的 pulse socket）上 AdLib 與 PC 喇叭各 65 秒，欠載都是 6 次全在開場第 1 秒、第 2 秒之後 0；機器／牆上 0.9978（反向對照） | 2026-09-18 |
 | #5 | `opl2-synth` | OPL2（AdLib）合成：`.MID` 音樂路徑目前只有暫存器紀錄 | docs/spec/016 三項全過：spec 0.9117、env 0.8119、chroma 0.9836（門檻 0.8350／0.7548／0.9603）。根因是相位單位——真機一個正弦週期 1024 個索引不是 512，FM 少一半、回授多一倍（docs/re/032）。驗收的第二段「迷宮曲」依使用者定案 2026-09-19 不做 | 2026-09-19 |
+| #25 | `baked-text-replacement` | 圖檔內嵌文字的中文替換圖層 | 含文字 50 張已疊 48 張、125 塊（tools/baked_report.py）；沒疊的只有 LOGO.PBL 與 KGDLOGO.PBL 兩張標題美術字，docs/spec/011 §6 定案保留。lint 0 問題、合成畫面測試 125 筆全過。開場字幕條 OPEN.PBL #7–#10 的畫面座標由實跑截圖逐像素定出（差 0），四行中文實跑觸發並蓋上；字比底密的兩行用 text/baked.json 的 swap_colors 對調定色（dosgolem xlate，規格 202 §2.3）。見 docs/re/024 §6 | 2026-09-19 |

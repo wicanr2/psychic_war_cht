@@ -1,6 +1,6 @@
 # 024：圖檔內嵌文字的清冊與中文疊字
 
-狀態：量測紀錄（2026-09-18）。對應 issue #18（清冊）、#25（替換）。
+狀態：量測紀錄（2026-09-18，2026-09-19 補開場字幕條）。對應 issue #18（清冊）、#25（替換）。
 規格 `docs/spec/010`（`.PBL` 格式）、`docs/spec/011`（疊字）；dosgolem 規格 `203-baked-text-watchers`。
 
 ## 1. 結論
@@ -9,7 +9,7 @@
 |---|---|
 | 清冊 | 537 張圖全部判讀；**含文字 50 張、143 則**（`text/baked-inventory.json`） |
 | 含文字的檔案 | `MAP.PBL` 17、`ROOM1.PBL` 15、`ROOM0.PBL` 8、`OPEN.PBL` 4、`SCREEN.PBL` 3、`MENU.PBL`／`LOGO.PBL`／`KGDLOGO.PBL` 各 1 |
-| 本輪疊上中文 | 操作面板 4 則、狀態欄 2 則（`text/baked.json`） |
+| 疊上中文 | **48 張、125 塊**（`text/baked.json`）；含文字但沒疊的只有兩張標題 Logo（§6） |
 | 逐像素（`pwstep`） | 6 塊全部差 0 |
 | 反向對照 | 拿掉 `ADVANCE` 的譯文，該塊與原版英文放大 3 倍差 0，其餘 5 塊仍是中文、差 0 |
 | 前端（Xvfb） | 6 塊全部差 0 |
@@ -62,14 +62,41 @@
 - 清冊只記「圖上有什麼字」，不含畫面座標；座標在需要疊中文時才量（§3 的六塊就是這樣做的）。
 - **限制**：判讀是視覺的，沒有 OCR 或字模比對當交叉驗證；`MAP.PBL` 的道具說明頁字數多，翻譯前要再核一次原文。
 
-## 6. 還沒疊中文的（下一輪）
+## 6. 完成度
 
-| 來源 | 張數 | 內容 |
-|---|---:|---|
-| `MAP.PBL` #1–#17 | 17 | 拾獲地圖（`TOP SECRET MAP xx-x-xx`）與道具說明頁（`ARTICLE nnn OF nnn`…），字最多 |
-| `ROOM0/ROOM1` | 23 | 房間招牌：`DANGER`、`GUARD`、`ELEVATOR`、`DATA`、`GATE OPEN`、`ESCAPE`、`COMPUTER`、`IMPERIAL CO. LTD.` |
-| `OPEN.PBL` #7–#10 | 4 | 開場字幕條（`STANDARD 47600`、`SAMAR CITY STATION`、`SPACE JUMP IS READY`…） |
-| `LOGO.PBL`、`KGDLOGO.PBL`、`SCREEN.PBL` 的標題字 | 3 | 美術字與商標，`docs/spec/011` §6 決定保留原樣 |
+`tools/py.sh tools/baked_report.py`（2026-09-19）：圖 537 張，含文字 50 張、143 則；
+**已疊中文 48 張、125 塊**。
+
+| 來源 | 含文字 | 已疊 |
+|---|---:|---:|
+| `MAP.PBL` | 17 | 17 |
+| `ROOM0.PBL` | 8 | 8 |
+| `ROOM1.PBL` | 15 | 15 |
+| `SCREEN.PBL` | 3 | 3 |
+| `MENU.PBL` | 1 | 1（等價涵蓋，見 §3） |
+| `OPEN.PBL` | 4 | 4 |
+| `LOGO.PBL`、`KGDLOGO.PBL` | 2 | 0 — 美術字與商標，`docs/spec/011` §6 決定保留原樣 |
+
+### 6.1 開場字幕條（`OPEN.PBL` #7–#10）
+
+星圖面板上的四行，畫面座標由 `opencheck` 第 25 步的截圖逐像素定出來：
+
+| 圖 | 畫面座標 | 原文 | 譯文 | 定色 |
+|---|---|---|---|---|
+| #7 | (24,120) | `STANDARD 47600` | 標準 47600 | 互換 |
+| #8 | (24,128) | `4760021 SET` | 4760021 設定 | — |
+| #9 | (24,136) | `SAMAR CITY STATION` | 薩瑪市太空站 | 互換 |
+| #10 | (24,144) | `SPACE JUMP IS READY` | 太空躍遷準備就緒 | — |
+
+兩件跟其他圖塊不同的事：
+
+- **字比底密**。這四條橫幅被字填滿，字的像素多於底，`Colors()` 的「最多的當背景」在這裡是反的。
+  `text/baked.json` 的 `swap_colors` 讓那一筆把背景與前景對調（dosgolem `202-translation-overlay` §2.3）。
+  判斷依據是疊字**自己蓋住的那塊**的色號分布，不是 `region`。
+- **#8 的前景抓到底紋**。那一條的第二多色號是底紋的亮紅（12）而不是字色白（15），
+  所以中文是黑底紅字。指定色號的能力目前沒有（`docs/spec/011` §3）。
+- #10 圖裡的字是色號 10（亮綠），實跑畫面上顯示為白；除了這 152 個像素，圖與畫面逐像素相同。
+  watcher 比的是屬性索引，色盤重映射不影響觸發。
 
 ## 7. 重現
 
@@ -78,4 +105,5 @@ tools/py.sh tools/pbl.py dump workplace/original/psychic-war/SCREEN.PBL workplac
 tools/baked_run.sh                                   # 逐像素
 PSYCHICWAR_WITHOUT=SCREEN.PBL:0:advance tools/baked_run.sh   # 反向對照
 tools/frontend-baked-check.sh                        # 前端 Xvfb
+tools/playstep.sh opencheck from 024 "wait:5000"      # 開場字幕條那一格
 ```

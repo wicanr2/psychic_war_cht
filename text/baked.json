@@ -1,2944 +1,3018 @@
 {
- "schema": "psychic-war-baked/1",
- "note": "圖檔內嵌文字的中文疊字（docs/spec/011）。region、text 是圖內座標；screen 是這張圖畫在畫面上的左上角（docs/re/023 的實跑觀測）。原文欄位只給清冊看，程式不讀。",
- "equivalent": [
-  {
-   "file": "MENU.PBL",
-   "image": 0,
-   "screen": [
-    160,
-    4
-   ],
-   "covers": [
-    "SCREEN.PBL:0:advance",
-    "SCREEN.PBL:0:look-aside",
-    "SCREEN.PBL:1:turn"
-   ],
-   "note": "面板重畫用的圖，文字像素與 SCREEN.PBL 相同（docs/re/024 §2），同一組 watcher 就會蓋到兩者，不必另外寫一份資料。ESC OPERATION 那一塊在這張圖的下緣之外，由 SCREEN.PBL #1 提供。"
-  }
- ],
- "entries": [
-  {
-   "key": "MAP.PBL:1:top-secret-map",
-   "file": "MAP.PBL",
-   "image": 1,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    24,
-    68,
-    107,
-    5
-   ],
-   "text": [
-    24,
-    67,
-    18
-   ],
-   "original": "TOP SECRET  MAP 02-V-11",
-   "translation": "最高機密 地圖 02-V-11",
-   "font": "cjk16",
-   "note": "screen 未觀測，整頁圖用 [0,0]。拾獲地圖畫面唯一一行標籤"
-  },
-  {
-   "key": "MAP.PBL:2:top",
-   "file": "MAP.PBL",
-   "image": 2,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    92,
-    25,
-    16,
-    5
-   ],
-   "text": [
-    92,
-    23,
-    3
-   ],
-   "original": "TOP",
-   "translation": "最高",
-   "font": "cjk16",
-   "note": "screen 未觀測。TOP／SECRET 在此圖是上下兩行小字（非左右並排），拆成兩筆避免中文矩形垂直重疊"
-  },
-  {
-   "key": "MAP.PBL:2:secret",
-   "file": "MAP.PBL",
-   "image": 2,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    92,
-    31,
-    33,
-    5
-   ],
-   "text": [
-    92,
-    30,
-    6
-   ],
-   "original": "SECRET",
-   "translation": "機密",
-   "font": "cjk16",
-   "note": "screen 未觀測。與 top 合看即「最高機密」"
-  },
-  {
-   "key": "MAP.PBL:2:map",
-   "file": "MAP.PBL",
-   "image": 2,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    92,
-    40,
-    44,
-    5
-   ],
-   "text": [
-    92,
-    39,
-    10
-   ],
-   "original": "MAP 00-A-47",
-   "translation": "地圖 00-A-47",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:3:top-secret",
-   "file": "MAP.PBL",
-   "image": 3,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    28,
-    63,
-    49,
-    5
-   ],
-   "text": [
-    28,
-    62,
-    9
-   ],
-   "original": "TOP SECRET",
-   "translation": "最高機密",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:3:map",
-   "file": "MAP.PBL",
-   "image": 3,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    28,
-    71,
-    49,
-    5
-   ],
-   "text": [
-    28,
-    70,
-    10
-   ],
-   "original": "MAP 99-N-54",
-   "translation": "地圖 99-N-54",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:4:top-secret-map",
-   "file": "MAP.PBL",
-   "image": 4,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    44,
-    72,
-    98,
-    5
-   ],
-   "text": [
-    44,
-    71,
-    17
-   ],
-   "original": "TOP SECRET MAP 70-A-81",
-   "translation": "最高機密 地圖 70-A-81",
-   "font": "cjk16",
-   "note": "screen 未觀測。右側小怪物圖案不在文字區塊內，未動"
-  },
-  {
-   "key": "MAP.PBL:5:top-secret",
-   "file": "MAP.PBL",
-   "image": 5,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    92,
-    64,
-    48,
-    5
-   ],
-   "text": [
-    92,
-    63,
-    8
-   ],
-   "original": "TOP SECRET",
-   "translation": "最高機密",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:5:map",
-   "file": "MAP.PBL",
-   "image": 5,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    92,
-    72,
-    48,
-    5
-   ],
-   "text": [
-    92,
-    71,
-    10
-   ],
-   "original": "MAP 40-K-74",
-   "translation": "地圖 40-K-74",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:6:top-secret",
-   "file": "MAP.PBL",
-   "image": 6,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    93,
-    48,
-    47,
-    5
-   ],
-   "text": [
-    93,
-    47,
-    8
-   ],
-   "original": "TOP SECRET",
-   "translation": "最高機密",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:6:map",
-   "file": "MAP.PBL",
-   "image": 6,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    93,
-    56,
-    49,
-    5
-   ],
-   "text": [
-    93,
-    55,
-    9
-   ],
-   "original": "MAP 09-E-65",
-   "translation": "地圖09-E-65",
-   "font": "cjk16",
-   "note": "screen 未觀測。右緣空間不足，譯文省略「地圖」與代號間的空白"
-  },
-  {
-   "key": "MAP.PBL:7:map",
-   "file": "MAP.PBL",
-   "image": 7,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    101,
-    60,
-    48,
-    5
-   ],
-   "text": [
-    101,
-    59,
-    8
-   ],
-   "original": "MAP EEACC-DD",
-   "translation": "EEACC-DD",
-   "font": "cjk16",
-   "note": "screen 未觀測。清冊標 uncertain：放大重看色號圖，圓形設施圖右下角空間僅夠 8 格，省略「MAP／地圖」只留代號；同圖另一行已有「最高機密」提示這是地圖"
-  },
-  {
-   "key": "MAP.PBL:7:top-secret",
-   "file": "MAP.PBL",
-   "image": 7,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    92,
-    68,
-    47,
-    5
-   ],
-   "text": [
-    92,
-    67,
-    8
-   ],
-   "original": "TOP SECRET",
-   "translation": "最高機密",
-   "font": "cjk16",
-   "note": "screen 未觀測。本圖文字順序與其他張相反（MAP 在前）"
-  },
-  {
-   "key": "MAP.PBL:8:header1",
-   "file": "MAP.PBL",
-   "image": 8,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    3,
-    2,
-    96,
-    5
-   ],
-   "text": [
-    3,
-    1,
-    16
-   ],
-   "original": "MADE FROM MASTERS KDG",
-   "translation": "KDG大師出品",
-   "font": "cjk16",
-   "note": "screen 未觀測。E-CAPSULE 道具說明頁頂部藍底"
-  },
-  {
-   "key": "MAP.PBL:8:header2",
-   "file": "MAP.PBL",
-   "image": 8,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    3,
-    10,
-    144,
-    5
-   ],
-   "text": [
-    3,
-    9,
-    24
-   ],
-   "original": "DIGITAL:TECHNICAL NOTE/E-CAPSULE",
-   "translation": "數位技術筆記／E-CAPSULE",
-   "font": "cjk16",
-   "note": "screen 未觀測。E-CAPSULE 為道具名保留原文"
-  },
-  {
-   "key": "MAP.PBL:8:alloy",
-   "file": "MAP.PBL",
-   "image": 8,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    6,
-    27,
-    23,
-    5
-   ],
-   "text": [
-    6,
-    26,
-    4
-   ],
-   "original": "ALLOY",
-   "translation": "合金",
-   "font": "cjk16",
-   "note": "screen 未觀測。左側零件標籤"
-  },
-  {
-   "key": "MAP.PBL:8:dc-brand-7",
-   "file": "MAP.PBL",
-   "image": 8,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    105,
-    34,
-    44,
-    5
-   ],
-   "text": [
-    104,
-    33,
-    8
-   ],
-   "original": "DC BRAND 7",
-   "translation": "DC-7",
-   "font": "cjk16",
-   "note": "screen 未觀測。自動框選只抓到部分寬度，改用色號圖手動量出完整範圍（x105–148）；右側緊貼畫面邊緣只夠 8 格，縮寫為代號"
-  },
-  {
-   "key": "MAP.PBL:8:paradise",
-   "file": "MAP.PBL",
-   "image": 8,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    112,
-    52,
-    37,
-    5
-   ],
-   "text": [
-    110,
-    51,
-    7
-   ],
-   "original": "PARADISE",
-   "translation": "天堂",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:8:nickle",
-   "file": "MAP.PBL",
-   "image": 8,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    56,
-    24,
-    5
-   ],
-   "text": [
-    4,
-    55,
-    4
-   ],
-   "original": "NICKLE",
-   "translation": "鎳",
-   "font": "cjk16",
-   "note": "screen 未觀測。自動框選工具被右側圖案的亮色干擾漏掉，改用色號圖手動量位置"
-  },
-  {
-   "key": "MAP.PBL:8:bottom1",
-   "file": "MAP.PBL",
-   "image": 8,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    64,
-    101,
-    5
-   ],
-   "text": [
-    4,
-    63,
-    17
-   ],
-   "original": "CAPSULE IN CHANGE MODE:",
-   "translation": "膠囊：切換模式",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:8:bottom2",
-   "file": "MAP.PBL",
-   "image": 8,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    72,
-    123,
-    5
-   ],
-   "text": [
-    4,
-    71,
-    21
-   ],
-   "original": "DEFEAT THE SPECIAL KDG FORCE",
-   "translation": "擊敗KDG特種部隊",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:9:header1",
-   "file": "MAP.PBL",
-   "image": 9,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    4,
-    122,
-    5
-   ],
-   "text": [
-    4,
-    3,
-    21
-   ],
-   "original": "ARTICLE 555 OF 888 : PATH KDG",
-   "translation": "型錄555/888 PATH KDG",
-   "font": "cjk16",
-   "note": "screen 未觀測。黑底青字道具說明頁"
-  },
-  {
-   "key": "MAP.PBL:9:header2",
-   "file": "MAP.PBL",
-   "image": 9,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    12,
-    127,
-    5
-   ],
-   "text": [
-    4,
-    11,
-    22
-   ],
-   "original": "SUBJECT : TECHNICAL NOTE/ LOW",
-   "translation": "主旨：技術筆記／LOW",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:9:cassette",
-   "file": "MAP.PBL",
-   "image": 9,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    6,
-    21,
-    39,
-    5
-   ],
-   "text": [
-    6,
-    20,
-    7
-   ],
-   "original": "CASSETTE",
-   "translation": "卡匣",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:9:autoeject",
-   "file": "MAP.PBL",
-   "image": 9,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    73,
-    27,
-    44,
-    5
-   ],
-   "text": [
-    73,
-    26,
-    8
-   ],
-   "original": "AUTOEJECT",
-   "translation": "自動退出",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:9:metal",
-   "file": "MAP.PBL",
-   "image": 9,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    8,
-    53,
-    24,
-    5
-   ],
-   "text": [
-    8,
-    52,
-    4
-   ],
-   "original": "METAL",
-   "translation": "金屬",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:9:bottom1",
-   "file": "MAP.PBL",
-   "image": 9,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    64,
-    102,
-    5
-   ],
-   "text": [
-    4,
-    63,
-    17
-   ],
-   "original": "HIGH QUALITY ARMORSHIP",
-   "translation": "高品質裝甲艦",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:9:bottom2",
-   "file": "MAP.PBL",
-   "image": 9,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    72,
-    125,
-    5
-   ],
-   "text": [
-    4,
-    71,
-    21
-   ],
-   "original": "DIGITAL PROGRAM SYNTHESIZER",
-   "translation": "數位程式合成器",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:10:header1",
-   "file": "MAP.PBL",
-   "image": 10,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    4,
-    119,
-    5
-   ],
-   "text": [
-    4,
-    3,
-    20
-   ],
-   "original": "ARTICLE 770 OF 045 :PATH KDG",
-   "translation": "型錄770/045 PATH KDG",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:10:header2",
-   "file": "MAP.PBL",
-   "image": 10,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    12,
-    120,
-    5
-   ],
-   "text": [
-    4,
-    11,
-    20
-   ],
-   "original": "SPECIAL TECHNICAL NOTE-GPX",
-   "translation": "特殊技術筆記-GPX",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:10:kanso",
-   "file": "MAP.PBL",
-   "image": 10,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    128,
-    19,
-    24,
-    5
-   ],
-   "text": [
-    122,
-    18,
-    5
-   ],
-   "original": "KANSO",
-   "translation": "簡素",
-   "font": "cjk16",
-   "note": "screen 未觀測。清冊標 uncertain：色號圖確認貼齊畫面右緣（x128–152），讀法與清冊一致；疑似日文「簡素」諧音的機械標籤"
-  },
-  {
-   "key": "MAP.PBL:10:dassui-a",
-   "file": "MAP.PBL",
-   "image": 10,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    72,
-    20,
-    26,
-    5
-   ],
-   "text": [
-    72,
-    19,
-    6
-   ],
-   "original": "DASSUI",
-   "translation": "脫水",
-   "font": "cjk16",
-   "note": "screen 未觀測。DASSUI 在畫面出現兩次（本筆＋ dassui-b），用寬度比對確認兩處是同一個字；疑似日文「脱水」諧音的機械標籤"
-  },
-  {
-   "key": "MAP.PBL:10:dassui-b",
-   "file": "MAP.PBL",
-   "image": 10,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    5,
-    46,
-    26,
-    5
-   ],
-   "text": [
-    5,
-    45,
-    6
-   ],
-   "original": "DASSUI",
-   "translation": "脫水",
-   "font": "cjk16",
-   "note": "screen 未觀測。與 dassui-a 同字（寬度相同，26px），此為左下方那一次"
-  },
-  {
-   "key": "MAP.PBL:10:rear",
-   "file": "MAP.PBL",
-   "image": 10,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    128,
-    46,
-    18,
-    5
-   ],
-   "text": [
-    128,
-    45,
-    3
-   ],
-   "original": "REAR",
-   "translation": "後方",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:10:timer",
-   "file": "MAP.PBL",
-   "image": 10,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    60,
-    49,
-    24,
-    5
-   ],
-   "text": [
-    60,
-    48,
-    4
-   ],
-   "original": "TIMER",
-   "translation": "計時器",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:10:bottom1",
-   "file": "MAP.PBL",
-   "image": 10,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    64,
-    84,
-    5
-   ],
-   "text": [
-    4,
-    63,
-    14
-   ],
-   "original": "HARD STONE SPECIAL:",
-   "translation": "硬石特別版：",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:10:bottom2",
-   "file": "MAP.PBL",
-   "image": 10,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    72,
-    93,
-    5
-   ],
-   "text": [
-    4,
-    71,
-    16
-   ],
-   "original": "KEEP AWAY FROM MELSER",
-   "translation": "遠離梅爾瑟",
-   "font": "cjk16",
-   "note": "screen 未觀測。MELSER 沿用 text/glossary.json 既有譯名「梅爾瑟」"
-  },
-  {
-   "key": "MAP.PBL:11:header1",
-   "file": "MAP.PBL",
-   "image": 11,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    4,
-    140,
-    5
-   ],
-   "text": [
-    4,
-    3,
-    24
-   ],
-   "original": "ARTICLE 254 OF 509   PATH  KDG216",
-   "translation": "型錄254/509 PATH KDG216",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:11:header2",
-   "file": "MAP.PBL",
-   "image": 11,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    12,
-    126,
-    5
-   ],
-   "text": [
-    4,
-    11,
-    21
-   ],
-   "original": "SUBJECT:TECHNICAL NOTE/ VRS",
-   "translation": "主旨：技術筆記／VRS",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:11:tanuki",
-   "file": "MAP.PBL",
-   "image": 11,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    9,
-    20,
-    27,
-    5
-   ],
-   "text": [
-    9,
-    19,
-    6
-   ],
-   "original": "TANUKI",
-   "translation": "狸",
-   "font": "cjk16",
-   "note": "screen 未觀測。日文羅馬字「狸」，機械標籤的趣味命名"
-  },
-  {
-   "key": "MAP.PBL:11:toro-a",
-   "file": "MAP.PBL",
-   "image": 11,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    76,
-    23,
-    20,
-    5
-   ],
-   "text": [
-    76,
-    22,
-    4
-   ],
-   "original": "TORO",
-   "translation": "多羅",
-   "font": "cjk16",
-   "note": "screen 未觀測。TORO 出現兩次（本筆＋ toro-b），用寬度比對（皆 20px）確認同字；疑似日文「とろ（鮪魚肚）」諧音，用音譯"
-  },
-  {
-   "key": "MAP.PBL:11:ten",
-   "file": "MAP.PBL",
-   "image": 11,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    75,
-    46,
-    14,
-    5
-   ],
-   "text": [
-    75,
-    45,
-    3
-   ],
-   "original": "TEN",
-   "translation": "天",
-   "font": "cjk16",
-   "note": "screen 未觀測。語意不確定，音譯"
-  },
-  {
-   "key": "MAP.PBL:11:toro-b",
-   "file": "MAP.PBL",
-   "image": 11,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    9,
-    47,
-    20,
-    5
-   ],
-   "text": [
-    9,
-    46,
-    4
-   ],
-   "original": "TORO",
-   "translation": "多羅",
-   "font": "cjk16",
-   "note": "screen 未觀測。與 toro-a 同字"
-  },
-  {
-   "key": "MAP.PBL:11:bottom1",
-   "file": "MAP.PBL",
-   "image": 11,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    64,
-    92,
-    5
-   ],
-   "text": [
-    4,
-    63,
-    16
-   ],
-   "original": "AMR-445  VERSION 2-12",
-   "translation": "AMR-445 第2-12版",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:11:bottom2",
-   "file": "MAP.PBL",
-   "image": 11,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    72,
-    111,
-    5
-   ],
-   "text": [
-    4,
-    71,
-    19
-   ],
-   "original": "DOUBLE SIDE: DENSITY TRACK",
-   "translation": "雙面：高密度磁軌",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:12:header1",
-   "file": "MAP.PBL",
-   "image": 12,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    4,
-    130,
-    5
-   ],
-   "text": [
-    4,
-    3,
-    22
-   ],
-   "original": "ARTICLE 021 OF 726  PATH KDG209",
-   "translation": "型錄021/726 PATH KDG209",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:12:header2",
-   "file": "MAP.PBL",
-   "image": 12,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    12,
-    107,
-    5
-   ],
-   "text": [
-    4,
-    11,
-    18
-   ],
-   "original": "SUBJECT:TECHNICAL NOTE/",
-   "translation": "主旨：技術筆記／",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:12:psycho-gun",
-   "file": "MAP.PBL",
-   "image": 12,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    20,
-    47,
-    5
-   ],
-   "text": [
-    4,
-    19,
-    8
-   ],
-   "original": "PSYCHO GUN",
-   "translation": "超能砲",
-   "font": "cjk16",
-   "note": "screen 未觀測。沿用 text/glossary.json「PsychoGun -> 超能砲」"
-  },
-  {
-   "key": "MAP.PBL:12:ear-set",
-   "file": "MAP.PBL",
-   "image": 12,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    100,
-    20,
-    30,
-    5
-   ],
-   "text": [
-    100,
-    19,
-    5
-   ],
-   "original": "EAR SET",
-   "translation": "耳機組",
-   "font": "cjk16",
-   "note": "screen 未觀測。與 psycho-gun 同一橫排但橫向分離，未重疊"
-  },
-  {
-   "key": "MAP.PBL:12:arm-set",
-   "file": "MAP.PBL",
-   "image": 12,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    15,
-    48,
-    32,
-    5
-   ],
-   "text": [
-    15,
-    47,
-    6
-   ],
-   "original": "ARM SET",
-   "translation": "臂裝組",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:12:engine",
-   "file": "MAP.PBL",
-   "image": 12,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    89,
-    53,
-    26,
-    5
-   ],
-   "text": [
-    89,
-    52,
-    5
-   ],
-   "original": "ENGINE",
-   "translation": "引擎",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:12:bottom1",
-   "file": "MAP.PBL",
-   "image": 12,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    64,
-    122,
-    5
-   ],
-   "text": [
-    4,
-    63,
-    21
-   ],
-   "original": "PLAY THE GAME!  DON'T BOTHER",
-   "translation": "玩遊戲就好，別管",
-   "font": "cjk16",
-   "note": "screen 未觀測。與 bottom2 合看是一句吐槽玩笑"
-  },
-  {
-   "key": "MAP.PBL:12:bottom2",
-   "file": "MAP.PBL",
-   "image": 12,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    72,
-    95,
-    5
-   ],
-   "text": [
-    4,
-    71,
-    16
-   ],
-   "original": "READING THE FINE PRINT.",
-   "translation": "那些小字說明。",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:13:header1",
-   "file": "MAP.PBL",
-   "image": 13,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    2,
-    124,
-    5
-   ],
-   "text": [
-    4,
-    1,
-    21
-   ],
-   "original": "LOAD BEFORE USE:PATH KGD7440",
-   "translation": "使用前先讀取：PATH KGD7440",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:13:header2",
-   "file": "MAP.PBL",
-   "image": 13,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    10,
-    133,
-    5
-   ],
-   "text": [
-    4,
-    9,
-    23
-   ],
-   "original": "ORIGINAL:TECHNICAL NOTE/E-GUN",
-   "translation": "原廠：技術筆記／E-GUN",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:13:thingamajig",
-   "file": "MAP.PBL",
-   "image": 13,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    19,
-    55,
-    5
-   ],
-   "text": [
-    4,
-    18,
-    10
-   ],
-   "original": "THINGAMAJIG",
-   "translation": "小玩意兒",
-   "font": "cjk16",
-   "note": "screen 未觀測。自動框選完全沒抓到（與右側圖案的亮色連通後整塊被濾掉），改用色號圖整行手動量出（x4–59）"
-  },
-  {
-   "key": "MAP.PBL:13:watzit",
-   "file": "MAP.PBL",
-   "image": 13,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    112,
-    34,
-    30,
-    5
-   ],
-   "text": [
-    112,
-    33,
-    5
-   ],
-   "original": "WATZIT",
-   "translation": "啥東西",
-   "font": "cjk16",
-   "note": "screen 未觀測。WATZIT＝口語 what is it"
-  },
-  {
-   "key": "MAP.PBL:13:wazoo",
-   "file": "MAP.PBL",
-   "image": 13,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    0,
-    35,
-    24,
-    5
-   ],
-   "text": [
-    0,
-    34,
-    5
-   ],
-   "original": "WAZOO",
-   "translation": "屁股",
-   "font": "cjk16",
-   "note": "screen 未觀測。原文是俚語「屁股」的詼諧說法，保留原本的玩笑語氣"
-  },
-  {
-   "key": "MAP.PBL:13:dodad",
-   "file": "MAP.PBL",
-   "image": 13,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    47,
-    24,
-    5
-   ],
-   "text": [
-    4,
-    46,
-    4
-   ],
-   "original": "DODAD",
-   "translation": "小機件",
-   "font": "cjk16",
-   "note": "screen 未觀測。與 thingamajig 同義（不知名小零件）的另一種講法，譯文刻意用不同字避免重複"
-  },
-  {
-   "key": "MAP.PBL:13:bottom1",
-   "file": "MAP.PBL",
-   "image": 13,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    64,
-    81,
-    5
-   ],
-   "text": [
-    4,
-    63,
-    14
-   ],
-   "original": "BEWARE OF JAMMING-",
-   "translation": "小心卡彈－",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:13:bottom2",
-   "file": "MAP.PBL",
-   "image": 13,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    4,
-    71,
-    65,
-    5
-   ],
-   "text": [
-    4,
-    70,
-    11
-   ],
-   "original": "HAVE A NICE DAY.",
-   "translation": "祝你有美好的一天。",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:14:header1",
-   "file": "MAP.PBL",
-   "image": 14,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    2,
-    2,
-    123,
-    5
-   ],
-   "text": [
-    2,
-    1,
-    21
-   ],
-   "original": "MADE FROM MASTERS KDG : PATH",
-   "translation": "KDG大師出品：PATH",
-   "font": "cjk16",
-   "note": "screen 未觀測。此標題與 15、16 三張版面座標相同"
-  },
-  {
-   "key": "MAP.PBL:14:header2",
-   "file": "MAP.PBL",
-   "image": 14,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    2,
-    9,
-    107,
-    5
-   ],
-   "text": [
-    2,
-    8,
-    18
-   ],
-   "original": "DIGITAL :TECHNICAL NOTE/",
-   "translation": "數位：技術筆記／",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:14:speed",
-   "file": "MAP.PBL",
-   "image": 14,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    7,
-    26,
-    22,
-    5
-   ],
-   "text": [
-    7,
-    25,
-    4
-   ],
-   "original": "SPEED",
-   "translation": "速度",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:14:tech",
-   "file": "MAP.PBL",
-   "image": 14,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    122,
-    41,
-    19,
-    5
-   ],
-   "text": [
-    122,
-    40,
-    4
-   ],
-   "original": "TECH",
-   "translation": "科技",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:14:noise",
-   "file": "MAP.PBL",
-   "image": 14,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    12,
-    42,
-    22,
-    5
-   ],
-   "text": [
-    12,
-    41,
-    4
-   ],
-   "original": "NOISE",
-   "translation": "噪音",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:14:mode",
-   "file": "MAP.PBL",
-   "image": 14,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    118,
-    54,
-    19,
-    5
-   ],
-   "text": [
-    118,
-    53,
-    4
-   ],
-   "original": "MODE",
-   "translation": "模式",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:14:bottom1",
-   "file": "MAP.PBL",
-   "image": 14,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    2,
-    64,
-    54,
-    5
-   ],
-   "text": [
-    2,
-    63,
-    9
-   ],
-   "original": "NAME- GAMERA",
-   "translation": "名稱：卡美拉",
-   "font": "cjk16",
-   "note": "screen 未觀測。GAMERA 沿用 text/glossary.json「Gamera -> 卡美拉」"
-  },
-  {
-   "key": "MAP.PBL:14:bottom2",
-   "file": "MAP.PBL",
-   "image": 14,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    2,
-    71,
-    82,
-    5
-   ],
-   "text": [
-    2,
-    70,
-    14
-   ],
-   "original": "EXCITING SPACE WAR...",
-   "translation": "刺激的太空戰爭…",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:15:header1",
-   "file": "MAP.PBL",
-   "image": 15,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    2,
-    2,
-    123,
-    5
-   ],
-   "text": [
-    2,
-    1,
-    21
-   ],
-   "original": "MADE FROM MASTERS KDG : PATH",
-   "translation": "KDG大師出品：PATH",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:15:header2",
-   "file": "MAP.PBL",
-   "image": 15,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    2,
-    9,
-    107,
-    5
-   ],
-   "text": [
-    2,
-    8,
-    18
-   ],
-   "original": "DIGITAL :TECHNICAL NOTE/",
-   "translation": "數位：技術筆記／",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:15:auto",
-   "file": "MAP.PBL",
-   "image": 15,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    17,
-    19,
-    20,
-    5
-   ],
-   "text": [
-    17,
-    18,
-    4
-   ],
-   "original": "AUTO",
-   "translation": "自動",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:15:basic",
-   "file": "MAP.PBL",
-   "image": 15,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    7,
-    38,
-    23,
-    5
-   ],
-   "text": [
-    7,
-    37,
-    4
-   ],
-   "original": "BASIC",
-   "translation": "基本",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:15:print",
-   "file": "MAP.PBL",
-   "image": 15,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    120,
-    42,
-    24,
-    5
-   ],
-   "text": [
-    120,
-    41,
-    4
-   ],
-   "original": "PRINT",
-   "translation": "列印",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:15:back",
-   "file": "MAP.PBL",
-   "image": 15,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    88,
-    54,
-    19,
-    5
-   ],
-   "text": [
-    88,
-    53,
-    4
-   ],
-   "original": "BACK",
-   "translation": "返回",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:15:bottom",
-   "file": "MAP.PBL",
-   "image": 15,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    3,
-    66,
-    78,
-    5
-   ],
-   "text": [
-    3,
-    65,
-    13
-   ],
-   "original": "KIT:C-6 FROM E-GUN",
-   "translation": "套件C-6：取自E-GUN",
-   "font": "cjk16",
-   "note": "screen 未觀測。本圖底部只有一行（其餘同系列圖是兩行）"
-  },
-  {
-   "key": "MAP.PBL:16:header1",
-   "file": "MAP.PBL",
-   "image": 16,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    2,
-    2,
-    123,
-    5
-   ],
-   "text": [
-    2,
-    1,
-    21
-   ],
-   "original": "MADE FROM MASTERS KDG : PATH",
-   "translation": "KDG大師出品：PATH",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:16:header2",
-   "file": "MAP.PBL",
-   "image": 16,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    2,
-    9,
-    118,
-    5
-   ],
-   "text": [
-    2,
-    8,
-    20
-   ],
-   "original": "DIGITAL :TECHNICAL NOTE/SP",
-   "translation": "數位：技術筆記／SP",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:16:control",
-   "file": "MAP.PBL",
-   "image": 16,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    1,
-    19,
-    34,
-    5
-   ],
-   "text": [
-    1,
-    18,
-    6
-   ],
-   "original": "CONTROL",
-   "translation": "控制",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:16:channel",
-   "file": "MAP.PBL",
-   "image": 16,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    120,
-    19,
-    32,
-    5
-   ],
-   "text": [
-    116,
-    18,
-    6
-   ],
-   "original": "CHANNEL",
-   "translation": "頻道",
-   "font": "cjk16",
-   "note": "screen 未觀測。墨跡貼齊畫面右緣（x120–152），中文矩形往左移到 116 才能在不超出畫面的情況下蓋滿"
-  },
-  {
-   "key": "MAP.PBL:16:chioo",
-   "file": "MAP.PBL",
-   "image": 16,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    12,
-    46,
-    22,
-    5
-   ],
-   "text": [
-    12,
-    45,
-    5
-   ],
-   "original": "CHIOO",
-   "translation": "奇歐",
-   "font": "cjk16",
-   "note": "screen 未觀測。清冊標 uncertain：自動框選漏掉（與右側圖案連通後濾掉），改用色號圖逐字元比對字形（C／H／I／O／O 五個字母的筆畫分別與 CONTROL 的 C、HANG TOUGH 的 H、以及本圖其他 O 逐一核對），確認讀法與清冊一致；語意不確定，音譯"
-  },
-  {
-   "key": "MAP.PBL:16:digit",
-   "file": "MAP.PBL",
-   "image": 16,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    121,
-    46,
-    23,
-    5
-   ],
-   "text": [
-    121,
-    45,
-    4
-   ],
-   "original": "DIGIT",
-   "translation": "數字",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:16:bottom1",
-   "file": "MAP.PBL",
-   "image": 16,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    2,
-    64,
-    130,
-    5
-   ],
-   "text": [
-    2,
-    63,
-    22
-   ],
-   "original": "WE PUT THIS IN AS SPACE FILLER-",
-   "translation": "這裡只是拿來填版面的－",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:16:bottom2",
-   "file": "MAP.PBL",
-   "image": 16,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    32,
-    72,
-    49,
-    5
-   ],
-   "text": [
-    32,
-    71,
-    9
-   ],
-   "original": "HANG TOUGH!",
-   "translation": "撐住！",
-   "font": "cjk16",
-   "note": "screen 未觀測"
-  },
-  {
-   "key": "MAP.PBL:17:danger",
-   "file": "MAP.PBL",
-   "image": 17,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    46,
-    3,
-    30,
-    5
-   ],
-   "text": [
-    46,
-    2,
-    6
-   ],
-   "original": "DANGER",
-   "translation": "危險",
-   "font": "cjk16",
-   "note": "screen 未觀測。吃角子老虎機面板，黃字標題"
-  },
-  {
-   "key": "MAP.PBL:17:slot-machine",
-   "file": "MAP.PBL",
-   "image": 17,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    46,
-    59,
-    58,
-    5
-   ],
-   "text": [
-    46,
-    58,
-    10
-   ],
-   "original": "SLOT MACHINE",
-   "translation": "拉霸機",
-   "font": "cjk16",
-   "note": "screen 未觀測。五個轉輪本身是圖形（尚未轉動），不在文字範圍內"
-  },
-  {
-   "key": "OPEN.PBL:10:space-jump-is-ready",
-   "file": "OPEN.PBL",
-   "image": 10,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    3,
-    2,
-    69,
-    5
-   ],
-   "text": [
-    0,
-    1,
-    12
-   ],
-   "original": "SPACE JUMP IS READY",
-   "translation": "太空躍遷準備就緒",
-   "font": "cjk16",
-   "note": "screen 未觀測。整條字幕只有 72×8，cjk16 一格 7 像素高已逼近圖高上限（ty=1 用滿剩下的 7 列）；綠字疊在深色底上，與 #7–#9 的紅黑斜紋底不同，能用最小出現色分離出墨跡"
-  },
-  {
-   "key": "ROOM0.PBL:5:elevator",
-   "file": "ROOM0.PBL",
-   "image": 5,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    8,
-    11,
-    37,
-    5
-   ],
-   "text": [
-    8,
-    10,
-    7
-   ],
-   "original": "ELEVATOR",
-   "translation": "   電梯  ",
-   "font": "cjk16",
-   "note": "電梯房間，左側牆面紅字招牌，無邊框，直接畫在青色控制面板上"
-  },
-  {
-   "key": "ROOM0.PBL:18:danger",
-   "file": "ROOM0.PBL",
-   "image": 18,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    20,
-    10,
-    31,
-    7
-   ],
-   "text": [
-    20,
-    10,
-    5
-   ],
-   "original": "DANGER",
-   "translation": " 危險  ",
-   "font": "cjk16",
-   "note": "房間招牌：藍底黃字的警示牌"
-  },
-  {
-   "key": "ROOM0.PBL:19:danger",
-   "file": "ROOM0.PBL",
-   "image": 19,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    20,
-    22,
-    31,
-    7
-   ],
-   "text": [
-    20,
-    22,
-    5
-   ],
-   "original": "DANGER",
-   "translation": " 危險  ",
-   "font": "cjk16",
-   "note": "與 #18 同一招牌圖案，位置下移 12px"
-  },
-  {
-   "key": "ROOM0.PBL:23:guard-left",
-   "file": "ROOM0.PBL",
-   "image": 23,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    1,
-    10,
-    24,
-    7
-   ],
-   "text": [
-    1,
-    10,
-    4
-   ],
-   "original": "GUARD",
-   "translation": " 警衛 ",
-   "font": "cjk16",
-   "note": "警衛室左側，大型數字造型招牌內的青字（背景色塊挖空成字）"
-  },
-  {
-   "key": "ROOM0.PBL:23:guard-right",
-   "file": "ROOM0.PBL",
-   "image": 23,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    49,
-    58,
-    23,
-    7
-   ],
-   "text": [
-    48,
-    58,
-    4
-   ],
-   "original": "GUARD",
-   "translation": " 警衛 ",
-   "font": "cjk16",
-   "note": "警衛室右側招牌，貼齊畫面右緣（字跡最右到 x=71，中文格向左延伸 1px 以留在圖內）"
-  },
-  {
-   "key": "ROOM0.PBL:24:guard-left",
-   "file": "ROOM0.PBL",
-   "image": 24,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    14,
-    10,
-    24,
-    7
-   ],
-   "text": [
-    14,
-    10,
-    4
-   ],
-   "original": "GUARD",
-   "translation": " 警衛 ",
-   "font": "cjk16",
-   "note": "與 #23 同房間、色調不同版本；左側招牌位置實測與 #23 不同（x14 非 x1）"
-  },
-  {
-   "key": "ROOM0.PBL:24:guard-right",
-   "file": "ROOM0.PBL",
-   "image": 24,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    34,
-    57,
-    24,
-    7
-   ],
-   "text": [
-    34,
-    57,
-    4
-   ],
-   "original": "GUARD",
-   "translation": " 警衛 ",
-   "font": "cjk16",
-   "note": "右側招牌，位置與 #23 的右側招牌不同（x34/y57 非 x48/y58）"
-  },
-  {
-   "key": "ROOM0.PBL:27:data",
-   "file": "ROOM0.PBL",
-   "image": 27,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    36,
-    21,
-    19,
-    5
-   ],
-   "text": [
-    36,
-    20,
-    4
-   ],
-   "original": "DATA",
-   "translation": " 資料 ",
-   "font": "cjk16",
-   "note": "終端機房間，右上白字藍底招牌"
-  },
-  {
-   "key": "ROOM0.PBL:28:compute",
-   "file": "ROOM0.PBL",
-   "image": 28,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    36,
-    21,
-    35,
-    5
-   ],
-   "text": [
-    36,
-    20,
-    6
-   ],
-   "original": "COMPUTE",
-   "translation": "  電腦  ",
-   "font": "cjk16",
-   "note": "與 #27 同系列房間；原文被畫面右緣裁到只剩 COMPUTE（推斷完整字是 COMPUTER），譯文照完整字意譯"
-  },
-  {
-   "key": "ROOM0.PBL:29:inform",
-   "file": "ROOM0.PBL",
-   "image": 29,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    36,
-    21,
-    29,
-    5
-   ],
-   "text": [
-    36,
-    20,
-    5
-   ],
-   "original": "INFORM",
-   "translation": " 資訊  ",
-   "font": "cjk16",
-   "note": "與 #27 同系列房間；原文被裁到只剩 INFORM（推斷完整字是 INFORMATION），依指示範例縮短譯為「資訊」"
-  },
-  {
-   "key": "ROOM1.PBL:2:computer",
-   "file": "ROOM1.PBL",
-   "image": 2,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    2,
-    2,
-    40,
-    5
-   ],
-   "text": [
-    2,
-    1,
-    7
-   ],
-   "original": "COMPUTER",
-   "translation": "   電腦  ",
-   "font": "cjk16",
-   "note": "電腦終端機房間，上方黃底紫字招牌"
-  },
-  {
-   "key": "ROOM1.PBL:2:imperial",
-   "file": "ROOM1.PBL",
-   "image": 2,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    7,
-    61,
-    47,
-    5
-   ],
-   "text": [
-    7,
-    60,
-    8
-   ],
-   "original": "IMPERIAL CO.",
-   "translation": "帝國股份有限公司",
-   "font": "cjk16",
-   "note": "公司名兩行「IMPERIAL CO.」＋「LTD.」；兩行只隔 1 像素，cjk16 字高 7 像素蓋不下兩塊，只譯第一行，LTD. 保留原文"
-  },
-  {
-   "key": "ROOM1.PBL:3:computer",
-   "file": "ROOM1.PBL",
-   "image": 3,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    2,
-    2,
-    40,
-    5
-   ],
-   "text": [
-    2,
-    1,
-    7
-   ],
-   "original": "COMPUTER",
-   "translation": "   電腦  ",
-   "font": "cjk16",
-   "note": "與 #2 相同房間、色調變化版本，位置實測相同"
-  },
-  {
-   "key": "ROOM1.PBL:3:imperial",
-   "file": "ROOM1.PBL",
-   "image": 3,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    7,
-    61,
-    47,
-    5
-   ],
-   "text": [
-    7,
-    60,
-    8
-   ],
-   "original": "IMPERIAL CO.",
-   "translation": "帝國股份有限公司",
-   "font": "cjk16",
-   "note": "公司名兩行「IMPERIAL CO.」＋「LTD.」；兩行只隔 1 像素，cjk16 字高 7 像素蓋不下兩塊，只譯第一行，LTD. 保留原文"
-  },
-  {
-   "key": "ROOM1.PBL:4:computer",
-   "file": "ROOM1.PBL",
-   "image": 4,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    2,
-    2,
-    40,
-    5
-   ],
-   "text": [
-    2,
-    1,
-    7
-   ],
-   "original": "COMPUTER",
-   "translation": "   電腦  ",
-   "font": "cjk16",
-   "note": "與 #2 相同房間、色調變化版本，位置實測相同"
-  },
-  {
-   "key": "ROOM1.PBL:4:imperial",
-   "file": "ROOM1.PBL",
-   "image": 4,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    7,
-    61,
-    47,
-    5
-   ],
-   "text": [
-    7,
-    60,
-    8
-   ],
-   "original": "IMPERIAL CO.",
-   "translation": "帝國股份有限公司",
-   "font": "cjk16",
-   "note": "公司名兩行「IMPERIAL CO.」＋「LTD.」；兩行只隔 1 像素，cjk16 字高 7 像素蓋不下兩塊，只譯第一行，LTD. 保留原文"
-  },
-  {
-   "key": "ROOM1.PBL:10:danger",
-   "file": "ROOM1.PBL",
-   "image": 10,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    1,
-    10,
-    28,
-    5
-   ],
-   "text": [
-    1,
-    9,
-    5
-   ],
-   "original": "DANGER",
-   "translation": " 危險  ",
-   "font": "cjk16",
-   "note": "左上白字黑底警示牌"
-  },
-  {
-   "key": "ROOM1.PBL:12:gate",
-   "file": "ROOM1.PBL",
-   "image": 12,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    50,
-    12,
-    20,
-    5
-   ],
-   "text": [
-    46,
-    11,
-    4
-   ],
-   "original": "GATE",
-   "translation": " 閘門 ",
-   "font": "cjk16",
-   "note": "告示牌兩行「GATE」＋「OPEN」第一行"
-  },
-  {
-   "key": "ROOM1.PBL:12:open",
-   "file": "ROOM1.PBL",
-   "image": 12,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    50,
-    18,
-    19,
-    5
-   ],
-   "text": [
-    46,
-    18,
-    4
-   ],
-   "original": "OPEN",
-   "translation": " 開啟 ",
-   "font": "cjk16",
-   "note": "GATE OPEN 第二行；與第一行緊鄰但有黑色間隔列，可分開覆蓋不重疊"
-  },
-  {
-   "key": "ROOM1.PBL:13:danger",
-   "file": "ROOM1.PBL",
-   "image": 13,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    18,
-    29,
-    24,
-    4
-   ],
-   "text": [
-    18,
-    27,
-    4
-   ],
-   "original": "DANGER",
-   "translation": " 危險 ",
-   "font": "cjk16",
-   "note": "上方中央紅字黑底小招牌，字高僅4px；中文格上下各touch一行相鄰牆面裝飾（無法完全避開）"
-  },
-  {
-   "key": "ROOM1.PBL:14:danger",
-   "file": "ROOM1.PBL",
-   "image": 14,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    18,
-    29,
-    24,
-    4
-   ],
-   "text": [
-    18,
-    27,
-    4
-   ],
-   "original": "DANGER",
-   "translation": " 危險 ",
-   "font": "cjk16",
-   "note": "與 #13 同房間，招牌改綠字，位置相同"
-  },
-  {
-   "key": "ROOM1.PBL:15:danger",
-   "file": "ROOM1.PBL",
-   "image": 15,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    27,
-    28,
-    29,
-    5
-   ],
-   "text": [
-    27,
-    27,
-    5
-   ],
-   "original": "DANGER",
-   "translation": " 危險  ",
-   "font": "cjk16",
-   "note": "與 #13/#14 同房間但招牌改黃字且位置不同（實測 x27/y28，非 x18/y29），不可沿用 #13 座標"
-  },
-  {
-   "key": "ROOM1.PBL:16:danger",
-   "file": "ROOM1.PBL",
-   "image": 16,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    27,
-    28,
-    29,
-    5
-   ],
-   "text": [
-    27,
-    27,
-    5
-   ],
-   "original": "DANGER",
-   "translation": " 危險  ",
-   "font": "cjk16",
-   "note": "綠字招牌；位置與 #15 完全相同（雖然清冊註記為不同房間造型）"
-  },
-  {
-   "key": "ROOM1.PBL:17:danger",
-   "file": "ROOM1.PBL",
-   "image": 17,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    30,
-    29,
-    23,
-    4
-   ],
-   "text": [
-    30,
-    28,
-    4
-   ],
-   "original": "DANGER",
-   "translation": " 危險 ",
-   "font": "cjk16",
-   "note": "青字招牌，字高4px；與 #16 房間相近但招牌位置不同（x30/y29）"
-  },
-  {
-   "key": "ROOM1.PBL:18:danger",
-   "file": "ROOM1.PBL",
-   "image": 18,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    30,
-    29,
-    23,
-    4
-   ],
-   "text": [
-    30,
-    28,
-    4
-   ],
-   "original": "DANGER",
-   "translation": " 危險 ",
-   "font": "cjk16",
-   "note": "與 #17 同房間、色調變化版本，位置相同"
-  },
-  {
-   "key": "ROOM1.PBL:25:danger",
-   "file": "ROOM1.PBL",
-   "image": 25,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    34,
-    16,
-    28,
-    5
-   ],
-   "text": [
-    34,
-    14,
-    5
-   ],
-   "original": "DANGER",
-   "translation": " 危險  ",
-   "font": "cjk16",
-   "note": "白字黑底招牌，上方為紅色裝飾條，中文格往上多蓋2列裝飾條以避開招牌下方的綠色小圖示"
-  },
-  {
-   "key": "ROOM1.PBL:26:escape",
-   "file": "ROOM1.PBL",
-   "image": 26,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    22,
-    12,
-    29,
-    5
-   ],
-   "text": [
-    22,
-    12,
-    5
-   ],
-   "original": "ESCAPE",
-   "translation": " 逃生口 ",
-   "font": "cjk16",
-   "note": "逃生通道房間，黃字招牌"
-  },
-  {
-   "key": "ROOM1.PBL:27:escape",
-   "file": "ROOM1.PBL",
-   "image": 27,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    22,
-    12,
-    29,
-    5
-   ],
-   "text": [
-    22,
-    12,
-    5
-   ],
-   "original": "ESCAPE",
-   "translation": " 逃生口 ",
-   "font": "cjk16",
-   "note": "逃生通道房間，黃字招牌"
-  },
-  {
-   "key": "ROOM1.PBL:28:escape",
-   "file": "ROOM1.PBL",
-   "image": 28,
-   "screen": [
-    4,
-    124
-   ],
-   "region": [
-    22,
-    12,
-    29,
-    5
-   ],
-   "text": [
-    22,
-    12,
-    5
-   ],
-   "original": "ESCAPE",
-   "translation": " 逃生口 ",
-   "font": "cjk16",
-   "note": "逃生通道房間，黃字招牌"
-  },
-  {
-   "key": "SCREEN.PBL:0:advance",
-   "file": "SCREEN.PBL",
-   "image": 0,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    180,
-    8,
-    48,
-    10
-   ],
-   "text": [
-    180,
-    8,
-    6
-   ],
-   "original": "ADVANCE",
-   "translation": "  前進  ",
-   "note": "面板：↑ 前進"
-  },
-  {
-   "key": "SCREEN.PBL:0:look-aside",
-   "file": "SCREEN.PBL",
-   "image": 0,
-   "screen": [
-    0,
-    0
-   ],
-   "region": [
-    178,
-    32,
-    52,
-    8
-   ],
-   "text": [
-    180,
-    32,
-    6
-   ],
-   "original": "LOOK ASIDE",
-   "translation": "  轉向  ",
-   "note": "面板：←→ 左右轉"
-  },
-  {
-   "key": "SCREEN.PBL:1:turn",
-   "file": "SCREEN.PBL",
-   "image": 1,
-   "screen": [
-    0,
-    40
-   ],
-   "region": [
-    186,
-    14,
-    40,
-    10
-   ],
-   "text": [
-    184,
-    16,
-    5
-   ],
-   "original": "TURN",
-   "translation": " 向後轉 ",
-   "note": "面板：↓ 向後轉"
-  },
-  {
-   "key": "SCREEN.PBL:1:operation",
-   "file": "SCREEN.PBL",
-   "image": 1,
-   "screen": [
-    0,
-    40
-   ],
-   "region": [
-    178,
-    28,
-    52,
-    10
-   ],
-   "text": [
-    180,
-    28,
-    6
-   ],
-   "original": "ESC OPERATION",
-   "translation": "  選單  ",
-   "note": "面板：ESC 開選單。左邊的 ESC 是按鍵名，保留原樣"
-  },
-  {
-   "key": "SCREEN.PBL:3:place",
-   "file": "SCREEN.PBL",
-   "image": 3,
-   "screen": [
-    0,
-    120
-   ],
-   "region": [
-    76,
-    4,
-    38,
-    10
-   ],
-   "text": [
-    76,
-    4,
-    4
-   ],
-   "original": "PLACE",
-   "translation": " 地點 ",
-   "note": "狀態欄標籤；值由遊戲畫在右邊；比對範圍避開左邊的框線（遊戲會重畫）"
-  },
-  {
-   "key": "SCREEN.PBL:3:direction",
-   "file": "SCREEN.PBL",
-   "image": 3,
-   "screen": [
-    0,
-    120
-   ],
-   "region": [
-    82,
-    12,
-    36,
-    10
-   ],
-   "text": [
-    84,
-    12,
-    4
-   ],
-   "original": "DIRECTION",
-   "translation": " 方向 ",
-   "note": "狀態欄標籤；值由遊戲畫在右邊；比對範圍避開右邊的方位值"
-  }
- ]
+  "schema": "psychic-war-baked/1",
+  "note": "圖檔內嵌文字的中文疊字（docs/spec/011）。region、text 是圖內座標；screen 是這張圖畫在畫面上的左上角（docs/re/023 的實跑觀測）。原文欄位只給清冊看，程式不讀。",
+  "equivalent": [
+    {
+      "file": "MENU.PBL",
+      "image": 0,
+      "screen": [
+        160,
+        4
+      ],
+      "covers": [
+        "SCREEN.PBL:0:advance",
+        "SCREEN.PBL:0:look-aside",
+        "SCREEN.PBL:1:turn"
+      ],
+      "note": "面板重畫用的圖，文字像素與 SCREEN.PBL 相同（docs/re/024 §2），同一組 watcher 就會蓋到兩者，不必另外寫一份資料。ESC OPERATION 那一塊在這張圖的下緣之外，由 SCREEN.PBL #1 提供。"
+    }
+  ],
+  "entries": [
+    {
+      "key": "MAP.PBL:1:top-secret-map",
+      "file": "MAP.PBL",
+      "image": 1,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        24,
+        68,
+        107,
+        5
+      ],
+      "text": [
+        24,
+        67,
+        18
+      ],
+      "original": "TOP SECRET  MAP 02-V-11",
+      "translation": "最高機密 地圖 02-V-11",
+      "font": "cjk16",
+      "note": "screen 未觀測，整頁圖用 [0,0]。拾獲地圖畫面唯一一行標籤"
+    },
+    {
+      "key": "MAP.PBL:2:map",
+      "file": "MAP.PBL",
+      "image": 2,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        92,
+        40,
+        44,
+        5
+      ],
+      "text": [
+        92,
+        39,
+        10
+      ],
+      "original": "MAP 00-A-47",
+      "translation": "地圖 00-A-47",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:2:secret",
+      "file": "MAP.PBL",
+      "image": 2,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        92,
+        31,
+        33,
+        5
+      ],
+      "text": [
+        92,
+        30,
+        6
+      ],
+      "original": "SECRET",
+      "translation": "機密",
+      "font": "cjk16",
+      "note": "screen 未觀測。與 top 合看即「最高機密」"
+    },
+    {
+      "key": "MAP.PBL:2:top",
+      "file": "MAP.PBL",
+      "image": 2,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        92,
+        25,
+        16,
+        5
+      ],
+      "text": [
+        92,
+        23,
+        3
+      ],
+      "original": "TOP",
+      "translation": "最高",
+      "font": "cjk16",
+      "note": "screen 未觀測。TOP／SECRET 在此圖是上下兩行小字（非左右並排），拆成兩筆避免中文矩形垂直重疊"
+    },
+    {
+      "key": "MAP.PBL:3:map",
+      "file": "MAP.PBL",
+      "image": 3,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        28,
+        71,
+        49,
+        5
+      ],
+      "text": [
+        28,
+        70,
+        10
+      ],
+      "original": "MAP 99-N-54",
+      "translation": "地圖 99-N-54",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:3:top-secret",
+      "file": "MAP.PBL",
+      "image": 3,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        28,
+        63,
+        49,
+        5
+      ],
+      "text": [
+        28,
+        62,
+        9
+      ],
+      "original": "TOP SECRET",
+      "translation": "最高機密",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:4:top-secret-map",
+      "file": "MAP.PBL",
+      "image": 4,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        44,
+        72,
+        98,
+        5
+      ],
+      "text": [
+        44,
+        71,
+        17
+      ],
+      "original": "TOP SECRET MAP 70-A-81",
+      "translation": "最高機密 地圖 70-A-81",
+      "font": "cjk16",
+      "note": "screen 未觀測。右側小怪物圖案不在文字區塊內，未動"
+    },
+    {
+      "key": "MAP.PBL:5:map",
+      "file": "MAP.PBL",
+      "image": 5,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        92,
+        72,
+        48,
+        5
+      ],
+      "text": [
+        92,
+        71,
+        10
+      ],
+      "original": "MAP 40-K-74",
+      "translation": "地圖 40-K-74",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:5:top-secret",
+      "file": "MAP.PBL",
+      "image": 5,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        92,
+        64,
+        48,
+        5
+      ],
+      "text": [
+        92,
+        63,
+        8
+      ],
+      "original": "TOP SECRET",
+      "translation": "最高機密",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:6:map",
+      "file": "MAP.PBL",
+      "image": 6,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        93,
+        56,
+        49,
+        5
+      ],
+      "text": [
+        93,
+        55,
+        9
+      ],
+      "original": "MAP 09-E-65",
+      "translation": "地圖09-E-65",
+      "font": "cjk16",
+      "note": "screen 未觀測。右緣空間不足，譯文省略「地圖」與代號間的空白"
+    },
+    {
+      "key": "MAP.PBL:6:top-secret",
+      "file": "MAP.PBL",
+      "image": 6,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        93,
+        48,
+        47,
+        5
+      ],
+      "text": [
+        93,
+        47,
+        8
+      ],
+      "original": "TOP SECRET",
+      "translation": "最高機密",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:7:map",
+      "file": "MAP.PBL",
+      "image": 7,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        101,
+        60,
+        48,
+        5
+      ],
+      "text": [
+        101,
+        59,
+        8
+      ],
+      "original": "MAP EEACC-DD",
+      "translation": "EEACC-DD",
+      "font": "cjk16",
+      "note": "screen 未觀測。清冊標 uncertain：放大重看色號圖，圓形設施圖右下角空間僅夠 8 格，省略「MAP／地圖」只留代號；同圖另一行已有「最高機密」提示這是地圖"
+    },
+    {
+      "key": "MAP.PBL:7:top-secret",
+      "file": "MAP.PBL",
+      "image": 7,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        92,
+        68,
+        47,
+        5
+      ],
+      "text": [
+        92,
+        67,
+        8
+      ],
+      "original": "TOP SECRET",
+      "translation": "最高機密",
+      "font": "cjk16",
+      "note": "screen 未觀測。本圖文字順序與其他張相反（MAP 在前）"
+    },
+    {
+      "key": "MAP.PBL:8:alloy",
+      "file": "MAP.PBL",
+      "image": 8,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        6,
+        27,
+        23,
+        5
+      ],
+      "text": [
+        6,
+        26,
+        4
+      ],
+      "original": "ALLOY",
+      "translation": "合金",
+      "font": "cjk16",
+      "note": "screen 未觀測。左側零件標籤"
+    },
+    {
+      "key": "MAP.PBL:8:bottom1",
+      "file": "MAP.PBL",
+      "image": 8,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        64,
+        101,
+        5
+      ],
+      "text": [
+        4,
+        63,
+        17
+      ],
+      "original": "CAPSULE IN CHANGE MODE:",
+      "translation": "膠囊：切換模式",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:8:bottom2",
+      "file": "MAP.PBL",
+      "image": 8,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        72,
+        123,
+        5
+      ],
+      "text": [
+        4,
+        71,
+        21
+      ],
+      "original": "DEFEAT THE SPECIAL KDG FORCE",
+      "translation": "擊敗KDG特種部隊",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:8:dc-brand-7",
+      "file": "MAP.PBL",
+      "image": 8,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        105,
+        34,
+        44,
+        5
+      ],
+      "text": [
+        104,
+        33,
+        8
+      ],
+      "original": "DC BRAND 7",
+      "translation": "DC-7",
+      "font": "cjk16",
+      "note": "screen 未觀測。自動框選只抓到部分寬度，改用色號圖手動量出完整範圍（x105–148）；右側緊貼畫面邊緣只夠 8 格，縮寫為代號"
+    },
+    {
+      "key": "MAP.PBL:8:header1",
+      "file": "MAP.PBL",
+      "image": 8,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        3,
+        2,
+        96,
+        5
+      ],
+      "text": [
+        3,
+        1,
+        16
+      ],
+      "original": "MADE FROM MASTERS KDG",
+      "translation": "KDG大師出品",
+      "font": "cjk16",
+      "note": "screen 未觀測。E-CAPSULE 道具說明頁頂部藍底"
+    },
+    {
+      "key": "MAP.PBL:8:header2",
+      "file": "MAP.PBL",
+      "image": 8,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        3,
+        10,
+        144,
+        5
+      ],
+      "text": [
+        3,
+        9,
+        24
+      ],
+      "original": "DIGITAL:TECHNICAL NOTE/E-CAPSULE",
+      "translation": "數位技術筆記／E-CAPSULE",
+      "font": "cjk16",
+      "note": "screen 未觀測。E-CAPSULE 為道具名保留原文"
+    },
+    {
+      "key": "MAP.PBL:8:nickle",
+      "file": "MAP.PBL",
+      "image": 8,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        56,
+        24,
+        5
+      ],
+      "text": [
+        4,
+        55,
+        4
+      ],
+      "original": "NICKLE",
+      "translation": "鎳",
+      "font": "cjk16",
+      "note": "screen 未觀測。自動框選工具被右側圖案的亮色干擾漏掉，改用色號圖手動量位置"
+    },
+    {
+      "key": "MAP.PBL:8:paradise",
+      "file": "MAP.PBL",
+      "image": 8,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        112,
+        52,
+        37,
+        5
+      ],
+      "text": [
+        110,
+        51,
+        7
+      ],
+      "original": "PARADISE",
+      "translation": "天堂",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:9:autoeject",
+      "file": "MAP.PBL",
+      "image": 9,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        73,
+        27,
+        44,
+        5
+      ],
+      "text": [
+        73,
+        26,
+        8
+      ],
+      "original": "AUTOEJECT",
+      "translation": "自動退出",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:9:bottom1",
+      "file": "MAP.PBL",
+      "image": 9,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        64,
+        102,
+        5
+      ],
+      "text": [
+        4,
+        63,
+        17
+      ],
+      "original": "HIGH QUALITY ARMORSHIP",
+      "translation": "高品質裝甲艦",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:9:bottom2",
+      "file": "MAP.PBL",
+      "image": 9,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        72,
+        125,
+        5
+      ],
+      "text": [
+        4,
+        71,
+        21
+      ],
+      "original": "DIGITAL PROGRAM SYNTHESIZER",
+      "translation": "數位程式合成器",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:9:cassette",
+      "file": "MAP.PBL",
+      "image": 9,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        6,
+        21,
+        39,
+        5
+      ],
+      "text": [
+        6,
+        20,
+        7
+      ],
+      "original": "CASSETTE",
+      "translation": "卡匣",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:9:header1",
+      "file": "MAP.PBL",
+      "image": 9,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        4,
+        122,
+        5
+      ],
+      "text": [
+        4,
+        3,
+        21
+      ],
+      "original": "ARTICLE 555 OF 888 : PATH KDG",
+      "translation": "型錄555/888 PATH KDG",
+      "font": "cjk16",
+      "note": "screen 未觀測。黑底青字道具說明頁"
+    },
+    {
+      "key": "MAP.PBL:9:header2",
+      "file": "MAP.PBL",
+      "image": 9,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        12,
+        127,
+        5
+      ],
+      "text": [
+        4,
+        11,
+        22
+      ],
+      "original": "SUBJECT : TECHNICAL NOTE/ LOW",
+      "translation": "主旨：技術筆記／LOW",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:9:metal",
+      "file": "MAP.PBL",
+      "image": 9,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        8,
+        53,
+        24,
+        5
+      ],
+      "text": [
+        8,
+        52,
+        4
+      ],
+      "original": "METAL",
+      "translation": "金屬",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:10:bottom1",
+      "file": "MAP.PBL",
+      "image": 10,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        64,
+        84,
+        5
+      ],
+      "text": [
+        4,
+        63,
+        14
+      ],
+      "original": "HARD STONE SPECIAL:",
+      "translation": "硬石特別版：",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:10:bottom2",
+      "file": "MAP.PBL",
+      "image": 10,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        72,
+        93,
+        5
+      ],
+      "text": [
+        4,
+        71,
+        16
+      ],
+      "original": "KEEP AWAY FROM MELSER",
+      "translation": "遠離梅爾瑟",
+      "font": "cjk16",
+      "note": "screen 未觀測。MELSER 沿用 text/glossary.json 既有譯名「梅爾瑟」"
+    },
+    {
+      "key": "MAP.PBL:10:dassui-a",
+      "file": "MAP.PBL",
+      "image": 10,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        72,
+        20,
+        26,
+        5
+      ],
+      "text": [
+        72,
+        19,
+        6
+      ],
+      "original": "DASSUI",
+      "translation": "脫水",
+      "font": "cjk16",
+      "note": "screen 未觀測。DASSUI 在畫面出現兩次（本筆＋ dassui-b），用寬度比對確認兩處是同一個字；疑似日文「脱水」諧音的機械標籤"
+    },
+    {
+      "key": "MAP.PBL:10:dassui-b",
+      "file": "MAP.PBL",
+      "image": 10,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        5,
+        46,
+        26,
+        5
+      ],
+      "text": [
+        5,
+        45,
+        6
+      ],
+      "original": "DASSUI",
+      "translation": "脫水",
+      "font": "cjk16",
+      "note": "screen 未觀測。與 dassui-a 同字（寬度相同，26px），此為左下方那一次"
+    },
+    {
+      "key": "MAP.PBL:10:header1",
+      "file": "MAP.PBL",
+      "image": 10,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        4,
+        119,
+        5
+      ],
+      "text": [
+        4,
+        3,
+        20
+      ],
+      "original": "ARTICLE 770 OF 045 :PATH KDG",
+      "translation": "型錄770/045 PATH KDG",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:10:header2",
+      "file": "MAP.PBL",
+      "image": 10,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        12,
+        120,
+        5
+      ],
+      "text": [
+        4,
+        11,
+        20
+      ],
+      "original": "SPECIAL TECHNICAL NOTE-GPX",
+      "translation": "特殊技術筆記-GPX",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:10:kanso",
+      "file": "MAP.PBL",
+      "image": 10,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        128,
+        19,
+        24,
+        5
+      ],
+      "text": [
+        122,
+        18,
+        5
+      ],
+      "original": "KANSO",
+      "translation": "簡素",
+      "font": "cjk16",
+      "note": "screen 未觀測。清冊標 uncertain：色號圖確認貼齊畫面右緣（x128–152），讀法與清冊一致；疑似日文「簡素」諧音的機械標籤"
+    },
+    {
+      "key": "MAP.PBL:10:rear",
+      "file": "MAP.PBL",
+      "image": 10,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        128,
+        46,
+        18,
+        5
+      ],
+      "text": [
+        128,
+        45,
+        3
+      ],
+      "original": "REAR",
+      "translation": "後方",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:10:timer",
+      "file": "MAP.PBL",
+      "image": 10,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        60,
+        49,
+        24,
+        5
+      ],
+      "text": [
+        60,
+        48,
+        4
+      ],
+      "original": "TIMER",
+      "translation": "計時器",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:11:bottom1",
+      "file": "MAP.PBL",
+      "image": 11,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        64,
+        92,
+        5
+      ],
+      "text": [
+        4,
+        63,
+        16
+      ],
+      "original": "AMR-445  VERSION 2-12",
+      "translation": "AMR-445 第2-12版",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:11:bottom2",
+      "file": "MAP.PBL",
+      "image": 11,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        72,
+        111,
+        5
+      ],
+      "text": [
+        4,
+        71,
+        19
+      ],
+      "original": "DOUBLE SIDE: DENSITY TRACK",
+      "translation": "雙面：高密度磁軌",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:11:header1",
+      "file": "MAP.PBL",
+      "image": 11,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        4,
+        140,
+        5
+      ],
+      "text": [
+        4,
+        3,
+        24
+      ],
+      "original": "ARTICLE 254 OF 509   PATH  KDG216",
+      "translation": "型錄254/509 PATH KDG216",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:11:header2",
+      "file": "MAP.PBL",
+      "image": 11,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        12,
+        126,
+        5
+      ],
+      "text": [
+        4,
+        11,
+        21
+      ],
+      "original": "SUBJECT:TECHNICAL NOTE/ VRS",
+      "translation": "主旨：技術筆記／VRS",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:11:tanuki",
+      "file": "MAP.PBL",
+      "image": 11,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        9,
+        20,
+        27,
+        5
+      ],
+      "text": [
+        9,
+        19,
+        6
+      ],
+      "original": "TANUKI",
+      "translation": "狸",
+      "font": "cjk16",
+      "note": "screen 未觀測。日文羅馬字「狸」，機械標籤的趣味命名"
+    },
+    {
+      "key": "MAP.PBL:11:ten",
+      "file": "MAP.PBL",
+      "image": 11,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        75,
+        46,
+        14,
+        5
+      ],
+      "text": [
+        75,
+        45,
+        3
+      ],
+      "original": "TEN",
+      "translation": "天",
+      "font": "cjk16",
+      "note": "screen 未觀測。語意不確定，音譯"
+    },
+    {
+      "key": "MAP.PBL:11:toro-a",
+      "file": "MAP.PBL",
+      "image": 11,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        76,
+        23,
+        20,
+        5
+      ],
+      "text": [
+        76,
+        22,
+        4
+      ],
+      "original": "TORO",
+      "translation": "多羅",
+      "font": "cjk16",
+      "note": "screen 未觀測。TORO 出現兩次（本筆＋ toro-b），用寬度比對（皆 20px）確認同字；疑似日文「とろ（鮪魚肚）」諧音，用音譯"
+    },
+    {
+      "key": "MAP.PBL:11:toro-b",
+      "file": "MAP.PBL",
+      "image": 11,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        9,
+        47,
+        20,
+        5
+      ],
+      "text": [
+        9,
+        46,
+        4
+      ],
+      "original": "TORO",
+      "translation": "多羅",
+      "font": "cjk16",
+      "note": "screen 未觀測。與 toro-a 同字"
+    },
+    {
+      "key": "MAP.PBL:12:arm-set",
+      "file": "MAP.PBL",
+      "image": 12,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        15,
+        48,
+        32,
+        5
+      ],
+      "text": [
+        15,
+        47,
+        6
+      ],
+      "original": "ARM SET",
+      "translation": "臂裝組",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:12:bottom1",
+      "file": "MAP.PBL",
+      "image": 12,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        64,
+        122,
+        5
+      ],
+      "text": [
+        4,
+        63,
+        21
+      ],
+      "original": "PLAY THE GAME!  DON'T BOTHER",
+      "translation": "玩遊戲就好，別管",
+      "font": "cjk16",
+      "note": "screen 未觀測。與 bottom2 合看是一句吐槽玩笑"
+    },
+    {
+      "key": "MAP.PBL:12:bottom2",
+      "file": "MAP.PBL",
+      "image": 12,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        72,
+        95,
+        5
+      ],
+      "text": [
+        4,
+        71,
+        16
+      ],
+      "original": "READING THE FINE PRINT.",
+      "translation": "那些小字說明。",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:12:ear-set",
+      "file": "MAP.PBL",
+      "image": 12,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        100,
+        20,
+        30,
+        5
+      ],
+      "text": [
+        100,
+        19,
+        5
+      ],
+      "original": "EAR SET",
+      "translation": "耳機組",
+      "font": "cjk16",
+      "note": "screen 未觀測。與 psycho-gun 同一橫排但橫向分離，未重疊"
+    },
+    {
+      "key": "MAP.PBL:12:engine",
+      "file": "MAP.PBL",
+      "image": 12,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        89,
+        53,
+        26,
+        5
+      ],
+      "text": [
+        89,
+        52,
+        5
+      ],
+      "original": "ENGINE",
+      "translation": "引擎",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:12:header1",
+      "file": "MAP.PBL",
+      "image": 12,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        4,
+        130,
+        5
+      ],
+      "text": [
+        4,
+        3,
+        22
+      ],
+      "original": "ARTICLE 021 OF 726  PATH KDG209",
+      "translation": "型錄021/726 PATH KDG209",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:12:header2",
+      "file": "MAP.PBL",
+      "image": 12,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        12,
+        107,
+        5
+      ],
+      "text": [
+        4,
+        11,
+        18
+      ],
+      "original": "SUBJECT:TECHNICAL NOTE/",
+      "translation": "主旨：技術筆記／",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:12:psycho-gun",
+      "file": "MAP.PBL",
+      "image": 12,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        20,
+        47,
+        5
+      ],
+      "text": [
+        4,
+        19,
+        8
+      ],
+      "original": "PSYCHO GUN",
+      "translation": "超能砲",
+      "font": "cjk16",
+      "note": "screen 未觀測。沿用 text/glossary.json「PsychoGun -> 超能砲」"
+    },
+    {
+      "key": "MAP.PBL:13:bottom1",
+      "file": "MAP.PBL",
+      "image": 13,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        64,
+        81,
+        5
+      ],
+      "text": [
+        4,
+        63,
+        14
+      ],
+      "original": "BEWARE OF JAMMING-",
+      "translation": "小心卡彈－",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:13:bottom2",
+      "file": "MAP.PBL",
+      "image": 13,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        71,
+        65,
+        5
+      ],
+      "text": [
+        4,
+        70,
+        11
+      ],
+      "original": "HAVE A NICE DAY.",
+      "translation": "祝你有美好的一天。",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:13:dodad",
+      "file": "MAP.PBL",
+      "image": 13,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        47,
+        24,
+        5
+      ],
+      "text": [
+        4,
+        46,
+        4
+      ],
+      "original": "DODAD",
+      "translation": "小機件",
+      "font": "cjk16",
+      "note": "screen 未觀測。與 thingamajig 同義（不知名小零件）的另一種講法，譯文刻意用不同字避免重複"
+    },
+    {
+      "key": "MAP.PBL:13:header1",
+      "file": "MAP.PBL",
+      "image": 13,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        2,
+        124,
+        5
+      ],
+      "text": [
+        4,
+        1,
+        21
+      ],
+      "original": "LOAD BEFORE USE:PATH KGD7440",
+      "translation": "使用前先讀取：PATH KGD7440",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:13:header2",
+      "file": "MAP.PBL",
+      "image": 13,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        10,
+        133,
+        5
+      ],
+      "text": [
+        4,
+        9,
+        23
+      ],
+      "original": "ORIGINAL:TECHNICAL NOTE/E-GUN",
+      "translation": "原廠：技術筆記／E-GUN",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:13:thingamajig",
+      "file": "MAP.PBL",
+      "image": 13,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        4,
+        19,
+        55,
+        5
+      ],
+      "text": [
+        4,
+        18,
+        10
+      ],
+      "original": "THINGAMAJIG",
+      "translation": "小玩意兒",
+      "font": "cjk16",
+      "note": "screen 未觀測。自動框選完全沒抓到（與右側圖案的亮色連通後整塊被濾掉），改用色號圖整行手動量出（x4–59）"
+    },
+    {
+      "key": "MAP.PBL:13:watzit",
+      "file": "MAP.PBL",
+      "image": 13,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        112,
+        34,
+        30,
+        5
+      ],
+      "text": [
+        112,
+        33,
+        5
+      ],
+      "original": "WATZIT",
+      "translation": "啥東西",
+      "font": "cjk16",
+      "note": "screen 未觀測。WATZIT＝口語 what is it"
+    },
+    {
+      "key": "MAP.PBL:13:wazoo",
+      "file": "MAP.PBL",
+      "image": 13,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        0,
+        35,
+        24,
+        5
+      ],
+      "text": [
+        0,
+        34,
+        5
+      ],
+      "original": "WAZOO",
+      "translation": "屁股",
+      "font": "cjk16",
+      "note": "screen 未觀測。原文是俚語「屁股」的詼諧說法，保留原本的玩笑語氣"
+    },
+    {
+      "key": "MAP.PBL:14:bottom1",
+      "file": "MAP.PBL",
+      "image": 14,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        2,
+        64,
+        54,
+        5
+      ],
+      "text": [
+        2,
+        63,
+        9
+      ],
+      "original": "NAME- GAMERA",
+      "translation": "名稱：卡美拉",
+      "font": "cjk16",
+      "note": "screen 未觀測。GAMERA 沿用 text/glossary.json「Gamera -> 卡美拉」"
+    },
+    {
+      "key": "MAP.PBL:14:bottom2",
+      "file": "MAP.PBL",
+      "image": 14,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        2,
+        71,
+        82,
+        5
+      ],
+      "text": [
+        2,
+        70,
+        14
+      ],
+      "original": "EXCITING SPACE WAR...",
+      "translation": "刺激的太空戰爭…",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:14:header1",
+      "file": "MAP.PBL",
+      "image": 14,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        2,
+        2,
+        123,
+        5
+      ],
+      "text": [
+        2,
+        1,
+        21
+      ],
+      "original": "MADE FROM MASTERS KDG : PATH",
+      "translation": "KDG大師出品：PATH",
+      "font": "cjk16",
+      "note": "screen 未觀測。此標題與 15、16 三張版面座標相同"
+    },
+    {
+      "key": "MAP.PBL:14:header2",
+      "file": "MAP.PBL",
+      "image": 14,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        2,
+        9,
+        107,
+        5
+      ],
+      "text": [
+        2,
+        8,
+        18
+      ],
+      "original": "DIGITAL :TECHNICAL NOTE/",
+      "translation": "數位：技術筆記／",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:14:mode",
+      "file": "MAP.PBL",
+      "image": 14,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        118,
+        54,
+        19,
+        5
+      ],
+      "text": [
+        118,
+        53,
+        4
+      ],
+      "original": "MODE",
+      "translation": "模式",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:14:noise",
+      "file": "MAP.PBL",
+      "image": 14,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        12,
+        42,
+        22,
+        5
+      ],
+      "text": [
+        12,
+        41,
+        4
+      ],
+      "original": "NOISE",
+      "translation": "噪音",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:14:speed",
+      "file": "MAP.PBL",
+      "image": 14,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        7,
+        26,
+        22,
+        5
+      ],
+      "text": [
+        7,
+        25,
+        4
+      ],
+      "original": "SPEED",
+      "translation": "速度",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:14:tech",
+      "file": "MAP.PBL",
+      "image": 14,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        122,
+        41,
+        19,
+        5
+      ],
+      "text": [
+        122,
+        40,
+        4
+      ],
+      "original": "TECH",
+      "translation": "科技",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:15:auto",
+      "file": "MAP.PBL",
+      "image": 15,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        17,
+        19,
+        20,
+        5
+      ],
+      "text": [
+        17,
+        18,
+        4
+      ],
+      "original": "AUTO",
+      "translation": "自動",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:15:back",
+      "file": "MAP.PBL",
+      "image": 15,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        88,
+        54,
+        19,
+        5
+      ],
+      "text": [
+        88,
+        53,
+        4
+      ],
+      "original": "BACK",
+      "translation": "返回",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:15:basic",
+      "file": "MAP.PBL",
+      "image": 15,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        7,
+        38,
+        23,
+        5
+      ],
+      "text": [
+        7,
+        37,
+        4
+      ],
+      "original": "BASIC",
+      "translation": "基本",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:15:bottom",
+      "file": "MAP.PBL",
+      "image": 15,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        3,
+        66,
+        78,
+        5
+      ],
+      "text": [
+        3,
+        65,
+        13
+      ],
+      "original": "KIT:C-6 FROM E-GUN",
+      "translation": "套件C-6：取自E-GUN",
+      "font": "cjk16",
+      "note": "screen 未觀測。本圖底部只有一行（其餘同系列圖是兩行）"
+    },
+    {
+      "key": "MAP.PBL:15:header1",
+      "file": "MAP.PBL",
+      "image": 15,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        2,
+        2,
+        123,
+        5
+      ],
+      "text": [
+        2,
+        1,
+        21
+      ],
+      "original": "MADE FROM MASTERS KDG : PATH",
+      "translation": "KDG大師出品：PATH",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:15:header2",
+      "file": "MAP.PBL",
+      "image": 15,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        2,
+        9,
+        107,
+        5
+      ],
+      "text": [
+        2,
+        8,
+        18
+      ],
+      "original": "DIGITAL :TECHNICAL NOTE/",
+      "translation": "數位：技術筆記／",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:15:print",
+      "file": "MAP.PBL",
+      "image": 15,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        120,
+        42,
+        24,
+        5
+      ],
+      "text": [
+        120,
+        41,
+        4
+      ],
+      "original": "PRINT",
+      "translation": "列印",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:16:bottom1",
+      "file": "MAP.PBL",
+      "image": 16,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        2,
+        64,
+        130,
+        5
+      ],
+      "text": [
+        2,
+        63,
+        22
+      ],
+      "original": "WE PUT THIS IN AS SPACE FILLER-",
+      "translation": "這裡只是拿來填版面的－",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:16:bottom2",
+      "file": "MAP.PBL",
+      "image": 16,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        32,
+        72,
+        49,
+        5
+      ],
+      "text": [
+        32,
+        71,
+        9
+      ],
+      "original": "HANG TOUGH!",
+      "translation": "撐住！",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:16:channel",
+      "file": "MAP.PBL",
+      "image": 16,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        120,
+        19,
+        32,
+        5
+      ],
+      "text": [
+        116,
+        18,
+        6
+      ],
+      "original": "CHANNEL",
+      "translation": "頻道",
+      "font": "cjk16",
+      "note": "screen 未觀測。墨跡貼齊畫面右緣（x120–152），中文矩形往左移到 116 才能在不超出畫面的情況下蓋滿"
+    },
+    {
+      "key": "MAP.PBL:16:chioo",
+      "file": "MAP.PBL",
+      "image": 16,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        12,
+        46,
+        22,
+        5
+      ],
+      "text": [
+        12,
+        45,
+        5
+      ],
+      "original": "CHIOO",
+      "translation": "奇歐",
+      "font": "cjk16",
+      "note": "screen 未觀測。清冊標 uncertain：自動框選漏掉（與右側圖案連通後濾掉），改用色號圖逐字元比對字形（C／H／I／O／O 五個字母的筆畫分別與 CONTROL 的 C、HANG TOUGH 的 H、以及本圖其他 O 逐一核對），確認讀法與清冊一致；語意不確定，音譯"
+    },
+    {
+      "key": "MAP.PBL:16:control",
+      "file": "MAP.PBL",
+      "image": 16,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        1,
+        19,
+        34,
+        5
+      ],
+      "text": [
+        1,
+        18,
+        6
+      ],
+      "original": "CONTROL",
+      "translation": "控制",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:16:digit",
+      "file": "MAP.PBL",
+      "image": 16,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        121,
+        46,
+        23,
+        5
+      ],
+      "text": [
+        121,
+        45,
+        4
+      ],
+      "original": "DIGIT",
+      "translation": "數字",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:16:header1",
+      "file": "MAP.PBL",
+      "image": 16,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        2,
+        2,
+        123,
+        5
+      ],
+      "text": [
+        2,
+        1,
+        21
+      ],
+      "original": "MADE FROM MASTERS KDG : PATH",
+      "translation": "KDG大師出品：PATH",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:16:header2",
+      "file": "MAP.PBL",
+      "image": 16,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        2,
+        9,
+        118,
+        5
+      ],
+      "text": [
+        2,
+        8,
+        20
+      ],
+      "original": "DIGITAL :TECHNICAL NOTE/SP",
+      "translation": "數位：技術筆記／SP",
+      "font": "cjk16",
+      "note": "screen 未觀測"
+    },
+    {
+      "key": "MAP.PBL:17:danger",
+      "file": "MAP.PBL",
+      "image": 17,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        46,
+        3,
+        30,
+        5
+      ],
+      "text": [
+        46,
+        2,
+        6
+      ],
+      "original": "DANGER",
+      "translation": "危險",
+      "font": "cjk16",
+      "note": "screen 未觀測。吃角子老虎機面板，黃字標題"
+    },
+    {
+      "key": "MAP.PBL:17:slot-machine",
+      "file": "MAP.PBL",
+      "image": 17,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        46,
+        59,
+        58,
+        5
+      ],
+      "text": [
+        46,
+        58,
+        10
+      ],
+      "original": "SLOT MACHINE",
+      "translation": "拉霸機",
+      "font": "cjk16",
+      "note": "screen 未觀測。五個轉輪本身是圖形（尚未轉動），不在文字範圍內"
+    },
+    {
+      "key": "OPEN.PBL:7:standard-47600",
+      "file": "OPEN.PBL",
+      "image": 7,
+      "screen": [
+        24,
+        120
+      ],
+      "region": [
+        3,
+        2,
+        69,
+        5
+      ],
+      "text": [
+        0,
+        1,
+        12
+      ],
+      "original": "STANDARD 47600",
+      "translation": "標準 47600",
+      "font": "cjk16",
+      "note": "開場動畫星圖的字幕列，紅黑斜紋底白字；region 避開外框那一圈；字的像素比底多，定色要互換（swap_colors）",
+      "swap_colors": true
+    },
+    {
+      "key": "OPEN.PBL:8:set-4760021",
+      "file": "OPEN.PBL",
+      "image": 8,
+      "screen": [
+        24,
+        128
+      ],
+      "region": [
+        3,
+        2,
+        69,
+        5
+      ],
+      "text": [
+        0,
+        1,
+        12
+      ],
+      "original": "4760021 SET",
+      "translation": "4760021 設定",
+      "font": "cjk16",
+      "note": "開場動畫星圖的字幕列，緊接 #7 下方；這一條的第二多色號是底紋的亮紅（12）不是字色白（15），所以中文是黑底紅字"
+    },
+    {
+      "key": "OPEN.PBL:9:samar-city-station",
+      "file": "OPEN.PBL",
+      "image": 9,
+      "screen": [
+        24,
+        136
+      ],
+      "region": [
+        3,
+        2,
+        69,
+        5
+      ],
+      "text": [
+        0,
+        1,
+        12
+      ],
+      "original": "SAMAR CITY STATION",
+      "translation": "薩瑪市太空站",
+      "font": "cjk16",
+      "note": "開場動畫星圖的字幕列；SAMAR 與 CITY 之間有圓形圖示分隔；字的像素比底多，定色要互換（swap_colors）",
+      "swap_colors": true
+    },
+    {
+      "key": "OPEN.PBL:10:space-jump-is-ready",
+      "file": "OPEN.PBL",
+      "image": 10,
+      "screen": [
+        24,
+        144
+      ],
+      "region": [
+        3,
+        2,
+        69,
+        5
+      ],
+      "text": [
+        0,
+        1,
+        12
+      ],
+      "original": "SPACE JUMP IS READY",
+      "translation": "太空躍遷準備就緒",
+      "font": "cjk16",
+      "note": "開場動畫星圖的字幕列，第四行。圖裡字是色號 10（亮綠），實跑畫面上顯示為白——除了這 152 個像素，圖與畫面逐像素相同"
+    },
+    {
+      "key": "ROOM0.PBL:5:elevator",
+      "file": "ROOM0.PBL",
+      "image": 5,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        8,
+        11,
+        37,
+        5
+      ],
+      "text": [
+        8,
+        10,
+        7
+      ],
+      "original": "ELEVATOR",
+      "translation": "   電梯  ",
+      "font": "cjk16",
+      "note": "電梯房間，左側牆面紅字招牌，無邊框，直接畫在青色控制面板上"
+    },
+    {
+      "key": "ROOM0.PBL:18:danger",
+      "file": "ROOM0.PBL",
+      "image": 18,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        20,
+        10,
+        31,
+        7
+      ],
+      "text": [
+        20,
+        10,
+        5
+      ],
+      "original": "DANGER",
+      "translation": " 危險  ",
+      "font": "cjk16",
+      "note": "房間招牌：藍底黃字的警示牌"
+    },
+    {
+      "key": "ROOM0.PBL:19:danger",
+      "file": "ROOM0.PBL",
+      "image": 19,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        20,
+        22,
+        31,
+        7
+      ],
+      "text": [
+        20,
+        22,
+        5
+      ],
+      "original": "DANGER",
+      "translation": " 危險  ",
+      "font": "cjk16",
+      "note": "與 #18 同一招牌圖案，位置下移 12px"
+    },
+    {
+      "key": "ROOM0.PBL:23:guard-left",
+      "file": "ROOM0.PBL",
+      "image": 23,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        1,
+        10,
+        24,
+        7
+      ],
+      "text": [
+        1,
+        10,
+        4
+      ],
+      "original": "GUARD",
+      "translation": " 警衛 ",
+      "font": "cjk16",
+      "note": "警衛室左側，大型數字造型招牌內的青字（背景色塊挖空成字）"
+    },
+    {
+      "key": "ROOM0.PBL:23:guard-right",
+      "file": "ROOM0.PBL",
+      "image": 23,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        49,
+        58,
+        23,
+        7
+      ],
+      "text": [
+        48,
+        58,
+        4
+      ],
+      "original": "GUARD",
+      "translation": " 警衛 ",
+      "font": "cjk16",
+      "note": "警衛室右側招牌，貼齊畫面右緣（字跡最右到 x=71，中文格向左延伸 1px 以留在圖內）"
+    },
+    {
+      "key": "ROOM0.PBL:24:guard-left",
+      "file": "ROOM0.PBL",
+      "image": 24,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        14,
+        10,
+        24,
+        7
+      ],
+      "text": [
+        14,
+        10,
+        4
+      ],
+      "original": "GUARD",
+      "translation": " 警衛 ",
+      "font": "cjk16",
+      "note": "與 #23 同房間、色調不同版本；左側招牌位置實測與 #23 不同（x14 非 x1）"
+    },
+    {
+      "key": "ROOM0.PBL:24:guard-right",
+      "file": "ROOM0.PBL",
+      "image": 24,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        34,
+        57,
+        24,
+        7
+      ],
+      "text": [
+        34,
+        57,
+        4
+      ],
+      "original": "GUARD",
+      "translation": " 警衛 ",
+      "font": "cjk16",
+      "note": "右側招牌，位置與 #23 的右側招牌不同（x34/y57 非 x48/y58）"
+    },
+    {
+      "key": "ROOM0.PBL:27:data",
+      "file": "ROOM0.PBL",
+      "image": 27,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        36,
+        21,
+        19,
+        5
+      ],
+      "text": [
+        36,
+        20,
+        4
+      ],
+      "original": "DATA",
+      "translation": " 資料 ",
+      "font": "cjk16",
+      "note": "終端機房間，右上白字藍底招牌"
+    },
+    {
+      "key": "ROOM0.PBL:28:compute",
+      "file": "ROOM0.PBL",
+      "image": 28,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        36,
+        21,
+        35,
+        5
+      ],
+      "text": [
+        36,
+        20,
+        6
+      ],
+      "original": "COMPUTE",
+      "translation": "  電腦  ",
+      "font": "cjk16",
+      "note": "與 #27 同系列房間；原文被畫面右緣裁到只剩 COMPUTE（推斷完整字是 COMPUTER），譯文照完整字意譯"
+    },
+    {
+      "key": "ROOM0.PBL:29:inform",
+      "file": "ROOM0.PBL",
+      "image": 29,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        36,
+        21,
+        29,
+        5
+      ],
+      "text": [
+        36,
+        20,
+        5
+      ],
+      "original": "INFORM",
+      "translation": " 資訊  ",
+      "font": "cjk16",
+      "note": "與 #27 同系列房間；原文被裁到只剩 INFORM（推斷完整字是 INFORMATION），依指示範例縮短譯為「資訊」"
+    },
+    {
+      "key": "ROOM1.PBL:2:computer",
+      "file": "ROOM1.PBL",
+      "image": 2,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        2,
+        2,
+        40,
+        5
+      ],
+      "text": [
+        2,
+        1,
+        7
+      ],
+      "original": "COMPUTER",
+      "translation": "   電腦  ",
+      "font": "cjk16",
+      "note": "電腦終端機房間，上方黃底紫字招牌"
+    },
+    {
+      "key": "ROOM1.PBL:2:imperial",
+      "file": "ROOM1.PBL",
+      "image": 2,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        7,
+        61,
+        47,
+        5
+      ],
+      "text": [
+        7,
+        60,
+        8
+      ],
+      "original": "IMPERIAL CO.",
+      "translation": "帝國股份有限公司",
+      "font": "cjk16",
+      "note": "公司名兩行「IMPERIAL CO.」＋「LTD.」；兩行只隔 1 像素，cjk16 字高 7 像素蓋不下兩塊，只譯第一行，LTD. 保留原文"
+    },
+    {
+      "key": "ROOM1.PBL:3:computer",
+      "file": "ROOM1.PBL",
+      "image": 3,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        2,
+        2,
+        40,
+        5
+      ],
+      "text": [
+        2,
+        1,
+        7
+      ],
+      "original": "COMPUTER",
+      "translation": "   電腦  ",
+      "font": "cjk16",
+      "note": "與 #2 相同房間、色調變化版本，位置實測相同"
+    },
+    {
+      "key": "ROOM1.PBL:3:imperial",
+      "file": "ROOM1.PBL",
+      "image": 3,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        7,
+        61,
+        47,
+        5
+      ],
+      "text": [
+        7,
+        60,
+        8
+      ],
+      "original": "IMPERIAL CO.",
+      "translation": "帝國股份有限公司",
+      "font": "cjk16",
+      "note": "公司名兩行「IMPERIAL CO.」＋「LTD.」；兩行只隔 1 像素，cjk16 字高 7 像素蓋不下兩塊，只譯第一行，LTD. 保留原文"
+    },
+    {
+      "key": "ROOM1.PBL:4:computer",
+      "file": "ROOM1.PBL",
+      "image": 4,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        2,
+        2,
+        40,
+        5
+      ],
+      "text": [
+        2,
+        1,
+        7
+      ],
+      "original": "COMPUTER",
+      "translation": "   電腦  ",
+      "font": "cjk16",
+      "note": "與 #2 相同房間、色調變化版本，位置實測相同"
+    },
+    {
+      "key": "ROOM1.PBL:4:imperial",
+      "file": "ROOM1.PBL",
+      "image": 4,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        7,
+        61,
+        47,
+        5
+      ],
+      "text": [
+        7,
+        60,
+        8
+      ],
+      "original": "IMPERIAL CO.",
+      "translation": "帝國股份有限公司",
+      "font": "cjk16",
+      "note": "公司名兩行「IMPERIAL CO.」＋「LTD.」；兩行只隔 1 像素，cjk16 字高 7 像素蓋不下兩塊，只譯第一行，LTD. 保留原文"
+    },
+    {
+      "key": "ROOM1.PBL:10:danger",
+      "file": "ROOM1.PBL",
+      "image": 10,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        1,
+        10,
+        28,
+        5
+      ],
+      "text": [
+        1,
+        9,
+        5
+      ],
+      "original": "DANGER",
+      "translation": " 危險  ",
+      "font": "cjk16",
+      "note": "左上白字黑底警示牌"
+    },
+    {
+      "key": "ROOM1.PBL:12:gate",
+      "file": "ROOM1.PBL",
+      "image": 12,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        50,
+        12,
+        20,
+        5
+      ],
+      "text": [
+        46,
+        11,
+        4
+      ],
+      "original": "GATE",
+      "translation": " 閘門 ",
+      "font": "cjk16",
+      "note": "告示牌兩行「GATE」＋「OPEN」第一行"
+    },
+    {
+      "key": "ROOM1.PBL:12:open",
+      "file": "ROOM1.PBL",
+      "image": 12,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        50,
+        18,
+        19,
+        5
+      ],
+      "text": [
+        46,
+        18,
+        4
+      ],
+      "original": "OPEN",
+      "translation": " 開啟 ",
+      "font": "cjk16",
+      "note": "GATE OPEN 第二行；與第一行緊鄰但有黑色間隔列，可分開覆蓋不重疊"
+    },
+    {
+      "key": "ROOM1.PBL:13:danger",
+      "file": "ROOM1.PBL",
+      "image": 13,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        18,
+        29,
+        24,
+        4
+      ],
+      "text": [
+        18,
+        27,
+        4
+      ],
+      "original": "DANGER",
+      "translation": " 危險 ",
+      "font": "cjk16",
+      "note": "上方中央紅字黑底小招牌，字高僅4px；中文格上下各touch一行相鄰牆面裝飾（無法完全避開）"
+    },
+    {
+      "key": "ROOM1.PBL:14:danger",
+      "file": "ROOM1.PBL",
+      "image": 14,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        18,
+        29,
+        24,
+        4
+      ],
+      "text": [
+        18,
+        27,
+        4
+      ],
+      "original": "DANGER",
+      "translation": " 危險 ",
+      "font": "cjk16",
+      "note": "與 #13 同房間，招牌改綠字，位置相同"
+    },
+    {
+      "key": "ROOM1.PBL:15:danger",
+      "file": "ROOM1.PBL",
+      "image": 15,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        27,
+        28,
+        29,
+        5
+      ],
+      "text": [
+        27,
+        27,
+        5
+      ],
+      "original": "DANGER",
+      "translation": " 危險  ",
+      "font": "cjk16",
+      "note": "與 #13/#14 同房間但招牌改黃字且位置不同（實測 x27/y28，非 x18/y29），不可沿用 #13 座標"
+    },
+    {
+      "key": "ROOM1.PBL:16:danger",
+      "file": "ROOM1.PBL",
+      "image": 16,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        27,
+        28,
+        29,
+        5
+      ],
+      "text": [
+        27,
+        27,
+        5
+      ],
+      "original": "DANGER",
+      "translation": " 危險  ",
+      "font": "cjk16",
+      "note": "綠字招牌；位置與 #15 完全相同（雖然清冊註記為不同房間造型）"
+    },
+    {
+      "key": "ROOM1.PBL:17:danger",
+      "file": "ROOM1.PBL",
+      "image": 17,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        30,
+        29,
+        23,
+        4
+      ],
+      "text": [
+        30,
+        28,
+        4
+      ],
+      "original": "DANGER",
+      "translation": " 危險 ",
+      "font": "cjk16",
+      "note": "青字招牌，字高4px；與 #16 房間相近但招牌位置不同（x30/y29）"
+    },
+    {
+      "key": "ROOM1.PBL:18:danger",
+      "file": "ROOM1.PBL",
+      "image": 18,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        30,
+        29,
+        23,
+        4
+      ],
+      "text": [
+        30,
+        28,
+        4
+      ],
+      "original": "DANGER",
+      "translation": " 危險 ",
+      "font": "cjk16",
+      "note": "與 #17 同房間、色調變化版本，位置相同"
+    },
+    {
+      "key": "ROOM1.PBL:25:danger",
+      "file": "ROOM1.PBL",
+      "image": 25,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        34,
+        16,
+        28,
+        5
+      ],
+      "text": [
+        34,
+        14,
+        5
+      ],
+      "original": "DANGER",
+      "translation": " 危險  ",
+      "font": "cjk16",
+      "note": "白字黑底招牌，上方為紅色裝飾條，中文格往上多蓋2列裝飾條以避開招牌下方的綠色小圖示"
+    },
+    {
+      "key": "ROOM1.PBL:26:escape",
+      "file": "ROOM1.PBL",
+      "image": 26,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        22,
+        12,
+        29,
+        5
+      ],
+      "text": [
+        22,
+        12,
+        5
+      ],
+      "original": "ESCAPE",
+      "translation": " 逃生口 ",
+      "font": "cjk16",
+      "note": "逃生通道房間，黃字招牌"
+    },
+    {
+      "key": "ROOM1.PBL:27:escape",
+      "file": "ROOM1.PBL",
+      "image": 27,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        22,
+        12,
+        29,
+        5
+      ],
+      "text": [
+        22,
+        12,
+        5
+      ],
+      "original": "ESCAPE",
+      "translation": " 逃生口 ",
+      "font": "cjk16",
+      "note": "逃生通道房間，黃字招牌"
+    },
+    {
+      "key": "ROOM1.PBL:28:escape",
+      "file": "ROOM1.PBL",
+      "image": 28,
+      "screen": [
+        4,
+        124
+      ],
+      "region": [
+        22,
+        12,
+        29,
+        5
+      ],
+      "text": [
+        22,
+        12,
+        5
+      ],
+      "original": "ESCAPE",
+      "translation": " 逃生口 ",
+      "font": "cjk16",
+      "note": "逃生通道房間，黃字招牌"
+    },
+    {
+      "key": "SCREEN.PBL:0:advance",
+      "file": "SCREEN.PBL",
+      "image": 0,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        180,
+        8,
+        48,
+        10
+      ],
+      "text": [
+        180,
+        8,
+        6
+      ],
+      "original": "ADVANCE",
+      "translation": "  前進  ",
+      "note": "面板：↑ 前進"
+    },
+    {
+      "key": "SCREEN.PBL:0:look-aside",
+      "file": "SCREEN.PBL",
+      "image": 0,
+      "screen": [
+        0,
+        0
+      ],
+      "region": [
+        178,
+        32,
+        52,
+        8
+      ],
+      "text": [
+        180,
+        32,
+        6
+      ],
+      "original": "LOOK ASIDE",
+      "translation": "  轉向  ",
+      "note": "面板：←→ 左右轉"
+    },
+    {
+      "key": "SCREEN.PBL:1:operation",
+      "file": "SCREEN.PBL",
+      "image": 1,
+      "screen": [
+        0,
+        40
+      ],
+      "region": [
+        178,
+        28,
+        52,
+        10
+      ],
+      "text": [
+        180,
+        28,
+        6
+      ],
+      "original": "ESC OPERATION",
+      "translation": "  選單  ",
+      "note": "面板：ESC 開選單。左邊的 ESC 是按鍵名，保留原樣"
+    },
+    {
+      "key": "SCREEN.PBL:1:turn",
+      "file": "SCREEN.PBL",
+      "image": 1,
+      "screen": [
+        0,
+        40
+      ],
+      "region": [
+        186,
+        14,
+        40,
+        10
+      ],
+      "text": [
+        184,
+        16,
+        5
+      ],
+      "original": "TURN",
+      "translation": " 向後轉 ",
+      "note": "面板：↓ 向後轉"
+    },
+    {
+      "key": "SCREEN.PBL:3:direction",
+      "file": "SCREEN.PBL",
+      "image": 3,
+      "screen": [
+        0,
+        120
+      ],
+      "region": [
+        82,
+        12,
+        36,
+        10
+      ],
+      "text": [
+        84,
+        12,
+        4
+      ],
+      "original": "DIRECTION",
+      "translation": " 方向 ",
+      "note": "狀態欄標籤；值由遊戲畫在右邊；比對範圍避開右邊的方位值"
+    },
+    {
+      "key": "SCREEN.PBL:3:place",
+      "file": "SCREEN.PBL",
+      "image": 3,
+      "screen": [
+        0,
+        120
+      ],
+      "region": [
+        76,
+        4,
+        38,
+        10
+      ],
+      "text": [
+        76,
+        4,
+        4
+      ],
+      "original": "PLACE",
+      "translation": " 地點 ",
+      "note": "狀態欄標籤；值由遊戲畫在右邊；比對範圍避開左邊的框線（遊戲會重畫）"
+    }
+  ]
 }

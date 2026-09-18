@@ -1,378 +1,368 @@
 {
- "schema": "psychic-war-worklist/1",
- "note": "未完成項的權威。docs/worklist.md 由 tools/worklist.py render 產生，不要手改。verify 為真＝仍未完成。 做完的條目移到 done，保留 issue 編號與證據。",
- "milestones": {
-  "M0": "探勘與基線：證據、狀態檔、參照畫面",
-  "M1": "原版在 golem 上完整可跑：畫面、音樂、決定性",
-  "M2": "可遊玩前端：視窗、鍵盤、滑鼠、音訊、節拍",
-  "M3": "文字攔截與文本抽取",
-  "M4": "中文繪製與全文翻譯",
-  "M5": "輔助功能：F1／F2／F3／F10、防拷、作弊",
-  "M6": "主題、打包、授權與發行"
- },
- "labels": {
-  "re": "反組譯與格式解讀",
-  "golem-upstream": "通用機制，做完送回 dosgolem",
-  "graphics": "畫面與圖檔",
-  "audio": "音樂與音效",
-  "input": "鍵盤與滑鼠",
-  "frontend": "可遊玩的主程式",
-  "text": "文本抽取、翻譯與排版",
-  "assist": "原版沒有的輔助功能",
-  "verify": "對原版驗證",
-  "release": "打包與發行"
- },
- "items": [
-  {
-   "id": "realtime-pacing",
-   "milestone": "M2",
-   "labels": [
-    "golem-upstream",
-    "frontend"
-   ],
-   "title": "牆上時間節拍：讓 72 Hz 的遊戲以原速執行",
-   "body": "golem 預設是指令數時鐘。實測第一場戰鬥的長短由 CPU 指令數決定（約 1,193 萬道），計時器刻數隨 CPU 速度差十倍：預設速度下約 1 秒、8088 級約 10.5 秒；DOSBox-X 中玩家會被打掉 10 點、dosgolem 預設速度下不掉（docs/re/009 §5）。前端要用週期時鐘把 `CPUHz` 限在原版目標機器的等級（8088–286），以牆上時間對齊，並保留指令數給重播。",
-   "acceptance": "spec 定案 `CPUHz` 與依據（敵人攻擊的時間基準＋DOSBox-X 固定 cycles 的戰鬥時間參照）；前端執行時計時器中斷穩定在 72 Hz ±1%、每秒週期數 ±2%，第一場戰鬥的持續時間與參照相差 ≤ 10%。",
-   "verify": {
-    "kind": "manual",
-    "note": "前端牆上時間對齊已通過（docs/re/016 §2.1）。第一場戰鬥：DOSBox-X 750 cycles 有效 3 場平均 17.75 秒、dosgolem 12 組平均 17.84 秒（−0.5%，docs/re/010 §4.6），樣本不足不定案。2026-09-17 主機 load 18（14 核）不能量；重開條件：load 連續 5 分鐘 < 2，DOSBox-X 走位改成等檢查點後補到 ≥ 5 場（docs/re/019 §6、docs/re/026 §3）"
-   },
-   "issue": 9
+  "schema": "psychic-war-worklist/1",
+  "note": "未完成項的權威。docs/worklist.md 由 tools/worklist.py render 產生，不要手改。verify 為真＝仍未完成。 做完的條目移到 done，保留 issue 編號與證據。",
+  "milestones": {
+    "M0": "探勘與基線：證據、狀態檔、參照畫面",
+    "M1": "原版在 golem 上完整可跑：畫面、音樂、決定性",
+    "M2": "可遊玩前端：視窗、鍵盤、滑鼠、音訊、節拍",
+    "M3": "文字攔截與文本抽取",
+    "M4": "中文繪製與全文翻譯",
+    "M5": "輔助功能：F1／F2／F3／F10、防拷、作弊",
+    "M6": "主題、打包、授權與發行"
   },
-  {
-   "id": "baked-text-replacement",
-   "milestone": "M4",
-   "labels": [
-    "graphics",
-    "text"
-   ],
-   "title": "圖檔內嵌文字的中文替換圖層",
-   "body": "依 `baked-text-graphics` 清冊，為每個含文字的圖區製作中文替換圖，在放大畫布上蓋在原位。替換圖是自製素材，可進版控。",
-   "acceptance": "清冊內每一項都有替換圖；四個檢查點畫面沒有英文圖字。",
-   "blocked_by": "baked-text-graphics, hires-overlay-canvas",
-   "verify": {
-    "kind": "manual",
-    "note": "含文字 50 張已疊 45 張、122 塊（`docs/re/031`）：面板與狀態欄 3 張、房間招牌 23 張、道具圖鑑 17 張、開場字幕 1 張，另 `MENU.PBL` 由 `SCREEN.PBL` 的 watcher 等價涵蓋（lint 第 6 項會驗）。lint 0 問題、合成畫面測試 122 筆全過；逐像素實跑差 0 的有面板 6 塊與抽測走到的電梯招牌（含反向對照）。剩 `OPEN.PBL` #7–#9：字是從紅色雜訊底挖出來的，疊字層只有「填背景再畫字」一種畫法，要先在 dosgolem 規格 202 加「只畫字、其餘保留原畫面」的模式。`LOGO.PBL`／`KGDLOGO.PBL` 是標題美術字，`docs/spec/011` §6 定案保留。"
-   },
-   "issue": 25
+  "labels": {
+    "re": "反組譯與格式解讀",
+    "golem-upstream": "通用機制，做完送回 dosgolem",
+    "graphics": "畫面與圖檔",
+    "audio": "音樂與音效",
+    "input": "鍵盤與滑鼠",
+    "frontend": "可遊玩的主程式",
+    "text": "文本抽取、翻譯與排版",
+    "assist": "原版沒有的輔助功能",
+    "verify": "對原版驗證",
+    "release": "打包與發行"
   },
-  {
-   "id": "playtest-cht",
-   "milestone": "M4",
-   "labels": [
-    "verify",
-    "text"
-   ],
-   "title": "中文版正常玩家路徑試玩",
-   "body": "依 kb `retro-cht/retro-game-playtest`：以一般玩家方式從開頭玩到結局，含存讀檔，記錄漏譯、破版、錯字。",
-   "acceptance": "試玩紀錄進 docs/；`runtime-text-coverage` 的「不在文本檔」為 0，沒有破版。**抽測即可**（使用者定案 2026-09-18）：不必從頭玩到結局，抽幾段正常玩家會走的路徑確認畫面上是中文。",
-   "blocked_by": "translation-pass, baked-text-replacement",
-   "verify": {
-    "kind": "manual",
-    "note": "抽測（使用者定案）：第一次 84 步到發射台（docs/re/022），第二次 238 步做存檔、抵達賽瓦德、8 場戰鬥（docs/re/027）。找到 3 個缺陷都已修並重現驗證，2 類暫態寫明不修。剩：賽瓦德以後的地點（角色等級不夠打不過）、讀檔入口（原版選單會逾時）；第三次 60 步（`docs/re/031` §7）走進電梯房間看招牌、開道具圖鑑，卡住 0 次。找到的孤字缺陷已修（dosgolem 錨定格）；另一則「狀態面板卡住」對照原版後確認是原版行為。"
-   },
-   "issue": 27
-  },
-  {
-   "id": "theme",
-   "milestone": "M6",
-   "labels": [
-    "graphics"
-   ],
-   "title": "主題替換",
-   "body": "在放大畫布上提供替換 UI 框線、配色或圖檔的機制。原版畫面永遠是預設主題。",
-   "acceptance": "主題是資料檔；切換後四個檢查點畫面正常、遊戲狀態不變。",
-   "blocked_by": "hires-overlay-canvas",
-   "verify": {
-    "kind": "manual",
-    "note": "主題格式 spec 出現後改綁"
-   },
-   "issue": 34
-  },
-  {
-   "id": "cross-platform-package",
-   "milestone": "M6",
-   "labels": [
-    "release"
-   ],
-   "title": "跨平台打包：Linux／Windows／macOS",
-   "body": "依 `rulebook/82` 驗證每個平台的封包。發行包不含原版素材，玩家自備 DOS 版檔案；啟動時檢查 SHA-256。",
-   "acceptance": "三個平台各自能從乾淨環境解開、指定原版目錄、玩到主畫面；驗證紀錄進 docs/。",
-   "blocked_by": "playtest-cht",
-   "verify": {
-    "kind": "manual",
-    "note": "CI 工作流程出現後改綁"
-   },
-   "issue": 35
-  },
-  {
-   "id": "license-readme",
-   "milestone": "M6",
-   "labels": [
-    "release"
-   ],
-   "title": "LICENSE（RRSAL-1.0）與 README",
-   "body": "依 `rulebook/85` 放入 RRSAL-1.0 全文，第 2 條 (c) 點名本專案的灰色地帶（文本檔的原文欄位、從原版量出的位址表、參照截圖）。README 依 `rulebook/80` 撰寫，寫清楚玩家要自備哪個版本。 README 另要寫明中文字模來源是倚天中文系統 3.53 的點陣子集（使用者定案 2026-09-18，docs/re/020 §4）與下架聯絡方式。",
-   "acceptance": "LICENSE 與 README 進版控；README 寫明原版取得方式與 SHA-256。",
-   "verify": {
-    "kind": "absent",
-    "paths": [
-     "README.md"
-    ],
-    "pattern": "RRSAL",
-    "note": "LICENSE（RRSAL-1.0）已放入 repo 並依實際內容填好占位符；剩 README 的授權段與字型來源聲明，README 本身由 #37 追蹤。README.md 出現 RRSAL 字樣就該關。"
-   },
-   "issue": 36
-  },
-  {
-   "id": "readme",
-   "milestone": "M6",
-   "labels": [
-    "release"
-   ],
-   "issue": 37,
-   "title": "README.md：遊戲介紹、中文截圖、怎麼玩",
-   "body": "repo 目前沒有 README。要寫遊戲介紹、中文截圖、建置與執行、熱鍵表、進度、授權與素材來源。",
-   "acceptance": "README.md 涵蓋上述章節；截圖取自試玩產出；依 rulebook/80、90、91 寫。⚠ 先決定截圖算不算散布原版素材。",
-   "blocked_by": "license-readme",
-   "verify": {
-    "kind": "absent",
-    "paths": [
-     "README.md"
-    ],
-    "pattern": "(?m)^## ",
-    "note": "repo 根目錄出現有章節的 README.md 就該關。⚠ 先決定截圖算不算散布原版素材。"
-   }
-  },
-  {
-   "id": "walkthrough-1989",
-   "milestone": "M6",
-   "labels": [
-    "text"
-   ],
-   "issue": 38,
-   "title": "整理當年《軟體世界》19 期攻略（29–38 頁）成 markdown",
-   "body": "10 頁掃描逐頁判讀，整理成 markdown 放 docs/；同時當譯名的校對材料。",
-   "acceptance": "docs/ 有涵蓋 29–38 頁的 markdown；譯名與 text/glossary.json 一致；repo 裡沒有掃描圖。",
-   "blocked_by": "",
-   "verify": {
-    "kind": "manual",
-    "note": "掃描圖不進 repo（原版素材）；內容要改寫不逐字轉錄，並標出處。"
-   }
-  }
- ],
- "done": [
-  {
-   "id": "ida-baseline",
-   "issue": 1,
-   "title": "建立 PW.EXE／LOGO.EXE 的 IDA 資料庫並做函式普查",
-   "evidence": "`docs/re/002-pw-exe-function-census.md`",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "state-checkpoints",
-   "issue": 2,
-   "title": "固定的狀態檔檢查點：標題、防拷、輸入名字、第一個可操作畫面",
-   "evidence": "`docs/re/003-checkpoints-and-dosboxx-reference.md` §2；`tools/states.sh --check`",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "dosbox-reference-frames",
-   "issue": 3,
-   "title": "DOSBox-X 參照畫面：同一個畫面的正確顏色與版面",
-   "evidence": "`docs/re/003-checkpoints-and-dosboxx-reference.md` §3；`tools/dosboxx-ref.sh`、`tools/frame_compare.py`",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "ega-palette-output",
-   "issue": 4,
-   "title": "EGA mode 0Dh 的畫面輸出沒有套用遊戲設定的色盤",
-   "evidence": "`docs/re/005-ega-palette-rgb-parity.md`；dosgolem 分支 `psychic-war/m1-ega-palette` `509a639`（未推上游）",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "determinism-rng",
-   "issue": 7,
-   "title": "亂數來源與重播決定性",
-   "evidence": "`docs/re/004-rng-and-determinism.md`；`tools/determinism.sh`",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "pc-speaker-audio",
-   "issue": 6,
-   "title": "PC 喇叭音樂路徑（`.IBM`）驗證",
-   "evidence": "`docs/re/006-ibm-music-format-and-pc-speaker-parity.md`；`docs/spec/001`；`tools/music_compare.py`；dosgolem 分支 `psychic-war/m1-pit-tone` `6cf8a1b`（未推上游）",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "frontend-window",
-   "issue": 10,
-   "title": "可遊玩前端：視窗顯示 320×200 EGA 畫面（整數倍放大）",
-   "evidence": "`docs/spec/006`、`docs/re/016` §1–2；`cmd/psychicwar`；`03-protection`、`07-first-play` 截圖與檢查點不同像素 0",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "keyboard-input",
-   "issue": 11,
-   "title": "鍵盤輸入：前端按鍵轉成 IRQ1 掃描碼",
-   "evidence": "`docs/re/016` §2.2；`apps/psychicwar/keymap.go`；`tools/frontend-playthrough.sh`（Xvfb＋xdotool：防拷、SELECT、名字、前進、按住空白鍵、轉向、Esc；F1 攔下畫面不變）",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "print-routine",
-   "issue": 15,
-   "title": "找出印字常式：FONT.BIN 字模與固定寬度文字框",
-   "evidence": "`docs/re/014-print-routine.md`（單字元 `sub_16629`、三支字串迴圈、字模 `FONT.BIN`、攔截點候選）；`tools/print_trace.py`。其餘 6 個單字元呼叫點由第 5 輪追蹤",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "text-formats",
-   "issue": 16,
-   "title": "文字資料格式：I_MENU*.BIN、I_ENMY*.BIN、CODE*.BIN、PW.EXE 字串表",
-   "evidence": "`docs/spec/007`（READY：I_MENU、I_ENMY、I_MAP 地點名、CODE 81h＝sub_167B2 內嵌字串、PW_UNP.EXE 位址表；PW.EXE／PW_UNP.EXE SHA-256 與逐項位元組簽章）；`docs/re/014`、`015`",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "text-extract",
-   "issue": 17,
-   "title": "文本抽取工具：從玩家自備的原版產生文本檔",
-   "evidence": "`text/*.json` 1,389 則（要翻 1,313）；`tools/text_extract.py build／check／stats`；`tools/test_text_extract.py` 7 項通過（含雜湊不符停止、缺原版列出缺檔）",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "runtime-text-coverage",
-   "issue": 19,
-   "title": "文字覆蓋率量測：實跑觸發但不在文本檔的訊息數",
-   "evidence": "`tools/text_coverage.sh`、`tools/text_coverage.py`：重播 18 段 要翻 1,313、已翻 0→11、觸發 52、不在文本檔 0；反向對照拿掉一則變 2（`docs/re/017`、`tools/test_text_coverage.py`）",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "hires-overlay-canvas",
-   "issue": 20,
-   "title": "放大畫布＋疊字層：原版畫面放大後在上面畫中文",
-   "evidence": "`docs/spec/009`（READY）＋dosgolem 規格 `202-translation-overlay`（`xlate` 套件）：A1／A2／A3／小字型四條印字路徑。`pwstep` 8 情境 13 行逐像素差 0、反向對照差 0；前端 Xvfb `wall`（含訊息框捲動）、`match` 5 行差 0（`docs/re/019`）",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "layout-rules",
-   "issue": 22,
-   "title": "固定寬度文字框的中文排版規則",
-   "evidence": "`docs/spec/009` §3：各種類行寬（訊息 16＋15、選項 10、區塊每行 20、其餘依原文可印字數）、一格一字、透明格、保留原文；`tools/text_extract.py lint` 列出過長譯文，1,313 則過長 0（`docs/re/021`）。選單游標與反白沿用原版像素，不另排",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "glossary",
-   "issue": 23,
-   "title": "譯名表：人名、地名、超能力名稱",
-   "evidence": "`text/glossary.json` 119 筆：說明書對照 40（記頁碼）、自訂 79（標 provisional，敵人名稱全部）；翻譯指令與 `tools/l10n_batches.py sweep` 都讀它（`docs/re/021`）",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "translation-pass",
-   "issue": 24,
-   "title": "全文翻譯",
-   "evidence": "要翻 1,313、已翻 1,313（保留原文 38）；10 批子代理＋合併核對＋一致性修正；lint 過長 0、非 Big5 0；字型子集 873 字（`docs/re/021`）",
-   "date": "2026-09-17"
-  },
-  {
-   "id": "cjk-font",
-   "issue": 21,
-   "title": "CJK 點陣字：依譯文烘製子集",
-   "evidence": "`tools/font/bake.sh` 走 docker 烘 `font/cjk24.golemfnt`、`cjk16.golemfnt`，873 字（24 點倚天 815＋Noto 58、16 點倚天 825＋Noto 48）；兩套字型都沒有的字結束碼 1、不寫輸出檔（反向對照 U+1F600）；實跑缺字 0（`docs/re/019` §5、`docs/re/021`）。字型授權：使用者定案 2026-09-18 發行也用倚天字形（`docs/re/020` §4），README 的字模來源說明由 #36 追蹤",
-   "date": "2026-09-18"
-  },
-  {
-   "id": "baked-text-graphics",
-   "issue": 18,
-   "title": "圖檔內嵌文字：PBL 格式與含文字的圖清冊",
-   "evidence": "`docs/spec/010`（READY）＋`tools/pbl.py`：26 個檔 537 張圖全部解得開，`SCREEN.PBL` 三張在實跑畫面逐像素相同、反向對照失敗（`docs/re/023`）。清冊 `text/baked-inventory.json`：537 筆、含文字 50 張 143 則（`docs/re/024` §1、§5）",
-   "date": "2026-09-18"
-  },
-  {
-   "id": "f1-help",
-   "issue": 29,
-   "title": "F1 說明頁",
-   "evidence": "`docs/spec/012`（READY）＋`text/help.json`：任何畫面 F1 開關，說明頁與期望值逐像素差 0（22 行），關閉後與開啟前差 0（`docs/re/025`）。內容含「發射台才能選目的地」（docs/re/022 的卡住點）",
-   "date": "2026-09-18"
-  },
-  {
-   "id": "f2-language",
-   "issue": 30,
-   "title": "F2 切換語言（中文／英文原文）",
-   "evidence": "F2 切到英文：畫面與原版放大 3 倍差 0；切回中文與切換前差 0；轉譯層照常運作只是不畫（`docs/spec/012` §2、`docs/re/025`）",
-   "date": "2026-09-18"
-  },
-  {
-   "id": "f10-quicksave",
-   "issue": 31,
-   "title": "F10 即時存檔／讀檔",
-   "evidence": "F10 存、F11 讀：狀態檔＋疊字層快照＋`quick.json`（golem 狀態格式版本、PW.EXE 與 text/ 的 SHA-256、語言）。讀回後畫面與觀測變數和存檔時相同；雜湊被改過時拒絕且畫面不動（`docs/re/025`）",
-   "date": "2026-09-18"
-  },
-  {
-   "id": "copy-protection",
-   "issue": 28,
-   "title": "防拷：翻譯、F1 查表、略過選項",
-   "evidence": "`docs/spec/013`（READY）＋`docs/re/028`：出題與答案表讀出來（11×7，答案在 `cs:66E5`）；**這一版的比對被一個位元組關掉**，任何答案都會過。三種用法：畫面中文化（`docs/spec/009` 的疊字）、F1 查表（從玩家自己的執行檔即時讀，掛在輸入常式上判斷狀態）、略過（不必做，空白就會過）。反向對照：迷宮畫面按 F1 沒有那一行（差 0）",
-   "date": "2026-09-18"
-  },
-  {
-   "id": "cheats",
-   "issue": 33,
-   "title": "作弊功能",
-   "evidence": "`docs/spec/014`（READY）＋`docs/re/029`：`-cheat` 打開 F5（HP 與能量補滿）、F6（敵人剩 1 點），一律寫記憶體、位址表在 `apps/psychicwar/cheat.go`。實跑 HP 23→40、能量 1→30、敵人 38→1；不給 `-cheat` 時完全沒變（反向對照）",
-   "date": "2026-09-18"
-  },
-  {
-   "id": "f3-map",
-   "issue": 32,
-   "title": "F3 自動地圖",
-   "evidence": "`docs/spec/015`（READY）＋`docs/re/030`：走過才記的自動地圖（不解 I_MAP），F3 開關。實跑目前格子與存檔座標相同、走過的 3 格正確、沒走過的 5 格是背景色、開關前後記憶體相同",
-   "date": "2026-09-18"
-  },
-  {
-   "id": "mouse-input",
-   "issue": 12,
-   "title": "滑鼠：確認原版是否支援，並在前端提供點選操作",
-   "evidence": "docs/spec/018、tools/frontend-mouse-check.sh：點「前進」與按 Up 之後的觀測變數逐位元組相同、點熱區外與不點相同",
-   "date": "2026-09-18"
-  },
-  {
-   "id": "input-record-replay",
-   "issue": 14,
-   "title": "輸入錄放：以指令數記錄按鍵，可重播重現",
-   "evidence": "docs/spec/019、tools/record-replay-check.sh：錄 8 筆事件，重播後觀測變數逐位元組相同，反向對照不同",
-   "date": "2026-09-18"
-  },
-  {
-   "id": "name-entry",
-   "issue": 26,
-   "title": "輸入名字：原版只收 ASCII，中文版怎麼處理",
-   "evidence": "docs/spec/017、tools/frontend-name-check.sh：名字欄位 play3 正確、送非 ASCII 之後逐位元組相同、NonASCII 單元測試通過",
-   "date": "2026-09-18"
-  },
-  {
-   "id": "audio-output",
-   "issue": 13,
-   "title": "即時音訊輸出（OPL2 與 PC 喇叭）",
-   "evidence": "docs/spec/020、docs/re/026 §6：真實裝置（PipeWire 的 pulse socket）上 AdLib 與 PC 喇叭各 65 秒，欠載都是 6 次全在開場第 1 秒、第 2 秒之後 0；機器／牆上 0.9978（反向對照）",
-   "date": "2026-09-18"
-  },
-  {
-   "id": "opl2-synth",
-   "issue": 5,
-   "title": "OPL2（AdLib）合成：`.MID` 音樂路徑目前只有暫存器紀錄",
-   "evidence": "docs/spec/016 三項全過：spec 0.9117、env 0.8119、chroma 0.9836（門檻 0.8350／0.7548／0.9603）。根因是相位單位——真機一個正弦週期 1024 個索引不是 512，FM 少一半、回授多一倍（docs/re/032）。驗收的第二段「迷宮曲」依使用者定案 2026-09-19 不做",
-   "date": "2026-09-19"
-  }
- ],
- "dropped": [
-  {
-   "id": "full-run-no-gaps",
-   "issue": 8,
-   "title": "從開頭跑到結局，沒有未實作的服務",
-   "reason": "使用者定案：不執行。MVP 改以抽測驗收（幾段正常玩家路徑畫面上是中文），不做從開頭到結局的完整跑通。",
-   "date": "2026-09-18"
-  }
- ]
+  "items": [
+    {
+      "id": "realtime-pacing",
+      "milestone": "M2",
+      "labels": [
+        "golem-upstream",
+        "frontend"
+      ],
+      "title": "牆上時間節拍：讓 72 Hz 的遊戲以原速執行",
+      "body": "golem 預設是指令數時鐘。實測第一場戰鬥的長短由 CPU 指令數決定（約 1,193 萬道），計時器刻數隨 CPU 速度差十倍：預設速度下約 1 秒、8088 級約 10.5 秒；DOSBox-X 中玩家會被打掉 10 點、dosgolem 預設速度下不掉（docs/re/009 §5）。前端要用週期時鐘把 `CPUHz` 限在原版目標機器的等級（8088–286），以牆上時間對齊，並保留指令數給重播。",
+      "acceptance": "spec 定案 `CPUHz` 與依據（敵人攻擊的時間基準＋DOSBox-X 固定 cycles 的戰鬥時間參照）；前端執行時計時器中斷穩定在 72 Hz ±1%、每秒週期數 ±2%，第一場戰鬥的持續時間與參照相差 ≤ 10%。",
+      "verify": {
+        "kind": "manual",
+        "note": "前端牆上時間對齊已通過（docs/re/016 §2.1）。第一場戰鬥：DOSBox-X 750 cycles 有效 3 場平均 17.75 秒、dosgolem 12 組平均 17.84 秒（−0.5%，docs/re/010 §4.6），樣本不足不定案。2026-09-17 主機 load 18（14 核）不能量；重開條件：load 連續 5 分鐘 < 2，DOSBox-X 走位改成等檢查點後補到 ≥ 5 場（docs/re/019 §6、docs/re/026 §3）"
+      },
+      "issue": 9
+    },
+    {
+      "id": "playtest-cht",
+      "milestone": "M4",
+      "labels": [
+        "verify",
+        "text"
+      ],
+      "title": "中文版正常玩家路徑試玩",
+      "body": "依 kb `retro-cht/retro-game-playtest`：以一般玩家方式從開頭玩到結局，含存讀檔，記錄漏譯、破版、錯字。",
+      "acceptance": "試玩紀錄進 docs/；`runtime-text-coverage` 的「不在文本檔」為 0，沒有破版。**抽測即可**（使用者定案 2026-09-18）：不必從頭玩到結局，抽幾段正常玩家會走的路徑確認畫面上是中文。",
+      "blocked_by": "translation-pass, baked-text-replacement",
+      "verify": {
+        "kind": "manual",
+        "note": "抽測（使用者定案）：第一次 84 步到發射台（docs/re/022），第二次 238 步做存檔、抵達賽瓦德、8 場戰鬥（docs/re/027）。找到 3 個缺陷都已修並重現驗證，2 類暫態寫明不修。剩：賽瓦德以後的地點（角色等級不夠打不過）、讀檔入口（原版選單會逾時）；第三次 60 步（`docs/re/031` §7）走進電梯房間看招牌、開道具圖鑑，卡住 0 次。找到的孤字缺陷已修（dosgolem 錨定格）；另一則「狀態面板卡住」對照原版後確認是原版行為。"
+      },
+      "issue": 27
+    },
+    {
+      "id": "theme",
+      "milestone": "M6",
+      "labels": [
+        "graphics"
+      ],
+      "title": "主題替換",
+      "body": "在放大畫布上提供替換 UI 框線、配色或圖檔的機制。原版畫面永遠是預設主題。",
+      "acceptance": "主題是資料檔；切換後四個檢查點畫面正常、遊戲狀態不變。",
+      "blocked_by": "hires-overlay-canvas",
+      "verify": {
+        "kind": "manual",
+        "note": "主題格式 spec 出現後改綁"
+      },
+      "issue": 34
+    },
+    {
+      "id": "cross-platform-package",
+      "milestone": "M6",
+      "labels": [
+        "release"
+      ],
+      "title": "跨平台打包：Linux／Windows／macOS",
+      "body": "依 `rulebook/82` 驗證每個平台的封包。發行包不含原版素材，玩家自備 DOS 版檔案；啟動時檢查 SHA-256。",
+      "acceptance": "三個平台各自能從乾淨環境解開、指定原版目錄、玩到主畫面；驗證紀錄進 docs/。",
+      "blocked_by": "playtest-cht",
+      "verify": {
+        "kind": "manual",
+        "note": "CI 工作流程出現後改綁"
+      },
+      "issue": 35
+    },
+    {
+      "id": "license-readme",
+      "milestone": "M6",
+      "labels": [
+        "release"
+      ],
+      "title": "LICENSE（RRSAL-1.0）與 README",
+      "body": "依 `rulebook/85` 放入 RRSAL-1.0 全文，第 2 條 (c) 點名本專案的灰色地帶（文本檔的原文欄位、從原版量出的位址表、參照截圖）。README 依 `rulebook/80` 撰寫，寫清楚玩家要自備哪個版本。 README 另要寫明中文字模來源是倚天中文系統 3.53 的點陣子集（使用者定案 2026-09-18，docs/re/020 §4）與下架聯絡方式。",
+      "acceptance": "LICENSE 與 README 進版控；README 寫明原版取得方式與 SHA-256。",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "README.md"
+        ],
+        "pattern": "RRSAL",
+        "note": "LICENSE（RRSAL-1.0）已放入 repo 並依實際內容填好占位符；剩 README 的授權段與字型來源聲明，README 本身由 #37 追蹤。README.md 出現 RRSAL 字樣就該關。"
+      },
+      "issue": 36
+    },
+    {
+      "id": "readme",
+      "milestone": "M6",
+      "labels": [
+        "release"
+      ],
+      "issue": 37,
+      "title": "README.md：遊戲介紹、中文截圖、怎麼玩",
+      "body": "repo 目前沒有 README。要寫遊戲介紹、中文截圖、建置與執行、熱鍵表、進度、授權與素材來源。",
+      "acceptance": "README.md 涵蓋上述章節；截圖取自試玩產出；依 rulebook/80、90、91 寫。⚠ 先決定截圖算不算散布原版素材。",
+      "blocked_by": "license-readme",
+      "verify": {
+        "kind": "absent",
+        "paths": [
+          "README.md"
+        ],
+        "pattern": "(?m)^## ",
+        "note": "repo 根目錄出現有章節的 README.md 就該關。⚠ 先決定截圖算不算散布原版素材。"
+      }
+    },
+    {
+      "id": "walkthrough-1989",
+      "milestone": "M6",
+      "labels": [
+        "text"
+      ],
+      "issue": 38,
+      "title": "整理當年《軟體世界》19 期攻略（29–38 頁）成 markdown",
+      "body": "10 頁掃描逐頁判讀，整理成 markdown 放 docs/；同時當譯名的校對材料。",
+      "acceptance": "docs/ 有涵蓋 29–38 頁的 markdown；譯名與 text/glossary.json 一致；repo 裡沒有掃描圖。",
+      "blocked_by": "",
+      "verify": {
+        "kind": "manual",
+        "note": "掃描圖不進 repo（原版素材）；內容要改寫不逐字轉錄，並標出處。"
+      }
+    }
+  ],
+  "done": [
+    {
+      "id": "ida-baseline",
+      "issue": 1,
+      "title": "建立 PW.EXE／LOGO.EXE 的 IDA 資料庫並做函式普查",
+      "evidence": "`docs/re/002-pw-exe-function-census.md`",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "state-checkpoints",
+      "issue": 2,
+      "title": "固定的狀態檔檢查點：標題、防拷、輸入名字、第一個可操作畫面",
+      "evidence": "`docs/re/003-checkpoints-and-dosboxx-reference.md` §2；`tools/states.sh --check`",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "dosbox-reference-frames",
+      "issue": 3,
+      "title": "DOSBox-X 參照畫面：同一個畫面的正確顏色與版面",
+      "evidence": "`docs/re/003-checkpoints-and-dosboxx-reference.md` §3；`tools/dosboxx-ref.sh`、`tools/frame_compare.py`",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "ega-palette-output",
+      "issue": 4,
+      "title": "EGA mode 0Dh 的畫面輸出沒有套用遊戲設定的色盤",
+      "evidence": "`docs/re/005-ega-palette-rgb-parity.md`；dosgolem 分支 `psychic-war/m1-ega-palette` `509a639`（未推上游）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "determinism-rng",
+      "issue": 7,
+      "title": "亂數來源與重播決定性",
+      "evidence": "`docs/re/004-rng-and-determinism.md`；`tools/determinism.sh`",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "pc-speaker-audio",
+      "issue": 6,
+      "title": "PC 喇叭音樂路徑（`.IBM`）驗證",
+      "evidence": "`docs/re/006-ibm-music-format-and-pc-speaker-parity.md`；`docs/spec/001`；`tools/music_compare.py`；dosgolem 分支 `psychic-war/m1-pit-tone` `6cf8a1b`（未推上游）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "frontend-window",
+      "issue": 10,
+      "title": "可遊玩前端：視窗顯示 320×200 EGA 畫面（整數倍放大）",
+      "evidence": "`docs/spec/006`、`docs/re/016` §1–2；`cmd/psychicwar`；`03-protection`、`07-first-play` 截圖與檢查點不同像素 0",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "keyboard-input",
+      "issue": 11,
+      "title": "鍵盤輸入：前端按鍵轉成 IRQ1 掃描碼",
+      "evidence": "`docs/re/016` §2.2；`apps/psychicwar/keymap.go`；`tools/frontend-playthrough.sh`（Xvfb＋xdotool：防拷、SELECT、名字、前進、按住空白鍵、轉向、Esc；F1 攔下畫面不變）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "print-routine",
+      "issue": 15,
+      "title": "找出印字常式：FONT.BIN 字模與固定寬度文字框",
+      "evidence": "`docs/re/014-print-routine.md`（單字元 `sub_16629`、三支字串迴圈、字模 `FONT.BIN`、攔截點候選）；`tools/print_trace.py`。其餘 6 個單字元呼叫點由第 5 輪追蹤",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "text-formats",
+      "issue": 16,
+      "title": "文字資料格式：I_MENU*.BIN、I_ENMY*.BIN、CODE*.BIN、PW.EXE 字串表",
+      "evidence": "`docs/spec/007`（READY：I_MENU、I_ENMY、I_MAP 地點名、CODE 81h＝sub_167B2 內嵌字串、PW_UNP.EXE 位址表；PW.EXE／PW_UNP.EXE SHA-256 與逐項位元組簽章）；`docs/re/014`、`015`",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "text-extract",
+      "issue": 17,
+      "title": "文本抽取工具：從玩家自備的原版產生文本檔",
+      "evidence": "`text/*.json` 1,389 則（要翻 1,313）；`tools/text_extract.py build／check／stats`；`tools/test_text_extract.py` 7 項通過（含雜湊不符停止、缺原版列出缺檔）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "runtime-text-coverage",
+      "issue": 19,
+      "title": "文字覆蓋率量測：實跑觸發但不在文本檔的訊息數",
+      "evidence": "`tools/text_coverage.sh`、`tools/text_coverage.py`：重播 18 段 要翻 1,313、已翻 0→11、觸發 52、不在文本檔 0；反向對照拿掉一則變 2（`docs/re/017`、`tools/test_text_coverage.py`）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "hires-overlay-canvas",
+      "issue": 20,
+      "title": "放大畫布＋疊字層：原版畫面放大後在上面畫中文",
+      "evidence": "`docs/spec/009`（READY）＋dosgolem 規格 `202-translation-overlay`（`xlate` 套件）：A1／A2／A3／小字型四條印字路徑。`pwstep` 8 情境 13 行逐像素差 0、反向對照差 0；前端 Xvfb `wall`（含訊息框捲動）、`match` 5 行差 0（`docs/re/019`）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "layout-rules",
+      "issue": 22,
+      "title": "固定寬度文字框的中文排版規則",
+      "evidence": "`docs/spec/009` §3：各種類行寬（訊息 16＋15、選項 10、區塊每行 20、其餘依原文可印字數）、一格一字、透明格、保留原文；`tools/text_extract.py lint` 列出過長譯文，1,313 則過長 0（`docs/re/021`）。選單游標與反白沿用原版像素，不另排",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "glossary",
+      "issue": 23,
+      "title": "譯名表：人名、地名、超能力名稱",
+      "evidence": "`text/glossary.json` 119 筆：說明書對照 40（記頁碼）、自訂 79（標 provisional，敵人名稱全部）；翻譯指令與 `tools/l10n_batches.py sweep` 都讀它（`docs/re/021`）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "translation-pass",
+      "issue": 24,
+      "title": "全文翻譯",
+      "evidence": "要翻 1,313、已翻 1,313（保留原文 38）；10 批子代理＋合併核對＋一致性修正；lint 過長 0、非 Big5 0；字型子集 873 字（`docs/re/021`）",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "cjk-font",
+      "issue": 21,
+      "title": "CJK 點陣字：依譯文烘製子集",
+      "evidence": "`tools/font/bake.sh` 走 docker 烘 `font/cjk24.golemfnt`、`cjk16.golemfnt`，873 字（24 點倚天 815＋Noto 58、16 點倚天 825＋Noto 48）；兩套字型都沒有的字結束碼 1、不寫輸出檔（反向對照 U+1F600）；實跑缺字 0（`docs/re/019` §5、`docs/re/021`）。字型授權：使用者定案 2026-09-18 發行也用倚天字形（`docs/re/020` §4），README 的字模來源說明由 #36 追蹤",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "baked-text-graphics",
+      "issue": 18,
+      "title": "圖檔內嵌文字：PBL 格式與含文字的圖清冊",
+      "evidence": "`docs/spec/010`（READY）＋`tools/pbl.py`：26 個檔 537 張圖全部解得開，`SCREEN.PBL` 三張在實跑畫面逐像素相同、反向對照失敗（`docs/re/023`）。清冊 `text/baked-inventory.json`：537 筆、含文字 50 張 143 則（`docs/re/024` §1、§5）",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "f1-help",
+      "issue": 29,
+      "title": "F1 說明頁",
+      "evidence": "`docs/spec/012`（READY）＋`text/help.json`：任何畫面 F1 開關，說明頁與期望值逐像素差 0（22 行），關閉後與開啟前差 0（`docs/re/025`）。內容含「發射台才能選目的地」（docs/re/022 的卡住點）",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "f2-language",
+      "issue": 30,
+      "title": "F2 切換語言（中文／英文原文）",
+      "evidence": "F2 切到英文：畫面與原版放大 3 倍差 0；切回中文與切換前差 0；轉譯層照常運作只是不畫（`docs/spec/012` §2、`docs/re/025`）",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "f10-quicksave",
+      "issue": 31,
+      "title": "F10 即時存檔／讀檔",
+      "evidence": "F10 存、F11 讀：狀態檔＋疊字層快照＋`quick.json`（golem 狀態格式版本、PW.EXE 與 text/ 的 SHA-256、語言）。讀回後畫面與觀測變數和存檔時相同；雜湊被改過時拒絕且畫面不動（`docs/re/025`）",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "copy-protection",
+      "issue": 28,
+      "title": "防拷：翻譯、F1 查表、略過選項",
+      "evidence": "`docs/spec/013`（READY）＋`docs/re/028`：出題與答案表讀出來（11×7，答案在 `cs:66E5`）；**這一版的比對被一個位元組關掉**，任何答案都會過。三種用法：畫面中文化（`docs/spec/009` 的疊字）、F1 查表（從玩家自己的執行檔即時讀，掛在輸入常式上判斷狀態）、略過（不必做，空白就會過）。反向對照：迷宮畫面按 F1 沒有那一行（差 0）",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "cheats",
+      "issue": 33,
+      "title": "作弊功能",
+      "evidence": "`docs/spec/014`（READY）＋`docs/re/029`：`-cheat` 打開 F5（HP 與能量補滿）、F6（敵人剩 1 點），一律寫記憶體、位址表在 `apps/psychicwar/cheat.go`。實跑 HP 23→40、能量 1→30、敵人 38→1；不給 `-cheat` 時完全沒變（反向對照）",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "f3-map",
+      "issue": 32,
+      "title": "F3 自動地圖",
+      "evidence": "`docs/spec/015`（READY）＋`docs/re/030`：走過才記的自動地圖（不解 I_MAP），F3 開關。實跑目前格子與存檔座標相同、走過的 3 格正確、沒走過的 5 格是背景色、開關前後記憶體相同",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "mouse-input",
+      "issue": 12,
+      "title": "滑鼠：確認原版是否支援，並在前端提供點選操作",
+      "evidence": "docs/spec/018、tools/frontend-mouse-check.sh：點「前進」與按 Up 之後的觀測變數逐位元組相同、點熱區外與不點相同",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "input-record-replay",
+      "issue": 14,
+      "title": "輸入錄放：以指令數記錄按鍵，可重播重現",
+      "evidence": "docs/spec/019、tools/record-replay-check.sh：錄 8 筆事件，重播後觀測變數逐位元組相同，反向對照不同",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "name-entry",
+      "issue": 26,
+      "title": "輸入名字：原版只收 ASCII，中文版怎麼處理",
+      "evidence": "docs/spec/017、tools/frontend-name-check.sh：名字欄位 play3 正確、送非 ASCII 之後逐位元組相同、NonASCII 單元測試通過",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "audio-output",
+      "issue": 13,
+      "title": "即時音訊輸出（OPL2 與 PC 喇叭）",
+      "evidence": "docs/spec/020、docs/re/026 §6：真實裝置（PipeWire 的 pulse socket）上 AdLib 與 PC 喇叭各 65 秒，欠載都是 6 次全在開場第 1 秒、第 2 秒之後 0；機器／牆上 0.9978（反向對照）",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "opl2-synth",
+      "issue": 5,
+      "title": "OPL2（AdLib）合成：`.MID` 音樂路徑目前只有暫存器紀錄",
+      "evidence": "docs/spec/016 三項全過：spec 0.9117、env 0.8119、chroma 0.9836（門檻 0.8350／0.7548／0.9603）。根因是相位單位——真機一個正弦週期 1024 個索引不是 512，FM 少一半、回授多一倍（docs/re/032）。驗收的第二段「迷宮曲」依使用者定案 2026-09-19 不做",
+      "date": "2026-09-19"
+    },
+    {
+      "id": "baked-text-replacement",
+      "issue": 25,
+      "title": "圖檔內嵌文字的中文替換圖層",
+      "evidence": "含文字 50 張已疊 48 張、125 塊（tools/baked_report.py）；沒疊的只有 LOGO.PBL 與 KGDLOGO.PBL 兩張標題美術字，docs/spec/011 §6 定案保留。lint 0 問題、合成畫面測試 125 筆全過。開場字幕條 OPEN.PBL #7–#10 的畫面座標由實跑截圖逐像素定出（差 0），四行中文實跑觸發並蓋上；字比底密的兩行用 text/baked.json 的 swap_colors 對調定色（dosgolem xlate，規格 202 §2.3）。見 docs/re/024 §6",
+      "date": "2026-09-19"
+    }
+  ],
+  "dropped": [
+    {
+      "id": "full-run-no-gaps",
+      "issue": 8,
+      "title": "從開頭跑到結局，沒有未實作的服務",
+      "reason": "使用者定案：不執行。MVP 改以抽測驗收（幾段正常玩家路徑畫面上是中文），不做從開頭到結局的完整跑通。",
+      "date": "2026-09-18"
+    }
+  ]
 }
