@@ -601,6 +601,15 @@ func (t *Translator) Frame(o *oracle.Oracle) {
 	t.Layer.Frame(o.Indexed(), rgb)
 }
 
+// ResetForLoad 清掉疊字與 watcher，保留掛鉤與回呼（讀檔之後用；dosgolem 規格 203 §2.3）。
+func (t *Translator) ResetForLoad() {
+	t.Layer.Stamps = nil
+	t.Layer.UnwatchAll()
+	t.active = nil
+	t.trackMenu, t.trackDS, t.trackCS = xlate.LineTracker{}, xlate.LineTracker{}, xlate.LineTracker{}
+	t.scrolling = false
+}
+
 // MissingGlyph 記一筆缺字。
 func (t *Translator) MissingGlyph(r rune) { t.once("missing-glyph", string(r)) }
 

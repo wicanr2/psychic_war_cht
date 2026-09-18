@@ -3,7 +3,7 @@
     tools/font/bake.sh [額外字…]
     python3 bake_cjk24.py <字型來源目錄> <Noto TC .otf> <text 目錄> <輸出目錄> [額外字…]
 
-- 字集：text/*.json（schema psychic-war-text/1 與 psychic-war-baked/1）所有 translation 的字元，加額外字。空白不烘。
+- 字集：text/*.json 的 translation（schema psychic-war-text/1、psychic-war-baked/1）與說明頁的每一行（psychic-war-help/1），加額外字。空白不烘。
 - 24×24：Big5 漢字用倚天 24 點明體 STD.24M（ETUNPACK 解壓）；其餘用 Noto Sans CJK TC 點陣化。
 - 16×15：Big5 漢字用倚天 STDFONT.15、全形符號用 SPCFONT.15；其餘用 Noto 點陣化。
 - 驗證 oracle：兩份倚天字型的「一」都只有一到三列有筆畫，「中」印出來看。
@@ -113,7 +113,11 @@ def main(argv):
     chars = set(extra)
     for p in sorted(pathlib.Path(text_dir).glob("*.json")):
         doc = json.loads(p.read_text(encoding="utf-8"))
-        if doc.get("schema") not in ("psychic-war-text/1", "psychic-war-baked/1"):
+        schema = doc.get("schema")
+        if schema == "psychic-war-help/1":      # F1 說明頁（docs/spec/012）
+            chars.update("".join(doc.get("lines", [])))
+            continue
+        if schema not in ("psychic-war-text/1", "psychic-war-baked/1"):
             continue
         for e in doc["entries"]:
             chars.update(e.get("translation", ""))

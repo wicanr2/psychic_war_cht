@@ -71,3 +71,69 @@ func TestKeyMap(t *testing.T) {
 		}
 	}
 }
+
+// docs/spec/012 §5 第 1 項：說明頁排版與即時存檔的版本比對。
+func TestHelpFits(t *testing.T) {
+	lines, err := LoadHelp("../../text")
+	if err != nil {
+		t.Fatalf("讀不到說明頁：%v", err)
+	}
+	if err := CheckHelp(lines); err != nil {
+		t.Error(err)
+	}
+	if err := CheckHelp([]string{string([]rune(repeatRune('字', HelpCols+1)))}); err == nil {
+		t.Error("超過行寬要回錯")
+	}
+	rows := make([]string, HelpRows+1)
+	if err := CheckHelp(rows); err == nil {
+		t.Error("超過行數要回錯")
+	}
+}
+
+func repeatRune(r rune, n int) []rune {
+	out := make([]rune, n)
+	for i := range out {
+		out[i] = r
+	}
+	return out
+}
+
+func TestCheckQuickMeta(t *testing.T) {
+	m := NewQuickMeta("dosgolem-state/1", "exe-sha", "text-sha", "zh")
+	if ok, why := CheckQuickMeta(m, "dosgolem-state/1", "exe-sha", "text-sha"); !ok || why != "" {
+		t.Errorf("同一份應該可讀：%v %q", ok, why)
+	}
+	if ok, why := CheckQuickMeta(m, "dosgolem-state/2", "exe-sha", "text-sha"); ok || why == "" {
+		t.Error("golem 版本不符要拒絕")
+	}
+	if ok, why := CheckQuickMeta(m, "dosgolem-state/1", "別的 exe", "text-sha"); ok || why == "" {
+		t.Error("PW.EXE 不同要拒絕")
+	}
+	if ok, why := CheckQuickMeta(m, "dosgolem-state/1", "exe-sha", "別的譯文"); !ok || why == "" {
+		t.Error("譯文不同只警告，仍可讀")
+	}
+	m.Schema = "psychic-war-quicksave/0"
+	if ok, _ := CheckQuickMeta(m, "dosgolem-state/1", "exe-sha", "text-sha"); ok {
+		t.Error("schema 不符要拒絕")
+	}
+}
+
+func TestDrawTextPageFillsAndDraws(t *testing.T) {
+	f := &Font8x8Stub
+	w, h := 64, 32
+	dst := make([]uint8, 4*w*h)
+	DrawTextPage(dst, w, h, f, []string{"A"}, 8, [3]uint8{9, 9, 9}, [3]uint8{1, 2, 3}, 0xFF)
+	if dst[0] != 1 || dst[1] != 2 || dst[2] != 3 || dst[3] != 0xFF {
+		t.Errorf("背景沒填：%v", dst[:4])
+	}
+	drew := false
+	for i := 0; i < w*h; i++ {
+		if dst[4*i] == 9 && dst[4*i+1] == 9 && dst[4*i+2] == 9 {
+			drew = true
+			break
+		}
+	}
+	if !drew {
+		t.Error("字模沒畫上去")
+	}
+}

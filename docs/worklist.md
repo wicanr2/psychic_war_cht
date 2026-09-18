@@ -42,9 +42,6 @@
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
 | #28 | `copy-protection` | 防拷：翻譯、F1 查表、略過選項 | assist, re, text | #1 | absent |
-| #29 | `f1-help` | F1 說明頁 | assist, frontend | #20 | manual |
-| #30 | `f2-language` | F2 切換語言（中文／英文原文） | assist, text | #20 | manual |
-| #31 | `f10-quicksave` | F10 即時存檔／讀檔 | assist, golem-upstream | #7 | manual |
 | #32 | `f3-map` | F3 自動地圖 | assist, re | — | absent |
 | #33 | `cheats` | 作弊功能 | assist, re | — | manual |
 
@@ -78,3 +75,6 @@
 | #24 | `translation-pass` | 全文翻譯 | 要翻 1,313、已翻 1,313（保留原文 38）；10 批子代理＋合併核對＋一致性修正；lint 過長 0、非 Big5 0；字型子集 873 字（`docs/re/021`） | 2026-09-17 |
 | #21 | `cjk-font` | CJK 點陣字：依譯文烘製子集 | `tools/font/bake.sh` 走 docker 烘 `font/cjk24.golemfnt`、`cjk16.golemfnt`，873 字（24 點倚天 815＋Noto 58、16 點倚天 825＋Noto 48）；兩套字型都沒有的字結束碼 1、不寫輸出檔（反向對照 U+1F600）；實跑缺字 0（`docs/re/019` §5、`docs/re/021`）。字型授權：使用者定案 2026-09-18 發行也用倚天字形（`docs/re/020` §4），README 的字模來源說明由 #36 追蹤 | 2026-09-18 |
 | #18 | `baked-text-graphics` | 圖檔內嵌文字：PBL 格式與含文字的圖清冊 | `docs/spec/010`（READY）＋`tools/pbl.py`：26 個檔 537 張圖全部解得開，`SCREEN.PBL` 三張在實跑畫面逐像素相同、反向對照失敗（`docs/re/023`）。清冊 `text/baked-inventory.json`：537 筆、含文字 50 張 143 則（`docs/re/024` §1、§5） | 2026-09-18 |
+| #29 | `f1-help` | F1 說明頁 | `docs/spec/012`（READY）＋`text/help.json`：任何畫面 F1 開關，說明頁與期望值逐像素差 0（22 行），關閉後與開啟前差 0（`docs/re/025`）。內容含「發射台才能選目的地」（docs/re/022 的卡住點） | 2026-09-18 |
+| #30 | `f2-language` | F2 切換語言（中文／英文原文） | F2 切到英文：畫面與原版放大 3 倍差 0；切回中文與切換前差 0；轉譯層照常運作只是不畫（`docs/spec/012` §2、`docs/re/025`） | 2026-09-18 |
+| #31 | `f10-quicksave` | F10 即時存檔／讀檔 | F10 存、F11 讀：狀態檔＋疊字層快照＋`quick.json`（golem 狀態格式版本、PW.EXE 與 text/ 的 SHA-256、語言）。讀回後畫面與觀測變數和存檔時相同；雜湊被改過時拒絕且畫面不動（`docs/re/025`） | 2026-09-18 |

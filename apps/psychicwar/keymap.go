@@ -29,8 +29,8 @@ func init() {
 	}
 }
 
-// intercepted 是前端攔下、不送進遊戲的鍵（留給 M5 的說明、語言、地圖、即時存檔）。
-var intercepted = map[ebiten.Key]bool{ebiten.KeyF1: true, ebiten.KeyF2: true, ebiten.KeyF3: true, ebiten.KeyF10: true}
+// intercepted 是前端攔下、不送進遊戲的鍵：F1 說明、F2 語言、F3 地圖（未做）、F10 存檔、F11 讀檔（docs/spec/012）。
+var intercepted = map[ebiten.Key]bool{ebiten.KeyF1: true, ebiten.KeyF2: true, ebiten.KeyF3: true, ebiten.KeyF10: true, ebiten.KeyF11: true}
 
 // ScanCode 回按鍵的掃描碼；沒有對應或被攔下時 ok 為 false。
 func ScanCode(k ebiten.Key) (code uint8, ok bool) {
@@ -41,5 +41,5 @@ func ScanCode(k ebiten.Key) (code uint8, ok bool) {
 	return code, ok
 }
 
-// Intercepted 回報這個鍵是不是前端自己要處理的（F1／F2／F3／F10）。
+// Intercepted 回報這個鍵是不是前端自己要處理的（F1／F2／F3／F10／F11）。
 func Intercepted(k ebiten.Key) bool { return intercepted[k] }

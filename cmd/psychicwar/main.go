@@ -10,6 +10,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"image"
 	"io"
 	"log"
 	"os"
@@ -56,6 +57,109 @@ type game struct {
 	tr      *translator.Translator // -text：中文疊字（docs/spec/008、009），nil ＝ 停用
 	over    *ebiten.Image
 	overPix []byte
+
+	// 輔助熱鍵（docs/spec/012）
+	help      bool   // F1：說明頁顯示中
+	english   bool   // F2：切到英文原文（疊字不畫）
+	toast     string // F10／F11 的提示
+	toastTill time.Time
+	quickDir  string // 即時存檔放哪（＝ -scratch）
+	origDir   string
+	textDir   string
+	baked     []translator.BakedEntry
+	fontHelp  *xlate.Font
+	helpLines []string
+}
+
+// 狀態檔格式的版本字串：dosgolem 沒有版本常數，格式換了就手動升這個版號（docs/spec/012 §4）。
+const stateFormat = "dosgolem-state/1"
+
+// hotkeys 處理 F1／F2／F10／F11（docs/spec/012）。回傳有沒有處理掉。
+func (g *game) hotkeys(k ebiten.Key) bool {
+	switch k {
+	case ebiten.KeyF1:
+		g.help = !g.help
+		return true
+	case ebiten.KeyF2:
+		g.english = !g.english
+		g.showToast(map[bool]string{true: "英文原文", false: "中文"}[g.english])
+		return true
+	case ebiten.KeyF10:
+		g.showToast(g.quickSave())
+		return true
+	case ebiten.KeyF11:
+		g.showToast(g.quickLoad())
+		return true
+	}
+	return false
+}
+
+func (g *game) showToast(s string) {
+	if s == "" {
+		return
+	}
+	g.toast, g.toastTill = s, time.Now().Add(2*time.Second)
+}
+
+// quickSave 存狀態、疊字層快照與中繼資料；回畫面上要顯示的一行字。
+func (g *game) quickSave() string {
+	base := filepath.Join(g.quickDir, "quick.state")
+	if err := g.o.SaveStateFile(base); err != nil {
+		return "存檔失敗：" + err.Error()
+	}
+	if g.tr != nil {
+		if b, err := g.tr.Layer.Snapshot(); err == nil {
+			_ = os.WriteFile(base+".xlate.json", b, 0o644)
+		}
+	}
+	exe, err := psychicwar.FileSHA256(filepath.Join(g.origDir, "PW.EXE"))
+	if err != nil {
+		return "存檔失敗：" + err.Error()
+	}
+	text, _ := psychicwar.DirSHA256(g.textDir)
+	lang := "zh"
+	if g.english {
+		lang = "en"
+	}
+	if err := psychicwar.WriteQuickMeta(filepath.Join(g.quickDir, "quick.json"),
+		psychicwar.NewQuickMeta(stateFormat, exe, text, lang)); err != nil {
+		return "存檔失敗：" + err.Error()
+	}
+	return "已存檔"
+}
+
+// quickLoad 版本相符才讀；不符就拒絕，不動目前的遊戲。
+func (g *game) quickLoad() string {
+	base := filepath.Join(g.quickDir, "quick.state")
+	m, err := psychicwar.ReadQuickMeta(filepath.Join(g.quickDir, "quick.json"))
+	if err != nil {
+		return "沒有即時存檔"
+	}
+	exe, err := psychicwar.FileSHA256(filepath.Join(g.origDir, "PW.EXE"))
+	if err != nil {
+		return "讀檔失敗：" + err.Error()
+	}
+	text, _ := psychicwar.DirSHA256(g.textDir)
+	ok, why := psychicwar.CheckQuickMeta(m, stateFormat, exe, text)
+	if !ok {
+		return "不能讀：" + why
+	}
+	if err := g.o.LoadStateFile(base); err != nil {
+		return "讀檔失敗：" + err.Error()
+	}
+	g.startCyc, g.start = g.o.Cycles(), time.Now() // 牆上時間重新對齊，不然會狂追進度
+	if g.tr != nil {
+		g.tr.ResetForLoad()
+		if b, err := os.ReadFile(base + ".xlate.json"); err == nil {
+			_ = g.tr.Layer.Restore(b, g.tr.Fonts())
+		}
+		g.tr.AttachBaked(g.baked, g.origDir) // watcher 不進快照，讀檔後重新登記（dosgolem 規格 203 §2.3）
+	}
+	g.english = m.Language == "en"
+	if why != "" {
+		return "已讀檔（" + why + "）"
+	}
+	return "已讀檔"
 }
 
 func (g *game) machineMs() float64 {
@@ -74,6 +178,7 @@ func (g *game) Update() error {
 		}
 		if psychicwar.Intercepted(k) {
 			g.intercepted++
+			g.hotkeys(k)
 			continue
 		}
 		if sc, ok := psychicwar.ScanCode(k); ok {
@@ -148,13 +253,43 @@ func (g *game) Draw(dst *ebiten.Image) {
 	op.GeoM.Scale(float64(g.scale), float64(g.scale))
 	op.Filter = ebiten.FilterNearest
 	dst.DrawImage(g.screen, &op)
-	if g.tr != nil {
+	if g.tr != nil && !g.english { // F2：英文模式不畫疊字（docs/spec/012 §2）
 		clear(g.overPix)
 		if g.tr.Layer.Draw(g.overPix, g.scale, g.tr.MissingGlyph) {
 			g.over.WritePixels(g.overPix)
 			dst.DrawImage(g.over, nil)
 		}
 	}
+	g.drawHelp(dst)
+	g.drawToast(dst)
+}
+
+// drawHelp 畫 F1 說明頁（docs/spec/012 §3）：蓋滿整個畫布，固定顏色。
+func (g *game) drawHelp(dst *ebiten.Image) {
+	if !g.help || g.over == nil || g.fontHelp == nil || len(g.helpLines) == 0 {
+		return
+	}
+	w, h := 320*g.scale, 200*g.scale
+	clear(g.overPix)
+	psychicwar.DrawTextPage(g.overPix, w, h, g.fontHelp, g.helpLines,
+		8*g.scale, [3]uint8{0xFF, 0xFF, 0xFF}, [3]uint8{0, 0, 0}, 0xFF)
+	g.over.WritePixels(g.overPix)
+	dst.DrawImage(g.over, nil)
+}
+
+// drawToast 畫 F10／F11 的提示（兩秒）。
+func (g *game) drawToast(dst *ebiten.Image) {
+	if g.toast == "" || time.Now().After(g.toastTill) || g.over == nil || g.fontHelp == nil {
+		return
+	}
+	w, h := 320*g.scale, 200*g.scale
+	clear(g.overPix)
+	psychicwar.DrawTextPage(g.overPix, w, 8*g.scale, g.fontHelp, []string{g.toast},
+		8*g.scale, [3]uint8{0xFF, 0xFF, 0x55}, [3]uint8{0, 0, 0}, 0xFF)
+	g.over.WritePixels(g.overPix)
+	op := &ebiten.DrawImageOptions{}
+	op.GeoM.Translate(0, float64(h-8*g.scale))
+	dst.DrawImage(g.over.SubImage(image.Rect(0, 0, w, 8*g.scale)).(*ebiten.Image), op)
 }
 
 func (g *game) Layout(int, int) (int, int) { return 320 * g.scale, 200 * g.scale }
@@ -295,6 +430,12 @@ func main() {
 		quitAfter: *quitAfter,
 	}
 	g.audio = o.NewAudio(sampleRate)
+	g.quickDir, g.origDir, g.textDir = *scratch, *orig, *textDir
+	if lines, err := psychicwar.LoadHelp(*textDir); err != nil { // 排不下或讀不到就不要進畫面（docs/spec/012 §5）
+		log.Printf("讀不到說明頁（F1 停用）：%v", err)
+	} else {
+		g.helpLines = lines
+	}
 	if *textDir != "" {
 		if *scale%3 != 0 {
 			log.Printf("-scale %d 不是 3 的倍數，停用中文疊字（docs/spec/008 §3.5）", *scale)
@@ -322,9 +463,11 @@ func main() {
 			}
 			g.tr = translator.NewTranslator(entries, f24, f16, *scale, w)
 			g.tr.Attach(o)
+			g.fontHelp = f24
 			if baked, err := translator.LoadBaked(*textDir); err != nil {
 				log.Fatal(err)
 			} else {
+				g.baked = baked
 				g.tr.AttachBaked(baked, *orig)
 			}
 			g.over = ebiten.NewImage(320**scale, 200**scale)

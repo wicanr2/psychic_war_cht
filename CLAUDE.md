@@ -120,7 +120,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 
 證據、指令與數字見 `docs/re/001-pw-exe-first-look.md`（實跑初探）、`002-pw-exe-function-census.md`（函式普查）、
 `003-checkpoints-and-dosboxx-reference.md`（檢查點與 DOSBox-X 參照）、`004-rng-and-determinism.md`（亂數）、
-`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）、`011-observation-addresses.md`（位置、朝向、區域、角色數值位址，地圖檔格式）、`012-opl2-event-layer.md`（OPL2 事件層）、`013-replay-route-samar-to-sivad.md`（重播路線）、`014-print-routine.md`（印字常式）、`015-text-formats.md`（文字格式）、`016-frontend-prototype.md`（前端雛形驗收）、`017-text-coverage.md`（文字覆蓋率）、`018-first-chinese-overlay.md`（第一句中文）、`019-all-paths-overlay-verification.md`（所有路徑疊字、覆蓋率、前端實跑）、`020-font-license-options.md`（字型授權選項，待決）、`021-translation-first-pass.md`（全文翻譯第一版）、`022-simulated-player-playtest.md`（模擬玩家試玩）；
+`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）、`011-observation-addresses.md`（位置、朝向、區域、角色數值位址，地圖檔格式）、`012-opl2-event-layer.md`（OPL2 事件層）、`013-replay-route-samar-to-sivad.md`（重播路線）、`014-print-routine.md`（印字常式）、`015-text-formats.md`（文字格式）、`016-frontend-prototype.md`（前端雛形驗收）、`017-text-coverage.md`（文字覆蓋率）、`018-first-chinese-overlay.md`（第一句中文）、`019-all-paths-overlay-verification.md`（所有路徑疊字、覆蓋率、前端實跑）、`020-font-license-options.md`（字型授權選項，待決）、`021-translation-first-pass.md`（全文翻譯第一版）、`022-simulated-player-playtest.md`（模擬玩家試玩）、`023-pbl-image-format.md`（`.PBL` 圖檔格式）、`024-baked-text-overlay.md`（圖檔內嵌文字）、`025-assist-hotkeys.md`（F1／F2／F10）；
 被推翻的斷言集中在 `000-overturned-claims.md`。
 
 | 事實 | 等級 |
@@ -153,6 +153,8 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | 中文疊字（`docs/spec/009`，疊字層是 dosgolem `xlate`，規格 `202-translation-overlay`）：原版照畫英文，疊字層以該行英文的背景色蓋掉再畫中文。四條印字路徑：A1 `6289`、A2 `62A2`、A3 `62AF`（`FONT.BIN` 8×8 → 24×24）、小字型 `B0F1`（6×7 → 18×21，字 16×15）。游標 `cs:610E`（高位元組 X、低位元組 Y，×4 像素）。8 情境 13 行逐像素差 0、反向對照差 0、前端 A／B 差 0；訊息框捲動（`6273`–`6276`）期間框內疊字凍結（`docs/re/019`） | confirmed |
 | 全文翻譯第一版：1,313 則全部有譯文（保留原文 38）、過長 0、非 Big5 0；譯名表 119 筆（說明書 40、暫譯 79）；字型子集 873 字（`docs/re/021`）。重播 19 段到 Zellwal 觸發 55 則、不在文本檔 0；前端開機到第一場戰鬥的轉譯紀錄缺譯文／過長／缺字 0，剩下的英文都在圖檔上（#18） | confirmed（數字）；譯文品質未逐則對畫面 |
 | 模擬玩家（Sonnet 子代理只看 `pwstep` 截圖）84 步完成開機 → 打贏第一場 → 發射台選目的地，沒用攻略；卡住 1 次（降落平台與發射台的分辨）。找到的問號裁字、音效／音樂、BBS室已修（`docs/re/022`） | confirmed（一條路線） |
+| 圖檔文字：`.PBL` ＝ 偏移表＋每張 `[寬÷8][高÷8][16 bytes CGA 表]`＋RLE，4bpp 逐列；貼圖位置 ＝ `CH×4`、`CL×4`。26 檔 537 張，含文字 50 張（`docs/re/023`、`024`） | confirmed |
+| 圖檔內嵌文字的中文以「畫面內容比對」觸發（dosgolem `xlate.Watcher`）：面板與狀態欄 6 塊逐像素差 0；F1 說明、F2 中英切換、F10／F11 即時存檔都通過（`docs/re/024`、`025`） | confirmed |
 
 ## 工作追蹤
 
@@ -193,6 +195,9 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/overlay_run.sh [情境…]`＋`tools/overlay_cases.json`＋`tools/overlay_check.py` | 疊字逐像素驗收：`cmd/step` 出原版參照、`pwstep` 出中文截圖；`PSYCHICWAR_WITHOUT=1` 反向對照（`docs/spec/009` §6） |
 | `tools/frontend-overlay-check.sh <情境> <xdotool 鍵>` | 同一情境改在 Xvfb 前端上驗 |
 | `cmd/pwstep`、`tools/playstep.sh <試玩名> new\|next\|from NNN "<動作>"` | 逐步操作（dosgolem 規格 `201-step-actions`）加轉譯層：一步一個狀態檔＋960×600 中文截圖＋轉譯紀錄；模擬玩家試玩用，代理指令範本 `tools/playtest-instructions.md`（`docs/re/022`） |
+| `tools/pbl.py list\|dump\|find\|check` | `.PBL` 圖檔解碼與定位（`docs/spec/010`） |
+| `tools/baked_run.sh`、`tools/frontend-baked-check.sh` | 圖檔內嵌文字的疊字驗收（`docs/spec/011` §5）；`PSYCHICWAR_WITHOUT=<key>` 反向對照 |
+| `tools/frontend-hotkeys-check.sh`、`tools/help_check.py` | F1／F2／F10／F11 的實跑驗收（`docs/spec/012` §5） |
 | `tools/l10n_batches.py prep\|merge\|sweep`、`tools/l10n_check.py` | 分批翻譯、合併核對、一致性掃描；譯者自我檢查（`docs/re/021`） |
 | `tools/text_extract.py lint` | 譯文行寬與 Big5 檢查（`docs/spec/009` §3） |
 | `tools/text_extract.py build\|check\|stats <原版目錄>` | 產生／驗證 `text/`（`docs/spec/007`）；`menu\|enmy\|code` 是單檔除錯輸出 |
