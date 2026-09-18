@@ -10,6 +10,10 @@
 3. `translation` 非空、字數 ≤ 格數、每個字在字型子集裡（`font/charset.txt`）。
 4. 同一張圖的不同筆不可以重疊（會互相移除）。
 5. `original` 要在清冊 `text/baked-inventory.json` 的同一張圖裡找得到（大小寫、空白不計）。
+6. 頂層 `equivalent` 宣告的「這張圖的文字像素與另一張相同」要真的成立：
+   兩張圖各自換算到畫面座標之後，`covers` 列出的每一塊逐像素相同。
+   面板同時來自 `SCREEN.PBL` 與 `MENU.PBL`，一組 watcher 就會蓋到兩者（`docs/re/024` §2），
+   宣告出來報表才不會把另一張算成「還沒疊」。
 
 全部通過結束碼 0；有問題列出來並回 1。
 """
@@ -104,7 +108,37 @@ def main(argv):
         texts = inv_by.get((e["file"], e["image"]), [])
         if want and texts and not any(want in t or t in want for t in texts):
             fail(key, "原文 %r 不在清冊的 %s" % (e["original"], texts))
-    print("%d 筆，問題 %d 筆" % (len(doc["entries"]), bad))
+
+    # 6：等價涵蓋的宣告要成立（同一塊像素來自兩張圖時，一組 watcher 就夠）
+    by_key = {e["key"]: e for e in doc["entries"]}
+    for q in doc.get("equivalent", []):
+        tag = "%s:%d" % (q["file"], q["image"])
+        p = orig / q["file"]
+        if not p.exists():
+            print("%-34s 缺原版 %s（跳過）" % (tag, q["file"]))
+            continue
+        if q["file"] not in cache:
+            cache[q["file"]] = p.read_bytes()
+        qw, qh, qpx = pbl.decode(cache[q["file"]], pbl.images(cache[q["file"]])[q["image"]][1])
+        qsx, qsy = q["screen"]
+        for k in q["covers"]:
+            e = by_key.get(k)
+            if e is None:
+                fail(tag, "covers 指到不存在的 %s" % k)
+                continue
+            w, h, px = pbl.decode(cache[e["file"]], pbl.images(cache[e["file"]])[e["image"]][1])
+            rx, ry, rw, rh = e["region"]
+            # 兩張圖各自的圖內座標換算到畫面座標再比
+            ax, ay = e["screen"][0] + rx, e["screen"][1] + ry
+            bx, by = ax - qsx, ay - qsy
+            if bx < 0 or by < 0 or bx + rw > qw or by + rh > qh:
+                fail(tag, "%s 的區塊落在這張圖之外（圖內 (%d,%d) %d×%d，圖 %d×%d）" % (k, bx, by, rw, rh, qw, qh))
+                continue
+            diff = sum(1 for r in range(rh) for c in range(rw)
+                       if px[(ry + r) * w + rx + c] != qpx[(by + r) * qw + bx + c])
+            if diff:
+                fail(tag, "%s 的區塊與這張圖不同：%d 個像素" % (k, diff))
+    print("%d 筆，等價涵蓋 %d 張，問題 %d 筆" % (len(doc["entries"]), len(doc.get("equivalent", [])), bad))
     return 1 if bad else 0
 
 

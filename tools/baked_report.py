@@ -18,10 +18,14 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 def main(argv):
     text_dir = ROOT / (argv[argv.index("--text") + 1] if "--text" in argv else "text")
     inv = json.loads((text_dir / "baked-inventory.json").read_text(encoding="utf-8"))["entries"]
-    baked = json.loads((text_dir / "baked.json").read_text(encoding="utf-8"))["entries"]
+    doc = json.loads((text_dir / "baked.json").read_text(encoding="utf-8"))
+    baked = doc["entries"]
     with_text = [e for e in inv if e["has_text"]]
     strings = sum(len(e["texts"]) for e in with_text)
     done_imgs = {(e["file"], e["image"]) for e in baked}
+    # 等價涵蓋：像素與已疊的那張相同，同一組 watcher 就會蓋（`tools/baked_lint.py` 第 6 項會驗）
+    equiv = {(q["file"], q["image"]) for q in doc.get("equivalent", [])}
+    done_imgs |= equiv
     translated = sum(1 for e in baked if e["translation"])
     by_file = collections.Counter(e["file"] for e in with_text)
     done_by_file = collections.Counter(f for f, _ in done_imgs)
@@ -33,6 +37,7 @@ def main(argv):
         "images_with_text": len(with_text),
         "strings_in_inventory": strings,
         "images_covered": len(done_imgs),
+        "images_equivalent": len(equiv),
         "regions": len(baked),
         "regions_translated": translated,
         "by_file": rows,
@@ -43,8 +48,12 @@ def main(argv):
     print("圖 %d 張，含文字 %d 張（%d 則）；已疊中文 %d 張、%d 塊（有譯文 %d 塊）"
           % (out["images_total"], out["images_with_text"], out["strings_in_inventory"],
              out["images_covered"], out["regions"], out["regions_translated"]))
+    eq_by_file = collections.Counter(f for f, _ in equiv)
     for r in rows:
-        print("  %-14s 含文字 %2d 張，已疊 %d 張" % (r["file"], r["images_with_text"], r["images_done"]))
+        n = eq_by_file.get(r["file"], 0)
+        print("  %-14s 含文字 %2d 張，已疊 %d 張%s"
+              % (r["file"], r["images_with_text"], r["images_done"],
+                 "（其中 %d 張是等價涵蓋）" % n if n else ""))
     if "--json" in argv:
         p = ROOT / argv[argv.index("--json") + 1]
         p.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
