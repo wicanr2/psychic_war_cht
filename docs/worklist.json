@@ -68,7 +68,7 @@
    "blocked_by": "opl2-synth, realtime-pacing",
    "verify": {
     "kind": "manual",
-    "note": "null 輸出路徑第 2–65 秒欠載 0（docs/re/026 §5，量測時每核負載 0.36）。缺真實音效卡或 dummy sink 上的數字。"
+    "note": "null 輸出路徑第 2–65 秒欠載 0（docs/re/026 §5，量測時每核負載 0.36）。真實裝置上的數字這台機器量不到（docs/re/026 §6）：容器沒有 /dev/snd，而 ALSA 的 null PCM 不按時序消耗資料、立刻吸收，量到 29 萬次欠載是它自己的行為不是待測系統的。要 snd-dummy 或 PulseAudio null sink，得在有音效卡的機器上做。"
    },
    "issue": 13
   },

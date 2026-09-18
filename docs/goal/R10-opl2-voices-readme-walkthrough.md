@@ -45,6 +45,10 @@
      不一致的列出來處理。
 4. **即時音訊（#13）**
    - 真實音效卡或 dummy sink 上量 60 秒欠載（null 輸出已經是第 2–65 秒 0）。
+   - ⚠ **這台機器做不到**（`docs/re/026` §6）：容器沒有 `/dev/snd`；ALSA 的 `null` PCM
+     不按時序消耗資料、立刻吸收，量到的 29 萬次欠載是它自己的行為。
+     要 `snd-dummy` 核心模組或 PulseAudio 的 null sink——**換一台有音效卡的機器再做**，
+     或先確認可以在這台載入 `snd-dummy`。不要再花時間在容器內找替代品。
    - 量測條件：每核負載 < 0.5（這台 14 核 ＝ load < 7）。
 5. `tools/py.sh tools/worklist.py verify` 沒有「可能已完成」；做完的條目移到 `done`；本機 commit。
 
