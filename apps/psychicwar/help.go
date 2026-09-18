@@ -29,6 +29,7 @@ func LoadHelp(dir string) ([]string, error) {
 		Lines  []string `json:"lines"`
 		Label  string   `json:"protection_label"`
 		Map    string   `json:"map_header"`
+		ASCII  string   `json:"ascii_only_toast"`
 	}
 	if err := json.Unmarshal(b, &doc); err != nil {
 		return nil, err
@@ -40,6 +41,9 @@ func LoadHelp(dir string) ([]string, error) {
 	if doc.Map != "" {
 		MapHeader = doc.Map
 	}
+	if doc.ASCII != "" {
+		ASCIIOnlyToast = doc.ASCII
+	}
 	return doc.Lines, CheckHelp(doc.Lines)
 }
 
@@ -48,6 +52,11 @@ var ProtectionLabel = "　本題答案："
 
 // MapHeader 是 F3 自動地圖的標題樣板（LoadHelp 讀進來；docs/spec/015 §2）。
 var MapHeader = "區域 %d　座標 (%d, %d)　已走 %d 格　朝向 %c"
+
+// ASCIIOnlyToast 是收到非 ASCII 輸入時的提示（docs/spec/017 §3）。
+// 中文輸入法送出的是字元不是掃描碼，本來就進不到遊戲裡——玩家按半天沒有反應，
+// 畫面上要說出為什麼，不能讓被擋掉的輸入靜默消失。
+var ASCIIOnlyToast = "名字只能用英數字（原版的限制）"
 
 // LineCells 回一行佔幾格（半形字佔半格，用兩倍整數避免小數）：回的是「半格數」。
 func LineCells(s string) int {
@@ -151,4 +160,17 @@ func DrawTextPage(dst []uint8, w, h int, f *xlate.Font, lines []string, cell int
 			}
 		}
 	}
+}
+
+// NonASCII 回報這批文字輸入裡有沒有非 ASCII 字元（docs/spec/017 §3）。
+//
+// 前端把 ebiten.Key 對到掃描碼送給原版；中文輸入法送的是**字元**，不是掃描碼，
+// 所以它本來就進不到遊戲裡。玩家按半天沒有反應時，畫面上要說出為什麼。
+func NonASCII(rs []rune) bool {
+	for _, r := range rs {
+		if r > 0x7F {
+			return true
+		}
+	}
+	return false
 }

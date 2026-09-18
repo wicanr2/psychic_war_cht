@@ -304,6 +304,11 @@ func (g *game) Update() error {
 			g.o.KeyDown(sc)
 		}
 	}
+	// 非 ASCII 的文字輸入（中文輸入法）送的是字元不是掃描碼，本來就進不到遊戲裡。
+	// 玩家按半天沒有反應，畫面上要說出為什麼——被擋掉的輸入不能靜默消失（docs/spec/017 §3）。
+	if psychicwar.NonASCII(ebiten.AppendInputChars(nil)) {
+		g.showToast(psychicwar.ASCIIOnlyToast)
+	}
 	for _, k := range inpututil.AppendJustReleasedKeys(nil) {
 		if sc, ok := psychicwar.ScanCode(k); ok {
 			g.o.KeyUp(sc)
