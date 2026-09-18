@@ -42,5 +42,5 @@ timeout 20m docker run --rm --network none --memory 2g --cpus 2 --pids-limit 128
       -do '$DO' -text $TEXT -text-log $OUT/text.jsonl -shot $OUT/shot.png > $OUT/pwstep.log 2>&1
   "
 set +e
-"$ROOT/tools/py.sh" tools/overlay_check.py --baked "$OUT/ref.png" "$OUT/shot.png" --text "$TEXT" "${args[@]}" | tee "$ROOT/$OUT/result.txt"
+"$ROOT/tools/py.sh" tools/overlay_check.py --baked "$OUT/ref.png" "$OUT/shot.png" --text "$TEXT" --log "$OUT/text.jsonl" "${args[@]}" | tee "$ROOT/$OUT/result.txt"
 exit "${PIPESTATUS[0]}"
