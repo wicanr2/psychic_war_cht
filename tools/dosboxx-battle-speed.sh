@@ -77,7 +77,9 @@ n=0
 # 「畫面有沒有換」用變化幅度判斷，不用雜湊：SELECT 選單與輸入名字都有閃爍游標，
 # 雜湊每 0.5 秒就變一次，等於沒等——這是先前多次停在選單、後面按鍵全部落空的原因。
 THRESH=\$((WIDTH * HEIGHT / 50))   # 2% 的像素：游標閃爍幾十點不算，轉場幾千點才算
-diffpx() { compare -metric AE "\$1" "\$2" null: 2>&1 | tr -d '\n' | sed 's/[^0-9].*//'; }
+# ⚠ compare 只要有差異就回非 0，在 set -e 底下會直接把腳本收掉（第一次改寫踩到：
+# 只留下 title.png，log 是空的）。所以吞掉結束碼，只取它印在 stderr 的數字。
+diffpx() { { compare -metric AE "\$1" "\$2" null: 2>&1 || true; } | tr -d '\n' | sed 's/[^0-9].*//'; }
 # 送一鍵，等畫面真的換過去（最多 40 秒），再等 settle 秒；每一步截圖存 steps/，時序錯了看得出卡在哪一步
 key() {
   import -window "\$WIN" /tmp/a.png
