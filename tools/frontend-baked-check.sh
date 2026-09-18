@@ -2,10 +2,13 @@
 # 圖檔內嵌文字在前端的驗收（docs/spec/011 §5 第 3 項）：Ebiten 合成的畫面與原版推算的期望值逐像素相同。
 #
 #   tools/frontend-baked-check.sh [狀態檔]        # 預設 states/07-first-play.state
+#   PSYCHICWAR_KEYS="a b" tools/frontend-baked-check.sh   # 換一組「要等到的 key」
 #
 # 1. 參照：dosgolem cmd/step 從同一狀態跑 2 秒，存 320×200 原版畫面
-# 2. 前端：Xvfb 裡從同一狀態啟動（scale 3、-audio null），等轉譯紀錄出現全部 baked key 後截圖（PNG24）
-# 3. tools/overlay_check.py --baked 逐像素比
+# 2. 前端：Xvfb 裡從同一狀態啟動（scale 3、-audio null），等轉譯紀錄出現這個畫面該有的 key 後截圖（PNG24）
+# 3. tools/overlay_check.py --baked 逐像素比；**要帶轉譯紀錄**，否則畫面上沒有的圖也會被拿去比
+#    （期望值會算成「原版畫面 ＋ 中文」，而畫面上那塊是別的東西，差異數字沒有意義）
+# ⚠ 大部分招牌在還沒走到的房間，這支只涵蓋當下畫面上有的圖；其餘看合成畫面測試（docs/spec/011 §5 第 5 項）
 # 產出 workplace/overlay/frontend/baked/：ref.png、shot.png、text.jsonl、frontend.log、result.txt
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -13,7 +16,8 @@ STATE="${1:-states/07-first-play.state}"
 for b in psychicwar step; do [[ -x "$ROOT/workplace/bin/$b" ]] || { echo "先 build workplace/bin/$b" >&2; exit 2; }; done
 OUT="workplace/overlay/frontend/baked"
 rm -rf "$ROOT/$OUT"; mkdir -p "$ROOT/$OUT"
-KEYS=$("$ROOT/tools/py.sh" -c 'import json; print(" ".join(e["key"] for e in json.load(open("/src/text/baked.json"))["entries"]))')
+# 只等這個畫面該有的 key（預設操作面板與狀態欄）；房間招牌要走到那個房間才會出現。
+KEYS="${PSYCHICWAR_KEYS:-$("$ROOT/tools/py.sh" -c 'import json; print(" ".join(e["key"] for e in json.load(open("/src/text/baked.json"))["entries"] if e["file"] == "SCREEN.PBL"))')}"
 
 PSYCHICWAR_TIMEOUT=10m PSYCHICWAR_SH="
 set -eu
@@ -38,5 +42,6 @@ kill \$PID; wait \$PID 2>/dev/null || true
 " "$ROOT/tools/go-ebiten.sh"
 
 set +e
-"$ROOT/tools/py.sh" tools/overlay_check.py --baked "$OUT/ref.png" "$OUT/shot.png" | tee "$ROOT/$OUT/result.txt"
+"$ROOT/tools/py.sh" tools/overlay_check.py --baked "$OUT/ref.png" "$OUT/shot.png" \
+  --text text --log "$OUT/text.jsonl" | tee "$ROOT/$OUT/result.txt"
 exit "${PIPESTATUS[0]}"
