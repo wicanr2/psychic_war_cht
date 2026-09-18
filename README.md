@@ -90,7 +90,7 @@ Esc 選單與凱拉的回話，兩者都來自 `I_MENUH.BIN` 的固定寬度欄�
 - 賽瓦德（區域 1）之後的地點沒有抽測過，角色等級不夠打不過去。
 - 原版的讀檔入口只在死亡後的標題選單，而那個選單會逾時自動選「新遊戲」，抽測時三次都來不及選。
   目前讀回進度靠 F11 即時讀檔。
-- 跨平台發行包（Linux／Windows／macOS）還沒做，現在只能自己建置。
+- macOS 的發行包沒有在真機上跑過（沒有 Mac，只做了結構驗收，見 [`docs/re/033`](docs/re/033-macos-cross-build.md)）。Windows 版還沒做。
 - 主題替換（換 UI 框線與配色）還沒做。
 
 未完成項的權威是 [`docs/worklist.json`](docs/worklist.json)，每條對應一個 GitHub issue。
@@ -126,12 +126,38 @@ F1 說明頁。內容來自 `text/help.json`，驗收時由文本檔與字型算
 
 位址表只對這個版本成立。抽取工具會先驗雜湊，不符就停下來列出不符的檔案，不猜測。
 
-目前沒有發行包，要自己建置。建置與實跑都走 docker：
+### 用發行包
+
+`tools/package.sh` 產出三種（規格 [`docs/spec/021`](docs/spec/021-packaging.md)）：
+
+| 產物 | 狀態 |
+|---|---|
+| `psychicwar-<版本>-linux-x86_64.tar.gz` | 解開產物實跑驗過 |
+| `PsychicWar-<版本>-x86_64.AppImage` | 同上 |
+| `PsychicWar-<版本>-macos.zip`（universal，x86_64 ＋ arm64） | 只做了靜態驗收，**沒有在 Mac 上跑過** |
+
+解開之後指定原版目錄就能跑，資料檔跟著執行檔走，不必從特定目錄啟動：
+
+```sh
+./psychicwar -orig /path/to/psychic-war        # 含 PW.EXE 的目錄
+```
+
+存檔（遊戲存檔與 F10 即時存檔）寫在使用者資料目錄，不是解開的地方：
+Linux 是 `$XDG_DATA_HOME/psychicwar`（預設 `~/.local/share/psychicwar`），
+macOS 是 `~/Library/Application Support/PsychicWar`。
+
+macOS 的 `.app` 沒有簽章也沒有公證（在 Linux 上做不出來），首次開啟要**右鍵 →「打開」**。
+
+### 自己建置
+
+建置與實跑都走 docker：
 
 ```sh
 # 原版解開到 workplace/original/psychic-war/（裡面要有 PW.EXE）
 tools/go-ebiten.sh build -o /src/workplace/bin/psychicwar ./cmd/psychicwar
 workplace/bin/psychicwar -orig workplace/original/psychic-war   # 從 repo 根目錄執行
+
+tools/package.sh all       # 或 linux／appimage／macos，產物在 dist/
 ```
 
 字型子集（`font/cjk24.golemfnt`、`font/cjk16.golemfnt`）已經在版控裡，不必自己烘。
@@ -139,7 +165,7 @@ workplace/bin/psychicwar -orig workplace/original/psychic-war   # 從 repo 根�
 
 常用旗標：`-adlib` 走 OPL2 音樂（不加就是 PC 喇叭）、`-scale` 放大倍率（預設 3）、
 `-cycles` 執行速度（預設 750，約 8 MHz AT；`xt` 是 XT 級）、`-cheat` 打開作弊鍵、
-`-text ''` 關掉中文疊字。
+`-text off` 關掉中文疊字。
 
 dosgolem 目前用本機分支（`go.mod` 的 `replace` 指到 `worktrees/dosgolem`），第一次建置要先 clone 它。
 
