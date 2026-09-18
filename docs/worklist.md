@@ -28,7 +28,6 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #18 | `baked-text-graphics` | 圖檔內嵌文字：PBL 格式與含文字的圖清冊 | re, graphics, text | — | absent |
 
 ## M4：中文繪製與全文翻譯
 
@@ -78,3 +77,4 @@
 | #23 | `glossary` | 譯名表：人名、地名、超能力名稱 | `text/glossary.json` 119 筆：說明書對照 40（記頁碼）、自訂 79（標 provisional，敵人名稱全部）；翻譯指令與 `tools/l10n_batches.py sweep` 都讀它（`docs/re/021`） | 2026-09-17 |
 | #24 | `translation-pass` | 全文翻譯 | 要翻 1,313、已翻 1,313（保留原文 38）；10 批子代理＋合併核對＋一致性修正；lint 過長 0、非 Big5 0；字型子集 873 字（`docs/re/021`） | 2026-09-17 |
 | #21 | `cjk-font` | CJK 點陣字：依譯文烘製子集 | `tools/font/bake.sh` 走 docker 烘 `font/cjk24.golemfnt`、`cjk16.golemfnt`，873 字（24 點倚天 815＋Noto 58、16 點倚天 825＋Noto 48）；兩套字型都沒有的字結束碼 1、不寫輸出檔（反向對照 U+1F600）；實跑缺字 0（`docs/re/019` §5、`docs/re/021`）。字型授權：使用者定案 2026-09-18 發行也用倚天字形（`docs/re/020` §4），README 的字模來源說明由 #36 追蹤 | 2026-09-18 |
+| #18 | `baked-text-graphics` | 圖檔內嵌文字：PBL 格式與含文字的圖清冊 | `docs/spec/010`（READY）＋`tools/pbl.py`：26 個檔 537 張圖全部解得開，`SCREEN.PBL` 三張在實跑畫面逐像素相同、反向對照失敗（`docs/re/023`）。清冊 `text/baked-inventory.json`：537 筆、含文字 50 張 143 則（`docs/re/024` §1、§5） | 2026-09-18 |

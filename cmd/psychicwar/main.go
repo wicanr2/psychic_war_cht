@@ -24,9 +24,9 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/audio"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 	"github.com/wicanr2/dosgolem/oracle"
+	"github.com/wicanr2/dosgolem/xlate"
 	"github.com/wicanr2/psychic_war_cht/apps/psychicwar"
 	"github.com/wicanr2/psychic_war_cht/apps/psychicwar/translator"
-	"github.com/wicanr2/dosgolem/xlate"
 )
 
 const sampleRate = 44100
@@ -322,6 +322,11 @@ func main() {
 			}
 			g.tr = translator.NewTranslator(entries, f24, f16, *scale, w)
 			g.tr.Attach(o)
+			if baked, err := translator.LoadBaked(*textDir); err != nil {
+				log.Fatal(err)
+			} else {
+				g.tr.AttachBaked(baked, *orig)
+			}
 			g.over = ebiten.NewImage(320**scale, 200**scale)
 			g.overPix = make([]byte, 4*320**scale*200**scale)
 		}

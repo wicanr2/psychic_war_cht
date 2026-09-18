@@ -1,6 +1,7 @@
 """中文疊字逐像素驗收（docs/spec/009 §6 第 2 項）：期望值由原版畫面推算，不用轉譯層自己的紀錄。
 
     tools/py.sh tools/overlay_check.py <情境名> <參照.png> <截圖.png> [--text text] [--without KEY]
+    tools/py.sh tools/overlay_check.py --baked <參照.png> <截圖.png> [--text text] [--keys k1,k2] [--without KEY]
 
 - 參照：dosgolem `cmd/step` 以同一狀態、同一動作跑出的原版畫面（-scale 1，320×200）。
 - 截圖：`cmd/pwstep` 以同一狀態、同一動作跑出的放大畫面加疊字層（-scale 3，960×600）。
@@ -9,6 +10,8 @@
   （遮罩為 1 的像素同一種顏色、為 0 的同一種顏色；透明格不看）。背景色 ＝ 該行非透明格出現最多的顏色，前景 ＝ 第二多。
 - 期望區塊：非透明格填背景色，再依 docs/spec/009 §2 的幾何以 font/*.golemfnt 的字模畫前景色；透明格是參照畫面放大 3 倍。
   `--without KEY`（反向對照）：這一則當作沒有譯文，整行期望是參照畫面放大 3 倍。
+- `--baked`：圖檔內嵌文字（docs/spec/011）。位置不用搜尋——`text/baked.json` 直接給了畫面座標與格數；
+  期望區塊 ＝ 參照畫面該塊的背景色填滿再畫中文字模，顏色同樣取「最多／第二多」。
 - 全部行都差 0 才結束碼 0。
 """
 import json
@@ -139,7 +142,63 @@ def search(px, cm, n, cw, ch, skip):
     return hits
 
 
+def check_baked(argv):
+    """圖檔內嵌文字的逐像素驗收（docs/spec/011 §5 第 2 項）；argv[0] 是 --baked。"""
+    ref_png, shot_png = argv[1], argv[2]
+    text_dir = ROOT / (argv[argv.index("--text") + 1] if "--text" in argv else "text")
+    without = argv[argv.index("--without") + 1] if "--without" in argv else None
+    only = argv[argv.index("--keys") + 1].split(",") if "--keys" in argv else None
+    doc = json.loads((text_dir / "baked.json").read_text(encoding="utf-8"))
+    rw, rh, ref = read_png(ROOT / ref_png)
+    sw, sh, shot = read_png(ROOT / shot_png)
+    assert (rw, rh, sw, sh) == (320, 200, 960, 600), (rw, rh, sw, sh)
+    px = lambda x, y: ref[3 * (y * 320 + x):3 * (y * 320 + x) + 3]  # noqa: E731
+    fw, fh, glyphs = load_golemfnt(ROOT / "font/cjk24.golemfnt")
+    rb = (fw + 7) // 8
+    failed = 0
+    for e in doc["entries"]:
+        if only and e["key"] not in only:
+            continue
+        tr = "" if e["key"] == without else e["translation"]
+        cells = e["text"][2]
+        x = e["screen"][0] + e["text"][0]
+        y = e["screen"][1] + e["text"][1]
+        cw = ch = 8
+        counts = {}
+        for r in range(ch):
+            for b in range(cells * cw):
+                v = px(x + b, y + r)
+                counts[v] = counts.get(v, 0) + 1
+        order = sorted(counts, key=lambda v: -counts[v])
+        bg = order[0]
+        fg = order[1] if len(order) > 1 else order[0]
+        bw, bh = cells * cw * S, ch * S
+        exp = bytearray(3 * bw * bh)
+        for yy in range(bh):
+            for xx in range(bw):
+                v = px(x + xx // S, y + yy // S) if not tr else bg
+                exp[3 * (yy * bw + xx):3 * (yy * bw + xx) + 3] = v
+        if tr:
+            for i, c in enumerate(tr.ljust(cells)[:cells]):
+                if c == " " or c not in glyphs:
+                    continue
+                g = glyphs[c]
+                for r in range(fh):
+                    for b in range(fw):
+                        if g[r * rb + b // 8] & (0x80 >> (b % 8)):
+                            xx, yy = i * cw * S + b, r
+                            if xx < (i + 1) * cw * S and yy < bh:
+                                exp[3 * (yy * bw + xx):3 * (yy * bw + xx) + 3] = fg
+        bad = sum(1 for yy in range(bh) for xx in range(bw)
+                  if exp[3 * (yy * bw + xx):3 * (yy * bw + xx) + 3] != shot[3 * ((y * S + yy) * 960 + x * S + xx):3 * ((y * S + yy) * 960 + x * S + xx) + 3])
+        failed += bad != 0
+        print("%-28s @ (%3d,%3d) %d 格：%s，不同像素 %d / %d" % (e["key"], x, y, cells, "中文" if tr else "原版英文", bad, bw * bh))
+    return 0 if failed == 0 else 1
+
+
 def main(argv):
+    if argv and argv[0] == "--baked":
+        return check_baked(argv)
     if len(argv) < 3:
         print(__doc__)
         return 2

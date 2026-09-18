@@ -1,0 +1,6141 @@
+{
+ "note": "圖檔內嵌文字清冊（issue #18，docs/spec/010、docs/re/023）。537 張圖各一筆；has_text 為 true 的是畫在圖上的英文。判讀方式與限制見 docs/re/024。",
+ "entries": [
+  {
+   "file": "ALLY.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 15,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "ALLY.PBL",
+   "image": 30,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-ALLY 無文字）"
+  },
+  {
+   "file": "BEAM.PBL",
+   "image": 0,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-BEAM 無文字）"
+  },
+  {
+   "file": "BEAM.PBL",
+   "image": 1,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-BEAM 無文字）"
+  },
+  {
+   "file": "BEAM.PBL",
+   "image": 2,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-BEAM 無文字）"
+  },
+  {
+   "file": "BEAM.PBL",
+   "image": 3,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-BEAM 無文字）"
+  },
+  {
+   "file": "BEAM.PBL",
+   "image": 4,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-BEAM 無文字）"
+  },
+  {
+   "file": "BEAM.PBL",
+   "image": 5,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-BEAM 無文字）"
+  },
+  {
+   "file": "BEAM.PBL",
+   "image": 6,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-BEAM 無文字）"
+  },
+  {
+   "file": "BEAM.PBL",
+   "image": 7,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-BEAM 無文字）"
+  },
+  {
+   "file": "BEAM.PBL",
+   "image": 8,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-BEAM 無文字）"
+  },
+  {
+   "file": "BEAM.PBL",
+   "image": 9,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-BEAM 無文字）"
+  },
+  {
+   "file": "BEAM.PBL",
+   "image": 10,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-BEAM 無文字）"
+  },
+  {
+   "file": "BEAM.PBL",
+   "image": 11,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-BEAM 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 0,
+   "w": 72,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 1,
+   "w": 72,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 2,
+   "w": 72,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 3,
+   "w": 72,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 15,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 16,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 17,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "END1.PBL",
+   "image": 18,
+   "w": 8,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "角色",
+   "note": "以總覽判定（sheet-END1 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 15,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY00.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY00 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 15,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY01.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY01 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 15,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY02.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY02 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 15,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY03.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY03 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 15,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY04.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY04 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 15,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY05.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY05 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 15,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY06.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY06 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 15,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY07.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY07 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 24,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 24,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 24,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 15,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY08.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY08 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 15,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY09.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY09 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 15,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY10.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY10 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 4,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 5,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 6,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 7,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 8,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 9,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 10,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 11,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 12,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 13,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 14,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 15,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 16,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 17,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 18,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 19,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 20,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 21,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 22,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 23,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 24,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 25,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 26,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 27,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 28,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "ENEMY11.PBL",
+   "image": 29,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "怪物",
+   "note": "以總覽判定（sheet-ENEMY11 無文字）"
+  },
+  {
+   "file": "FIGHT.PBL",
+   "image": 0,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-FIGHT 無文字）"
+  },
+  {
+   "file": "FIGHT.PBL",
+   "image": 1,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-FIGHT 無文字）"
+  },
+  {
+   "file": "FIGHT.PBL",
+   "image": 2,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-FIGHT 無文字）"
+  },
+  {
+   "file": "FIGHT.PBL",
+   "image": 3,
+   "w": 24,
+   "h": 32,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-FIGHT 無文字）"
+  },
+  {
+   "file": "FIGHT.PBL",
+   "image": 4,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-FIGHT 無文字）"
+  },
+  {
+   "file": "FIGHT.PBL",
+   "image": 5,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-FIGHT 無文字）"
+  },
+  {
+   "file": "FIGHT.PBL",
+   "image": 6,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-FIGHT 無文字）"
+  },
+  {
+   "file": "FIGHT.PBL",
+   "image": 7,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-FIGHT 無文字）"
+  },
+  {
+   "file": "FIGHT.PBL",
+   "image": 8,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-FIGHT 無文字）"
+  },
+  {
+   "file": "FIGHT.PBL",
+   "image": 9,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-FIGHT 無文字）"
+  },
+  {
+   "file": "FIGHT.PBL",
+   "image": 10,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-FIGHT 無文字）"
+  },
+  {
+   "file": "FIGHT.PBL",
+   "image": 11,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "特效",
+   "note": "以總覽判定（sheet-FIGHT 無文字）"
+  },
+  {
+   "file": "SCREEN.PBL",
+   "image": 0,
+   "w": 320,
+   "h": 40,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "PSYCHIC",
+     "where": "左側，大型美術標題字，僅露出下半部（與 #1 接續）",
+     "uncertain": true
+    },
+    {
+     "text": "KYODAI",
+     "where": "左側標題右上方小字",
+     "uncertain": false
+    },
+    {
+     "text": "ADVANCE",
+     "where": "中間黑底方框上方，配一個向上箭頭圖示",
+     "uncertain": false
+    },
+    {
+     "text": "LOOK ASIDE",
+     "where": "中間黑底方框下方，左右各配一個箭頭圖示",
+     "uncertain": false
+    }
+   ],
+   "kind": "面板",
+   "note": "探索模式操作提示面板，左側疊有遊戲標題美術字殘片（與 #1 相接），右側為角色頭像"
+  },
+  {
+   "file": "SCREEN.PBL",
+   "image": 1,
+   "w": 320,
+   "h": 40,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "COSMIC SOLDIER",
+     "where": "左側，標題美術字第二行小字",
+     "uncertain": false
+    },
+    {
+     "text": "WAR",
+     "where": "左側，標題美術字主體大字（與 #0 的 PSYCHIC 上下相接）",
+     "uncertain": false
+    },
+    {
+     "text": "SF ROLEPLAYING",
+     "where": "左下角小字",
+     "uncertain": false
+    },
+    {
+     "text": "KYODAI SOFT",
+     "where": "左下角小字，緊接 SF ROLEPLAYING 下方",
+     "uncertain": false
+    },
+    {
+     "text": "TURN",
+     "where": "中間黑底，上方文字，配一個向下箭頭圖示",
+     "uncertain": false
+    },
+    {
+     "text": "ESC",
+     "where": "中間黑底，青色方框內小字",
+     "uncertain": false
+    },
+    {
+     "text": "OPERATION",
+     "where": "中間黑底，ESC 方框右側文字",
+     "uncertain": false
+    }
+   ],
+   "kind": "面板",
+   "note": "延續 #0 的標題美術字（COSMIC SOLDIER WAR、KYODAI SOFT、SF ROLEPLAYING），右半為操作提示與角色頭像"
+  },
+  {
+   "file": "SCREEN.PBL",
+   "image": 2,
+   "w": 320,
+   "h": 40,
+   "has_text": false,
+   "texts": [],
+   "kind": "面板",
+   "note": "右半為機械管線裝飾圖形，無文字；最右側為角色頭像局部"
+  },
+  {
+   "file": "SCREEN.PBL",
+   "image": 3,
+   "w": 320,
+   "h": 40,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "PLACE",
+     "where": "左側黑底方框內，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "DIRECTION",
+     "where": "左側黑底方框內，第二行（與 PLACE 合為一句提示）",
+     "uncertain": false
+    }
+   ],
+   "kind": "面板",
+   "note": "提示語「PLACE DIRECTION」，右側為機械／角色圖形"
+  },
+  {
+   "file": "SCREEN.PBL",
+   "image": 4,
+   "w": 320,
+   "h": 40,
+   "has_text": false,
+   "texts": [],
+   "kind": "面板",
+   "note": "全為機械管線裝飾圖形，無文字"
+  },
+  {
+   "file": "MENU.PBL",
+   "image": 0,
+   "w": 88,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "ADVANCE",
+     "where": "最上方，配向上箭頭",
+     "uncertain": false
+    },
+    {
+     "text": "LOOK ASIDE",
+     "where": "中間，左右各配一個箭頭",
+     "uncertain": false
+    },
+    {
+     "text": "TURN",
+     "where": "中下方，配向下箭頭",
+     "uncertain": false
+    },
+    {
+     "text": "ESC",
+     "where": "最下方，青色方框內",
+     "uncertain": false
+    },
+    {
+     "text": "OPERATION",
+     "where": "最下方，緊接 ESC 方框右側",
+     "uncertain": false
+    }
+   ],
+   "kind": "面板",
+   "note": "探索模式移動操作說明面板（完整版，與 SCREEN.PBL #0/#1/#3 的殘片內容一致）"
+  },
+  {
+   "file": "OPEN.PBL",
+   "image": 0,
+   "w": 128,
+   "h": 64,
+   "has_text": false,
+   "texts": [],
+   "kind": "其他",
+   "note": "開場動畫，星雲／碎片場景，無文字"
+  },
+  {
+   "file": "OPEN.PBL",
+   "image": 1,
+   "w": 128,
+   "h": 64,
+   "has_text": false,
+   "texts": [],
+   "kind": "其他",
+   "note": "開場動畫，太空船自地球升空／行星背景，無文字"
+  },
+  {
+   "file": "OPEN.PBL",
+   "image": 2,
+   "w": 128,
+   "h": 64,
+   "has_text": false,
+   "texts": [],
+   "kind": "其他",
+   "note": "開場動畫，太空船特寫，無文字"
+  },
+  {
+   "file": "OPEN.PBL",
+   "image": 3,
+   "w": 128,
+   "h": 64,
+   "has_text": false,
+   "texts": [],
+   "kind": "其他",
+   "note": "開場動畫，兩名角色臉部特寫，無文字"
+  },
+  {
+   "file": "OPEN.PBL",
+   "image": 4,
+   "w": 16,
+   "h": 16,
+   "has_text": false,
+   "texts": [],
+   "kind": "其他",
+   "note": "黃色十字／準星圖示，無文字"
+  },
+  {
+   "file": "OPEN.PBL",
+   "image": 5,
+   "w": 8,
+   "h": 8,
+   "has_text": false,
+   "texts": [],
+   "kind": "其他",
+   "note": "小型色塊圖示（游標或裝飾），無文字"
+  },
+  {
+   "file": "OPEN.PBL",
+   "image": 6,
+   "w": 8,
+   "h": 8,
+   "has_text": false,
+   "texts": [],
+   "kind": "其他",
+   "note": "小型色塊圖示（游標或裝飾），無文字"
+  },
+  {
+   "file": "OPEN.PBL",
+   "image": 7,
+   "w": 72,
+   "h": 8,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "STANDARD 47600",
+     "where": "整條橫幅（紅黑警示斜紋底），右端配一個小圖示",
+     "uncertain": false
+    }
+   ],
+   "kind": "其他",
+   "note": "開場動畫字幕列，警示斜紋背景"
+  },
+  {
+   "file": "OPEN.PBL",
+   "image": 8,
+   "w": 72,
+   "h": 8,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "4760021 SET",
+     "where": "整條橫幅（紅黑警示斜紋底），右上角配一個小圖示",
+     "uncertain": false
+    }
+   ],
+   "kind": "其他",
+   "note": "開場動畫字幕列，緊接 #7 之後，警示斜紋背景"
+  },
+  {
+   "file": "OPEN.PBL",
+   "image": 9,
+   "w": 72,
+   "h": 8,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "SAMAR CITY STATION",
+     "where": "整條橫幅（紅黑警示斜紋底），SAMAR 與 CITY 之間有一個圓形圖示分隔",
+     "uncertain": false
+    }
+   ],
+   "kind": "其他",
+   "note": "開場動畫字幕列，地點名稱"
+  },
+  {
+   "file": "OPEN.PBL",
+   "image": 10,
+   "w": 72,
+   "h": 8,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "SPACE JUMP IS READY",
+     "where": "整條橫幅，綠色文字",
+     "uncertain": false
+    }
+   ],
+   "kind": "其他",
+   "note": "開場動畫字幕列"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 0,
+   "w": 152,
+   "h": 80,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "淺藍色設施走廊配置圖，無文字說明（與 #1-#7 的「TOP SECRET」尋獲地圖風格不同）"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 1,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "TOP SECRET  MAP 02-V-11",
+     "where": "下方，暗紅底白字",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "拾獲地圖畫面，暗紅底配設施平面圖"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 2,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "TOP SECRET",
+     "where": "右側，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "MAP 00-A-47",
+     "where": "右側，第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "拾獲地圖畫面，暗紅底配設施平面圖"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 3,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "TOP SECRET",
+     "where": "下方，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "MAP 99-N-54",
+     "where": "下方，第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "拾獲地圖畫面，暗紅底配設施平面圖"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 4,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "TOP SECRET MAP 70-A-81",
+     "where": "下方，同一行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "拾獲地圖畫面，暗紅底配設施平面圖，右側有一隻小怪物圖案"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 5,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "TOP SECRET",
+     "where": "右下方，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "MAP 40-K-74",
+     "where": "右下方，第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "拾獲地圖畫面，暗紅底配設施平面圖"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 6,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "TOP SECRET",
+     "where": "右下方，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "MAP 09-E-65",
+     "where": "右下方，第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "拾獲地圖畫面，暗紅底配設施平面圖，上緣有黑色破損效果"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 7,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "MAP EEACC-DD",
+     "where": "右下方，第一行",
+     "uncertain": true
+    },
+    {
+     "text": "TOP SECRET",
+     "where": "右下方，第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "拾獲地圖畫面，暗紅底配設施平面圖（圓形），文字順序與其他張相反（MAP 在前）"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 8,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "MADE FROM MASTERS KDG",
+     "where": "頂部藍底，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "DIGITAL:TECHNICAL NOTE/E-CAPSULE",
+     "where": "頂部藍底，第二行",
+     "uncertain": false
+    },
+    {
+     "text": "ALLOY",
+     "where": "左側標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "NICKLE",
+     "where": "左下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "DC BRAND 7",
+     "where": "右側標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "PARADISE",
+     "where": "右下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "CAPSULE IN CHANGE MODE:",
+     "where": "底部，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "DEFEAT THE SPECIAL KDG FORCE",
+     "where": "底部，第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "武器道具說明頁（E-CAPSULE），藍底白字＋青色部件標註"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 9,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "ARTICLE 555 OF 888 : PATH KDG",
+     "where": "頂部，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "SUBJECT : TECHNICAL NOTE/ LOW",
+     "where": "頂部，第二行",
+     "uncertain": false
+    },
+    {
+     "text": "CASSETTE",
+     "where": "左上標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "AUTOEJECT",
+     "where": "中上標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "METAL",
+     "where": "左下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "HIGH QUALITY ARMORSHIP",
+     "where": "底部，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "DIGITAL PROGRAM SYNTHESIZER",
+     "where": "底部，第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "武器道具說明頁，黑底青色字，畫兩個零件特寫"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 10,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "ARTICLE 770 OF 045 :PATH KDG",
+     "where": "頂部，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "SPECIAL TECHNICAL NOTE-GPX",
+     "where": "頂部，第二行",
+     "uncertain": false
+    },
+    {
+     "text": "DASSUI",
+     "where": "左側標籤（含底線，出現兩次，左右各一）",
+     "uncertain": false
+    },
+    {
+     "text": "KANSO",
+     "where": "右上標籤（含底線，貼齊畫面右緣，疑似被裁切）",
+     "uncertain": true
+    },
+    {
+     "text": "TIMER",
+     "where": "中下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "REAR",
+     "where": "右下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "HARD STONE  SPECIAL:",
+     "where": "底部，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "KEEP AWAY FROM MELSER",
+     "where": "底部，第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "武器道具說明頁，黑底青色字，畫兩個零件特寫"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 11,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "ARTICLE 254 OF 509   PATH  KDG216",
+     "where": "頂部，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "SUBJECT:TECHNICAL NOTE/ VRS",
+     "where": "頂部，第二行",
+     "uncertain": false
+    },
+    {
+     "text": "TANUKI",
+     "where": "左上標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "TORO",
+     "where": "標籤（含底線，出現兩次，左右各一）",
+     "uncertain": false
+    },
+    {
+     "text": "TEN",
+     "where": "中下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "AMR-445  VERSION 2-12",
+     "where": "底部，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "DOUBLE SIDE: DENSITY TRACK",
+     "where": "底部，第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "武器道具說明頁，黑底青色字，畫兩個零件特寫"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 12,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "ARTICLE 021 OF 726  PATH KDG209",
+     "where": "頂部，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "SUBJECT:TECHNICAL NOTE/",
+     "where": "頂部，第二行",
+     "uncertain": false
+    },
+    {
+     "text": "PSYCHO GUN",
+     "where": "頂部，第三行",
+     "uncertain": false
+    },
+    {
+     "text": "EAR SET",
+     "where": "右上標籤",
+     "uncertain": false
+    },
+    {
+     "text": "ARM SET",
+     "where": "左側標籤",
+     "uncertain": false
+    },
+    {
+     "text": "ENGINE",
+     "where": "中下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "PLAY THE GAME!  DON'T BOTHER",
+     "where": "底部，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "READING THE FINE PRINT.",
+     "where": "底部，第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "武器道具說明頁「PSYCHO GUN」，黑底青色字"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 13,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "LOAD BEFORE USE:PATH KGD7440",
+     "where": "頂部藍底，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "ORIGINAL:TECHNICAL NOTE/E-GUN",
+     "where": "頂部藍底，第二行",
+     "uncertain": false
+    },
+    {
+     "text": "THINGAMAJIG",
+     "where": "左上標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "WAZOO",
+     "where": "左側標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "DODAD",
+     "where": "左下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "WATZIT",
+     "where": "右側標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "BEWARE OF JAMMING-",
+     "where": "底部藍底，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "HAVE A NICE DAY.",
+     "where": "底部藍底，第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "武器道具說明頁「E-GUN」，藍底白字＋青色部件標註（詼諧用詞：THINGAMAJIG/WAZOO/DODAD/WATZIT）"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 14,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "MADE FROM MASTERS KDG : PATH",
+     "where": "頂部藍底，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "DIGITAL :TECHNICAL NOTE/",
+     "where": "頂部藍底，第二行",
+     "uncertain": false
+    },
+    {
+     "text": "SPEED",
+     "where": "左上標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "NOISE",
+     "where": "左下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "TECH",
+     "where": "右上標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "MODE",
+     "where": "右下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "NAME- GAMERA",
+     "where": "底部藍底，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "EXCITING SPACE WAR...",
+     "where": "底部藍底，第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "武器道具說明頁，藍底白字＋青色部件標註"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 15,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "MADE FROM MASTERS KDG : PATH",
+     "where": "頂部藍底，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "DIGITAL :TECHNICAL NOTE/",
+     "where": "頂部藍底，第二行",
+     "uncertain": false
+    },
+    {
+     "text": "AUTO",
+     "where": "左上標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "BASIC",
+     "where": "左下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "PRINT",
+     "where": "右側標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "BACK",
+     "where": "中下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "KIT:C-6 FROM E-GUN",
+     "where": "底部藍底，單行",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "武器道具說明頁，藍底白字＋青色部件標註"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 16,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "MADE FROM MASTERS KDG : PATH",
+     "where": "頂部藍底，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "DIGITAL :TECHNICAL NOTE/SP",
+     "where": "頂部藍底，第二行",
+     "uncertain": false
+    },
+    {
+     "text": "CONTROL",
+     "where": "左上標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "CHANNEL",
+     "where": "右上標籤（含底線，貼齊畫面右緣）",
+     "uncertain": false
+    },
+    {
+     "text": "CHIOO",
+     "where": "左下標籤（含底線）",
+     "uncertain": true
+    },
+    {
+     "text": "DIGIT",
+     "where": "右下標籤（含底線）",
+     "uncertain": false
+    },
+    {
+     "text": "WE PUT THIS IN AS SPACE FILLER-",
+     "where": "底部藍底，第一行",
+     "uncertain": false
+    },
+    {
+     "text": "HANG TOUGH!",
+     "where": "底部藍底，第二行（置中）",
+     "uncertain": false
+    }
+   ],
+   "kind": "道具圖鑑",
+   "note": "武器道具說明頁，藍底白字＋青色部件標註（詼諧用詞：WE PUT THIS IN AS SPACE FILLER）"
+  },
+  {
+   "file": "MAP.PBL",
+   "image": 17,
+   "w": 152,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "DANGER",
+     "where": "頂部中央，黃字",
+     "uncertain": false
+    },
+    {
+     "text": "SLOT MACHINE",
+     "where": "轉輪下方，青色字",
+     "uncertain": false
+    }
+   ],
+   "kind": "面板",
+   "note": "吃角子老虎機畫面，五個轉輪目前為黑色空白（轉輪符號待轉動時才顯示，非文字）"
+  },
+  {
+   "file": "END0.PBL",
+   "image": 0,
+   "w": 48,
+   "h": 48,
+   "has_text": false,
+   "texts": [],
+   "kind": "結局",
+   "note": "圓形抽象網點紋理（藍黃紅），無文字，疑為結局畫面的星球／特效背景素材"
+  },
+  {
+   "file": "END0.PBL",
+   "image": 1,
+   "w": 48,
+   "h": 48,
+   "has_text": false,
+   "texts": [],
+   "kind": "結局",
+   "note": "圓形抽象網點紋理（藍綠紅），無文字，疑為結局畫面的星球／特效背景素材"
+  },
+  {
+   "file": "LOGO.PBL",
+   "image": 0,
+   "w": 112,
+   "h": 80,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "PSYCHIC",
+     "where": "上方，大型美術字（藍色，含閃電裝飾）",
+     "uncertain": false
+    },
+    {
+     "text": "COSMIC SOLDIER",
+     "where": "中間，小字",
+     "uncertain": false
+    },
+    {
+     "text": "WAR",
+     "where": "下方，大型美術字（藍色，含閃電裝飾）",
+     "uncertain": false
+    }
+   ],
+   "kind": "標題",
+   "note": "完整遊戲標題美術字，與 SCREEN.PBL #0/#1 的殘片內容一致"
+  },
+  {
+   "file": "KGDLOGO.PBL",
+   "image": 0,
+   "w": 192,
+   "h": 96,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "AN ORIGINAL GAME BY",
+     "where": "上方黑底，白字",
+     "uncertain": false
+    },
+    {
+     "text": "KOGADO",
+     "where": "中間，黃底大黑字",
+     "uncertain": false
+    },
+    {
+     "text": "SOFTWARE PRODUCTS",
+     "where": "下方，黃底小黑字",
+     "uncertain": false
+    }
+   ],
+   "kind": "標題",
+   "note": "開發商片頭 Logo 畫面（工画堂スタジオ／KOGADO，與 SCREEN.PBL 上出現的 KYODAI 為不同名稱）"
+  },
+  {
+   "file": "OVER.PBL",
+   "image": 0,
+   "w": 64,
+   "h": 64,
+   "has_text": false,
+   "texts": [],
+   "kind": "結局",
+   "note": "粉紅色怪物／機械生物立繪，無文字（GAME OVER 畫面用插圖，文字可能由程式另外疊印）"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 0,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "第一人稱視角走廊／機艙內部，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 1,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "第一人稱視角走廊，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 2,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "第一人稱視角走廊，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 3,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "第一人稱視角，太空／能量特效場景，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 4,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "第一人稱視角房間，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 5,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "ELEVATOR",
+     "where": "左上方，紅色文字招牌",
+     "uncertain": false
+    },
+    {
+     "text": "AT011",
+     "where": "右側牆面，傾斜（斜體）珊瑚色小字，疑似樓層/區域編號",
+     "uncertain": true
+    }
+   ],
+   "kind": "房間背景",
+   "note": "電梯房間，左側牆面招牌寫 ELEVATOR，右側牆面另有一行傾斜字體難以完全確認"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 6,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，三個艙室裝置，一名藍髮角色站立，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 7,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，機械裝置特寫，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 8,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，角色與裝置，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 9,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "角色頭像特寫，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 10,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "角色頭像特寫，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 11,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，機械與布幕，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 12,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，走廊延伸，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 13,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "角色與生物特寫，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 14,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，控制面板特寫（含儀表圖示，非文字），無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 15,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，控制面板特寫，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 16,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "與 #14 相同房間布局，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 17,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "與 #14 相同房間布局，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 18,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "DANGER",
+     "where": "正上方，黃字紫底告示牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "房間內部，警示牌 DANGER，下方鋸齒狀裝飾"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 19,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "DANGER",
+     "where": "正上方，黃字紫底告示牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "與 #18 相同房間，警示牌 DANGER"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 20,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "粉紅色走廊與樓梯，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 21,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "與 #20 相同走廊，地面有血跡/瓦礫裝飾圖案，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 22,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "青色房間，中央藍色門，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 23,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "GUARD",
+     "where": "左側大型數字造型招牌內，青字",
+     "uncertain": false
+    },
+    {
+     "text": "GUARD",
+     "where": "右側大型數字造型招牌內，青字",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "警衛室，左右各一個 GUARD 標示"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 24,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "GUARD",
+     "where": "左側大型數字造型招牌內，青字",
+     "uncertain": false
+    },
+    {
+     "text": "GUARD",
+     "where": "右側大型數字造型招牌內，青字",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "與 #23 相同房間，背景色調不同"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 25,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，控制台特寫，無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 26,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，控制台特寫（俯視角度），無文字"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 27,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "DATA",
+     "where": "右上方，白字藍底招牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "終端機房間，招牌寫 DATA"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 28,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "COMPUTE",
+     "where": "右上方，白字藍底招牌，貼齊畫面右緣，疑似被裁切（原字可能是 COMPUTER）",
+     "uncertain": true
+    }
+   ],
+   "kind": "房間背景",
+   "note": "與 #27 同系列終端機房間，招牌文字被畫面邊緣截斷"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 29,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "INFORM",
+     "where": "右上方，白字藍底招牌，貼齊畫面右緣，疑似被裁切（原字可能是 INFORMATION）",
+     "uncertain": true
+    }
+   ],
+   "kind": "房間背景",
+   "note": "與 #27 同系列終端機房間，招牌文字被畫面邊緣截斷"
+  },
+  {
+   "file": "ROOM0.PBL",
+   "image": 30,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，怪物與機器人特寫，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 0,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，機械與樓梯，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 1,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "巨大數字造型裝飾牆（與 ROOM0 #23/#24 類似造型但無 GUARD 字樣），無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 2,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "COMPUTER",
+     "where": "上方，黃底紫字招牌",
+     "uncertain": false
+    },
+    {
+     "text": "IMPERIAL CO.",
+     "where": "下方，黃底紫字招牌第一行",
+     "uncertain": false
+    },
+    {
+     "text": "LTD.",
+     "where": "下方，黃底紫字招牌第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "電腦終端機房間，招牌 COMPUTER／公司名 IMPERIAL CO. LTD."
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 3,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "COMPUTER",
+     "where": "上方，黃底紫字招牌",
+     "uncertain": false
+    },
+    {
+     "text": "IMPERIAL CO.",
+     "where": "下方，黃底紫字招牌第一行",
+     "uncertain": false
+    },
+    {
+     "text": "LTD.",
+     "where": "下方，黃底紫字招牌第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "與 #2 相同房間，色調變化版本"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 4,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "COMPUTER",
+     "where": "上方，黃底紫字招牌",
+     "uncertain": false
+    },
+    {
+     "text": "IMPERIAL CO.",
+     "where": "下方，黃底紫字招牌第一行",
+     "uncertain": false
+    },
+    {
+     "text": "LTD.",
+     "where": "下方，黃底紫字招牌第二行",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "與 #2 相同房間，色調變化版本"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 5,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，牆面裝置特寫，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 6,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "與 #5 類似房間，加入植物裝飾，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 7,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，天花板懸掛裝置與樓梯，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 8,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，走廊與樓梯，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 9,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "垂掛藤蔓／管線特寫，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 10,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "DANGER",
+     "where": "左上方，白字黑底招牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "房間內部，警示牌 DANGER，左側另有一個紅色符號圖示（非文字）"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 11,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "與 #10 同系列房間，無文字版本"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 12,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "GATE OPEN",
+     "where": "右上方，白字藍底告示牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "房間內部，告示牌 GATE OPEN"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 13,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "DANGER",
+     "where": "上方中央，紅字黑底小招牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "房間內部，警示牌 DANGER（紅字）"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 14,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "DANGER",
+     "where": "上方中央，綠字黑底小招牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "與 #13 相同房間，DANGER 招牌改綠字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 15,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "DANGER",
+     "where": "上方中央，黃字黑底小招牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "與 #13 相同房間，DANGER 招牌改黃字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 16,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "DANGER",
+     "where": "上方中央，綠字招牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "房間內部，警示牌 DANGER（綠字，與 #13-15 不同房間造型）"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 17,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "DANGER",
+     "where": "上方中央，青字招牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "與 #16 相同房間，DANGER 招牌改青字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 18,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "DANGER",
+     "where": "上方中央，青字招牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "與 #16/#17 相同房間，色調變化版本"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 19,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，控制台特寫（波形圖與色塊，非文字），無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 20,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "與 #19 相同房間，色調變化版本，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 21,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "與 #19 相同房間，色調變化版本，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 22,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "與 #19 相同房間，色調變化版本，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 23,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "與 #19 相同房間，色調變化版本，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 24,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，藍色門，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 25,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "DANGER",
+     "where": "上方中央，白字黑底招牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "房間內部，警示牌 DANGER"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 26,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "ESCAPE",
+     "where": "上方中央，黃字招牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "逃生通道房間，招牌 ESCAPE；門洞內管線排列略似字母 N 形狀，判斷為裝飾造型非文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 27,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "ESCAPE",
+     "where": "上方中央，綠字招牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "與 #26 相同房間，ESCAPE 招牌改綠字；門洞內管線排列略似字母 U／N 形狀，判斷為裝飾造型非文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 28,
+   "w": 72,
+   "h": 72,
+   "has_text": true,
+   "texts": [
+    {
+     "text": "ESCAPE",
+     "where": "上方中央，綠字招牌",
+     "uncertain": false
+    }
+   ],
+   "kind": "房間背景",
+   "note": "與 #26/#27 相同房間，門洞內為直線管線裝飾（無造型文字）"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 29,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "圓柱形艙室特寫，無文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 30,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "房間內部，怪物與控制台，右側黃色鋸齒為裝飾圖案非文字"
+  },
+  {
+   "file": "ROOM1.PBL",
+   "image": 31,
+   "w": 72,
+   "h": 72,
+   "has_text": false,
+   "texts": [],
+   "kind": "房間背景",
+   "note": "怪物觸手特寫，無文字"
+  }
+ ],
+ "schema": "psychic-war-baked-inventory/1"
+}

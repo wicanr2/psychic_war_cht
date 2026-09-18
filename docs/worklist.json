@@ -126,27 +126,6 @@
       "issue": 14
     },
     {
-      "id": "baked-text-graphics",
-      "milestone": "M3",
-      "labels": [
-        "re",
-        "graphics",
-        "text"
-      ],
-      "title": "圖檔內嵌文字：PBL 格式與含文字的圖清冊",
-      "body": "操作面板上的「ADVANCE」「LOOK ASIDE」「TURN」「OPERATION」在任何檔案的 ASCII 裡都找不到，推定畫在 `SCREEN.PBL` 等圖上。要解 `.PBL` 格式，列出所有含文字的圖與位置，供 M4 以圖層替換。",
-      "acceptance": "`.PBL` 格式規格 READY；含文字圖片清冊（檔名、座標、原文）完成。",
-      "verify": {
-        "kind": "absent",
-        "paths": [
-          "docs/spec"
-        ],
-        "pattern": "(?m)^# \\d{3}：.*PBL",
-        "note": "規格出現後改綁清冊檔；標題畫面兩套字型都沒有使用，推定是 OPEN.PBL 圖（docs/re/014 §5）"
-      },
-      "issue": 18
-    },
-    {
       "id": "baked-text-replacement",
       "milestone": "M4",
       "labels": [
@@ -159,7 +138,7 @@
       "blocked_by": "baked-text-graphics, hires-overlay-canvas",
       "verify": {
         "kind": "manual",
-        "note": "替換圖目錄出現後改綁清冊與替換圖的數量比對"
+        "note": "機制完成（`docs/spec/011` READY、dosgolem 規格 203、`xlate.Watcher`）：操作面板 4 則、狀態欄 2 則逐像素差 0，反向對照與前端都差 0（docs/re/024）。四個檢查點只剩標題美術字（決定保留）。剩：MAP.PBL 17 張的道具圖鑑與拾獲地圖、ROOM0／ROOM1 23 張房間招牌、OPEN.PBL 4 張開場字幕（docs/re/024 §6）"
       },
       "issue": 25
     },
@@ -476,6 +455,13 @@
       "issue": 21,
       "title": "CJK 點陣字：依譯文烘製子集",
       "evidence": "`tools/font/bake.sh` 走 docker 烘 `font/cjk24.golemfnt`、`cjk16.golemfnt`，873 字（24 點倚天 815＋Noto 58、16 點倚天 825＋Noto 48）；兩套字型都沒有的字結束碼 1、不寫輸出檔（反向對照 U+1F600）；實跑缺字 0（`docs/re/019` §5、`docs/re/021`）。字型授權：使用者定案 2026-09-18 發行也用倚天字形（`docs/re/020` §4），README 的字模來源說明由 #36 追蹤",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "baked-text-graphics",
+      "issue": 18,
+      "title": "圖檔內嵌文字：PBL 格式與含文字的圖清冊",
+      "evidence": "`docs/spec/010`（READY）＋`tools/pbl.py`：26 個檔 537 張圖全部解得開，`SCREEN.PBL` 三張在實跑畫面逐像素相同、反向對照失敗（`docs/re/023`）。清冊 `text/baked-inventory.json`：537 筆、含文字 50 張 143 則（`docs/re/024` §1、§5）",
       "date": "2026-09-18"
     }
   ]

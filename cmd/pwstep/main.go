@@ -95,6 +95,11 @@ func main() {
 			}
 		}
 		tr.Attach(o)
+		if baked, err := translator.LoadBaked(*textDir); err != nil {
+			log.Fatal(err)
+		} else {
+			tr.AttachBaked(baked, *orig)
+		}
 	}
 
 	startMs := float64(o.Cycles()) / float64(*cycles)
