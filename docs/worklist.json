@@ -67,7 +67,7 @@
       "acceptance": "spec 定案 `CPUHz` 與依據（敵人攻擊的時間基準＋DOSBox-X 固定 cycles 的戰鬥時間參照）；前端執行時計時器中斷穩定在 72 Hz ±1%、每秒週期數 ±2%，第一場戰鬥的持續時間與參照相差 ≤ 10%。",
       "verify": {
         "kind": "manual",
-        "note": "前端牆上時間對齊已通過（docs/re/016 §2.1）。第一場戰鬥：DOSBox-X 750 cycles 有效 3 場平均 17.75 秒、dosgolem 12 組平均 17.84 秒（−0.5%，docs/re/010 §4.6），樣本不足不定案。2026-09-17 主機 load 18（14 核）不能量；重開條件：load 連續 5 分鐘 < 2，DOSBox-X 走位改成等檢查點後補到 ≥ 5 場（docs/re/019 §6）"
+        "note": "前端牆上時間對齊已通過（docs/re/016 §2.1）。第一場戰鬥：DOSBox-X 750 cycles 有效 3 場平均 17.75 秒、dosgolem 12 組平均 17.84 秒（−0.5%，docs/re/010 §4.6），樣本不足不定案。2026-09-17 主機 load 18（14 核）不能量；重開條件：load 連續 5 分鐘 < 2，DOSBox-X 走位改成等檢查點後補到 ≥ 5 場（docs/re/019 §6、docs/re/026 §3）"
       },
       "issue": 9
     },
@@ -104,7 +104,7 @@
       "blocked_by": "opl2-synth, realtime-pacing",
       "verify": {
         "kind": "manual",
-        "note": "前端串流音訊已做：null 輸出 60 秒欠載 0；-wav 另存的標題音樂與 DOSBox-X 聲音層配對 628／628（docs/re/016 §2.3）。剩：有音效卡的機器實際發聲、AdLib 在前端實跑與比對、音源切換"
+        "note": "前端即時音訊只在 -audio null 驗過（docs/re/016）。AdLib 路徑 2026-09-18 追量：第 2–50 秒欠載 0、第 51–54 秒 68 次與主機負載尖峰同時（docs/re/026）。剩：主機空閒時的乾淨 60 秒數字、真音效卡輸出"
       },
       "issue": 13
     },
