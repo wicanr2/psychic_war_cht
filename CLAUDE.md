@@ -190,6 +190,8 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/battle_frames.py <rgb 目錄> [fps] [按下格]` | 戰鬥錄影判讀：敵人圖像消失的時點 |
 | `tools/frame_compare.py [--rgb]` | dosgolem vs DOSBox-X：預設比版面（色號對應），`--rgb` 直接比 RGB |
 | `tools/battle_palette_check.py` | 攻擊雷射上色號 2／A 的顏色驗證（時間軸不對齊時用） |
+| `tools/opl_wav_compare.py <a.wav> <b.wav> [--segments] [--drift]` | OPL2 合成器的保真度（`docs/spec/016`）：頻譜、包絡、chroma 三個指標。整段一個數字看不出「哪一段不像」——`--segments` 逐 5 秒印，`--drift` 看位移是不是隨時間漂 |
+| probe 的 `-opl-disable`／`-opl-only`／`-opl-except` | OPL2 診斷：關掉單一功能、只混一個聲道、排除一個聲道。**一次只改一個變因**；`-opl-except` 比 `-opl-only` 有用，因為參照那邊是混音拆不開 |
 | `tools/music_compare.py events\|audio\|opl` | 配樂比對：埠紀錄 vs `.IBM`（逐筆）；兩個 WAV 的音高與節奏（`docs/spec/001`）；OPL2 樂譜 vs WAV（`docs/spec/002`，方法分辨力不足，見 docs/re/007） |
 | `tools/dosboxx-audio.sh [秒] [speaker\|adlib]` | DOSBox-X 錄標題音樂 |
 | `tools/dosboxx-opl.sh [秒]` | DOSBox-X 擷取 raw OPL（`DX-CAPTURE /O`），走進迷宮後 Ctrl+Q 收尾 |
