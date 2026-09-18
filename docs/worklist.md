@@ -48,6 +48,8 @@
 | #34 | `theme` | 主題替換 | graphics | #20 | manual |
 | #35 | `cross-platform-package` | 跨平台打包：Linux／Windows／macOS | release | #27 | manual |
 | #36 | `license-readme` | LICENSE（RRSAL-1.0）與 README | release | — | absent |
+| #37 | `readme` | README.md：遊戲介紹、中文截圖、怎麼玩 | release | #36 | absent |
+| #38 | `walkthrough-1989` | 整理當年《軟體世界》19 期攻略（29–38 頁）成 markdown | text | — | manual |
 
 ## 不做（使用者定案）
 

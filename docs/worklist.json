@@ -210,6 +210,42 @@
     "note": "檔案不存在時 hit 為空＝仍未完成"
    },
    "issue": 36
+  },
+  {
+   "id": "readme",
+   "milestone": "M6",
+   "labels": [
+    "release"
+   ],
+   "issue": 37,
+   "title": "README.md：遊戲介紹、中文截圖、怎麼玩",
+   "body": "repo 目前沒有 README。要寫遊戲介紹、中文截圖、建置與執行、熱鍵表、進度、授權與素材來源。",
+   "acceptance": "README.md 涵蓋上述章節；截圖取自試玩產出；依 rulebook/80、90、91 寫。⚠ 先決定截圖算不算散布原版素材。",
+   "blocked_by": "license-readme",
+   "verify": {
+    "kind": "absent",
+    "paths": [
+     "README.md"
+    ],
+    "pattern": "(?m)^## ",
+    "note": "repo 根目錄出現有章節的 README.md 就該關。⚠ 先決定截圖算不算散布原版素材。"
+   }
+  },
+  {
+   "id": "walkthrough-1989",
+   "milestone": "M6",
+   "labels": [
+    "text"
+   ],
+   "issue": 38,
+   "title": "整理當年《軟體世界》19 期攻略（29–38 頁）成 markdown",
+   "body": "10 頁掃描逐頁判讀，整理成 markdown 放 docs/；同時當譯名的校對材料。",
+   "acceptance": "docs/ 有涵蓋 29–38 頁的 markdown；譯名與 text/glossary.json 一致；repo 裡沒有掃描圖。",
+   "blocked_by": "",
+   "verify": {
+    "kind": "manual",
+    "note": "掃描圖不進 repo（原版素材）；內容要改寫不逐字轉錄，並標出處。"
+   }
   }
  ],
  "done": [
