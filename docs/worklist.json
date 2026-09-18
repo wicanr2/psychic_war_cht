@@ -147,22 +147,6 @@
       "issue": 18
     },
     {
-      "id": "cjk-font",
-      "milestone": "M4",
-      "labels": [
-        "text",
-        "graphics"
-      ],
-      "title": "CJK 點陣字：依譯文烘製子集",
-      "body": "依譯文實際用字烘製 16×16 或 24×24 點陣子集，字型授權要允許再散布並記在 README。尺寸依放大倍率與文字框大小定案。",
-      "acceptance": "字型烘製腳本走 docker；譯文用到的字 100% 有字模，缺字時建置失敗。",
-      "verify": {
-        "kind": "manual",
-        "note": "烘製走 docker（tools/font/bake.sh → font/cjk24.golemfnt、cjk16.golemfnt，873 字）；兩套字型都沒有的字結束碼 1、不寫輸出檔；實跑缺字 0（docs/re/019 §5）。剩：倚天字模散布授權，選項在 docs/re/020 等使用者決定；決定後改綁 README 的字型授權段"
-      },
-      "issue": 21
-    },
-    {
       "id": "baked-text-replacement",
       "milestone": "M4",
       "labels": [
@@ -205,11 +189,11 @@
       ],
       "title": "中文版正常玩家路徑試玩",
       "body": "依 kb `retro-cht/retro-game-playtest`：以一般玩家方式從開頭玩到結局，含存讀檔，記錄漏譯、破版、錯字。",
-      "acceptance": "試玩紀錄進 docs/；`runtime-text-coverage` 的「不在文本檔」為 0，沒有破版。",
+      "acceptance": "試玩紀錄進 docs/；`runtime-text-coverage` 的「不在文本檔」為 0，沒有破版。**抽測即可**（使用者定案 2026-09-18）：不必從頭玩到結局，抽幾段正常玩家會走的路徑確認畫面上是中文。",
       "blocked_by": "translation-pass, baked-text-replacement",
       "verify": {
         "kind": "manual",
-        "note": "前端開機到第一場戰鬥：轉譯紀錄三種問題 0、文字路徑英文殘留 0（docs/re/019 §5）；模擬玩家看截圖試玩到出發平台（docs/re/022）。剩：到結局、存讀檔、圖檔內嵌文字（#18、#25）"
+        "note": "前端開機到第一場戰鬥：轉譯紀錄三種問題 0、文字路徑英文殘留 0（docs/re/019 §5）；模擬玩家看截圖試玩到出發平台（docs/re/022）。剩：再抽測幾段（存讀檔、第二個區域），不必走完全程"
       },
       "issue": 27
     },
@@ -361,7 +345,7 @@
         "release"
       ],
       "title": "LICENSE（RRSAL-1.0）與 README",
-      "body": "依 `rulebook/85` 放入 RRSAL-1.0 全文，第 2 條 (c) 點名本專案的灰色地帶（文本檔的原文欄位、從原版量出的位址表、參照截圖）。README 依 `rulebook/80` 撰寫，寫清楚玩家要自備哪個版本。",
+      "body": "依 `rulebook/85` 放入 RRSAL-1.0 全文，第 2 條 (c) 點名本專案的灰色地帶（文本檔的原文欄位、從原版量出的位址表、參照截圖）。README 依 `rulebook/80` 撰寫，寫清楚玩家要自備哪個版本。 README 另要寫明中文字模來源是倚天中文系統 3.53 的點陣子集（使用者定案 2026-09-18，docs/re/020 §4）與下架聯絡方式。",
       "acceptance": "LICENSE 與 README 進版控；README 寫明原版取得方式與 SHA-256。",
       "verify": {
         "kind": "absent",
@@ -486,6 +470,13 @@
       "title": "全文翻譯",
       "evidence": "要翻 1,313、已翻 1,313（保留原文 38）；10 批子代理＋合併核對＋一致性修正；lint 過長 0、非 Big5 0；字型子集 873 字（`docs/re/021`）",
       "date": "2026-09-17"
+    },
+    {
+      "id": "cjk-font",
+      "issue": 21,
+      "title": "CJK 點陣字：依譯文烘製子集",
+      "evidence": "`tools/font/bake.sh` 走 docker 烘 `font/cjk24.golemfnt`、`cjk16.golemfnt`，873 字（24 點倚天 815＋Noto 58、16 點倚天 825＋Noto 48）；兩套字型都沒有的字結束碼 1、不寫輸出檔（反向對照 U+1F600）；實跑缺字 0（`docs/re/019` §5、`docs/re/021`）。字型授權：使用者定案 2026-09-18 發行也用倚天字形（`docs/re/020` §4），README 的字模來源說明由 #36 追蹤",
+      "date": "2026-09-18"
     }
   ]
 }

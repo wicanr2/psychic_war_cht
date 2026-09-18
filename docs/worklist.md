@@ -34,7 +34,6 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #21 | `cjk-font` | CJK 點陣字：依譯文烘製子集 | text, graphics | — | manual |
 | #25 | `baked-text-replacement` | 圖檔內嵌文字的中文替換圖層 | graphics, text | #18、#20 | manual |
 | #26 | `name-entry` | 輸入名字：原版只收 ASCII，中文版怎麼處理 | text, input | #15 | manual |
 | #27 | `playtest-cht` | 中文版正常玩家路徑試玩 | verify, text | #24、#25 | manual |
@@ -78,3 +77,4 @@
 | #22 | `layout-rules` | 固定寬度文字框的中文排版規則 | `docs/spec/009` §3：各種類行寬（訊息 16＋15、選項 10、區塊每行 20、其餘依原文可印字數）、一格一字、透明格、保留原文；`tools/text_extract.py lint` 列出過長譯文，1,313 則過長 0（`docs/re/021`）。選單游標與反白沿用原版像素，不另排 | 2026-09-17 |
 | #23 | `glossary` | 譯名表：人名、地名、超能力名稱 | `text/glossary.json` 119 筆：說明書對照 40（記頁碼）、自訂 79（標 provisional，敵人名稱全部）；翻譯指令與 `tools/l10n_batches.py sweep` 都讀它（`docs/re/021`） | 2026-09-17 |
 | #24 | `translation-pass` | 全文翻譯 | 要翻 1,313、已翻 1,313（保留原文 38）；10 批子代理＋合併核對＋一致性修正；lint 過長 0、非 Big5 0；字型子集 873 字（`docs/re/021`） | 2026-09-17 |
+| #21 | `cjk-font` | CJK 點陣字：依譯文烘製子集 | `tools/font/bake.sh` 走 docker 烘 `font/cjk24.golemfnt`、`cjk16.golemfnt`，873 字（24 點倚天 815＋Noto 58、16 點倚天 825＋Noto 48）；兩套字型都沒有的字結束碼 1、不寫輸出檔（反向對照 U+1F600）；實跑缺字 0（`docs/re/019` §5、`docs/re/021`）。字型授權：使用者定案 2026-09-18 發行也用倚天字形（`docs/re/020` §4），README 的字模來源說明由 #36 追蹤 | 2026-09-18 |
