@@ -492,10 +492,16 @@ func (t *Translator) onStringLoop(o *oracle.Oracle, loop uint16) {
 	if loop == addrCSLoop {
 		lin, tr = codeLin+uint32(r.BX), &t.trackCS
 	}
+	at := oracle.Addr{Seg: uint16(lin >> 4), Off: uint16(lin & 0xF)}
+	// 迴圈頭也會停在字串結尾的 0：那一次不能推進行追蹤，否則**記憶體裡相鄰的下一個字串**
+	// 起點剛好是「上一個位址 ＋1」，會被當成同一行的延續而整行不疊字（Game Over 的三行只有第一行有中文）。
+	if str := o.Bytes(at, 1); len(str) == 0 || str[0] == 0 {
+		return
+	}
 	if !tr.Hit(lin, 0, false) {
 		return
 	}
-	str := o.Bytes(oracle.Addr{Seg: uint16(lin >> 4), Off: uint16(lin & 0xF)}, 128)
+	str := o.Bytes(at, 128)
 	for i, c := range str {
 		if c == 0 {
 			str = str[:i]
