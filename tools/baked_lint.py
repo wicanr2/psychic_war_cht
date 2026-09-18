@@ -7,7 +7,7 @@
 1. `file` 存在、`image` 在範圍內；`region`、`text` 都完全落在那張圖裡。
 2. 中文蓋的矩形（`text` 的 x、y 加上格數×格寬、格高）要**包住** `region` 裡的英文墨跡
    （墨跡 ＝ 區塊裡出現次數最少的那些色號的像素；只檢查「英文有沒有被蓋到」，不看是什麼字）。
-3. `translation` 非空、字數 ≤ 格數、每個字在字型子集裡（`font/charset.txt`）。
+3. `translation` 非空、**不是照抄原文**、字數 ≤ 格數、每個字在字型子集裡（`font/charset.txt`）。
 4. 同一張圖的不同筆不可以重疊（會互相移除）。
 5. `original` 要在清冊 `text/baked-inventory.json` 的同一張圖裡找得到（大小寫、空白不計）。
 6. 頂層 `equivalent` 宣告的「這張圖的文字像素與另一張相同」要真的成立：
@@ -91,6 +91,10 @@ def main(argv):
         tr = e["translation"]
         if not tr:
             fail(key, "沒有譯文")
+        elif tr.upper().replace(" ", "") == e["original"].upper().replace(" ", ""):
+            # 疊字是用 CJK 點陣字型畫的，一個字母佔一格；照抄英文不是「保持原樣」，
+            # 是把原版排好的英文換成間距被拉開的版本。不翻就不要建這一筆（原版像素照顯示）。
+            fail(key, "譯文照抄原文 %r：不翻的話刪掉這一筆，讓原版顯示" % e["original"])
         elif len(tr) > cells:
             fail(key, "譯文 %d 字，超過 %d 格" % (len(tr), cells))
         else:
