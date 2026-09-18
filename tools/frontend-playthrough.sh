@@ -54,8 +54,10 @@ wait_ref 04-cleared 64; press space 1
 wait_ref 05-select 64; press Return 1
 wait_ref 06-name 64; press k 0.5; press a 0.5; press i 0.5; press Return 1
 wait_ref 07-first-play 64
-# 攔截測試：F1 不送進遊戲，畫面不該變
-h0=\$(shot); tap F1; sleep 2; [ \"\$(shot)\" = \"\$h0\" ] && echo 'F1 後畫面沒變' > \$OUT/f1.txt || echo 'F1 後畫面變了' > \$OUT/f1.txt
+# F1 說明頁（docs/spec/012 §3）：按一次要出現、再按一次要回到原畫面，而且鍵不進遊戲
+h0=\$(shot); tap F1; sleep 2; h1=\$(shot); import -window \"\$W\" \$OUT/help.png; tap F1; sleep 2; h2=\$(shot)
+{ [ \"\$h1\" != \"\$h0\" ] && echo 'F1 開啟：畫面變了' || echo 'F1 開啟：畫面沒變（說明頁沒出現）'
+  [ \"\$h2\" = \"\$h0\" ] && echo 'F1 關閉：回到原畫面' || echo 'F1 關閉：畫面與原本不同'; } > \$OUT/f1.txt
 for s in 1 2 3 4 5 6; do press Up 2.5; done
 note \"遭遇，按住空白鍵 $HOLD 秒\"
 xdotool keydown space; sleep $HOLD; xdotool keyup space
