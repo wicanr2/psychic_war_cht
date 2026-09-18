@@ -522,23 +522,50 @@ func parseCycles(s string) (uint64, error) {
 	return v, nil
 }
 
+// version 由 -ldflags -X main.version 打進來（docs/spec/021 §4）。
+var version = "dev"
+
+// notext 是 -text 的停用值。空字串現在表示「用預設位置」（docs/spec/021 §3.1），
+// 所以停用疊字要另外給一個值。
+const notext = "off"
+
 func main() {
 	orig := flag.String("orig", "", "含 PW.EXE 的原版目錄（玩家自備）")
 	cyclesFlag := flag.String("cycles", "750", "每毫秒 cycles，或 xt／at8／at12（docs/spec/004）")
 	scale := flag.Int("scale", 3, "整數倍放大")
 	adlib := flag.Bool("adlib", false, "388h 上有 OPL2（遊戲改走 .MID）")
-	scratch := flag.String("scratch", "saves", "遊戲存檔寫到這裡")
+	scratch := flag.String("scratch", "", "遊戲存檔寫到這裡（預設是使用者資料目錄，docs/spec/021 §3.2）")
 	loadState := flag.String("load-state", "", "從 probe 狀態檔開始（除錯、測試用）")
 	audioOut := flag.String("audio", "ebiten", "ebiten（音效卡）或 null（照牆上時間丟棄）")
 	statsPath := flag.String("stats", "", "每秒寫一行 JSON 量測")
 	quitAfter := flag.Duration("quit-after", 0, "牆上時間到了自己結束（自動驗收用）")
 	wavPath := flag.String("wav", "", "把送給音效卡的取樣另存成 WAV（驗證聲音內容用）")
-	textDir := flag.String("text", "text", "文本檔目錄（docs/spec/007）；空字串停用中文疊字")
-	fontDir := flag.String("font", "font", "中文字型子集目錄：cjk24.golemfnt、cjk16.golemfnt（tools/font/bake.sh）")
+	textDir := flag.String("text", "", "文本檔目錄（docs/spec/007）；預設找執行檔旁的 text/，"+notext+" 停用中文疊字")
+	fontDir := flag.String("font", "", "中文字型子集目錄：cjk24.golemfnt、cjk16.golemfnt（預設找執行檔旁的 font/）")
 	textLog := flag.String("text-log", "", "轉譯紀錄（JSON Lines）")
 	cheat := flag.Bool("cheat", false, "打開作弊熱鍵 F5（補滿 HP 與能量）、F6（敵人剩 1 點），docs/spec/014")
 	recordPath := flag.String("record", "", "把按鍵錄成重播檔（docs/spec/019）：記指令數不記時間，換一台機器也能重現")
+	showVersion := flag.Bool("version", false, "印出版本後結束")
 	flag.Parse()
+	if *showVersion {
+		fmt.Println(version)
+		return
+	}
+	// 發行包的路徑（docs/spec/021 §3）：旗標沒給時找執行檔旁，不是 cwd。
+	if *orig == "" {
+		*orig = psychicwar.OrigDir()
+	}
+	if *scratch == "" {
+		*scratch = psychicwar.SaveDir("saves")
+	}
+	if *textDir == "" {
+		*textDir = psychicwar.DataDir("text")
+	} else if *textDir == notext {
+		*textDir = ""
+	}
+	if *fontDir == "" {
+		*fontDir = psychicwar.DataDir("font")
+	}
 	if *orig == "" {
 		flag.Usage()
 		os.Exit(2)

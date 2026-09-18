@@ -18,7 +18,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 HOLD="${1:-35}"
 TEXTARGS="-text text -font font -text-log workplace/fe/play/text.jsonl"; TOLMIN=3000
 # 檢查點是原版英文畫面；開疊字時中文區塊會多出上千個不同像素，檢查點只用來抓送鍵時機，所以容許值至少 3000
-if [[ "${PSYCHICWAR_PLAY_TEXT:-1}" == "0" ]]; then TEXTARGS="-text ''"; TOLMIN=0; fi
+if [[ "${PSYCHICWAR_PLAY_TEXT:-1}" == "0" ]]; then TEXTARGS="-text off"; TOLMIN=0; fi
 [[ -x "$ROOT/workplace/bin/psychicwar" ]] || { echo "先 build 前端到 workplace/bin/psychicwar" >&2; exit 2; }
 rm -rf "$ROOT/workplace/fe/play"; mkdir -p "$ROOT/workplace/fe/play/steps"
 PSYCHICWAR_TIMEOUT=15m PSYCHICWAR_SH="

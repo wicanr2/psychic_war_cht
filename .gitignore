@@ -17,3 +17,6 @@
 
 # Python 快取
 __pycache__/
+
+# 發行包產物
+/dist/
