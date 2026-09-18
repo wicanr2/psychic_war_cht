@@ -35,7 +35,7 @@
    "acceptance": "暫存器序列與 DOSBox-X raw OPL 擷取逐筆一致；標題音樂 WAV 比對通過（方法以 dosgolem 自我比對當正對照定案）。",
    "verify": {
     "kind": "manual",
-    "note": "事件層已通過（docs/re/012：暫存器序列與 DOSBox-X 逐筆相同）；剩合成器品質與 WAV 層比對（docs/re/007）。WAV 層通過後改綁 docs/re 的通過紀錄"
+    "note": "判準已定案（docs/spec/016 READY）：spec ≥ 0.8350、env ≥ 0.7548、chroma ≥ 0.9603，門檻由 DOSBox-X 錄兩次的上界與兩種下界推出。合成器補上 KSL、震音、顫音、指數起音（dosgolem 196 修訂）。現況（docs/re/032）：全曲前 30 秒 spec 0.8086、env 0.7007、chroma 0.9730，只有 chroma 過；但**前 15 秒三項全部大幅超過門檻**（0.9502／0.8669／0.9798），15 秒之後掉下來而 chroma 仍高 → 純音色問題。已排除 KSL、震音、顫音、指數起音、時間軸速度差、段落間隔、混音截幅。下一步是逐聲道渲染。"
    },
    "issue": 5
   },
@@ -56,26 +56,6 @@
    "issue": 9
   },
   {
-   "id": "mouse-input",
-   "milestone": "M2",
-   "labels": [
-    "input",
-    "re"
-   ],
-   "title": "滑鼠：確認原版是否支援，並在前端提供點選操作",
-   "body": "執行檔有 1 處 `CD 33`，4 億步內沒有執行，可能是偵測滑鼠或不是指令。先確認原版有沒有滑鼠路徑；沒有的話，前端把點擊選單項目、方向箭頭轉成按鍵。",
-   "acceptance": "docs/re/ 寫明原版的滑鼠支援結論；前端可以用滑鼠選選單項目與移動。",
-   "verify": {
-    "kind": "absent",
-    "paths": [
-     "docs/re"
-    ],
-    "pattern": "(?m)^# \\d{3}：.*滑鼠",
-    "note": "docs/re 出現以此為標題的文件就該關；結論文件出現後改綁前端滑鼠對應程式碼"
-   },
-   "issue": 12
-  },
-  {
    "id": "audio-output",
    "milestone": "M2",
    "labels": [
@@ -88,26 +68,9 @@
    "blocked_by": "opl2-synth, realtime-pacing",
    "verify": {
     "kind": "manual",
-    "note": "前端即時音訊只在 -audio null 驗過（docs/re/016）。AdLib 路徑 2026-09-18 追量：第 2–50 秒欠載 0、第 51–54 秒 68 次與主機負載尖峰同時（docs/re/026）。剩：主機空閒時的乾淨 60 秒數字、真音效卡輸出"
+    "note": "null 輸出路徑第 2–65 秒欠載 0（docs/re/026 §5，量測時每核負載 0.36）。缺真實音效卡或 dummy sink 上的數字。"
    },
    "issue": 13
-  },
-  {
-   "id": "input-record-replay",
-   "milestone": "M2",
-   "labels": [
-    "golem-upstream",
-    "verify"
-   ],
-   "title": "輸入錄放：以指令數記錄按鍵，可重播重現",
-   "body": "互動時把每個輸入事件連同指令數記下來，存成重播檔。重播時不需要牆上時間。用途：回報 bug、回歸測試、全程跑測（`full-run-no-gaps`）。",
-   "acceptance": "錄一段遊玩後重播，終點畫面與記憶體逐位元組相同。",
-   "blocked_by": "determinism-rng",
-   "verify": {
-    "kind": "manual",
-    "note": "重播格式 spec 出現後改綁"
-   },
-   "issue": 14
   },
   {
    "id": "baked-text-replacement",
@@ -125,23 +88,6 @@
     "note": "含文字 50 張已疊 45 張、122 塊（`docs/re/031`）：面板與狀態欄 3 張、房間招牌 23 張、道具圖鑑 17 張、開場字幕 1 張，另 `MENU.PBL` 由 `SCREEN.PBL` 的 watcher 等價涵蓋（lint 第 6 項會驗）。lint 0 問題、合成畫面測試 122 筆全過；逐像素實跑差 0 的有面板 6 塊與抽測走到的電梯招牌（含反向對照）。剩 `OPEN.PBL` #7–#9：字是從紅色雜訊底挖出來的，疊字層只有「填背景再畫字」一種畫法，要先在 dosgolem 規格 202 加「只畫字、其餘保留原畫面」的模式。`LOGO.PBL`／`KGDLOGO.PBL` 是標題美術字，`docs/spec/011` §6 定案保留。"
    },
    "issue": 25
-  },
-  {
-   "id": "name-entry",
-   "milestone": "M4",
-   "labels": [
-    "text",
-    "input"
-   ],
-   "title": "輸入名字：原版只收 ASCII，中文版怎麼處理",
-   "body": "「ENTER YOUR NAME」由原版讀按鍵存成 ASCII。選項：保留英文名、或前端另存中文顯示名並在顯示時替換。需要先確認名字存放位置與長度。",
-   "acceptance": "**只支援 ASCII（使用者定案 2026-09-18）**：玩家輸入的名字限 ASCII，存檔檔名沿用 `<名>.DAT`；提示文字與周邊訊息中文化。驗收：輸入、存檔、讀檔、狀態頁四處顯示一致。",
-   "blocked_by": "print-routine",
-   "verify": {
-    "kind": "manual",
-    "note": "定案只支援 ASCII，不做中文名字的顯示層轉換。第 9 輪做。"
-   },
-   "issue": 26
   },
   {
    "id": "playtest-cht",
@@ -204,10 +150,10 @@
    "verify": {
     "kind": "absent",
     "paths": [
-     "LICENSE"
+     "README.md"
     ],
-    "pattern": "RRSAL-1.0",
-    "note": "檔案不存在時 hit 為空＝仍未完成"
+    "pattern": "RRSAL",
+    "note": "LICENSE（RRSAL-1.0）已放入 repo 並依實際內容填好占位符；剩 README 的授權段與字型來源聲明，README 本身由 #37 追蹤。README.md 出現 RRSAL 字樣就該關。"
    },
    "issue": 36
   },
@@ -415,6 +361,27 @@
    "issue": 32,
    "title": "F3 自動地圖",
    "evidence": "`docs/spec/015`（READY）＋`docs/re/030`：走過才記的自動地圖（不解 I_MAP），F3 開關。實跑目前格子與存檔座標相同、走過的 3 格正確、沒走過的 5 格是背景色、開關前後記憶體相同",
+   "date": "2026-09-18"
+  },
+  {
+   "id": "mouse-input",
+   "issue": 12,
+   "title": "滑鼠：確認原版是否支援，並在前端提供點選操作",
+   "evidence": "docs/spec/018、tools/frontend-mouse-check.sh：點「前進」與按 Up 之後的觀測變數逐位元組相同、點熱區外與不點相同",
+   "date": "2026-09-18"
+  },
+  {
+   "id": "input-record-replay",
+   "issue": 14,
+   "title": "輸入錄放：以指令數記錄按鍵，可重播重現",
+   "evidence": "docs/spec/019、tools/record-replay-check.sh：錄 8 筆事件，重播後觀測變數逐位元組相同，反向對照不同",
+   "date": "2026-09-18"
+  },
+  {
+   "id": "name-entry",
+   "issue": 26,
+   "title": "輸入名字：原版只收 ASCII，中文版怎麼處理",
+   "evidence": "docs/spec/017、tools/frontend-name-check.sh：名字欄位 play3 正確、送非 ASCII 之後逐位元組相同、NonASCII 單元測試通過",
    "date": "2026-09-18"
   }
  ],

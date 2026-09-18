@@ -19,9 +19,7 @@
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
 | #9 | `realtime-pacing` | 牆上時間節拍：讓 72 Hz 的遊戲以原速執行 | golem-upstream, frontend | — | manual |
-| #12 | `mouse-input` | 滑鼠：確認原版是否支援，並在前端提供點選操作 | input, re | — | absent |
 | #13 | `audio-output` | 即時音訊輸出（OPL2 與 PC 喇叭） | audio, frontend | #5、#9 | manual |
-| #14 | `input-record-replay` | 輸入錄放：以指令數記錄按鍵，可重播重現 | golem-upstream, verify | #7 | manual |
 
 ## M3：文字攔截與文本抽取
 
@@ -33,7 +31,6 @@
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
 | #25 | `baked-text-replacement` | 圖檔內嵌文字的中文替換圖層 | graphics, text | #18、#20 | manual |
-| #26 | `name-entry` | 輸入名字：原版只收 ASCII，中文版怎麼處理 | text, input | #15 | manual |
 | #27 | `playtest-cht` | 中文版正常玩家路徑試玩 | verify, text | #24、#25 | manual |
 
 ## M5：輔助功能：F1／F2／F3／F10、防拷、作弊
@@ -85,3 +82,6 @@
 | #28 | `copy-protection` | 防拷：翻譯、F1 查表、略過選項 | `docs/spec/013`（READY）＋`docs/re/028`：出題與答案表讀出來（11×7，答案在 `cs:66E5`）；**這一版的比對被一個位元組關掉**，任何答案都會過。三種用法：畫面中文化（`docs/spec/009` 的疊字）、F1 查表（從玩家自己的執行檔即時讀，掛在輸入常式上判斷狀態）、略過（不必做，空白就會過）。反向對照：迷宮畫面按 F1 沒有那一行（差 0） | 2026-09-18 |
 | #33 | `cheats` | 作弊功能 | `docs/spec/014`（READY）＋`docs/re/029`：`-cheat` 打開 F5（HP 與能量補滿）、F6（敵人剩 1 點），一律寫記憶體、位址表在 `apps/psychicwar/cheat.go`。實跑 HP 23→40、能量 1→30、敵人 38→1；不給 `-cheat` 時完全沒變（反向對照） | 2026-09-18 |
 | #32 | `f3-map` | F3 自動地圖 | `docs/spec/015`（READY）＋`docs/re/030`：走過才記的自動地圖（不解 I_MAP），F3 開關。實跑目前格子與存檔座標相同、走過的 3 格正確、沒走過的 5 格是背景色、開關前後記憶體相同 | 2026-09-18 |
+| #12 | `mouse-input` | 滑鼠：確認原版是否支援，並在前端提供點選操作 | docs/spec/018、tools/frontend-mouse-check.sh：點「前進」與按 Up 之後的觀測變數逐位元組相同、點熱區外與不點相同 | 2026-09-18 |
+| #14 | `input-record-replay` | 輸入錄放：以指令數記錄按鍵，可重播重現 | docs/spec/019、tools/record-replay-check.sh：錄 8 筆事件，重播後觀測變數逐位元組相同，反向對照不同 | 2026-09-18 |
+| #26 | `name-entry` | 輸入名字：原版只收 ASCII，中文版怎麼處理 | docs/spec/017、tools/frontend-name-check.sh：名字欄位 play3 正確、送非 ASCII 之後逐位元組相同、NonASCII 單元測試通過 | 2026-09-18 |
