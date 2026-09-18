@@ -70,6 +70,69 @@ type game struct {
 	fontHelp  *xlate.Font
 	helpLines []string
 	cheat     bool // -cheat：打開 F5／F6（docs/spec/014）
+	amap      *psychicwar.AutoMap
+	showMap   bool // F3：自動地圖顯示中（docs/spec/015）
+}
+
+// 自動地圖的版面（docs/spec/015 §2）：一格 12 像素、左上角 (24, 24)、最多 32×32 格。
+const (
+	mapCell  = 12
+	mapOX    = 24
+	mapOY    = 24
+	mapCells = 32
+	mapHeadY = 4
+)
+
+// noteMap 每一幀記一次目前的格子。
+func (g *game) noteMap() {
+	if g.amap == nil {
+		return
+	}
+	g.amap.Note(g.word(psychicwar.AddrArea), g.word(psychicwar.AddrMapX), g.word(psychicwar.AddrMapY))
+}
+
+// drawMap 畫 F3 自動地圖。
+func (g *game) drawMap(dst *ebiten.Image) {
+	if !g.showMap || g.amap == nil || g.over == nil || g.fontHelp == nil {
+		return
+	}
+	w, h := 320*g.scale, 200*g.scale
+	area, x, y := g.word(psychicwar.AddrArea), g.word(psychicwar.AddrMapX), g.word(psychicwar.AddrMapY)
+	clear(g.overPix)
+	// 底色：整頁不透明黑
+	for i := 0; i < w*h; i++ {
+		g.overPix[4*i+3] = 0xFF
+	}
+	put := func(px, py int, c [3]uint8) {
+		if px < 0 || px >= w || py < 0 || py >= h {
+			return
+		}
+		i := 4 * (py*w + px)
+		g.overPix[i], g.overPix[i+1], g.overPix[i+2], g.overPix[i+3] = c[0], c[1], c[2], 0xFF
+	}
+	box := func(cx, cy int, c [3]uint8) {
+		for dy := 0; dy < mapCell-2; dy++ {
+			for dx := 0; dx < mapCell-2; dx++ {
+				put(mapOX+cx*mapCell+dx, mapOY+cy*mapCell+dy, c)
+			}
+		}
+	}
+	grey := [3]uint8{0xAA, 0xAA, 0xAA}
+	white := [3]uint8{0xFF, 0xFF, 0xFF}
+	for _, c := range g.amap.Cells(area) {
+		if int(c[0]) < mapCells && int(c[1]) < mapCells {
+			box(int(c[0]), int(c[1]), grey)
+		}
+	}
+	if int(x) < mapCells && int(y) < mapCells {
+		box(int(x), int(y), white)
+	}
+	head := fmt.Sprintf(psychicwar.MapHeader,
+		area, x, y, g.amap.Count(area), psychicwar.FacingMark(g.word(psychicwar.AddrFacing)))
+	psychicwar.DrawTextPage(g.overPix, w, mapHeadY*g.scale+8*g.scale, g.fontHelp, []string{head},
+		8*g.scale, white, [3]uint8{0, 0, 0}, 0)
+	g.over.WritePixels(g.overPix)
+	dst.DrawImage(g.over, nil)
 }
 
 // word 讀一個線性位址的字組。
@@ -113,6 +176,9 @@ func (g *game) hotkeys(k ebiten.Key) bool {
 	switch k {
 	case ebiten.KeyF1:
 		g.help = !g.help
+		return true
+	case ebiten.KeyF3:
+		g.showMap = !g.showMap
 		return true
 	case ebiten.KeyF2:
 		g.english = !g.english
@@ -165,6 +231,9 @@ func (g *game) quickSave() string {
 	if g.english {
 		lang = "en"
 	}
+	if b, err := json.Marshal(g.amap); err == nil { // 自動地圖跟著即時存檔（docs/spec/015 §3）
+		_ = os.WriteFile(filepath.Join(g.quickDir, "quick.map.json"), b, 0o644)
+	}
 	if err := psychicwar.WriteQuickMeta(filepath.Join(g.quickDir, "quick.json"),
 		psychicwar.NewQuickMeta(stateFormat, exe, text, lang)); err != nil {
 		return "存檔失敗：" + err.Error()
@@ -198,6 +267,12 @@ func (g *game) quickLoad() string {
 			_ = g.tr.Layer.Restore(b, g.tr.Fonts())
 		}
 		g.tr.AttachBaked(g.baked, g.origDir) // watcher 不進快照，讀檔後重新登記（dosgolem 規格 203 §2.3）
+	}
+	if b, err := os.ReadFile(filepath.Join(g.quickDir, "quick.map.json")); err == nil {
+		m2 := psychicwar.NewAutoMap()
+		if json.Unmarshal(b, m2) == nil {
+			g.amap = m2
+		}
 	}
 	g.english = m.Language == "en"
 	if why != "" {
@@ -248,6 +323,7 @@ func (g *game) Update() error {
 	if g.tr != nil {
 		g.tr.Frame(g.o)
 	}
+	g.noteMap()
 	pcm := g.audio.Render()
 	g.ring.Write(pcm)
 	if g.wav != nil {
@@ -304,6 +380,7 @@ func (g *game) Draw(dst *ebiten.Image) {
 			dst.DrawImage(g.over, nil)
 		}
 	}
+	g.drawMap(dst)
 	g.drawHelp(dst)
 	g.drawToast(dst)
 }
@@ -483,6 +560,7 @@ func main() {
 	g.audio = o.NewAudio(sampleRate)
 	g.quickDir, g.origDir, g.textDir = *scratch, *orig, *textDir
 	g.cheat = *cheat
+	g.amap = psychicwar.NewAutoMap()
 	if lines, err := psychicwar.LoadHelp(*textDir); err != nil { // 排不下或讀不到就不要進畫面（docs/spec/012 §5）
 		log.Printf("讀不到說明頁（F1 停用）：%v", err)
 	} else {

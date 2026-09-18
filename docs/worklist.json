@@ -177,26 +177,6 @@
       "issue": 27
     },
     {
-      "id": "f3-map",
-      "milestone": "M5",
-      "labels": [
-        "assist",
-        "re"
-      ],
-      "title": "F3 自動地圖",
-      "body": "資料來源二選一：解 `I_MAP00–11.BIN`／`MAZE.BIN` 格式，或從記憶體讀目前區域與位置。至少要能標出玩家位置與朝向。",
-      "acceptance": "地圖格式或記憶體位址寫進 docs/re/；F3 顯示目前區域地圖與玩家位置，與實際移動一致。",
-      "verify": {
-        "kind": "absent",
-        "paths": [
-          "docs/re"
-        ],
-        "pattern": "(?m)^# \\d{3}：.*地圖格式",
-        "note": "地圖檔地點格已解（docs/re/011 §3），牆壁格未解；docs/re 出現以此為標題的文件就該關；文件出現後改綁地圖繪製程式碼"
-      },
-      "issue": 32
-    },
-    {
       "id": "theme",
       "milestone": "M6",
       "labels": [
@@ -408,6 +388,13 @@
       "issue": 33,
       "title": "作弊功能",
       "evidence": "`docs/spec/014`（READY）＋`docs/re/029`：`-cheat` 打開 F5（HP 與能量補滿）、F6（敵人剩 1 點），一律寫記憶體、位址表在 `apps/psychicwar/cheat.go`。實跑 HP 23→40、能量 1→30、敵人 38→1；不給 `-cheat` 時完全沒變（反向對照）",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "f3-map",
+      "issue": 32,
+      "title": "F3 自動地圖",
+      "evidence": "`docs/spec/015`（READY）＋`docs/re/030`：走過才記的自動地圖（不解 I_MAP），F3 開關。實跑目前格子與存檔座標相同、走過的 3 格正確、沒走過的 5 格是背景色、開關前後記憶體相同",
       "date": "2026-09-18"
     }
   ]

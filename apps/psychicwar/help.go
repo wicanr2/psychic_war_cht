@@ -28,6 +28,7 @@ func LoadHelp(dir string) ([]string, error) {
 		Schema string   `json:"schema"`
 		Lines  []string `json:"lines"`
 		Label  string   `json:"protection_label"`
+		Map    string   `json:"map_header"`
 	}
 	if err := json.Unmarshal(b, &doc); err != nil {
 		return nil, err
@@ -36,11 +37,17 @@ func LoadHelp(dir string) ([]string, error) {
 		return nil, fmt.Errorf("help.json 的 schema 不是 psychic-war-help/1：%q", doc.Schema)
 	}
 	ProtectionLabel = doc.Label
+	if doc.Map != "" {
+		MapHeader = doc.Map
+	}
 	return doc.Lines, CheckHelp(doc.Lines)
 }
 
 // ProtectionLabel 是防拷畫面那一行的標籤（LoadHelp 讀進來）。
 var ProtectionLabel = "　本題答案："
+
+// MapHeader 是 F3 自動地圖的標題樣板（LoadHelp 讀進來；docs/spec/015 §2）。
+var MapHeader = "區域 %d　座標 (%d, %d)　已走 %d 格　朝向 %c"
 
 // LineCells 回一行佔幾格（半形字佔半格，用兩倍整數避免小數）：回的是「半格數」。
 func LineCells(s string) int {

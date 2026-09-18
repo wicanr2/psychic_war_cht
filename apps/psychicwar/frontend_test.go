@@ -187,3 +187,38 @@ func TestCheatValues(t *testing.T) {
 		}
 	}
 }
+
+// docs/spec/015 §4 第 1 項：自動地圖只記合理的格子、去重、分區域、快照往返。
+func TestAutoMap(t *testing.T) {
+	m := NewAutoMap()
+	if !m.Note(0, 3, 4) || m.Note(0, 3, 4) {
+		t.Error("同一格只算一次")
+	}
+	if m.Note(0, 64, 4) || m.Note(0, 3, 999) || m.Note(12, 1, 1) {
+		t.Error("不合理的值不該記")
+	}
+	m.Note(1, 5, 6)
+	if m.Count(0) != 1 || m.Count(1) != 1 || m.Seen(1, 3, 4) {
+		t.Errorf("區域要分開：0 有 %d、1 有 %d", m.Count(0), m.Count(1))
+	}
+	b, err := m.MarshalJSON()
+	if err != nil {
+		t.Fatal(err)
+	}
+	m2 := NewAutoMap()
+	if err := m2.UnmarshalJSON(b); err != nil {
+		t.Fatal(err)
+	}
+	if !m2.Seen(0, 3, 4) || !m2.Seen(1, 5, 6) || m2.Count(0) != 1 {
+		t.Error("快照往返後內容要相同")
+	}
+	m3 := NewAutoMap()
+	if err := m3.UnmarshalJSON([]byte(`{"schema":"別的東西"}`)); err != nil || m3.Count(0) != 0 {
+		t.Error("格式不對時當空的，不回錯")
+	}
+	for f, want := range map[uint16]rune{0: '↑', 1: '→', 2: '↓', 3: '←', 7: '←'} {
+		if got := FacingMark(f); got != want {
+			t.Errorf("朝向 %d → %c，要 %c", f, got, want)
+		}
+	}
+}
