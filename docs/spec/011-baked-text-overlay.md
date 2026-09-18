@@ -76,6 +76,15 @@ dosgolem 規格 `203-baked-text-watchers`（`xlate.Watcher`）、`202-translatio
 3. 前端（Xvfb）：同一個情境用 `tools/frontend-overlay-check.sh` 再驗一次。
 4. 檢查點畫面沒有英文圖字：`07-first-play`、`08-encounter`、`09-battle-won`、`16-sivad` 四張截圖，
    清冊裡列為「有文字」且出現在該畫面的區塊，都已經蓋上中文（以轉譯紀錄的 `stamp` 事件與截圖判讀）。
+5. 合成畫面（`apps/psychicwar/translator` 的 `TestBakedEntriesOnSyntheticScreen`）：**每一筆**資料都要通過。
+   做法是把 `.PBL` 解出來的原版圖塊貼到空白畫面上該在的座標，跑一次 `Frame`，
+   檢查 watcher 有沒有比對到、疊字的座標與格數對不對、字有沒有畫進矩形裡，並以空白畫面做反向對照。
+   像素仍然是原版的，所以這一項驗的是「圖出現時會不會蓋、蓋在哪裡」；
+   沒驗到的只有「那個房間會不會出現在正常路徑上」。
+   - 大部分招牌在還沒走到的房間，第 2 項的實跑只涵蓋當下畫面上有的圖。
+     要知道某張圖該在哪個狀態驗，用 `tools/py.sh tools/baked_find.py <截圖…>`：
+     它拿原版圖塊比截圖上 `screen` 座標的像素，回答「哪一張截圖上有這張圖」。
+     已經蓋上中文的區塊不會命中——這支工具吃的是還沒疊字時留下的截圖。
 
 ## 6. 不做
 
