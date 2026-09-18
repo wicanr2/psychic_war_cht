@@ -120,7 +120,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 
 證據、指令與數字見 `docs/re/001-pw-exe-first-look.md`（實跑初探）、`002-pw-exe-function-census.md`（函式普查）、
 `003-checkpoints-and-dosboxx-reference.md`（檢查點與 DOSBox-X 參照）、`004-rng-and-determinism.md`（亂數）、
-`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）、`011-observation-addresses.md`（位置、朝向、區域、角色數值位址，地圖檔格式）、`012-opl2-event-layer.md`（OPL2 事件層）、`013-replay-route-samar-to-sivad.md`（重播路線）、`014-print-routine.md`（印字常式）、`015-text-formats.md`（文字格式）、`016-frontend-prototype.md`（前端雛形驗收）、`017-text-coverage.md`（文字覆蓋率）、`018-first-chinese-overlay.md`（第一句中文）、`019-all-paths-overlay-verification.md`（所有路徑疊字、覆蓋率、前端實跑）、`020-font-license-options.md`（字型授權選項，待決）、`021-translation-first-pass.md`（全文翻譯第一版）、`022-simulated-player-playtest.md`（模擬玩家試玩）、`023-pbl-image-format.md`（`.PBL` 圖檔格式）、`024-baked-text-overlay.md`（圖檔內嵌文字）、`025-assist-hotkeys.md`（F1／F2／F10）、`026-adlib-underrun-followup.md`（AdLib 追量）、`027-sampling-playtest-and-fixes.md`（抽測試玩與修正）；
+`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）、`011-observation-addresses.md`（位置、朝向、區域、角色數值位址，地圖檔格式）、`012-opl2-event-layer.md`（OPL2 事件層）、`013-replay-route-samar-to-sivad.md`（重播路線）、`014-print-routine.md`（印字常式）、`015-text-formats.md`（文字格式）、`016-frontend-prototype.md`（前端雛形驗收）、`017-text-coverage.md`（文字覆蓋率）、`018-first-chinese-overlay.md`（第一句中文）、`019-all-paths-overlay-verification.md`（所有路徑疊字、覆蓋率、前端實跑）、`020-font-license-options.md`（字型授權選項，待決）、`021-translation-first-pass.md`（全文翻譯第一版）、`022-simulated-player-playtest.md`（模擬玩家試玩）、`023-pbl-image-format.md`（`.PBL` 圖檔格式）、`024-baked-text-overlay.md`（圖檔內嵌文字）、`025-assist-hotkeys.md`（F1／F2／F10）、`026-adlib-underrun-followup.md`（AdLib 追量）、`027-sampling-playtest-and-fixes.md`（抽測試玩與修正）、`028-copy-protection.md`（防拷）、`029-cheats.md`（作弊）、`030-auto-map.md`（自動地圖）；
 被推翻的斷言集中在 `000-overturned-claims.md`。
 
 | 事實 | 等級 |
@@ -155,6 +155,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | 模擬玩家（Sonnet 子代理只看 `pwstep` 截圖）84 步完成開機 → 打贏第一場 → 發射台選目的地，沒用攻略；卡住 1 次（降落平台與發射台的分辨）。找到的問號裁字、音效／音樂、BBS室已修（`docs/re/022`） | confirmed（一條路線） |
 | 圖檔文字：`.PBL` ＝ 偏移表＋每張 `[寬÷8][高÷8][16 bytes CGA 表]`＋RLE，4bpp 逐列；貼圖位置 ＝ `CH×4`、`CL×4`。26 檔 537 張，含文字 50 張（`docs/re/023`、`024`） | confirmed |
 | 圖檔內嵌文字的中文以「畫面內容比對」觸發（dosgolem `xlate.Watcher`）：面板與狀態欄 6 塊逐像素差 0；F1 說明、F2 中英切換、F10／F11 即時存檔都通過（`docs/re/024`、`025`） | confirmed |
+| 防拷：出題 `sub_1695C`、答案表 `cs:6787`（11×7）、正確答案在 `cs:66E5`；**這一版的比對被一個位元組關掉**（`cmp` 之後是無條件跳躍），任何答案都會過（`docs/re/028`） | confirmed |
 | 疊字失效是**逐格**判斷（原版會在一行的一部分上面畫別的東西）；watcher 的疊字例外，整筆失效再由 watcher 重蓋（`docs/re/027`） | confirmed |
 | A2／A3 的迴圈頭也會停在字串結尾的 0；那一次不能推進行追蹤，否則記憶體裡相鄰的下一個字串會被當成同一行（Game Over 三行只有第一行是中文）| confirmed（修正前後對照） |
 
@@ -200,6 +201,9 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/pbl.py list\|dump\|find\|check` | `.PBL` 圖檔解碼與定位（`docs/spec/010`） |
 | `tools/baked_run.sh`、`tools/frontend-baked-check.sh` | 圖檔內嵌文字的疊字驗收（`docs/spec/011` §5）；`PSYCHICWAR_WITHOUT=<key>` 反向對照 |
 | `tools/frontend-hotkeys-check.sh`、`tools/help_check.py` | F1／F2／F10／F11 的實跑驗收（`docs/spec/012` §5） |
+| `tools/frontend-cheat-check.sh` | 作弊熱鍵驗收（`docs/spec/014`）：開與不開各一次，probe 從即時存檔讀值 |
+| `tools/frontend-map-check.sh`、`tools/map_check.py` | F3 自動地圖驗收（`docs/spec/015`）：座標由存檔推、逐格比顏色 |
+| `tools/baked_boxes.py`、`tools/baked_lint.py`、`tools/baked_preview.py` | 圖檔疊字的資料：量文字框、檢查一筆一筆、畫預覽（`tools/baked-authoring-instructions.md`）|
 | `tools/baked_report.py` | 圖檔內嵌文字的覆蓋率（清冊 vs 已疊中文） |
 | `tools/playtest-sampling-instructions.md` | 抽測試玩的代理指令範本（`docs/re/027`） |
 | `tools/l10n_batches.py prep\|merge\|sweep`、`tools/l10n_check.py` | 分批翻譯、合併核對、一致性掃描；譯者自我檢查（`docs/re/021`） |
@@ -209,6 +213,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 ## 待決事項
 
 - 目標平台清單（前端框架已定 Go／Ebiten，`docs/spec/006`；Windows／macOS 由 #35 追蹤）。
+- **畫面上要出現的中文，來源一律放進 `text/` 的資料檔**（`help.json`、`baked.json`…），否則字型子集收不到、畫面缺字（`docs/re/030` §2）。
 - 公開時機。授權一律採 RRSAL-1.0（`rulebook/85`，已定案不重問），放入 `LICENSE` 由 #36 追蹤。
 - **中文字模用倚天字形發行（使用者定案 2026-09-18，`docs/re/020` §4，不重問）**；README 要寫明來源是倚天中文系統 3.53 的點陣子集與下架聯絡方式（#36）。
 - **試玩用抽測（使用者定案 2026-09-18）**：不必從頭玩到結局，抽幾段正常玩家路徑確認畫面上是中文即可。
