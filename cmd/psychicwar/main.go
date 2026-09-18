@@ -73,6 +73,8 @@ type game struct {
 	amap      *psychicwar.AutoMap
 	mouseKey  ebiten.Key // 滑鼠按住時送出的鍵（docs/spec/018）
 	mouseDown bool
+	rec       *psychicwar.Recording // -record：輸入錄製（docs/spec/019）
+	recPath   string
 	showMap   bool // F3：自動地圖顯示中（docs/spec/015）
 }
 
@@ -304,6 +306,7 @@ func (g *game) Update() error {
 		}
 		if sc, ok := psychicwar.ScanCode(k); ok {
 			g.o.KeyDown(sc)
+			g.record(k, true)
 		}
 	}
 	// 非 ASCII 的文字輸入（中文輸入法）送的是字元不是掃描碼，本來就進不到遊戲裡。
@@ -315,6 +318,7 @@ func (g *game) Update() error {
 	for _, k := range inpututil.AppendJustReleasedKeys(nil) {
 		if sc, ok := psychicwar.ScanCode(k); ok {
 			g.o.KeyUp(sc)
+			g.record(k, false)
 		}
 	}
 	wall := time.Since(g.start)
@@ -533,6 +537,7 @@ func main() {
 	fontDir := flag.String("font", "font", "中文字型子集目錄：cjk24.golemfnt、cjk16.golemfnt（tools/font/bake.sh）")
 	textLog := flag.String("text-log", "", "轉譯紀錄（JSON Lines）")
 	cheat := flag.Bool("cheat", false, "打開作弊熱鍵 F5（補滿 HP 與能量）、F6（敵人剩 1 點），docs/spec/014")
+	recordPath := flag.String("record", "", "把按鍵錄成重播檔（docs/spec/019）：記指令數不記時間，換一台機器也能重現")
 	flag.Parse()
 	if *orig == "" {
 		flag.Usage()
@@ -569,6 +574,14 @@ func main() {
 	g.quickDir, g.origDir, g.textDir = *scratch, *orig, *textDir
 	g.cheat = *cheat
 	g.amap = psychicwar.NewAutoMap()
+	if *recordPath != "" { // 輸入錄製（docs/spec/019）
+		exe, err := psychicwar.FileSHA256(filepath.Join(*orig, "PW.EXE"))
+		if err != nil {
+			log.Fatal(err)
+		}
+		g.rec = psychicwar.NewRecording(exe, int(perMs), *loadState, o.Steps())
+		g.recPath = *recordPath
+	}
 	if lines, err := psychicwar.LoadHelp(*textDir); err != nil { // 排不下或讀不到就不要進畫面（docs/spec/012 §5）
 		log.Printf("讀不到說明頁（F1 停用）：%v", err)
 	} else {
@@ -652,6 +665,7 @@ func main() {
 	runErr := ebiten.RunGameWithOptions(g, &ebiten.RunGameOptions{})
 	close(stop)
 	wg.Wait()
+	g.saveRecording()
 	if runErr != nil {
 		log.Fatal(runErr)
 	}
@@ -678,4 +692,25 @@ func (g *game) mouse() {
 		}
 		g.mouseDown = false
 	}
+}
+
+// record 記一筆按鍵（docs/spec/019 §4）。
+// 熱鍵不會走到這裡——它們在 Update 裡就被 Intercepted 攔掉了，那是前端自己的功能，不進遊戲。
+func (g *game) record(k ebiten.Key, down bool) {
+	if g.rec == nil {
+		return
+	}
+	g.rec.Add(g.o.Steps(), psychicwar.KeyName(k), down)
+}
+
+// saveRecording 在結束時把錄製寫出來。
+func (g *game) saveRecording() {
+	if g.rec == nil || g.recPath == "" {
+		return
+	}
+	if err := g.rec.Save(g.recPath); err != nil {
+		log.Printf("寫錄製檔失敗：%v", err)
+		return
+	}
+	log.Printf("錄製 %d 筆事件 → %s", len(g.rec.Events), g.recPath)
 }

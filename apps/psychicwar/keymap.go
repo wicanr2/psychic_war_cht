@@ -44,3 +44,27 @@ func ScanCode(k ebiten.Key) (code uint8, ok bool) {
 
 // Intercepted 回報這個鍵是不是前端自己要處理的（F1／F2／F3／F5／F6／F10／F11）。
 func Intercepted(k ebiten.Key) bool { return intercepted[k] }
+
+// KeyName 回這個鍵在錄製檔與 dosgolem 動作腳本裡的寫法（docs/spec/019 §3）。
+// 用 ebiten 的 String()：方向鍵是 ArrowUp，dosgolem 認的是 Up，所以要換一下。
+func KeyName(k ebiten.Key) string {
+	switch k {
+	case ebiten.KeyArrowUp:
+		return "Up"
+	case ebiten.KeyArrowDown:
+		return "Down"
+	case ebiten.KeyArrowLeft:
+		return "Left"
+	case ebiten.KeyArrowRight:
+		return "Right"
+	case ebiten.KeyEnter:
+		return "Return"
+	case ebiten.KeyEscape:
+		return "Esc"
+	case ebiten.KeySpace:
+		return "Space"
+	case ebiten.KeyBackspace:
+		return "Backspace"
+	}
+	return k.String()
+}
