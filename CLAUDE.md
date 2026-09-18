@@ -120,7 +120,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 
 證據、指令與數字見 `docs/re/001-pw-exe-first-look.md`（實跑初探）、`002-pw-exe-function-census.md`（函式普查）、
 `003-checkpoints-and-dosboxx-reference.md`（檢查點與 DOSBox-X 參照）、`004-rng-and-determinism.md`（亂數）、
-`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）、`011-observation-addresses.md`（位置、朝向、區域、角色數值位址，地圖檔格式）、`012-opl2-event-layer.md`（OPL2 事件層）、`013-replay-route-samar-to-sivad.md`（重播路線）、`014-print-routine.md`（印字常式）、`015-text-formats.md`（文字格式）、`016-frontend-prototype.md`（前端雛形驗收）、`017-text-coverage.md`（文字覆蓋率）、`018-first-chinese-overlay.md`（第一句中文）、`019-all-paths-overlay-verification.md`（所有路徑疊字、覆蓋率、前端實跑）、`020-font-license-options.md`（字型授權選項，待決）、`021-translation-first-pass.md`（全文翻譯第一版）、`022-simulated-player-playtest.md`（模擬玩家試玩）、`023-pbl-image-format.md`（`.PBL` 圖檔格式）、`024-baked-text-overlay.md`（圖檔內嵌文字）、`025-assist-hotkeys.md`（F1／F2／F10）、`026-adlib-underrun-followup.md`（AdLib 追量）、`027-sampling-playtest-and-fixes.md`（抽測試玩與修正）、`028-copy-protection.md`（防拷）、`029-cheats.md`（作弊）、`030-auto-map.md`（自動地圖）；
+`005-ega-palette-rgb-parity.md`（色盤）、`006-ibm-music-format-and-pc-speaker-parity.md`（PC 喇叭配樂）、`007-opl2-synth-skeleton-and-comparison.md`（OPL2，未通過）、`008-replay-first-battle-and-save-load.md`（重播、存讀檔）、`009-battle-hold-cheat-and-cpu-pacing.md`（按住攻擊、敵人 HP）、`010-cpu-speed-time-base.md`（CPU 速度與時間基準）、`011-observation-addresses.md`（位置、朝向、區域、角色數值位址，地圖檔格式）、`012-opl2-event-layer.md`（OPL2 事件層）、`013-replay-route-samar-to-sivad.md`（重播路線）、`014-print-routine.md`（印字常式）、`015-text-formats.md`（文字格式）、`016-frontend-prototype.md`（前端雛形驗收）、`017-text-coverage.md`（文字覆蓋率）、`018-first-chinese-overlay.md`（第一句中文）、`019-all-paths-overlay-verification.md`（所有路徑疊字、覆蓋率、前端實跑）、`020-font-license-options.md`（字型授權選項，待決）、`021-translation-first-pass.md`（全文翻譯第一版）、`022-simulated-player-playtest.md`（模擬玩家試玩）、`023-pbl-image-format.md`（`.PBL` 圖檔格式）、`024-baked-text-overlay.md`（圖檔內嵌文字）、`025-assist-hotkeys.md`（F1／F2／F10）、`026-adlib-underrun-followup.md`（AdLib 追量）、`027-sampling-playtest-and-fixes.md`（抽測試玩與修正）、`028-copy-protection.md`（防拷）、`029-cheats.md`（作弊）、`030-auto-map.md`（自動地圖）、`031-baked-text-rooms-and-map.md`（房間招牌、道具圖鑑、開場字幕）；
 被推翻的斷言集中在 `000-overturned-claims.md`。
 
 | 事實 | 等級 |
@@ -157,6 +157,9 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | 圖檔內嵌文字的中文以「畫面內容比對」觸發（dosgolem `xlate.Watcher`）：面板與狀態欄 6 塊逐像素差 0；F1 說明、F2 中英切換、F10／F11 即時存檔都通過（`docs/re/024`、`025`） | confirmed |
 | 防拷：出題 `sub_1695C`、答案表 `cs:6787`（11×7）、正確答案在 `cs:66E5`；**這一版的比對被一個位元組關掉**（`cmp` 之後是無條件跳躍），任何答案都會過（`docs/re/028`） | confirmed |
 | 疊字失效是**逐格**判斷（原版會在一行的一部分上面畫別的東西）；watcher 的疊字例外，整筆失效再由 watcher 重蓋（`docs/re/027`） | confirmed |
+| 疊字失效另有**錨定格**規則：定色時壓在原文墨跡上的格子全部失效就整筆移除。中文比原文寬時多出來的格子壓在純色背景上，指紋永遠不變，只靠逐格判斷會留下孤字（`docs/re/031` §7.3） | confirmed（重現前後對照） |
+| 圖檔文字：含文字 50 張已疊 45 張、122 塊（面板 3、房間招牌 23、道具圖鑑 17、開場字幕 1，另 `MENU.PBL` 由 `SCREEN.PBL` 的 watcher 等價涵蓋）。剩 `OPEN.PBL` #7–#9（字是從雜訊底挖空的，要疊字層的新畫法）與兩張標題美術字（定案保留）（`docs/re/031`） | confirmed |
+| **`font/charset.txt` 是烘字的產物，不是可用字的上限**：`tools/font/bake.sh` 掃 `text/*.json` 的譯文收字，再從倚天全字庫烘。寫譯文時不要為了避開字型換詞——缺字補烘一次就有（`docs/re/031` §3.1） | confirmed |
 | A2／A3 的迴圈頭也會停在字串結尾的 0；那一次不能推進行追蹤，否則記憶體裡相鄰的下一個字串會被當成同一行（Game Over 三行只有第一行是中文）| confirmed（修正前後對照） |
 
 ## 工作追蹤
