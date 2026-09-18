@@ -71,6 +71,8 @@ type game struct {
 	helpLines []string
 	cheat     bool // -cheat：打開 F5／F6（docs/spec/014）
 	amap      *psychicwar.AutoMap
+	mouseKey  ebiten.Key // 滑鼠按住時送出的鍵（docs/spec/018）
+	mouseDown bool
 	showMap   bool // F3：自動地圖顯示中（docs/spec/015）
 }
 
@@ -309,6 +311,7 @@ func (g *game) Update() error {
 	if psychicwar.NonASCII(ebiten.AppendInputChars(nil)) {
 		g.showToast(psychicwar.ASCIIOnlyToast)
 	}
+	g.mouse()
 	for _, k := range inpututil.AppendJustReleasedKeys(nil) {
 		if sc, ok := psychicwar.ScanCode(k); ok {
 			g.o.KeyUp(sc)
@@ -651,5 +654,28 @@ func main() {
 	wg.Wait()
 	if runErr != nil {
 		log.Fatal(runErr)
+	}
+}
+
+// mouse 處理滑鼠點擊操作面板（docs/spec/018）。
+//
+// 按下送 KeyDown、放開送 KeyUp，與鍵盤走同一條路——**不模擬「按一下」**：
+// 原版有些操作要按住（戰鬥時的攻擊），維持按住／放開的語意才不會漏掉這類用法。
+func (g *game) mouse() {
+	if inpututil.IsMouseButtonJustPressed(ebiten.MouseButtonLeft) {
+		mx, my := ebiten.CursorPosition()
+		if h := psychicwar.HotspotAt(mx/g.scale, my/g.scale); h != nil {
+			if sc, ok := psychicwar.ScanCode(h.Key); ok {
+				g.o.KeyDown(sc)
+				g.mouseKey = h.Key
+				g.mouseDown = true
+			}
+		}
+	}
+	if g.mouseDown && inpututil.IsMouseButtonJustReleased(ebiten.MouseButtonLeft) {
+		if sc, ok := psychicwar.ScanCode(g.mouseKey); ok {
+			g.o.KeyUp(sc)
+		}
+		g.mouseDown = false
 	}
 }
