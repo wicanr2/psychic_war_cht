@@ -73,21 +73,34 @@ t0=\$(date +%s)
 note() { echo "[\$((\$(date +%s) - t0))s] \$*" >&2; }
 xdotool windowfocus --sync "\$WIN" || true
 mkdir -p /out/steps
-shot() { import -window "\$WIN" png:- | md5sum | cut -c1-16; }
 n=0
-# 送一鍵，等畫面跟著變（最多 40 秒），再等 settle 秒；每一步截圖存 steps/，時序錯了看得出卡在哪一步
+# 「畫面有沒有換」用變化幅度判斷，不用雜湊：SELECT 選單與輸入名字都有閃爍游標，
+# 雜湊每 0.5 秒就變一次，等於沒等——這是先前多次停在選單、後面按鍵全部落空的原因。
+THRESH=\$((WIDTH * HEIGHT / 50))   # 2% 的像素：游標閃爍幾十點不算，轉場幾千點才算
+diffpx() { compare -metric AE "\$1" "\$2" null: 2>&1 | tr -d '\n' | sed 's/[^0-9].*//'; }
+# 送一鍵，等畫面真的換過去（最多 40 秒），再等 settle 秒；每一步截圖存 steps/，時序錯了看得出卡在哪一步
 key() {
-  h0=\$(shot); xdotool key --clearmodifiers "\$1"
-  for i in \$(seq 1 160); do [ "\$(shot)" != "\$h0" ] && break; sleep 0.25; done
+  import -window "\$WIN" /tmp/a.png
+  xdotool key --clearmodifiers "\$1"
+  moved=0
+  for i in \$(seq 1 160); do
+    sleep 0.25
+    import -window "\$WIN" /tmp/b.png
+    d=\$(diffpx /tmp/a.png /tmp/b.png); d=\${d:-0}
+    [ "\$d" -gt "\$THRESH" ] && { moved=1; break; }
+  done
   sleep "\$2"; n=\$((n + 1))
   import -window "\$WIN" "/out/steps/\$(printf %02d \$n)-\$1.png"
-  note "key \$1（畫面變化後再等 \$2 秒）"
+  [ "\$moved" = 1 ] || note "⚠ key \$1 之後畫面沒換（等滿 40 秒），後面可能整串落空"
+  note "key \$1（畫面換過去再等 \$2 秒）"
 }
+# 打字：畫面只多一個字元，永遠到不了 2% 的門檻，所以固定等秒數就好
+tap() { xdotool key --clearmodifiers "\$1"; sleep "\$2"; n=\$((n + 1)); note "tap \$1"; }
 # 標題出現約在視窗出現後 12–18 秒（tools/dosboxx-ref.sh 實跑的時序）；太早按空白鍵會被吃掉
 sleep 18
 import -window "\$WIN" /out/title.png
 key space 3; key Return 3; key Return 3; key space 5; key Return 3
-key k 1; key a 1; key i 1
+tap k 1; tap a 1; tap i 1
 key Return 6
 for s in \$(seq 1 11); do key Up 1; done
 sleep 2
