@@ -106,7 +106,7 @@ issue #5 維持開啟。這一輪的產出是「有了可以據以宣稱成敗�
   （前段全是 FB ＝ 7 而且合得很像），但基準點沒有獨立驗過。
   中段改以 FB ＝ 5 為主之後才掉下來，這是目前最具體的線索。
 
-## 6. 重現
+## 7. 重現
 
 ```sh
 DOSGOLEM_ORIG=$PWD/workplace/original DOSGOLEM_EXTRA_MOUNT=$PWD/workplace:/wp \
@@ -118,4 +118,5 @@ tools/py.sh tools/opl_wav_compare.py workplace/audio/golem-opl-title.wav \
   workplace/dosboxx-audio/title-adlib.wav --secs 30 --segments --drift
 ```
 
-`-opl-disable ksl|am|vib|expatk` 關掉個別功能重合成（診斷用，一次只關一個）。
+`-opl-disable ksl|am|vib|expatk` 關掉個別功能重合成（診斷用，一次只關一個）；
+`-opl-only <c>`／`-opl-except <c>` 做逐聲道。
