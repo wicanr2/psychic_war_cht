@@ -27,6 +27,7 @@ func LoadHelp(dir string) ([]string, error) {
 	var doc struct {
 		Schema string   `json:"schema"`
 		Lines  []string `json:"lines"`
+		Label  string   `json:"protection_label"`
 	}
 	if err := json.Unmarshal(b, &doc); err != nil {
 		return nil, err
@@ -34,8 +35,12 @@ func LoadHelp(dir string) ([]string, error) {
 	if doc.Schema != "psychic-war-help/1" {
 		return nil, fmt.Errorf("help.json 的 schema 不是 psychic-war-help/1：%q", doc.Schema)
 	}
+	ProtectionLabel = doc.Label
 	return doc.Lines, CheckHelp(doc.Lines)
 }
+
+// ProtectionLabel 是防拷畫面那一行的標籤（LoadHelp 讀進來）。
+var ProtectionLabel = "　本題答案："
 
 // LineCells 回一行佔幾格（半形字佔半格，用兩倍整數避免小數）：回的是「半格數」。
 func LineCells(s string) int {

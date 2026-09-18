@@ -137,3 +137,27 @@ func TestDrawTextPageFillsAndDraws(t *testing.T) {
 		t.Error("字模沒畫上去")
 	}
 }
+
+// docs/spec/013 §3 第 1 項：防拷答案的判讀。
+func TestProtectionAnswer(t *testing.T) {
+	if got := ProtectionAnswer([]byte("FREEZE          ")); got != "FREEZE" {
+		t.Errorf("正常答案：%q", got)
+	}
+	if got := ProtectionAnswer([]byte("MIND-GRENADE    ")); got != "MIND-GRENADE" {
+		t.Errorf("含連字號：%q", got)
+	}
+	for _, bad := range []string{
+		"                ",  // 空白：一般畫面
+		"Freeze          ",  // 小寫：不是答案的字集
+		"FR              ",  // 太短
+		"FREEZE\x00       ", // 控制碼
+		"FREEZE!         ",  // 標點
+	} {
+		if got := ProtectionAnswer([]byte(bad)); got != "" {
+			t.Errorf("%q 不該當成答案，卻回 %q", bad, got)
+		}
+	}
+	if got := ProtectionAnswer([]byte("SHORT")); got != "" {
+		t.Errorf("長度不足 16 要回空字串，卻回 %q", got)
+	}
+}

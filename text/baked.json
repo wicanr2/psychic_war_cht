@@ -6,9 +6,21 @@
    "key": "SCREEN.PBL:0:advance",
    "file": "SCREEN.PBL",
    "image": 0,
-   "screen": [0, 0],
-   "region": [180, 8, 48, 10],
-   "text": [180, 8, 6],
+   "screen": [
+    0,
+    0
+   ],
+   "region": [
+    180,
+    8,
+    48,
+    10
+   ],
+   "text": [
+    180,
+    8,
+    6
+   ],
    "original": "ADVANCE",
    "translation": "  前進  ",
    "note": "面板：↑ 前進"
@@ -17,9 +29,21 @@
    "key": "SCREEN.PBL:0:look-aside",
    "file": "SCREEN.PBL",
    "image": 0,
-   "screen": [0, 0],
-   "region": [178, 32, 52, 8],
-   "text": [180, 32, 6],
+   "screen": [
+    0,
+    0
+   ],
+   "region": [
+    178,
+    32,
+    52,
+    8
+   ],
+   "text": [
+    180,
+    32,
+    6
+   ],
    "original": "LOOK ASIDE",
    "translation": "  轉向  ",
    "note": "面板：←→ 左右轉"
@@ -28,9 +52,21 @@
    "key": "SCREEN.PBL:1:turn",
    "file": "SCREEN.PBL",
    "image": 1,
-   "screen": [0, 40],
-   "region": [186, 14, 40, 10],
-   "text": [184, 16, 5],
+   "screen": [
+    0,
+    40
+   ],
+   "region": [
+    186,
+    14,
+    40,
+    10
+   ],
+   "text": [
+    184,
+    16,
+    5
+   ],
    "original": "TURN",
    "translation": " 向後轉 ",
    "note": "面板：↓ 向後轉"
@@ -39,9 +75,21 @@
    "key": "SCREEN.PBL:1:operation",
    "file": "SCREEN.PBL",
    "image": 1,
-   "screen": [0, 40],
-   "region": [178, 28, 52, 10],
-   "text": [180, 28, 6],
+   "screen": [
+    0,
+    40
+   ],
+   "region": [
+    178,
+    28,
+    52,
+    10
+   ],
+   "text": [
+    180,
+    28,
+    6
+   ],
    "original": "ESC OPERATION",
    "translation": "  選單  ",
    "note": "面板：ESC 開選單。左邊的 ESC 是按鍵名，保留原樣"
@@ -50,9 +98,21 @@
    "key": "SCREEN.PBL:3:place",
    "file": "SCREEN.PBL",
    "image": 3,
-   "screen": [0, 120],
-   "region": [76, 4, 38, 10],
-   "text": [76, 4, 4],
+   "screen": [
+    0,
+    120
+   ],
+   "region": [
+    76,
+    4,
+    38,
+    10
+   ],
+   "text": [
+    76,
+    4,
+    4
+   ],
    "original": "PLACE",
    "translation": " 地點 ",
    "note": "狀態欄標籤；值由遊戲畫在右邊；比對範圍避開左邊的框線（遊戲會重畫）"
@@ -61,12 +121,48 @@
    "key": "SCREEN.PBL:3:direction",
    "file": "SCREEN.PBL",
    "image": 3,
-   "screen": [0, 120],
-   "region": [82, 12, 36, 10],
-   "text": [84, 12, 4],
+   "screen": [
+    0,
+    120
+   ],
+   "region": [
+    82,
+    12,
+    36,
+    10
+   ],
+   "text": [
+    84,
+    12,
+    4
+   ],
    "original": "DIRECTION",
    "translation": " 方向 ",
    "note": "狀態欄標籤；值由遊戲畫在右邊；比對範圍避開右邊的方位值"
+  },
+  {
+   "key": "ROOM0.PBL:18:danger",
+   "file": "ROOM0.PBL",
+   "image": 18,
+   "screen": [
+    4,
+    124
+   ],
+   "region": [
+    20,
+    10,
+    31,
+    7
+   ],
+   "text": [
+    20,
+    10,
+    5
+   ],
+   "original": "DANGER",
+   "translation": " 危險  ",
+   "font": "cjk16",
+   "note": "房間招牌：藍底黃字的警示牌"
   }
  ]
 }

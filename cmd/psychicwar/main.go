@@ -270,8 +270,14 @@ func (g *game) drawHelp(dst *ebiten.Image) {
 		return
 	}
 	w, h := 320*g.scale, 200*g.scale
+	lines := g.helpLines
+	if g.tr != nil && g.tr.InProtection() {
+		if a := psychicwar.ProtectionAnswer(g.o.Bytes(oracle.Addr{Seg: psychicwar.ProtAnswerSeg, Off: psychicwar.ProtAnswerOff}, psychicwar.ProtAnswerLen)); a != "" {
+			lines = append(append([]string{}, lines...), "", psychicwar.ProtectionLabel+a) // 防拷畫面才有（docs/spec/013 §2.2）
+		}
+	}
 	clear(g.overPix)
-	psychicwar.DrawTextPage(g.overPix, w, h, g.fontHelp, g.helpLines,
+	psychicwar.DrawTextPage(g.overPix, w, h, g.fontHelp, lines,
 		8*g.scale, [3]uint8{0xFF, 0xFF, 0xFF}, [3]uint8{0, 0, 0}, 0xFF)
 	g.over.WritePixels(g.overPix)
 	dst.DrawImage(g.over, nil)

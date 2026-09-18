@@ -23,7 +23,10 @@ type BakedEntry struct {
 	Text        [3]int `json:"text"`   // 圖內座標 x, y 與格數：中文蓋在哪
 	Original    string `json:"original"`
 	Translation string `json:"translation"`
-	Note        string `json:"note"`
+	// Font：cjk24（一格 8×8，預設）或 cjk16（一格 6×7，字模 16×15 偏移 (1,3)）——
+	// 招牌上的字常常只有 5 像素高，用大格會蓋掉上下的美術（docs/spec/011 §3）。
+	Font string `json:"font"`
+	Note string `json:"note"`
 }
 
 type bakedFile struct {
@@ -115,10 +118,19 @@ func (t *Translator) bakedStamp(e BakedEntry) *xlate.Stamp {
 		Cells: cells, CellW: bakedCell, CellH: bakedCell,
 		Font: t.Font24, GlyphScale: t.Scale / 3, Text: text, State: xlate.Pending,
 	}
+	if e.Font == "cjk16" { // 小字型：與 docs/spec/009 的 B 路徑同一套幾何
+		s.CellW, s.CellH, s.Font = smallCellW, smallCellH, t.Font16
+		s.GlyphX, s.GlyphY = t.Scale/3, 3*t.Scale/3
+	}
 	t.event(map[string]any{"event": "stamp", "key": e.Key, "line": 0,
 		"text": string(text), "x": s.X, "y": s.Y, "cells": cells})
 	return s
 }
 
-// 圖檔疊字的一格：8×8 原版像素，與 FONT.BIN 路徑相同（docs/spec/011 §3）。
-const bakedCell = 8
+// 圖檔疊字的格子（docs/spec/011 §3）：預設與 FONT.BIN 路徑相同的 8×8；
+// font 指定 cjk16 時是小字型的 6×7。
+const (
+	bakedCell  = 8
+	smallCellW = 6
+	smallCellH = 7
+)

@@ -114,8 +114,11 @@ def main(argv):
     for p in sorted(pathlib.Path(text_dir).glob("*.json")):
         doc = json.loads(p.read_text(encoding="utf-8"))
         schema = doc.get("schema")
-        if schema == "psychic-war-help/1":      # F1 說明頁（docs/spec/012）
+        if schema == "psychic-war-help/1":      # F1 說明頁（docs/spec/012、013）
             chars.update("".join(doc.get("lines", [])))
+            for k, v in doc.items():            # protection_label 之類的單行欄位也要收
+                if isinstance(v, str) and k not in ("schema", "note"):
+                    chars.update(v)
             continue
         if schema not in ("psychic-war-text/1", "psychic-war-baked/1"):
             continue

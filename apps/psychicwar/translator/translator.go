@@ -33,6 +33,8 @@ const (
 	retSmallEcho = 0xB055 // 輸入回顯與選擇游標
 	addrB07D     = 0xB07D // B016 區塊，第 1 行由 B058 從 20 bytes 的行複製進來
 	addrEnemyBuf = 0x3A4C // 戰鬥時從 I_ENMY 複製來的敵人名稱
+	addrProtAsk  = 0x6493 // sub_169A3 進入點：防拷畫面開始等玩家輸入答案（docs/spec/013）
+	retProtAsk   = 0x6503 // sub_169A3 的 retn：輸入結束
 	linArea      = 0x16966
 
 	linMenuH    = 0x13A16
@@ -242,6 +244,7 @@ type Translator struct {
 	active                      []printing
 	noted                       map[string]bool
 	scrolling                   bool // 訊息框捲動一步進行中（addrScroll 到 addrScrolled）
+	protecting                  bool // 防拷畫面正在等玩家輸入答案（addrProtAsk 到 retProtAsk）
 }
 
 type printing struct {
@@ -415,6 +418,8 @@ func (t *Translator) Attach(o *oracle.Oracle) {
 		return t.scrolling && s.X >= boxX0 && s.X+s.Cells*s.CellW <= boxX1 && s.Y >= boxY0 && s.Y < boxY1
 	}
 	o.OnCall(at(addrSmall), t.onSmall)
+	o.OnCall(at(addrProtAsk), func(*oracle.Oracle) { t.protecting = true })
+	o.OnCall(at(retProtAsk), func(*oracle.Oracle) { t.protecting = false })
 }
 
 func area(o *oracle.Oracle) uint16 {
@@ -615,6 +620,10 @@ func (t *Translator) ResetForLoad() {
 	t.trackMenu, t.trackDS, t.trackCS = xlate.LineTracker{}, xlate.LineTracker{}, xlate.LineTracker{}
 	t.scrolling = false
 }
+
+// InProtection 回「防拷畫面正在等玩家輸入答案」（docs/spec/013 §2.2）。
+// F1 說明頁只有在這個時候才顯示本題答案——那 16 bytes 過關之後還留在記憶體裡，光看內容分不出來。
+func (t *Translator) InProtection() bool { return t.protecting }
 
 // MissingGlyph 記一筆缺字。
 func (t *Translator) MissingGlyph(r rune) { t.once("missing-glyph", string(r)) }
