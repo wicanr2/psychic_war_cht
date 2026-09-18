@@ -2390,9 +2390,9 @@
     8
    ],
    "original": "IMPERIAL CO.",
-   "translation": " 帝國有限公司 ",
+   "translation": "帝國股份有限公司",
    "font": "cjk16",
-   "note": "公司名兩行「IMPERIAL CO.」+「LTD.」，只譯第一行為完整公司名；第二行 LTD. 未譯，見任務回報「不確定/限制」說明（兩行間距只有 1px，cjk16 7px 字高無法在不重疊的前提下分開覆蓋兩行）"
+   "note": "公司名兩行「IMPERIAL CO.」＋「LTD.」；兩行只隔 1 像素，cjk16 字高 7 像素蓋不下兩塊，只譯第一行，LTD. 保留原文"
   },
   {
    "key": "ROOM1.PBL:3:computer",
@@ -2438,9 +2438,9 @@
     8
    ],
    "original": "IMPERIAL CO.",
-   "translation": " 帝國有限公司 ",
+   "translation": "帝國股份有限公司",
    "font": "cjk16",
-   "note": "同 #2，只譯 IMPERIAL CO. 這行，LTD. 未譯（同一理由）"
+   "note": "公司名兩行「IMPERIAL CO.」＋「LTD.」；兩行只隔 1 像素，cjk16 字高 7 像素蓋不下兩塊，只譯第一行，LTD. 保留原文"
   },
   {
    "key": "ROOM1.PBL:4:computer",
@@ -2486,9 +2486,9 @@
     8
    ],
    "original": "IMPERIAL CO.",
-   "translation": " 帝國有限公司 ",
+   "translation": "帝國股份有限公司",
    "font": "cjk16",
-   "note": "同 #2，只譯 IMPERIAL CO. 這行，LTD. 未譯（同一理由）"
+   "note": "公司名兩行「IMPERIAL CO.」＋「LTD.」；兩行只隔 1 像素，cjk16 字高 7 像素蓋不下兩塊，只譯第一行，LTD. 保留原文"
   },
   {
    "key": "ROOM1.PBL:10:danger",
@@ -2750,9 +2750,9 @@
     5
    ],
    "original": "ESCAPE",
-   "translation": " 逃生道 ",
+   "translation": " 逃生口 ",
    "font": "cjk16",
-   "note": "逃生通道房間，黃字招牌；「口」不在字型子集，改用「逃生道」（原建議「逃生口」）"
+   "note": "逃生通道房間，黃字招牌"
   },
   {
    "key": "ROOM1.PBL:27:escape",
@@ -2774,9 +2774,9 @@
     5
    ],
    "original": "ESCAPE",
-   "translation": " 逃生道 ",
+   "translation": " 逃生口 ",
    "font": "cjk16",
-   "note": "與 #26 同房間，招牌改綠字，位置相同"
+   "note": "逃生通道房間，黃字招牌"
   },
   {
    "key": "ROOM1.PBL:28:escape",
@@ -2798,9 +2798,9 @@
     5
    ],
    "original": "ESCAPE",
-   "translation": " 逃生道 ",
+   "translation": " 逃生口 ",
    "font": "cjk16",
-   "note": "與 #26/#27 同房間，位置相同"
+   "note": "逃生通道房間，黃字招牌"
   },
   {
    "key": "SCREEN.PBL:0:advance",
