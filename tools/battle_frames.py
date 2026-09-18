@@ -33,6 +33,13 @@ def main():
     fps = float(sys.argv[2]) if len(sys.argv) > 2 else 4.0
     press = int(sys.argv[3]) if len(sys.argv) > 3 else int(fps)
     files = sorted(d.glob("*.rgb"))
+    # 沒有 .rgb 就明說。少了這一段的話，下面的 name[press] 會在空清單上爆 IndexError，
+    # 而 press 落在清單內但檔案殘缺時更糟——會印「按下時敵人不在畫面上」，
+    # 看起來像走位失敗，其實只是忘了把 PNG 轉成 raw RGB。
+    if len(files) <= press:
+        print("%s 只有 %d 個 .rgb（要 > %d）。錄影是 PNG 的話先轉：" % (d, len(files), press))
+        print("  for p in *.png; do convert \"$p\" -depth 8 \"rgb:${p%.png}.rgb\"; done")
+        return 2
     bufs = [f.read_bytes() for f in files]
     name = [lit(b, NAME, True) for b in bufs]
     sprite = [lit(b, SPRITE, False) for b in bufs]
