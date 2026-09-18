@@ -26,8 +26,10 @@
 | 只載入不解壓 | `sub_189BF` | `menu.pbl`（面板重畫）、`open.pbl` |
 
 所以觸發點改成**畫面內容**：登記「這塊區域應該長這樣」，比對到就蓋中文（dosgolem `xlate.Watcher`）。
-好處是一份資料同時涵蓋三條路徑——面板像素同時來自 `SCREEN.PBL` 與 `MENU.PBL`（兩張圖那一塊完全相同），
-一組 watcher 就夠，不必知道這一幀是誰畫的。
+好處是一份資料同時涵蓋三條路徑——面板像素同時來自 `SCREEN.PBL` 與 `MENU.PBL`，一組 watcher 就夠，
+不必知道這一幀是誰畫的。證據：把 `MENU.PBL` #0（88×72，畫在 (160,4)）換算到同樣的畫面座標，
+`advance`、`look-aside`、`turn` 三塊與 `SCREEN.PBL` 逐 byte 相同（480、416、400 格差 0）；
+`operation` 那一塊在 `MENU.PBL` 的下緣之外，由 `SCREEN.PBL` #1 提供。
 
 ## 3. 六塊的資料（`text/baked.json`）
 
