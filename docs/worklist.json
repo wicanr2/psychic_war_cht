@@ -40,22 +40,6 @@
    "issue": 5
   },
   {
-   "id": "full-run-no-gaps",
-   "milestone": "M1",
-   "labels": [
-    "verify"
-   ],
-   "title": "從開頭跑到結局，沒有未實作的服務",
-   "body": "重播 `replay/title-to-first-save.json`（格式 `docs/spec/003`）推進到 11 段：開機到第一個遭遇、**按住空白鍵打贏**第一場戰鬥、存檔 TEST、讀檔回到存檔時的畫面；11 段沒實作的服務皆 0 種（docs/re/008、009）。dosgolem 已支援按住按鍵（規格 197）。還沒走到：與戰友會合、ESP Power／加速砲、其他區域與結局。",
-   "acceptance": "一份可重播的全程輸入（或檢查點串），跑完沒有未實作服務，結局畫面解幀存證。",
-   "blocked_by": "state-checkpoints",
-   "verify": {
-    "kind": "manual",
-    "note": "重播到 Zellwal（區域 3，19 段，docs/re/013、docs/re/019 §4）；Sivad 碰撞座標偏移 +3／+5 已解、探路掃描可用（docs/re/011 §3.5）；遭遇計數器位址未找到（重開條件見 docs/re/011 §4）。重播到結局後改綁重播檔最後一段的段名"
-   },
-   "issue": 8
-  },
-  {
    "id": "realtime-pacing",
    "milestone": "M2",
    "labels": [
@@ -151,11 +135,11 @@
    ],
    "title": "輸入名字：原版只收 ASCII，中文版怎麼處理",
    "body": "「ENTER YOUR NAME」由原版讀按鍵存成 ASCII。選項：保留英文名、或前端另存中文顯示名並在顯示時替換。需要先確認名字存放位置與長度。",
-   "acceptance": "決定寫進 spec；實作後存讀檔後名字顯示正確。",
+   "acceptance": "**只支援 ASCII（使用者定案 2026-09-18）**：玩家輸入的名字限 ASCII，存檔檔名沿用 `<名>.DAT`；提示文字與周邊訊息中文化。驗收：輸入、存檔、讀檔、狀態頁四處顯示一致。",
    "blocked_by": "print-routine",
    "verify": {
     "kind": "manual",
-    "note": "spec 出現後改綁"
+    "note": "定案只支援 ASCII，不做中文名字的顯示層轉換。第 9 輪做。"
    },
    "issue": 26
   },
@@ -395,6 +379,15 @@
    "issue": 32,
    "title": "F3 自動地圖",
    "evidence": "`docs/spec/015`（READY）＋`docs/re/030`：走過才記的自動地圖（不解 I_MAP），F3 開關。實跑目前格子與存檔座標相同、走過的 3 格正確、沒走過的 5 格是背景色、開關前後記憶體相同",
+   "date": "2026-09-18"
+  }
+ ],
+ "dropped": [
+  {
+   "id": "full-run-no-gaps",
+   "issue": 8,
+   "title": "從開頭跑到結局，沒有未實作的服務",
+   "reason": "使用者定案：不執行。MVP 改以抽測驗收（幾段正常玩家路徑畫面上是中文），不做從開頭到結局的完整跑通。",
    "date": "2026-09-18"
   }
  ]

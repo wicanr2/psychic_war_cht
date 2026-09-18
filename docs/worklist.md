@@ -13,7 +13,6 @@
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
 | #5 | `opl2-synth` | OPL2（AdLib）合成：`.MID` 音樂路徑目前只有暫存器紀錄 | golem-upstream, audio | — | manual |
-| #8 | `full-run-no-gaps` | 從開頭跑到結局，沒有未實作的服務 | verify | #2 | manual |
 
 ## M2：可遊玩前端：視窗、鍵盤、滑鼠、音訊、節拍
 
@@ -49,6 +48,12 @@
 | #34 | `theme` | 主題替換 | graphics | #20 | manual |
 | #35 | `cross-platform-package` | 跨平台打包：Linux／Windows／macOS | release | #27 | manual |
 | #36 | `license-readme` | LICENSE（RRSAL-1.0）與 README | release | — | absent |
+
+## 不做（使用者定案）
+
+| issue | id | 標題 | 理由 | 定案日期 |
+|---|---|---|---|---|
+| #8 | `full-run-no-gaps` | 從開頭跑到結局，沒有未實作的服務 | 使用者定案：不執行。MVP 改以抽測驗收（幾段正常玩家路徑畫面上是中文），不做從開頭到結局的完整跑通。 | 2026-09-18 |
 
 ## 已完成
 

@@ -6,6 +6,9 @@
     tools/py.sh tools/worklist.py issues <outdir> # 每條輸出一份 issue 內文，給 gh 建 issue 用
 
 verify 為真＝這一條仍未完成。規則見 ~/.claude/rulebook/61。
+
+三種狀態：`items`（未完成）、`done`（完成，附證據）、`dropped`（使用者定案不做，附理由與日期）。
+「不做」的條目要留著而不是刪掉——刪掉之後下一輪會有人重新提案做同一件事。
 """
 import json
 import re
@@ -66,6 +69,11 @@ def check_schema(data):
             if key not in d:
                 raise ValueError(f'done {d.get("id", "?")} 缺欄位 {key}')
         done_ids.add(d["id"])
+    for d in data.get("dropped", []):
+        for key in ("id", "issue", "title", "reason", "date"):
+            if key not in d:
+                raise ValueError(f'dropped {d.get("id", "?")} 缺欄位 {key}')
+        done_ids.add(d["id"])
     ids = set()
     for item in data["items"]:
         for key in ("id", "milestone", "labels", "title", "body", "acceptance", "verify"):
@@ -100,7 +108,9 @@ def cmd_verify(data):
             stale += 1
         mark = "仍未完成" if open_ else "**可能已完成**"
         print(f'{item["milestone"]} {item["id"]:<26} {mark:<10} {why}')
-    print(f'\n共 {len(data["items"])} 條；要人判 {manual} 條；可能已完成 {stale} 條')
+    dropped = len(data.get("dropped", []))
+    tail = f'；不做 {dropped} 條' if dropped else ""
+    print(f'\n共 {len(data["items"])} 條；要人判 {manual} 條；可能已完成 {stale} 條{tail}')
     return 1 if stale else 0
 
 
@@ -153,6 +163,12 @@ def cmd_render(data):
             deps = "、".join(issue_ref(data, d) for d in split_deps(i.get("blocked_by", ""))) or "—"
             kind = i["verify"]["kind"]
             out.append(f'| {num} | `{i["id"]}` | {i["title"]} | {", ".join(i["labels"])} | {deps} | {kind} |')
+        out.append("")
+    dropped = data.get("dropped", [])
+    if dropped:
+        out += ["## 不做（使用者定案）", "", "| issue | id | 標題 | 理由 | 定案日期 |", "|---|---|---|---|---|"]
+        for d in dropped:
+            out.append(f'| #{d["issue"]} | `{d["id"]}` | {d["title"]} | {d["reason"]} | {d["date"]} |')
         out.append("")
     done = data.get("done", [])
     if done:
