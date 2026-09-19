@@ -11,7 +11,6 @@ package psychicwar
 
 import (
 	"log"
-	"path/filepath"
 	"sort"
 	"strings"
 	"sync"
@@ -465,77 +464,25 @@ func drawHelpOps(dst []uint8, w, h, unit int, f24, f16 *xlate.Font, ops []helpOp
 	}
 }
 
-// helpBody16 是說明頁內文用的 cjk16。
+// helpWarnOnce 讓「字型尺寸與版面對不上」只印一次：這個函式每幀都會被呼叫。
+var helpWarnOnce sync.Once
+
+// DrawHelpPage 畫說明頁（docs/spec/022 的版面）；畫不了（缺字型、畫布比版面小、
+// 字型尺寸與版面對不上）回 false，由呼叫端自己決定要不要退回別的畫法。
 //
-// 前端交給 DrawTextPage 的只有標頭字型，內文字型由本檔自己找：先看與前端相同的預設
-// （執行檔旁的 font/，退到工作目錄下的 font/），再看 help.json 那個資料夾的同層 font/。
-// ⚠ 前端的 -font 指到別的地方時這裡找不到，會退回舊的整頁文字畫法並留一行 log——
-// 說明頁靜默變成另一個樣子，比缺字更難查。
-var (
-	helpBody16     *xlate.Font
-	helpTextDir    string
-	helpBody16Once sync.Once
-	helpWarnOnce   sync.Once
-)
-
-func helpBodyFont() *xlate.Font {
-	helpBody16Once.Do(func() {
-		dirs := []string{DataDir("font")}
-		if helpTextDir != "" {
-			dirs = append(dirs, filepath.Join(filepath.Dir(helpTextDir), "font"))
-		}
-		for _, d := range dirs {
-			if f, err := xlate.LoadFont(filepath.Join(d, "cjk16.golemfnt")); err == nil {
-				helpBody16 = f
-				return
-			}
-		}
-		log.Printf("說明頁在 %v 讀不到 cjk16 字型，改用舊的整頁文字版面", dirs)
-	})
-	return helpBody16
-}
-
-// helpPageLines 認出「這一批文字就是說明頁」，順便把防拷答案那一列挑出來。
-//
-// 前端把 help.json 的內容原樣交過來，防拷畫面時在尾端多一個空行與答案列
-// （cmd/psychicwar 的 drawHelp）。版面由本檔決定，所以認頁面也在本檔。
-func helpPageLines(lines []string) (bool, string) {
+// 兩個字型都由呼叫端給：前端載入 cjk24 與 cjk16 的地方只有一處（-font），
+// 這一層自己去找的話，-font 指到別處時會靜默變成另一個樣子，比缺字更難查。
+func DrawHelpPage(dst []uint8, w, h int, f24, f16 *xlate.Font, prot string) bool {
 	d := helpDoc
-	if d == nil || len(d.Lines) == 0 || len(lines) < len(d.Lines) {
-		return false, ""
-	}
-	for i, s := range d.Lines {
-		if lines[i] != s {
-			return false, ""
-		}
-	}
-	switch n := len(lines) - len(d.Lines); n {
-	case 0:
-		return true, ""
-	case 2:
-		if lines[len(d.Lines)] == "" && strings.HasPrefix(lines[len(d.Lines)+1], ProtectionLabel) {
-			return true, lines[len(d.Lines)+1]
-		}
-	}
-	return false, ""
-}
-
-// drawHelpPage 畫說明頁；畫不了（沒有字型、畫布比版面小、字型尺寸與版面對不上）回 false，
-// 由呼叫端退回舊的整頁文字畫法。
-func drawHelpPage(dst []uint8, w, h int, f24 *xlate.Font, prot string) bool {
-	d := helpDoc
-	if d == nil || f24 == nil {
+	if d == nil || f24 == nil || f16 == nil {
 		return false
 	}
 	L := d.Layout
 	if L.PageW <= 0 || L.PageHeight <= 0 {
 		return false
 	}
-	f16 := helpBodyFont()
-	if f16 == nil {
-		return false
-	}
 	if f24.W != L.FontHeadW || f24.H != L.FontHeadH || f16.W != L.FontBodyW || f16.H != L.FontBodyH {
+		// 每幀都會走到這裡，印一次就好
 		helpWarnOnce.Do(func() {
 			log.Printf("說明頁的字型尺寸（%d×%d、%d×%d）與 help.json 的 layout（%d×%d、%d×%d）對不上",
 				f24.W, f24.H, f16.W, f16.H, L.FontHeadW, L.FontHeadH, L.FontBodyW, L.FontBodyH)

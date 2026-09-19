@@ -50,7 +50,6 @@ func LoadHelp(dir string) ([]string, error) {
 	if doc.ASCII != "" {
 		ASCIIOnlyToast = doc.ASCII
 	}
-	helpTextDir = dir // 內文字型（cjk16）的備用找法：help.json 同層的 font/
 	d := &HelpDoc{Lines: doc.Lines, Keycaps: sortKeycaps(doc.Keycaps), Layout: doc.Layout}
 	if err := CheckHelpDoc(d); err != nil {
 		return nil, err
@@ -132,14 +131,10 @@ func MissingHelpGlyphs(lines []string, f *xlate.Font) []rune {
 //
 // 一格 cell×cell 像素，字模置左上；fg、bg 是 RGB。bgAlpha 0 表示不填背景（只畫字）。
 //
-// 內容剛好是 help.json 那一頁時（可能尾端多了防拷答案）改走 docs/spec/022 的版面：
-// 說明頁有兩種字級、外框、橫線與反白鍵帽，fg／bg 兩個顏色表達不了。版面規則集中在
-// helppage.go，呼叫端只交內容——驗收工具才有單一的期望值來源。地圖標題與提示列不受影響。
+// 說明頁不走這裡（它有兩種字級、橫線與反白鍵帽，fg／bg 兩個顏色表達不了），
+// 用 DrawHelpPage。這裡留給地圖標題與提示列。
 func DrawTextPage(dst []uint8, w, h int, f *xlate.Font, lines []string, cell int, fg, bg [3]uint8, bgAlpha uint8) {
 	if f == nil {
-		return
-	}
-	if ok, prot := helpPageLines(lines); ok && drawHelpPage(dst, w, h, f, prot) {
 		return
 	}
 	if bgAlpha > 0 {

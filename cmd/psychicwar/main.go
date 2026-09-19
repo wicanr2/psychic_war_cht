@@ -67,7 +67,8 @@ type game struct {
 	origDir   string
 	textDir   string
 	baked     []translator.BakedEntry
-	fontHelp  *xlate.Font
+	fontHelp  *xlate.Font // 說明頁的標頭字型（cjk24）
+	fontBody  *xlate.Font // 說明頁的內文字型（cjk16）
 	helpLines []string
 	cheat     bool // -cheat：打開 F5／F6（docs/spec/014）
 	amap      *psychicwar.AutoMap
@@ -398,19 +399,18 @@ func (g *game) Draw(dst *ebiten.Image) {
 
 // drawHelp 畫 F1 說明頁（docs/spec/012 §3）：蓋滿整個畫布，固定顏色。
 func (g *game) drawHelp(dst *ebiten.Image) {
-	if !g.help || g.over == nil || g.fontHelp == nil || len(g.helpLines) == 0 {
+	if !g.help || g.over == nil || g.fontHelp == nil || g.fontBody == nil || len(g.helpLines) == 0 {
 		return
 	}
 	w, h := 320*g.scale, 200*g.scale
-	lines := g.helpLines
-	if g.tr != nil && g.tr.InProtection() {
-		if a := psychicwar.ProtectionAnswer(g.o.Bytes(oracle.Addr{Seg: psychicwar.ProtAnswerSeg, Off: psychicwar.ProtAnswerOff}, psychicwar.ProtAnswerLen)); a != "" {
-			lines = append(append([]string{}, lines...), "", psychicwar.ProtectionLabel+a) // 防拷畫面才有（docs/spec/013 §2.2）
-		}
+	var prot string
+	if g.tr != nil && g.tr.InProtection() { // 防拷畫面才有（docs/spec/013 §2.2）
+		prot = psychicwar.ProtectionAnswer(g.o.Bytes(oracle.Addr{Seg: psychicwar.ProtAnswerSeg, Off: psychicwar.ProtAnswerOff}, psychicwar.ProtAnswerLen))
 	}
 	clear(g.overPix)
-	psychicwar.DrawTextPage(g.overPix, w, h, g.fontHelp, lines,
-		8*g.scale, [3]uint8{0xFF, 0xFF, 0xFF}, [3]uint8{0, 0, 0}, 0xFF)
+	if !psychicwar.DrawHelpPage(g.overPix, w, h, g.fontHelp, g.fontBody, prot) {
+		return // 畫不了就不要蓋半頁上去，讓遊戲畫面留著
+	}
 	g.over.WritePixels(g.overPix)
 	dst.DrawImage(g.over, nil)
 }
@@ -677,7 +677,7 @@ func main() {
 			}
 			g.tr = translator.NewTranslator(entries, f24, f16, *scale, w)
 			g.tr.Attach(o)
-			g.fontHelp = f24
+			g.fontHelp, g.fontBody = f24, f16
 			if baked, err := translator.LoadBaked(*textDir); err != nil {
 				dieData("讀不到中文文本檔。", textFix, err)
 			} else {
