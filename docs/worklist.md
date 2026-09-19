@@ -40,8 +40,9 @@
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
 | #34 | `theme` | 主題替換 | graphics | #20 | manual |
-| #35 | `cross-platform-package` | 跨平台打包：Linux／Windows／macOS | release | #27 | manual |
 | #38 | `walkthrough-1989` | 整理當年《軟體世界》19 期攻略（29–38 頁）成 markdown | text | — | manual |
+| #39 | `windows-package` | Windows 發行包 | release | — | absent |
+| #39 | `macos-real-run` | macOS 發行包的真機驗收 | release, verify | — | manual |
 
 ## 不做（使用者定案）
 
@@ -85,3 +86,4 @@
 | #25 | `baked-text-replacement` | 圖檔內嵌文字的中文替換圖層 | 含文字 50 張已疊 48 張、125 塊（tools/baked_report.py）；沒疊的只有 LOGO.PBL 與 KGDLOGO.PBL 兩張標題美術字，docs/spec/011 §6 定案保留。lint 0 問題、合成畫面測試 125 筆全過。開場字幕條 OPEN.PBL #7–#10 的畫面座標由實跑截圖逐像素定出（差 0），四行中文實跑觸發並蓋上；字比底密的兩行用 text/baked.json 的 swap_colors 對調定色（dosgolem xlate，規格 202 §2.3）。見 docs/re/024 §6 | 2026-09-19 |
 | #36 | `license-readme` | LICENSE（RRSAL-1.0）與 README | LICENSE 是 RRSAL-1.0 全文；README 的授權段摘要第 2、6、12 條，寫明授權不涵蓋原版素材、中文字模來自倚天中文系統 3.53 的點陣子集與下架聯絡方式（wicanr2@gmail.com），並列出 PW.EXE 與 LOGO.EXE 的 SHA-256（取得管道刻意不寫） | 2026-09-19 |
 | #37 | `readme` | README.md：遊戲介紹、中文截圖、怎麼玩 | README.md 173 行，五張中文截圖在 docs/images/（由 pwstep 以當前 HEAD 重跑產生）。涵蓋遊戲介紹、中文化做法、完成度數字（出處全部連到 docs/re/）、抽測試玩三次、輔助功能表、怎麼跑、發行包狀態、文件索引、授權與字型來源。截圖只含遊戲畫面，原版檔案沒有進版控 | 2026-09-19 |
+| #35 | `cross-platform-package` | 跨平台打包：Linux／Windows／macOS | AppImage 與 macOS universal 都產出並集中在 dist-all/（docs/spec/021、docs/DEV-SETUP.md）。AppImage：解開產物從別的 cwd 執行、畫面與 repo 建置逐像素差 0、解開處零寫入、存檔落在 XDG 目錄、字型改名報錯。-with-data 變體在沒有掛任何原版目錄的容器裡、不給 -orig 跑到標題畫面；反向對照是可散布版印用法、結束碼 2。macOS 只過靜態驗收五道（docs/re/033），沒有 Mac 可實跑，那一項移到 macos-real-run。Windows 移到 #39 | 2026-09-19 |

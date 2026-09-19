@@ -218,7 +218,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 | `tools/baked_find.py <截圖…>` | 哪一張截圖上有哪張圖：拿 `.PBL` 解出的原版圖塊比 `screen` 座標的像素。招牌多半在還沒走到的房間，逐像素驗收前要先知道去哪裡驗 |
 | `tools/baked_merge.py <來源.json…>` | 分頭寫的疊字資料合併進 `text/baked.json`（排序後寫，diff 看得懂） |
 | `tools/playtest-sampling-instructions.md` | 抽測試玩的代理指令範本（`docs/re/027`） |
-| `tools/package.sh linux\|appimage\|macos\|all` | 發行包（`docs/spec/021`），產物在 `dist/`（gitignore） |
+| `tools/package.sh appimage\|macos\|promo\|all` | 發行包（`docs/spec/021`）。**產物一律在 `dist-all/`**（gitignore），每平台只留最新一份，慣例見 `docs/DEV-SETUP.md`。`PSYCHICWAR_WITH_DATA=1` 另出含原版素材的本機版（**絕不推 git、絕不上傳**）|
 | `tools/package-check.sh <產物>` | 發行包驗收：解開後從**別的 cwd** 跑，比畫面、比解開處有沒有被寫入、字型改名的反向對照 |
 | `tools/macos-pack.sh`、`tools/macos-verify.sh` | macOS universal（osxcross 兩弧＋lipo）與五道靜態驗收（`docs/re/033`） |
 | `tools/appimagetool.sh`、`tools/appicon.py` | AppDir → AppImage（type2 runtime 串 squashfs）；自製圖示（不用原版 Logo） |
@@ -229,7 +229,7 @@ workplace/         解開的原版、快照、暫存輸出（gitignore）
 
 ## 待決事項
 
-- 目標平台：Linux tar.gz、AppImage、macOS universal 已做（`docs/spec/021`）；**Windows 還沒做**，由 #35 追蹤。
+- 目標平台：**Linux 只出 AppImage**、macOS universal（`docs/spec/021`）。Windows 由 #39 追蹤；macOS 真機驗收也在 #39。
 - **畫面上要出現的中文，來源一律放進 `text/` 的資料檔**（`help.json`、`baked.json`…），否則字型子集收不到、畫面缺字（`docs/re/030` §2）。
 - 公開時機。授權採 RRSAL-1.0（`rulebook/85`，已定案不重問），`LICENSE` 與 README 授權段已進版控（#36 已關）。
 - **中文字模用倚天字形發行（使用者定案 2026-09-18，`docs/re/020` §4，不重問）**；README 已寫明來源是倚天中文系統 3.53 的點陣子集與下架聯絡方式。
