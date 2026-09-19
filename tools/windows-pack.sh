@@ -13,8 +13,9 @@
 #
 # `-H windowsgui` 讓程式以 GUI 子系統連結，雙擊不會多開一個主控台視窗。
 # 代價是**錯誤訊息沒有地方可去**（`rulebook/82` 第 1 點：同一段訊息在不同 OS 是不同嚴重度）。
-# 所以包裡附 `troubleshoot.bat`：它把 stderr 導進 `psychicwar-log.txt` 再 `pause`，
-# 玩家看得到「缺原版」「缺字型」這類訊息。詳見 docs/re/035 §4。
+# 程式自己處理這件事：致命錯誤彈 MessageBox ＋ 寫 `%APPDATA%\PsychicWar\psychicwar-error.log`
+# （issue #45，`apps/psychicwar/fatal.go`）。`troubleshoot.bat` 留著當後路——
+# 彈窗被擋掉、或要看 log.Printf 那些非致命訊息時用。詳見 docs/re/035 §4。
 #
 # ⚠ 這支跑完只做得到「wine 底下起得來」的驗收（`tools/windows-verify.sh --run`）。
 # **沒有在真正的 Windows 上跑過**，wine 過關不等於 Windows 過關。
@@ -124,17 +125,21 @@ BAT
   原版放別的地方也可以，用命令列指過去：
      PsychicWar.exe -orig D:\\路徑\\到\\原版
 
-二、雙擊沒反應？
-  這支程式是視窗程式（GUI），沒有主控台可以印訊息，所以「缺原版」「缺字型」
-  這類錯誤在雙擊時看不到。改成雙擊 troubleshoot.bat：它會把訊息寫進
-  psychicwar-log.txt 並停在畫面上。
+二、開不起來？
+  「缺原版」「缺字型」這類錯誤會直接彈一個視窗告訴你原因與修法，同一份訊息
+  也會寫進 %APPDATA%\\PsychicWar\\psychicwar-error.log（下次正常開起來就會自動清掉）。
+  回報問題時把那個檔案附上來。
 
   最常見的原因就是第一項的第 2 步沒做（找不到 PW.EXE）。
 
+  如果連視窗都沒有（例如彈窗被防毒或遠端桌面擋掉），雙擊 troubleshoot.bat：
+  它會把所有訊息導進 psychicwar-log.txt 並停在畫面上。這支程式是視窗程式（GUI），
+  沒有主控台可以印訊息，所以平常看不到那些輸出。
+
 三、存檔放哪
   %APPDATA%\\PsychicWar
-  （遊戲存檔 <名字>.DAT 與 F10 的即時存檔都在這裡。解開的資料夾本身不會被寫入，
-   所以放在 Program Files 或唯讀磁碟也沒問題。）
+  （遊戲存檔 <名字>.DAT、F10 的即時存檔與 psychicwar-error.log 都在這裡。
+   解開的資料夾本身不會被寫入，所以放在 Program Files 或唯讀磁碟也沒問題。）
 
 四、熱鍵
   進遊戲後叫出說明頁就看得到完整清單（按哪個鍵寫在 README.md 裡）。

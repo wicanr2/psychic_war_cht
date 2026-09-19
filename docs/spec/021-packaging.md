@@ -72,8 +72,31 @@ Windows 不在本輪（issue #35 另外追蹤）。
 
 ### 3.3 原版目錄（`-orig`）
 
-旗標沒給時找執行檔所在目錄的 `original/`；還是沒有就照現行行為印用法並結束（結束碼 2），
-訊息要講清楚「要自備原版，把含 `PW.EXE` 的目錄用 `-orig` 指過來」。
+旗標沒給時找執行檔所在目錄的 `original/`；還是沒有就結束（結束碼 2）。
+
+訊息**不是** `flag.Usage()`。整份旗標說明有 34 行，第一行是 `Usage of …`，
+沒有一句話講「你要自己準備原版」，而這是玩家最常撞到的一件事。要印的是：
+缺的是 `PW.EXE`、原版要自備、兩種指法（複製成執行檔旁的 `original`，或 `-orig` 指過去）、
+例子照平台給（Windows 給 `PsychicWar.exe -orig D:\…`）。旗標清單留給 `-h`。
+
+### 3.4 致命錯誤要讓玩家看得到（issue #45）
+
+Windows 版以 `-H windowsgui` 連結，行程沒有主控台：`log.Fatal` 的訊息**一個字都不會出現**，
+雙擊的人只看到什麼都沒發生。同一段訊息在 Linux 只是終端機上的一行字
+（`rulebook/82` 第 1 點：同一段訊息在不同 OS 是不同嚴重度）。
+
+所以致命錯誤一律走 `psychicwar.Fatal`（`apps/psychicwar/fatal.go`），三條出口同時走：
+
+| 出口 | 平台 | 內容 |
+|---|---|---|
+| stderr | 全部 | 與以前相同，從終端機或 `troubleshoot.bat` 啟動時看得到 |
+| `<存檔目錄>/psychicwar-error.log` | 全部 | 時間、命令列、工作目錄、訊息本體。覆蓋寫，只留最後一次 |
+| `MessageBoxW` | 只有 Windows | 訊息本體 ＋ 紀錄檔路徑。其他平台是 no-op |
+
+- 缺資料檔的訊息要帶「怎麼修」，不能只給 `open …: no such file or directory`。
+- **啟動成功就刪掉上一次的 `psychicwar-error.log`**，否則玩家會照著已經修好的問題追下去。
+- `PSYCHICWAR_NO_DIALOG=1` 關掉彈窗。模態視窗會停在那裡等人按確定，無人看管的自動驗收
+  會卡到 timeout 拿不到結束碼；彈窗本身另外驗（§5 第 7 項），不是靠這個變數繞過去不驗。
 
 ## 4. 建置
 
@@ -102,10 +125,16 @@ Ebiten 需要 cgo：Linux 連 X11／GL，macOS 連 Cocoa／OpenGL／Metal framew
 2. **存檔落點**：同一次執行後，`$XDG_DATA_HOME/psychicwar`（測試時指到暫存目錄）底下要出現即時存檔；
    解開處的目錄不得被寫入（比對執行前後的檔案列表）。
 3. **`-with-data` 變體**：在**沒有掛任何原版目錄**的容器裡跑，不給 `-orig` 要能啟動
-   （靠 `OrigDir()` 找到包內的 `original/`）。反向對照：同一個容器跑可散布版要印用法並結束碼 2。
+   （靠 `OrigDir()` 找到包內的 `original/`）。反向對照：同一個容器跑可散布版要印 §3.3 的訊息、結束碼 2。
 4. **反向對照**：把發行包裡的 `font/` 改名，執行要**明確報錯**指出缺字型，不是靜默跑出沒有中文的畫面。
 5. **macOS**：`lipo -archs` 要列出 `x86_64 arm64`；`.app` 的結構（`Contents/MacOS`、`Contents/Resources`、
    `Info.plist`）齊全。**沒有 Mac 可以實跑，這一項只驗產物結構，不驗行為**，紀錄要照實寫。
+6. **錯誤紀錄**（§3.4）：缺原版、缺字型各跑一次，`<存檔目錄>/psychicwar-error.log` 要寫得出來、
+   內容看得懂。**反向對照**：正常啟動一次，結束後那個檔案不存在（上一次留下的也要被清掉）。
+7. **彈窗**（Windows）：不給原版跑一次，`PSYCHICWAR_NO_DIALOG` 不設。判準是程式停在模態視窗上
+   沒有自己結束、視窗樹裡有標題正確的視窗，並存一張截圖
+   （`tools/windows-verify.sh <zip> --dialog`）。
+8. **彈窗的反向對照**：同一個情境設 `PSYCHICWAR_NO_DIALOG=1`，程式要立刻結束、結束碼 2。
 
 ## 6. 不做
 

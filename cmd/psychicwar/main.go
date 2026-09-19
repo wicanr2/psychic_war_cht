@@ -15,6 +15,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"sync"
@@ -527,6 +528,42 @@ var version = "dev"
 // 所以停用疊字要另外給一個值。
 const notext = "off"
 
+// die／dief 取代 log.Fatal：Windows 版沒有主控台，log.Fatal 的訊息一個字都到不了玩家那裡
+// （issue #45、rulebook/82 第 1 點）。實作在 apps/psychicwar/fatal.go。
+func die(v ...any)                 { psychicwar.Fatal(1, fmt.Sprint(v...)) }
+func dief(format string, a ...any) { psychicwar.Fatal(1, fmt.Sprintf(format, a...)) }
+
+// dieData 是資料檔讀不到時的出口：原始錯誤留著（路徑在裡面，回報時有用），另外補一句「怎麼修」。
+// 只給 `open …: no such file or directory` 的話，玩家看得懂每一個字卻不知道要做什麼。
+func dieData(what, fix string, err error) {
+	psychicwar.Fatal(1, fmt.Sprintf("%s\n\n%v\n\n%s", what, err, fix))
+}
+
+// 缺資料檔的兩句修法。發行包的 text／font 就在執行檔旁邊，最常見的原因是只把執行檔拉出資料夾。
+const (
+	textFix = "text 資料夾要跟執行檔放在一起（解開發行包時不要只拉執行檔出來），或用 -text 指過去。\n" +
+		"想先用原版英文玩的話：-text off 會關掉中文疊字。"
+	fontFix = "font 資料夾要跟執行檔放在一起（裡面是 cjk24.golemfnt 與 cjk16.golemfnt），或用 -font 指過去。"
+)
+
+// origMissing 是找不到原版時的訊息（docs/spec/021 §3.3）。
+//
+// 以前這裡印的是整份 flag.Usage()：34 行旗標說明，第一行還是 "Usage of ..."，
+// 沒有一句話講「你要自己準備原版」。缺原版是玩家最常撞到的一件事，訊息要直接回答
+// 「我該做什麼」；旗標清單留給 -h。
+func origMissing() string {
+	exe, orig := "./psychicwar", "/path/to/psychic-war"
+	if runtime.GOOS == "windows" {
+		exe, orig = "PsychicWar.exe", `D:\games\psychic-war`
+	}
+	return "找不到原版遊戲檔案 PW.EXE。\n\n" +
+		"這是《銀河超能力戰記》（Psychic War，DOS 英文版）的繁體中文化，只換掉畫面上的文字，\n" +
+		"遊戲本體要用你自己那一份原版。兩種做法挑一種：\n\n" +
+		"  1. 把含 PW.EXE 的整個目錄複製到 " + exe + " 旁邊，命名為 original\n" +
+		"  2. 用 -orig 指過去：" + exe + " -orig " + orig + "\n\n" +
+		"其他旗標：" + exe + " -h"
+}
+
 func main() {
 	orig := flag.String("orig", "", "含 PW.EXE 的原版目錄（玩家自備）")
 	cyclesFlag := flag.String("cycles", "750", "每毫秒 cycles，或 xt／at8／at12（docs/spec/004）")
@@ -564,26 +601,27 @@ func main() {
 	if *fontDir == "" {
 		*fontDir = psychicwar.DataDir("font")
 	}
+	// 錯誤紀錄跟著存檔走，這一行要在第一個 die 之前（issue #45）。
+	psychicwar.SetErrorLogDir(*scratch)
 	if *orig == "" {
-		flag.Usage()
-		os.Exit(2)
+		psychicwar.Fatal(2, origMissing())
 	}
 	perMs, err := parseCycles(*cyclesFlag)
 	if err != nil {
-		log.Fatal(err)
+		die(err)
 	}
 	o, err := oracle.Load(filepath.Join(*orig, "PW.EXE"), *orig)
 	if err != nil {
-		log.Fatal(err)
+		dieData("原版執行檔載入失敗。", "確認 -orig 指到的目錄裡有 PW.EXE，而且是完整的一份原版（106 個檔案）。", err)
 	}
 	defer o.Close()
 	if err := os.MkdirAll(*scratch, 0o755); err != nil {
-		log.Fatal(err)
+		dieData("存檔目錄建不起來。", "用 -scratch 指到一個寫得進去的目錄。", err)
 	}
 	o.SetScratch(*scratch)
 	if *loadState != "" {
 		if err := o.LoadStateFile(*loadState); err != nil {
-			log.Fatal(err)
+			die(err)
 		}
 	}
 	// 狀態檔會還原時鐘設定，所以速度與 AdLib 在載入之後才設。
@@ -602,7 +640,7 @@ func main() {
 	if *recordPath != "" { // 輸入錄製（docs/spec/019）
 		exe, err := psychicwar.FileSHA256(filepath.Join(*orig, "PW.EXE"))
 		if err != nil {
-			log.Fatal(err)
+			die(err)
 		}
 		g.rec = psychicwar.NewRecording(exe, int(perMs), *loadState, o.Steps())
 		g.recPath = *recordPath
@@ -618,21 +656,21 @@ func main() {
 		} else {
 			entries, err := translator.LoadText(*textDir)
 			if err != nil {
-				log.Fatal(err)
+				dieData("讀不到中文文本檔。", textFix, err)
 			}
 			f24, err := xlate.LoadFont(filepath.Join(*fontDir, "cjk24.golemfnt"))
 			if err != nil {
-				log.Fatal(err)
+				dieData("讀不到中文字型。", fontFix, err)
 			}
 			f16, err := xlate.LoadFont(filepath.Join(*fontDir, "cjk16.golemfnt"))
 			if err != nil {
-				log.Fatal(err)
+				dieData("讀不到中文字型。", fontFix, err)
 			}
 			var w io.Writer
 			if *textLog != "" {
 				f, err := os.Create(*textLog)
 				if err != nil {
-					log.Fatal(err)
+					die(err)
 				}
 				defer f.Close()
 				w = f
@@ -641,7 +679,7 @@ func main() {
 			g.tr.Attach(o)
 			g.fontHelp = f24
 			if baked, err := translator.LoadBaked(*textDir); err != nil {
-				log.Fatal(err)
+				dieData("讀不到中文文本檔。", textFix, err)
 			} else {
 				g.baked = baked
 				g.tr.AttachBaked(baked, *orig)
@@ -653,14 +691,14 @@ func main() {
 	g.ring.Write(make([]int16, sampleRate/20)) // 預填 50 ms 靜音
 	if *statsPath != "" {
 		if g.stats, err = os.Create(*statsPath); err != nil {
-			log.Fatal(err)
+			die(err)
 		}
 		defer g.stats.Close()
 	}
 
 	if *wavPath != "" {
 		if g.wav, err = os.Create(*wavPath); err != nil {
-			log.Fatal(err)
+			die(err)
 		}
 		_, _ = g.wav.Write(make([]byte, 44)) // 檔頭結束時補
 		defer finishWAV(g)
@@ -676,13 +714,17 @@ func main() {
 		ctx := audio.NewContext(sampleRate)
 		p, err := ctx.NewPlayer(io.Reader(&stereoReader{ring: g.ring}))
 		if err != nil {
-			log.Fatal(err)
+			die(err)
 		}
 		p.SetBufferSize(50 * time.Millisecond)
 		p.Play()
 	default:
-		log.Fatalf("-audio 要是 ebiten 或 null：%q", *audioOut)
+		dief("-audio 要是 ebiten 或 null：%q", *audioOut)
 	}
+
+	// 走到這裡表示原版、字型、文本檔都讀到了：把上一次失敗留下的錯誤紀錄清掉，
+	// 否則玩家修好之後還是會看到那個檔案，照著已經不成立的訊息追下去。
+	psychicwar.ClearErrorLog()
 
 	ebiten.SetWindowTitle("銀河超能力戰記 Psychic War")
 	ebiten.SetWindowSize(320**scale, 200**scale)
@@ -692,7 +734,7 @@ func main() {
 	wg.Wait()
 	g.saveRecording()
 	if runErr != nil {
-		log.Fatal(runErr)
+		die(runErr)
 	}
 }
 

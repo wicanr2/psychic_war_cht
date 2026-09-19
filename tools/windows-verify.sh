@@ -4,6 +4,7 @@
 #   tools/windows-verify.sh workplace/pkg-stage/win64/PsychicWar      # 目錄（打包前自檢）
 #   tools/windows-verify.sh workplace/win-check/PsychicWar/PsychicWar.exe
 #   tools/windows-verify.sh dist-all/PsychicWar-<版本>-win64.zip --run # 解開 zip ＋ wine 實跑
+#   tools/windows-verify.sh dist-all/PsychicWar-<版本>-win64.zip --dialog # 缺原版時的彈窗（issue #45）
 #
 # 參數可以是 portable 目錄、`.exe` 或 `.zip`；路徑要在本 repo 底下。
 #
@@ -25,6 +26,11 @@
 #   `-quit-after`，截圖、看結束碼、看 `%APPDATA%` 底下有沒有寫出存檔。
 #   ⚠ **wine 不是 Windows**。這一段只證明「不是立刻崩潰、路徑解析成立」，
 #   真正的 Windows 上沒有跑過（docs/re/035 §5）。
+#
+# **彈窗**（加 `--dialog`）：不給原版也不掛原版目錄，驗 GUI 子系統的致命錯誤有沒有變成
+#   看得見的 MessageBox（issue #45）。判準兩個：程式停在模態視窗上沒有自己結束、
+#   `xwininfo` 的視窗樹裡有這支程式的視窗；另外存一張截圖。
+#   `--run` 那一段刻意設 `PSYCHICWAR_NO_DIALOG=1`（模態視窗會讓無人看管的驗收卡到 timeout）。
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -166,7 +172,7 @@ if fail:
 print("靜態五道全過（**結構驗收，不是功能驗收**）")
 PY
 
-[[ "$MODE" == "--run" ]] || exit 0
+case "$MODE" in --run|--dialog) ;; *) exit 0 ;; esac
 
 # --- 實跑：wine ＋ Xvfb ----------------------------------------------------------
 if ! docker image inspect "$IMAGE" >/dev/null 2>&1; then
@@ -184,17 +190,88 @@ fi
 # ⚠ WINEPREFIX 不能放 /tmp（sticky bit，wine 拒絕），所以另外掛一個 /wine tmpfs 當 HOME。
 # ⚠ `WINEDLLOVERRIDES=mscoree,mshtml=` 停掉 Mono 與 Gecko：少了它 `wineboot` 會跳
 #    「要不要安裝」的對話框，而這裡是 `--network none` ＋ 無人看管的 Xvfb，會一路卡到 timeout。
-timeout "${PSYCHICWAR_WINE_TIMEOUT:-10m}" docker run --rm --network none \
-  --memory 4g --cpus "${PSYCHICWAR_WINE_CPUS:-2}" --pids-limit 512 \
-  --log-opt max-size=10m --log-opt max-file=3 \
-  -u "$(id -u):$(id -g)" -e HOME=/wine -e WINEDEBUG="${WINEDEBUG:--all}" \
-  -e WINEDLLOVERRIDES="mscoree,mshtml=" \
-  -e "PW_PKG=$REL" -e "PW_OUT=$OUT" -e "PW_ARGS=${PSYCHICWAR_WINE_ARGS:--orig Z:\\orig\\psychic-war}" \
-  -e "PW_GL=${EBITENGINE_GRAPHICS_LIBRARY:-opengl}" \
-  -v "$ROOT:/src" "${ORIGMOUNT[@]}" \
-  --tmpfs "/wine:exec,uid=$(id -u),gid=$(id -g),size=2g" \
-  -w /src "$IMAGE" \
-  bash -c '
+# PSYCHICWAR_NO_DIALOG=1：致命錯誤不彈視窗。模態視窗會停在那裡等人按確定，
+# 而這裡是無人看管的 Xvfb，不關掉的話「缺原版」那一項會卡到 timeout，拿不到結束碼。
+# 彈窗本身用 `--dialog` 另外驗（不設這個變數），不是靠它繞過去不驗。
+wine_run() { # $1 ＝ 容器內要跑的 bash
+  timeout "${PSYCHICWAR_WINE_TIMEOUT:-10m}" docker run --rm --network none \
+    --memory 4g --cpus "${PSYCHICWAR_WINE_CPUS:-2}" --pids-limit 512 \
+    --log-opt max-size=10m --log-opt max-file=3 \
+    -u "$(id -u):$(id -g)" -e HOME=/wine -e WINEDEBUG="${WINEDEBUG:--all}" \
+    -e WINEDLLOVERRIDES="mscoree,mshtml=" \
+    -e "PSYCHICWAR_NO_DIALOG=${PW_NO_DIALOG:-1}" \
+    -e "PW_PKG=$REL" -e "PW_OUT=$OUT" -e "PW_ARGS=${PSYCHICWAR_WINE_ARGS:--orig Z:\\orig\\psychic-war}" \
+    -e "PW_GL=${EBITENGINE_GRAPHICS_LIBRARY:-opengl}" \
+    -v "$ROOT:/src" "${ORIGMOUNT[@]}" \
+    --tmpfs "/wine:exec,uid=$(id -u),gid=$(id -g),size=2g" \
+    -w /src "$IMAGE" bash -c "$1"
+}
+
+if [[ "$MODE" == "--dialog" ]]; then
+  # 缺原版時的 MessageBox（issue #45）。不給 -orig、不設 PSYCHICWAR_NO_DIALOG，
+  # 所以程式會停在視窗上不結束——「還活著」本身就是它真的彈出來的證據之一。
+  ORIGMOUNT=()
+  PW_NO_DIALOG=0
+  wine_run '
+    set -uo pipefail
+    export WINEPREFIX=/wine/prefix EBITENGINE_GRAPHICS_LIBRARY=$PW_GL
+    WINE=$(command -v wine || command -v wine64)
+    mkdir -p /tmp/.X11-unix
+    Xvfb :99 -screen 0 1280x800x24 -nolisten tcp -ac >/tmp/xvfb.log 2>&1 &
+    xvfb_pid=$!
+    i=0; while [ ! -S /tmp/.X11-unix/X99 ] && [ $i -lt 50 ]; do sleep 0.1; i=$((i+1)); done
+    export DISPLAY=:99
+    $WINE wineboot -i >/dev/null 2>&1
+    # ⚠ 這個 image 一個 CJK 字型都沒有，彈窗的中文會畫成豆腐格：那是**驗收環境缺字型**，
+    #   不是訊息壞掉（真正的 Windows 一定有 CJK 介面字型）。把專案烘字用的 Noto 來源
+    #   丟進 prefix 的 Fonts，截圖才看得出訊息內容。沒有這個檔就照跑，只是截圖看不懂。
+    if [ -f /src/workplace/font-src/NotoSansCJKtc-Regular.otf ]; then
+      mkdir -p /wine/.fonts "$WINEPREFIX/drive_c/windows/Fonts"
+      cp /src/workplace/font-src/NotoSansCJKtc-Regular.otf /wine/.fonts/
+      cp /src/workplace/font-src/NotoSansCJKtc-Regular.otf "$WINEPREFIX/drive_c/windows/Fonts/"
+      command -v fc-cache >/dev/null && fc-cache -f >/dev/null 2>&1
+      # 光是把檔案放進去還不夠：MessageBox 用的是系統介面字型（wine 解成 Tahoma／MS Shell Dlg），
+      # 而 wine 不會自己為缺字去找別的字型。用 Wine 的 Replacements 把那兩個名字換掉。
+      $WINE reg add "HKCU\\Software\\Wine\\Fonts\\Replacements" /v "MS Shell Dlg" /d "Noto Sans CJK TC" /f >/dev/null 2>&1
+      $WINE reg add "HKCU\\Software\\Wine\\Fonts\\Replacements" /v "Tahoma" /d "Noto Sans CJK TC" /f >/dev/null 2>&1
+    fi
+    cd "/src/$PW_PKG"
+    $WINE ./PsychicWar.exe -audio null > "/src/$PW_OUT/dialog.log" 2>&1 &
+    app_pid=$!
+    sleep 20
+    alive=no; kill -0 $app_pid 2>/dev/null && alive=yes
+    # ⚠ locale 要是 UTF-8。預設的 ANSI_X3.4-1968（＝ASCII）底下，xwininfo 印不出中文標題，
+    #   會變成 `" (failure in conversion from UTF8_STRING to ANSI_X3.4-1968)"`：
+    #   視窗明明在，grep 標題卻落空，結論會變成「彈窗沒出來」。
+    export LC_ALL=C.UTF-8 LANG=C.UTF-8
+    xwininfo -root -tree > "/src/$PW_OUT/dialog-tree.txt" 2>&1 || true
+    # 再用 xprop 取一次標題：_NET_WM_NAME／WM_NAME 是 UTF8_STRING，xprop 原樣印，不經 locale 轉換。
+    : > "/src/$PW_OUT/dialog-names.txt"
+    for id in $(awk "/psychicwar.exe/ {print \$1}" "/src/$PW_OUT/dialog-tree.txt"); do
+      echo "-- $id" >> "/src/$PW_OUT/dialog-names.txt"
+      xprop -id "$id" _NET_WM_NAME WM_NAME >> "/src/$PW_OUT/dialog-names.txt" 2>&1 || true
+    done
+    import -window root "/src/$PW_OUT/dialog.png" 2>/dev/null || true
+    kill $app_pid 2>/dev/null || true
+    kill $xvfb_pid 2>/dev/null || true
+    echo "程式還在執行（停在模態視窗上）：$alive"
+    [ "$alive" = yes ] || { echo "✗ 程式自己結束了，沒有停在視窗上" >&2; exit 1; }
+  '
+  echo "=== 視窗標題"
+  # 判準是視窗真的在 X server 上而且標題對得上，不是「程式沒死」——後者也可能是別的原因卡住。
+  if grep -q "銀河超能力戰記" "$OUT/dialog-names.txt"; then
+    grep -B1 "銀河超能力戰記" "$OUT/dialog-names.txt"
+  else
+    echo "✗ 視窗樹裡沒有這支程式標題正確的視窗" >&2
+    cat "$OUT/dialog-names.txt" "$OUT/dialog-tree.txt" >&2
+    exit 1
+  fi
+  ls -l "$OUT/dialog.png"
+  echo "彈窗驗收過（截圖 $OUT/dialog.png）"
+  exit 0
+fi
+
+wine_run '
     set -uo pipefail
     export WINEPREFIX=/wine/prefix EBITENGINE_GRAPHICS_LIBRARY=$PW_GL
     WINE=$(command -v wine || command -v wine64)

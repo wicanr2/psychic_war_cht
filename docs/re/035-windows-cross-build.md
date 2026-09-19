@@ -1,6 +1,6 @@
 # 035：在 Linux 上交叉編出 Windows 版
 
-狀態：量測紀錄（2026-09-19）。對應 issue #39。規格 `docs/spec/021`（READY）§1.1、§3、§4、§5；
+狀態：量測紀錄（2026-09-19）。對應 issue #39、#45（§3.3、§4）。規格 `docs/spec/021`（READY）§1.1、§3、§4、§5；
 紀律 `rulebook/82`。對照組是 `docs/re/033`（macOS）。
 
 ## 1. 結論
@@ -21,6 +21,8 @@
 | 存檔落點 | `%APPDATA%\PsychicWar`（`apps/psychicwar/paths.go` 這一輪新增的 windows 分支） |
 | 建置時間 | 暖快取 1.8 秒（冷快取未量）；`--cpus 4`，開工時 load average 1.27 |
 | 實跑驗收 | wine-9.0（Ubuntu 24.04）＋ Xvfb：可散布版與 `-with-data` 版都起得來；同狀態畫面與 Linux 產物**逐像素差 0** |
+| 致命錯誤（issue #45，2026-09-19 補） | 彈 `MessageBoxW` ＋ 寫 `%APPDATA%\PsychicWar\psychicwar-error.log`（§4.1）。wine 底下的彈窗驗過，截圖為證（§5.2 第 F 項） |
+| 圖示 | **仍然沒有**（§3.3 評估了三條路與代價） |
 | **真機驗收** | **沒有做**（沒有 Windows 機器） |
 
 ## 2. 產物
@@ -84,11 +86,27 @@ cmd/psychicwar/main.go:370:40: ru.Stime undefined (type syscall.Rusage has no fi
 新增的 windows 分支用 `os.UserConfigDir()`，它在 Windows 回的就是 `%APPDATA%`
 （Roaming），拼成 `%APPDATA%\PsychicWar`。
 
-### 3.3 沒做圖示
+### 3.3 沒做圖示（issue #45 第 3 項，評估過，這一輪仍然沒做）
 
-`.exe` 的圖示要嵌成 PE 資源（`.rsrc`），純 Go 工具鏈做不到，要 `windres` 或
-`akavel/rsrc` 這類工具。這一輪沒有做，執行檔在檔案總管裡會是預設圖示。
-不影響能不能跑，優先度低。
+`.exe` 的圖示要嵌成 PE 的 `.rsrc` 資源（`RT_GROUP_ICON` ＋ `RT_ICON`）。
+**純 Go 工具鏈做不到**：`go build` 不會產生資源節，只會把它看得到的 `*.syso`
+（COFF 目的檔）連進去。所以問題是「那個 `.syso` 從哪來」。
+
+本機現況：`psychicwar-go-ebiten` 裡**沒有** `windres`、`llvm-rc`，也沒有任何 mingw 套件
+（`ls /usr/bin | grep -c mingw` ＝ 0），`GOPROXY=off` 也裝不了 Go 寫的工具。三條路：
+
+| 做法 | 代價 | 備註 |
+|---|---|---|
+| `binutils-mingw-w64-x86-64` 的 `windres` | 重建 image、要網路（這台容器網路 60–200 KB/s） | 只為了圖示裝一整套 binutils |
+| `tc-hib/go-winres` 或 `akavel/rsrc` | 要網路 `go install`，多一個工具相依 | 產物一樣是 `.syso` |
+| 自己用 Python 產 `.syso` | 不必網路，但要自己處理 COFF 節、資源目錄與 `IMAGE_REL_AMD64_ADDR32NB` 重定位 | 錯了會產出「連得起來但資源壞掉」的執行檔 |
+
+**如果之後要做，建議第二條，而且只做一次**：`.syso` 產好就 commit 進
+`cmd/psychicwar/`（Go 會自動連進 `GOOS=windows` 的建置），之後**建置端沒有任何新相依**，
+只有換圖示的時候才需要那個工具。圖示素材已經有了：`tools/py.sh tools/appicon.py <輸出.png> [邊長]`
+（macOS 的 `.icns` 就是用它組的），多一步 PNG → `.ico`。
+
+沒有圖示不影響能不能跑，只影響檔案總管與工作列的長相。
 
 ## 4. `-H windowsgui` 與「看不見的錯誤」
 
@@ -99,15 +117,34 @@ cmd/psychicwar/main.go:370:40: ru.Stime undefined (type syscall.Rusage has no fi
 `rulebook/82` 第 1 點講的就是這件事：同一段訊息在 Linux 是 stderr 上的噪音，
 在 Windows 是玩家唯一的線索，而 GUI 子系統把那個線索整個拿掉。
 
-### 4.1 為什麼不用 `MessageBox`
+### 4.1 做法：彈窗 ＋ 錯誤紀錄（issue #45，2026-09-19）
 
-最好的修法是在程式裡判斷「這是致命錯誤而且沒有主控台」就彈 `MessageBox`。
-**這一輪沒有做**：本輪的授權只改得了 `paths.go` 的 `SaveDir`，彈窗要動 `cmd/psychicwar`
-的錯誤路徑。留給後續（建議做法：`log.Fatal` 之前先寫一份 `psychicwar-log.txt` 到存檔目錄，
-GUI 子系統再補 `MessageBoxW`）。
+`apps/psychicwar/fatal.go` 的 `Fatal(code, msg)` 取代 `cmd/psychicwar` 裡每一處 `log.Fatal`，
+三條出口同時走（規格 `docs/spec/021` §3.4）：
 
-### 4.2 這一輪的做法：`troubleshoot.bat`
+| 出口 | 平台 | 內容 |
+|---|---|---|
+| stderr | 全部 | 與以前相同 |
+| `%APPDATA%\PsychicWar\psychicwar-error.log` | 全部（Linux 在 `~/.local/share/psychicwar`） | 時間、命令列、工作目錄、訊息。覆蓋寫 |
+| `MessageBoxW` | 只有 Windows | 訊息 ＋ 紀錄檔路徑 |
 
+分平台的只有彈窗：`dialog_windows.go` 與 `dialog_other.go`（no-op），build tag 分檔，
+與 `cputime_*.go` 同一套做法。`MessageBoxW` 走 `golang.org/x/sys/windows`
+（`x/sys` 本來就在相依樹裡，這一輪從 indirect 變成直接相依）：它用 `NewLazySystemDLL`
+只從 system32 載，不會被執行檔旁邊的同名 DLL 攔截，而且沒有 cgo，`CGO_ENABLED=0` 照樣編得過。
+
+兩條配套規則，少了任何一條都會讓玩家追錯方向：
+
+- **缺資料檔的訊息要帶「怎麼修」。** `open …\cjk24.golemfnt: no such file or directory`
+  每個字都看得懂，但沒有回答「我該做什麼」。現在的格式是「一句現況 ＋ 原始錯誤 ＋ 一句修法」。
+- **啟動成功就刪掉上一次的紀錄檔**（`ClearErrorLog`）。不刪的話，玩家修好之後還是會
+  看到那個檔案，照著已經不成立的訊息追下去。
+
+`PSYCHICWAR_NO_DIALOG=1` 關掉彈窗，給無人看管的驗收用（§5.2）。
+
+### 4.2 `troubleshoot.bat` 留著當後路
+
+彈窗被擋掉（防毒、遠端桌面）、或要看 `log.Printf` 那些非致命訊息時還是用得上。
 包裡附一支 ASCII 內容的 `.bat`：
 
 ```bat
@@ -174,11 +211,14 @@ UTF-8 ＋ BOM（記事本沒有 BOM 會拿 ANSI 代碼頁去猜）。檔名一�
 |---|---|---|---|
 | A | 可散布版 ＋ `-orig Z:\orig\psychic-war`，`-quit-after 12s` | 起得來 | **結束碼 0**，`%APPDATA%\PsychicWar` 被建出來（`C:\users\ubuntu\AppData\Roaming\PsychicWar`） |
 | A2 | 同一個狀態檔，wine 的畫面 vs repo 建置的 Linux 執行檔 | 差 0 | `05-select`、`08-encounter` 兩張**逐像素差 0** |
-| B | 可散布版，**不掛**原版也不給 `-orig` | 明確報錯 | **結束碼 2**，34 行用法訊息（`Usage of …PsychicWar.exe:`） |
+| B | 可散布版，**不掛**原版也不給 `-orig` | 明確報錯 | **結束碼 2**，訊息是 §3.3 那段（「找不到原版遊戲檔案 PW.EXE」＋兩種指法，例子是 `PsychicWar.exe -orig D:\games\psychic-war`），`%APPDATA%\PsychicWar\psychicwar-error.log` 寫得出來 |
 | C | `-with-data` 版，**不掛**原版也不給 `-orig` | 起得來 | **結束碼 0**，`%APPDATA%\PsychicWar` 被建出來，畫面是原版的 KOGADO 開場 |
 | D | `wine cmd /c troubleshoot.bat`（不給原版） | 訊息進得了檔案 | `psychicwar-log.txt` **1,326 bytes**，內容是用法訊息 |
 | E | 把 `font\` 改名再跑 | 明確報錯 | **結束碼 1**，`open font\cjk24.golemfnt: Path not found.` |
 | E2 | E 的對照組（字型在） | 正常 | 結束碼 0 |
+| F | 缺原版，**不設** `PSYCHICWAR_NO_DIALOG`（`--dialog`，2026-09-19） | 彈出 MessageBox | 程式**沒有自己結束**（停在模態視窗上）；視窗樹裡 `0x600005` 標題 `銀河超能力戰記 Psychic War`、437×296；截圖 `workplace/win-check-out/dialog.png` 裡看得到錯誤圖示、全文與 OK 鍵 |
+| F2 | F 的反向對照：同一情境設 `PSYCHICWAR_NO_DIALOG=1` | 立刻結束 | 結束碼 2（＝上面 B 那一列） |
+| G | A 那一輪跑完，`%APPDATA%\PsychicWar` 底下 | 沒有錯誤紀錄 | 目錄是空的（正常啟動不寫、也把舊的清掉） |
 
 A2 是這一輪最強的證據：**Windows 產物畫出來的東西與已經驗過的 Linux 產物一模一樣**，
 包含中文疊字（操作面板的「前進／轉向／向後轉／選單」、狀態欄的「地點／方向」）。
@@ -195,9 +235,13 @@ A2 是這一輪最強的證據：**Windows 產物畫出來的東西與已經驗�
   沒有走過玩家路徑。Linux 那邊有 `tools/frontend-playthrough.sh` 用 xdotool 實際打完第一場戰鬥，
   Windows 這邊沒有對應的東西。
 - **`%APPDATA%` 只驗到目錄被建出來**，沒有實際存一次遊戲檔再讀回來。
-- **B 的訊息不夠好。** `docs/spec/021` §3.3 要求「講清楚要自備原版」，實際印的是整份
-  `flag.Usage()`。Linux／macOS 也一樣，但在 Windows 特別傷：**雙擊的人連這 34 行都看不到**
-  （§4）。要修得動 `cmd/psychicwar` 的錯誤路徑，本輪授權之外。
+- **彈窗只驗到 wine 的 MessageBox。** 真正的 Windows 上，彈窗會不會被防毒、遠端桌面或
+  全螢幕的其他程式蓋住，沒有驗過。這也是 `troubleshoot.bat` 留著的理由（§4.2）。
+- **彈窗的中文能不能顯示，這個環境答不了。** 這個 image 一個 CJK 字型都沒有，
+  第一次截圖整段中文是豆腐格；把專案烘字用的 `NotoSansCJKtc-Regular.otf` 複製進
+  prefix 的 `Fonts\` 並設 Wine 的字型 Replacements（`MS Shell Dlg`、`Tahoma`）之後才看得到字
+  （`tools/windows-verify.sh --dialog` 已經內建這一步）。**豆腐格是驗收環境缺字型，
+  不是訊息壞掉**，但這代表「Windows 的介面字型畫不畫得出這些字」在這裡驗不到。
 
 ### 5.4 踩到的兩個坑（都會給出「自洽但錯」的結論）
 
@@ -233,6 +277,11 @@ PSYCHICWAR_WITH_DATA=1 tools/package.sh windows            # 再多一份含原�
 tools/windows-verify.sh dist-all/PsychicWar-<版本>-win64.zip --run
 PSYCHICWAR_NO_ORIG=1 PSYCHICWAR_WINE_ARGS=" " \
   tools/windows-verify.sh dist-all/PsychicWar-<版本>-with-data-win64.zip --run
+# 缺原版的訊息與結束碼（§5.2 B、F2）
+PSYCHICWAR_NO_ORIG=1 PSYCHICWAR_WINE_ARGS=" " \
+  tools/windows-verify.sh dist-all/PsychicWar-<版本>-win64.zip --run
+# 彈窗本身（§5.2 F）：不掛原版、不設 PSYCHICWAR_NO_DIALOG，截圖存 workplace/win-check-out/dialog.png
+tools/windows-verify.sh dist-all/PsychicWar-<版本>-win64.zip --dialog
 ```
 
 A2（跨平台逐像素比）沒有做成腳本，是臨時跑的，重點只有三步：
@@ -268,3 +317,12 @@ A2（跨平台逐像素比）沒有做成腳本，是臨時跑的，重點只有
   連 `main` 都進不去，而錯誤訊息指著我們的 binary。驗收工具的年紀會偽裝成產物的缺陷。
 - **截圖比對之前先確定截到的是同一塊畫面。** 視窗不在 `0,0`。沒對齊的比對會產出
   一個很具體、很有說服力、而且完全錯的數字；「換個位移找最小值」只會讓它更像真的。
+- **模態視窗與無人看管的驗收互斥。** `MessageBox` 會停在那裡等人按確定，自動化那邊
+  看到的是「卡住」，不是結束碼。要有一個關掉彈窗的開關給驗收用，**而且彈窗本身要另外驗一次**，
+  否則開關會變成「永遠沒驗過」的擋箭牌。
+- **`xwininfo` 印不出非 ASCII 標題時，長相像「視窗不存在」。** 預設 locale 是
+  `ANSI_X3.4-1968`，中文標題會被印成 `" (failure in conversion from UTF8_STRING to …)"`，
+  grep 標題就落空。要嘛 `LC_ALL=C.UTF-8`，要嘛改用 `xprop` 讀 `_NET_WM_NAME`（UTF8_STRING 原樣印）。
+- **容器裡的字型不是目標平台的字型。** 彈窗的中文在這個 image 裡全是豆腐格，
+  因為 image 一個 CJK 字型都沒有——**是驗收環境的缺，不是產物的缺**，但兩者的截圖長得一樣。
+  分辨方法：看 ASCII 的部分有沒有正常畫出來。

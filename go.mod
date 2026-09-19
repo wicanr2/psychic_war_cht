@@ -7,6 +7,7 @@ toolchain go1.24.13
 require (
 	github.com/hajimehoshi/ebiten/v2 v2.9.9
 	github.com/wicanr2/dosgolem v0.0.0-00010101000000-000000000000
+	golang.org/x/sys v0.36.0
 )
 
 require (
@@ -16,7 +17,6 @@ require (
 	github.com/ebitengine/purego v0.9.0 // indirect
 	github.com/jezek/xgb v1.1.1 // indirect
 	golang.org/x/sync v0.17.0 // indirect
-	golang.org/x/sys v0.36.0 // indirect
 )
 
 // dosgolem 用本機分支（worktrees/dosgolem，psychic-war/r4-live 起）：前端需要規格 199 的即時執行介面。
