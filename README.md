@@ -6,8 +6,22 @@
 
 ![開場故事](docs/images/opening-story.png)
 
-開場字幕。畫面是 dosgolem 執行原版 `PW.EXE` 的實跑輸出，960×600 ＝ 原版 EGA 320×200 整數倍放大 3 倍。
+開場字幕。dosgolem 執行原版 `PW.EXE` 的實跑輸出，960×600 ＝ 原版 EGA 320×200 整數倍放大 3 倍。
 左邊插圖與標題 Logo 是原版圖檔，右邊文字是轉譯層疊上去的中文。
+
+## 原版要自備
+
+本 repo 不含 `PW.EXE`、`.PBL`、`.BIN`、`.MID` 或任何磁碟映像，也不提供取得管道。
+可散布的發行包同樣不含，打包時會掃一遍確認沒有夾帶。
+要玩的話，需要 Kyodai Software 1989 年的 DOS 英文版：
+
+| 檔案 | 大小 | SHA-256 |
+|---|---:|---|
+| `PW.EXE` | 58,649 | `88321206d5400b2276aba0f268e2daaa8355a733843dd9e89f9e7116ae690c49` |
+| `LOGO.EXE` | 23,136 | `08a4e38b051c29381296fdf3d075eac55dc215d52cf43b9caf955c8deccfc1ba` |
+
+位址表只對這個版本成立。文本抽取工具會先驗雜湊，不符就停下來列出不符的檔案，不猜測。
+F10 即時存檔也綁 `PW.EXE` 與文本檔的雜湊，對不上就拒絕讀回。
 
 ## 這是什麼遊戲
 
@@ -24,7 +38,7 @@ EGA 320×200 十六色，音樂走 PC 喇叭或 AdLib。
 
 ![迷宮與操作面板](docs/images/maze-panel.png)
 
-迷宮裡的一格：左下是第一人稱視野，訊息框留著剛才問凱拉的回話。
+迷宮裡的一格，dosgolem 實跑輸出。左下是第一人稱視野，訊息框留著剛才問凱拉的回話。
 右上角的操作面板（前進／轉向／向後轉／選單）與狀態欄（地點／方向）原本是畫進 `.PBL` 圖檔的文字，
 不是程式印出來的，所以改用畫面內容比對來觸發替換。
 
@@ -59,9 +73,25 @@ Esc 選單與凱拉的回話，兩者都來自 `I_MENUH.BIN` 的固定寬度欄�
 畫面上的文字有兩種來源，兩種都處理了：
 
 - **程式印出來的**：`PW.EXE`、`I_MENU*.BIN`、`I_ENMY*.BIN`、`CODE*.BIN` 裡的字串，
-  攔四條印字路徑（`FONT.BIN` 的 8×8 三條、程式內建 6×7 小字型一條）。
+  攔四條印字路徑（`FONT.BIN` 的 8×8 三條、程式內建 6×7 小字型一條），
+  見 [`docs/re/014`](docs/re/014-print-routine.md)。
 - **畫進圖檔的**：`.PBL` 圖檔裡的操作面板、房間招牌、道具圖鑑、開場字幕。
   這些沒有字串可攔，改用畫面內容比對，比中了再蓋上中文。
+
+## 逆向得到的東西
+
+做中文化順帶解出來的原版機制，每項都有量測紀錄。
+
+| 發現 | 出處 |
+|---|---|
+| `PW.EXE` 是 Microsoft EXEPACK 壓縮檔。靜態解壓的結果與執行期解壓逐位元組相同，所以反組譯與位址一律用解壓後的 `PW_UNP.EXE` | [`001`](docs/re/001-pw-exe-first-look.md) |
+| 遊戲邏輯跑在自製的位元組碼直譯器（`sub_12766`）。區域、座標、朝向、HP、能量都是腳本變數，位址固定，改值就會反映到畫面上 | [`011`](docs/re/011-observation-addresses.md) |
+| 唯一的亂數產生器不讀時鐘，等待按鍵的迴圈每圈推進一次。「隨機」實際上來自玩家的反應時間，所以同一組輸入可以逐位元組重現 | [`004`](docs/re/004-rng-and-determinism.md) |
+| 戰鬥敵我雙方的推進都綁 CPU 指令數，不是計時器。跑得快就難，跑得慢就簡單 | [`009`](docs/re/009-battle-hold-cheat-and-cpu-pacing.md)、[`010`](docs/re/010-cpu-speed-time-base.md) |
+| 音樂兩條路徑：偵測不到 AdLib 就載 `.IBM` 走 PC 喇叭（每筆 3 bytes：頻率 Hz ＋ 刻數），有 AdLib 就載 `.MID` 走 OPL2 | [`006`](docs/re/006-ibm-music-format-and-pc-speaker-parity.md)、[`012`](docs/re/012-opl2-event-layer.md) |
+| OPL2 的相位單位是一個正弦週期 1024 個索引，不是 512。自寫合成器照 512 算的話，FM 調變深度與回授倍率會同時差一倍，而且兩者方向相反，逐項開關測不出來 | [`032`](docs/re/032-opl2-synth-fidelity.md) |
+| `.PBL` 是偏移表加每張圖的 CGA 色表與 RLE，4bpp 逐列；貼圖座標是暫存器值乘以 4。26 個檔案共 537 張 | [`023`](docs/re/023-pbl-image-format.md) |
+| 開頭的手冊式防拷，這一版的比對被一個位元組關掉：`cmp` 之後接的是無條件跳躍，任何答案都會過 | [`028`](docs/re/028-copy-protection.md) |
 
 ## 目前到哪裡
 
@@ -87,13 +117,14 @@ Esc 選單與凱拉的回話，兩者都來自 `I_MENUH.BIN` 的固定寬度欄�
 
 還沒做完的：
 
-- 賽瓦德（區域 1）之後的地點沒有抽測過，角色等級不夠打不過去。
+- 賽瓦德（區域 1）之後的地點沒有抽測過，角色等級不夠打不過去（#27）。
 - 原版的讀檔入口只在死亡後的標題選單，而那個選單會逾時自動選「新遊戲」，抽測時三次都來不及選。
   目前讀回進度靠 F11 即時讀檔。
-- macOS 的發行包沒有在真機上跑過（沒有 Mac，只做了結構驗收，見 [`docs/re/033`](docs/re/033-macos-cross-build.md)）。Windows 版還沒做。
-- 主題替換（換 UI 框線與配色）還沒做。
+- macOS 的發行包沒有在真機上跑過，只做了結構驗收（[`docs/re/033`](docs/re/033-macos-cross-build.md)，#35）。Windows 版還沒做。
+- 主題替換（換 UI 框線與配色）還沒做（#34）。
 
-未完成項的權威是 [`docs/worklist.json`](docs/worklist.json)，每條對應一個 GitHub issue。
+未完成項的權威是 [`docs/worklist.json`](docs/worklist.json)，每條對應一個 GitHub issue，
+也各自掛著一個可以跑的驗證方式。
 
 ## 輔助功能
 
@@ -112,41 +143,38 @@ Esc 選單與凱拉的回話，兩者都來自 `I_MENUH.BIN` 的固定寬度欄�
 
 ![F1 說明頁](docs/images/help-f1.png)
 
-F1 說明頁。內容來自 `text/help.json`，驗收時由文本檔與字型算出期望畫面，和實跑截圖逐像素比對。
+F1 說明頁，前端實跑截圖。內容來自 `text/help.json`，驗收時由文本檔與字型算出期望畫面，和截圖逐像素比對。
 
 ## 怎麼跑
 
-**要自備原版。** 本 repo 不含 `PW.EXE`、`.PBL`、`.BIN`、`.MID` 或任何磁碟映像，
-也不提供取得管道。需要的是 Kyodai Software 1989 年的 DOS 英文版：
-
-| 檔案 | 大小 | SHA-256 |
-|---|---:|---|
-| `PW.EXE` | 58,649 | `88321206d5400b2276aba0f268e2daaa8355a733843dd9e89f9e7116ae690c49` |
-| `LOGO.EXE` | 23,136 | `08a4e38b051c29381296fdf3d075eac55dc215d52cf43b9caf955c8deccfc1ba` |
-
-位址表只對這個版本成立。抽取工具會先驗雜湊，不符就停下來列出不符的檔案，不猜測。
-
 ### 用發行包
 
-`tools/package.sh` 產出三種（規格 [`docs/spec/021`](docs/spec/021-packaging.md)）：
+`tools/package.sh` 產出兩種平台的包（規格 [`docs/spec/021`](docs/spec/021-packaging.md)）：
 
 | 產物 | 狀態 |
 |---|---|
-| `psychicwar-<版本>-linux-x86_64.tar.gz` | 解開產物實跑驗過 |
-| `PsychicWar-<版本>-x86_64.AppImage` | 同上 |
+| `PsychicWar-<版本>-x86_64.AppImage` | 解開產物實跑驗過 |
 | `PsychicWar-<版本>-macos.zip`（universal，x86_64 ＋ arm64） | 只做了靜態驗收，**沒有在 Mac 上跑過** |
 
-解開之後指定原版目錄就能跑，資料檔跟著執行檔走，不必從特定目錄啟動：
+產物都放 `dist-all/`，每個平台只留最新一份，整個目錄 gitignore。
+Linux 只出 AppImage，不另外出 tar.gz。
+
+跑的時候把含 `PW.EXE` 的目錄指過去就行，資料檔跟著執行檔走，不必從特定目錄啟動：
 
 ```sh
-./psychicwar -orig /path/to/psychic-war        # 含 PW.EXE 的目錄
+./PsychicWar-<版本>-x86_64.AppImage -orig /path/to/psychic-war
 ```
+
+系統沒有 FUSE 時改用 `--appimage-extract-and-run`。
 
 存檔（遊戲存檔與 F10 即時存檔）寫在使用者資料目錄，不是解開的地方：
 Linux 是 `$XDG_DATA_HOME/psychicwar`（預設 `~/.local/share/psychicwar`），
 macOS 是 `~/Library/Application Support/PsychicWar`。
 
 macOS 的 `.app` 沒有簽章也沒有公證（在 Linux 上做不出來），首次開啟要**右鍵 →「打開」**。
+
+`PSYCHICWAR_WITH_DATA=1` 會另外產一份 `-with-data` 變體，把原版素材放進執行檔旁的 `original/`，
+免去每次給 `-orig`。那種包含原版素材，只留在自己機器上，不進版控也不上傳。
 
 ### 自己建置
 
@@ -157,17 +185,22 @@ macOS 的 `.app` 沒有簽章也沒有公證（在 Linux 上做不出來），�
 tools/go-ebiten.sh build -o /src/workplace/bin/psychicwar ./cmd/psychicwar
 workplace/bin/psychicwar -orig workplace/original/psychic-war   # 從 repo 根目錄執行
 
-tools/package.sh all       # 或 linux／appimage／macos，產物在 dist/
+tools/package.sh appimage    # 或 macos／promo／all，產物在 dist-all/
 ```
-
-字型子集（`font/cjk24.golemfnt`、`font/cjk16.golemfnt`）已經在版控裡，不必自己烘。
-改了譯文、用到新字時才跑 `tools/font/bake.sh` 重烘一次，來源字型放在 `workplace/font-src/`。
 
 常用旗標：`-adlib` 走 OPL2 音樂（不加就是 PC 喇叭）、`-scale` 放大倍率（預設 3）、
 `-cycles` 執行速度（預設 750，約 8 MHz AT；`xt` 是 XT 級）、`-cheat` 打開作弊鍵、
 `-text off` 關掉中文疊字。
 
+字型子集（`font/cjk24.golemfnt`、`font/cjk16.golemfnt`）已經在版控裡，不必自己烘。
+改了譯文、用到新字時才跑 `tools/font/bake.sh` 重烘一次，來源字型放在 `workplace/font-src/`。
+
 dosgolem 目前用本機分支（`go.mod` 的 `replace` 指到 `worktrees/dosgolem`），第一次建置要先 clone 它。
+
+`tools/package.sh promo` 把 `tools/promo/make.sh` 做出來的 62 秒推廣片一起收進 `dist-all/`。
+片子的配樂是 DOSBox-X 跑原版錄下來的輸出，畫面全是實跑截圖；
+旋律的著作權屬於原作曲者，對外公開前要先換成授權明確的曲子或改用無音樂版
+（[`docs/re/034`](docs/re/034-promo-video.md)）。
 
 ## 文件
 
@@ -177,6 +210,7 @@ dosgolem 目前用本機分支（`go.mod` 的 `replace` 指到 `worktrees/dosgol
 - [`docs/re/`](docs/re/)：反組譯與量測紀錄，編號與日期都在。
   被推翻的斷言集中在 [`000-overturned-claims.md`](docs/re/000-overturned-claims.md)。
 - [`docs/worklist.json`](docs/worklist.json)：未完成項，每條掛一個可執行的驗證方式。
+- [`IDEA.md`](IDEA.md)：最初的構想，寫在選定 DOS 版之前。
 
 ## 授權
 
@@ -194,7 +228,8 @@ repo 裡為了研究與對照保留的原版片段（文本檔的原文欄位、
 **中文字模**來自倚天中文系統 3.53 的點陣字（24 點與 16 點），只取譯文用得到的 966 個字烘成子集
 （`font/cjk24.golemfnt`、`font/cjk16.golemfnt`），倚天沒有的字用 Noto Sans CJK TC 補。
 選它是因為字形接近當年代理版的觀感。若權利人有意見，請寄 wicanr2@gmail.com，會移除字型子集
-並改用授權明確的替代（`docs/re/020` 列了四個備案，換字型只要重跑烘字腳本，疊字層不用改）。
+並改用授權明確的替代（[`docs/re/020`](docs/re/020-font-license-options.md) 列了四個備案，
+換字型只要重跑烘字腳本，疊字層不用改）。
 
 本專案與工画堂スタジオ（Kogado Studio）、Kyodai Software 沒有隸屬、合作、贊助或授權關係，
 是獨立的第三方保存與研究專案。

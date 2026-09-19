@@ -1,4 +1,4 @@
-# 021 — 發行包：Linux、AppImage、macOS
+# 021 — 發行包：AppImage、macOS
 
 狀態：**READY**
 日期：2026-09-19
@@ -9,15 +9,29 @@
 
 ## 1. 範圍
 
-把前端（`cmd/psychicwar`）連同中文資料打包成玩家解開就能跑的東西：
+把前端（`cmd/psychicwar`）連同中文資料打包成玩家解開就能跑的東西。
+**所有可交付的產物一律輸出到 `dist-all/`**（gitignore），每個平台只留最新一份
+（kb `mac-app-cross-pack`「產物統一放 dist-all/」的組織慣例）。
 
 | 產物 | 內容 |
 |---|---|
-| `psychicwar-<版本>-linux-x86_64.tar.gz` | 執行檔、`text/`、`font/`、`README.md`、`LICENSE` |
-| `PsychicWar-<版本>-x86_64.AppImage` | 同上，包成單檔 |
+| `PsychicWar-<版本>-x86_64.AppImage` | 執行檔、`text/`、`font/`、`README.md`、`LICENSE`，包成單檔 |
 | `PsychicWar-<版本>-macos.zip` | `PsychicWar.app`（universal：x86_64 ＋ arm64） |
+| `psychic-war-<版本>-promo.mp4` | 推廣片（`docs/re/034`） |
 
-**不含原版素材**：`PW.EXE`、`.PBL`、`.BIN`、`.MID`、磁碟映像一律不進發行包。玩家自備。
+**Linux 只出 AppImage**，不出 tar.gz。
+
+### 1.1 兩種變體（使用者定案 2026-09-19）
+
+| 變體 | 原版素材 | 用途 |
+|---|---|---|
+| `PsychicWar-<版本>-x86_64.AppImage`、`-macos.zip` | **不含** | 可散布。玩家自備 `PW.EXE`，用 `-orig` 指過去 |
+| `PsychicWar-<版本>-with-data-x86_64.AppImage`、`-with-data-macos.zip` | **含** | **純本機自用。絕不推 git、絕不上傳。** 解開就能玩，不必給 `-orig` |
+
+`PSYCHICWAR_WITH_DATA=1 tools/package.sh all` 才會多出 `-with-data` 那一份。
+
+可散布版打包時做一次 **leak-scan**：拿原版目錄裡實際有哪些檔名去掃包的內容，
+掃到就中止（`CLAUDE.md` [HARD]：不得散布原版素材）。判準是實際檔名，不是猜副檔名。
 
 Windows 不在本輪（issue #35 另外追蹤）。
 
@@ -67,12 +81,13 @@ Windows 不在本輪（issue #35 另外追蹤）。
 
 | 目標 | 怎麼建 |
 |---|---|
-| Linux x86_64 | `tools/go-ebiten.sh` 的同一個 image，原生建 |
-| AppImage | 用 Linux 的執行檔組 `AppDir`（`AppRun`、`.desktop`、圖示、資料），`appimagetool` 打包 |
+| AppImage | `tools/go-ebiten.sh` 的同一個 image 原生建執行檔，組 `AppDir`（`AppRun`、`.desktop`、圖示、資料），`tools/appimagetool.sh` 打包 |
 | macOS | osxcross 交叉編譯（skill `osxcross-macos-cross-build`）。x86_64 與 arm64 各建一次，`lipo` 合成 universal |
 
 Ebiten 需要 cgo：Linux 連 X11／GL，macOS 連 Cocoa／OpenGL／Metal framework。
 兩邊都不能用 `CGO_ENABLED=0`。
+
+中間的 staging 放 `workplace/pkg-stage/`，壓完就刪，不留在 `dist-all/`。
 
 版本字串由 `git describe --tags --always --dirty` 取，以 `-ldflags -X` 打進執行檔，
 `-version` 旗標印出來。
@@ -82,11 +97,12 @@ Ebiten 需要 cgo：Linux 連 X11／GL，macOS 連 Cocoa／OpenGL／Metal framew
 `rulebook/82` 的硬規則是「驗**實際打包產物**在**它自己的執行環境**」，所以每一項都解開產物再跑，
 不驗 `workplace/bin/` 的建置輸出。
 
-1. **Linux tar.gz**：解到一個空目錄，`cd` 到**別的**目錄執行（cwd 不是解開處），
-   `-quit-after` 跑滿並存一張截圖，與檢查點 `07-first-play` 逐像素差 0。
+1. **AppImage（可散布版）**：解到一個空目錄，`cd` 到**別的**目錄執行（cwd 不是解開處），
+   `-quit-after` 跑滿並存一張截圖，與 repo 內建置的執行檔逐像素差 0。
 2. **存檔落點**：同一次執行後，`$XDG_DATA_HOME/psychicwar`（測試時指到暫存目錄）底下要出現即時存檔；
    解開處的目錄不得被寫入（比對執行前後的檔案列表）。
-3. **AppImage**：`--appimage-extract-and-run` 在唯讀情境下跑同一項，畫面與第 1 項相同、存檔一樣落在使用者目錄。
+3. **`-with-data` 變體**：在**沒有掛任何原版目錄**的容器裡跑，不給 `-orig` 要能啟動
+   （靠 `OrigDir()` 找到包內的 `original/`）。反向對照：同一個容器跑可散布版要印用法並結束碼 2。
 4. **反向對照**：把發行包裡的 `font/` 改名，執行要**明確報錯**指出缺字型，不是靜默跑出沒有中文的畫面。
 5. **macOS**：`lipo -archs` 要列出 `x86_64 arm64`；`.app` 的結構（`Contents/MacOS`、`Contents/Resources`、
    `Info.plist`）齊全。**沒有 Mac 可以實跑，這一項只驗產物結構，不驗行為**，紀錄要照實寫。

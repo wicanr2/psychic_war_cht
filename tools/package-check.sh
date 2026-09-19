@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # 發行包的驗收（docs/spec/021 §5）：解開產物，在**別的 cwd** 跑，比檢查點畫面。
 #
-#   tools/package-check.sh <產物.tar.gz|產物.AppImage>
+#   tools/package-check.sh dist-all/<產物.AppImage>
 #
 # 為什麼不驗 workplace/bin 的建置輸出：rulebook/82 的硬規則是「驗實際打包產物在它自己的執行環境」。
 # 路徑解析（資料在執行檔旁、存檔在使用者資料目錄）只有解開之後才驗得到。
@@ -19,7 +19,6 @@ set -eu
 cd /src
 mkdir -p /tmp/unpack /tmp/elsewhere /tmp/xdg
 case "'"$PKG"'" in
-  *.tar.gz) tar -C /tmp/unpack -xzf "'"$PKG"'"; APPDIR=$(ls -d /tmp/unpack/*/) ;;
   *.AppImage) cp "'"$PKG"'" /tmp/app.AppImage; chmod +x /tmp/app.AppImage
               (cd /tmp/unpack && /tmp/app.AppImage --appimage-extract >/dev/null)
               APPDIR=/tmp/unpack/squashfs-root/usr/bin/ ;;

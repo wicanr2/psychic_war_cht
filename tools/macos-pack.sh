@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # macOS 發行包（docs/spec/021 §1、§4）：兩弧各編一次 → lipo 合成 universal →
-# 組 `PsychicWar.app` → `dist/PsychicWar-<版本>-macos.zip`。
+# 組 `PsychicWar.app` → `dist-all/PsychicWar-<版本>-macos.zip`。
+# PSYCHICWAR_PACK_WITH_DATA=1 另外出含原版素材的本機完整版（絕不推 git、絕不上傳）。
 #
 #   tools/macos-pack.sh [版本]        # 版本預設 git describe --tags --always --dirty
 #   tools/package.sh macos            # 同上，發行包的統一入口
@@ -34,10 +35,18 @@ CPUS="${PSYCHICWAR_MAC_CPUS:-4}"
 APP_NAME="PsychicWar"
 EXE_NAME="psychicwar"
 
-DIST="dist"
-STAGE="$DIST/stage/macos"
+DIST="dist-all"
+STAGE="workplace/pkg-stage/macos"   # 中間產物放 workplace，壓完就清
 APP="$STAGE/$APP_NAME.app"
-ZIP="$DIST/$APP_NAME-$VER-macos.zip"
+ORIG="workplace/original/psychic-war"
+if [ "${PSYCHICWAR_PACK_WITH_DATA:-}" = 1 ]; then
+  ZIP="$DIST/$APP_NAME-$VER-with-data-macos.zip"
+  GLOB="$DIST/$APP_NAME-*-with-data-macos.zip"
+else
+  ZIP="$DIST/$APP_NAME-$VER-macos.zip"
+  GLOB="$DIST/$APP_NAME-*-macos.zip"
+fi
+mkdir -p "$DIST"
 
 # --- 1. 工具鏈 image（缺了才 build，build 要網路）--------------------------------
 if ! docker image inspect "$IMAGE" >/dev/null 2>&1; then
@@ -58,6 +67,19 @@ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" "$STAGE/icon"
 mkdir -p "$APP/Contents/Resources/text" "$APP/Contents/Resources/font"
 cp text/*.json "$APP/Contents/Resources/text/"
 cp font/*.golemfnt "$APP/Contents/Resources/font/"
+if [ "${PSYCHICWAR_PACK_WITH_DATA:-}" = 1 ]; then
+  # 本機完整版：原版素材放 Contents/Resources/original，由 OrigDir() 找到，
+  # 玩家不必給 -orig。這種包絕不推 git、絕不上傳（docs/spec/021 §1）。
+  [ -d "$ORIG" ] || { echo "缺原版 $ORIG" >&2; exit 2; }
+  mkdir -p "$APP/Contents/Resources/original"
+  cp -r "$ORIG"/. "$APP/Contents/Resources/original/"
+else
+  # 可散布版不得夾帶原版檔（CLAUDE.md [HARD]）。判準是原版目錄裡實際有哪些檔名。
+  if [ -d "$ORIG" ]; then
+    leak=$(cd "$APP" && for n in $(cd "$ROOT/$ORIG" && ls); do find . -name "$n" -print; done)
+    [ -z "$leak" ] || { echo "可散布的包裡夾帶原版檔：$leak" >&2; exit 1; }
+  fi
+fi
 cp README.md LICENSE "$APP/Contents/Resources/"
 
 # --- 3. 圖示 ---------------------------------------------------------------------
@@ -152,6 +174,13 @@ tools/macos-verify.sh "$APP"
 
 # --- 7. zip ----------------------------------------------------------------------
 # zip 會保留 unix 權限位元，解開之後執行位元還在（macOS 的 Archive Utility 也認）。
+# 同一個平台只留最新一份（kb `mac-app-cross-pack` 的 dist-all 慣例）。
+for old in $GLOB; do
+  [ -e "$old" ] || continue
+  case "$old" in *-with-data-macos.zip) [ "${PSYCHICWAR_PACK_WITH_DATA:-}" = 1 ] || continue ;; esac
+  [ "$old" = "$ZIP" ] || { echo "[macos-pack] 清掉舊的 $old"; rm -f "$old"; }
+done
 rm -f "$ZIP"
 ( cd "$STAGE" && zip -qry "$ROOT/$ZIP" "$APP_NAME.app" )
+rm -rf "$STAGE"          # staging 自清，別把 bundle 留在磁碟
 echo "$ZIP"

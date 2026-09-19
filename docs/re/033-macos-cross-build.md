@@ -5,7 +5,7 @@
 
 ## 1. 結論
 
-**`dist/PsychicWar-<版本>-macos.zip` 可以產出，靜態驗收五道全過。**
+**`dist-all/PsychicWar-<版本>-macos.zip` 可以產出，靜態驗收五道全過。**
 ⚠ **這不是「macOS 版完成」**——Linux 上執行不了 macOS binary，這一輪**一次都沒有實際執行過**
 這支程式。結構過關只代表「不會因為格式、架構、簽章、相依而開不起來」，**不代表功能正常**。
 
@@ -19,7 +19,7 @@
 | arm64 ad-hoc 簽章 | **有** `LC_CODE_SIGNATURE`（x86_64 沒有，正常）|
 | 動態相依 | 11 項，全在 `/usr/lib/` 與 `/System/Library/` |
 | 內容證據 | `Application Support` 2 處、`cjk24.golemfnt` 4 處、`Resources` 10 處 |
-| 發行包 | `dist/PsychicWar-4cda922-macos.zip`，6,299,469 bytes |
+| 發行包 | `dist-all/PsychicWar-<版本>-macos.zip`，6,301,494 bytes（`-with-data` 版 6,541,839） |
 | 建置時間 | 整支腳本冷 Go 快取 84 秒、暖快取 7.5 秒；工具鏈 image 另外 116 秒（只有第一次，要網路）。`--cpus 4`，14 核機器 load ≈ 7 |
 | 重現性 | 連續兩次建置的 universal 執行檔**逐位元組相同**（`-trimpath`）|
 | **實機驗收** | **沒有做**（沒有 Mac）|
@@ -121,7 +121,7 @@ image 裡有 `png2icns`（icnsutils），但**沒有用**：實測它把 `ic07`�
 ## 4. 驗收：驗到了什麼
 
 `rulebook/82` 的硬規則是「驗**實際打包產物**」，所以下面兩份都跑：
-`dist/stage/macos/PsychicWar.app`（`macos-pack.sh` 內建，不過就不產 zip）與
+`workplace/pkg-stage/macos/PsychicWar.app`（`macos-pack.sh` 內建，不過就不產 zip）與
 **解開 zip 之後**的 `workplace/macos-check/PsychicWar.app`。兩份輸出相同。
 
 | 道 | 檢查 | 結果 |
@@ -186,7 +186,7 @@ image 裡有 `png2icns`（icnsutils），但**沒有用**：實測它把 `ic07`�
 
 ```sh
 tools/macos-pack.sh                       # 或 tools/package.sh macos
-unzip -q dist/PsychicWar-<版本>-macos.zip -d workplace/macos-check
+unzip -q dist-all/PsychicWar-<版本>-macos.zip -d workplace/macos-check
 tools/macos-verify.sh workplace/macos-check/PsychicWar.app
 ```
 
