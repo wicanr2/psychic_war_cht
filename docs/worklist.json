@@ -78,24 +78,8 @@
       ],
       "title": "F1 說明頁的視覺設計",
       "issue": 41,
-      "body": "目前是純文字逐行畫，沒有層次。要用遊戲自己的視覺語言（EGA 亮青框線、黑底面板），中文沿用 cjk24／cjk16，不引進新字型。先出設計稿再實作。",
-      "acceptance": "tools/help_check.py 的逐像素驗收改過之後還能通過；期望畫面由資料算出不是拿截圖當答案。",
-      "verify": {
-        "kind": "manual",
-        "note": "要人判。"
-      }
-    },
-    {
-      "id": "error-messages-and-icon",
-      "milestone": "M6",
-      "labels": [
-        "frontend",
-        "release"
-      ],
-      "title": "缺檔時的錯誤訊息，與 Windows 的 .exe 圖示",
-      "issue": 45,
-      "body": "-H windowsgui 的程式 log.Fatal 之後看不到任何東西，現在靠包裡的 troubleshoot.bat 繞過。正解是缺關鍵檔時彈 MessageBox 或寫 log 檔。另外 -orig 缺檔時印的是整份 flag.Usage()（34 行），docs/spec/021 §3.3 要求的是一句人話。.exe 沒有嵌圖示。",
-      "acceptance": "Linux 與 wine 各驗一次缺原版、缺字型的訊息看得懂且指出怎麼修；正常啟動不彈任何東西也不寫多餘的 log。",
+      "body": "設計稿 docs/spec/022 已完成，使用者定案採方案 B（標題色帶＋雙欄，標頭 cjk24、內文 cjk16），help.json 加 keycaps 與 layout 兩個欄位，段落標頭的【】留著。內容一個字都不用改。",
+      "acceptance": "說明頁逐像素差 0；**負對照要成立**（改一行 help.json 的資料，期望畫面要跟著變、比對要失敗）；防拷那一版也要驗。",
       "verify": {
         "kind": "manual",
         "note": "要人判。"
@@ -374,6 +358,13 @@
       "issue": 43,
       "title": "依說明書修正譯名表",
       "evidence": "Psycho Shield 改「能量障壁」（9 則跨 4 檔，issue 只列到 3 個），連帶 Shield Room 改「能量障壁控制室」避免前後矛盾；POW 的錯譯「力量」改「體力」。出處欄修 5 筆、25 筆改寫法、新增 28 條＋zh_only 10 條、11 個密碼表人名 kind 改 ally。lint 過長 0、非 Big5 0；sweep 殘留 7 處與改動前相同；重烘 968 字不缺字。實跑截圖 workplace/playtest/issue43 看得到體力／位置／方位／詢問凱拉／功能選項。能量障壁在區域 8–11，現有存檔最遠到區域 3，沒拍到畫面",
+      "date": "2026-09-19"
+    },
+    {
+      "id": "error-messages-and-icon",
+      "issue": 45,
+      "title": "缺檔時的錯誤訊息，與 Windows 的 .exe 圖示",
+      "evidence": "三條出口：stderr 照舊、<存檔目錄>/psychicwar-error.log 全平台都寫、Windows 彈 MessageBoxW（x/sys 的 NewLazySystemDLL，只從 system32 載，無 cgo）。-orig 缺檔改印一句人話加兩種指法的例子，不再是 34 行 flag.Usage()。啟動成功會清掉上一次的紀錄檔。Linux 與 wine 各驗過缺原版與缺字型；反向對照是正常啟動結束碼 0、不寫紀錄檔。彈窗截圖 workplace/win-check-out/dialog.png。.exe 圖示沒做，三條路與代價在 docs/re/035 §3.3",
       "date": "2026-09-19"
     }
   ],

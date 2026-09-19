@@ -1,4 +1,4 @@
-# 021 — 發行包：AppImage、macOS
+# 021 — 發行包：AppImage、macOS、Windows
 
 狀態：**READY**
 日期：2026-09-19
@@ -17,6 +17,7 @@
 |---|---|
 | `PsychicWar-<版本>-x86_64.AppImage` | 執行檔、`text/`、`font/`、`README.md`、`LICENSE`，包成單檔 |
 | `PsychicWar-<版本>-macos.zip` | `PsychicWar.app`（universal：x86_64 ＋ arm64） |
+| `PsychicWar-<版本>-win64.zip` | `PsychicWar.exe` 與同樣的資料檔 |
 | `psychic-war-<版本>-promo.mp4` | 推廣片（`docs/re/034`） |
 
 **Linux 只出 AppImage**，不出 tar.gz。
@@ -33,7 +34,7 @@
 可散布版打包時做一次 **leak-scan**：拿原版目錄裡實際有哪些檔名去掃包的內容，
 掃到就中止（`CLAUDE.md` [HARD]：不得散布原版素材）。判準是實際檔名，不是猜副檔名。
 
-Windows 不在本輪（issue #35 另外追蹤）。
+Windows 版已經做好（`docs/re/035`），與另外兩個平台走同一支 `tools/package.sh`。
 
 ## 2. 文本檔的原文欄位（使用者定案 2026-09-19）
 
@@ -138,6 +139,5 @@ Ebiten 需要 cgo：Linux 連 X11／GL，macOS 連 Cocoa／OpenGL／Metal framew
 
 ## 6. 不做
 
-- Windows（issue #35）。
 - 簽章與公證（macOS Gatekeeper 會擋，README 要寫怎麼繞過）。
 - 自動更新、安裝程式。
