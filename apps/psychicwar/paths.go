@@ -45,6 +45,13 @@ func SaveDir(fallback string) string {
 		if home, err := os.UserHomeDir(); err == nil {
 			return filepath.Join(home, "Library", "Application Support", "PsychicWar")
 		}
+	case "windows":
+		// os.UserConfigDir() 在 Windows 回的就是 %APPDATA%（Roaming）。
+		// 少了這一條會掉進下面那一支，在 Windows 上寫出 `~/.local/share/psychicwar`；
+		// 路徑本身建得起來，所以不會報錯，只是存檔落在沒人會去看的地方。
+		if d, err := os.UserConfigDir(); err == nil {
+			return filepath.Join(d, "PsychicWar")
+		}
 	default:
 		if d := os.Getenv("XDG_DATA_HOME"); d != "" {
 			return filepath.Join(d, "psychicwar")
