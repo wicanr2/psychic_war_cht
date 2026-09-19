@@ -1,4 +1,4 @@
-"""F1 說明頁的逐像素驗收（docs/spec/012 §5 第 3 項）：期望值由 text/help.json 與字型排算，不看前端自己的輸出。
+"""F4 說明頁的逐像素驗收（docs/spec/012 §5 第 3 項）：期望值由 text/help.json 與字型排算，不看前端自己的輸出。
 
     tools/py.sh tools/help_check.py <截圖.png> [--text text] [--font font] [--scale 3]
 

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# 輔助熱鍵的實跑驗收（docs/spec/012 §5 第 2–4 項）：F2 切換語言、F1 說明頁、F10／F11 即時存檔。
+# 輔助熱鍵的實跑驗收（docs/spec/012 §5 第 2–4 項）：F5 切換語言、F4 說明頁、F10／F11 即時存檔。
 #
 #   tools/frontend-hotkeys-check.sh [狀態檔]        # 預設 states/07-first-play.state
 #
 # 流程（Xvfb 裡的前端，scale 3、-audio null）：
-#   a 中文 → F2 → b 英文 → F2 → c 回中文 → F1 → d 說明頁 → F1 → e 關閉
+#   a 中文 → F5 → b 英文 → F5 → c 回中文 → F4 → d 說明頁 → F4 → e 關閉
 #   → F10 存檔 → 往前走一步 → f 移動後 → F11 讀回 → g 讀檔後
 # 比對：
 #   b 與 cmd/step 的原版畫面放大 3 倍逐像素相同（英文模式真的沒畫疊字）
@@ -31,10 +31,10 @@ xdotool mousemove \$((X + WIDTH / 2)) \$((Y + HEIGHT / 2))
 shot() { import -window \"\$W\" -define png:color-type=2 -depth 8 PNG24:$OUT/\$1.png; }
 sleep 5
 shot a-chinese
-xdotool key F2; sleep 3; shot b-english
-xdotool key F2; sleep 3; shot c-back
-xdotool key F1; sleep 2; shot d-help
-xdotool key F1; sleep 3; shot e-closed
+xdotool key F5; sleep 3; shot b-english
+xdotool key F5; sleep 3; shot c-back
+xdotool key F4; sleep 2; shot d-help
+xdotool key F4; sleep 3; shot e-closed
 xdotool key F10; sleep 3
 cp $OUT/saves/quick.state $OUT/saves/before.state
 xdotool keydown Up; sleep 0.15; xdotool keyup Up; sleep 4; shot f-moved
@@ -64,15 +64,15 @@ print("尺寸不同" if (w1, h1) != (w2, h2) else sum(1 for i in range(w1 * h1) 
   say "$1：不同像素 $d"
   [[ "$d" == "0" ]] || fail=1
 }
-cmp_png "F2 英文模式 vs 原版畫面" "$OUT/b-english.png" "$OUT/ref.png"
-cmp_png "F2 切回中文 vs 切換前" "$OUT/c-back.png" "$OUT/a-chinese.png"
-cmp_png "F1 關閉後 vs 開啟前" "$OUT/e-closed.png" "$OUT/c-back.png"
+cmp_png "F5 英文模式 vs 原版畫面" "$OUT/b-english.png" "$OUT/ref.png"
+cmp_png "F5 切回中文 vs 切換前" "$OUT/c-back.png" "$OUT/a-chinese.png"
+cmp_png "F4 關閉後 vs 開啟前" "$OUT/e-closed.png" "$OUT/c-back.png"
 cmp_png "F11 讀檔後 vs 存檔時" "$OUT/g-loaded.png" "$OUT/a-chinese.png"
 cmp_png "反向對照：雜湊被改過時 F11 拒絕（畫面不動）" "$OUT/i-refused.png" "$OUT/h-moved2.png"
 set +e
 out=$(tools/py.sh tools/help_check.py "$OUT/d-help.png"); rc=$?
 set -e
-say "F1 說明頁：$out"
+say "F4 說明頁：$out"
 [[ $rc -eq 0 ]] || fail=1
 # 讀檔前後的觀測變數（區域、座標、朝向、地點、角色數值：lin:16966 起 52 bytes，docs/re/011）
 if [[ -x "$ROOT/workplace/bin/probe" ]]; then

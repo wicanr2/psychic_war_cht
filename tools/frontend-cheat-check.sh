@@ -3,7 +3,7 @@
 #
 #   tools/frontend-cheat-check.sh [狀態檔]      # 預設 states/08-encounter.state（戰鬥中）
 #
-# 兩輪：帶 -cheat 與不帶。每輪都是「按 F5、F6 → F10 存檔」，再用 probe 從存檔讀出
+# 兩輪：帶 -cheat 與不帶。每輪都是「按 F7、F8 → F10 存檔」，再用 probe 從存檔讀出
 # HP（lin 16990）、HP 上限（1698E）、能量（16994）、能量上限（16992）、敵人 HP（509C）。
 # 帶 -cheat：HP ＝ 上限、能量 ＝ 上限、敵人 HP ＝ 1。不帶：三個值與按鍵前相同。
 # 產出 workplace/cheat/：各輪的 quick.state 與 .mem、result.txt
@@ -22,7 +22,7 @@ workplace/bin/psychicwar -orig /orig/psychic-war -audio null -scratch $OUT/$1 -l
 PID=\$!
 for i in \$(seq 1 100); do W=\$(xdotool search --name 'Psychic War' 2>/dev/null | head -1 || true); [ -n \"\$W\" ] && break; sleep 0.1; done
 sleep 4
-xdotool key F5; sleep 1; xdotool key F6; sleep 1
+xdotool key F7; sleep 1; xdotool key F8; sleep 1
 xdotool key F10; sleep 3
 import -window \"\$W\" -define png:color-type=2 -depth 8 PNG24:$OUT/$1.png
 kill \$PID; wait \$PID 2>/dev/null || true

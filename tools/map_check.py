@@ -1,4 +1,4 @@
-"""F3 自動地圖的畫面比對（docs/spec/015 §4 第 2、3 項）。
+"""F6 自動地圖的畫面比對（docs/spec/015 §4 第 2、3 項）。
 
     tools/py.sh tools/map_check.py <地圖畫面.png> <quick.map.json> <觀測變數.mem>
 

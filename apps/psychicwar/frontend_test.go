@@ -65,9 +65,23 @@ func TestKeyMap(t *testing.T) {
 			t.Errorf("%v → %02X（%v），要 %02X", k, got, ok, want)
 		}
 	}
-	for _, k := range []ebiten.Key{ebiten.KeyF1, ebiten.KeyF2, ebiten.KeyF3, ebiten.KeyF10} {
+	// 輔助熱鍵：前端自己處理，不送進遊戲（docs/spec/012 §1）
+	for _, k := range []ebiten.Key{ebiten.KeyF4, ebiten.KeyF5, ebiten.KeyF6,
+		ebiten.KeyF7, ebiten.KeyF8, ebiten.KeyF10, ebiten.KeyF11} {
 		if _, ok := ScanCode(k); ok || !Intercepted(k) {
-			t.Errorf("%v 應該被攔下", k)
+			t.Errorf("%v 是輔助熱鍵，應該被攔下", k)
+		}
+	}
+	// F1／F2／F3 是原版自己的功能鍵（issue #42）：不攔，而且要有掃描碼。
+	// 少了掃描碼的話「不攔」只是空話——按了一樣送不進遊戲，症狀是沒反應不是報錯。
+	for k, want := range map[ebiten.Key]uint8{
+		ebiten.KeyF1: 0x3B, ebiten.KeyF2: 0x3C, ebiten.KeyF3: 0x3D, ebiten.KeyF9: 0x43,
+	} {
+		if Intercepted(k) {
+			t.Errorf("%v 是原版的功能鍵，不可以攔", k)
+		}
+		if got, ok := ScanCode(k); !ok || got != want {
+			t.Errorf("%v → %02X（%v），要 %02X", k, got, ok, want)
 		}
 	}
 }

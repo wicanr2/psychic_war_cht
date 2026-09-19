@@ -18,7 +18,6 @@ import (
 	"strconv"
 	"strings"
 	"sync"
-	"syscall"
 	"time"
 
 	"github.com/hajimehoshi/ebiten/v2"
@@ -175,25 +174,26 @@ func (g *game) cheatWeakenEnemy() string {
 // 狀態檔格式的版本字串：dosgolem 沒有版本常數，格式換了就手動升這個版號（docs/spec/012 §4）。
 const stateFormat = "dosgolem-state/1"
 
-// hotkeys 處理 F1／F2／F10／F11（docs/spec/012）。回傳有沒有處理掉。
+// hotkeys 處理 F4–F8、F10、F11（docs/spec/012）。回傳有沒有處理掉。
+// F1／F2／F3 是原版的功能鍵，這裡不碰（使用者實測 2026-09-19）。
 func (g *game) hotkeys(k ebiten.Key) bool {
 	switch k {
-	case ebiten.KeyF1:
+	case ebiten.KeyF4:
 		g.help = !g.help
 		return true
-	case ebiten.KeyF3:
+	case ebiten.KeyF6:
 		g.showMap = !g.showMap
 		return true
-	case ebiten.KeyF2:
+	case ebiten.KeyF5:
 		g.english = !g.english
 		g.showToast(map[bool]string{true: "英文原文", false: "中文"}[g.english])
 		return true
-	case ebiten.KeyF5:
+	case ebiten.KeyF7:
 		if g.cheat {
 			g.showToast(g.cheatFull())
 		}
 		return true
-	case ebiten.KeyF6:
+	case ebiten.KeyF8:
 		if g.cheat {
 			g.showToast(g.cheatWeakenEnemy())
 		}
@@ -356,8 +356,6 @@ func (g *game) Update() error {
 
 func (g *game) writeStats(wall time.Duration) {
 	g.lastStat = time.Now()
-	var ru syscall.Rusage
-	_ = syscall.Getrusage(syscall.RUSAGE_SELF, &ru)
 	under, over := g.ring.Stats()
 	line, _ := json.Marshal(map[string]any{
 		"wall_ms":     wall.Milliseconds(),
@@ -367,7 +365,7 @@ func (g *game) writeStats(wall time.Duration) {
 		"overflows":   over,
 		"dropped_ms":  int64(g.pacer.DroppedMs),
 		"intercepted": g.intercepted,
-		"cpu_ms":      (ru.Utime.Nano() + ru.Stime.Nano()) / 1e6,
+		"cpu_ms":      psychicwar.CPUMillis(), // 分平台（Windows 沒有 getrusage）
 	})
 	fmt.Fprintln(g.stats, string(line))
 }
