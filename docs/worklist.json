@@ -100,21 +100,6 @@
         "kind": "manual",
         "note": "要人判。"
       }
-    },
-    {
-      "id": "glossary-from-manual",
-      "milestone": "M4",
-      "labels": [
-        "text"
-      ],
-      "title": "依說明書修正譯名表",
-      "issue": 43,
-      "body": "Psycho Shield 應為「能量障壁」（與 ESP 的 Shield 撞名）；出處欄 5 筆要修、一批寫法不準確；說明書有中文而譯名表沒有的 29 條；11 個密碼表人名的 kind 標成 enemy 但他們是戰友。清單在 docs/manual-1989.md §13。",
-      "acceptance": "l10n_check 與 text_extract lint 0 問題；font/bake.sh 重烘不缺字；改到的畫面有實跑截圖。",
-      "verify": {
-        "kind": "manual",
-        "note": "要人判。"
-      }
     }
   ],
   "done": [
@@ -382,6 +367,13 @@
       "issue": 42,
       "title": "F2／F3 熱鍵與原版功能衝突",
       "evidence": "F1／F2／F3 還給原版、輔助熱鍵改從 F4 起算。端到端對照實驗：同狀態起兩次前端，起點逐像素差 0，按 F3 後畫面變 27,438 像素回到迷宮、方向由北變南，不按只變 657。scanCodes 補上 0x3B／0x3C／0x3D。單元測試改成兩組斷言。docs/re/036",
+      "date": "2026-09-19"
+    },
+    {
+      "id": "glossary-from-manual",
+      "issue": 43,
+      "title": "依說明書修正譯名表",
+      "evidence": "Psycho Shield 改「能量障壁」（9 則跨 4 檔，issue 只列到 3 個），連帶 Shield Room 改「能量障壁控制室」避免前後矛盾；POW 的錯譯「力量」改「體力」。出處欄修 5 筆、25 筆改寫法、新增 28 條＋zh_only 10 條、11 個密碼表人名 kind 改 ally。lint 過長 0、非 Big5 0；sweep 殘留 7 處與改動前相同；重烘 968 字不缺字。實跑截圖 workplace/playtest/issue43 看得到體力／位置／方位／詢問凱拉／功能選項。能量障壁在區域 8–11，現有存檔最遠到區域 3，沒拍到畫面",
       "date": "2026-09-19"
     }
   ],
