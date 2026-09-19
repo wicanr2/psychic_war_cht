@@ -11,31 +11,37 @@ import (
 	"github.com/wicanr2/dosgolem/xlate"
 )
 
-// 說明頁的版面（放大 3 倍的畫布上，一格 24×24）。
-const (
-	HelpCols = 38 // 每行最多幾個中文字
-	HelpRows = 22 // 最多幾行
-)
+// HelpCols 是舊版面（整頁置中、一格 24×24）每行的格數，DrawTextPage 的退路還在用。
+// 說明頁本身的版面已經改成 docs/spec/022 §4，行寬與行數的上限由 CheckHelp 實算。
+const HelpCols = 38
 
 // 說明頁內容在 text/help.json（LoadHelp 讀），不寫死在程式裡：驗收工具要用同一份算期望值。
-// LoadHelp 讀 <dir>/help.json 的說明頁內容（docs/spec/012 §3）。
+// 版面常數（`layout`）與鍵名清單（`keycaps`）也在同一份，理由同上（docs/spec/022 §6 第 1 項）。
+// LoadHelp 讀 <dir>/help.json 的說明頁內容與版面（docs/spec/012 §3、docs/spec/022）。
 func LoadHelp(dir string) ([]string, error) {
 	b, err := os.ReadFile(filepath.Join(dir, "help.json"))
 	if err != nil {
 		return nil, err
 	}
 	var doc struct {
-		Schema string   `json:"schema"`
-		Lines  []string `json:"lines"`
-		Label  string   `json:"protection_label"`
-		Map    string   `json:"map_header"`
-		ASCII  string   `json:"ascii_only_toast"`
+		Schema  string     `json:"schema"`
+		Lines   []string   `json:"lines"`
+		Keycaps []string   `json:"keycaps"`
+		Layout  HelpLayout `json:"layout"`
+		Label   string     `json:"protection_label"`
+		Map     string     `json:"map_header"`
+		ASCII   string     `json:"ascii_only_toast"`
 	}
 	if err := json.Unmarshal(b, &doc); err != nil {
 		return nil, err
 	}
 	if doc.Schema != "psychic-war-help/1" {
 		return nil, fmt.Errorf("help.json 的 schema 不是 psychic-war-help/1：%q", doc.Schema)
+	}
+	// 版面缺了就不要硬畫：程式裡另外寫一份預設值，等於讓資料與程式各有一套常數，
+	// 驗收工具與前端會算出不同的圖而兩邊都不報錯。
+	if doc.Layout.PageW <= 0 || doc.Layout.PageHeight <= 0 || doc.Layout.FontBodyW <= 0 {
+		return nil, fmt.Errorf("help.json 沒有 layout（docs/spec/022 §4）")
 	}
 	ProtectionLabel = doc.Label
 	if doc.Map != "" {
@@ -44,7 +50,13 @@ func LoadHelp(dir string) ([]string, error) {
 	if doc.ASCII != "" {
 		ASCIIOnlyToast = doc.ASCII
 	}
-	return doc.Lines, CheckHelp(doc.Lines)
+	helpTextDir = dir // 內文字型（cjk16）的備用找法：help.json 同層的 font/
+	d := &HelpDoc{Lines: doc.Lines, Keycaps: sortKeycaps(doc.Keycaps), Layout: doc.Layout}
+	if err := CheckHelpDoc(d); err != nil {
+		return nil, err
+	}
+	helpDoc = d
+	return doc.Lines, nil
 }
 
 // ProtectionLabel 是防拷畫面那一行的標籤（LoadHelp 讀進來）。
@@ -58,28 +70,42 @@ var MapHeader = "區域 %d　座標 (%d, %d)　已走 %d 格　朝向 %c"
 // 畫面上要說出為什麼，不能讓被擋掉的輸入靜默消失。
 var ASCIIOnlyToast = "名字只能用英數字（原版的限制）"
 
-// LineCells 回一行佔幾格（半形字佔半格，用兩倍整數避免小數）：回的是「半格數」。
-func LineCells(s string) int {
-	n := 0
-	for _, r := range s {
-		if r < 0x80 {
-			n++ // 半形：半格
-		} else {
-			n += 2
-		}
+// CheckHelp 檢查說明頁排得下；排不下回錯（建置期就擋住，docs/spec/012 §5 第 1 項）。
+// 用目前載入的版面算，所以要先 LoadHelp。
+func CheckHelp(lines []string) error {
+	if helpDoc == nil {
+		return fmt.Errorf("說明頁還沒載入（先呼叫 LoadHelp）")
 	}
-	return n
+	return CheckHelpDoc(&HelpDoc{Lines: lines, Keycaps: helpDoc.Keycaps, Layout: helpDoc.Layout})
 }
 
-// CheckHelp 檢查說明頁排得下；排不下回錯（建置期就擋住，docs/spec/012 §5 第 1 項）。
-func CheckHelp(lines []string) error {
-	if len(lines) > HelpRows {
-		return fmt.Errorf("說明頁 %d 行，超過 %d 行", len(lines), HelpRows)
+// CheckHelpDoc 用同一套版面常數實算，不是數行數（docs/spec/022 §5）。
+//
+// 新版面的高度不是行數乘以固定列距：標頭與內文的列距不同、段落之間有間距、
+// 欄位分配是算出來的。數行數會在「還有幾十像素可用」與「已經超出畫布」之間給出相同的答案，
+// 所以這裡直接把版面排一次，看最下面那個像素落在哪裡。防拷那一列一定算進去——
+// 它是保留席位，平常不畫，但不能沒有位置。
+func CheckHelpDoc(d *HelpDoc) error {
+	L := d.Layout
+	if len(d.Lines) == 0 {
+		return fmt.Errorf("說明頁沒有內容")
 	}
-	for i, s := range lines {
-		if n := LineCells(s); n > 2*HelpCols {
-			return fmt.Errorf("說明頁第 %d 行 %.1f 格，超過 %d 格：%s", i+1, float64(n)/2, HelpCols, s)
+	ops := helpGeometry(d, ProtectionLabel+"ANSWER")
+	limit := L.PageW - L.Margin
+	for _, op := range ops {
+		if op.Kind == opRect {
+			continue
 		}
+		fw := L.FontBodyW
+		if op.Big {
+			fw = L.FontHeadW
+		}
+		if r := op.X + helpWidth(fw, op.S); r > limit {
+			return fmt.Errorf("說明頁「%s」畫到 x=%d，超出可用寬度 %d", op.S, r, limit)
+		}
+	}
+	if b := helpBottom(L, ops); b > L.PageHeight {
+		return fmt.Errorf("說明頁內容底緣 y=%d，超出畫布高度 %d", b, L.PageHeight)
 	}
 	return nil
 }
@@ -105,8 +131,15 @@ func MissingHelpGlyphs(lines []string, f *xlate.Font) []rune {
 // DrawTextPage 把整頁文字畫進放大後的 RGBA（寬 w 像素）。
 //
 // 一格 cell×cell 像素，字模置左上；fg、bg 是 RGB。bgAlpha 0 表示不填背景（只畫字）。
+//
+// 內容剛好是 help.json 那一頁時（可能尾端多了防拷答案）改走 docs/spec/022 的版面：
+// 說明頁有兩種字級、外框、橫線與反白鍵帽，fg／bg 兩個顏色表達不了。版面規則集中在
+// helppage.go，呼叫端只交內容——驗收工具才有單一的期望值來源。地圖標題與提示列不受影響。
 func DrawTextPage(dst []uint8, w, h int, f *xlate.Font, lines []string, cell int, fg, bg [3]uint8, bgAlpha uint8) {
 	if f == nil {
+		return
+	}
+	if ok, prot := helpPageLines(lines); ok && drawHelpPage(dst, w, h, f, prot) {
 		return
 	}
 	if bgAlpha > 0 {

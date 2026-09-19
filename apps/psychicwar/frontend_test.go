@@ -98,9 +98,17 @@ func TestHelpFits(t *testing.T) {
 	if err := CheckHelp([]string{string([]rune(repeatRune('字', HelpCols+1)))}); err == nil {
 		t.Error("超過行寬要回錯")
 	}
-	rows := make([]string, HelpRows+1)
-	if err := CheckHelp(rows); err == nil {
-		t.Error("超過行數要回錯")
+	// 高度：新版面不是數行數，是實算內容底緣（docs/spec/022 §5）。
+	// 段落多到通欄排不下時要報錯——2 個通欄段落各 8 列就已經超出 600。
+	tall := []string{"標題"}
+	for i := 0; i < 2; i++ {
+		tall = append(tall, "【很長的段落】")
+		for j := 0; j < 8; j++ {
+			tall = append(tall, "　這一列長到放不進欄寬所以整段會被移到下面的通欄裡面去排版佔滿整頁寬度")
+		}
+	}
+	if err := CheckHelp(tall); err == nil {
+		t.Error("內容底緣超出畫布要回錯")
 	}
 }
 
