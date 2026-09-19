@@ -110,7 +110,11 @@ def main(argv):
     check_one(glyph_at(std24, 0, 24, 24), 24, 24, "STD.24M")
     check_one(glyph_at(std15, 0, 16, 15), 16, 15, "STDFONT.15")
 
-    chars = set(extra)
+    # 可見 ASCII 一律全收（95 個字，成本可忽略）。只收「譯文用得到的」會漏掉
+    # 執行時才從記憶體讀出來的字：防拷答案在 cs:66E5，內容由遊戲決定不在 text/ 裡。
+    # 漏一個字在畫面上是靜默的——那一格什麼都不畫，不會報錯（2026-09-19 發現兩套
+    # 字型都沒有 Q）。
+    chars = set(extra) | {chr(c) for c in range(0x20, 0x7F)}
     for p in sorted(pathlib.Path(text_dir).glob("*.json")):
         doc = json.loads(p.read_text(encoding="utf-8"))
         schema = doc.get("schema")
