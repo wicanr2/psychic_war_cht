@@ -3,14 +3,15 @@
 #
 #   tools/package.sh appimage   # Linux：PsychicWar-<版本>-x86_64.AppImage
 #   tools/package.sh macos      # PsychicWar-<版本>-macos.zip（universal）
+#   tools/package.sh windows    # PsychicWar-<版本>-win64.zip（portable 目錄壓成 zip）
 #   tools/package.sh promo      # 把推廣片收進 dist-all（要先跑 tools/promo/make.sh）
 #   tools/package.sh all
 #
 #   PSYCHICWAR_WITH_DATA=1 tools/package.sh all    # 另外再出一份含原版素材的本機完整版
 #
 # 兩種變體（使用者定案 2026-09-19）：
-#   *-x86_64.AppImage / *-macos.zip             可散布，**不含原版素材**，玩家自備
-#   *-with-data-x86_64.AppImage / *-macos.zip   含原版素材，**純本機自用**，絕不推 git、絕不上傳
+#   *-x86_64.AppImage / *-macos.zip / *-win64.zip             可散布，**不含原版素材**，玩家自備
+#   *-with-data-x86_64.AppImage / *-macos.zip / *-win64.zip   含原版素材，**純本機自用**，絕不推 git、絕不上傳
 # `dist-all/` 整個 gitignore。可散布版產出後會掃一次有沒有夾帶原版檔（leak-scan）。
 #
 # Linux 只出 AppImage，不出 tar.gz（kb `mac-app-cross-pack`「產物統一放 dist-all/」的 ship matrix）。
@@ -118,6 +119,14 @@ do_macos() {
   return 0
 }
 
+# Windows（issue #39）。不需要 mingw：Ebiten 的 Windows 後端用 purego 載 DLL，
+# CGO_ENABLED=0 就編得出來（docs/re/035 §3.1），走的是 build_linux 的同一份工具鏈。
+do_windows() {
+  tools/windows-pack.sh "$VER"
+  [ "${PSYCHICWAR_WITH_DATA:-}" = 1 ] && PSYCHICWAR_PACK_WITH_DATA=1 tools/windows-pack.sh "$VER"
+  return 0
+}
+
 # 推廣片也歸到 dist-all（kb 的典型內容就含 *-promo.mp4）。
 do_promo() {
   local src=workplace/promo/psychic-war-promo.mp4
@@ -131,9 +140,10 @@ do_promo() {
 case "$TARGET" in
   appimage) do_appimage ;;
   macos) do_macos ;;
+  windows) do_windows ;;
   promo) do_promo ;;
-  all) do_appimage; do_macos; do_promo ;;
-  *) echo "目標要是 appimage、macos、promo 或 all" >&2; exit 2 ;;
+  all) do_appimage; do_macos; do_windows; do_promo ;;
+  *) echo "目標要是 appimage、macos、windows、promo 或 all" >&2; exit 2 ;;
 esac
 rmdir "$STAGE" 2>/dev/null || true
 echo "== dist-all"
