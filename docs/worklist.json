@@ -69,21 +69,6 @@
         "kind": "manual",
         "note": "要人判。"
       }
-    },
-    {
-      "id": "help-page-design",
-      "milestone": "M5",
-      "labels": [
-        "frontend"
-      ],
-      "title": "F1 說明頁的視覺設計",
-      "issue": 41,
-      "body": "設計稿 docs/spec/022 已完成，使用者定案採方案 B（標題色帶＋雙欄，標頭 cjk24、內文 cjk16），help.json 加 keycaps 與 layout 兩個欄位，段落標頭的【】留著。內容一個字都不用改。",
-      "acceptance": "說明頁逐像素差 0；**負對照要成立**（改一行 help.json 的資料，期望畫面要跟著變、比對要失敗）；防拷那一版也要驗。",
-      "verify": {
-        "kind": "manual",
-        "note": "要人判。"
-      }
     }
   ],
   "done": [
@@ -365,6 +350,13 @@
       "issue": 45,
       "title": "缺檔時的錯誤訊息，與 Windows 的 .exe 圖示",
       "evidence": "三條出口：stderr 照舊、<存檔目錄>/psychicwar-error.log 全平台都寫、Windows 彈 MessageBoxW（x/sys 的 NewLazySystemDLL，只從 system32 載，無 cgo）。-orig 缺檔改印一句人話加兩種指法的例子，不再是 34 行 flag.Usage()。啟動成功會清掉上一次的紀錄檔。Linux 與 wine 各驗過缺原版與缺字型；反向對照是正常啟動結束碼 0、不寫紀錄檔。彈窗截圖 workplace/win-check-out/dialog.png。.exe 圖示沒做，三條路與代價在 docs/re/035 §3.3",
+      "date": "2026-09-19"
+    },
+    {
+      "id": "help-page-design",
+      "issue": 41,
+      "title": "F1 說明頁的視覺設計",
+      "evidence": "spec 022 READY，方案 B 實作完成。三個獨立實作（help_check.py 的期望值、Go、設計稿的 render.py）在同一份資料上比，四組都差 0。負對照 2x2 全做，第三列是實際跑前端拍的。防拷那一版也驗了，答案 FREEZE 與 probe 從 cs:66E5 讀出來的相同。收尾時把兩個繞路清掉（內容比對認自己、自己找字型），改成前端明確呼叫 DrawHelpPage 並傳兩個字型；重構後畫面仍差 0。順帶修掉字型缺 Q：烘字改成一律收全部可見 ASCII",
       "date": "2026-09-19"
     }
   ],
