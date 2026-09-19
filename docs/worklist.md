@@ -17,7 +17,6 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #9 | `realtime-pacing` | 牆上時間節拍：讓 72 Hz 的遊戲以原速執行 | golem-upstream, frontend | — | manual |
 | #40 | `adjustable-speed` | 遊戲內可調執行速度，預設考慮調快 | frontend | — | manual |
 
 ## M3：文字攔截與文本抽取
@@ -29,13 +28,12 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #27 | `playtest-cht` | 中文版正常玩家路徑試玩 | verify, text | #24、#25 | manual |
+| #43 | `glossary-from-manual` | 依說明書修正譯名表 | text | — | manual |
 
 ## M5：輔助功能：F1／F2／F3／F10、防拷、作弊
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #42 | `hotkey-conflict` | F2／F3 熱鍵與原版功能衝突 | frontend | — | manual |
 | #41 | `help-page-design` | F1 說明頁的視覺設計 | frontend | — | manual |
 
 ## M6：主題、打包、授權與發行
@@ -43,8 +41,8 @@
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
 | #34 | `theme` | 主題替換 | graphics | #20 | manual |
-| #39 | `windows-package` | Windows 發行包 | release | — | absent |
-| #39 | `macos-real-run` | macOS 發行包的真機驗收 | release, verify | — | manual |
+| #44 | `macos-real-run` | macOS 與 Windows 的真機驗收 | release, verify | — | manual |
+| #45 | `error-messages-and-icon` | 缺檔時的錯誤訊息，與 Windows 的 .exe 圖示 | frontend, release | — | manual |
 
 ## 不做（使用者定案）
 
@@ -90,3 +88,7 @@
 | #37 | `readme` | README.md：遊戲介紹、中文截圖、怎麼玩 | README.md 173 行，五張中文截圖在 docs/images/（由 pwstep 以當前 HEAD 重跑產生）。涵蓋遊戲介紹、中文化做法、完成度數字（出處全部連到 docs/re/）、抽測試玩三次、輔助功能表、怎麼跑、發行包狀態、文件索引、授權與字型來源。截圖只含遊戲畫面，原版檔案沒有進版控 | 2026-09-19 |
 | #35 | `cross-platform-package` | 跨平台打包：Linux／Windows／macOS | AppImage 與 macOS universal 都產出並集中在 dist-all/（docs/spec/021、docs/DEV-SETUP.md）。AppImage：解開產物從別的 cwd 執行、畫面與 repo 建置逐像素差 0、解開處零寫入、存檔落在 XDG 目錄、字型改名報錯。-with-data 變體在沒有掛任何原版目錄的容器裡、不給 -orig 跑到標題畫面；反向對照是可散布版印用法、結束碼 2。macOS 只過靜態驗收五道（docs/re/033），沒有 Mac 可實跑，那一項移到 macos-real-run。Windows 移到 #39 | 2026-09-19 |
 | #38 | `walkthrough-1989` | 整理當年《軟體世界》19 期攻略（29–38 頁）成 markdown | docs/walkthrough-1989.md 381 行。十頁掃描逐頁判讀，事實性資料表格化不逐字轉錄。交叉核對：基地名表 cs:674F 的七筆順序、三組密碼逐字（含驚嘆號數量）、八張地圖與 CODEH.BIN 的道具名表都吻合；MELSER 結局流程對上 I_MENU11／I_MAP11，可推定區域 11 ＝ MELSER。找到的衝突拆成 #42（F2／F3 熱鍵）。未核實項目逐條標明 | 2026-09-19 |
+| #9 | `realtime-pacing` | 牆上時間節拍：讓 72 Hz 的遊戲以原速執行 | spec 004 READY；計時器 72.001 Hz（誤差 0.001%）、60 秒節拍差 0.000%（docs/re/016 §2.1）、CPU 1.80–1.94 核與機器／牆上 0.9978（docs/re/026 §6）。⚠ 72 Hz 是在迷宮裡量的，繪圖密集的畫面沒另外量 | 2026-09-19 |
+| #27 | `playtest-cht` | 中文版正常玩家路徑試玩 | 驗收條件被使用者定案取代（2026-09-18：試玩用抽測，不必玩到結局）。抽測三次（docs/re/022、027、031），找到的缺陷都當場修掉並用同一個狀態檔重現。「不在文本檔」為 0。沒測到賽瓦德之後的地點 | 2026-09-19 |
+| #39 | `windows-package` | Windows 發行包 | dist-all/PsychicWar-v0.1.0-win64.zip 與 -with-data 版，已隨 v0.1.0 發布。不需要 mingw（Ebiten 走 purego）。wine 9.0 實跑，同狀態畫面與 Linux 產物逐像素差 0。docs/re/035。真機驗收拆到 #44，錯誤訊息與圖示拆到 #45 | 2026-09-19 |
+| #42 | `hotkey-conflict` | F2／F3 熱鍵與原版功能衝突 | F1／F2／F3 還給原版、輔助熱鍵改從 F4 起算。端到端對照實驗：同狀態起兩次前端，起點逐像素差 0，按 F3 後畫面變 27,438 像素回到迷宮、方向由北變南，不按只變 657。scanCodes 補上 0x3B／0x3C／0x3D。單元測試改成兩組斷言。docs/re/036 | 2026-09-19 |

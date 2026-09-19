@@ -117,11 +117,12 @@ Esc 選單與凱拉的回話，兩者都來自 `I_MENUH.BIN` 的固定寬度欄�
 
 還沒做完的：
 
-- 賽瓦德（區域 1）之後的地點沒有抽測過，角色等級不夠打不過去（#27）。
+- 賽瓦德（區域 1）之後的地點沒有抽測過，角色等級不夠打不過去。試玩是抽測不是通關。
 - 原版的讀檔入口只在死亡後的標題選單，而那個選單會逾時自動選「新遊戲」，抽測時三次都來不及選。
   目前讀回進度靠 F11 即時讀檔。
-- macOS 的發行包沒有在真機上跑過，只做了結構驗收（[`docs/re/033`](docs/re/033-macos-cross-build.md)，#35）。Windows 版還沒做。
-- 主題替換（換 UI 框線與配色）還沒做（#34）。
+- macOS 與 Windows 的發行包都沒有在真機上跑過（[`docs/re/033`](docs/re/033-macos-cross-build.md)、[`035`](docs/re/035-windows-cross-build.md)，[#44](https://github.com/wicanr2/psychic_war_cht/issues/44)）。
+- 遊戲速度只能在命令列用 `-cycles` 指定，遊戲內不能調（[#40](https://github.com/wicanr2/psychic_war_cht/issues/40)）。
+- 主題替換（換 UI 框線與配色）還沒做（[#34](https://github.com/wicanr2/psychic_war_cht/issues/34)）。
 
 未完成項的權威是 [`docs/worklist.json`](docs/worklist.json)，每條對應一個 GitHub issue，
 也各自掛著一個可以跑的驗證方式。
@@ -156,6 +157,7 @@ F1 說明頁，前端實跑截圖。內容來自 `text/help.json`，驗收時由
 | 產物 | 狀態 |
 |---|---|
 | `PsychicWar-<版本>-x86_64.AppImage` | 解開產物實跑驗過 |
+| `PsychicWar-<版本>-win64.zip` | wine 底下實跑，畫面與 Linux 產物逐像素差 0；**沒有在真 Windows 上跑過** |
 | `PsychicWar-<版本>-macos.zip`（universal，x86_64 ＋ arm64） | 只做了靜態驗收，**沒有在 Mac 上跑過** |
 
 產物都放 `dist-all/`，每個平台只留最新一份，整個目錄 gitignore。
@@ -174,6 +176,9 @@ Linux 是 `$XDG_DATA_HOME/psychicwar`（預設 `~/.local/share/psychicwar`），
 macOS 是 `~/Library/Application Support/PsychicWar`。
 
 macOS 的 `.app` 沒有簽章也沒有公證（在 Linux 上做不出來），首次開啟要**右鍵 →「打開」**。
+
+Windows 版是 GUI 子系統的程式，出錯時看不到訊息。包裡附了 `troubleshoot.bat`，
+它會把錯誤導成 `psychicwar-log.txt` 再停住讓你看（[#45](https://github.com/wicanr2/psychic_war_cht/issues/45) 會修掉這個權宜做法）。
 
 `PSYCHICWAR_WITH_DATA=1` 會另外產一份 `-with-data` 變體，把原版素材放進執行檔旁的 `original/`，
 免去每次給 `-orig`。那種包含原版素材，只留在自己機器上，不進版控也不上傳。
