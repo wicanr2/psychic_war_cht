@@ -121,7 +121,6 @@ Esc 選單與凱拉的回話，兩者都來自 `I_MENUH.BIN` 的固定寬度欄�
 - 原版的讀檔入口只在死亡後的標題選單，而那個選單會逾時自動選「新遊戲」，抽測時三次都來不及選。
   目前讀回進度靠 F11 即時讀檔。
 - macOS 與 Windows 的發行包都沒有在真機上跑過（[`docs/re/033`](docs/re/033-macos-cross-build.md)、[`035`](docs/re/035-windows-cross-build.md)，[#44](https://github.com/wicanr2/psychic_war_cht/issues/44)）。
-- 遊戲速度只能在命令列用 `-cycles` 指定，遊戲內不能調（[#40](https://github.com/wicanr2/psychic_war_cht/issues/40)）。
 - 主題替換（換 UI 框線與配色）還沒做（[#34](https://github.com/wicanr2/psychic_war_cht/issues/34)）。
 
 未完成項的權威是 [`docs/worklist.json`](docs/worklist.json)，每條對應一個 GitHub issue，
@@ -138,6 +137,7 @@ Esc 選單與凱拉的回話，兩者都來自 `I_MENUH.BIN` 的固定寬度欄�
 | F6 | 自動地圖。只記走過的格子，沒走過的不畫 |
 | F7／F8 | 作弊（要加 `-cheat` 才打開）：補滿 HP 與能量／把敵人打到剩 1 點 |
 | F10／F11 | 即時存檔／讀檔。存的是機器狀態加疊字層快照，原版執行檔或文本檔的雜湊對不上就拒絕讀回 |
+| F12 | 執行速度 1／2／3 倍。**戰鬥維持原速**，難度不受影響 |
 
 **F1、F2、F3 是原版自己的功能鍵**，前端不攔也不改，直接傳給遊戲。輔助功能一律從 F4 起算，F9 也留給原版。
 
