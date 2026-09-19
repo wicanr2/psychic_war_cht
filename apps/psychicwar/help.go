@@ -31,6 +31,12 @@ func LoadHelp(dir string) ([]string, error) {
 		Label   string     `json:"protection_label"`
 		Map     string     `json:"map_header"`
 		ASCII   string     `json:"ascii_only_toast"`
+		// 速度檔位的字樣（docs/spec/023 §7）
+		SpeedOriginal    string `json:"speed_original"`
+		SpeedGear        string `json:"speed_gear"`
+		SpeedToast       string `json:"speed_toast"`
+		SpeedToastBattle string `json:"speed_toast_battle"`
+		SpeedBadgeBattle string `json:"speed_badge_battle"`
 	}
 	if err := json.Unmarshal(b, &doc); err != nil {
 		return nil, err
@@ -49,6 +55,16 @@ func LoadHelp(dir string) ([]string, error) {
 	}
 	if doc.ASCII != "" {
 		ASCIIOnlyToast = doc.ASCII
+	}
+	for _, p := range []struct {
+		dst *string
+		src string
+	}{{&SpeedOriginal, doc.SpeedOriginal}, {&SpeedGearFmt, doc.SpeedGear},
+		{&SpeedToastFmt, doc.SpeedToast}, {&SpeedToastBattleFmt, doc.SpeedToastBattle},
+		{&SpeedBadgeBattleFmt, doc.SpeedBadgeBattle}} {
+		if p.src != "" {
+			*p.dst = p.src
+		}
 	}
 	d := &HelpDoc{Lines: doc.Lines, Keycaps: sortKeycaps(doc.Keycaps), Layout: doc.Layout}
 	if err := CheckHelpDoc(d); err != nil {

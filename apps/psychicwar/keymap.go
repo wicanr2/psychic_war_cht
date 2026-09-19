@@ -33,13 +33,18 @@ func init() {
 }
 
 // intercepted 是前端攔下、不送進遊戲的鍵（docs/spec/012 §1）：
-// F4 說明、F5 語言、F6 地圖、F7／F8 作弊（docs/spec/014）、F10 存檔、F11 讀檔。
+// F4 說明、F5 語言、F6 地圖、F7／F8 作弊（docs/spec/014）、F10 存檔、F11 讀檔、
+// F12 速度檔位（docs/spec/023 §4）。
 //
 // **F1／F2／F3 不在這裡**：那三個是原版自己的功能鍵，攔下來等於拿掉遊戲功能。
 // F9 也留給原版。
+//
+// F12 可以攔，因為它**本來就不在 scanCodes 裡**——原版從來收不到這個鍵，
+// 攔下它不會拿掉任何原版功能（攔一個鍵之前先確認原版沒在用它，docs/re/036 §3）。
 var intercepted = map[ebiten.Key]bool{
 	ebiten.KeyF4: true, ebiten.KeyF5: true, ebiten.KeyF6: true,
-	ebiten.KeyF7: true, ebiten.KeyF8: true, ebiten.KeyF10: true, ebiten.KeyF11: true}
+	ebiten.KeyF7: true, ebiten.KeyF8: true, ebiten.KeyF10: true, ebiten.KeyF11: true,
+	ebiten.KeyF12: true}
 
 // ScanCode 回按鍵的掃描碼；沒有對應或被攔下時 ok 為 false。
 func ScanCode(k ebiten.Key) (code uint8, ok bool) {
@@ -50,7 +55,7 @@ func ScanCode(k ebiten.Key) (code uint8, ok bool) {
 	return code, ok
 }
 
-// Intercepted 回報這個鍵是不是前端自己要處理的（F4–F8、F10、F11）。
+// Intercepted 回報這個鍵是不是前端自己要處理的（F4–F8、F10–F12）。
 func Intercepted(k ebiten.Key) bool { return intercepted[k] }
 
 // KeyName 回這個鍵在錄製檔與 dosgolem 動作腳本裡的寫法（docs/spec/019 §3）。

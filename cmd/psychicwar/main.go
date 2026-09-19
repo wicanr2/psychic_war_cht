@@ -77,6 +77,15 @@ type game struct {
 	rec       *psychicwar.Recording // -record：輸入錄製（docs/spec/019）
 	recPath   string
 	showMap   bool // F3：自動地圖顯示中（docs/spec/015）
+
+	// 速度檔位（docs/spec/023）
+	speed     *psychicwar.Speed
+	battle    psychicwar.Battle
+	vwallMs   float64   // 虛擬牆上時鐘：每幀加「實際毫秒 × 目前倍率」
+	lastFrame time.Time // 上一幀的牆上時刻（算 vwallMs 用）
+	saveSpeed bool      // 切換檔位時要不要寫回設定檔（-speed 指定時不寫）
+	lastCell  [3]uint16 // 上一幀的（區域, X, Y），換格子時寫一行量測
+	abudget   psychicwar.AudioBudget
 }
 
 // 自動地圖的版面（docs/spec/015 §2）：一格 12 像素、左上角 (24, 24)、最多 32×32 格。
@@ -88,12 +97,18 @@ const (
 	mapHeadY = 4
 )
 
-// noteMap 每一幀記一次目前的格子。
+// noteMap 每一幀記一次目前的格子；換格子時另外寫一行量測（docs/spec/023 §8 第 2 項：
+// 「走一格要幾秒」的解析度，每秒一次的 tick 量不出來）。
 func (g *game) noteMap() {
 	if g.amap == nil {
 		return
 	}
-	g.amap.Note(g.word(psychicwar.AddrArea), g.word(psychicwar.AddrMapX), g.word(psychicwar.AddrMapY))
+	cell := [3]uint16{g.word(psychicwar.AddrArea), g.word(psychicwar.AddrMapX), g.word(psychicwar.AddrMapY)}
+	g.amap.Note(cell[0], cell[1], cell[2])
+	if cell != g.lastCell {
+		g.lastCell = cell
+		g.writeStats(time.Since(g.start), "cell")
+	}
 }
 
 // drawMap 畫 F3 自動地圖。
@@ -176,8 +191,8 @@ func (g *game) cheatWeakenEnemy() string {
 // 狀態檔格式的版本字串：dosgolem 沒有版本常數，格式換了就手動升這個版號（docs/spec/012 §4）。
 const stateFormat = "dosgolem-state/1"
 
-// hotkeys 處理 F4–F8、F10、F11（docs/spec/012）。回傳有沒有處理掉。
-// F1／F2／F3 是原版的功能鍵，這裡不碰（使用者實測 2026-09-19）。
+// hotkeys 處理 F4–F8、F10、F11（docs/spec/012）與 F12 速度檔位（docs/spec/023）。
+// 回傳有沒有處理掉。F1／F2／F3／F9 是原版的功能鍵，這裡不碰（使用者實測 2026-09-19）。
 func (g *game) hotkeys(k ebiten.Key) bool {
 	switch k {
 	case ebiten.KeyF4:
@@ -206,8 +221,51 @@ func (g *game) hotkeys(k ebiten.Key) bool {
 	case ebiten.KeyF11:
 		g.showToast(g.quickLoad())
 		return true
+	case ebiten.KeyF12:
+		g.speed.Next()
+		g.showToast(g.speed.Toast())
+		g.persistSpeed()
+		g.writeStats(time.Since(g.start), "gear")
+		return true
 	}
 	return false
+}
+
+// persistSpeed 把玩家選的檔位寫回設定檔（docs/spec/023 §6）。
+// 寫不進去只記一行，不影響遊戲——設定檔只管下一次啟動。
+func (g *game) persistSpeed() {
+	if !g.saveSpeed {
+		return
+	}
+	if err := psychicwar.SaveSettings(g.quickDir, psychicwar.Settings{Speed: g.speed.Gear()}); err != nil {
+		log.Printf("寫不進設定檔：%v", err)
+	}
+}
+
+// setBattle 由戰鬥掛鉤呼叫（docs/spec/023 §3）：進戰鬥立刻降回原速、出戰鬥回到玩家選的檔位。
+func (g *game) setBattle(in bool) {
+	g.speed.SetBattle(in)
+	if !g.battle.TakeChange() {
+		return
+	}
+	if in {
+		g.writeStats(time.Since(g.start), "battle-in")
+	} else {
+		g.writeStats(time.Since(g.start), "battle-out")
+	}
+}
+
+// attachBattle 掛上戰鬥主迴圈的進入點與返回點（docs/re/037）。
+func (g *game) attachBattle(o *oracle.Oracle) {
+	at := func(off uint16) oracle.Addr { return oracle.Addr{Seg: psychicwar.CodeSeg, Off: off} }
+	o.OnCall(at(psychicwar.OffBattleLoop), func(*oracle.Oracle) { g.battle.Enter(); g.setBattle(true) })
+	o.OnCall(at(psychicwar.OffBattleDone), func(*oracle.Oracle) { g.battle.Leave(); g.setBattle(false) })
+}
+
+// reseedBattle 在讀狀態檔之後由記憶體重推戰鬥狀態（掛鉤那時候不會觸發）。
+func (g *game) reseedBattle() {
+	g.battle.Reseed(g.word(psychicwar.AddrEnemyHP))
+	g.setBattle(g.battle.In())
 }
 
 func (g *game) showToast(s string) {
@@ -266,7 +324,10 @@ func (g *game) quickLoad() string {
 	if err := g.o.LoadStateFile(base); err != nil {
 		return "讀檔失敗：" + err.Error()
 	}
-	g.startCyc, g.start = g.o.Cycles(), time.Now() // 牆上時間重新對齊，不然會狂追進度
+	// 牆上時間重新對齊，不然會狂追進度。虛擬時鐘跟著歸零（docs/spec/023 §2）。
+	g.startCyc, g.start, g.lastFrame, g.vwallMs = g.o.Cycles(), time.Now(), time.Now(), 0
+	g.pacer.DroppedMs = 0
+	g.reseedBattle() // 掛鉤在載入時不會觸發，戰鬥狀態改由記憶體重推
 	if g.tr != nil {
 		g.tr.ResetForLoad()
 		if b, err := os.ReadFile(base + ".xlate.json"); err == nil {
@@ -294,6 +355,7 @@ func (g *game) machineMs() float64 {
 func (g *game) Update() error {
 	if g.start.IsZero() { // 牆上時鐘從第一次 Update 起算：建立視窗的時間不算落後
 		g.start, g.startCyc, g.lastStat = time.Now(), g.o.Cycles(), time.Now()
+		g.lastFrame = g.start
 		g.audio.Render() // 丟掉載入到現在的機器時間
 	}
 	for _, k := range inpututil.AppendJustPressedKeys(nil) {
@@ -323,8 +385,14 @@ func (g *game) Update() error {
 			g.record(k, false)
 		}
 	}
-	wall := time.Since(g.start)
-	if n := g.pacer.Cycles(float64(wall.Microseconds())/1000, g.machineMs()); n > 0 {
+	now := time.Now()
+	wall := now.Sub(g.start)
+	// 虛擬牆上時鐘（docs/spec/023 §2）：檔位只改「一毫秒牆上時間要跑幾個 cycle」，
+	// 機器的 CPUHz 與 IRQ0 間隔完全不動，所以同一份輸入在任何檔位下逐位元組相同。
+	frameSec := now.Sub(g.lastFrame).Seconds()
+	g.vwallMs += frameSec * 1000 * float64(g.speed.Effective())
+	g.lastFrame = now
+	if n := g.pacer.Cycles(g.vwallMs, g.machineMs()); n > 0 {
 		if err := g.o.RunCycles(n); err != nil {
 			var exit *oracle.ExitError
 			if errors.As(err, &exit) {
@@ -338,35 +406,51 @@ func (g *game) Update() error {
 		g.tr.Frame(g.o)
 	}
 	g.noteMap()
-	pcm := g.audio.Render()
+	// n 倍速時機器一秒牆上時間產生 n 秒份的取樣，全寫進環形緩衝會一直溢位（docs/spec/023 §5）。
+	pcm := g.abudget.Take(g.audio.Render(), frameSec, sampleRate)
 	g.ring.Write(pcm)
 	if g.wav != nil {
 		_ = binary.Write(g.wav, binary.LittleEndian, pcm)
 		g.wavSamples += len(pcm)
 	}
 	if g.stats != nil && time.Since(g.lastStat) >= time.Second {
-		g.writeStats(wall)
+		g.writeStats(wall, "tick")
 	}
 	if g.quitAfter > 0 && wall >= g.quitAfter {
-		if g.stats != nil {
-			g.writeStats(wall)
-		}
+		g.writeStats(wall, "quit")
 		return ebiten.Termination
 	}
 	return nil
 }
 
-func (g *game) writeStats(wall time.Duration) {
-	g.lastStat = time.Now()
+// writeStats 寫一行量測。event 是「這一行為什麼被寫出來」：每秒一次是 tick，
+// 進出戰鬥與換檔另外各寫一行——驗收要的是那一瞬間的指令數與牆上毫秒，
+// 每秒一次的解析度量不出一場十幾秒的戰鬥（docs/spec/023 §8）。
+func (g *game) writeStats(wall time.Duration, event string) {
+	if g.stats == nil || g.start.IsZero() {
+		return
+	}
+	if event == "tick" {
+		g.lastStat = time.Now()
+	}
 	under, over := g.ring.Stats()
 	line, _ := json.Marshal(map[string]any{
+		"event":       event,
 		"wall_ms":     wall.Milliseconds(),
 		"machine_ms":  int64(g.machineMs()),
+		"steps":       g.o.Steps(),
 		"ticks":       g.o.Ticks(),
 		"underruns":   under,
 		"overflows":   over,
 		"dropped_ms":  int64(g.pacer.DroppedMs),
 		"intercepted": g.intercepted,
+		"area":        g.word(psychicwar.AddrArea),
+		"map_x":       g.word(psychicwar.AddrMapX),
+		"map_y":       g.word(psychicwar.AddrMapY),
+		"gear":        g.speed.Gear(),
+		"effective":   g.speed.Effective(),
+		"battle":      g.speed.InBattle(),
+		"enemy_hp":    g.word(psychicwar.AddrEnemyHP),
 		"cpu_ms":      psychicwar.CPUMillis(), // 分平台（Windows 沒有 getrusage）
 	})
 	fmt.Fprintln(g.stats, string(line))
@@ -394,7 +478,30 @@ func (g *game) Draw(dst *ebiten.Image) {
 	}
 	g.drawMap(dst)
 	g.drawHelp(dst)
+	g.drawSpeed(dst)
 	g.drawToast(dst)
+}
+
+// drawSpeed 畫左上角的速度檔位（docs/spec/023 §7）。
+//
+// 原速時不畫：常駐標記只在「跟原版不一樣」的時候才有資訊量，一直掛著就變成裝飾。
+// 戰鬥中畫「2 倍→原速」，玩家才知道畫面沒變快不是壞掉。
+func (g *game) drawSpeed(dst *ebiten.Image) {
+	if g.over == nil || g.fontHelp == nil || g.help {
+		return
+	}
+	s := g.speed.Badge()
+	if s == "" {
+		return
+	}
+	w, cell := 320*g.scale, 8*g.scale
+	clear(g.overPix)
+	psychicwar.DrawTextPage(g.overPix, w, cell, g.fontHelp, []string{s}, cell,
+		[3]uint8{0x55, 0xFF, 0x55}, [3]uint8{0, 0, 0}, 0xFF)
+	g.over.WritePixels(g.overPix)
+	// 只取標記那幾格：DrawTextPage 會把整條橫幅填成底色，整條蓋上去會擋住遊戲畫面。
+	box := image.Rect(0, 0, (len([]rune(s))+1)*cell, cell)
+	dst.DrawImage(g.over.SubImage(box).(*ebiten.Image), nil)
 }
 
 // drawHelp 畫 F1 說明頁（docs/spec/012 §3）：蓋滿整個畫布，固定顏色。
@@ -580,6 +687,8 @@ func main() {
 	textLog := flag.String("text-log", "", "轉譯紀錄（JSON Lines）")
 	cheat := flag.Bool("cheat", false, "打開作弊熱鍵 F5（補滿 HP 與能量）、F6（敵人剩 1 點），docs/spec/014")
 	recordPath := flag.String("record", "", "把按鍵錄成重播檔（docs/spec/019）：記指令數不記時間，換一台機器也能重現")
+	speedFlag := flag.Int("speed", 0, "速度檔位倍率 1／2／3（docs/spec/023）；0 ＝ 沿用設定檔。"+
+		"指定時不寫回設定檔。戰鬥一律原速")
 	showVersion := flag.Bool("version", false, "印出版本後結束")
 	flag.Parse()
 	if *showVersion {
@@ -619,12 +728,22 @@ func main() {
 		dieData("存檔目錄建不起來。", "用 -scratch 指到一個寫得進去的目錄。", err)
 	}
 	o.SetScratch(*scratch)
+	// 速度檔位（docs/spec/023）：旗標沒給就沿用設定檔；給了就不寫回去，
+	// 免得驗收與反向對照污染玩家自己的設定。
+	gear, saveSpeed := psychicwar.LoadSettings(*scratch).Speed, true
+	if *speedFlag != 0 {
+		gear, saveSpeed = *speedFlag, false
+	}
 	if *loadState != "" {
 		if err := o.LoadStateFile(*loadState); err != nil {
 			die(err)
 		}
 	}
 	// 狀態檔會還原時鐘設定，所以速度與 AdLib 在載入之後才設。
+	//
+	// ⚠ `SetDOSBoxCycles` **只在這裡呼叫一次**，換檔位時不再動它（docs/spec/023 §2）。
+	// CPUHz 一變，IRQ0 的間隔就變；計時器中斷插在戰鬥迴圈的哪個位置會改變單場戰鬥的結果
+	// （docs/re/010 §4.5），那樣「戰鬥不受檔位影響」就不可能成立。
 	o.SetAdLib(*adlib)
 	o.SetDOSBoxCycles(perMs)
 
@@ -637,6 +756,9 @@ func main() {
 	g.quickDir, g.origDir, g.textDir = *scratch, *orig, *textDir
 	g.cheat = *cheat
 	g.amap = psychicwar.NewAutoMap()
+	g.speed, g.saveSpeed = psychicwar.NewSpeed(gear), saveSpeed
+	g.attachBattle(o)
+	g.reseedBattle()       // -load-state 可能載進一場打到一半的戰鬥，掛鉤那時候不會觸發
 	if *recordPath != "" { // 輸入錄製（docs/spec/019）
 		exe, err := psychicwar.FileSHA256(filepath.Join(*orig, "PW.EXE"))
 		if err != nil {
