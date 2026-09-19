@@ -2988,7 +2988,7 @@
         4
       ],
       "original": "DIRECTION",
-      "translation": " 方向 ",
+      "translation": " 方位 ",
       "note": "狀態欄標籤；值由遊戲畫在右邊；比對範圍避開右邊的方位值"
     },
     {
@@ -3011,7 +3011,7 @@
         4
       ],
       "original": "PLACE",
-      "translation": " 地點 ",
+      "translation": " 位置 ",
       "note": "狀態欄標籤；值由遊戲畫在右邊；比對範圍避開左邊的框線（遊戲會重畫）"
     }
   ]

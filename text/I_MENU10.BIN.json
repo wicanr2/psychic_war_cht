@@ -154,7 +154,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Whoa! A Psychic Shield device! ",
-   "translation": "哇！是超能防護盾裝置！",
+   "translation": "哇！是能量障壁裝置！",
    "note": ""
   },
   {
@@ -188,7 +188,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The Psycho {C2}{D2}{E2}{F2} is wasted!     ",
-   "translation": "超能防護盾被摧毀了！",
+   "translation": "能量障壁被摧毀了！",
    "note": ""
   },
   {
@@ -538,7 +538,7 @@
    "reachable": true,
    "same_as": "",
    "original": "The Psycho {C2}{D2}{E2}{F2} zapped us!     ",
-   "translation": "超能防護盾電到我們了！",
+   "translation": "能量障壁電到我們了！",
    "note": ""
   },
   {
@@ -555,7 +555,7 @@
    "reachable": true,
    "same_as": "",
    "original": "WARNING! Psycho Shield's on... ",
-   "translation": "警告！超能防護盾啟動了…",
+   "translation": "警告！能量障壁啟動了…",
    "note": ""
   },
   {

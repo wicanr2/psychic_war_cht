@@ -1,6 +1,58 @@
 {
  "schema": "psychic-war-glossary/1",
- "note": "人名、地名、超能力、道具、敵人等定譯。優先沿用軟體世界代理版說明書（source 記頁碼，只記名詞對照不轉錄內容）；說明書沒有的標 provisional。敵人名稱全部是暫譯音譯，沒有依據。",
+ "note": "人名、地名、超能力、道具、敵人等定譯。優先沿用軟體世界代理版說明書（source 記頁碼，只記名詞對照不轉錄內容）；說明書只印英文、中譯由本專案自訂的標 provisional，出處欄寫明「說明書 p.X 只有英文，中譯自訂」。敵人名稱全部是暫譯音譯，沒有依據。zh_only 是說明書只有中文、原書沒印英文的名詞。",
+ "zh_only": [
+  {
+   "zh": "聯邦上議院",
+   "kind": "org",
+   "source": "說明書 p.2、17（原書只有中文，沒印英文）"
+  },
+  {
+   "zh": "全隊資料區",
+   "kind": "screen",
+   "source": "說明書 p.11（原書只有中文）"
+  },
+  {
+   "zh": "物品顯示區",
+   "kind": "screen",
+   "source": "說明書 p.11（原書只有中文）"
+  },
+  {
+   "zh": "指令區",
+   "kind": "screen",
+   "source": "說明書 p.11（原書只有中文）"
+  },
+  {
+   "zh": "訊息區",
+   "kind": "screen",
+   "source": "說明書 p.11（原書只有中文）"
+  },
+  {
+   "zh": "次訊息區",
+   "kind": "screen",
+   "source": "說明書 p.11（原書只有中文）"
+  },
+  {
+   "zh": "3-D 立體畫面",
+   "kind": "screen",
+   "source": "說明書 p.11（原書只有中文）"
+  },
+  {
+   "zh": "戰鬥區",
+   "kind": "screen",
+   "source": "說明書 p.11（原書只有中文）"
+  },
+  {
+   "zh": "能量指數",
+   "kind": "screen",
+   "source": "說明書 p.11（原書只有中文）"
+  },
+  {
+   "zh": "凱拉戰士",
+   "kind": "screen",
+   "source": "說明書 p.11（原書只有中文）"
+  }
+ ],
  "entries": [
   {
    "en": "Samar",
@@ -30,7 +82,7 @@
    "en": "Celtac",
    "zh": "塞爾塔克",
    "kind": "place",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書密碼表列名 CELTAC，只有英文，中譯自訂",
    "provisional": true
   },
   {
@@ -102,14 +154,14 @@
    "en": "Shua",
    "zh": "舒亞",
    "kind": "base",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書密碼表列名 SHUA，只有英文，中譯自訂",
    "provisional": true
   },
   {
    "en": "Melser",
    "zh": "梅爾瑟",
    "kind": "base",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書密碼表列名 MELSER，只有英文，中譯自訂",
    "provisional": true
   },
   {
@@ -140,7 +192,8 @@
    "en": "Teleport",
    "zh": "瞬間移位",
    "kind": "power",
-   "source": "說明書 p.17"
+   "source": "說明書 p.17",
+   "note": "說明書 p.8 把 F3 鍵也寫成「瞬間移位」（後退一步脫離戰鬥），與本條的 ESP 不是同一件事"
   },
   {
    "en": "Shield",
@@ -179,10 +232,10 @@
    "source": "說明書 p.18"
   },
   {
-   "en": "Mind Jump",
+   "en": "MindJump",
    "zh": "記憶跳躍",
    "kind": "power",
-   "source": "說明書 p.18"
+   "source": "說明書 p.18 作「Mind Jump」（有空格）；遊戲內字串 CODEH.BIN:0F05 作「MindJump」"
   },
   {
    "en": "Mega Shield",
@@ -194,14 +247,14 @@
    "en": "Magnify",
    "zh": "放大",
    "kind": "power",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書 p.18 只有英文，中譯自訂（原書只說是一種神祕的超能力）",
    "provisional": true
   },
   {
    "en": "Yontry",
    "zh": "體力恢復劑",
    "kind": "item",
-   "source": "說明書 p.13-14、19"
+   "source": "說明書 p.14、19"
   },
   {
    "en": "Map",
@@ -225,28 +278,28 @@
    "en": "Trogan",
    "zh": "特洛根",
    "kind": "item",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書 p.19 只有英文，中譯自訂（護甲值 3）",
    "provisional": true
   },
   {
    "en": "Ramzes",
    "zh": "拉姆西斯",
    "kind": "item",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書 p.19 只有英文，中譯自訂（護甲值 6）",
    "provisional": true
   },
   {
    "en": "Sheek",
    "zh": "席克",
    "kind": "item",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書 p.19 只有英文，中譯自訂（護甲值 9）",
    "provisional": true
   },
   {
    "en": "TurboGun",
    "zh": "強力加速砲",
    "kind": "item",
-   "source": "說明書 p.8、15"
+   "source": "說明書 p.8、15、19（原書拼法不一：p.8、15 作 Turbogun，p.19 作 TURBOGUN；遊戲內字串作 Turbogun）"
   },
   {
    "en": "Cartridge",
@@ -258,21 +311,21 @@
    "en": "Gamera",
    "zh": "卡美拉",
    "kind": "item",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書 p.19 只有英文，中譯自訂",
    "provisional": true
   },
   {
    "en": "Rodan",
    "zh": "拉頓",
    "kind": "item",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書 p.19 只有英文，中譯自訂",
    "provisional": true
   },
   {
    "en": "Mothra",
    "zh": "摩斯拉",
    "kind": "item",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書 p.19 只有英文，中譯自訂",
    "provisional": true
   },
   {
@@ -285,21 +338,21 @@
    "en": "Tears Crystal",
    "zh": "淚之水晶",
    "kind": "item",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書 p.19 只有英文，中譯自訂",
    "provisional": true
   },
   {
    "en": "Blood Crystal",
    "zh": "血之水晶",
    "kind": "item",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書 p.19 只有英文，中譯自訂",
    "provisional": true
   },
   {
    "en": "Sweat Crystal",
    "zh": "汗之水晶",
    "kind": "item",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書 p.19 只有英文，中譯自訂",
    "provisional": true
   },
   {
@@ -324,7 +377,7 @@
    "en": "BEEFUN",
    "zh": "畢方",
    "kind": "item",
-   "source": "自訂（說明書對照頁沒有）",
+   "source": "說明書 p.20 只有英文，中譯自訂（開啟發射台的鑰匙）",
    "provisional": true
   },
   {
@@ -332,6 +385,21 @@
    "zh": "能量障壁",
    "kind": "item",
    "source": "說明書 p.20"
+  },
+  {
+   "en": "Psycho Shield",
+   "zh": "能量障壁",
+   "kind": "item",
+   "source": "說明書 p.20「能量障壁（PSYCHOBARRIERS）」",
+   "note": "遊戲內字串作 Psycho Shield／Psychic Shield，與 Psychobarriers 是同一件事。不可譯成「防護盾」系列，會與 ESP 的 Shield（防護盾）、Mega Shield（超強防護盾）撞名"
+  },
+  {
+   "en": "Shield Room",
+   "zh": "能量障壁控制室",
+   "kind": "place",
+   "source": "說明書沒有這個名字；跟著 Psycho Shield ＝ 能量障壁定名，中譯自訂",
+   "provisional": true,
+   "note": "遊戲內以自訂字模拼成（I_MAP08／09／10／11 偏移 200h 之後、I_MENU11.BIN:0220）。不要譯成「防護盾控制室」，會與 ESP 的 Shield（防護盾）撞名"
   },
   {
    "en": "Sensor",
@@ -349,7 +417,7 @@
    "en": "Decoder",
    "zh": "解碼器",
    "kind": "item",
-   "source": "說明書 p.13"
+   "source": "說明書 p.13（該頁只印中文「解碼器」，沒印英文 Decoder；同頁的 Sensor、Mapper 有印）"
   },
   {
    "en": "Safe",
@@ -361,13 +429,181 @@
    "en": "ESP",
    "zh": "超能力",
    "kind": "system",
-   "source": "說明書 p.1、8、17"
+   "source": "說明書 p.1、7、12、15、17"
   },
   {
    "en": "Psychic Soldier",
    "zh": "超能戰士",
    "kind": "system",
    "source": "說明書 p.1-2"
+  },
+  {
+   "en": "Ask Kayla",
+   "zh": "詢問凱拉",
+   "kind": "ui",
+   "source": "說明書 p.13"
+  },
+  {
+   "en": "Sip Yontry",
+   "zh": "喝體力恢復劑",
+   "kind": "ui",
+   "source": "說明書 p.14"
+  },
+  {
+   "en": "See Maps",
+   "zh": "顯示地圖",
+   "kind": "ui",
+   "source": "說明書 p.14"
+  },
+  {
+   "en": "Totally",
+   "zh": "當然要",
+   "kind": "ui",
+   "source": "說明書 p.14 只給用途「選定本張顯示並脫離選單」，沒有定名；中譯自訂",
+   "provisional": true
+  },
+  {
+   "en": "Negative",
+   "zh": "不要",
+   "kind": "ui",
+   "source": "說明書 p.14 只給用途「跳過目前地圖，看下一張」，沒有定名；中譯自訂",
+   "provisional": true
+  },
+  {
+   "en": "ESP Power",
+   "zh": "使用超能力",
+   "kind": "ui",
+   "source": "說明書 p.15",
+   "note": "與資料區的 ESP（超能力指數）分開：這條是主功能選單的動作"
+  },
+  {
+   "en": "Options",
+   "zh": "功能選項",
+   "kind": "ui",
+   "source": "說明書 p.15（原書作 OPTIONS，遊戲內字串作 Options）"
+  },
+  {
+   "en": "Save game",
+   "zh": "儲存遊戲",
+   "kind": "ui",
+   "source": "說明書 p.15（原書作 Save Game）"
+  },
+  {
+   "en": "Sound",
+   "zh": "音效",
+   "kind": "ui",
+   "source": "說明書 p.15"
+  },
+  {
+   "en": "Definitely",
+   "zh": "當然要",
+   "kind": "ui",
+   "source": "說明書 p.15 在存檔流程譯作「確定」（用途說明）；遊戲內是通用的肯定選項，中譯自訂",
+   "provisional": true
+  },
+  {
+   "en": "No way",
+   "zh": "才不要",
+   "kind": "ui",
+   "source": "說明書 p.15、16 作「跳離」（用途說明）；中譯自訂",
+   "provisional": true
+  },
+  {
+   "en": "Absolutely",
+   "zh": "沒問題",
+   "kind": "ui",
+   "source": "說明書 p.16 作「繼續進行遊戲」（用途說明）；遊戲內是通用的肯定選項，中譯自訂",
+   "provisional": true
+  },
+  {
+   "en": "Cancel",
+   "zh": "取消",
+   "kind": "ui",
+   "source": "說明書 p.13 只給用途「脫離選單」，沒有定名；中譯自訂",
+   "provisional": true
+  },
+  {
+   "en": "Select",
+   "zh": "遊戲選單",
+   "kind": "ui",
+   "source": "說明書 p.9 作「進度選單」（用途說明）；畫面字串是 S E L E C T，中譯自訂",
+   "provisional": true
+  },
+  {
+   "en": "NEW GAME",
+   "zh": "新遊戲",
+   "kind": "ui",
+   "source": "說明書 p.9 只給用途「第一次進入遊戲／沒存過進度」，沒有定名；中譯自訂",
+   "provisional": true
+  },
+  {
+   "en": "LOAD GAME",
+   "zh": "讀取進度",
+   "kind": "ui",
+   "source": "說明書 p.9 只給用途「讀取儲存的遊戲進度」，沒有定名；中譯自訂",
+   "provisional": true
+  },
+  {
+   "en": "Team up",
+   "zh": "組隊",
+   "kind": "ui",
+   "source": "說明書 p.17 只給用途「使其加入你們的行列」，沒有定名；中譯自訂",
+   "provisional": true
+  },
+  {
+   "en": "Talk",
+   "zh": "交談",
+   "kind": "ui",
+   "source": "說明書 p.17「交談獲得情報」",
+   "note": "F2 的副選項（I_MENUH.BIN:0C10）。與各區 I_MENU* 的「Talk to it → 跟它說話」不是同一則"
+  },
+  {
+   "en": "Password",
+   "zh": "密碼",
+   "kind": "ui",
+   "source": "說明書 p.11、12 作「口令」；遊戲內 16 則訊息統一用「密碼」"
+  },
+  {
+   "en": "PLACE",
+   "zh": "位置",
+   "kind": "status",
+   "source": "說明書 p.11"
+  },
+  {
+   "en": "DIRECTION",
+   "zh": "方位",
+   "kind": "status",
+   "source": "說明書 p.11"
+  },
+  {
+   "en": "NAME",
+   "zh": "姓名",
+   "kind": "status",
+   "source": "說明書 p.12 作「隊友姓名」，畫面標籤只有 5 格，取「姓名」"
+  },
+  {
+   "en": "POW",
+   "zh": "體力",
+   "kind": "status",
+   "source": "說明書 p.12 作「目前體力指數」，畫面標籤只有 3 格，取「體力」"
+  },
+  {
+   "en": "ARM",
+   "zh": "護甲",
+   "kind": "status",
+   "source": "說明書 p.12"
+  },
+  {
+   "en": "LEV",
+   "zh": "等級",
+   "kind": "status",
+   "source": "說明書 p.12"
+  },
+  {
+   "en": "EX",
+   "zh": "經驗",
+   "kind": "status",
+   "source": "說明書 p.12 作「經驗指數」，畫面標籤只有 3 格，取「經驗」"
   },
   {
    "en": "Bio-Beast",
@@ -385,30 +621,34 @@
   {
    "en": "Shulosu",
    "zh": "舒洛蘇",
-   "kind": "enemy",
-   "source": "自訂（說明書對照頁沒有）",
-   "provisional": true
+   "kind": "ally",
+   "source": "說明書密碼表欄名，只有英文，中譯自訂",
+   "provisional": true,
+   "note": "密碼表稱「戰友」，投降後可在薩瑪用 F2 的 Team up 招募（說明書 p.17）；遊戲內也以敵人身分出現"
   },
   {
    "en": "Minton",
    "zh": "敏頓",
-   "kind": "enemy",
-   "source": "自訂（說明書對照頁沒有）",
-   "provisional": true
+   "kind": "ally",
+   "source": "說明書密碼表欄名，只有英文，中譯自訂",
+   "provisional": true,
+   "note": "密碼表稱「戰友」，投降後可在薩瑪用 F2 的 Team up 招募（說明書 p.17）；遊戲內也以敵人身分出現"
   },
   {
    "en": "Jiftok",
    "zh": "吉夫托克",
-   "kind": "enemy",
-   "source": "自訂（說明書對照頁沒有）",
-   "provisional": true
+   "kind": "ally",
+   "source": "說明書密碼表欄名，只有英文，中譯自訂",
+   "provisional": true,
+   "note": "密碼表稱「戰友」，投降後可在薩瑪用 F2 的 Team up 招募（說明書 p.17）；遊戲內也以敵人身分出現"
   },
   {
    "en": "Pospopoi",
    "zh": "波斯波伊",
-   "kind": "enemy",
-   "source": "自訂（說明書對照頁沒有）",
-   "provisional": true
+   "kind": "ally",
+   "source": "說明書密碼表欄名，只有英文，中譯自訂",
+   "provisional": true,
+   "note": "密碼表稱「戰友」，投降後可在薩瑪用 F2 的 Team up 招募（說明書 p.17）；遊戲內也以敵人身分出現"
   },
   {
    "en": "Machipi",
@@ -441,9 +681,10 @@
   {
    "en": "Paimus",
    "zh": "派馬斯",
-   "kind": "enemy",
-   "source": "自訂（說明書對照頁沒有）",
-   "provisional": true
+   "kind": "ally",
+   "source": "說明書密碼表欄名，只有英文，中譯自訂",
+   "provisional": true,
+   "note": "密碼表稱「戰友」，投降後可在薩瑪用 F2 的 Team up 招募（說明書 p.17）；遊戲內也以敵人身分出現"
   },
   {
    "en": "Ander-MT",
@@ -476,9 +717,10 @@
   {
    "en": "Houzz",
    "zh": "霍茲",
-   "kind": "enemy",
-   "source": "自訂（說明書對照頁沒有）",
-   "provisional": true
+   "kind": "ally",
+   "source": "說明書密碼表欄名，只有英文，中譯自訂",
+   "provisional": true,
+   "note": "密碼表稱「戰友」，投降後可在薩瑪用 F2 的 Team up 招募（說明書 p.17）；遊戲內也以敵人身分出現"
   },
   {
    "en": "Zikkead",
@@ -504,9 +746,10 @@
   {
    "en": "Utcham",
    "zh": "烏特強姆",
-   "kind": "enemy",
-   "source": "自訂（說明書對照頁沒有）",
-   "provisional": true
+   "kind": "ally",
+   "source": "說明書密碼表欄名與 p.7 範例，只有英文，中譯自訂",
+   "provisional": true,
+   "note": "密碼表稱「戰友」，投降後可在薩瑪用 F2 的 Team up 招募（說明書 p.17）；遊戲內也以敵人身分出現"
   },
   {
    "en": "Tatooman",
@@ -546,9 +789,10 @@
   {
    "en": "Gorrfys",
    "zh": "高爾菲斯",
-   "kind": "enemy",
-   "source": "自訂（說明書對照頁沒有）",
-   "provisional": true
+   "kind": "ally",
+   "source": "說明書密碼表欄名，只有英文，中譯自訂",
+   "provisional": true,
+   "note": "密碼表稱「戰友」，投降後可在薩瑪用 F2 的 Team up 招募（說明書 p.17）；遊戲內也以敵人身分出現"
   },
   {
    "en": "Burox",
@@ -581,9 +825,10 @@
   {
    "en": "Dekto",
    "zh": "戴克托",
-   "kind": "enemy",
-   "source": "自訂（說明書對照頁沒有）",
-   "provisional": true
+   "kind": "ally",
+   "source": "說明書密碼表欄名，只有英文，中譯自訂",
+   "provisional": true,
+   "note": "密碼表稱「戰友」，投降後可在薩瑪用 F2 的 Team up 招募（說明書 p.17）；遊戲內也以敵人身分出現"
   },
   {
    "en": "Ulsten",
@@ -644,9 +889,10 @@
   {
    "en": "Pionn",
    "zh": "皮昂",
-   "kind": "enemy",
-   "source": "自訂（說明書對照頁沒有）",
-   "provisional": true
+   "kind": "ally",
+   "source": "說明書密碼表欄名，只有英文，中譯自訂",
+   "provisional": true,
+   "note": "密碼表稱「戰友」，投降後可在薩瑪用 F2 的 Team up 招募（說明書 p.17）；遊戲內也以敵人身分出現"
   },
   {
    "en": "Rugoron",
@@ -721,9 +967,10 @@
   {
    "en": "Zupreen",
    "zh": "祖普林",
-   "kind": "enemy",
-   "source": "自訂（說明書對照頁沒有）",
-   "provisional": true
+   "kind": "ally",
+   "source": "說明書密碼表欄名，只有英文，中譯自訂",
+   "provisional": true,
+   "note": "密碼表稱「戰友」，投降後可在薩瑪用 F2 的 Team up 招募（說明書 p.17）；遊戲內也以敵人身分出現"
   },
   {
    "en": "Khezhik",

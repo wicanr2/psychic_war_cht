@@ -30,7 +30,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Ask Kayla ",
-   "translation": "問凱拉",
+   "translation": "詢問凱拉",
    "note": ""
   },
   {
@@ -56,7 +56,7 @@
    "reachable": true,
    "same_as": "",
    "original": "See Maps  ",
-   "translation": "看地圖",
+   "translation": "顯示地圖",
    "note": ""
   },
   {
@@ -95,7 +95,7 @@
    "reachable": true,
    "same_as": "",
    "original": "ESP Power ",
-   "translation": "超能力",
+   "translation": "使用超能力",
    "note": ""
   },
   {
@@ -108,7 +108,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Options   ",
-   "translation": "選項",
+   "translation": "功能選項",
    "note": ""
   },
   {
@@ -302,7 +302,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Save game ",
-   "translation": "存檔",
+   "translation": "儲存遊戲",
    "note": ""
   },
   {
@@ -315,7 +315,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Sound     ",
-   "translation": "音樂",
+   "translation": "音效",
    "note": ""
   },
   {
@@ -431,7 +431,7 @@
    "reachable": true,
    "same_as": "",
    "original": "Do you want     sound?         ",
-   "translation": "你要開音樂嗎？",
+   "translation": "你要開音效嗎？",
    "note": ""
   },
   {
