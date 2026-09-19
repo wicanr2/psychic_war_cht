@@ -18,6 +18,7 @@
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
 | #9 | `realtime-pacing` | 牆上時間節拍：讓 72 Hz 的遊戲以原速執行 | golem-upstream, frontend | — | manual |
+| #40 | `adjustable-speed` | 遊戲內可調執行速度，預設考慮調快 | frontend | — | manual |
 
 ## M3：文字攔截與文本抽取
 
@@ -34,13 +35,14 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
+| #42 | `hotkey-conflict` | F2／F3 熱鍵與原版功能衝突 | frontend | — | manual |
+| #41 | `help-page-design` | F1 說明頁的視覺設計 | frontend | — | manual |
 
 ## M6：主題、打包、授權與發行
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
 | #34 | `theme` | 主題替換 | graphics | #20 | manual |
-| #38 | `walkthrough-1989` | 整理當年《軟體世界》19 期攻略（29–38 頁）成 markdown | text | — | manual |
 | #39 | `windows-package` | Windows 發行包 | release | — | absent |
 | #39 | `macos-real-run` | macOS 發行包的真機驗收 | release, verify | — | manual |
 
@@ -87,3 +89,4 @@
 | #36 | `license-readme` | LICENSE（RRSAL-1.0）與 README | LICENSE 是 RRSAL-1.0 全文；README 的授權段摘要第 2、6、12 條，寫明授權不涵蓋原版素材、中文字模來自倚天中文系統 3.53 的點陣子集與下架聯絡方式（wicanr2@gmail.com），並列出 PW.EXE 與 LOGO.EXE 的 SHA-256（取得管道刻意不寫） | 2026-09-19 |
 | #37 | `readme` | README.md：遊戲介紹、中文截圖、怎麼玩 | README.md 173 行，五張中文截圖在 docs/images/（由 pwstep 以當前 HEAD 重跑產生）。涵蓋遊戲介紹、中文化做法、完成度數字（出處全部連到 docs/re/）、抽測試玩三次、輔助功能表、怎麼跑、發行包狀態、文件索引、授權與字型來源。截圖只含遊戲畫面，原版檔案沒有進版控 | 2026-09-19 |
 | #35 | `cross-platform-package` | 跨平台打包：Linux／Windows／macOS | AppImage 與 macOS universal 都產出並集中在 dist-all/（docs/spec/021、docs/DEV-SETUP.md）。AppImage：解開產物從別的 cwd 執行、畫面與 repo 建置逐像素差 0、解開處零寫入、存檔落在 XDG 目錄、字型改名報錯。-with-data 變體在沒有掛任何原版目錄的容器裡、不給 -orig 跑到標題畫面；反向對照是可散布版印用法、結束碼 2。macOS 只過靜態驗收五道（docs/re/033），沒有 Mac 可實跑，那一項移到 macos-real-run。Windows 移到 #39 | 2026-09-19 |
+| #38 | `walkthrough-1989` | 整理當年《軟體世界》19 期攻略（29–38 頁）成 markdown | docs/walkthrough-1989.md 381 行。十頁掃描逐頁判讀，事實性資料表格化不逐字轉錄。交叉核對：基地名表 cs:674F 的七筆順序、三組密碼逐字（含驚嘆號數量）、八張地圖與 CODEH.BIN 的道具名表都吻合；MELSER 結局流程對上 I_MENU11／I_MAP11，可推定區域 11 ＝ MELSER。找到的衝突拆成 #42（F2／F3 熱鍵）。未核實項目逐條標明 | 2026-09-19 |

@@ -73,22 +73,6 @@
       "issue": 34
     },
     {
-      "id": "walkthrough-1989",
-      "milestone": "M6",
-      "labels": [
-        "text"
-      ],
-      "issue": 38,
-      "title": "整理當年《軟體世界》19 期攻略（29–38 頁）成 markdown",
-      "body": "10 頁掃描逐頁判讀，整理成 markdown 放 docs/；同時當譯名的校對材料。",
-      "acceptance": "docs/ 有涵蓋 29–38 頁的 markdown；譯名與 text/glossary.json 一致；repo 裡沒有掃描圖。",
-      "blocked_by": "",
-      "verify": {
-        "kind": "manual",
-        "note": "掃描圖不進 repo（原版素材）；內容要改寫不逐字轉錄，並標出處。"
-      }
-    },
-    {
       "id": "windows-package",
       "milestone": "M6",
       "labels": [
@@ -121,6 +105,51 @@
       "verify": {
         "kind": "manual",
         "note": "要有 Mac 或 macOS CI 才做得到。"
+      }
+    },
+    {
+      "id": "hotkey-conflict",
+      "milestone": "M5",
+      "labels": [
+        "frontend"
+      ],
+      "title": "F2／F3 熱鍵與原版功能衝突",
+      "issue": 42,
+      "body": "攻略說原版用 F2 搭話、F3 脫離戰鬥，但前端把這兩個鍵指派成中英切換與自動地圖，而且 keymap 的 scanCodes 只涵蓋 F4–F9。先驗原版是否讀 0x3C／0x3D 再決定改不改指派。",
+      "acceptance": "原版行為有實測證據；若衝突成立，熱鍵重新指派並改 docs/spec/012 與 015，help.json 要列出原版的功能鍵。",
+      "verify": {
+        "kind": "manual",
+        "note": "要人判。"
+      }
+    },
+    {
+      "id": "adjustable-speed",
+      "milestone": "M2",
+      "labels": [
+        "frontend"
+      ],
+      "title": "遊戲內可調執行速度，預設考慮調快",
+      "issue": 40,
+      "body": "速度目前只能在命令列用 -cycles 給。要遊戲內熱鍵調檔位、畫面看得到目前檔位、存進設定。⚠ 戰鬥推進綁 CPU 指令數（docs/re/009、010），調速會改變難度，先釐清使用者要的是整體變快還是只有非戰鬥變快。",
+      "acceptance": "遊戲內能切換檔位且看得到；戰鬥難度的影響有實測數字。",
+      "verify": {
+        "kind": "manual",
+        "note": "要人判。"
+      }
+    },
+    {
+      "id": "help-page-design",
+      "milestone": "M5",
+      "labels": [
+        "frontend"
+      ],
+      "title": "F1 說明頁的視覺設計",
+      "issue": 41,
+      "body": "目前是純文字逐行畫，沒有層次。要用遊戲自己的視覺語言（EGA 亮青框線、黑底面板），中文沿用 cjk24／cjk16，不引進新字型。先出設計稿再實作。",
+      "acceptance": "tools/help_check.py 的逐像素驗收改過之後還能通過；期望畫面由資料算出不是拿截圖當答案。",
+      "verify": {
+        "kind": "manual",
+        "note": "要人判。"
       }
     }
   ],
@@ -354,6 +383,13 @@
       "issue": 35,
       "title": "跨平台打包：Linux／Windows／macOS",
       "evidence": "AppImage 與 macOS universal 都產出並集中在 dist-all/（docs/spec/021、docs/DEV-SETUP.md）。AppImage：解開產物從別的 cwd 執行、畫面與 repo 建置逐像素差 0、解開處零寫入、存檔落在 XDG 目錄、字型改名報錯。-with-data 變體在沒有掛任何原版目錄的容器裡、不給 -orig 跑到標題畫面；反向對照是可散布版印用法、結束碼 2。macOS 只過靜態驗收五道（docs/re/033），沒有 Mac 可實跑，那一項移到 macos-real-run。Windows 移到 #39",
+      "date": "2026-09-19"
+    },
+    {
+      "id": "walkthrough-1989",
+      "issue": 38,
+      "title": "整理當年《軟體世界》19 期攻略（29–38 頁）成 markdown",
+      "evidence": "docs/walkthrough-1989.md 381 行。十頁掃描逐頁判讀，事實性資料表格化不逐字轉錄。交叉核對：基地名表 cs:674F 的七筆順序、三組密碼逐字（含驚嘆號數量）、八張地圖與 CODEH.BIN 的道具名表都吻合；MELSER 結局流程對上 I_MENU11／I_MAP11，可推定區域 11 ＝ MELSER。找到的衝突拆成 #42（F2／F3 熱鍵）。未核實項目逐條標明",
       "date": "2026-09-19"
     }
   ],
