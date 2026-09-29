@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # 真實音訊裝置上的欠載量測（docs/spec/020）。
 #
-#   tools/audio-device-check.sh [adlib|speaker] [秒數]      # 預設 adlib、65
+#   tools/audio-device-check.sh [adlib|speaker] [秒數] [執行檔]   # 預設 adlib、65、開發建置
+#
+# 第三個參數給 AppImage 的路徑時，會先解開再跑裡面的執行檔——**發行包能不能出聲**
+# 與「開發建置能不能出聲」是兩件事：資料檔位置、存檔路徑、squashfs 唯讀都不一樣。
 #
 # ⚠ **這會從喇叭發出聲音**（量測期間播遊戲音樂）。沒有真的送到裝置就量不到裝置緩衝，
 #   而裝置緩衝正是玩家會聽到斷音的地方（`-audio null` 那條路徑不開裝置，量不到）。
@@ -16,12 +19,23 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MODE="${1:-adlib}"
 SECS="${2:-65}"
+EXE="${3:-}"          # 空＝用 workplace/bin/psychicwar；給 .AppImage 就解開來跑
 case "$MODE" in
   adlib)   ADLIB="-adlib" ;;
   speaker) ADLIB="" ;;
   *) echo "模式要是 adlib 或 speaker" >&2; exit 2 ;;
 esac
-[[ -x "$ROOT/workplace/bin/psychicwar" ]] || { echo "先 build workplace/bin/psychicwar" >&2; exit 2; }
+if [[ -z "$EXE" ]]; then
+  [[ -x "$ROOT/workplace/bin/psychicwar" ]] || { echo "先 build workplace/bin/psychicwar" >&2; exit 2; }
+  RUN="workplace/bin/psychicwar"; UNPACK=""
+else
+  [[ -f "$ROOT/$EXE" || -f "$EXE" ]] || { echo "找不到 $EXE" >&2; exit 2; }
+  case "$EXE" in
+    *.AppImage) RUN="/tmp/unpack/squashfs-root/AppRun"
+                UNPACK="mkdir -p /tmp/unpack && cp /src/$EXE /tmp/a.AppImage && chmod +x /tmp/a.AppImage && (cd /tmp/unpack && /tmp/a.AppImage --appimage-extract >/dev/null)" ;;
+    *) echo "只認得 .AppImage（macOS 與 Windows 的包在這台機器上跑不了）" >&2; exit 2 ;;
+  esac
+fi
 SOCK="/run/user/$(id -u)/pulse/native"
 [[ -S "$SOCK" ]] || { echo "找不到 PulseAudio socket：$SOCK（主機有在跑 PipeWire 或 PulseAudio 嗎）" >&2; exit 2; }
 
@@ -34,7 +48,7 @@ if ! docker run --rm --network none --memory 256m --cpus 1 --pids-limit 32 \
   exit 2
 fi
 
-OUT="workplace/audio-device/$MODE"
+OUT="workplace/audio-device/$MODE${EXE:+-pkg}"
 rm -rf "$ROOT/$OUT"; mkdir -p "$ROOT/$OUT/saves"
 uptime | tee "$ROOT/$OUT/load-before.txt"
 
@@ -44,7 +58,8 @@ PSYCHICWAR_SH="
 set -eu
 cd /src
 printf 'pcm.!default { type pulse }\nctl.!default { type pulse }\n' > /tmp/.asoundrc
-workplace/bin/psychicwar -orig /orig/psychic-war $ADLIB -audio ebiten \
+$UNPACK
+$RUN -orig /orig/psychic-war $ADLIB -audio ebiten \
   -scratch $OUT/saves -stats $OUT/stats.jsonl -quit-after ${SECS}s > $OUT/frontend.log 2>&1 || echo \"前端結束碼 \$?\"
 " "$ROOT/tools/go-ebiten.sh" >/dev/null 2>&1 || true
 uptime | tee "$ROOT/$OUT/load-after.txt"
