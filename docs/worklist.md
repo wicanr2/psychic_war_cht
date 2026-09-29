@@ -17,7 +17,6 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #46 | `audio-underrun-clean-machine` | 在乾淨的機器上補量音訊欠載 | verify | — | manual |
 
 ## M3：文字攔截與文本抽取
 
@@ -93,3 +92,4 @@
 | #45 | `error-messages-and-icon` | 缺檔時的錯誤訊息，與 Windows 的 .exe 圖示 | 三條出口：stderr 照舊、<存檔目錄>/psychicwar-error.log 全平台都寫、Windows 彈 MessageBoxW（x/sys 的 NewLazySystemDLL，只從 system32 載，無 cgo）。-orig 缺檔改印一句人話加兩種指法的例子，不再是 34 行 flag.Usage()。啟動成功會清掉上一次的紀錄檔。Linux 與 wine 各驗過缺原版與缺字型；反向對照是正常啟動結束碼 0、不寫紀錄檔。彈窗截圖 workplace/win-check-out/dialog.png。.exe 圖示沒做，三條路與代價在 docs/re/035 §3.3 | 2026-09-19 |
 | #41 | `help-page-design` | F1 說明頁的視覺設計 | spec 022 READY，方案 B 實作完成。三個獨立實作（help_check.py 的期望值、Go、設計稿的 render.py）在同一份資料上比，四組都差 0。負對照 2x2 全做，第三列是實際跑前端拍的。防拷那一版也驗了，答案 FREEZE 與 probe 從 cs:66E5 讀出來的相同。收尾時把兩個繞路清掉（內容比對認自己、自己找字型），改成前端明確呼叫 DrawHelpPage 並傳兩個字型；重構後畫面仍差 0。順帶修掉字型缺 Q：烘字改成一律收全部可見 ASCII | 2026-09-19 |
 | #40 | `adjustable-speed` | 遊戲內可調執行速度，預設考慮調快 | F12 切 1×／2×／3×，戰鬥中不生效。判斷點是執行位址掛鉤 0161:47D4／47AD（戰鬥主迴圈 sub_14CE4），不是敵人 HP——F3 逃走時 0x509C 完全不寫，會永遠卡在戰鬥中（docs/re/037 §2.1）。換檔只改『一毫秒牆上時間跑幾個 cycle』不碰 SetDOSBoxCycles，所以戰鬥長度不受檔位影響是結構保證。同一場戰鬥 1× 與 3× 結束指令數完全相同 103,945,892、牆上差 0.06%；非戰鬥走路每格 0.316 → 0.119 秒。反向對照 frontend-hotkeys-check 全過。⚠ Xvfb 瓶頸是算繪，3 倍檔只到 2.64 倍 | 2026-09-19 |
+| #46 | `audio-underrun-clean-machine` | 在乾淨的機器上補量音訊欠載 | AdLib 與 PC 喇叭各量 65 秒（PsychicWar-v0.2.0-x86_64.AppImage），兩條都 0 項不符：欠載 9 次／8 次全在開場第 1 秒、第 2 秒之後 0；機器／牆上 0.9921／0.9960；取樣長度等於要求秒數，沒有被丟樣本。開跑 load 6.83／6.65。docs/re/026 §7 另記高負載的三種假訊號與『解讀音訊結果前先確認取樣數』的規則 | 2026-09-29 |

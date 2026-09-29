@@ -54,21 +54,6 @@
         "kind": "manual",
         "note": "要有 Mac 或 macOS CI 才做得到。"
       }
-    },
-    {
-      "id": "audio-underrun-clean-machine",
-      "milestone": "M2",
-      "labels": [
-        "verify"
-      ],
-      "title": "在乾淨的機器上補量音訊欠載",
-      "issue": 46,
-      "body": "發行包能出聲已確認（完整版不給 -orig 啟動、產生 54.9 秒非靜音音訊）。欠載數字沒量到：量測當時 load 16–35（14 核），spec 020 要求 < 7。高負載的三種假訊號與判讀規則在 docs/re/026 §7。",
-      "acceptance": "load < 7 的機器上跑 tools/audio-device-check.sh 的 adlib 與 speaker 兩條路徑（吃發行包），開場第 1 秒以外欠載 0、機器／牆上落在 1 ± 0.01。解讀前先確認取樣數 = 秒數 × 取樣率。",
-      "verify": {
-        "kind": "manual",
-        "note": "要乾淨的機器；這台常有別的 session 在跑。"
-      }
     }
   ],
   "done": [
@@ -365,6 +350,13 @@
       "title": "遊戲內可調執行速度，預設考慮調快",
       "evidence": "F12 切 1×／2×／3×，戰鬥中不生效。判斷點是執行位址掛鉤 0161:47D4／47AD（戰鬥主迴圈 sub_14CE4），不是敵人 HP——F3 逃走時 0x509C 完全不寫，會永遠卡在戰鬥中（docs/re/037 §2.1）。換檔只改『一毫秒牆上時間跑幾個 cycle』不碰 SetDOSBoxCycles，所以戰鬥長度不受檔位影響是結構保證。同一場戰鬥 1× 與 3× 結束指令數完全相同 103,945,892、牆上差 0.06%；非戰鬥走路每格 0.316 → 0.119 秒。反向對照 frontend-hotkeys-check 全過。⚠ Xvfb 瓶頸是算繪，3 倍檔只到 2.64 倍",
       "date": "2026-09-19"
+    },
+    {
+      "id": "audio-underrun-clean-machine",
+      "issue": 46,
+      "title": "在乾淨的機器上補量音訊欠載",
+      "evidence": "AdLib 與 PC 喇叭各量 65 秒（PsychicWar-v0.2.0-x86_64.AppImage），兩條都 0 項不符：欠載 9 次／8 次全在開場第 1 秒、第 2 秒之後 0；機器／牆上 0.9921／0.9960；取樣長度等於要求秒數，沒有被丟樣本。開跑 load 6.83／6.65。docs/re/026 §7 另記高負載的三種假訊號與『解讀音訊結果前先確認取樣數』的規則",
+      "date": "2026-09-29"
     }
   ],
   "dropped": [
