@@ -38,7 +38,7 @@ PsychicWar/
   original/              ← 只有 -with-data 變體有，106 個原版檔
 ```
 
-可散布版不含原版素材（`CLAUDE.md` [HARD]）。玩家把含 `PW.EXE` 的目錄複製成執行檔旁的
+可散布版不含原版素材（`AGENTS.md` [HARD]）。玩家把含 `PW.EXE` 的目錄複製成執行檔旁的
 `original\`，或用 `-orig` 指過去。兩條都走 `OrigDir()`，與 AppImage、macOS 同一條程式碼。
 
 ## 3. 怎麼做的

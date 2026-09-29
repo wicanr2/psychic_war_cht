@@ -32,7 +32,7 @@
 `PSYCHICWAR_WITH_DATA=1 tools/package.sh all` 才會多出 `-with-data` 那一份。
 
 可散布版打包時做一次 **leak-scan**：拿原版目錄裡實際有哪些檔名去掃包的內容，
-掃到就中止（`CLAUDE.md` [HARD]：不得散布原版素材）。判準是實際檔名，不是猜副檔名。
+掃到就中止（`AGENTS.md` [HARD]：不得散布原版素材）。判準是實際檔名，不是猜副檔名。
 
 Windows 版已經做好（`docs/re/035`），與另外兩個平台走同一支 `tools/package.sh`。
 

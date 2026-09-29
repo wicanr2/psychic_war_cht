@@ -85,7 +85,7 @@ if [ "${PSYCHICWAR_PACK_WITH_DATA:-}" = 1 ]; then
   mkdir -p "$PKG/original"
   cp -r "$ORIG"/. "$PKG/original/"
 else
-  # 可散布版不得夾帶原版檔（CLAUDE.md [HARD]）。判準是原版目錄裡實際有哪些檔名，不是猜副檔名。
+  # 可散布版不得夾帶原版檔（AGENTS.md [HARD]）。判準是原版目錄裡實際有哪些檔名，不是猜副檔名。
   if [ -d "$ORIG" ]; then
     leak=$(cd "$PKG" && for n in $(cd "$ROOT/$ORIG" && ls); do find . -name "$n" -print; done)
     [ -z "$leak" ] || { echo "可散布的包裡夾帶原版檔：$leak" >&2; exit 1; }

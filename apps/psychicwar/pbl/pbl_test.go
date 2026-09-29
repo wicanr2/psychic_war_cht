@@ -8,7 +8,7 @@ import (
 )
 
 // docs/spec/011 §5 第 1 項：Go 版解碼與 tools/pbl.py 的輸出逐 byte 相同。
-// 原版是玩家自備的，缺檔就 skip（CLAUDE.md 的硬規則）。
+// 原版是玩家自備的，缺檔就 skip（AGENTS.md 的硬規則）。
 func TestDecodeMatchesPythonDump(t *testing.T) {
 	root := "../../.."
 	src := filepath.Join(root, "workplace/original/psychic-war/SCREEN.PBL")

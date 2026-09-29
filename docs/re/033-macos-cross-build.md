@@ -36,7 +36,7 @@ PsychicWar.app/
   Contents/Resources/README.md、LICENSE
 ```
 
-原版素材不在裡面（`CLAUDE.md` [HARD]）。玩家把含 `PW.EXE` 的目錄放進
+原版素材不在裡面（`AGENTS.md` [HARD]）。玩家把含 `PW.EXE` 的目錄放進
 `Contents/Resources/original`，或用 `-orig` 指過去——兩條路都已經在
 `apps/psychicwar/paths.go` 的 `OrigDir()` 裡，這次不必改程式。
 資料檔同理走 `../Resources/<名>`（`docs/spec/021` §3.1 第 2 條），存檔走

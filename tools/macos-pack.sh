@@ -21,7 +21,7 @@
 # ad-hoc 簽章由 ld64 在連結 arm64 時補上（verify 的第 2 道在驗這個）。「未簽」勝過
 # 「壞簽」——壞簽是直接被拒絕，未簽只是首次開啟要右鍵 →「打開」。
 #
-# 發行包不含原版素材（`CLAUDE.md` [HARD]）：玩家把含 `PW.EXE` 的目錄放進
+# 發行包不含原版素材（`AGENTS.md` [HARD]）：玩家把含 `PW.EXE` 的目錄放進
 # `PsychicWar.app/Contents/Resources/original`，或用 `-orig` 指過去。
 set -euo pipefail
 
@@ -74,7 +74,7 @@ if [ "${PSYCHICWAR_PACK_WITH_DATA:-}" = 1 ]; then
   mkdir -p "$APP/Contents/Resources/original"
   cp -r "$ORIG"/. "$APP/Contents/Resources/original/"
 else
-  # 可散布版不得夾帶原版檔（CLAUDE.md [HARD]）。判準是原版目錄裡實際有哪些檔名。
+  # 可散布版不得夾帶原版檔（AGENTS.md [HARD]）。判準是原版目錄裡實際有哪些檔名。
   if [ -d "$ORIG" ]; then
     leak=$(cd "$APP" && for n in $(cd "$ROOT/$ORIG" && ls); do find . -name "$n" -print; done)
     [ -z "$leak" ] || { echo "可散布的包裡夾帶原版檔：$leak" >&2; exit 1; }

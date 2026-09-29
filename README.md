@@ -212,7 +212,7 @@ dosgolem 目前用本機分支（`go.mod` 的 `replace` 指到 `worktrees/dosgol
 
 ## 文件
 
-- [`CLAUDE.md`](CLAUDE.md)：專案規則、已確認的事實表、工具表。
+- [`AGENTS.md`](AGENTS.md)：專案規則、已確認的事實表、工具表。
 - [`docs/goal/`](docs/goal/)：分期目標與驗收條件。
 - [`docs/spec/`](docs/spec/)：規格，標 `DRAFT` 或 `READY`。只有 `READY` 的可以動手實作。
 - [`docs/re/`](docs/re/)：反組譯與量測紀錄，編號與日期都在。

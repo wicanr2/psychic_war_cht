@@ -29,7 +29,7 @@
 
 第二個即使三項保真度指標都過了門檻（`spec` 0.9117、`env` 0.8119、`chroma` 0.9836），
 它仍然是「自產的逼近渲染」。鐵則不是拿相似度當判準，是拿**來源**當判準。
-`tools/promo/make.sh` 的檔頭與 `CLAUDE.md` 的待決事項都寫死了這一條。
+`tools/promo/make.sh` 的檔頭與 `AGENTS.md` 的待決事項都寫死了這一條。
 
 ## 3. Theme：「EGA 星圖」
 

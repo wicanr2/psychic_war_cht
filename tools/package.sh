@@ -52,7 +52,7 @@ stage_orig() { # $1 = 目的目錄
   cp -r "$ORIG"/. "$1/original/"   # 要的是 original/PW.EXE，不是 original/psychic-war/PW.EXE
 }
 
-# leak_scan：可散布的包裡不可以有原版檔（CLAUDE.md [HARD]）。
+# leak_scan：可散布的包裡不可以有原版檔（AGENTS.md [HARD]）。
 # 判準是原版目錄裡實際有哪些檔名，不是猜副檔名。
 leak_scan() { # $1 = 要掃的目錄
   local names hit

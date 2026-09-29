@@ -3,7 +3,7 @@
     tools/py.sh tools/appicon.py <輸出.png> [邊長]
 
 圖示是自製的：深色底、青色外框，中間用專案自己的 `font/cjk24.golemfnt` 畫「銀河」兩字。
-**不用原版的 Logo**——那是原版素材，發行包不得含（`CLAUDE.md` [HARD]）。
+**不用原版的 Logo**——那是原版素材，發行包不得含（`AGENTS.md` [HARD]）。
 """
 import pathlib
 import struct

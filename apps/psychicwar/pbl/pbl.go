@@ -1,6 +1,6 @@
 // Package pbl 解碼原版的 .PBL 圖檔（docs/spec/010）。
 //
-// 格式是遊戲專屬的，所以留在本 repo（CLAUDE.md 的分層判準）。
+// 格式是遊戲專屬的，所以留在本 repo（AGENTS.md 的分層判準）。
 // 只讀玩家自備的原版檔，不散布任何原版資料。
 package pbl
 

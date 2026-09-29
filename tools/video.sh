@@ -8,7 +8,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # 預設是本專案自己的 image。這台機器上已經有別的專案建好的同類 image
 # （ffmpeg ＋ ImageMagick ＋ Noto CJK 一樣齊），要借用就設 PSYCHICWAR_VIDEO_IMAGE。
-# ⚠ 借來的只**執行**，不清理、不覆寫——那是別人的東西（`CLAUDE.md` 的 docker 硬規則）。
+# ⚠ 借來的只**執行**，不清理、不覆寫——那是別人的東西（`AGENTS.md` 的 docker 硬規則）。
 IMAGE="${PSYCHICWAR_VIDEO_IMAGE:-psychicwar-video}"
 if ! docker image inspect "$IMAGE" >/dev/null 2>&1; then
   [ "$IMAGE" = psychicwar-video ] || { echo "找不到 image $IMAGE" >&2; exit 2; }

@@ -55,7 +55,7 @@ func (s *Speed) Next() int {
 
 // 畫面上的字樣（LoadHelp 從 text/help.json 讀進來覆蓋，docs/spec/023 §7）。
 // 中文一律放在 text/ 的資料檔，不寫死在這裡——烘字型只掃 text/，
-// 寫死在程式裡的字會靜默缺字（CLAUDE.md 待決事項、docs/re/030 §2）。
+// 寫死在程式裡的字會靜默缺字（AGENTS.md 待決事項、docs/re/030 §2）。
 var (
 	SpeedOriginal       = "原速"
 	SpeedGearFmt        = "%d 倍"

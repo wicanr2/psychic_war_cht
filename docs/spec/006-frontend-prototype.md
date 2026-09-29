@@ -14,7 +14,7 @@
 | 項目 | 選擇 | 理由 |
 |---|---|---|
 | 語言與框架 | Go ＋ Ebiten v2.9.9 | dosgolem 是 Go；Ebiten 在 Linux／Windows／macOS 都能出視窗與聲音，本機其他專案已驗證同版本 |
-| 位置 | `cmd/psychicwar/`（主程式）、`apps/psychicwar/`（按鍵對應、節拍、音訊緩衝，可單元測試） | CLAUDE.md 預定目錄 |
+| 位置 | `cmd/psychicwar/`（主程式）、`apps/psychicwar/`（按鍵對應、節拍、音訊緩衝，可單元測試） | AGENTS.md 預定目錄 |
 | module | `github.com/wicanr2/psychic_war_cht`，`replace github.com/wicanr2/dosgolem => ./worktrees/dosgolem` | 前端需要 dosgolem 本機分支的 `oracle` 即時介面（規格 `199`） |
 | 建置 | docker image `psychicwar-go-ebiten`（`tools/docker/go-ebiten.Dockerfile`：golang 1.24 ＋ X11／GL／ALSA 標頭 ＋ Xvfb、xdotool、imagemagick），包裝 `tools/go-ebiten.sh` | 硬規則：建置測試走 docker |
 | 支援平台 | 本輪只驗 Linux（docker＋Xvfb）；Windows／macOS 交叉編譯屬 #35 | |
