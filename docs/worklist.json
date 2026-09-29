@@ -54,6 +54,21 @@
         "kind": "manual",
         "note": "要有 Mac 或 macOS CI 才做得到。"
       }
+    },
+    {
+      "id": "audio-underrun-clean-machine",
+      "milestone": "M2",
+      "labels": [
+        "verify"
+      ],
+      "title": "在乾淨的機器上補量音訊欠載",
+      "issue": 46,
+      "body": "發行包能出聲已確認（完整版不給 -orig 啟動、產生 54.9 秒非靜音音訊）。欠載數字沒量到：量測當時 load 16–35（14 核），spec 020 要求 < 7。高負載的三種假訊號與判讀規則在 docs/re/026 §7。",
+      "acceptance": "load < 7 的機器上跑 tools/audio-device-check.sh 的 adlib 與 speaker 兩條路徑（吃發行包），開場第 1 秒以外欠載 0、機器／牆上落在 1 ± 0.01。解讀前先確認取樣數 = 秒數 × 取樣率。",
+      "verify": {
+        "kind": "manual",
+        "note": "要乾淨的機器；這台常有別的 session 在跑。"
+      }
     }
   ],
   "done": [

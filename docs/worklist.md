@@ -17,6 +17,7 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
+| #46 | `audio-underrun-clean-machine` | 在乾淨的機器上補量音訊欠載 | verify | — | manual |
 
 ## M3：文字攔截與文本抽取
 
