@@ -19,29 +19,37 @@ im() {
 
 KEEP=$(cat workplace/hd/keep-rects.txt)
 
-echo "[1/5] 外框壓功能遮罩"
+echo "[1/6] 外框壓功能遮罩"
 tools/py.sh tools/hd/mask.py workplace/hd/bg.idx 320 200 \
   workplace/hd/art-in/chrome.png "$OUT/chrome-masked.png" 3 $KEEP
 
-echo "[2/5] 去抖色（限有主矩形）"
+echo "[2/6] 去抖色（限有主矩形）"
 tools/py.sh tools/hd/dedither.py workplace/hd/bg.idx 320 200 \
   "$OUT/dedither.png" 3 3 workplace/hd/dedither-rects.txt
 
-echo "[3/5] 向量基元"
+echo "[3/6] 框線（自動掃出硬斜角，改三段漸層）"
+tools/py.sh tools/hd/bevels.py workplace/hd/bg.idx 320 200 workplace/hd/frames.json 12
+tools/py.sh tools/hd/render.py workplace/hd/frames.json "$OUT/frames.png" 3
+
+echo "[4/6] 向量基元"
 tools/py.sh tools/hd/render.py theme/hd/draw/MENU-00.json "$OUT/MENU-00-vec.png" 3
 
-echo "[4/5] 人物去背（邊緣填充，保留內部黑線）"
+echo "[5/6] 人物去背（邊緣填充，保留內部黑線）"
 im convert workplace/hd/art-in/girl.png -alpha set -channel RGBA -fuzz 6% \
   -fill none -floodfill +0+0 black -fill none -floodfill +263+0 black \
   -fill none -floodfill +0+455 black -fill none -floodfill +263+455 black \
-  +channel "$OUT/girl-cut.png"
+  +channel "$OUT/girl-raw.png"
+# 框線底邊在原版 y=143（y=144 整列全黑），人物不能超過。等比縮到高 432 再靠右對齊，
+# 免得壓在框線上（docs/re/038 §14）。
+im convert "$OUT/girl-raw.png" -resize x432 "$OUT/girl-cut.png"
 
-echo "[5/5] 合成"
+echo "[6/6] 合成"
 im convert workplace/hd/full-near3.png \
   "$OUT/chrome-masked.png" -composite \
   "$OUT/dedither.png" -composite \
+  "$OUT/frames.png" -composite \
   "$OUT/MENU-00-vec.png" -geometry +480+12 -composite \
-  "$OUT/girl-cut.png" -geometry +696+0 -composite \
+  "$OUT/girl-cut.png" -gravity NorthEast -geometry +0+0 -composite +gravity \
   "$OUT/full-hd.png"
 im convert "$OUT/full-hd.png" -type TrueColor "PNG24:$OUT/full-hd-rgb.png"
 

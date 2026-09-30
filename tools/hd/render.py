@@ -117,10 +117,22 @@ def main(argv):
             rgba[4*i:4*i+4] = bytes((r, g, b, 0xFF))
 
     for shape in spec["shapes"]:
-        r, g, b = color(shape["color"])
+        # 漸層：原版的框線是「亮色壓暗色」的硬斜角，HD 版畫成平滑過渡
+        grad = shape.get("gradient")
+        if grad:
+            stops = [color(c) for c in grad]  # 2 段或多段，沿短邊等距
+            vertical = shape.get("dir", "v") == "v"
+        else:
+            r, g, b = color(shape["color"])
         cov = bytearray(W * SS * H * SS)
-        for poly in polygons(shape):
+        ps = polygons(shape)
+        for poly in ps:
             fill(cov, W, H, poly, scale)
+        if grad:
+            xs = [p[0] for poly in ps for p in poly]
+            ys = [p[1] for poly in ps for p in poly]
+            g0, g1 = (min(ys), max(ys)) if vertical else (min(xs), max(xs))
+            g0, g1 = g0 * scale, max(g1 * scale, g0 * scale + 1)
         for y in range(H):
             for x in range(W):
                 n = 0
@@ -130,6 +142,14 @@ def main(argv):
                 if not n:
                     continue
                 a = n / (SS * SS)
+                if grad:
+                    t = ((y if vertical else x) + 0.5 - g0) / (g1 - g0)
+                    t = 0.0 if t < 0 else (1.0 if t > 1 else t)
+                    seg = t * (len(stops) - 1)
+                    k0 = min(int(seg), len(stops) - 2)
+                    u = seg - k0
+                    a0, a1 = stops[k0], stops[k0 + 1]
+                    r, g, b = (int(a0[k] + (a1[k] - a0[k]) * u + 0.5) for k in range(3))
                 i = 4 * (y * W + x)
                 o = rgba[i + 3] / 255.0
                 na = a + o * (1 - a)
