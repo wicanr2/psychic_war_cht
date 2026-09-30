@@ -37,7 +37,7 @@
 
 | issue | id | 標題 | label | 前置 | 完成訊號 |
 |---|---|---|---|---|---|
-| #34 | `theme` | 主題替換 | graphics | #20 | manual |
+| #34 | `theme` | HD 主題 | graphics | — | manual |
 | #44 | `macos-real-run` | macOS 與 Windows 的真機驗收 | release, verify | — | manual |
 
 ## 不做（使用者定案）

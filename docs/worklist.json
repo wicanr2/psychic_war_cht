@@ -29,13 +29,12 @@
       "labels": [
         "graphics"
       ],
-      "title": "主題替換",
-      "body": "在放大畫布上提供替換 UI 框線、配色或圖檔的機制。原版畫面永遠是預設主題。",
-      "acceptance": "主題是資料檔；切換後四個檢查點畫面正常、遊戲狀態不變。",
-      "blocked_by": "hires-overlay-canvas",
+      "title": "HD 主題",
+      "body": "把原版的圖換成高解析度版本畫在放大畫布上，原版畫面永遠是預設。第一版範圍是 SCREEN.PBL 五張＋MENU.PBL 一張（整個畫面背景與指令面板）。可行性與量測在 docs/re/038；規格 docs/spec/024（DRAFT）＋dosgolem 204-art-plane（DRAFT）。怪物、房間、迷宮視野是第二版，要先補 sub_18A98 的攔截。",
+      "acceptance": "docs/spec/024 §6 六項：主題關掉時四個檢查點逐像素差 0；開與不開的指令數與存檔相同；HD 疊字失效的格子集合等於原版蓋掉的格子集合；缺圖非 0 結束；倍率不符不載入；耗時要有數字。",
       "verify": {
         "kind": "manual",
-        "note": "主題格式 spec 出現後改綁"
+        "note": "規格還是 DRAFT，而且授權要使用者明文放行（放大圖是原版美術的衍生作品）。兩件都定了才改綁自動驗收。"
       },
       "issue": 34
     },
