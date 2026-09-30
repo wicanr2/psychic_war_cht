@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # 派畫圖代理重繪一批圖檔（docs/spec/024 §3.2）。
 #
-#   tools/hd/batch_run.sh <PBL 名> [說明]
+#   tools/hd/batch_run.sh <PBL 名> [說明] [跳過的圖號,…]
 #
 # 產生規格 → 跑 codex → log 在 workplace/hd/log/<名>.log。
 # ⚠ 提示詞一律用 stdin 餵：codex exec 的 -i/--image 是可變長度參數，
@@ -11,11 +11,10 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
 NAME="$1"
 NOTE="${2:-進入地點時顯示的場景插圖}"
+SKIP="${3:-}"
 
-tools/py.sh tools/hd/batch_spec.py "$NAME" "workplace/hd/spec-$NAME.md"
-N=$(python3 -c "
-import json;d=json.load(open('workplace/hd/batches.json'))
-print(sum(1 for b in d if b['file']=='$NAME'))")
+tools/py.sh tools/hd/batch_spec.py "$NAME" "workplace/hd/spec-$NAME.md" "$SKIP"
+N=$(grep -c '^| [0-9]' "workplace/hd/spec-$NAME.md")
 
 PROMPT=$(cat <<EOF
 你是《銀河超能力戰記》(Psychic War: Cosmic Soldier 2, 工画堂 1987) 繁體中文化專案的美術。
