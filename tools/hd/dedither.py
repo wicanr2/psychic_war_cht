@@ -44,11 +44,22 @@ def main(argv):
     w, h, out = int(argv[2]), int(argv[3]), argv[4]
     scale = int(argv[5]) if len(argv) > 5 else 3
     need = int(argv[6]) if len(argv) > 6 else 3  # 四鄰中要有幾個同色
+    # 只在「有主」的矩形內作用。抖色會把黑色相位換成中間色，而黑色像素在別處
+    # 是遊戲的地盤——沒有範圍限制就會零星佔住不該佔的像素（docs/re/038 §13）。
+    rects = []
+    if len(argv) > 7:
+        for line in pathlib.Path(argv[7]).read_text(encoding="utf-8").splitlines():
+            line = line.split("#")[0].strip()
+            if line:
+                rx, ry, rw, rh = (int(v) for v in line.split(","))
+                rects.append((rx, ry, rx + rw, ry + rh))
 
     blend = {}
     n = 0
     for y in range(1, h - 1):
         for x in range(1, w - 1):
+            if rects and not any(x0 <= x < x1 and y0 <= y < y1 for x0, y0, x1, y1 in rects):
+                continue
             p = idx[y * w + x]
             nb = [idx[y * w + x - 1], idx[y * w + x + 1],
                   idx[(y - 1) * w + x], idx[(y + 1) * w + x]]
