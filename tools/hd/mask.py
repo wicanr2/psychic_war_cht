@@ -6,7 +6,10 @@
 重繪的外框**不能佔住那些像素**，否則訊息還沒出現時會看到一塊裝飾，
 訊息出現時又整塊消失（逐格失效會處理，但畫面會閃）。
 
-所以流程是：畫圖代理畫一張不透明的整屏 → 這支工具把「原版是黑的」那些像素
+另外，原版畫在圖上的英文字（`text/baked.json` 的 `SCREEN.PBL`／`MENU.PBL` 六筆）
+與標題美術字（`docs/spec/011` §6 定案沿用原版）也不能被重繪蓋掉，用保護區參數列出來。
+
+所以流程是：畫圖代理畫一張不透明的整屏 → 這支工具把「原版是黑的」與保護區內的像素
 改成全透明 → 疊字層只畫剩下的部分。**正確性由這支工具保證，不靠代理自律。**
 """
 import pathlib
@@ -72,6 +75,11 @@ def main(argv):
     w, h = int(argv[2]), int(argv[3])
     src, out = argv[4], argv[5]
     scale = int(argv[6]) if len(argv) > 6 else 3
+    # 額外保護區（原版座標 x,y,w,h）：不只黑色像素，原版文字與標題美術字也要留著
+    keep_out = []
+    for a in argv[7:]:
+        kx, ky, kw, kh = (int(v) for v in a.split(","))
+        keep_out.append((kx, ky, kx + kw, ky + kh))
 
     W, H, ch, rows = read_png(src)
     if (W, H) != (w * scale, h * scale):
@@ -83,8 +91,11 @@ def main(argv):
         r = rows[y]
         sy = y // scale
         for x in range(W):
-            if idx[sy * w + x // scale] == 0:
+            sx = x // scale
+            if idx[sy * w + sx] == 0:
                 continue  # 原版是黑的：留給遊戲，全透明
+            if any(x0 <= sx < x1 and y0 <= sy < y1 for x0, y0, x1, y1 in keep_out):
+                continue  # 保護區：原版文字、標題美術字
             i = 4 * (y * W + x)
             rgba[i:i+3] = r[ch*x:ch*x+3]
             rgba[i+3] = 0xFF
