@@ -12,6 +12,10 @@ cd "$ROOT"
 NAME="$1"
 NOTE="${2:-進入地點時顯示的場景插圖}"
 SKIP="${3:-}"
+VERIFY=(tools/py.sh tools/hd/verify_batch.py "$NAME")
+if [[ -n "$SKIP" ]]; then
+  VERIFY+=(--skip "$NAME:$SKIP")
+fi
 
 tools/py.sh tools/hd/batch_spec.py "$NAME" "workplace/hd/spec-$NAME.md" "$SKIP"
 N=$(grep -c '^| [0-9]' "workplace/hd/spec-$NAME.md")
@@ -37,7 +41,7 @@ PROMPT=$(cat <<EOF
    細節堆太多在縮到目標尺寸之後會糊成一團。先想「縮到那個尺寸還看得出是什麼」。
 
 做法：一張一張處理，每張畫完先確認尺寸再做下一張。
-全部做完跑 tools/py.sh tools/hd/verify_batch.py $NAME，把結果貼在最後。
+全部做完跑 ${VERIFY[*]}，把結果貼在最後。排除圖號必須照本次清單，不可自動略過缺檔。
 
 邊界（違反會造成事故，務必遵守）：
 - 只能寫 workplace/hd/art-in/ 底下的檔案。不要改動 repo 裡任何其他檔案。
@@ -51,4 +55,4 @@ mkdir -p workplace/hd/log
 printf '%s\n' "$PROMPT" | timeout 180m codex exec -s workspace-write \
   -c sandbox_workspace_write.network_access=true > "workplace/hd/log/$NAME.log" 2>&1
 echo "$NAME 結束碼 $?"
-tools/py.sh tools/hd/verify_batch.py "$NAME"
+"${VERIFY[@]}"

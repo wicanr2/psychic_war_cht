@@ -37,6 +37,9 @@ func LoadHelp(dir string) ([]string, error) {
 		SpeedToast       string `json:"speed_toast"`
 		SpeedToastBattle string `json:"speed_toast_battle"`
 		SpeedBadgeBattle string `json:"speed_badge_battle"`
+		ThemeOn          string `json:"theme_on"`
+		ThemeOff         string `json:"theme_off"`
+		ThemeUnavailable string `json:"theme_unavailable"`
 	}
 	if err := json.Unmarshal(b, &doc); err != nil {
 		return nil, err
@@ -50,6 +53,7 @@ func LoadHelp(dir string) ([]string, error) {
 		return nil, fmt.Errorf("help.json 沒有 layout（docs/spec/022 §4）")
 	}
 	ProtectionLabel = doc.Label
+	ThemeOn, ThemeOff, ThemeUnavailable = doc.ThemeOn, doc.ThemeOff, doc.ThemeUnavailable
 	if doc.Map != "" {
 		MapHeader = doc.Map
 	}
@@ -76,6 +80,9 @@ func LoadHelp(dir string) ([]string, error) {
 
 // ProtectionLabel 是防拷畫面那一行的標籤（LoadHelp 讀進來）。
 var ProtectionLabel = "　本題答案："
+
+// 主題切換提示只由 text/help.json 載入。
+var ThemeOn, ThemeOff, ThemeUnavailable string
 
 // MapHeader 是 F3 自動地圖的標題樣板（LoadHelp 讀進來；docs/spec/015 §2）。
 var MapHeader = "區域 %d　座標 (%d, %d)　已走 %d 格　朝向 %c"

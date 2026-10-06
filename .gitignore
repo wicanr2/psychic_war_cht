@@ -20,6 +20,9 @@ Thumbs.db
 /workplace/
 /.out/
 
+# 完整生成提示與參照紀錄留在本機
+/tools/hd/battle-effects-prompts*.json
+
 # Python 快取
 __pycache__/
 

@@ -113,7 +113,7 @@ def main():
             handlers[kind](arg, out)
         except Exception as e:  # noqa: BLE001 — 一個查詢壞掉不要拖垮整批
             out.append("## %s 失敗：%r" % (q, e))
-    with open(out_path, "w") as f:
+    with open(out_path, "w", encoding="utf-8") as f:
         f.write("\n".join(out) + "\n")
     ida_pro.qexit(0)
 

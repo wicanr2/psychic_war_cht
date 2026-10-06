@@ -103,7 +103,7 @@ Esc 選單。項目來自 `I_MENUH.BIN` 的固定寬度欄位，譯法照當年�
 | 譯文檢查 | 過長 0、非 Big5 0；譯名表 119 筆（說明書 40、暫譯 79） | [`docs/re/021`](docs/re/021-translation-first-pass.md) |
 | 執行時覆蓋 | 重播 19 段觸發 55 則，**觸發了卻不在文本檔的是 0** | [`docs/re/017`](docs/re/017-text-coverage.md)、[`019`](docs/re/019-all-paths-overlay-verification.md) |
 | 圖檔文字 | 26 個 `.PBL` 共 537 張圖，含文字 50 張，已疊 48 張 125 塊；沒疊的只剩兩張標題美術字（定案保留原樣） | [`docs/re/024`](docs/re/024-baked-text-overlay.md)、[`031`](docs/re/031-baked-text-rooms-and-map.md) |
-| 字型子集 | 966 個漢字，只收譯文用得到的字 | `font/charset.txt` |
+| 字型子集 | 1,004 個字元，含 890 個漢字、ASCII 與符號 | `font/charset.txt` |
 | 疊字逐像素驗收 | 8 情境 13 行與原版差 0，反向對照（關掉疊字）差 0 | [`docs/re/019`](docs/re/019-all-paths-overlay-verification.md) |
 | 音訊 | PC 喇叭事件逐筆與 DOSBox-X 相同；OPL2 合成器頻譜 0.9117／包絡 0.8119／chroma 0.9836，三項都過門檻 | [`docs/re/006`](docs/re/006-ibm-music-format-and-pc-speaker-parity.md)、[`032`](docs/re/032-opl2-synth-fidelity.md) |
 
@@ -123,7 +123,7 @@ Esc 選單。項目來自 `I_MENUH.BIN` 的固定寬度欄位，譯法照當年�
 - 原版的讀檔入口只在死亡後的標題選單，而那個選單會逾時自動選「新遊戲」，抽測時三次都來不及選。
   目前讀回進度靠 F11 即時讀檔。
 - macOS 與 Windows 的發行包都沒有在真機上跑過（[`docs/re/033`](docs/re/033-macos-cross-build.md)、[`035`](docs/re/035-windows-cross-build.md)，[#44](https://github.com/wicanr2/psychic_war_cht/issues/44)）。
-- 主題替換（換 UI 框線與配色）還沒做（[#34](https://github.com/wicanr2/psychic_war_cht/issues/34)）。
+- 開發版已接入 SCREEN／MENU、ALLY #0–#2的限定原版位置、ENEMY00／01／03／04各#0–#14、迷宮圖集、ROOM0限定房間與 OVER #0的來源技術。可用 `-theme <主題目錄>` 選擇、Shift+F5切換；F5中英文切換獨立。來源接入不代表美術或普通GUI驗收；完整HD與發行包仍待完成，本機素材未公開。現況與驗證範圍見 [`CONTEXT.md`](CONTEXT.md)（[#34](https://github.com/wicanr2/psychic_war_cht/issues/34)）。
 
 未完成項的權威是 [`docs/worklist.json`](docs/worklist.json)，每條對應一個 GitHub issue，
 也各自掛著一個可以跑的驗證方式。
@@ -218,6 +218,8 @@ dosgolem 目前用本機分支（`go.mod` 的 `replace` 指到 `worktrees/dosgol
 ## 文件
 
 - [`AGENTS.md`](AGENTS.md)：專案規則、已確認的事實表、工具表。
+- [`CONTEXT.md`](CONTEXT.md)：目前現況、有效決定與 HD 化接手入口。
+- [`WORKLOG.md`](WORKLOG.md)：工作歷程與驗證、清理紀錄。
 - [`docs/goal/`](docs/goal/)：分期目標與驗收條件。
 - [`docs/spec/`](docs/spec/)：規格，標 `DRAFT` 或 `READY`。只有 `READY` 的可以動手實作。
 - [`docs/re/`](docs/re/)：反組譯與量測紀錄，編號與日期都在。

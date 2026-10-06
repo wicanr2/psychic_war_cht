@@ -12,6 +12,7 @@ import (
 	"flag"
 	"fmt"
 	"image"
+	"image/draw"
 	"image/png"
 	"log"
 	"os"
@@ -19,6 +20,7 @@ import (
 
 	"github.com/wicanr2/dosgolem/oracle"
 	"github.com/wicanr2/dosgolem/xlate"
+	"github.com/wicanr2/psychic_war_cht/apps/psychicwar/theme"
 	"github.com/wicanr2/psychic_war_cht/apps/psychicwar/translator"
 )
 
@@ -31,6 +33,7 @@ func main() {
 	saveState := flag.String("save-state", "", "存狀態檔（另存 <檔名>.xlate.json）")
 	shot := flag.String("shot", "", "存截圖 PNG（放大後的原版畫面加疊字層）")
 	scale := flag.Int("scale", 3, "放大倍率（3 的倍數）")
+	themeFlag := flag.String("theme", "", "HD 主題名稱或目錄；預設原版")
 	textDir := flag.String("text", "text", "文本檔目錄；空字串停用轉譯層")
 	fontDir := flag.String("font", "font", "字型子集目錄")
 	textLog := flag.String("text-log", "", "這一步的轉譯紀錄（JSON Lines）；不給就印到標準輸出")
@@ -40,8 +43,12 @@ func main() {
 		flag.Usage()
 		os.Exit(2)
 	}
-	if *scale%3 != 0 {
-		log.Fatalf("-scale 要是 3 的倍數：%d", *scale)
+	if *scale <= 0 {
+		log.Fatalf("-scale 要是正整數：%d", *scale)
+	}
+	if *scale%3 != 0 && *textDir != "" {
+		log.Printf("-scale %d 不是 3 的倍數，停用中文疊字", *scale)
+		*textDir = ""
 	}
 	acts, err := oracle.ParseActions(*do)
 	if err != nil {
@@ -62,6 +69,16 @@ func main() {
 		}
 	}
 	o.SetDOSBoxCycles(*cycles)
+	hd, notice, err := theme.LoadTheme(*themeFlag, *orig, "theme", *scale)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if notice != "" {
+		log.Print(notice)
+	}
+	if err := hd.Attach(o); err != nil {
+		log.Fatal(err)
+	}
 
 	var tr *translator.Translator
 	if *textDir != "" {
@@ -104,6 +121,7 @@ func main() {
 
 	startMs := float64(o.Cycles()) / float64(*cycles)
 	runErr := o.RunActions(acts, 0, func() {
+		hd.Frame(o)
 		if tr != nil {
 			tr.Frame(o)
 		}
@@ -128,7 +146,8 @@ func main() {
 		}
 	}
 	if *shot != "" {
-		if err := writeShot(o, tr, *scale, *shot); err != nil {
+		hd.Frame(o)
+		if err := writeShot(o, tr, hd, *scale, *shot); err != nil {
 			log.Fatal(err)
 		}
 	}
@@ -141,7 +160,7 @@ func main() {
 }
 
 // writeShot 存放大後的原版畫面，疊字層不透明的像素蓋上去（與前端 Draw 的合成相同）。
-func writeShot(o *oracle.Oracle, tr *translator.Translator, scale int, path string) error {
+func writeShot(o *oracle.Oracle, tr *translator.Translator, hd *theme.Theme, scale int, path string) error {
 	w, h, rgb := o.ScreenRGB()
 	W, H := w*scale, h*scale
 	img := image.NewNRGBA(image.Rect(0, 0, W, H))
@@ -149,6 +168,12 @@ func writeShot(o *oracle.Oracle, tr *translator.Translator, scale int, path stri
 		for x := 0; x < W; x++ {
 			i, j := 3*((y/scale)*w+x/scale), 4*(y*W+x)
 			img.Pix[j], img.Pix[j+1], img.Pix[j+2], img.Pix[j+3] = rgb[i], rgb[i+1], rgb[i+2], 0xFF
+		}
+	}
+	if hd != nil {
+		over := image.NewNRGBA(img.Bounds())
+		if hd.Draw(over.Pix, scale) {
+			draw.Draw(img, img.Bounds(), over, image.Point{}, draw.Over)
 		}
 	}
 	if tr != nil {

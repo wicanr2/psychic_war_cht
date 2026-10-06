@@ -55,28 +55,32 @@ type game struct {
 	exitErr     error
 
 	tr      *translator.Translator // -text：中文疊字（docs/spec/008、009），nil ＝ 停用
+	theme   *psychicwar.Theme      // HD 圖面獨立於語言開關（docs/spec/024）
+	art     *ebiten.Image
+	artPix  []byte
 	over    *ebiten.Image
 	overPix []byte
 
 	// 輔助熱鍵（docs/spec/012）
-	help      bool   // F1：說明頁顯示中
-	english   bool   // F2：切到英文原文（疊字不畫）
-	toast     string // F10／F11 的提示
-	toastTill time.Time
-	quickDir  string // 即時存檔放哪（＝ -scratch）
-	origDir   string
-	textDir   string
-	baked     []translator.BakedEntry
-	fontHelp  *xlate.Font // 說明頁的標頭字型（cjk24）
-	fontBody  *xlate.Font // 說明頁的內文字型（cjk16）
-	helpLines []string
-	cheat     bool // -cheat：打開 F5／F6（docs/spec/014）
-	amap      *psychicwar.AutoMap
-	mouseKey  ebiten.Key // 滑鼠按住時送出的鍵（docs/spec/018）
-	mouseDown bool
-	rec       *psychicwar.Recording // -record：輸入錄製（docs/spec/019）
-	recPath   string
-	showMap   bool // F3：自動地圖顯示中（docs/spec/015）
+	help       bool   // F1：說明頁顯示中
+	english    bool   // F2：切到英文原文（疊字不畫）
+	toast      string // F10／F11 的提示
+	toastTill  time.Time
+	quickDir   string // 即時存檔放哪（＝ -scratch）
+	origDir    string
+	textDir    string
+	baked      []translator.BakedEntry
+	fontHelp   *xlate.Font // 說明頁的標頭字型（cjk24）
+	fontBody   *xlate.Font // 說明頁的內文字型（cjk16）
+	helpLines  []string
+	cheat      bool // -cheat：打開 F5／F6（docs/spec/014）
+	amap       *psychicwar.AutoMap
+	mouseKey   ebiten.Key // 滑鼠按住時送出的鍵（docs/spec/018）
+	mouseDown  bool
+	rec        *psychicwar.Recording // -record：輸入錄製（docs/spec/019）
+	recPath    string
+	shiftInput psychicwar.ShiftInput
+	showMap    bool // F3：自動地圖顯示中（docs/spec/015）
 
 	// 速度檔位（docs/spec/023）
 	speed     *psychicwar.Speed
@@ -202,6 +206,19 @@ func (g *game) hotkeys(k ebiten.Key) bool {
 		g.showMap = !g.showMap
 		return true
 	case ebiten.KeyF5:
+		if ebiten.IsKeyPressed(ebiten.KeyShift) {
+			if g.theme == nil {
+				g.showToast(psychicwar.ThemeUnavailable)
+			} else {
+				g.theme.Enabled = !g.theme.Enabled
+				if g.theme.Enabled {
+					g.showToast(psychicwar.ThemeOn)
+				} else {
+					g.showToast(psychicwar.ThemeOff)
+				}
+			}
+			return true
+		}
 		g.english = !g.english
 		g.showToast(map[bool]string{true: "英文原文", false: "中文"}[g.english])
 		return true
@@ -324,6 +341,7 @@ func (g *game) quickLoad() string {
 	if err := g.o.LoadStateFile(base); err != nil {
 		return "讀檔失敗：" + err.Error()
 	}
+	g.theme.ResetForLoad()
 	// 牆上時間重新對齊，不然會狂追進度。虛擬時鐘跟著歸零（docs/spec/023 §2）。
 	g.startCyc, g.start, g.lastFrame, g.vwallMs = g.o.Cycles(), time.Now(), time.Now(), 0
 	g.pacer.DroppedMs = 0
@@ -358,17 +376,28 @@ func (g *game) Update() error {
 		g.lastFrame = g.start
 		g.audio.Render() // 丟掉載入到現在的機器時間
 	}
-	for _, k := range inpututil.AppendJustPressedKeys(nil) {
+	pressed := inpututil.AppendJustPressedKeys(nil)
+	for _, k := range pressed {
+		g.shiftInput.Press(k)
+	}
+	for _, k := range pressed {
 		if keyLog {
 			sc, ok := psychicwar.ScanCode(k)
 			log.Printf("按下 %v → %02X %v（第 %d 步）", k, sc, ok, g.o.Steps())
 		}
 		if psychicwar.Intercepted(k) {
+			g.shiftInput.Consume()
 			g.intercepted++
 			g.hotkeys(k)
 			continue
 		}
 		if sc, ok := psychicwar.ScanCode(k); ok {
+			if k == ebiten.KeyShiftLeft || k == ebiten.KeyShiftRight {
+				continue
+			}
+			for _, edge := range g.shiftInput.BeforeKey() {
+				g.sendEdge(edge)
+			}
 			g.o.KeyDown(sc)
 			g.record(k, true)
 		}
@@ -380,6 +409,12 @@ func (g *game) Update() error {
 	}
 	g.mouse()
 	for _, k := range inpututil.AppendJustReleasedKeys(nil) {
+		if edges, handled := g.shiftInput.Release(k); handled {
+			for _, edge := range edges {
+				g.sendEdge(edge)
+			}
+			continue
+		}
 		if sc, ok := psychicwar.ScanCode(k); ok {
 			g.o.KeyUp(sc)
 			g.record(k, false)
@@ -405,6 +440,7 @@ func (g *game) Update() error {
 	if g.tr != nil {
 		g.tr.Frame(g.o)
 	}
+	g.theme.Frame(g.o)
 	g.noteMap()
 	// n 倍速時機器一秒牆上時間產生 n 秒份的取樣，全寫進環形緩衝會一直溢位（docs/spec/023 §5）。
 	pcm := g.abudget.Take(g.audio.Render(), frameSec, sampleRate)
@@ -423,6 +459,17 @@ func (g *game) Update() error {
 	return nil
 }
 
+func (g *game) sendEdge(edge psychicwar.KeyEdge) {
+	if sc, ok := psychicwar.ScanCode(edge.Key); ok {
+		if edge.Down {
+			g.o.KeyDown(sc)
+		} else {
+			g.o.KeyUp(sc)
+		}
+		g.record(edge.Key, edge.Down)
+	}
+}
+
 // writeStats 寫一行量測。event 是「這一行為什麼被寫出來」：每秒一次是 tick，
 // 進出戰鬥與換檔另外各寫一行——驗收要的是那一瞬間的指令數與牆上毫秒，
 // 每秒一次的解析度量不出一場十幾秒的戰鬥（docs/spec/023 §8）。
@@ -435,23 +482,25 @@ func (g *game) writeStats(wall time.Duration, event string) {
 	}
 	under, over := g.ring.Stats()
 	line, _ := json.Marshal(map[string]any{
-		"event":       event,
-		"wall_ms":     wall.Milliseconds(),
-		"machine_ms":  int64(g.machineMs()),
-		"steps":       g.o.Steps(),
-		"ticks":       g.o.Ticks(),
-		"underruns":   under,
-		"overflows":   over,
-		"dropped_ms":  int64(g.pacer.DroppedMs),
-		"intercepted": g.intercepted,
-		"area":        g.word(psychicwar.AddrArea),
-		"map_x":       g.word(psychicwar.AddrMapX),
-		"map_y":       g.word(psychicwar.AddrMapY),
-		"gear":        g.speed.Gear(),
-		"effective":   g.speed.Effective(),
-		"battle":      g.speed.InBattle(),
-		"enemy_hp":    g.word(psychicwar.AddrEnemyHP),
-		"cpu_ms":      psychicwar.CPUMillis(), // 分平台（Windows 沒有 getrusage）
+		"event":         event,
+		"wall_ms":       wall.Milliseconds(),
+		"machine_ms":    int64(g.machineMs()),
+		"steps":         g.o.Steps(),
+		"ticks":         g.o.Ticks(),
+		"underruns":     under,
+		"overflows":     over,
+		"dropped_ms":    int64(g.pacer.DroppedMs),
+		"intercepted":   g.intercepted,
+		"area":          g.word(psychicwar.AddrArea),
+		"map_x":         g.word(psychicwar.AddrMapX),
+		"map_y":         g.word(psychicwar.AddrMapY),
+		"gear":          g.speed.Gear(),
+		"effective":     g.speed.Effective(),
+		"battle":        g.speed.InBattle(),
+		"enemy_hp":      g.word(psychicwar.AddrEnemyHP),
+		"theme_enabled": g.theme != nil && g.theme.Enabled,
+		"english":       g.english,
+		"cpu_ms":        psychicwar.CPUMillis(), // 分平台（Windows 沒有 getrusage）
 	})
 	fmt.Fprintln(g.stats, string(line))
 }
@@ -469,9 +518,20 @@ func (g *game) Draw(dst *ebiten.Image) {
 	op.GeoM.Scale(float64(g.scale), float64(g.scale))
 	op.Filter = ebiten.FilterNearest
 	dst.DrawImage(g.screen, &op)
+	clear(g.artPix)
+	if g.theme != nil && g.theme.Enabled {
+		if g.theme.Draw(g.artPix, g.scale) {
+			if g.english {
+				g.theme.DrawOriginalLabels(g.artPix, g.scale, g.o.Indexed(), rgb)
+			}
+			psychicwar.PremultiplyRGBA(g.artPix)
+			g.art.WritePixels(g.artPix)
+			dst.DrawImage(g.art, nil)
+		}
+	}
 	if g.tr != nil && !g.english { // F2：英文模式不畫疊字（docs/spec/012 §2）
 		clear(g.overPix)
-		if g.tr.Layer.Draw(g.overPix, g.scale, g.tr.MissingGlyph) {
+		if g.tr.Layer.DrawWithBackground(g.overPix, g.scale, g.tr.MissingGlyph, g.artPix, g.theme.TextBackground) {
 			g.over.WritePixels(g.overPix)
 			dst.DrawImage(g.over, nil)
 		}
@@ -675,6 +735,7 @@ func main() {
 	orig := flag.String("orig", "", "含 PW.EXE 的原版目錄（玩家自備）")
 	cyclesFlag := flag.String("cycles", "750", "每毫秒 cycles，或 xt／at8／at12（docs/spec/004）")
 	scale := flag.Int("scale", 3, "整數倍放大")
+	themeFlag := flag.String("theme", "", "HD 主題名稱或目錄；預設原版，Shift+F5 切換")
 	adlib := flag.Bool("adlib", false, "388h 上有 OPL2（遊戲改走 .MID）")
 	scratch := flag.String("scratch", "", "遊戲存檔寫到這裡（預設是使用者資料目錄，docs/spec/021 §3.2）")
 	loadState := flag.String("load-state", "", "從 probe 狀態檔開始（除錯、測試用）")
@@ -694,6 +755,9 @@ func main() {
 	if *showVersion {
 		fmt.Println(version)
 		return
+	}
+	if *scale <= 0 {
+		die("-scale 必須為正整數")
 	}
 	// 發行包的路徑（docs/spec/021 §3）：旗標沒給時找執行檔旁，不是 cwd。
 	if *orig == "" {
@@ -758,7 +822,22 @@ func main() {
 	g.amap = psychicwar.NewAutoMap()
 	g.speed, g.saveSpeed = psychicwar.NewSpeed(gear), saveSpeed
 	g.attachBattle(o)
-	g.reseedBattle()       // -load-state 可能載進一場打到一半的戰鬥，掛鉤那時候不會觸發
+	g.reseedBattle() // -load-state 可能載進一場打到一半的戰鬥，掛鉤那時候不會觸發
+	if theme, notice, err := psychicwar.LoadTheme(*themeFlag, *orig, *scale); err != nil {
+		dieData("HD 主題載入失敗。", "確認 -theme 指到含 manifest.json 與 PNG 的完整主題目錄。", err)
+	} else {
+		g.theme = theme
+		if g.theme != nil {
+			g.art = ebiten.NewImage(320**scale, 200**scale)
+			g.artPix = make([]byte, 4*320**scale*200**scale)
+		}
+		if err := g.theme.Attach(o); err != nil {
+			die(err)
+		}
+		if notice != "" {
+			log.Print(notice)
+		}
+	}
 	if *recordPath != "" { // 輸入錄製（docs/spec/019）
 		exe, err := psychicwar.FileSHA256(filepath.Join(*orig, "PW.EXE"))
 		if err != nil {
@@ -809,6 +888,10 @@ func main() {
 			g.over = ebiten.NewImage(320**scale, 200**scale)
 			g.overPix = make([]byte, 4*320**scale*200**scale)
 		}
+	}
+	if g.theme != nil && g.over == nil {
+		g.over = ebiten.NewImage(320**scale, 200**scale)
+		g.overPix = make([]byte, 4*320**scale*200**scale)
 	}
 	g.ring.Write(make([]int16, sampleRate/20)) // 預填 50 ms 靜音
 	if *statsPath != "" {

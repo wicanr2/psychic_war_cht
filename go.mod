@@ -19,5 +19,5 @@ require (
 	golang.org/x/sync v0.17.0 // indirect
 )
 
-// dosgolem 用本機分支（worktrees/dosgolem，psychic-war/r4-live 起）：前端需要規格 199 的即時執行介面。
+// dosgolem 用本機分支（worktrees/dosgolem，psychic-war/r5-text）：前端需要規格 199 的即時執行介面。
 replace github.com/wicanr2/dosgolem => ./worktrees/dosgolem

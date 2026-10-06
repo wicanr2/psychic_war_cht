@@ -24,7 +24,7 @@
   "【中文版加的鍵】",
   "　F4　說明　F5　中文／英文　F6　地圖　F10　存檔　F11　讀檔",
   "　F12　走路與對話變快（原速→2 倍→3 倍）。戰鬥一律原速。",
-  "　說明頁不影響遊戲，時間照常進行。"
+  "　Shift+F5　切換 HD；說明頁不暫停遊戲。"
  ],
  "keycaps": ["F10", "F11", "F12", "F1", "F2", "F3", "F4", "F5", "F6", "Esc", "Enter"],
  "layout": {
@@ -66,5 +66,8 @@
  "speed_gear": "%d 倍",
  "speed_toast": "速度 %s",
  "speed_toast_battle": "速度 %s（戰鬥維持原速）",
- "speed_badge_battle": "%s→原速"
+ "speed_badge_battle": "%s→原速",
+ "theme_on": "HD 主題",
+ "theme_off": "原版畫面",
+ "theme_unavailable": "未載入 HD 主題"
 }
