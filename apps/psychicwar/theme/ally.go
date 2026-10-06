@@ -16,6 +16,7 @@ import (
 type spritePresence struct {
 	indexed, packed []byte
 	x, y, w, h      int
+	nativeH         int // 短圖的原版貼圖高度；0表示與來源相同。
 	deltas          []spriteDelta
 	active          bool
 	inFlight        bool
@@ -36,6 +37,13 @@ func newSprite(px []byte, x, y, w, h int) *spritePresence {
 
 func (s *spritePresence) slot() [4]int { return [4]int{s.x, s.y, s.w, s.h} }
 
+func (s *spritePresence) sourceHeight() int {
+	if s.nativeH != 0 {
+		return s.nativeH
+	}
+	return s.h
+}
+
 func equalInts(a, b []int) bool {
 	if len(a) != len(b) {
 		return false
@@ -53,7 +61,7 @@ func loadAlly0(orig string) (*spritePresence, error) {
 }
 
 func loadAlly(orig string, image int) (*spritePresence, error) {
-	if image != 0 && image != 1 && image != 2 {
+	if image < 0 || image >= 12 {
 		return nil, fmt.Errorf("主題 ALLY #%d 尚未證實", image)
 	}
 	b, err := os.ReadFile(filepath.Join(orig, "ALLY.PBL"))
@@ -72,10 +80,13 @@ func loadAlly(orig string, image int) (*spritePresence, error) {
 		return nil, fmt.Errorf("主題 ALLY #%d 尺寸或解碼不符", image)
 	}
 	x := 264
+	y := 152
 	if image == 1 || image == 2 {
 		x = 232
+	} else if image >= 3 {
+		x, y = 128, 8
 	}
-	return newSprite(px, x, 152, 24, 32), nil
+	return newSprite(px, x, y, 24, 32), nil
 }
 
 func (s *spritePresence) frame(indexed []byte, anchor xlate.Watcher) bool {
@@ -121,6 +132,17 @@ func (s *spritePresence) blitWithFrame(r oracle.Regs, read, before func() []byte
 }
 
 func (s *spritePresence) blitWithSource(r oracle.Regs, read, before func() []byte, prior []byte) {
+	if s.nativeH != 0 && int(r.CX>>8)*4 == s.x && int(r.CX&255)*4 == s.y && int(r.DX>>8)*8 == s.w && int(r.DX&255)*8 == s.nativeH {
+		r.DX = r.DX&0xff00 | uint16(s.h/8)
+		originalRead := read
+		read = func() []byte {
+			raw := originalRead()
+			if len(raw) < len(s.packed) {
+				return nil
+			}
+			return raw[:len(s.packed)]
+		}
+	}
 	s.blit(r, read)
 	if r.AX&255 != 1 || len(s.deltas) == 0 || int(r.CX>>8)*4 != s.x || int(r.CX&255)*4 != s.y ||
 		int(r.DX>>8)*8 != s.w || int(r.DX&255)*8 != s.h {
@@ -149,7 +171,7 @@ func (t *Theme) blitSprites(r oracle.Regs, read, before func() []byte) {
 		s := t.groups[i].sprite
 		if s == nil || !s.retainDelta || r.AX&255 != 1 ||
 			int(r.CX>>8)*4 != s.x || int(r.CX&255)*4 != s.y ||
-			int(r.DX>>8)*8 != s.w || int(r.DX&255)*8 != s.h {
+			int(r.DX>>8)*8 != s.w || int(r.DX&255)*8 != s.sourceHeight() {
 			continue
 		}
 		if _, ok := prior[s.slot()]; !ok {
@@ -229,7 +251,7 @@ func (t *Theme) Attach(o *oracle.Oracle) error {
 			hasSprite = true
 		}
 	}
-	if !hasSprite {
+	if !hasSprite && t.battle == nil {
 		return nil
 	}
 	o.OnCall(oracle.Addr{Seg: 0x0161, Off: 0x8705}, func(o *oracle.Oracle) {
@@ -253,8 +275,29 @@ func (t *Theme) Attach(o *oracle.Oracle) error {
 			return indexed
 		}
 		t.blitSprites(r, read, before)
+		if t.battle != nil {
+			t.battle.selectSource(o)
+			t.battle.blit(r, read(), before())
+		}
 	})
-	o.OnCall(oracle.Addr{Seg: 0x0161, Off: 0x8751}, func(*oracle.Oracle) { t.finishBlit() })
+	o.OnCall(oracle.Addr{Seg: 0x0161, Off: 0x8751}, func(*oracle.Oracle) {
+		t.finishBlit()
+		if t.battle != nil {
+			t.battle.finish()
+		}
+	})
+	if t.battle != nil {
+		o.OnCall(oracle.Addr{Seg: 0x0161, Off: 0x8260}, func(o *oracle.Oracle) {
+			t.battle.selectSource(o)
+			r := o.Regs()
+			if r.DS != 0x161 || r.DX != 0x4e36 {
+				t.battle.clearPrediction()
+				return
+			}
+			t.battle.mask(r, o.Bytes(oracle.Addr{Seg: r.DS, Off: r.DX}, 32), o.Indexed())
+		})
+		o.OnCall(oracle.Addr{Seg: 0x0161, Off: 0x4e34}, func(*oracle.Oracle) { t.battle.finish() })
+	}
 	return nil
 }
 

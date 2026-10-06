@@ -61,7 +61,7 @@ func TestZellwalRealSourceAndManifest(t *testing.T) {
 			t.Fatal("未證實圖號未拒絕", n)
 		}
 	}
-	for _, name := range []string{"ENEMY02.PBL", "../ENEMY03.PBL", "enemy03.pbl"} {
+	for _, name := range []string{"ENEMY12.PBL", "../ENEMY03.PBL", "enemy03.pbl"} {
 		if _, err := loadEnemy(orig, name, 3); err == nil {
 			t.Fatal("未證實檔名未拒絕", name)
 		}

@@ -123,7 +123,7 @@ Esc 選單。項目來自 `I_MENUH.BIN` 的固定寬度欄位，譯法照當年�
 - 原版的讀檔入口只在死亡後的標題選單，而那個選單會逾時自動選「新遊戲」，抽測時三次都來不及選。
   目前讀回進度靠 F11 即時讀檔。
 - macOS 與 Windows 的發行包都沒有在真機上跑過（[`docs/re/033`](docs/re/033-macos-cross-build.md)、[`035`](docs/re/035-windows-cross-build.md)，[#44](https://github.com/wicanr2/psychic_war_cht/issues/44)）。
-- 開發版已接入 SCREEN／MENU、ALLY #0–#2的限定原版位置、ENEMY00／01／03／04各#0–#14、迷宮圖集、ROOM0限定房間與 OVER #0的來源技術。可用 `-theme <主題目錄>` 選擇、Shift+F5切換；F5中英文切換獨立。來源接入不代表美術或普通GUI驗收；完整HD與發行包仍待完成，本機素材未公開。現況與驗證範圍見 [`CONTEXT.md`](CONTEXT.md)（[#34](https://github.com/wicanr2/psychic_war_cht/issues/34)）。
+- 開發版已接入 SCREEN／MENU、ALLY #0–#2限定位置及#3–#11道具肖像、十二圖庫360個敵人圖號、B透光戰鬥效果、迷宮圖集、ROOM0限定房間與OVER #0。敵人別名共用相同HD；短圖保留原尺寸及未知原版格。`builtin_masks`獨立記錄內建遮罩。可用 `-theme <主題目錄>` 選擇、Shift+F5切換；F5中英文切換獨立。美術已定稿，來源接入與正常GUI驗收分開記錄。其餘19個ALLY圖號、完整HD與發行包待完成，本機素材未公開。現況與限制見 [`CONTEXT.md`](CONTEXT.md)（[#34](https://github.com/wicanr2/psychic_war_cht/issues/34)）。
 
 未完成項的權威是 [`docs/worklist.json`](docs/worklist.json)，每條對應一個 GitHub issue，
 也各自掛著一個可以跑的驗證方式。

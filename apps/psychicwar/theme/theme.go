@@ -33,12 +33,13 @@ type ThemeEntry struct {
 }
 
 type ThemeManifest struct {
-	Schema  string       `json:"schema"`
-	Name    string       `json:"name"`
-	Title   string       `json:"title,omitempty"`
-	Scale   int          `json:"scale"`
-	Entries []ThemeEntry `json:"entries"`
-	Maze    *MazeEntry   `json:"maze,omitempty"`
+	Schema       string             `json:"schema"`
+	Name         string             `json:"name"`
+	Title        string             `json:"title,omitempty"`
+	Scale        int                `json:"scale"`
+	Entries      []ThemeEntry       `json:"entries"`
+	Maze         *MazeEntry         `json:"maze,omitempty"`
+	BuiltinMasks []BuiltinMaskEntry `json:"builtin_masks,omitempty"`
 }
 
 // 缺少圖號不能默認成 #0；同樣拒絕 null 與未知欄位。
@@ -80,6 +81,7 @@ type Theme struct {
 	maze               *mazeTheme
 	textBackgroundKeys map[string]bool
 	originalElevator   []byte
+	battle             *battleTheme
 }
 
 // LoadTheme 回 nil 表示未選主題或倍率不符；notice 由前端記錄一次。
@@ -112,6 +114,9 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 	if maze, present := fields["maze"]; present && (m.Schema != "psychic-war-theme/2" || bytes.Equal(bytes.TrimSpace(maze), []byte("null"))) {
 		return nil, "", fmt.Errorf("maze 僅接受新版主題的完整資料")
 	}
+	if masks, present := fields["builtin_masks"]; present && (m.Schema != "psychic-war-theme/2" || bytes.Equal(bytes.TrimSpace(masks), []byte("null"))) {
+		return nil, "", fmt.Errorf("builtin_masks 僅接受新版主題的完整清單")
+	}
 	if (m.Schema != "psychic-war-theme/1" && m.Schema != "psychic-war-theme/2") || m.Name == "" || m.Scale <= 0 || len(m.Entries) == 0 {
 		return nil, "", fmt.Errorf("主題清單的格式、名稱、倍率或圖面清單不合法")
 	}
@@ -136,7 +141,18 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 	}
 	t := &Theme{Name: m.Name, Enabled: true, Layer: xlate.Layer{W: 320, H: 200}}
 	roomLoaded := make(map[int]bool)
+	sourceEntries := make(map[*spritePresence]ThemeEntry)
+	seenAliases := make(map[int]bool)
 	for i, e := range m.Entries {
+		if e.PBL == "ENEMY02.PBL" && (e.Image == 12 || e.Image == 13) {
+			if seenAliases[e.Image] {
+				return nil, "", fmt.Errorf("ENEMY02別名圖號重複登記")
+			}
+			seenAliases[e.Image] = true
+		}
+		if battleEffectEntry(e) {
+			continue // 024 §1.49：效果由獨立場景合成，不登記成單張角色。
+		}
 		ref := base
 		var roomSource []byte
 		var sprite *spritePresence
@@ -173,17 +189,37 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 				return nil, "", err
 			}
 			sprite.x, sprite.y = x, y
-		} else if e.PBL == "ENEMY00.PBL" || e.PBL == "ENEMY01.PBL" || e.PBL == "ENEMY03.PBL" || e.PBL == "ENEMY04.PBL" {
+		} else if knownEnemySource(e.PBL) {
 			sprite, err = loadEnemy(orig, e.PBL, e.Image)
 			if err != nil {
 				return nil, "", err
 			}
 		}
 		if sprite != nil {
+			alias := false
 			for _, prior := range t.groups {
 				if prior.sprite != nil && prior.sprite.slot() == sprite.slot() && bytes.Equal(prior.sprite.indexed, sprite.indexed) {
-					return nil, "", fmt.Errorf("同位置重複或相同的角色來源，不能辨識唯一動作")
+					prev := sourceEntries[prior.sprite]
+					if prev.PBL != "ENEMY02.PBL" || e.PBL != prev.PBL || !(prev.Image == 12 && e.Image == 13 || prev.Image == 13 && e.Image == 12) ||
+						!equalInts(prev.At, e.At) || !equalInts(prev.Src, e.Src) || !equalInts(prev.Match, e.Match) || prev.Kind != e.Kind || prev.Scaler != e.Scaler {
+						return nil, "", fmt.Errorf("同位置重複或相同的角色來源，不能辨識唯一動作")
+					}
+					path, e1 := themeAssetPath(root, e.PNG)
+					oldPath, e2 := themeAssetPath(root, prev.PNG)
+					if e1 != nil || e2 != nil {
+						return nil, "", fmt.Errorf("別名PNG路徑不合法")
+					}
+					pixels, e1 := os.ReadFile(path)
+					oldPixels, e2 := os.ReadFile(oldPath)
+					if e1 != nil || e2 != nil || !bytes.Equal(pixels, oldPixels) {
+						return nil, "", fmt.Errorf("ENEMY02 #12／#13別名必須使用相同PNG")
+					}
+					prior.sprite.deltas = append(prior.sprite.deltas, sprite.deltas...)
+					alias = true
 				}
+			}
+			if alias {
+				continue
 			}
 			ref = append([]byte(nil), base...)
 			for y := 0; y < sprite.h; y++ {
@@ -195,6 +231,9 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 			return nil, "", fmt.Errorf("主題 %s 第 %d 筆：%w", m.Name, i+1, err)
 		}
 		g.sprite = sprite
+		if sprite != nil {
+			sourceEntries[sprite] = e
+		}
 		if e.PBL == "ROOM0.PBL" && e.Image == 5 && e.Kind == "redraw" {
 			if t.textBackgroundKeys == nil {
 				t.textBackgroundKeys = make(map[string]bool)
@@ -213,6 +252,10 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 		if err != nil {
 			return nil, "", fmt.Errorf("主題迷宮：%w", err)
 		}
+	}
+	t.battle, err = loadBattleTheme(root, orig, m, t.groups, base)
+	if err != nil {
+		return nil, "", fmt.Errorf("主題戰鬥效果：%w", err)
 	}
 	t.ResetForLoad()
 	return t, "", nil
@@ -340,18 +383,19 @@ func loadThemeEntry(root string, index int, e ThemeEntry, scale int, base []byte
 			return g, err
 		}
 		w, h = 24, 32
-	case "ENEMY00.PBL", "ENEMY01.PBL", "ENEMY03.PBL", "ENEMY04.PBL":
+	case "ENEMY00.PBL", "ENEMY01.PBL", "ENEMY02.PBL", "ENEMY03.PBL", "ENEMY04.PBL", "ENEMY05.PBL", "ENEMY06.PBL", "ENEMY07.PBL", "ENEMY08.PBL", "ENEMY09.PBL", "ENEMY10.PBL", "ENEMY11.PBL":
 		if _, _, err := enemySource(e.PBL, e.Image); err != nil {
 			return g, err
 		}
-		if (e.Src != nil && !equalInts(e.Src, []int{0, 0, 24, 32})) ||
+		h = enemyHeight(e.PBL, e.Image)
+		if (e.Src != nil && !equalInts(e.Src, []int{0, 0, 24, h})) ||
 			!validSpriteMatch(e.Match) {
 			return g, fmt.Errorf("%s 只支援完整圖與已證實背景錨點", e.PBL)
 		}
 		if e.PBL == "ENEMY04.PBL" && !equalInts(e.Match, []int{248, 0, 72, 40}) {
 			return g, fmt.Errorf("ENEMY04 必須明示已證實的右側背景錨點")
 		}
-		w, h, ox, oy = 24, 32, 32, 152
+		w, ox, oy = 24, 32, 152
 	default:
 		return g, fmt.Errorf("第一批尚未支援來源 %q", e.PBL)
 	}
@@ -421,7 +465,7 @@ func loadThemeEntry(root string, index int, e ThemeEntry, scale int, base []byte
 		start := (row - y0) * scale * padded.Stride
 		g.rows = append(g.rows, &xlate.Stamp{Key: rowKey, Art: true, X: x0, Y: row, Cells: (x1 - x0) / 8, CellW: 8, CellH: 8, PixScale: scale, Order: index,
 			Reference: ref, Pix: padded.Pix[start : start+8*scale*padded.Stride]})
-		if e.PBL == "ALLY.PBL" || e.PBL == "ENEMY00.PBL" || e.PBL == "ENEMY01.PBL" || e.PBL == "ENEMY03.PBL" || e.PBL == "ENEMY04.PBL" || e.PBL == "OVER.PBL" || e.PBL == "ROOM0.PBL" {
+		if e.PBL == "ALLY.PBL" || knownEnemySource(e.PBL) || e.PBL == "OVER.PBL" || e.PBL == "ROOM0.PBL" {
 			// 原版全黑的格沒有角色證據，不能因清空後吻合而留下 HD 殘片。
 			s := g.rows[len(g.rows)-1]
 			s.Transparent = make([]bool, s.Cells)
@@ -451,8 +495,14 @@ func validSpriteMatch(r []int) bool {
 
 // 來源認定與圖面必須共用同一個已證實位置，不能只移動 PNG。
 func allyPosition(e ThemeEntry) (int, int, error) {
-	if (e.Image != 0 && e.Image != 1 && e.Image != 2) || (e.Src != nil && !equalInts(e.Src, []int{0, 0, 24, 32})) || !validSpriteMatch(e.Match) {
-		return 0, 0, fmt.Errorf("ALLY 只支援 #0／#1／#2 完整圖與已證實背景錨點")
+	if e.Image < 0 || e.Image >= 12 || (e.Src != nil && !equalInts(e.Src, []int{0, 0, 24, 32})) || !validSpriteMatch(e.Match) {
+		return 0, 0, fmt.Errorf("ALLY 只支援 #0–#11 完整圖與已證實背景錨點")
+	}
+	if e.Image >= 3 {
+		if equalInts(e.At, []int{128, 8}) && equalInts(e.Match, []int{248, 0, 72, 40}) {
+			return 128, 8, nil
+		}
+		return 0, 0, fmt.Errorf("ALLY #3–#11只支援道具原位置(128,8)，並明示右側錨點")
 	}
 	if e.Image == 2 {
 		if equalInts(e.At, []int{232, 152}) && equalInts(e.Match, []int{248, 0, 72, 40}) {
@@ -515,6 +565,9 @@ func (t *Theme) ResetForLoad() {
 	if t.maze != nil {
 		t.maze.clear(&t.Layer)
 	}
+	if t.battle != nil {
+		t.battle.reset()
+	}
 	for i := range t.groups {
 		g := &t.groups[i]
 		if g.sprite != nil {
@@ -537,6 +590,9 @@ func (t *Theme) Frame(o *oracle.Oracle) {
 	}
 	w, h, rgb := o.ScreenRGB()
 	if w != 320 || h != 200 {
+		if t.battle != nil {
+			t.battle.reset()
+		}
 		if t.maze != nil {
 			t.maze.clear(&t.Layer)
 		}
@@ -550,6 +606,10 @@ func (t *Theme) Frame(o *oracle.Oracle) {
 		return
 	}
 	indexed := o.Indexed()
+	if t.battle != nil {
+		t.battle.selectSource(o)
+		t.battle.frame(indexed, o.Palette(), o.VideoMode(), o.Bytes(oracle.Addr{Seg: 0x0161, Off: 0x4e36}, 32))
+	}
 	if t.maze != nil {
 		t.maze.frame(&t.Layer, indexed, rgb, o.VideoMode(),
 			o.Bytes(oracle.Addr{Seg: 0x1175, Off: 0x16c6}, 2048),
@@ -583,7 +643,14 @@ func (t *Theme) frameSprites(indexed []byte) {
 }
 
 func (t *Theme) Draw(dst []byte, scale int) bool {
-	return t != nil && t.Enabled && t.Layer.Draw(dst, scale, nil)
+	if t == nil || !t.Enabled {
+		return false
+	}
+	drawn := t.Layer.Draw(dst, scale, nil)
+	if t.battle != nil && t.battle.draw(dst, scale) {
+		drawn = true
+	}
+	return drawn
 }
 
 // TextBackground只授權已核對無字重繪來源的文字（024 §1.38）。

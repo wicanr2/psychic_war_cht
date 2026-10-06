@@ -14,32 +14,45 @@ func loadEnemy0(orig string, n int) (*spritePresence, error) {
 	return loadEnemy(orig, "ENEMY00.PBL", n)
 }
 
+// §1.47：實際原版C6資料與共用階段分支限定來源；正常GUI另驗。
+var enemySourceHashes = map[string]string{
+	"ENEMY00.PBL": "8241b0ea73b1e7402b13adc434f10a5b1288f88f01fcfc3ba5710e4923fe6067",
+	"ENEMY01.PBL": "22f664050ce7ffa4ea0f6941c9c91cd1ab43671ea5b53491f6799f78ba8e64af",
+	"ENEMY02.PBL": "c38beb2879508466f0c316185eb7a489071279c34c2a89678bb1e80598de4c3f",
+	"ENEMY03.PBL": "ad6e8183bbf6c6fc258693b1f0ac726593feff5d052b5da18ac715cc2e63e5c1",
+	"ENEMY04.PBL": "81cb62cf9a8b64a538d09e50b29cbf8ad123b39b6e86979af6423a2aed20f546",
+	"ENEMY05.PBL": "2b390a5c4a5a2c6e49a9e27b02c89dd839c6c932dad0f568aee6b88e2397180a",
+	"ENEMY06.PBL": "489364bda2f9356d3b386ae71ad90cfc6064a1e04d33a5569e5e653a27d220a7",
+	"ENEMY07.PBL": "c2924057e1d704d30be7a644c870b0879bb72e155183b6ab7c4c6e864904d519",
+	"ENEMY08.PBL": "eb4e8673858a5425bba68edba74cad1138caf2c64d58d429e40c7d7a7ec072a7",
+	"ENEMY09.PBL": "f6e09a218300e9848360493ecac122617639475106753350944ef078b91e71d9",
+	"ENEMY10.PBL": "d371d4065a76a374329128c6d4a35f52f578322f7f2e4458252592b26fa0a482",
+	"ENEMY11.PBL": "f5c29f254baf0ec1ef2dc9db61596efbd2cfb941ed992534358899386a29dc44",
+}
+
+func knownEnemySource(name string) bool {
+	_, ok := enemySourceHashes[name]
+	return ok
+}
+
 func enemySource(name string, n int) (string, []int, error) {
-	var hash string
-	var edges map[int][]int
-	switch name {
-	case "ENEMY00.PBL":
-		hash = "8241b0ea73b1e7402b13adc434f10a5b1288f88f01fcfc3ba5710e4923fe6067"
-		edges = map[int][]int{0: {1}, 1: {0, 2}, 2: {1}, 3: {4}, 4: {3, 5}, 5: {4}, 6: {7}, 7: {6, 8}, 8: {7}, 9: {10}, 10: {9, 11}, 11: {10}, 12: {13}, 13: {12, 14}, 14: {13}}
-	case "ENEMY01.PBL":
-		hash = "22f664050ce7ffa4ea0f6941c9c91cd1ab43671ea5b53491f6799f78ba8e64af"
-		// 024 §1.22：五組來源及四階段分支皆由原版指令／保存資料核對。
-		edges = map[int][]int{0: {1}, 1: {0, 2}, 2: {1}, 3: {4}, 4: {3, 5}, 5: {4}, 6: {7}, 7: {6, 8}, 8: {7}, 9: {10}, 10: {9, 11}, 11: {10}, 12: {13}, 13: {12, 14}, 14: {13}}
-	case "ENEMY03.PBL":
-		hash = "ad6e8183bbf6c6fc258693b1f0ac726593feff5d052b5da18ac715cc2e63e5c1"
-		edges = map[int][]int{0: {1}, 1: {0, 2}, 2: {1}, 3: {4}, 4: {3, 5}, 5: {4}, 6: {7}, 7: {6, 8}, 8: {7}, 9: {10}, 10: {9, 11}, 11: {10}, 12: {13}, 13: {12, 14}, 14: {13}}
-	case "ENEMY04.PBL":
-		hash = "81cb62cf9a8b64a538d09e50b29cbf8ad123b39b6e86979af6423a2aed20f546"
-		// 024 §1.23：反向邊由原版四階段分支與正常保存圖庫證實。
-		edges = map[int][]int{0: {1}, 1: {0, 2}, 2: {1}, 3: {4}, 4: {3, 5}, 5: {4}, 6: {7}, 7: {6, 8}, 8: {7}, 9: {10}, 10: {9, 11}, 11: {10}, 12: {13}, 13: {12, 14}, 14: {13}}
-	default:
+	hash, ok := enemySourceHashes[name]
+	if !ok {
 		return "", nil, fmt.Errorf("未支援敵人來源 %q", name)
 	}
-	from, ok := edges[n]
-	if !ok {
+	limit := 15
+	if n < 0 || n >= limit {
 		return "", nil, fmt.Errorf("%s 圖號 #%d 尚未有READY契約", name, n)
 	}
-	return hash, from, nil
+	// 原版四階段：3g→3g+1→3g+2→3g+1→3g；不是依相鄰圖號推測。
+	switch n % 3 {
+	case 0:
+		return hash, []int{n + 1}, nil
+	case 1:
+		return hash, []int{n - 1, n + 1}, nil
+	default:
+		return hash, []int{n - 1}, nil
+	}
 }
 
 func loadEnemy(orig, name string, n int) (*spritePresence, error) {
@@ -59,11 +72,14 @@ func loadEnemy(orig, name string, n int) (*spritePresence, error) {
 		return nil, fmt.Errorf("主題 %s 圖數不符", name)
 	}
 	w, h, px, err := pbl.Decode(b, n)
-	if err != nil || w != 24 || h != 32 {
+	if err != nil || w != 24 || h != enemyHeight(name, n) {
 		return nil, fmt.Errorf("主題 %s #%d 尺寸或解碼不符", name, n)
 	}
 	s := newSprite(px, 32, 152, w, h)
-	// 024 §1.22–§1.23：enemySource已限制四檔各五組完整來源與有向差分。
+	if h == 24 {
+		s.nativeH = 32 // 原版多讀區不參與身體辨識，024 §1.51。
+	}
+	// 024 §1.47：enemySource限制58組完整唯一來源與有向差分。
 	s.retainDelta = true
 	// 每條邊由原版呼叫／畫面，或限定的原版分支／來源資料證實；不由圖號相鄰或 XOR 性質猜補。
 	for _, from := range fromImages {
@@ -78,4 +94,11 @@ func loadEnemy(orig, name string, n int) (*spritePresence, error) {
 		s.deltas = append(s.deltas, delta)
 	}
 	return s, nil
+}
+
+func enemyHeight(name string, n int) int {
+	if name == "ENEMY08.PBL" && n >= 12 && n <= 14 {
+		return 24
+	}
+	return 32
 }

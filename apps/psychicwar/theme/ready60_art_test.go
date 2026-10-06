@@ -38,16 +38,22 @@ func TestReady60ArtBatch(t *testing.T) {
 	if err = json.Unmarshal(raw, &plan); err != nil {
 		t.Fatal(err)
 	}
-	if plan.Schema != "psychic-war-ready60-art-fixtures/1" || len(plan.Rows) != 60 {
+	wantCount := 60
+	if plan.Schema == "psychic-war-ready174-art-fixtures/1" {
+		wantCount = 174
+	} else if plan.Schema != "psychic-war-ready60-art-fixtures/1" {
+		t.Fatal("期望格式不符")
+	}
+	if len(plan.Rows) != wantCount {
 		t.Fatal("期望範圍不符")
 	}
 	all, notice, err := LoadTheme(plan.Theme, orig, "", 3)
 	if err != nil || all == nil || notice != "" {
-		t.Fatal("78筆正式載入失敗", notice, err)
+		t.Fatal("正式主題載入失敗", notice, err)
 	}
 	hd, notice, err := LoadTheme(plan.BodyTheme, orig, "", 3)
-	if err != nil || hd == nil || notice != "" || len(hd.groups) != 60 {
-		t.Fatal("60張載入失敗", notice, err)
+	if err != nil || hd == nil || notice != "" || len(hd.groups) != wantCount {
+		t.Fatal("完整身體批次載入失敗", notice, err)
 	}
 	digest := func(p []byte) string { return fmt.Sprintf("%x", sha256.Sum256(p)) }
 	render := func(frame []byte) []byte {
@@ -117,7 +123,19 @@ func TestReady60ArtBatch(t *testing.T) {
 		t.Fatal("倍率fallback不符", err)
 	}
 	if output := os.Getenv("PSYCHICWAR_READY60_ART_OUT"); output != "" {
-		receipt := map[string]any{"status": "PASS_SYNTHETIC_READY60_ART_PLANES", "manifest_entries": 78, "png_count": 76, "body_sources": 60, "full_plane_checks": 60, "cover_restore_checks": 60, "anchor_checks": 60, "toggle_checks": 60, "negative_controls": "omit and single-pixel; all effective", "plan_sha256": digest(raw), "limits": "Synthetic independent original PBL fixtures only; not normal player path, GUI, DAT or complete animation."}
+		manifestBytes, err := os.ReadFile(filepath.Join(plan.Theme, "manifest.json"))
+		if err != nil {
+			t.Fatal(err)
+		}
+		var manifest ThemeManifest
+		if err = json.Unmarshal(manifestBytes, &manifest); err != nil {
+			t.Fatal(err)
+		}
+		pngPaths, err := filepath.Glob(filepath.Join(plan.Theme, "*.png"))
+		if err != nil {
+			t.Fatal(err)
+		}
+		receipt := map[string]any{"status": "PASS_SYNTHETIC_BODY_ART_PLANES", "manifest_entries": len(manifest.Entries), "png_count": len(pngPaths), "body_sources": wantCount, "full_plane_checks": wantCount, "cover_restore_checks": wantCount, "anchor_checks": wantCount, "toggle_checks": wantCount, "negative_controls": "omit and single-pixel; all effective", "plan_sha256": digest(raw), "limits": "Synthetic independent original PBL fixtures only; not normal player path, GUI, DAT or complete animation."}
 		data, err := json.MarshalIndent(receipt, "", "  ")
 		if err != nil {
 			t.Fatal(err)

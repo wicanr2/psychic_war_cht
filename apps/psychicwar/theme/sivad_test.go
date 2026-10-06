@@ -61,7 +61,7 @@ func TestSivadRealSourceAndManifest(t *testing.T) {
 			t.Fatal("未證實圖號未拒絕", n)
 		}
 	}
-	for _, name := range []string{"ENEMY02.PBL", "../ENEMY01.PBL", "enemy01.pbl"} {
+	for _, name := range []string{"ENEMY12.PBL", "../ENEMY01.PBL", "enemy01.pbl"} {
 		if _, err := loadEnemy(orig, name, 6); err == nil {
 			t.Fatal("未證實檔名未拒絕", name)
 		}

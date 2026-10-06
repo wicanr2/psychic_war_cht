@@ -63,7 +63,7 @@ func TestAllyItemsIndependentPositions(t *testing.T) {
 		func(e *ThemeEntry) { e.Match = nil },
 		func(e *ThemeEntry) { e.Match = []int{0, 0, 160, 40} },
 		func(e *ThemeEntry) { e.At = []int{128, 12} },
-		func(e *ThemeEntry) { e.Image = 3 },
+		func(e *ThemeEntry) { e.Image = 12 },
 		func(e *ThemeEntry) { e.Src = []int{0, 0, 16, 16} },
 	} {
 		bad := top

@@ -8146,3 +8146,169 @@ Sivad DEF COM與Celtac前置條件沿攻略待驗線索，沒有證明已破壞�
 dosgolem通用疊圖、文字背景與對應測試提交31242a9，分支psychic-war/r5-text；本repo繼續沿go.mod本機replace及README克隆入口使用該分支。兩repo git diff --check通過，提交明確列出新增依賴檔。使用者本次已授權commit與push，目標為本repo main及dosgolem專案分支，沒有force push或改上游main。遠端核對與收工快照保存於weekly-closeout-final-audit-v1-20261006.json，文件與#34同步保持OPEN，#44不改。
 
 Goal保持paused，中文化與完整HD沒有宣稱完成。本週提交收尾後停止工作，待使用者下次繼續。
+
+## 193. 全部草稿明示定稿、391圖號保全與四圖庫60張接入（2026-10-06）
+
+【confirmed，限定使用者決定、素材保全、合成圖面及既有正常保存點回歸】
+
+使用者明示「草稿我都同意定稿，依序完成敵人圖號、盟友圖號」。全部現有美術草稿已接受，停止逐張美術批准及手腳端點微調；接入工作先敵人、後盟友。原版位置、比例、姿勢、8×8及人物在後／框線在前保持。
+
+敵人360/360及盟友31/31圖號的既有美術已逐檔凍結定稿。敵人原60張READY身體來源中其餘33張加入現行本機主題，共79筆PBL＋256格MAZE／77PNG；接入敵人60/360、ALLY3/31。敵人正常呈現已驗仍27/360，新增33張普通中文GUI抽測及其餘300圖來源／接入尚未完成。
+
+敵人360/360的來源PBL圖數各30、解碼色號SHA、PNG尺寸與既有SHA逐圖核對。四已接入圖庫的60張保持現行選稿；ENEMY02採group0 v2及group3 v3，其餘沿已選版本；ENEMY05／06／07已選組及ENEMY07 group4最新v4；ENEMY08 #0–#11採v3、#12–#14保持舊72×72；ENEMY09–11沿已選草稿，180小圖沿全量清冊。這是本次使用者接受，不改寫先前未接受／拒稿的診斷收據。ENEMY02像素別名與ENEMY08少96bytes的原版來源仍未知，不因美術定稿猜補。
+
+ALLY31/31逐圖核對，#0–#2保持正式稿，#3 v5、#4 v2、#5 v6、#6 v1、#7 v2、#8 v3、#9 v1、#10 v2、#11 v1；#12–#29沿既有素材，#30採20261004藍髮人像修稿。九個新人物完整原生Lanczos72×96 RGBA重生差0，實際單位元組負對照差1。#5取左臂較接近原版的v6，歷史v7不刪除，不新增容差。12完整人物、4局部及15小圖分類保持，不從靜態圖形推斷玩法身份。
+
+正式本機theme-enemy60-final-maze-B-v1-20261006保留前46筆／44PNG並新增33圖，使用既有024 §1.22–§1.23 READY來源，不改Go、EXE、RAM、seed或DAT格式。既有ready60_art_test.go以新主題plan重跑60張全部通過，包含獨立整圖面、8×8遮格恢復、錨點、開關、冷載、省略及單像素負對照。六個既有正常保存點各載入及接續100,000指令，12圖面與前46筆主題相同；獨立44機器欄位、完整DOS與CPU／RAM／port負對照通過。沒有新GUI、DAT、全動畫或封包驗收。
+
+測試首命令將-p1合成一個參數，go test未取得套件參數並報no Go files，屬命令環境失敗。按既有成功命令改成-p與1兩個參數，同容器工具鏈／期望乾淨重跑通過；兩份收據保留，不記產品缺陷。成功命令：Docker內go test -p 1 ./apps/psychicwar/theme -run '^TestReady60ArtBatch$' -count=1 -v；明示PSYCHICWAR_READY60_ART_PLAN與PSYCHICWAR_TEST_ORIG，不設定舊硬寫78筆的render輸出欄位，實際79筆／77PNG以selection-receipt及test-result-v2記錄。
+
+輸入位址基準：PBL原始檔偏移、解碼色號及PNG，沒有新增反組譯位址或原版行為推論。Go1.24.13、Python3.11.2及ImageMagick6.9.11-60，既有psychicwar-go-ebiten:latest SHA083e45e6bc0f01ca46ba0774581572c80a607120431b530de72cdd6ffb36f2f7。主repo基準7deffb9、dosgolem31242a9，正式程式保持。
+
+逐圖定稿入口workplace/hd/enemy-art-final-v1-20261006/art-index.json與ally-art-final-v1-20261006/art-index.json；這兩份研究清冊不能當production manifest。重跑、來源及收據沿workplace/ida/hd-ally-recruit-20261004/finalize-approved-enemy60-v1-20261006.py、freeze-approved-enemy-art-v1-20261006.py、freeze-approved-ally-art-v1-20261006.py、record-approved-sprite-final-v1-20261006.py，enemy60-final-v1-20261006/plan.json、test-result-v2.json及test-v2.log，enemy60-final-normal-v1-20261006.go及該目錄runtime.json。正常回歸保持兩側同保存點／seed，沒有改原版狀態。
+
+CONTEXT及worklist更新唯一現況，AGENTS §12和024 §1.46保存新明示決定。工作接入先敵人、後ALLY，不重抽已定稿美術。#34更新保持OPEN，#44不改；完整HD及平台交付未完成。源、PNG、完整提示、state及保全留本機，未新增commit／push／發行。私有保全與Docker／擁有權沿sprite-art-final-audit-v1-20261006.json及sprite-art-final-source-snapshot-v1-20261006.tar.gz。
+
+## 194. 十二敵人圖庫受控原版載入與174張限定來源契約（2026-10-06）
+
+【confirmed：十二次原版C6執行與RAM資料。原版共用階段為已證實分支／資料模型；新增圖庫正常玩家載入及GUI仍未驗。】
+
+沿主repo7deffb9及dosgolem31242a9，原版PW.EXE SHA88321206d5400b2276aba0f268e2daaa8355a733843dd9e89f9e7116ae690c49唯讀。起點06-name.state，每圖庫重新載入；研究程式明示設定runtime CS:IP=0161:2AF0及CS:305D的C6參數0–11，執行原版180條已核對C6指令至0161:2C43。這是direct-entry受控來源實驗，非正常玩家路徑，不宣稱沒有研究狀態設定。原版EXE及檔案不改，正式覆繪仍唯讀。
+
+十二次均在有限指令內結束、SP平衡；實際開檔為I_MAP、CODE、I_MENU、同ENEMY PBL三十次及I_ENMY。原始RAM413段95,344 bytes的初始身體、DS／CS差分、16×16小圖及80bytes紀錄與兩份獨立PBL解碼相符。小圖只核對載入資料，不證實用途或接入位置。59完整組236階段由既有原版sub_1435B選DS／CS分支重建，所有一bit負對照有效，沒有把模型稱為自然戰鬥。
+
+391原圖唯一身份審查留下58組174張完整24×32。ENEMY02 #12/#13像素別名，整組#12–#14排除；ENEMY08 #12–#14原24×24，排除。後者初始288bytes相符，尾端96bytes與假設的上一組中間姿勢不符，不能猜舊值、補零或拉長成24×32。其餘十檔各#0–#14，02／08各#0–#11。
+
+實際原版執行補足024 §1.32只靠靜態模型的缺口。限定來源證據審查後，024 §1.47在實作前標READY；允許沿既有來源識別及生命週期擴張白名單。普通GUI、來源生命週期、動畫及DAT仍是完成閘門，未放寬為受控測試即可完成HD。此判定不猜新增圖號、位置或規則，不將其餘DRAFT整節改成已驗。
+
+位址基準：runtime CS:IP及線性RAM；IDA EA=runtime IP+10510h，EXE檔案偏移=976+IDA EA−10000h。既有IDA Pro9.4匯出及原始bytes保留，不改導覽名稱；共用階段原始證據body-bank-native-cycle-proof-v1-20261005.json，C6入口enemy-bank-routing-ida-v8-20261005.json。工具Go1.24.13、Python3.11.2，既有psychicwar-go-ebiten:latest SHA083e45e6bc0f01ca46ba0774581572c80a607120431b530de72cdd6ffb36f2f7。
+
+新增入口同研究根workplace/ida/hd-ally-recruit-20261004/：enemy-allbanks-c6-controlled-v1-20261006.go、build-enemy-allbanks-c6-controlled-v1-20261006.py、-build.json、-overlay.json及.bin，verify-enemy-allbanks-c6-controlled-v1-20261006.py；目錄enemy-allbanks-c6-controlled-v1-20261006/的execution.json、十二份RAM／state及source-proof.json。binary SHA4cfba477505a0ab04b7d9ffc9d7f405049dfdeec7b012934fe05ffbe26b937ed、62份實際非標準編譯來源保存。來源審查enemy174-source-contract-review-v1-20261006.json包含READY當時spec、原版共用分支及source-proof SHA。編譯初次缺少既有probe檔依賴的die(error)，修正後成功；重複建置被避免覆寫斷言擋下，均屬研究工具問題。
+
+174張獨立原版PBL／PNG合成期望、8×8遮格恢復、錨點、HD開關、冷載及省略／單像素負對照均通過；58組232條實際RAM差分與錯階段／一bit負對照通過。別名及短圖組、未知檔名與錯SHA被拒絕，既有Sivad／Zellwal來源與清單限制回歸通過。測試新增enemy_controlled_bank_test.go，ready60_art_test.go兼容兩種限定批次清冊，輸出筆數從實際manifest／PNG計算。舊60張獨立圖面另跑通過，不把174合成case稱正常GUI。
+
+本機theme-enemy174-final-maze-B-v1-20261006新增114已定稿PNG，原79筆／77PNG逐SHA保持；共193PBL＋256MAZE／191PNG，敵人接入174/360，ALLY3/31。六個原有正常保存點各載入及接續100,000指令，12圖面與舊79筆主題相同，44機器欄位與完整DOS相同；CPU／RAM／port負對照有效。正常回歸二進位SHAb8d9ac64c399f96f0553849321476835a922200e3f4192e0663f333719bcd678，90份實際非標準編譯來源保存，沒有使用新受控state當正常起點。
+
+來源／重跑索引同研究根：prepare-enemy174-final-v1-20261006.py、verify-enemy174-final-v1-20261006.py；enemy174-final-v1-20261006/plan.json、render.json、test-result.json及tests.log／old60-regression.log；run-enemy174-normal-v1-20261006.py、enemy174-final-normal-v1-20261006.go／.bin／-build.json及同名目錄runtime.json、12份-machine.json。受限sandbox第一次timeout docker無socket權限，使用既有主機Docker權限後執行；不記產品缺陷。Docker network none、user1000:1000、cpus1、有界timeout及memory／pids，原版唯讀。
+
+新正式前端SHAa0f0688d92be28dbccf4404a310315b5ebe3c0976f8567f5d83fbc61be22a516，348實際編譯來源在enemy174-frontend-v1-20261006-build.json。GUI沿既有F7／F8輔助來源起點，只有普通Up送原版，不稱全程自然遭遇；960×600視窗24張，10張非黑8×8格與獨立原版／PNG期望相符，ENEMY04 #9／#10／#11三姿勢都可見，省略／錯姿勢負對照有效。其餘14份未宣稱HD通過，沒有挑選樣本掩蓋差異；此為有限可見格驗收，非整屏同幀。新前端末點依實際record鍵與相同絕對指令數重播，observer-control及actual-GUI兩次44欄位／完整DOS相同，CPU／RAM／port負對照有效。這是既有三姿勢回歸，正常圖號數仍27，不外推新增圖庫GUI。
+
+GUI第一次來源保全檢查漏掛/gomod唯讀來源，遊戲未啟動；保留空輸出目錄及failure.json到enemy174-gui-preflight-failed-v1-20261006，補掛既有gomodcache後相同binary／script／輸入重跑通過。Xvfb由trap終止，前端自然退出0。入口prepare-enemy174-gui-v1-20261006.py、enemy174-gui-v1-20261006.sh／.py、-independent-v1-20261006.py／.json及同名GUI目錄；普通鍵重播enemy174-gui-replay-v1-20261006.py傳enemy174-v1，rusteck-enemy174-v1-replay-v1-20261006-event-proof.json及兩份-machine.json，原始按鍵與保存點皆保全。
+
+完整主題套件回歸v2通過，頂層25項通過、15項未提供可選fixture而明示跳過。受控232轉換、獨立174圖面與舊60圖已另行無跳過執行。v1唯一失敗為TestThemeRealBackground從/orig相對推到/hd/bg.idx，不符合既有fixture位置；v2使用同一唯讀原版的儲存庫路徑，獨立背景fixture不改，同工具鏈／命令乾淨重跑通過。兩份log／json保留，不記產品缺陷。
+
+最終本機驗證入口theme-enemy174-final-maze-B-v1-20261006/verification-receipt.json，建立時selection-receipt的pending歷史不重寫。preserve-enemy174-v1-20261006.py保存本輪增量enemy174-source-snapshot-v1-20261006.tar.gz及索引／逐SHA核對enemy174-final-audit-v1-20261006.json。前輪完整美術保全sprite-art-final-source-snapshot-v1-20261006.tar.gz仍保留，本輪索引引用其SHA，原生與生成提示不重抽。#34兩次讀回全文保持OPEN，#44未改；Git差異及擁有權核對，Docker容器均以--rm及GUI trap清理。未commit／push／PR／tag／發行，所有原版、PNG、state、完整編譯來源及archive純本機。
+
+## 195. 180敵人小圖來源、原版共用動作與遮罩格式B定案（2026-10-06）
+
+【confirmed：原始EGA來源、原版受控初始化及共用動作。受控槽值不是正常玩家路徑；來源READY不增加接入數。】
+
+使用者選定「B：新增builtin_masks」。024 §2.0由DRAFT改成限定格式READY，AGENTS §12保存決定；不重新詢問。主題/2使用可省略的獨立清單，主題/1保持。每筆必須提供id、at、png、kind、match，正式id為battle-mask-4e36；不加入任意EXE位址或圖號。美術仍沿使用者已接受的B透光，不因技術格式改稿。
+
+十二圖庫ENEMY00–11各#15–#29，180張16×16。既有原版C6的十二份RAM與兩份獨立PBL解碼核對23,040 EGA bytes，180來源在391清冊各自唯一；舊60正常來源SHA保持。各槽後64 bytes的11,520 bytes只作CGA候選診斷，並非全部相同，語意未知，不作EGA輸入。初次驗證器把未證實的CGA映射當斷言而失敗；v2刪除這項假設，保留原EGA期望與負對照，沒有改原始RAM。入口同研究根verify-small180-c6-v2-20261006.py、small180-c6-proof-v2-20261006.json，首次failure.json保留。
+
+IDA原始函式sub_144DC，執行期0161:3FCC，才是敵人小圖。原版sub_14038初始化來源DS:AF12。17槽請求值CS:3ACA、存值CS:3AFD，0為空，1／2／3依序對應#15+3g／#17+3g／#16+3g。CS:40B1的16個u16偏移以4×前值＋新值索引，AL=1進行XOR新增、轉換及消除，相同值不貼圖。sub_14566／DS:AF0C是玩家BEAM分支，不能混用。
+
+實際小圖位置為(8+16s,y,16,16)，s=0–16；y160或168。原版DX=F522h名義y170經sub_1632F取商、兩次右移及一般貼圖乘4，實際y168。受控v1選錯玩家分支，得到空來源；獨立驗證v2又把名義170當實際170而拒絕。兩次研究工具失敗保留，按原始資料流修正；同一份v2實際執行收據由v3驗證器核對，不改輸入或重擲。
+
+12圖庫×5組×2位置，共120受控原版初始化及sub_144DC執行。每組明示CS:IP、組號、狀態槽及原版狀態參數，16前後值組合共1,920對，1,440次貼圖、480次不貼圖。239原始指令與EXE及執行期RAM逐項相同；1,440完整frame由原始PBL、前frame及XOR重建差0，錯來源bit與錯目標負對照各1,440有效。舊正常敏頓209小圖座標回歸保持。合成前狀態槽不表示畫面已含對應舊姿勢，因此這只證實原始差分來源與輸出，不冒稱自然整段動畫。
+
+位址基準：IDA EA；runtime0161:IP=EA−10510h；MZ file offset=976+EA−10000h。PW_UNP.EXE SHAfd5115b91f014c47a1fb1a6e2ecfd645e293264fe614a4b350e92637cad2fbd9；唯讀資料庫SHA4db51a199f5913c52dc4964557b9a4aafb965754d663cb0173c9dfdfe9a00c56。IDA Pro9.4 image SHA6f6d59af49d0008c4109a5295b5f374bdc007e2d1ab28cb9de08779584de2780，複本於/tmp開啟，不改原名、註記或正式DB。
+
+來源索引：small-motion-ida-v1／v2-20261006.py及.json、兩份run與-command收據；small-motion-controlled-v2-20261006.go／.bin／-build.json／-overlay.json、同名目錄execution.json與所有frame／work.bin；verify-small-motion-controlled-v3-20261006.py、small-motion-controlled-proof-v3-20261006.json。二進位SHAfe27fae11b1f7b5c70405044b618d980d3d3cc1db2a4f658a6c8d358e3faabb4，62份實際非標準編譯來源保全。024 §1.48限定來源／動作READY；177張其他小圖、兩組例外與GUI仍待完成。
+
+## 196. builtin_masks正式接入、敏頓B效果與普通GUI限定驗收（2026-10-06）
+
+【confirmed：已知來源分解、限定正式合成、可見效果格與原版無修改比較。未證實所有真實中途、其他敵人動畫、DAT或效能。】
+
+首次101變數候選按§180來源接入正式效果層，2,238完整邊界與1,119來源轉換通過。普通GUI發現未列入的遮罩位置，完整模型因此回退原版效果；這份候選未通過GUI，不列正式完成。回到原版來源查證，再修024 §1.49，沒有在程式默補位置。
+
+首次GUI錄製起點為正常Minton #6完整保存點，steps381716779；Space381977770按下、392944263放開，F10終點392954097。研究重播v1誤用typematic=false，與前端KeyDown的按住鍵重複契約不同，44欄位比較拒絕。v2改用已查證的重複契約，保持同一初始state／原鍵／終點，控制及實際GUI兩次44機器欄位與完整DOS相同。這是研究工具修正，不記產品缺陷。v2原版874一般貼圖、90遮罩，1,928前後邊界與方向由獨立PBL／EXE來源重建差0。
+
+原版sub_1461B，runtime0161:410B，DX=F202h起17槽，每槽加4；sub_14685，runtime4175，使用CS:4197的八偏移[-642,640,-638,-2,642,-640,638,2]；sub_1530A，runtime4DFA，使用CS:4E36的32-byte遮罩。98原始指令與解壓EXE及C6執行期RAM一致。共88原版位置，78完整位於(32,144,256,40)域內；域外10位置保持回退。78是靜態原版位置契約，並非78正常GUI樣本。
+
+域內y152／168的x32至272每8，y160的x32至272每16；敵人小圖沿原版17槽，批准域內y160、x40至264每16。BEAM沿已驗y160、x40至248每16；FIGHT #0–#1在(256,144)、#2–#3在(40,144)；身體#6–#8在(32,152)。3身體、45小圖原位、42BEAM原位、4FIGHT及78MASK，共172變數滿秩。新GUI重播1,928邊界唯一冷載解與原事件真值相同，未知像素、兩身體姿勢、外來身體及錯已知bit負對照有效。
+
+遮罩只有SHAe1aa2b9ddb6488a70d573ca3a03e71028cd8a2dafa68087c6f6f3d7c60950a5a進入正式程式，原32 bytes從玩家執行期CS:4E36唯讀取得，沒有嵌入Git。PW.EXE SHA沿§194。原始場景由SCREEN五張、MENU及ALLY #0重建，身體變數與原版基底差分；效果為色號XOR。完整場景用GF(2)冷載唯一解，不依賴HD畫面或事件歷史。一般8705／8751及遮罩8260／4E34入口只在完整前場景與唯一來源下預測中途新場景；全域8×8格與不可變模型不符即回退。ResetForLoad、未知來源、錯遮罩及錯錨點清除預測。
+
+新正式程式為apps/psychicwar/theme/battle.go，theme.go負責格式／載入／圖面，ally.go附加唯讀來源入口。HD先沿SCREEN／MENU／ALLY基底畫人物，效果沿B透光，以各通道透光係數相乘後一次取整；全黑原版8×8來源格不畫PNG。原位、比例、人物在後／框線在前保持，中文在HD之後。舊/1與沒有新清單的/2主題保持，錯欄位、null、來源SHA、尺寸、原位及重複變數拒絕。原版RAM／buffer／DOS／DAT不寫入。
+
+兩條獨立原版清單共4,166完整邊界、2,083來源轉換及2,083錯來源負對照全部通過，另有每次測試12個合成中途8×8遮格／恢復樣本。12個樣本是前後原版frame間只改第一個變動像素，不稱真實貼圖中途收據。3正式768×120圖面的全RGBA與独立PBL／PNG／B公式差0，敵人小圖、BEAM、FIGHT、MASK的省略及錯原位負對照有效。174身體、58組232轉換、Sivad／Zellwal及格式必要欄位測試無跳過通過；完整主題套件26通過、16項可選fixture明示跳過，不把跳過當成功。
+
+現行本機theme-enemy177-effects-maze-B-v2-20261006保留193PBL／191PNG，新增91PBL效果原位、78builtin_masks，共284PBL＋78內建遮罩＋256MAZE／202PNG。新增11個PNG含三張已凍結敵人小圖，其餘沿已展示BEAM／FIGHT／MASK稿，不重生美術。三敵人小圖SHA逐項與391美術清冊相同。敵人接入177/360，正常呈現由27增至30/360；ALLY仍3/31。剩183敵人為177小圖與6例外，28ALLY接入排在敵人後。
+
+六既有正常保存點的載入及接續100,000指令，12次原版44欄位／DOS相同，HD開關恢復相同。新效果圖面會填入原始已知基底，原始透明通道可與舊圖面不同，因此驗收預先指定為最終合成畫面，12份與舊174主題相同，沒有事後降低比較。
+
+新正式前端SHA08bb307118108a122233682d6dd1840d796c9815aa792efc4094bad7c5a53c3b，349實際非標準編譯來源保全。GUI v3在第44次抓圖時超過16秒自動退出；另一次前置檢查漏掛/gomod，未啟動遊戲。兩項屬驗證環境／預算問題，保留來源及輸出。v4用同一前端及正常起點，延長至30秒，36張960×600視窗、普通Space及F10保存，自然退出0；Xvfb trap清理。
+
+v4實際Space381960769按下、388862996放開，F10終點388881409、cycles1861545003、seed5E38。初始seed從同保存點唯讀取得，不寫seed或重擲；750cycles沿前端載入後設定。原版重播551一般貼圖＋57MASK，共608事件、1,216完整邊界，原始來源／方向與172變數冷載全部相符。控制及實際GUI兩次完整44欄位、DOS與CPU／RAM／port負對照通過。純F10保存不算512-byte DAT驗收。
+
+35/36份GUI視窗共2,436效果格與獨立原版來源／定稿PNG／B公式相同，新增#21／#22／#23各431／432／440個可見來源格，BEAM587、FIGHT682、MASK406；重疊格可同時計多類來源，不將各類相加當總格。逐來源省略負對照有效。未驗到效果格的1畫面保留，不宣稱通過。候選原版邊界步數只供找回模型，並非抓圖時間戳，因此本項是有限8×8格驗收，不稱整屏同狀態或全動畫。前端有中文靜態標籤，-load-state未恢復舊訊息／名字的中文歷史，不稱從開機普通中文全流程。
+
+工具沿§194的Go1.24.13、Python3.11.2、ImageMagick6.9.11-60與Docker image SHA083e45e6bc0f01ca46ba0774581572c80a607120431b530de72cdd6ffb36f2f7；IDA版本與位址基準沿§195。研究根仍為workplace/ida/hd-ally-recruit-20261004/，沒有新研究根或交付目錄。
+
+可重現入口：
+
+- 清單重建：prepare-minton-production-v1／v2-20261006.py，v2的--check-only逐bytes重建284PBL／78遮罩及202PNG相同；--out只建立workplace/hd/下全新本機目錄，不覆寫。實作前172來源READY完整快照minton-expanded-ready-spec-snapshot-v1-20261006.md及-review.json與原plan所錄SHA完全相同。minton-current-production-source-review-v1-20261006.json確認113專案來源與已驗GUI的349來源編譯版本逐SHA相同。
+- 原版位置：battle-mask-ida-v1／v2／v3-20261006.py、.json及run／command；verify-minton-mask-contract-v2-20261006.py、minton-mask-coordinate-contract-v2-20261006.json。
+- 初次GUI來源：minton-gui-replay-observer-v2-20261006.go／.bin／-build.json及minton-gui-replay-normal-v2-20261006.json，verify-minton-gui-replay-directed-v2-20261006.py、verify-minton-gui-cold-expanded-v1-20261006.py。重播binary SHAc010b2f0b49551e9ff189aabc5d1a0a39b5c0814d423b2f8ad7a34ed4a6181aa，63份實際來源。
+- 正式測試：minton-production-tests-v3-20261006.bin／-build.json，SHA78694b127fedb113014e06b9473e1314b3d79db7a960854dae922eeee54df17a、111實際來源；兩份minton-production-plan-expanded-{old,gui}-v1-20261006.json及minton-production-expanded-{old,gui}-v3-20261006/tests.log／render.json／test-command.json。明示PSYCHICWAR_TEST_ORIG、PSYCHICWAR_MINTON_PLAN及PSYCHICWAR_MINTON_OUT後執行-test.run 'TestMintonProductionScene|TestBuiltinMaskRequiredFields'。測試檔後續只有兩個加號的空白格式修正，實際編譯原文仍完整保留。
+- B合成：verify-minton-production-render-v3-20261006.py、minton-production-render-independent-v3-20261006.json。
+- 正常回歸：minton-production-normal-v3-20261006.go／.bin／-build.json及同名目錄runtime.json，SHA1ccbebc3042b295089a5bea4a342f52a1b02411494be27a3045cb0a2042d70f8、91實際來源；12份-machine.json。
+- 正式GUI：minton-production-gui-v4-20261006.sh／.py及同名目錄36視窗、record.json、terminal.json及final.state；新349來源前端同名前綴frontend-v3。GUI所用容器掛repo／原版／gomod唯讀、研究根可寫，CPU2、memory1g、pids128、有界逾時及Xvfb trap。
+- 新GUI原版：minton-gui-replay-observer-v3-20261006.go／.bin／-build.json，SHA33cb9ff8a155bbe6fb6490d28115e5f99c1a6c74de2f4bf288b9e12a58694400、63實際來源；minton-gui-replay-normal-v3-20261006.json與所有frame，verify-minton-gui-replay-directed-v3-20261006.py、verify-minton-gui-cold-expanded-v2-20261006.py；minton-gui-replay-{control,final}-machine-v3-20261006.json。
+- GUI格：verify-minton-gui-cells-v1-20261006.py、minton-gui-cells-independent-v1-20261006.json，記錄所有36張及未匹配畫面，不隱藏負結果。
+
+現況由CONTEXT及worklist保存，#34保持OPEN，#44不改。完整效果圖號、真實中途／DAT、其他敵人、全動畫、效能、權利、封包與平台待完成；024 §1.49保持限定READY，不稱全項CONFORMED。前輪原版及391美術archive保持，新來源／完整編譯原文／PNG／state在本機增量保全；入口preserve-minton-runtime-v1-20261006.py、minton-runtime-source-snapshot-v1-20261006.tar.gz、minton-runtime-final-audit-v1-20261006.json。未commit／push／PR／tag／發行。
+## 197. 十二圖庫58組小圖的來源選擇與合成
+
+日期：2026-10-06。規格024 §1.50；本節入口為workplace/ida/hd-ally-recruit-20261004/explore-small-profiles-v1-20261006.py及small-profiles-exploration-v1-20261006.json。12原版圖庫SHA沿§194–195，輸入逐檔SHA記錄於收據；工具Python3.11.2，既有psychicwar-go-ebiten image，原始PBL唯讀。
+
+已證實：三段工作源0／C0h／180h各128 bytes連接，在60組各自唯一，120受控原版初始化皆吻合。原版指標1175:AF12；sub_14038的IDA EA14081 bytes `8b160eaf`讀DS:AF0E，14092的`f3a4`複製600h；原始指令與執行期驗證沿§195保留，不改導覽名稱。12份既有正常保存點讀取工作源，對應敏頓、卡蘇魯奇、格斯丁提與賈克斯莫組別。入口small-profile-normal-source-v1-20261006.go／.bin／-build.json／.json，實際77來源及binary SHA在build收據。
+
+已證實：58個有完整24×32身體的組，三身體＋BEAM42＋FIGHT4＋MASK78＋兩高度90小圖，各217變數獨立滿秩。原版像素來源模型範圍(32,144,256,40)，未含兩組身體例外、小圖x8／24、域外遮罩、其他ALLY與光束。這是合成來源與可唯一求解的證據，尚不稱58敵人正常GUI或完整HD完成。正式接入與必要回歸結果續記本節。
+
+限定接入已實作：新增171小圖，敵人348/360，包含174身體及174小圖。現行本機theme-enemy348-effects-maze-B-v2-20261006有5,459PBL／78builtin_masks／256MAZE、373PNG，前193筆及202PNG保持。美術沿360／31凍結清冊。原版指標、工作源、畫面與遮罩全唯讀，未知或切組清空預測，冷解及中途全域8×8沿024 §1.49–§1.50。
+
+以下入口均在workplace/ida/hd-ally-recruit-20261004/：
+
+- prepare-small-profile-plan-v1-20261006.py產生58組、174合成frame及12,586單源變數。正式apps/psychicwar/theme/battle_profiles_test.go沿清單核對來源SHA、原位、滿秩、冷載、讀檔、開關及174錯工作源負對照。small-profile-tests-v1-20261006/保存58圖面；verify-small-profile-render-v1-20261006.py及small-profile-render-independent-v1-20261006.json，58完整RGBA差0、58省略小圖負對照有效。合成場景不增加GUI計數。
+- small-profile-tests-v2-20261006.bin／-build.json保存112實際來源。新217模型的敏頓4,166邊界及2,083轉換／錯源負對照通過、24合成中途格線樣本，small-profile-regression-v1-20261006/{old,gui}.log。一般套件24通過／19可選fixture跳過，small-profile-suite-orig-v2-20261006.json；核心58組及兩敏頓清單另無跳過執行。
+- small-profile-normal-v2-20261006.go／.bin／-build.json及同名目錄runtime.json：六起點載入與100,000指令接續，12次44欄位、RAM／CPU／port負對照及完整DOS相同。10舊合成相同；賈克斯莫新增#18–#20小圖／FIGHT，差12,578放大像素；卡蘇魯奇新增光束／FIGHT，差11,206。verify-small-profile-normal-v3-20261006.py及small-profile-normal-independent-v3-20261006.json，由PBL、前幀與B公式獨立核對，差異皆在已知来源矩形。
+- 卡蘇魯奇一份真實中途：237809800步入口(72,160,16,16)、AL=1，237810721步終點。small-profile-normal-pending-v1-20261006.go／.bin／-build.json／.json保存独立原版前幀與來源；唯一推得BEAM #0目標，156格与新模型／B公式相同，4格回退且新舊合成相同。party／items／格斯丁提六份未知場景保持舊合成，不稱模型已解出。
+- 新前端small-profile-frontend-v1-20261006.bin SHA-256 `767fcd0fc5eb97fa7344da1569c6d4a494f5a3b4b79daf4b4d98b02156cdccf2`，-build.json有349實際來源。small-profile-gui-v1-20261006.sh／.py跑既有正常敏頓state、普通Space與F10，36視窗、自然退出0。verify-small-profile-gui-cells-v1-20261006.py及small-profile-gui-cells-independent-v1-20261006.json核對35視窗2,387效果格、三小圖與BEAM／FIGHT／MASK省略負對照。模板引用前輪原版邊界，候選步數不是新截圖時間戳，未稱整屏同幀。
+- GUI實際Space381950198–388541576，F10終點388575312、cycles1861238906、seed0EE7。small-profile-gui-control-v1-20261006.go／.bin／-build.json與small-profile-gui-control-normal-v1-20261006.json：原版523一般／55遮罩，觀察及控制終點相同；small-profile-gui-machine-v1-20261006.json核對新GUI44欄位及DOS相同。750cycles、同state、按住鍵重複，seed唯讀不重擲。
+
+失敗與訂正保留：主題v1的三小圖新別名造成PNG376不符373預估，v2沿同SHA舊檔名乾淨重建；六狀態初版誤把新增效果要求為舊畫面，v2保存差異供獨立核對；normal verifier v1缺真實中途，v2誤把未改且未知的格斯丁提當可解，v3明示未知回退，改動畫面仍需唯一來源及中途證據。私有debug overlay只讀合成狀態，不進production。GUI缺/gomod、套件缺/hd/bg.idx是環境失敗，相同image／命令補唯讀掛載後重跑通過，不列產品缺陷。
+
+敵人正常GUI仍30/360、ALLY3/31。最後12敵人、28ALLY、其他基底／效果、小圖域外、動畫、DAT、效能與交付未完成。024限定READY、#34 OPEN、#44不改。本輪保全入口preserve-small-profile-runtime-v1-20261006.py、small-profile-runtime-source-snapshot-v1-20261006.tar.gz及small-profile-runtime-final-audit-v1-20261006.json；沒有新commit／push／tag或發行。
+
+## 198. 最後兩組敵人別名與短圖來源接入（2026-10-06 19:09）
+
+依使用者定案續作，不重問美術。路由命中IDA／規格閘門／文件職責，載入use-ida-pro-9-4、grilling與對應入口。原版唯讀，正式PW_UNP.EXE.i64只在IDA容器/tmp複本查詢，沒有改名、分類或原始bytes。Docker沿psychicwar-go-ebiten:latest、Go1.24.13及Python3.11.2；IDA沿locked-v1 9.4。image ID沿§197及§100，UID/GID1000、network none、資源限制、逾時與--rm。
+
+【confirmed，限定原始來源】ENEMY02 #12／#13的384-byte原圖相同，已凍結定稿PNG bytes也相同，SHA59ba5219b0ac242fdd4d95d9ac74073cc21e5ad3607802f94f6354c6febc35e5。只此對可共用圖面／模型，保留兩圖號；不同PNG及重複同圖號拒絕。ENEMY08 #12–#14為24×24，HD保持72×72；三個前288-byte來源在391圖的24×24前綴各自唯一。C6觀察的尾96 bytes均為零，但語意仍unknown，不升格成固定零契約。
+
+【confirmed，限定受控原版執行】從既有C6 bank02／08 state明示初始化group4，再直接進sub_1435B，CS:3B20設1。八次原版AL=1、(32,152,24,32)貼圖全畫面XOR與原始PBL已知區域相同；ENEMY02首末兩個零差分也如實保存。原始IDA14038／1435B等rows與原版RAM逐bytes核對；runtime0161:IP=IDA EA−10510h，MZ fileoffset976+EA−10000h。輸入EXE、.i64及原版PW.EXE SHA沿§100／§194保持。這是明示direct-entry，不當正常玩家或GUI。
+
+024 §1.51 READY後接入六身體及六小圖，敵人来源覆蓋360/360。別名組216變數滿秩；短圖忽略(32,176,24,8)的三個全域8×8格，所有該區HD及重疊效果都保留原版。#27／#29在(40,168)的墨跡全部落在這區，217登記變數的兩個不可見變數不參與冷解；其餘215滿秩。初版獨立矩陣報兩個零向量後先核對原版逐列墨跡，沒有選任意姿勢或補零。中途完整前圖仍可顯示，但不得覆寫已由入口確認的待完成目標；新增pendingValue保存這個既有契約。
+
+60組／180合成場景、13,019登記變數及13,017可見變數冷載通過。原版八轉換、40短圖中途模型、錯來源、尾段、不同別名PNG、讀檔與開關負對照通過；兩份敏頓4,166邊界／2,083轉換保持。60独立B整圖面RGBA差0；新ALLY合併主題亦重新核對60份。正常GUI仍30/360，未算新12圖。六正常保存點12次44欄位與DOS、12舊圖面及合成相同，不稱全動畫、正常新圖號或DAT完成。
+
+來源入口在既有研究根：explore-last-enemy-groups-v1-20261006.py／last-enemy-groups-source-review-v1-20261006.json、last-enemy-motion-v1-20261006.go／.bin／-build.json及同名目錄、verify-last-enemy-motion-v1-20261006.py／last-enemy-motion-independent-v1-20261006.json。實作apps/psychicwar/theme/enemy.go、ally.go、theme.go、battle.go；驗證enemy_last_groups_test.go與battle_profiles_test.go。合併期望enemy360-ally12-plan-v2-20261006.json；原型及先前360主題保留，不覆寫歷史收據。
+
+## 199. ALLY九張完整道具肖像接入（2026-10-06 19:09）
+
+敵人來源批次接入後，依使用者順序接ALLY #3–#11，沿既有定稿，不重生。先查既有普通來源盤點，未取得新正常ALLY圖號，不再猜步行或重擲seed。只追已知道具肖像共用載入／貼圖切片，停止於來源、原位、模式足以形成限定READY契約；正常角色選取、隊伍及其他19圖號另列unknown。
+
+【confirmed，限定IDA與受控執行互證】原版ALLY.PBL SHA c88ad34c06d3c5ab68ff2b4aafe2a0fde51b513c375c1d90924563f1b1557219，31圖數與兩解碼器核對。IDA132A5 bytes e84dff，runtime2D95呼叫2CE5；後者設定AH=0Ch並讀DS:AEE8。132A8 bytes baa0c2、132AB bytes e89d30，送sub_1634B原位(128,8)、24×32、AL=0。原DB把這些bytes列data，匯出保留分類及原始bytes，對齊decode只作附加證據，沒有改DB名稱。相關輸入SHA、工具9.4及位址基準沿§198／§100。
+
+12次直接進2D95並明示AL0–11，全部384-byte來源與391圖唯一身份相符；全畫面COPY差0，SP保持，12個一bit負對照有效。這只證實受控原版共用來源／原位／模式，不證實#3–#11玩家選取、招募或隊伍位置。024 §1.52 READY後復用既有sprite生命週期，九張只允許(128,8)及右側錨點。ALLY接入12/31，#12–#15四局部24×32、#16–#30十五小圖仍未接入；全部31美術定稿保持。
+
+九張正式圖面與原版實際來源frame的獨立全畫面RGBA差0；原位8×8、冷載、開關、省略圖面、錯來源、未READY位置與其他圖號負對照通過。第一版測試漏給Layer.Frame RGB，圖層按契約停止繪製；補相同原版RGB後同工具鏈乾淨重跑。一般套件舊負對照仍把已READY #3列拒絕，改成尚未READY #12後24通過／23專用fixture明示跳過；九ALLY、60敵人、原版八轉換、40中途及兩敏頓核心均另明示執行沒有跳過。兩個失敗都是驗證輸入／舊期望，未放寬產品來源或原位。
+
+合併主題theme-enemy360-ally12-effects-maze-B-v1-20261006，5,654PBL＋78builtin_masks＋256MAZE／394PNG。六正常保存點12次44欄位／DOS及12舊圖面／合成相同。新版正式前端SHA9b5fc6609a4bd1831cf228a8810bd25290a1d58a224e2ff705717a27bc8c8c11，349實際非標準來源保存；普通Space GUI36張中35張共1,975效果格符合獨立B模板，BEAM／FIGHT／MASK及敏頓三小圖可見，F10保存、30秒自然退出碼0。GUI首版cwd為/，相對text／font找不到；v2用/src，相同binary、state與鍵序重跑。Xvfb有trap，沒有退回主機執行。有限格模板来自前批原版邊界，不作新時戳或整屏同幀；ALLY新九張正常GUI尚未驗，不增加計數。
+
+入口均在既有研究根：ally-portraits-ida-v1-20261006.py／.json及run-ally-portraits-ida-v1-20261006.py，ally-portraits-controlled-v1-20261006.go／.bin／-build.json及同名execution.json，verify-ally-portraits-source-v1-20261006.py／ally-portraits-source-independent-v1-20261006.json。正式測試apps/psychicwar/theme/ally_portraits_test.go；九份RGBA在ally12-validation-v2-20261006/，獨立ally12-render-independent-v2-20261006.json。六正常保存點與12-machine.json在enemy360-ally12-normal-v1-20261006/；60圖面、敏頓與一般套件入口見CONTEXT。GUI入口enemy360-ally12-gui-v2-20261006.sh／.py及同名目錄，獨立enemy360-ally12-gui-cells-independent-v1-20261006.json。
+
+本批來源、原版、PNG、state、提示及archive只留本機。保全入口preserve-enemy360-ally12-v1-20261006.py、enemy360-ally12-source-snapshot-v1-20261006.tar.gz及enemy360-ally12-final-audit-v1-20261006.json。CONTEXT／AGENTS／README／worklist與#34同步，#34保持OPEN，#44不改。完整HD、19ALLY來源、正常隊伍／GUI、其他基底／效果、DAT、動畫、效能、權利與封包仍待完成；沒有commit／push／PR／tag／發行。
