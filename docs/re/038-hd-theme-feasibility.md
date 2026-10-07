@@ -8354,3 +8354,16 @@ v4實際Space381960769按下、388862996放開，F10終點388881409、cycles1861
 研究工具失敗保留：probe覆映射缺die輔助函式、舊計時探針漏目前英文標籤分支、舊比較器／道具fixture二進位或路徑不存在、loaded-off起跑load8.24停止。前兩項依實際源碼修正；缺件用固定SHA來源重生；道具fixture改用本輪正常DAT載回；高負載段未開跑，保留已驗absent，降載後只續兩模式。沒有退回主機執行或降低驗收標準。初次DAT工具執行的自動審查逾時，依工具指示重試一次後核准，未造成檔案寫入。
 
 保全入口preserve-ally31-handoff-v1-20261007.py、ally31-handoff-source-snapshot-v1-20261007.tar.gz、ally31-handoff-final-audit-v1-20261007.json，均在既有研究根。原版、PNG、state、DAT、完整來源及archive只留本機。CONTEXT、AGENTS、README、024及worklist回填；#34核讀OPEN、#44不改。本批僅本機提交，未push／PR／tag／發行。其他效果圖號、圖像／動畫、其他人物／選裝正常GUI、剩餘場景DAT、權利與封包仍待完成，完整HD不稱CONFORMED。
+
+## 202. 其餘BEAM／FIGHT的來源索引與停止邊界（2026-10-07 17:54）
+
+ALLY31限定接入與§200–§201驗收已提交d3ab16136cbf70ac7310125fe44b348233ec5363，17檔；兩工作樹當時乾淨，未push。6,532份本機來源保全archive為366,703,312 bytes，SHA4b964a8a23a21046cee22af28108416503cb6d99264800ba6c5f749aaa7617ec；每個member重新讀取核對。前端實際來源、391定稿圖號、八份獨立收據及前批archive均相符。這是限定接入的收工記錄，完整HD保持未完成。
+
+後續查詢命中IDA路由，載入use-ida-pro-9-4、ida_94_official工具契約與非root衛生入口。沿locked-v1 9.4，image SHA6f6d59af49d0008c4109a5295b5f374bdc007e2d1ab28cb9de08779584de2780；正式DB唯讀、/tmp一次性複本、UID/GID1000、network none、CPU1、3GiB與75秒外層逾時。PW_UNP.EXE SHAfd5115b91f014c47a1fb1a6e2ecfd645e293264fe614a4b350e92637cad2fbd9，正式PW_UNP.EXE.i64 SHA4db51a199f5913c52dc4964557b9a4aafb965754d663cb0173c9dfdfe9a00c56保持。位址基準：IDA EA；程式runtime0161:IP=EA−10510h；DS資料EA基底20650h；MZ檔案offset=976+EA−10000h。
+
+- 【confirmed，限原始bytes與索引】v3匯出SHA8a742c5951b364514f15c938be47ca623e7dc9552924edf1b46e125e822a680b。339處原始指令與原EXE逐byte相同，339個單bit負對照有效。26資源指標及檔名與EXE相符，BEAM為AH=0Eh、FIGHT為AH=0Fh；兩原始PBL各12圖獨立解碼。檔名前一byte的語意本批未查，不猜狀態旗標。
+- 【confirmed，限讀取端】IDA145AA讀DS:AF0C，145B1呼叫sub_1632F；143EE讀DS:AEF2，143AA／143B3讀DS:AEF6／AEF8，143BE呼叫sub_16367。保留原名、operand及bytes。14398至143DC的連續解碼補足正式DB分散的函式邊界，不修改DB分類或名稱。
+- 【unknown】來源工作區的間接初始化、其餘圖號選擇與正常動作尚未閉合。直接xref少寫入只描述查詢結果，不宣稱不存在寫入端。DS:EF88／F202靜態匯出的FFFF值沒有對應EXE bytes，不當執行期座標或固定值證據。
+- 024 §1.55保持DRAFT。正式BEAM #0–#2／FIGHT #0–#3接受範圍、正常GUI數字及ALLY31主題不改。下一切片追載入選擇及間接寫入，再驗原版工作源、位置與轉換；不重跑缺前置條件的F1來湊覆蓋，也不由共用貼圖常式猜補其餘圖號。
+
+入口均在workplace/ida/hd-ally-recruit-20261004/：remaining-effects-ida-v{1,2,3}-20261007.py／.json、run-remaining-effects-ida-v3-20261007.py及同名command收據；獨立verify-remaining-effects-ida-v1-20261007.py／remaining-effects-ida-independent-v1-20261007.json。早版保留；資源字串解析明示跳過前一byte，不把以0開頭的記錄稱為缺檔。新增證據保全remaining-effects-source-snapshot-v1-20261007.tar.gz及remaining-effects-final-audit-v1-20261007.json。原版與研究archive只留本機，沒有Issue寫入或發行。

@@ -47,10 +47,11 @@
 - DAT：ally31-dat-gui-v1-20261007.sh／.py、ally31-dat-{save,load}-v1-20261007/，含實際PNG、錄製、原版state／frame／player。對照：run-ally31-controls-v2-20261007.py、ally31-{save,load,battle}-control-v2-20261007/；收據ally31-gui-dat-machine-independent-v2-20261007.json。角色區verify-ally31-dat-crops-v1-20261007.py／ally31-dat-gui-crops-independent-v1-20261007.json。
 - 效能：ally31-performance-v1-20261007/verified.json及三模式execution／stats／terminal。準備／重生入口prepare-ally31-performance-v2、run-ally31-performance-v3及verify-ally31-performance-v1，日期20261007。正式程式不含計時探針。
 - 保全與最後稽核：preserve-ally31-handoff-v1-20261007.py、ally31-handoff-source-snapshot-v1-20261007.tar.gz、ally31-handoff-final-audit-v1-20261007.json。原版、PNG、state、DAT及archive僅本機。
+- 後續效果查詢：remaining-effects-ida-v3-20261007.json、run-remaining-effects-ida-v3-20261007.py及verify-remaining-effects-ida-v1-20261007.py。339處原始指令、26資源索引及24圖解碼相符；僅來源索引，其他BEAM／FIGHT選擇與動作仍未知。入口研究038 §202及024 §1.55 DRAFT；保全remaining-effects-source-snapshot-v1-20261007.tar.gz／remaining-effects-final-audit-v1-20261007.json。
 
 ## 下一步
 
-1. 依024 §1.1核對尚未接入的BEAM／FIGHT圖號、ROOM1／MAP／OPEN／END等圖像與動畫。先查既有證據，再補最小來源切片。
+1. 沿024 §1.55及研究038 §202，追BEAM #3–#11／FIGHT #4–#11的載入選擇與間接寫入端，再補原版來源及動作切片。ROOM1／MAP／OPEN／END等仍依§1.1，查既有證據後逐批接入。
 2. 補其他人物、小圖、裝備與敵人的正常玩家GUI抽樣，以及剩餘場景DAT與戰鬥成本。
 3. 完成權利與實際封包驗收。全部達024 §6才關#34；#44真機驗收獨立保持。
 4. HD完成後製作四張README總覽：我方原版、我方HD、敵人原版、敵人HD，保留圖號並說明HD貢獻。此展示已於2026-10-06授權；原版資料包仍留本機。
