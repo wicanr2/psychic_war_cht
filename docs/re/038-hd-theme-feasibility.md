@@ -8312,3 +8312,45 @@ v4實際Space381960769按下、388862996放開，F10終點388881409、cycles1861
 入口均在既有研究根：ally-portraits-ida-v1-20261006.py／.json及run-ally-portraits-ida-v1-20261006.py，ally-portraits-controlled-v1-20261006.go／.bin／-build.json及同名execution.json，verify-ally-portraits-source-v1-20261006.py／ally-portraits-source-independent-v1-20261006.json。正式測試apps/psychicwar/theme/ally_portraits_test.go；九份RGBA在ally12-validation-v2-20261006/，獨立ally12-render-independent-v2-20261006.json。六正常保存點與12-machine.json在enemy360-ally12-normal-v1-20261006/；60圖面、敏頓與一般套件入口見CONTEXT。GUI入口enemy360-ally12-gui-v2-20261006.sh／.py及同名目錄，獨立enemy360-ally12-gui-cells-independent-v1-20261006.json。
 
 本批來源、原版、PNG、state、提示及archive只留本機。保全入口preserve-enemy360-ally12-v1-20261006.py、enemy360-ally12-source-snapshot-v1-20261006.tar.gz及enemy360-ally12-final-audit-v1-20261006.json。CONTEXT／AGENTS／README／worklist與#34同步，#34保持OPEN，#44不改。完整HD、19ALLY來源、正常隊伍／GUI、其他基底／效果、DAT、動畫、效能、權利與封包仍待完成；沒有commit／push／PR／tag／發行。
+
+## 200. ALLY十五小圖、四裝備與四隊伍原位的接手核對（2026-10-07）
+
+本輪接手前輪未提交的024 §1.53–§1.54 READY實作及收據，沿已定稿美術。研究根仍為workplace/ida/hd-ally-recruit-20261004/，本節以下相對入口均在此。工具Go1.24.13、Python3.11.2、ImageMagick6.9.11-60，psychicwar-go-ebiten image SHA083e45e6bc0f01ca46ba0774581572c80a607120431b530de72cdd6ffb36f2f7；IDA證據沿前輪9.4，正式DB未改。原版PW.EXE SHA88321206d5400b2276aba0f268e2daaa8355a733843dd9e89f9e7116ae690c49，ALLY.PBL SHAc88ad34c06d3c5ab68ff2b4aafe2a0fde51b513c375c1d90924563f1b1557219。原版唯讀，輸出UID/GID1000；network none、--rm、CPU1–2、資源及外層逾時限制。
+
+【confirmed，限既有原版受控來源】#16–#30十五張16×16小圖共31原位的RLE COPY、兩解碼器及單像素負對照通過。座標表與原始bytes沿024 §1.53；原版直接RLE畫圖，不經8705，正式程式以完整來源與原版全圖辨識，不猜掛鉤。入口ally-remaining-ida-v7-20261006.json、ally-remaining-controlled-v2-20261006/execution.json、ally-small-source-independent-v1-20261006.json。IDA EA換runtime0161:IP為EA−10510h，MZ fileoffset為976+EA−10000h；原名、bytes與分類保留。
+
+【confirmed，限既有受控合成】四裝備#12–#15合入12人物、四隊伍槽，共192組RAM及完整COPY；另48人物原位COPY及256人數輸入通過。原版driver2跳過色號2／Ah，完整384-byte工作源共有60唯一身份。四原位依槽0–3為(264,152)、(232,152)、(200,152)、(168,152)。覆繪只讀1175:AEE6指標+46h的低兩bit、人數與1175:AF02工作源；未知來源／driver與指標越界回退。入口ally-equipment-controlled-v4-20261006、ally-equipment-source-independent-v2-20261006.json、ally-loader-return-ida-v1及ally-party-count-ida-v1；原始地址／合成規則沿024 §1.54。
+
+【confirmed，限定圖面】裝備定稿PNG沿RGB(85,255,85)底色的最小alpha轉換，再與人物合成，原PNG不改。240份人物／裝備完整RGBA、31小圖原位完整RGBA、144合成B場景與48獨立B圖面通過，移位、錨點、未知來源／driver／人數、冷載、開關及省略負對照有效。正式實作ally.go／ally_equipment.go／theme.go／battle.go，驗證ally_small_test.go／ally_equipment_test.go。收據ally31-render-independent-v2、ally31-small-render-independent-v1、enemy360-ally31-render-independent-v1，日期20261006。來源接入ALLY31/31，正常選裝與其他人物GUI仍未知。
+
+【confirmed，既有正常保存點接續】六起點載入及100,000步接續，12次44機器欄位與DOS相同。11舊RGBA相同；格斯丁提bank4/group2兩隊員ALLY0／2的真實中途，原版入口676817253步、核對點676817780步，156格符合獨立來源與B公式、4格保持原版，錯來源負對照有效。入口enemy360-ally31-normal-v2-20261006/runtime.json、ally31-normal-independent-v2-20261006.json。60敵人模型、八受控身體轉換、40短圖中途及敏頓4,166邊界／2,083轉換保持。一般套件24通過／25專用fixture跳過；來源清單另明示執行通過，不計跳過為成功。
+
+現行本機主題theme-enemy360-ally31-effects-maze-B-v1-20261006，5,746PBL＋78builtin_masks＋256MAZE／413PNG。audit-ally31-handoff-v1-20261007.py核對31凍結素材、既有四份獨立收據及實際編譯來源。缺失的18份art-in PNG別名由完全相同SHA的現行素材復原；舊比較器由原碼重生，binary SHA6e4a6979d5fdef33b4c204982583e9952af8dbab834ac39650c6ea7d009c1e73與舊收據完全相同。入口restore-ally31-reference-inputs-v1-20261007.py／ally31-reference-inputs-restored-v1-20261007.json。歷史收據及原版不改；四份輸入直接路徑全部相符。
+
+本輪核對後接手實作，沒有重新生成美術或改規則／schema。來源READY及受控RGBA不能替代正常選裝、全部圖號GUI、動畫或完整HD交付。下一節記本輪新的正式GUI／DAT／效能驗收。
+
+## 201. ALLY31正式前端、原版DAT與效能（2026-10-07）
+
+【confirmed，限定新建正式前端】enemy360-ally31-frontend-v1-20261007.bin SHA9cca6ad5ae93cbcba2ba67d3d034975dbf11f6a6009f2aece1f6f6bb7ad9ab59，350實際非標準來源全文及SHA保存在同名-build.json；建置入口build-ally31-frontend-v1-20261007.py。主題與工具版本沿§200。所有起點為既有正常玩家保存點，seed於執行前由同state固定，不寫seed、不重擲，750cycles沿正式前端讀檔後設定。
+
+隊伍／道具24視窗的角色兩原位、肖像切換／撤圖、F10／F11與自然退出0通過，獨立PNG負對照有效。普通Space戰鬥36視窗中35份、1,739效果格吻合，FIGHT590、BEAM1048、MASK31及敏頓小圖#21／#22／#23各42／45／75來源格可見。重疊格不相加當總格。模板是前批原版邊界，不作新截圖時戳；仍限8×8格，整屏同幀及全動畫另驗。入口ally31-gui-v1-20261007.sh、ally31-gui-{party,battle}-v1-20261007/及獨立party／battle-cells收據。敵人正常GUI30/360、ALLY正常#0–#2保持。
+
+【confirmed，真正原版存讀檔】從正常Options及SELECT起點，以正式F11還原中文字面，再用普通原版鍵保存及讀取hd31.dat。新主題GUI的512 bytes與原版精確鍵序保存結果完全相同，SHA b32d25e6298fb0dd7a14de3202cd80a53479826e0cda6793b94f5081030c58f8；載回玩家區52 bytes相同，DAT／玩家單byte負對照有效。載回後切換凱與敏頓道具肖像，24視窗、66個完整72×96角色區與獨立原版PBL／定稿PNG相同，HD關閉回到原版RGB的負對照有效。入口ally31-dat-gui-v1-20261007.sh／.py、ally31-dat-{save,load}-v1-20261007/、verify-ally31-dat-crops-v1-20261007.py及其獨立收據。
+
+【confirmed，同起點／同原版鍵步數】存檔、讀檔與普通Space三段GUI錄製各自重播到實際F10終點，44個機器欄位、指令數及完整DOS全部相同。負對照翻動CPU、RAM及port均有效。入口prepare-ally31-control-v2、run-ally31-controls-v2及ally31-{save,load,battle}-control-v2，日期20261007；總收據ally31-gui-dat-machine-independent-v2-20261007.json。重播binary SHAdd64ec5cda24d667b53f8ca402b9d17f830fb048408af70cc7703fcb38f3128c，62實際來源保全。原版state解析工具完整44欄位結構與目前machineState相同，不略過欄位。
+
+讀檔第一輪只有線性01096／01097兩byte不同，DOS相同。獨立差分ally31-load-machine-difference-v1-20261007.json保留。dosgolem internal/dos/find.go的emitFind在DTA+16h寫入dosDateTime(info.ModTime())；此點DTA為1000:0080，因此差異即01096。GUI複製DAT與重播複製DAT的時間不同。v2維持實際GUI讀檔輸入的mtime，重跑完整44欄位與DOS即相同，沒有排除這兩byte或改原版RAM。這是驗證環境差異，未列產品缺陷。
+
+【confirmed，限定本機成本】正式main以Go覆映射加入計時，原碼不改；量測binary SHAd591b49ca38c21b1e21754536a5ef89175c81dc42867791a643f2c69a36c239d，350實際來源保全。用本輪正常DAT載回的道具畫面，三模式起跑load 6.26／4.29／4.74，統計10–30秒，所有程序自然退出0及計數破壞負對照有效。
+
+| 模式 | Frame均值ms | Theme.Frame均值ms | Draw CPU均值ms | 實際繪圖FPS |
+|---|---:|---:|---:|---:|
+| 未載入 | 1.543 | 0.00024 | 3.197 | 40.58 |
+| 載入關閉 | 3.207 | 2.037 | 2.380 | 53.23 |
+| 開啟 | 3.485 | 2.213 | 4.348 | 38.14 |
+
+限兩CPU、軟體OpenGL、null音訊，沒有速度門檻；各段共享主機負載不同，FPS不外推真機、戰鬥或封包。入口prepare-ally31-performance-v2、run-ally31-performance-v3、verify-ally31-performance-v1及ally31-performance-v1/verified.json，日期20261007。
+
+研究工具失敗保留：probe覆映射缺die輔助函式、舊計時探針漏目前英文標籤分支、舊比較器／道具fixture二進位或路徑不存在、loaded-off起跑load8.24停止。前兩項依實際源碼修正；缺件用固定SHA來源重生；道具fixture改用本輪正常DAT載回；高負載段未開跑，保留已驗absent，降載後只續兩模式。沒有退回主機執行或降低驗收標準。初次DAT工具執行的自動審查逾時，依工具指示重試一次後核准，未造成檔案寫入。
+
+保全入口preserve-ally31-handoff-v1-20261007.py、ally31-handoff-source-snapshot-v1-20261007.tar.gz、ally31-handoff-final-audit-v1-20261007.json，均在既有研究根。原版、PNG、state、DAT、完整來源及archive只留本機。CONTEXT、AGENTS、README、024及worklist回填；#34核讀OPEN、#44不改。本批僅本機提交，未push／PR／tag／發行。其他效果圖號、圖像／動畫、其他人物／選裝正常GUI、剩餘場景DAT、權利與封包仍待完成，完整HD不稱CONFORMED。

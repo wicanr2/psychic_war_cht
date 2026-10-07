@@ -112,6 +112,7 @@ func TestMintonProductionScene(t *testing.T) {
 		b = found
 		variables = 217
 	}
+	selectSingleAllyFixture(t, b, orig)
 	mask := read(plan.Mask)
 	if !b.prepare(mask) || len(b.assets) != variables || len(b.basis) != variables {
 		t.Fatal("原版遮罩／滿秩來源不符")
@@ -240,6 +241,7 @@ func TestMintonProductionScene(t *testing.T) {
 		if !changed {
 			continue
 		}
+		selectSingleAllyFixture(t, b, orig)
 		b.frame(partial, colors, 0x0d, mask)
 		if b.plane == nil {
 			t.Fatal("已知中途整層消失")
@@ -275,6 +277,7 @@ func TestMintonProductionScene(t *testing.T) {
 		}
 		partialChecks++
 		b.finish()
+		selectSingleAllyFixture(t, b, orig)
 		b.frame(after, colors, 0x0d, mask)
 		if b.plane == nil {
 			t.Fatal("完成後HD未恢復")
@@ -287,12 +290,14 @@ func TestMintonProductionScene(t *testing.T) {
 	rows := []map[string]any{}
 	for _, r := range plan.Renders {
 		frame := read(r.Source)
+		selectSingleAllyFixture(t, b, orig)
 		b.frame(frame, colors, 0x0d, mask)
 		if len(b.plane) == 0 {
 			t.Fatal("完整效果畫面被拒絕")
 		}
 		pixels := append([]byte(nil), b.plane...)
 		hd.ResetForLoad()
+		selectSingleAllyFixture(t, b, orig)
 		b.frame(frame, colors, 0x0d, mask)
 		if !bytes.Equal(pixels, b.plane) {
 			t.Fatal("實際ResetForLoad冷載不同")
@@ -330,16 +335,19 @@ func TestMintonProductionScene(t *testing.T) {
 	}
 	wrongMask := append([]byte(nil), mask...)
 	wrongMask[0] ^= 1
+	selectSingleAllyFixture(t, b, orig)
 	b.frame(frame, colors, 0x0d, wrongMask)
 	if b.plane != nil || b.value != nil {
 		t.Fatal("錯遮罩來源未回退")
 	}
+	selectSingleAllyFixture(t, b, orig)
 	b.frame(frame, colors, 0x0d, mask)
 	if b.plane == nil {
 		t.Fatal("原版遮罩恢復未回來")
 	}
 	noAnchor := append([]byte(nil), frame...)
 	noAnchor[248] ^= 1
+	selectSingleAllyFixture(t, b, orig)
 	b.frame(noAnchor, colors, 0x0d, mask)
 	if b.plane != nil {
 		t.Fatal("錨點錯誤仍畫效果")

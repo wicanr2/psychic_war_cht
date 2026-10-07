@@ -76,6 +76,9 @@ type battleTheme struct {
 	plane        []byte
 	maskReady    bool
 	ignored      [4]int // 短圖尾段保持原版，不參與冷解或覆繪。
+	party        *partyTheme
+	partyKeys    [4][32]byte
+	partyValid   bool
 }
 
 func battleEffectEntry(e ThemeEntry) bool {
@@ -131,6 +134,7 @@ func (b *battleTheme) selectWork(work []byte) {
 
 func (b *battleTheme) selectSource(o *oracle.Oracle) {
 	if b.profiles == nil {
+		b.selectParty(o)
 		return
 	}
 	a := oracle.Addr{Seg: 0x1175, Off: o.Word(oracle.Addr{Seg: 0x1175, Off: 0xaf12})}
@@ -139,6 +143,9 @@ func (b *battleTheme) selectSource(o *oracle.Oracle) {
 		return
 	}
 	b.selectWork(o.Bytes(a, 512))
+	if b.active != nil {
+		b.active.selectParty(o)
+	}
 }
 
 func battlePNG(root, name string, w, h, scale int) (*image.NRGBA, error) {
@@ -520,6 +527,8 @@ func (b *battleTheme) reset() {
 	b.maskReady = false
 	b.basis = nil
 	b.baseVector = nil
+	b.partyKeys = [4][32]byte{}
+	b.partyValid = false
 }
 func (b *battleTheme) clearPrediction() {
 	if b.profiles != nil {
@@ -672,7 +681,7 @@ func (b *battleTheme) frame(actual []byte, palette [256][3]uint8, mode byte, mas
 		return
 	}
 	b.plane = nil
-	if mode != 0x0d || len(actual) != 64000 || !b.prepare(mask) {
+	if mode != 0x0d || len(actual) != 64000 || b.party != nil && !b.partyValid || !b.prepare(mask) {
 		b.clearPrediction()
 		return
 	}

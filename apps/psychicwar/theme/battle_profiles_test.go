@@ -116,6 +116,7 @@ func TestEnemySmallProfiles(t *testing.T) {
 			if got == nil || got.Cmp(want) != 0 || b.vector(b.model(got)).Cmp(b.vector(frame)) != 0 {
 				t.Fatal("独立冷解不同", p.Bank, p.Group, n)
 			}
+			selectSingleAllyFixture(t, root, orig)
 			root.frame(frame, colors, 0x0d, mask)
 			if len(b.plane) != 768*120*4 {
 				t.Fatal("B合成缺失")
@@ -126,6 +127,7 @@ func TestEnemySmallProfiles(t *testing.T) {
 				t.Fatal("讀檔保留舊來源組")
 			}
 			root.selectWork(raw[:512])
+			selectSingleAllyFixture(t, root, orig)
 			root.frame(frame, colors, 0x0d, mask)
 			if !bytes.Equal(pixels, b.plane) {
 				t.Fatal("切組／讀檔冷載不同")

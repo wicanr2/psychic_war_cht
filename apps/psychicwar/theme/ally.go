@@ -61,7 +61,7 @@ func loadAlly0(orig string) (*spritePresence, error) {
 }
 
 func loadAlly(orig string, image int) (*spritePresence, error) {
-	if image < 0 || image >= 12 {
+	if image < 0 || image >= 31 || image >= 12 && image < 16 {
 		return nil, fmt.Errorf("主題 ALLY #%d 尚未證實", image)
 	}
 	b, err := os.ReadFile(filepath.Join(orig, "ALLY.PBL"))
@@ -76,17 +76,33 @@ func loadAlly(orig string, image int) (*spritePresence, error) {
 		return nil, fmt.Errorf("主題 ALLY.PBL 圖數不符")
 	}
 	w, h, px, err := pbl.Decode(b, image)
-	if err != nil || w != 24 || h != 32 {
+	wantW, wantH := allySize(image)
+	if err != nil || w != wantW || h != wantH {
 		return nil, fmt.Errorf("主題 ALLY #%d 尺寸或解碼不符", image)
 	}
 	x := 264
 	y := 152
 	if image == 1 || image == 2 {
 		x = 232
+	} else if image >= 16 && image < 27 {
+		x, y = allySmallPositions[image-16][0], allySmallPositions[image-16][1]
+	} else if image >= 27 {
+		x, y = allyEffectPositions[0][0], allyEffectPositions[0][1]
 	} else if image >= 3 {
 		x, y = 128, 8
 	}
-	return newSprite(px, x, y, 24, 32), nil
+	return newSprite(px, x, y, w, h), nil
+}
+
+// 024 §1.53：IDA12E78／13290原始座標表與31次原版RLE COPY互證。
+var allySmallPositions = [11][2]int{{144, 88}, {144, 104}, {160, 88}, {160, 104}, {176, 88}, {176, 104}, {192, 88}, {192, 104}, {280, 8}, {296, 56}, {276, 40}}
+var allyEffectPositions = [5][2]int{{16, 32}, {44, 32}, {72, 32}, {96, 32}, {124, 32}}
+
+func allySize(image int) (int, int) {
+	if image >= 16 {
+		return 16, 16
+	}
+	return 24, 32
 }
 
 func (s *spritePresence) frame(indexed []byte, anchor xlate.Watcher) bool {

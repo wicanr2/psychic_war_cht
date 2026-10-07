@@ -143,9 +143,11 @@ func TestShortEnemyBattlePartial(t *testing.T) {
 			}
 		}
 		b.reset()
+		selectSingleAllyFixture(t, b, orig)
 		b.frame(target, colors, 0x0d, mask)
 		expected := append([]byte(nil), b.plane...)
 		b.reset()
+		selectSingleAllyFixture(t, b, orig)
 		b.frame(before, colors, 0x0d, mask)
 		prior := append([]byte(nil), b.plane...)
 		if len(expected) != 768*120*4 || len(prior) != len(expected) {
@@ -161,6 +163,7 @@ func TestShortEnemyBattlePartial(t *testing.T) {
 			for y := 0; y < count; y++ {
 				copy(mid[(152+y)*320+32:(152+y)*320+56], target[(152+y)*320+32:(152+y)*320+56])
 			}
+			selectSingleAllyFixture(t, b, orig)
 			b.frame(mid, colors, 0x0d, mask)
 			if b.vector(mid).Cmp(b.vector(before)) == 0 {
 				if !bytes.Equal(b.plane, prior) {

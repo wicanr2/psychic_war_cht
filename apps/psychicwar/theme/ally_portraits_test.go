@@ -100,7 +100,7 @@ func TestAllyPortraitBatch(t *testing.T) {
 		if s.active {
 			t.Fatal("接受錯誤肖像來源")
 		}
-		for _, p := range []struct{ At, Match []int }{{[]int{232, 152}, []int{248, 0, 72, 40}}, {[]int{128, 8}, nil}, {[]int{132, 8}, []int{248, 0, 72, 40}}} {
+		for _, p := range []struct{ At, Match []int }{{[]int{236, 152}, []int{248, 0, 72, 40}}, {[]int{128, 8}, nil}, {[]int{132, 8}, []int{248, 0, 72, 40}}} {
 			if _, _, e := allyPosition(ThemeEntry{Image: r.Image, At: p.At, Match: p.Match}); e == nil {
 				t.Fatal("接受未證實盟友位置", r.Image)
 			}
@@ -126,7 +126,7 @@ func TestAllyPortraitBatch(t *testing.T) {
 	if len(rows) != 9 {
 		t.Fatal("肖像缺項")
 	}
-	for _, n := range []int{-1, 12, 15, 16, 30, 31} {
+	for _, n := range []int{-1, 12, 15, 31} {
 		if _, e := loadAlly(orig, n); e == nil {
 			t.Fatal("接受非完整人物來源")
 		}

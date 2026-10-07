@@ -82,6 +82,7 @@ type Theme struct {
 	textBackgroundKeys map[string]bool
 	originalElevator   []byte
 	battle             *battleTheme
+	party              *partyTheme
 }
 
 // LoadTheme 回 nil 表示未選主題或倍率不符；notice 由前端記錄一次。
@@ -150,7 +151,7 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 			}
 			seenAliases[e.Image] = true
 		}
-		if battleEffectEntry(e) {
+		if battleEffectEntry(e) || allyEquipmentEntry(e) {
 			continue // 024 §1.49：效果由獨立場景合成，不登記成單張角色。
 		}
 		ref := base
@@ -253,9 +254,19 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 			return nil, "", fmt.Errorf("主題迷宮：%w", err)
 		}
 	}
+	t.party, err = loadAllyEquipment(root, orig, m, t, base)
+	if err != nil {
+		return nil, "", fmt.Errorf("主題盟友裝備：%w", err)
+	}
 	t.battle, err = loadBattleTheme(root, orig, m, t.groups, base)
 	if err != nil {
 		return nil, "", fmt.Errorf("主題戰鬥效果：%w", err)
+	}
+	if t.battle != nil && t.party != nil {
+		t.battle.party = t.party
+		for _, profile := range t.battle.profiles {
+			profile.party = t.party
+		}
 	}
 	t.ResetForLoad()
 	return t, "", nil
@@ -382,7 +393,7 @@ func loadThemeEntry(root string, index int, e ThemeEntry, scale int, base []byte
 		if err != nil {
 			return g, err
 		}
-		w, h = 24, 32
+		w, h = allySize(e.Image)
 	case "ENEMY00.PBL", "ENEMY01.PBL", "ENEMY02.PBL", "ENEMY03.PBL", "ENEMY04.PBL", "ENEMY05.PBL", "ENEMY06.PBL", "ENEMY07.PBL", "ENEMY08.PBL", "ENEMY09.PBL", "ENEMY10.PBL", "ENEMY11.PBL":
 		if _, _, err := enemySource(e.PBL, e.Image); err != nil {
 			return g, err
@@ -495,6 +506,30 @@ func validSpriteMatch(r []int) bool {
 
 // 來源認定與圖面必須共用同一個已證實位置，不能只移動 PNG。
 func allyPosition(e ThemeEntry) (int, int, error) {
+	if allyEquipmentEntry(e) {
+		if allyPartySlot(e.At) >= 0 && (e.Src == nil || equalInts(e.Src, []int{0, 0, 24, 32})) && equalInts(e.Match, []int{248, 0, 72, 40}) && e.Kind == "redraw" && e.Scaler == "" {
+			return e.At[0], e.At[1], nil
+		}
+		return 0, 0, fmt.Errorf("ALLY裝備只接受四隊伍原位與完整圖及右側錨點")
+	}
+	if e.Image >= 0 && e.Image < 12 && allyPartySlot(e.At) >= 0 && equalInts(e.Match, []int{248, 0, 72, 40}) && (e.Src == nil || equalInts(e.Src, []int{0, 0, 24, 32})) {
+		return e.At[0], e.At[1], nil
+	}
+	if e.Image >= 16 && e.Image < 31 {
+		if (e.Src != nil && !equalInts(e.Src, []int{0, 0, 16, 16})) || !equalInts(e.Match, []int{248, 0, 72, 40}) {
+			return 0, 0, fmt.Errorf("ALLY小圖只支援完整16×16與明示右側錨點")
+		}
+		positions := allyEffectPositions[:]
+		if e.Image < 27 {
+			positions = allySmallPositions[e.Image-16 : e.Image-15]
+		}
+		for _, p := range positions {
+			if equalInts(e.At, p[:]) {
+				return p[0], p[1], nil
+			}
+		}
+		return 0, 0, fmt.Errorf("ALLY小圖位置未證實")
+	}
 	if e.Image < 0 || e.Image >= 12 || (e.Src != nil && !equalInts(e.Src, []int{0, 0, 24, 32})) || !validSpriteMatch(e.Match) {
 		return 0, 0, fmt.Errorf("ALLY 只支援 #0–#11 完整圖與已證實背景錨點")
 	}
