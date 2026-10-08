@@ -24,10 +24,10 @@
 | 成本 | 三模式Frame均值1.522／4.491／4.646ms | 繪圖45.20／39.46／29.38 FPS，更新約60次／秒；兩CPU、軟體OpenGL、load<7、null音訊 |
 | 四張總覽 | 敵人360及ALLY31的原版／HD已完成 | workplace/hd/full-overviews-v1-20261008；本機，不當作GUI驗收 |
 | 指定音源 | 原版AdLib錄音95.058秒 | 全取樣、非靜音、無削波、退出0；非dosgolem波形parity或人耳驗收 |
-| 推廣片 | 67秒、多版面候選已合成及字卡目視 | workplace/promo/full-hd-v4-20261008；影音及正式交付收據見下述入口 |
-| 三平台封包 | 使用者要求重新打包正式1.0.0 | 三平台公開／本機六包從新tag重建，逐包收據為完成依據 |
+| 推廣片 | 1.0.0影片73秒，其中65秒實際遊玩 | 正常開機、移動、戰鬥及四次原版／HD切換；錄影／輸入／切換影格與影音驗收通過，僅本機 |
+| 三平台封包 | 1.0.0三平台公開／本機六包已重建與驗收 | Linux實際GUI／DAT、Windows Wine／AppData、macOS結構及所有內容／權利／SHA通過 |
 | 平台限制 | Linux實跑、Windows Wine、macOS結構分開驗 | 真Windows／Mac仍屬#44，不能由容器代替 |
-| 發布 | 使用者授權後已推送並發布v.0.3.2-20261008 | 三個公開附件遠端SHA与本機相同；#34已關閉，#44真機保持開啟；本機完整版及影片未上傳 |
+| 發布 | 正式1.0.0已推送並發布 | 三公開附件遠端SHA與本機相同；#34已關閉、#44真機保持；完整版及影片未上傳 |
 
 ## 現行入口
 
@@ -58,3 +58,5 @@
 使用者要求將本成果定為正式1.0.0，重新建立完整與公開封包；既有推送、主機gh發布授權沿本次要求續用。新的tag、程式版本、manifest、檔名與Release統一v.1.0.0-20261008，舊Release不覆寫。使用者追加要求實際遊玩錄影與原版／HD切換；1.0.0影片由實際封包正常開機重新錄影，以新timeline與影音收據驗收，舊靜態影片保留為歷史。正式1.0.0結果以版本內交付收據及遠端Release為準。
 
 實際錄影入口：[capture-live.py](tools/promo/capture-live.py)、[make-live.py](tools/promo/make-live.py)、[verify-live.py](tools/promo/verify-live.py)。沿既有Go GUI及FFmpeg兩個容器，透過專用X11 socket與有界訊號檔同步，錄影入口[record-live.py](tools/promo/record-live.py)。不混用runtime或library。預定73秒，其中65秒實際遊玩，含移動、普通戰鬥及四次Shift+F5切換；實際結果以版本內promo收據為準。
+
+正式1.0.0已完成：[Release](https://github.com/wicanr2/psychic_war_cht/releases/tag/v.1.0.0-20261008)，建置tag固定27b766e。遠端三附件SHA與本機相同。全部六包、73秒影片及65秒實際遊玩／四次切換已驗收；promo/capture保留實際AppImage錄影、按鍵與stats，非圖片投影片。來源workplace/promo/v1-live-capture-r2與v1-live-film-r1，正式交付dist-all/v.1.0.0-20261008。舊Release及tag未動。後續文件提交不移動tag或重包。

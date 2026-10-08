@@ -2475,3 +2475,11 @@ macOS首次正式打包失敗：沿用SDK image已有Go1.26，COPY Go1.24未先�
 使用者追加：推廣片需有遊戲實際遊玩錄影，包含原版與HD theme切換。改由1.0.0實際完整版AppImage正常開機錄影，不匯入state或注入RAM。四秒片頭、65秒實際遊玩、四秒片尾，使用指定原版AdLib；新工具與錄影image来源掛回CONTEXT／README。
 
 錄影工具初次補件apt下載過慢，有界建置取消；改沿既有Go GUI與FFmpeg兩個容器，以專用X11 socket及訊號檔同步，沒有退回主機或混用library。record-live.py同時掛入CONTEXT。
+
+## 2026-10-08：正式1.0.0與實際遊玩影片完成
+
+六個1.0.0封包從乾淨27b766e重建並驗收，公開三包遠端SHA一致。正式Release https://github.com/wicanr2/psychic_war_cht/releases/tag/v.1.0.0-20261008 標為latest，舊版本不覆寫。Linux兩AppImage實際GUI／512-byte DAT／F10／缺字型負對照、Windows兩ZIP正常開機／AppData F10及Mac universal雙架構／arm64簽章／min11.0／系統相依通過；真機#44保持。
+
+推廣片從此版實際完整版AppImage正常開機錄影，未匯入state或注入RAM。72秒源錄影，成片73秒／1825幀，其中65秒實際迷宮移動、普通戰鬥与四次Shift+F5原版／HD切換；切換時間源錄影4.32／7.82／35.65／38.99秒，影片加4秒片頭。影音、黑幀、靜音、凍結、移動／戰鬥stats、兩模式及切換前後影格通過並目視。原版指定AdLib配樂仍為唯一音源。
+
+雙容器preflight先因顯示器提前退出而連線失敗，順序保持顯示器後取得75幀；正式r1因donor IPC不可共享而未錄影，r2設shareable且只供錄影器加入後成功、程式自然退出0。既有GUI／FFmpeg工具鏈無主機工作負載，專用socket與容器均清理。影片、HD與原版只留本機，公開Release只三個patch附件。
