@@ -1,59 +1,56 @@
-# 接手現況：中文化與HD化
+# 接手現況：中文化、完整HD與交付
 
-核對日期：2026-10-07 17:14（台灣時間）。主repo建置基準e8a401e，dosgolem31242a9；本批ALLY實作與驗收納入本機提交。未完成權威：[docs/worklist.json](docs/worklist.json)。歷程：[WORKLOG.md](WORKLOG.md)。
+核對日期：2026-10-08。本次版號 `v.0.3.0-20261008`。dosgolem固定 `31242a9`；原版、規則、RAM及DAT格式不修改。唯一工作清單：[docs/worklist.json](docs/worklist.json)；歷程：[WORKLOG.md](WORKLOG.md)；研究：[038 §207](docs/re/038-hd-theme-feasibility.md)。
 
-## 最新結果
+## 有效決策
 
-敵人來源接入360/360；ALLY來源接入31/31。新增十五張小圖與四張裝備，沿024 §1.53–§1.54 READY。小圖限定31個原版位置；裝備先與人物合成，再沿四個隊伍原位顯示。原版來源、RAM與存檔保持。敵人360／ALLY31美術均已定稿。
-
-現行本機主題theme-enemy360-ally31-effects-maze-B-v1-20261006，5,746PBL＋78builtin_masks＋256MAZE／413PNG。31份小圖、192裝備與48人物原位的獨立全RGBA差0；144合成B場景、48獨立B圖面及60唯一隊伍工作源通過。六正常保存點12次44欄位與DOS相同；11舊RGBA相同，格斯丁提的一份真實中途用實際兩隊員基底重建，156格吻合、4格回退。
-
-新正式前端的隊伍／道具24視窗、肖像切換、撤圖及F10／F11通過。普通Space戰鬥36視窗中35份、1,739效果格符合獨立B模板。真正DAT存讀後24視窗、66角色區全RGBA差0。存檔、讀檔、戰鬥三條實際GUI鍵序，各44機器欄位及完整DOS與原版精確重播相同；512-byte DAT相同，載回玩家52 bytes相同。正常GUI仍限既有保存點，敵人30/360、ALLY #0–#2保持。
-
-效能三模式已量測，起跑load 6.26／4.29／4.74。未載入、載入關閉、開啟的Frame均值1.543／3.207／3.485ms，繪圖頻率40.58／53.23／38.14FPS。限兩CPU容器、軟體OpenGL、null音訊的正常道具畫面，沒有設定效能門檻。
+完成全部HD，再交付三平台本機完整版、公開Release與推廣片。公開包只帶程式與已確認可散布素材；原版與全部HD僅放本機，不進Git或Release。人物、效果、迷宮與場景美術已定案，不重問。原位、比例、動作、全域8×8及人物在後／框線在前保持。影片只用DOSBox-X原版實錄 `workplace/dosboxx-audio/title-adlib.wav`，含原版音樂及HD的影片僅留本機。
 
 ## 目前狀態表
 
-| 項目 | 目前狀態 | 證據與限制 |
+| 項目 | 現況 | 證據與限制 |
 |---|---|---|
-| 中文化 | 1,313則、48圖檔／125塊及既有抽測完成 | 缺文本0；兩張標題美術字保留；未全程試玩 |
-| 美術定稿 | 敵人360/360、ALLY31/31 | 身份、尺寸與SHA凍結，不重問美術 |
-| 現行本機主題 | 5,746PBL＋78遮罩＋256MAZE／413PNG | theme-enemy360-ally31-effects-maze-B-v1-20261006；僅本機 |
-| 敵人來源／接入 | 360/360 | 180身體＋180小圖；ENEMY02別名共用；ENEMY08未知尾三格保持原版 |
-| 敵人正常GUI | 已驗30/360 | 原27身體及敏頓三小圖；受控／合成不增加計數 |
-| ALLY來源／接入 | 31/31圖號 | 12人物、4裝備、15小圖；限READY原位與模式 |
-| ALLY正常玩家／GUI | 仍只驗#0–#2 | 其他人物、小圖及正常選裝／招募待驗 |
-| 裝備與隊伍基底 | 60唯一來源、四隊伍原位 | 192原版合成、48原位COPY與240獨立RGBA；正常選裝另驗 |
-| 敵人冷載與中途 | 60組／180合成場景 | 八受控原版轉換、40短圖中途模型；全域8×8及未知三格保持 |
-| 敏頓回歸 | 4,166邊界、2,083轉換及負對照通過 | ALLY31主題，兩核心清單均明示執行 |
-| 六正常保存點 | 12次44欄位／DOS與獨立隊伍B通過 | 11舊RGBA相同；1真實中途156格吻合、4格原版回退 |
-| 新版普通戰鬥GUI | 35/36畫面、1,739有限效果格 | 六類來源與F10；模板步數不是截圖時戳，整屏同幀另驗 |
-| 隊伍／道具GUI | 24視窗、F10／F11與撤圖通過 | 新前端；#0／#2兩原位，保持既有正常GUI範圍 |
-| 真正DAT | 新主題512 bytes存讀及原版對照通過 | 載回玩家52 bytes及24視窗／66角色區；其他角色／場景另驗 |
-| GUI原版狀態不變 | 三條精確錄放各44欄位及DOS相同 | 同初始state／seed及原版鍵步數，沒有重擲 |
-| 效能 | 三模式有數字與負對照 | 起跑load均<7；道具畫面、兩CPU／軟體OpenGL；戰鬥與封包另驗 |
-| 一般套件 | 24通過、25專用fixture跳過 | 小圖31原位、裝備192、人物48、60敵人與兩敏頓清單另明示通過 |
-| 房間／OVER／迷宮 | 既有來源與B v9保持 | ROOM0限定來源、OVER #0及單張256格MAZE；其他場景另驗 |
-| 完整HD／交付 | 未完成 | 其他效果、圖像／動畫、正常抽樣、權利與封包待驗；#34 OPEN、#44不改 |
+| 中文化 | 1,313則、48圖檔／125塊與既有抽測完成 | 缺文本0；兩Logo保留；未全程試玩 |
+| 完整HD | 531/531目標PBL圖號已接入 | 6,875個原位entries、78遮罩、256 MAZE、532 PNG；全部僅本機 |
+| 人物與戰鬥 | 敵人360、ALLY31、四BEAM工作源及四隊伍FIGHT效果 | 來源、獨立RGBA及限定動作通過；正常GUI敵人30/360、ALLY #0–#2，不把受控來源算成全播放 |
+| 房間 | ROOM0全部31、ROOM1全部32 | 63原版COPY、63獨立RGBA及負對照；#14/#17同源共用；ROOM22沿MAZE優先序 |
+| 固定場景 | MAP18、OPEN6、END0兩圖、END1十八圖 | 816 COPY原位全RGBA與省略負對照；半列及左裁切沒有外推 |
+| 開場親子圖 | OPEN3/5/6兩個完整模板 | 原版0／7像素變化、HD共用裁切及兩全RGBA通過 |
+| 場景XOR | OPEN4的16原位、END1#18的76原位 | 92原版操作、雙XOR恢復、B全RGBA、失配／來源／色盤／冷載方向負對照通過 |
+| 原版未知 | ENEMY08尾96 bytes、未辨識的中途XOR方向 | 尾三格與方向未知的效果保留原版；不以推測補洞 |
+| 新版戰鬥GUI | 36視窗、1,827有限可見格 | 普通Space與F10；原版精確重播44欄位及完整DOS相同 |
+| 正常開機 | 新版開機到迷宮及首場遭遇已擷取 | quiet等待原版COPY穩定後送鍵；有限正常路線，非全程試玩 |
+| 真正DAT | 512-byte DAT、52-byte玩家資料、24視窗66角色區通過 | 存、讀、戰鬥三條實際鍵序各44欄位及DOS相同；負對照有效 |
+| 成本 | 三模式Frame均值1.522／4.491／4.646ms | 繪圖45.20／39.46／29.38 FPS，更新約60次／秒；兩CPU、軟體OpenGL、load<7、null音訊 |
+| 四張總覽 | 敵人360及ALLY31的原版／HD已完成 | workplace/hd/full-overviews-v1-20261008；本機，不當作GUI驗收 |
+| 指定音源 | 原版AdLib錄音95.058秒 | 全取樣、非靜音、無削波、退出0；非dosgolem波形parity或人耳驗收 |
+| 推廣片 | 67秒、多版面候選已合成及字卡目視 | workplace/promo/full-hd-v2-20261008；影音及正式交付收據見下述入口 |
+| 三平台封包 | 乾淨tag建置及逐包驗收流程已備妥 | 實際結果以dist-all版本內收據為準；公開包不得有原版或HD |
+| 平台限制 | Linux實跑、Windows Wine、macOS結構分開驗 | 真Windows／Mac仍屬#44，不能由容器代替 |
+| 發布 | push／PR仍需使用者批准 | 先準備可審閱的公開附件與Release說明；本機完整版及影片不上傳 |
 
-## 證據與執行入口
+## 現行入口
 
-- 規格：[024 HD主題](docs/spec/024-hd-theme.md) §1.47–§1.54、§2.0；本批研究：[038](docs/re/038-hd-theme-feasibility.md) §200–§201。前批敵人入口保留§194–§199。
-- 現行主題：workplace/hd/theme-enemy360-ally31-effects-maze-B-v1-20261006/。啟動參數：`-theme workplace/hd/theme-enemy360-ally31-effects-maze-B-v1-20261006`。定稿清冊workplace/hd/{enemy,ally}-art-final-v1-20261006/art-index.json。
-- 以下入口均在workplace/ida/hd-ally-recruit-20261004/。原版來源：ally-remaining-ida-v7、ally-remaining-controlled-v2、ally-small-source-independent-v1、ally-equipment-controlled-v4、ally-equipment-source-independent-v2，日期20261006。正式實作／測試：[ally_equipment.go](apps/psychicwar/theme/ally_equipment.go)、[ally_equipment_test.go](apps/psychicwar/theme/ally_equipment_test.go)、[ally_small_test.go](apps/psychicwar/theme/ally_small_test.go)。
-- 既有驗證：ally31-validation-v1、ally31-small-validation-v1、enemy360-ally31-regression-v2及enemy360-ally31-normal-v2，日期20261006。獨立收據ally31-render-independent-v2、ally31-small-render-independent-v1、enemy360-ally31-render-independent-v1、ally31-normal-independent-v2。跳過不計通過。
-- 接手核對：audit-ally31-handoff-v1-20261007.py／ally31-handoff-audit-v1-20261007.json。restore-ally31-reference-inputs-v1-20261007.py精確復原18份缺失PNG別名及相同SHA舊比較器；四份既有獨立收據直接路徑全部相符，歷史保留。
-- 新正式前端：build-ally31-frontend-v1-20261007.py、enemy360-ally31-frontend-v1-20261007.bin／-build.json，350實際來源。GUI：ally31-gui-v1-20261007.sh、ally31-gui-{party,battle}-v1-20261007/；獨立party及battle-cells收據同日期。沒有新作弊或位置／seed注入。
-- DAT：ally31-dat-gui-v1-20261007.sh／.py、ally31-dat-{save,load}-v1-20261007/，含實際PNG、錄製、原版state／frame／player。對照：run-ally31-controls-v2-20261007.py、ally31-{save,load,battle}-control-v2-20261007/；收據ally31-gui-dat-machine-independent-v2-20261007.json。角色區verify-ally31-dat-crops-v1-20261007.py／ally31-dat-gui-crops-independent-v1-20261007.json。
-- 效能：ally31-performance-v1-20261007/verified.json及三模式execution／stats／terminal。準備／重生入口prepare-ally31-performance-v2、run-ally31-performance-v3及verify-ally31-performance-v1，日期20261007。正式程式不含計時探針。
-- 保全與最後稽核：preserve-ally31-handoff-v1-20261007.py、ally31-handoff-source-snapshot-v1-20261007.tar.gz、ally31-handoff-final-audit-v1-20261007.json。原版、PNG、state、DAT及archive僅本機。
-- 後續效果查詢：remaining-effects-ida-v3-20261007.json、run-remaining-effects-ida-v3-20261007.py及verify-remaining-effects-ida-v1-20261007.py。339處原始指令、26資源索引及24圖解碼相符；僅來源索引，其他BEAM／FIGHT選擇與動作仍未知。入口研究038 §202及024 §1.55 DRAFT；保全remaining-effects-source-snapshot-v1-20261007.tar.gz／remaining-effects-final-audit-v1-20261007.json。
+本機主題：`workplace/hd/theme-full-scenes-ally31-maze-B-v1-20261008/`。前端用 `-theme` 指向此目錄。規格：[024](docs/spec/024-hd-theme.md) §1.55–§1.59、§6與§7；重生及來源入口：[038 §203–§207](docs/re/038-hd-theme-feasibility.md)。
 
-## 下一步
+本輪收據均在 `workplace/ida/hd-ally-recruit-20261004/`：
 
-1. 沿024 §1.55及研究038 §202，追BEAM #3–#11／FIGHT #4–#11的載入選擇與間接寫入端，再補原版來源及動作切片。ROOM1／MAP／OPEN／END等仍依§1.1，查既有證據後逐批接入。
-2. 補其他人物、小圖、裝備與敵人的正常玩家GUI抽樣，以及剩餘場景DAT與戰鬥成本。
-3. 完成權利與實際封包驗收。全部達024 §6才關#34；#44真機驗收獨立保持。
-4. HD完成後製作四張README總覽：我方原版、我方HD、敵人原版、敵人HD，保留圖號並說明HD貢獻。此展示已於2026-10-06授權；原版資料包仍留本機。
+- `hd-full-scene-copy-art-independent-v1-20261008.json`：816 COPY來源及全RGBA。
+- `hd-completion-opening-parent-art-independent-v1-20261008.json`：兩親子模板及負對照。
+- `hd-completion-scene-effects-prototype-independent-v1-20261008.json`、`hd-full-final-effect-output-audit-v2-20261008.json`：92 B圖面、正式輸出與冷載方向。
+- `hd-full-products-tests-v2-20261008.log`、`hd-full-cold-tests-v1-20261008.log`：全部產品套件與新效果fixture明示執行。
+- `hd-completion-frontend-v4-20261008-build.json`：本輪冷載階段前端的352份來源及binary SHA；最後撤圖修正的正式程式以乾淨tag封包的HEAD、SHA與產品測試v2為準。
+- `hd-completion-gui-machine-independent-v2-20261008.json`、`hd-completion-gui-cells-independent-v2-20261008.json`：普通戰鬥原版重播及有限可見格。
+- `hd-full-gui-dat-machine-independent-v1-20261008.json`、`hd-full-dat-gui-crops-independent-v1-20261008.json`：DAT與三條GUI原版對照。
+- `hd-full-performance-v1-20261008/verified.json`：三模式成本及計數器負對照。
+- `hd-full-boot-gui-v3-20261008/`：正常開機、移動、戰鬥、F4及HD切換；v1／v2送鍵落於轉場，不當作到迷宮證據。
 
-本批未push、PR、tag或發行；完整HD尚未完成。
+## 交付與下一步
+
+唯一交付根為 `dist-all/v.0.3.0-20261008/`：公開包在 `patch/`，本機完整包在 `full-local/`，影片與影音收據在 `promo/`，實際封包驗收在 `smoke/`。`SHA256SUMS.json` 列出正式產物的大小、雜湊、建置HEAD及權利分類。產物不進Git。
+
+重生：[tools/package.sh](tools/package.sh)、[release-stage.py](tools/release-stage.py)、[release-verify.py](tools/release-verify.py)。先完成全部commit、建立同名tag，再從乾淨輸入打包。Linux兩包驗實际GUI、DAT與缺字型負對照；Windows另驗Wine；macOS驗雙架構、簽章、最低版本與動態相依。實際結果以版本內 `smoke/package-verification.json` 及平台收據為準；不存在或失敗時不得宣稱交付驗收通過。
+
+推廣片：[capture-current.py](tools/promo/capture-current.py)、[make-current.py](tools/promo/make-current.py)。67秒靜態分幕已在timeline明示，需驗影音、黑幀、凍結與字幕。四總覽由[overview.py](tools/hd/overview.py)重生。工具鏈沿專案Dockerfile，Go1.24.13、IDA9.4、固定DOSBox-X来源5fcf624b；macOS revision沿既有SDK工具鏈改為同版Go，SDK只留本機。
+
+完成封包與影片收據後，公開附件及Release說明供使用者批准push／發布。#44真機驗收維持獨立未完成；不重新深挖硬體時序或已完成來源。

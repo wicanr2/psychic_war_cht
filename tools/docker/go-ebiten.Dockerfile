@@ -12,7 +12,7 @@
 # 不裝 alsa-utils：`aplay` 只是方便，plugin 本身不需要它。
 # 它提供 ALSA 的 pulse plugin，讓容器經由主機的 PipeWire／PulseAudio socket 出聲，
 # **不獨佔音效卡**。直接掛 /dev/snd 會跟主機的音訊伺服器搶裝置。
-FROM golang:1.24-bookworm
+FROM golang:1.24.13-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac
 RUN apt-get update && apt-get install -y --no-install-recommends \
         libx11-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev libxxf86vm-dev \
         libgl1-mesa-dev libasound2-dev pkg-config xvfb xauth libgl1 libglx-mesa0 \

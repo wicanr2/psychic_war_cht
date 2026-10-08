@@ -123,7 +123,7 @@ Esc 選單。項目來自 `I_MENUH.BIN` 的固定寬度欄位，譯法照當年�
 - 原版的讀檔入口只在死亡後的標題選單，而那個選單會逾時自動選「新遊戲」，抽測時三次都來不及選。
   目前讀回進度靠 F11 即時讀檔。
 - macOS 與 Windows 的發行包都沒有在真機上跑過（[`docs/re/033`](docs/re/033-macos-cross-build.md)、[`035`](docs/re/035-windows-cross-build.md)，[#44](https://github.com/wicanr2/psychic_war_cht/issues/44)）。
-- 開發版已接入 SCREEN／MENU、31個ALLY圖號、十二圖庫360個敵人圖號、B透光戰鬥效果、迷宮圖集、ROOM0限定房間與OVER #0。ALLY裝備與人物先合成，再沿原版隊伍位置顯示；小圖只用已證實原位。敵人別名共用相同HD，短圖保留原尺寸及未知原版格。`builtin_masks`獨立記錄內建遮罩。可用 `-theme <主題目錄>` 選擇、Shift+F5切換；F5中英文切換獨立。美術已定稿，來源接入與正常GUI驗收分開記錄；原版DAT存讀及有限GUI抽測通過。其他圖像／動畫、完整HD與發行包待完成，本機素材未公開。現況與限制見 [`CONTEXT.md`](CONTEXT.md)（[#34](https://github.com/wicanr2/psychic_war_cht/issues/34)）。
+- 開發版已接入 SCREEN／MENU、31個ALLY圖號、十二圖庫360個敵人圖號、B透光戰鬥效果、迷宮圖集、ROOM0限定房間與OVER #0。ALLY裝備與人物先合成，再沿原版隊伍位置顯示；小圖只用已證實原位。敵人別名共用相同HD，短圖保留原尺寸及未知原版格。`builtin_masks`獨立記錄內建遮罩。可用 `-theme <主題目錄>` 選擇、Shift+F5切換；F5中英文切換獨立。全部目標531個PBL圖號與256個MAZE slot已完成限定HD接入，共532張PNG。原版位置、比例、動作與全域8×8保持；兩張Logo及四條開場字幕沿既有契約。正常GUI採抽測，其他圖號以原版來源與獨立RGBA驗證，不宣稱全程試玩。ENEMY08未知尾三格及方向未知的中途XOR保持原版。全部HD僅收入本機完整版。現況與證據見 [`CONTEXT.md`](CONTEXT.md)。
 
 未完成項的權威是 [`docs/worklist.json`](docs/worklist.json)，每條對應一個 GitHub issue，
 也各自掛著一個可以跑的驗證方式。
@@ -158,15 +158,15 @@ F4 說明頁，前端實跑截圖。鍵名畫成反白鍵帽，那是抄原版 `
 
 ### 用發行包
 
-`tools/package.sh` 產出兩種平台的包（規格 [`docs/spec/021`](docs/spec/021-packaging.md)）：
+[`tools/package.sh`](tools/package.sh) 從乾淨 tag 建立三平台公開包與本機完整版（規格 [`docs/spec/021`](docs/spec/021-packaging.md)）：
 
 | 產物 | 狀態 |
 |---|---|
 | `PsychicWar-<版本>-x86_64.AppImage` | 解開產物實跑驗過 |
-| `PsychicWar-<版本>-win64.zip` | wine 底下實跑，畫面與 Linux 產物逐像素差 0；**沒有在真 Windows 上跑過** |
+| `PsychicWar-<版本>-win64.zip` | Wine啟動與存檔抽測；**沒有在真Windows上跑過** |
 | `PsychicWar-<版本>-macos.zip`（universal，x86_64 ＋ arm64） | 只做了靜態驗收，**沒有在 Mac 上跑過** |
 
-產物都放 `dist-all/`，每個平台只留最新一份，整個目錄 gitignore。
+產物放 `dist-all/<完整版號>/`。`patch/` 是公開包，`full-local/` 是含原版與全部 HD 的本機完整版。`promo/` 保存影片與影音驗收，`smoke/` 保存實際封包驗收。整個目錄不進 Git。
 Linux 只出 AppImage，不另外出 tar.gz。
 
 跑的時候把含 `PW.EXE` 的目錄指過去就行，資料檔跟著執行檔走，不必從特定目錄啟動：
@@ -183,11 +183,9 @@ macOS 是 `~/Library/Application Support/PsychicWar`。
 
 macOS 的 `.app` 沒有簽章也沒有公證（在 Linux 上做不出來），首次開啟要**右鍵 →「打開」**。
 
-Windows 版是 GUI 子系統的程式，出錯時看不到訊息。包裡附了 `troubleshoot.bat`，
-它會把錯誤導成 `psychicwar-log.txt` 再停住讓你看（[#45](https://github.com/wicanr2/psychic_war_cht/issues/45) 會修掉這個權宜做法）。
+Windows 版出錯時會顯示 MessageBox，並在 `%APPDATA%/PsychicWar/psychicwar-error.log` 留下紀錄。
 
-`PSYCHICWAR_WITH_DATA=1` 會另外產一份 `-with-data` 變體，把原版素材放進執行檔旁的 `original/`，
-免去每次給 `-orig`。那種包含原版素材，只留在自己機器上，不進版控也不上傳。
+`-with-data` 完整版帶 `original/` 與 `theme/hd/`，只留本機。Linux AppImage及macOS `.app` 啟動時選用內附HD；Windows使用 `Start-HD.bat`。公開包不附原版或任何HD素材。
 
 ### 自己建置
 
@@ -196,9 +194,9 @@ Windows 版是 GUI 子系統的程式，出錯時看不到訊息。包裡附了 
 ```sh
 # 原版解開到 workplace/original/psychic-war/（裡面要有 PW.EXE）
 tools/go-ebiten.sh build -o /src/workplace/bin/psychicwar ./cmd/psychicwar
-workplace/bin/psychicwar -orig workplace/original/psychic-war   # 從 repo 根目錄執行
-
-tools/package.sh appimage    # 或 macos／promo／all，產物在 dist-all/
+# 實跑同樣透過 tools/go-ebiten.sh 的容器與 Xvfb。
+# 完成所有提交及同名tag後，指定本機HD主題打包：
+PSYCHICWAR_RELEASE_THEME=workplace/hd/<已驗證主題> tools/package.sh v.0.3.0-20261008
 ```
 
 常用旗標：`-adlib` 走 OPL2 音樂（不加就是 PC 喇叭）、`-scale` 放大倍率（預設 3）、
@@ -210,10 +208,9 @@ tools/package.sh appimage    # 或 macos／promo／all，產物在 dist-all/
 
 dosgolem 目前用本機分支（`go.mod` 的 `replace` 指到 `worktrees/dosgolem`），第一次建置要先 clone 它。
 
-`tools/package.sh promo` 把 `tools/promo/make.sh` 做出來的 62 秒推廣片一起收進 `dist-all/`。
-片子的配樂是 DOSBox-X 跑原版錄下來的輸出，畫面全是實跑截圖；
-旋律的著作權屬於原作曲者，對外公開前要先換成授權明確的曲子或改用無音樂版
-（[`docs/re/034`](docs/re/034-promo-video.md)）。
+目前推廣片入口為 [`tools/promo/capture-current.py`](tools/promo/capture-current.py) 與 [`make-current.py`](tools/promo/make-current.py)。依retro-remake流程製作67秒多版面短片，使用新版GUI及標明的圖面驗證輸出。配樂只使用DOSBox-X原版實錄 `workplace/dosboxx-audio/title-adlib.wav`。影片含原版音樂與HD，僅放本機；公開前另處理著作權。原版配樂擷取入口為 [`capture-original-adlib.sh`](tools/promo/capture-original-adlib.sh)。
+
+封包驗收入口為 [`tools/release-verify.py`](tools/release-verify.py)，涵蓋內容、雜湊、權利、平台結構及Linux實際GUI與DAT。四張角色總覽由 [`tools/hd/overview.py`](tools/hd/overview.py) 重生，僅留本機。
 
 ## 文件
 
@@ -248,3 +245,5 @@ repo 裡為了研究與對照保留的原版片段（文本檔的原文欄位、
 
 本專案與工画堂スタジオ（Kogado Studio）、Kyodai Software 沒有隸屬、合作、贊助或授權關係，
 是獨立的第三方保存與研究專案。
+
+Windows容器驗收使用 [release-wine-smoke.py](tools/release-wine-smoke.py)。影片影音及逐幕抽幀由 [verify-current.py](tools/promo/verify-current.py) 重生。

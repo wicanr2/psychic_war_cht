@@ -261,6 +261,22 @@ func (t *Theme) Attach(o *oracle.Oracle) error {
 		return fmt.Errorf("同一主題不能接上第二個 Oracle")
 	}
 	t.attached = o
+	if t.sceneEffects != nil {
+		o.OnCall(oracle.Addr{Seg: 0x0161, Off: 0x8705}, func(o *oracle.Oracle) {
+			if !t.Enabled {
+				t.sceneEffects.reset()
+				return
+			}
+			t.sceneEffects.observe(t, o, false)
+		})
+		o.OnCall(oracle.Addr{Seg: 0x0161, Off: 0x1060}, func(o *oracle.Oracle) {
+			if !t.Enabled {
+				t.sceneEffects.reset()
+				return
+			}
+			t.sceneEffects.observe(t, o, true)
+		})
+	}
 	hasSprite := false
 	for i := range t.groups {
 		if t.groups[i].sprite != nil {

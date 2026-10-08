@@ -216,6 +216,7 @@ OPL2 是複音 FM 抽不出音高，配對率只有 7%。**OPL2 的判準是 `do
 | 全部草稿定稿及接入順序 | 2026-10-06 | 使用者明示「草稿我都同意定稿，依序完成敵人圖號、盟友圖號」。現有敵人360圖號及ALLY31圖號草稿均美術定稿，不再要求逐張批准或構圖微調。接入先敵人後ALLY；原位、比例、姿勢、8×8與人物在後／框線在前保持，來源與正常GUI另驗。逐圖凍結入口CONTEXT.md及docs/spec/024-hd-theme.md §1.46，研究038 §193。 |
 
 | 內建戰鬥遮罩資料表示 | 2026-10-06 | 使用者選B，新增`builtin_masks`清單；沿主題/2，以`id=battle-mask-4e36`表示唯一已證實32-byte來源，包含at／png／kind／match。舊主題省略時相容，PBL清單不造EXE圖號。入口docs/spec/024-hd-theme.md §2.0；原型workplace/ida/hd-ally-recruit-20261004/minton-effects-format-prototype-v2-20261006/B/，原版來源及合成仍依§1.42驗證。 |
+| HD公開與本機完整版 | 2026-10-07 | 公開Release只帶程式與已確認可散布素材；原版資料及全部HD素材收進本機完整版，不加入公開包、Git或Release附件。逐項權利分類與交付位置見docs/spec/024-hd-theme.md §7及Codex知識路由的retro-remake-dist-all-output.md。 |
 
 兩條不是產品決定但同樣不要重問：
 

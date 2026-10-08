@@ -63,6 +63,7 @@ type battleAsset struct {
 type battleBasisRow struct{ vector, combination *big.Int }
 type battleTheme struct {
 	profiles     map[[32]byte]*battleTheme
+	beamProfiles map[[32]byte]map[[32]byte]*battleTheme
 	active       *battleTheme
 	base         []byte
 	assets       []battleAsset
@@ -92,9 +93,15 @@ func battlePosition(name string, n, x, y int) bool {
 	}
 	switch name {
 	case "BEAM.PBL":
-		return n >= 0 && n <= 2 && y == 160 && x >= 40 && x <= 248 && (x-40)%16 == 0
+		return n >= 0 && n < 12 && y == 160 && x >= 40 && x <= 248 && (x-40)%16 == 0
 	case "FIGHT.PBL":
-		return y == 144 && (n >= 0 && n <= 1 && x == 256 || n >= 2 && n <= 3 && x == 40)
+		if n >= 0 && n <= 1 {
+			return y == 144 && x >= 160 && x <= 256 && (x-160)%32 == 0
+		}
+		if n >= 2 && n <= 3 {
+			return y == 144 && x == 40
+		}
+		return n >= 4 && n < 12 && x >= 144 && x <= 240 && (x-144)%32 == 0 && y == 152+(n%2)*16
 	case "MASK":
 		return n == 0 && x >= 32 && x <= 272 && (y == 160 && (x-32)%16 == 0 || (y == 152 || y == 168) && (x-32)%8 == 0)
 	}
@@ -118,13 +125,22 @@ func battleSourceKey(work []byte) ([32]byte, bool) {
 }
 
 func (b *battleTheme) selectWork(work []byte) {
+	b.selectWorkWithBeam(work, nil)
+}
+
+// §1.55：新主題同時要求敵人與BEAM的三槽原始bytes，舊主題只沿敵人來源。
+func (b *battleTheme) selectWorkWithBeam(work, beam []byte) {
 	if b.profiles == nil {
 		return
 	}
 	key, ok := battleSourceKey(work)
 	var next *battleTheme
 	if ok {
-		next = b.profiles[key]
+		if b.beamProfiles == nil {
+			next = b.profiles[key]
+		} else if beamKey, valid := battleSourceKey(beam); valid {
+			next = b.beamProfiles[beamKey][key]
+		}
 	}
 	if next != b.active && b.active != nil {
 		b.active.clearPrediction()
@@ -142,16 +158,31 @@ func (b *battleTheme) selectSource(o *oracle.Oracle) {
 		b.selectWork(nil)
 		return
 	}
-	b.selectWork(o.Bytes(a, 512))
+	var beam []byte
+	if b.beamProfiles != nil {
+		ba := oracle.Addr{Seg: 0x1175, Off: o.Word(oracle.Addr{Seg: 0x1175, Off: 0xaf0c})}
+		if ba.Linear() <= 0xa0000-512 {
+			beam = o.Bytes(ba, 512)
+		}
+	}
+	b.selectWorkWithBeam(o.Bytes(a, 512), beam)
 	if b.active != nil {
 		b.active.selectParty(o)
 	}
 }
 
-func battlePNG(root, name string, w, h, scale int) (*image.NRGBA, error) {
+func battlePNG(root, name string, w, h, scale int, caches ...map[string]*image.NRGBA) (*image.NRGBA, error) {
+	images := map[string]*image.NRGBA{}
+	if len(caches) > 0 && caches[0] != nil {
+		images = caches[0]
+	}
 	path, err := themeAssetPath(root, name)
 	if err != nil {
 		return nil, err
+	}
+	key := fmt.Sprintf("%s:%d:%d:%d", path, w, h, scale)
+	if cached := images[key]; cached != nil {
+		return cached, nil // 所有效果只讀hd.Pix；每次LoadTheme各自持有完整來源組。
 	}
 	f, err := os.Open(path)
 	if err != nil {
@@ -171,18 +202,29 @@ func battlePNG(root, name string, w, h, scale int) (*image.NRGBA, error) {
 	}
 	out := image.NewNRGBA(image.Rect(0, 0, w*scale, h*scale))
 	draw.Draw(out, out.Bounds(), im, im.Bounds().Min, draw.Src)
+	images[key] = out
 	return out, nil
 }
 
 func loadBattleTheme(root, orig string, m ThemeManifest, groups []themeGroup, base []byte) (*battleTheme, error) {
+	images := map[string]*image.NRGBA{}
 	expanded := false
+	beamExpanded := false
+	beamGroups := map[int]bool{}
 	for _, e := range m.Entries {
+		if e.PBL == "BEAM.PBL" {
+			if e.Image < 0 || e.Image >= 12 {
+				return nil, fmt.Errorf("BEAM圖號越界")
+			}
+			beamGroups[e.Image/3] = true
+			beamExpanded = beamExpanded || e.Image >= 3
+		}
 		if knownEnemySource(e.PBL) && e.Image >= 15 {
 			expanded = expanded || e.PBL != "ENEMY00.PBL" || e.Image < 21 || e.Image > 23 || len(e.At) == 2 && e.At[1] != 160
 		}
 	}
-	if !expanded {
-		return loadBattleProfile(root, orig, m, groups, base, "ENEMY00.PBL", 2)
+	if !expanded && !beamExpanded {
+		return loadBattleProfile(root, orig, m, groups, base, "ENEMY00.PBL", 2, images)
 	}
 	b := &battleTheme{profiles: map[[32]byte]*battleTheme{}}
 	selected := map[string]map[int]bool{}
@@ -199,16 +241,52 @@ func loadBattleTheme(root, orig string, m ThemeManifest, groups []themeGroup, ba
 		}
 		selected[e.PBL][g] = true
 	}
+	if beamExpanded && len(selected) == 0 {
+		return nil, fmt.Errorf("完整BEAM主題需明示已READY的敵人來源組")
+	}
+	manifests := []ThemeManifest{m}
+	beamKeys := [][32]byte{}
+	if beamExpanded {
+		b.beamProfiles = map[[32]byte]map[[32]byte]*battleTheme{}
+		data, err := os.ReadFile(filepath.Join(orig, "BEAM.PBL"))
+		if err != nil {
+			return nil, err
+		}
+		manifests = nil
+		for g := 0; g < 4; g++ {
+			if !beamGroups[g] {
+				continue
+			}
+			part := m
+			part.Entries = nil
+			for _, e := range m.Entries {
+				if e.PBL != "BEAM.PBL" || e.Image/3 == g {
+					part.Entries = append(part.Entries, e)
+				}
+			}
+			key := make([]byte, 0, 384)
+			for n := g * 3; n < g*3+3; n++ {
+				w, h, px, err := pbl.Decode(data, n)
+				if err != nil || w != 16 || h != 16 {
+					return nil, fmt.Errorf("BEAM工作源尺寸或解碼不符")
+				}
+				key = append(key, battlePack(px)...)
+			}
+			hash := sha256.Sum256(key)
+			if b.beamProfiles[hash] != nil {
+				return nil, fmt.Errorf("BEAM工作源身份重複")
+			}
+			b.beamProfiles[hash] = map[[32]byte]*battleTheme{}
+			beamKeys = append(beamKeys, hash)
+			manifests = append(manifests, part)
+		}
+	}
 	for name, gs := range selected {
 		data, err := os.ReadFile(filepath.Join(orig, name))
 		if err != nil {
 			return nil, err
 		}
 		for g := range gs {
-			profile, err := loadBattleProfile(root, orig, m, groups, base, name, g)
-			if err != nil {
-				return nil, err
-			}
 			key := make([]byte, 0, 384)
 			for _, n := range []int{15 + 3*g, 17 + 3*g, 16 + 3*g} {
 				w, h, px, err := pbl.Decode(data, n)
@@ -221,13 +299,28 @@ func loadBattleTheme(root, orig string, m ThemeManifest, groups []themeGroup, ba
 			if b.profiles[hash] != nil {
 				return nil, fmt.Errorf("敵人工作源身份重複")
 			}
-			b.profiles[hash] = profile
+			for n, part := range manifests {
+				profile, err := loadBattleProfile(root, orig, part, groups, base, name, g, images)
+				if err != nil {
+					return nil, err
+				}
+				if n == 0 {
+					b.profiles[hash] = profile
+				}
+				if beamExpanded {
+					b.beamProfiles[beamKeys[n]][hash] = profile
+				}
+			}
 		}
 	}
 	return b, nil
 }
 
-func loadBattleProfile(root, orig string, m ThemeManifest, groups []themeGroup, base []byte, enemy string, group int) (*battleTheme, error) {
+func loadBattleProfile(root, orig string, m ThemeManifest, groups []themeGroup, base []byte, enemy string, group int, caches ...map[string]*image.NRGBA) (*battleTheme, error) {
+	images := map[string]*image.NRGBA{}
+	if len(caches) > 0 {
+		images = caches[0]
+	}
 	needed := len(m.BuiltinMasks) != 0
 	for _, e := range m.Entries {
 		needed = needed || battleEffectEntry(e)
@@ -263,7 +356,7 @@ func loadBattleProfile(root, orig string, m ThemeManifest, groups []themeGroup, 
 			return fmt.Errorf("重複效果來源 %s", key)
 		}
 		seen[key] = true
-		a.hd, err = battlePNG(root, pngName, a.rect[2], a.rect[3], m.Scale)
+		a.hd, err = battlePNG(root, pngName, a.rect[2], a.rect[3], m.Scale, images)
 		if err != nil {
 			return err
 		}
@@ -287,7 +380,7 @@ func loadBattleProfile(root, orig string, m ThemeManifest, groups []themeGroup, 
 			continue
 		}
 		w, h := 16, 16
-		if body || e.PBL == "FIGHT.PBL" {
+		if body || e.PBL == "FIGHT.PBL" && e.Image < 4 {
 			w, h = 24, 32
 		}
 		if body {
@@ -514,7 +607,7 @@ func (b *battleTheme) model(value *big.Int) []byte {
 }
 func (b *battleTheme) reset() {
 	if b.profiles != nil {
-		for _, p := range b.profiles {
+		for _, p := range b.allProfiles() {
 			p.reset()
 		}
 		b.active = nil
@@ -529,6 +622,26 @@ func (b *battleTheme) reset() {
 	b.baseVector = nil
 	b.partyKeys = [4][32]byte{}
 	b.partyValid = false
+}
+
+func (b *battleTheme) allProfiles() []*battleTheme {
+	seen := map[*battleTheme]bool{}
+	var profiles []*battleTheme
+	add := func(p *battleTheme) {
+		if !seen[p] {
+			seen[p] = true
+			profiles = append(profiles, p)
+		}
+	}
+	for _, p := range b.profiles {
+		add(p)
+	}
+	for _, bank := range b.beamProfiles {
+		for _, p := range bank {
+			add(p)
+		}
+	}
+	return profiles
 }
 func (b *battleTheme) clearPrediction() {
 	if b.profiles != nil {

@@ -66,6 +66,7 @@ func (e *ThemeEntry) UnmarshalJSON(b []byte) error {
 }
 
 type themeGroup struct {
+	sceneCopy  bool
 	watch      xlate.Watcher
 	rows       []*xlate.Stamp
 	sprite     *spritePresence
@@ -83,6 +84,7 @@ type Theme struct {
 	originalElevator   []byte
 	battle             *battleTheme
 	party              *partyTheme
+	sceneEffects       *sceneEffects
 }
 
 // LoadTheme 回 nil 表示未選主題或倍率不符；notice 由前端記錄一次。
@@ -141,10 +143,15 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 		return nil, "", err
 	}
 	t := &Theme{Name: m.Name, Enabled: true, Layer: xlate.Layer{W: 320, H: 200}}
-	roomLoaded := make(map[int]bool)
+	roomLoaded := make(map[string]bool)
+	roomAliases := make(map[int]ThemeEntry)
+	sceneLoaded := make(map[string]bool)
 	sourceEntries := make(map[*spritePresence]ThemeEntry)
 	seenAliases := make(map[int]bool)
 	for i, e := range m.Entries {
+		if sceneEffectEntry(e) {
+			continue
+		}
 		if e.PBL == "ENEMY02.PBL" && (e.Image == 12 || e.Image == 13) {
 			if seenAliases[e.Image] {
 				return nil, "", fmt.Errorf("ENEMY02別名圖號重複登記")
@@ -157,12 +164,13 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 		ref := base
 		var roomSource []byte
 		var sprite *spritePresence
-		if e.PBL == "ROOM0.PBL" {
-			if roomLoaded[e.Image] {
-				return nil, "", fmt.Errorf("ROOM0 #%d不能重複登記", e.Image)
+		if isRoomSource(e.PBL) {
+			key := fmt.Sprintf("%s:%d", e.PBL, e.Image)
+			if roomLoaded[key] {
+				return nil, "", fmt.Errorf("%s #%d不能重複登記", e.PBL, e.Image)
 			}
-			roomLoaded[e.Image] = true
-			px, err := loadRoomImage(orig, e.Image)
+			roomLoaded[key] = true
+			px, err := loadRoomImageNamed(orig, e.PBL, e.Image, m.Schema == "psychic-war-theme/2")
 			if err != nil {
 				return nil, "", err
 			}
@@ -170,6 +178,46 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 			ref = append([]byte(nil), base...)
 			for y := 0; y < 72; y++ {
 				copy(ref[(124+y)*320+4:(124+y)*320+76], px[y*72:(y+1)*72])
+			}
+			if e.PBL == "ROOM0.PBL" && (e.Image == 14 || e.Image == 17) {
+				if prior, ok := roomAliases[31-e.Image]; ok {
+					p1, er1 := themeAssetPath(root, e.PNG)
+					p2, er2 := themeAssetPath(root, prior.PNG)
+					if er1 != nil || er2 != nil || !equalInts(e.At, prior.At) || !equalInts(e.Src, prior.Src) || !equalInts(e.Match, prior.Match) || e.Kind != prior.Kind || e.Scaler != prior.Scaler {
+						return nil, "", fmt.Errorf("ROOM0 #14／#17別名的來源表示不符")
+					}
+					b1, er1 := os.ReadFile(p1)
+					b2, er2 := os.ReadFile(p2)
+					if er1 != nil || er2 != nil || !bytes.Equal(b1, b2) {
+						return nil, "", fmt.Errorf("ROOM0 #14／#17別名必須使用相同PNG")
+					}
+					continue // 兩圖號保留，完整內容與半透明圖面只註冊一次。
+				}
+				roomAliases[e.Image] = e
+			}
+		} else if isSceneSource(e.PBL) {
+			if m.Schema != "psychic-war-theme/2" {
+				return nil, "", fmt.Errorf("MAP／OPEN／END完整來源只支援theme/2")
+			}
+			x, y, w, h, positionErr := fixedScenePosition(e)
+			if positionErr != nil {
+				return nil, "", positionErr
+			}
+			key := fmt.Sprintf("%s:%d:%d:%d", e.PBL, e.Image, x, y)
+			if sceneLoaded[key] {
+				return nil, "", fmt.Errorf("場景來源與原位重複")
+			}
+			sceneLoaded[key] = true
+			_, _, px, sourceErr := loadSceneImage(orig, e)
+			if sourceErr != nil {
+				return nil, "", sourceErr
+			}
+			ref = make([]byte, 320*200)
+			if e.PBL == "MAP.PBL" {
+				copy(ref, base)
+			}
+			for yy := 0; yy < h; yy++ {
+				copy(ref[(y+yy)*320+x:(y+yy)*320+x+w], px[yy*w:(yy+1)*w])
 			}
 		} else if e.PBL == "OVER.PBL" {
 			px, err := loadOver0(orig)
@@ -227,7 +275,7 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 				copy(ref[(sprite.y+y)*320+sprite.x:(sprite.y+y)*320+sprite.x+sprite.w], sprite.indexed[y*sprite.w:(y+1)*sprite.w])
 			}
 		}
-		g, err := loadThemeEntry(root, i, e, scale, ref)
+		g, err := loadThemeEntry(root, i, e, scale, ref, m.Schema == "psychic-war-theme/2")
 		if err != nil {
 			return nil, "", fmt.Errorf("主題 %s 第 %d 筆：%w", m.Name, i+1, err)
 		}
@@ -243,10 +291,17 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 			t.originalElevator = append([]byte(nil), roomSource...)
 		}
 		// 新版統一使用迷宮圖集，仍先驗證既有ROOM22資產。
+		g.sceneCopy = isSceneSource(e.PBL)
 		if m.Maze != nil && e.PBL == "ROOM0.PBL" && e.Image == 22 {
 			continue
 		}
 		t.groups = append(t.groups, g)
+	}
+	if err = t.loadOpeningParents(root, orig, m); err != nil {
+		return nil, "", err
+	}
+	if t.sceneEffects, err = loadSceneEffects(root, orig, m); err != nil {
+		return nil, "", err
 	}
 	if m.Maze != nil {
 		t.maze, err = loadMaze(root, orig, *m.Maze, scale, base)
@@ -264,7 +319,7 @@ func LoadTheme(selection, orig, themeRoot string, scale int) (*Theme, string, er
 	}
 	if t.battle != nil && t.party != nil {
 		t.battle.party = t.party
-		for _, profile := range t.battle.profiles {
+		for _, profile := range t.battle.allProfiles() {
 			profile.party = t.party
 		}
 	}
@@ -339,30 +394,47 @@ func validRoomImage(image int) bool {
 	return image == 0 || image == 2 || image == 3 || image == 5 || image == 8 || image == 22
 }
 
+func isRoomSource(name string) bool { return name == "ROOM0.PBL" || name == "ROOM1.PBL" }
+
+func validRoomSource(name string, image int, expanded bool) bool {
+	if !expanded {
+		return name == "ROOM0.PBL" && validRoomImage(image)
+	}
+	return image >= 0 && (name == "ROOM0.PBL" && image < 31 || name == "ROOM1.PBL" && image < 32)
+}
+
 // ROOM0限定完整原圖辨識（024 §1.9／§1.11／§1.12），圖外基準沿用SCREEN／MENU。
 func loadRoomImage(orig string, image int) ([]byte, error) {
-	if !validRoomImage(image) {
-		return nil, fmt.Errorf("ROOM0圖號未證實：%d", image)
+	return loadRoomImageNamed(orig, "ROOM0.PBL", image, false)
+}
+
+func loadRoomImageNamed(orig, name string, image int, expanded bool) ([]byte, error) {
+	if !validRoomSource(name, image, expanded) {
+		return nil, fmt.Errorf("%s圖號未READY：%d", name, image)
 	}
-	b, err := os.ReadFile(filepath.Join(orig, "ROOM0.PBL"))
+	b, err := os.ReadFile(filepath.Join(orig, name))
 	if err != nil {
 		return nil, fmt.Errorf("主題房間來源：%w", err)
 	}
-	if fmt.Sprintf("%x", sha256.Sum256(b)) != "2b2f58c9b716a54bf826dbc9c90237a32458fe49abab52869d5353bbff34d111" {
-		return nil, fmt.Errorf("主題ROOM0.PBL的SHA-256不符")
+	hash, count := "2b2f58c9b716a54bf826dbc9c90237a32458fe49abab52869d5353bbff34d111", 31
+	if name == "ROOM1.PBL" {
+		hash, count = "ebac0767717e29a6cc8760ac2bd3a57bb44aeac52823ee5274cfa05f4d1ee781", 32
+	}
+	if fmt.Sprintf("%x", sha256.Sum256(b)) != hash {
+		return nil, fmt.Errorf("主題%s的SHA-256不符", name)
 	}
 	offsets, err := pbl.Offsets(b)
-	if err != nil || len(offsets) != 31 {
-		return nil, fmt.Errorf("主題ROOM0.PBL圖數不符")
+	if err != nil || len(offsets) != count {
+		return nil, fmt.Errorf("主題%s圖數不符", name)
 	}
 	w, h, px, err := pbl.Decode(b, image)
 	if err != nil || w != 72 || h != 72 {
-		return nil, fmt.Errorf("主題ROOM0 #%d尺寸或解碼不符", image)
+		return nil, fmt.Errorf("主題%s #%d尺寸或解碼不符", name, image)
 	}
 	return px, nil
 }
 
-func loadThemeEntry(root string, index int, e ThemeEntry, scale int, base []byte) (themeGroup, error) {
+func loadThemeEntry(root string, index int, e ThemeEntry, scale int, base []byte, expandedRooms ...bool) (themeGroup, error) {
 	var g themeGroup
 	w, h, ox, oy := 320, 40, 0, e.Image*40
 	switch e.PBL {
@@ -381,12 +453,22 @@ func loadThemeEntry(root string, index int, e ThemeEntry, scale int, base []byte
 			return g, fmt.Errorf("OVER只支援#0完整圖及原版人物矩形錨點")
 		}
 		w, h, ox, oy = 64, 64, 128, 48
-	case "ROOM0.PBL":
-		if !validRoomImage(e.Image) || (e.Src != nil && !equalInts(e.Src, []int{0, 0, 72, 72})) ||
+	case "ROOM0.PBL", "ROOM1.PBL":
+		expanded := len(expandedRooms) > 0 && expandedRooms[0]
+		if !validRoomSource(e.PBL, e.Image, expanded) || (e.Src != nil && !equalInts(e.Src, []int{0, 0, 72, 72})) ||
 			(e.Match != nil && !equalInts(e.Match, []int{4, 124, 72, 72})) {
-			return g, fmt.Errorf("ROOM0只支援#0／#2／#3／#5／#8／#22完整圖及原版房間矩形錨點")
+			return g, fmt.Errorf("房間只接受READY來源、完整原圖及原版窗格錨點")
 		}
 		w, h, ox, oy = 72, 72, 4, 124
+	case "MAP.PBL", "OPEN.PBL", "END0.PBL", "END1.PBL":
+		if len(expandedRooms) == 0 || !expandedRooms[0] {
+			return g, fmt.Errorf("固定場景只支援theme/2")
+		}
+		var err error
+		ox, oy, w, h, err = fixedScenePosition(e)
+		if err != nil {
+			return g, err
+		}
 	case "ALLY.PBL":
 		var err error
 		ox, oy, err = allyPosition(e)
@@ -430,8 +512,10 @@ func loadThemeEntry(root string, index int, e ThemeEntry, scale int, base []byte
 	match := []int{0, 0, 320, 40}
 	if e.PBL == "OVER.PBL" {
 		match = []int{128, 48, 64, 64}
-	} else if e.PBL == "ROOM0.PBL" {
+	} else if isRoomSource(e.PBL) {
 		match = []int{4, 124, 72, 72}
+	} else if isSceneSource(e.PBL) {
+		match = []int{x, y, rw, rh}
 	}
 	if e.Match != nil {
 		match = e.Match
@@ -476,7 +560,7 @@ func loadThemeEntry(root string, index int, e ThemeEntry, scale int, base []byte
 		start := (row - y0) * scale * padded.Stride
 		g.rows = append(g.rows, &xlate.Stamp{Key: rowKey, Art: true, X: x0, Y: row, Cells: (x1 - x0) / 8, CellW: 8, CellH: 8, PixScale: scale, Order: index,
 			Reference: ref, Pix: padded.Pix[start : start+8*scale*padded.Stride]})
-		if e.PBL == "ALLY.PBL" || knownEnemySource(e.PBL) || e.PBL == "OVER.PBL" || e.PBL == "ROOM0.PBL" {
+		if e.PBL == "ALLY.PBL" || knownEnemySource(e.PBL) || e.PBL == "OVER.PBL" || isRoomSource(e.PBL) || isSceneSource(e.PBL) {
 			// 原版全黑的格沒有角色證據，不能因清空後吻合而留下 HD 殘片。
 			s := g.rows[len(g.rows)-1]
 			s.Transparent = make([]bool, s.Cells)
@@ -484,7 +568,7 @@ func loadThemeEntry(root string, index int, e ThemeEntry, scale int, base []byte
 				s.Transparent[cell] = true
 				for yy := 0; yy < 8; yy++ {
 					for xx := cell * 8; xx < (cell+1)*8; xx++ {
-						if e.PBL == "ROOM0.PBL" && (x0+xx < x || x0+xx >= x+rw || row+yy < y || row+yy >= y+rh) {
+						if (isRoomSource(e.PBL) || isSceneSource(e.PBL)) && (x0+xx < x || x0+xx >= x+rw || row+yy < y || row+yy >= y+rh) {
 							continue
 						}
 						if ref[yy*(x1-x0)+xx] != 0 {
@@ -596,6 +680,7 @@ func (t *Theme) ResetForLoad() {
 		return
 	}
 	t.Layer.ClearArt()
+	t.sceneEffects.reset()
 	t.Layer.UnwatchAll()
 	if t.maze != nil {
 		t.maze.clear(&t.Layer)
@@ -625,6 +710,7 @@ func (t *Theme) Frame(o *oracle.Oracle) {
 	}
 	w, h, rgb := o.ScreenRGB()
 	if w != 320 || h != 200 {
+		t.sceneEffects.reset()
 		if t.battle != nil {
 			t.battle.reset()
 		}
@@ -652,6 +738,11 @@ func (t *Theme) Frame(o *oracle.Oracle) {
 	}
 	t.frameSprites(indexed)
 	t.Layer.Frame(indexed, rgb)
+	if t.Enabled {
+		t.sceneEffects.frame(indexed, o.Palette())
+	} else {
+		t.sceneEffects.reset()
+	}
 }
 
 func (t *Theme) frameSprites(indexed []byte) {
@@ -683,6 +774,9 @@ func (t *Theme) Draw(dst []byte, scale int) bool {
 	}
 	drawn := t.Layer.Draw(dst, scale, nil)
 	if t.battle != nil && t.battle.draw(dst, scale) {
+		drawn = true
+	}
+	if t.sceneEffects.draw(dst, scale) {
 		drawn = true
 	}
 	return drawn

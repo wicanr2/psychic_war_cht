@@ -93,6 +93,7 @@ func TestMintonProductionScene(t *testing.T) {
 		t.Fatal("正式效果載入", notice, err)
 	}
 	b := hd.battle
+	extendedEffects := b.beamProfiles != nil
 	variables := 172
 	if b.profiles != nil {
 		var found *battleTheme
@@ -111,6 +112,9 @@ func TestMintonProductionScene(t *testing.T) {
 		}
 		b = found
 		variables = 217
+		if extendedEffects {
+			variables = 255 // §1.55：舊172原版真值映射保持；新增38個已驗FIGHT原位。
+		}
 	}
 	selectSingleAllyFixture(t, b, orig)
 	mask := read(plan.Mask)

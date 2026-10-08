@@ -8367,3 +8367,101 @@ ALLY31限定接入與§200–§201驗收已提交d3ab16136cbf70ac7310125fe44b348
 - 024 §1.55保持DRAFT。正式BEAM #0–#2／FIGHT #0–#3接受範圍、正常GUI數字及ALLY31主題不改。下一切片追載入選擇及間接寫入，再驗原版工作源、位置與轉換；不重跑缺前置條件的F1來湊覆蓋，也不由共用貼圖常式猜補其餘圖號。
 
 入口均在workplace/ida/hd-ally-recruit-20261004/：remaining-effects-ida-v{1,2,3}-20261007.py／.json、run-remaining-effects-ida-v3-20261007.py及同名command收據；獨立verify-remaining-effects-ida-v1-20261007.py／remaining-effects-ida-independent-v1-20261007.json。早版保留；資源字串解析明示跳過前一byte，不把以0開頭的記錄稱為缺檔。新增證據保全remaining-effects-source-snapshot-v1-20261007.tar.gz及remaining-effects-final-audit-v1-20261007.json。原版與研究archive只留本機，沒有Issue寫入或發行。
+
+## 203. 完整效果來源與四隊員原位的受控審查（2026-10-07）
+
+本輪以30e16ac接手，使用者要求完成HD、完整版、Release與推廣影片。現行ALLY31主題與來源先重驗，1511份來源、四份獨立收據及既有339處指令與負對照保持。另發現未登錄的remaining-effects-ida-v4、正常開機來源與四組BEAM受控載入，原始比較器移輸出至容器/tmp重跑通過；歷史原檔不改。
+
+【confirmed，限原版資料與載入】remaining-effects-boot-beam-independent-v2-20261007.json SHA83da958be723a87fc023ee04b7154e9b8cb3f19b0dd8ffee7be2c2240028f862。正常開機15次來源包含FIGHT #0–#11與BEAM #0–#2；四組BEAM明示載入12圖及24個EGA工作槽相同。相關指標在第931步由原版EXEPACK runtime1CAD:0090寫入；值與PW_UNP.EXE資料相符，不能沿先前直接xref缺項宣稱沒有写入端。
+
+工具沿IDA9.4 locked-v1、UID1000、CPU1、network none及正式DB唯讀／tmp複本。新hd-completion-effects-ida-v2-20261007.json SHA541cf2d7cd346d8f7704c22e0bf91bac9a6ac9bd47e44840edb8890df78d54c5；原DB與EXE SHA及位址空間沿§202。v1從143DD開始，少了143DC的CS前綴；原始bytes相同只證實片段，不能證明完整指令。v2從143DC重生，初版保留，正式DB不改。原始名稱、operand、decoded_mnemonic與bytes同列；未定義資料區的database_listing可仍是db，不當成解碼語意。
+
+【confirmed，受控輸出】hd-completion-effects-controlled-v2-20261007包含536明示案例、600次原版8705輸出。FIGHT固定動作欄位、相位、四隊員欄位及事先列出的四seed；BEAM固定四組、17槽與六個輸入對。全部來源由獨立PBL解析唯一配對，600完整畫面XOR及1200來源／像素負對照通過。FIGHT0／1的四位置為(160／192／224／256,144)；FIGHT4–11的四列為x144／176／208／240，偶數y152、奇數y168。BEAM四組均沿16像素槽x8..264、y160；正式範圍只維持已有正常證據的x40..248，其他三位置不由受控案例升格。
+
+獨立入口verify-hd-completion-effects-controlled-v1-20261007.py，收據hd-completion-effects-controlled-independent-v1-20261007.json SHA57b1f6ea2097edc6f2c35d60054fbbcaf3333e30b637c27402074229928032bb。收據核對原始檔、DB、IDA指令、62編譯來源與binary、逐筆source及before／after。受控from／to名稱與目前／前值的實際寫入順序相反；保留名稱，審查以原始欄位及像素為準，不據此建立動作方向。四個seed在執行前固定，不以seed不同宣稱位置隨機；14F96實際讀取隊員欄位，測試明示0..3。
+
+只讀原始資料的可丟棄模型核對ENEMY00首組與四BEAM組，新增FIGHT原位後各255變數滿秩；尚未驗全部60組或HD。024 §1.55經限定審查READY，正常GUI與新HD接入計數保持。17份原版參照由原PBL及已驗戰鬥色盤生成，來源索引hd-completion-effect-art-references-v1-20261007.json；新增美術保全hd-completion-effects-art-generation-v1-20261007.json，原生及48×48轉檔只留本機。原始素材、研究state與PNG不進公開包。
+
+初次Go編譯由login shell重設PATH而找不到go，改同一映像的非login shell及明示可寫輸出掛載後通過。Python圖像檢查缺PIL屬工具缺件，改沿既有影片映像的ImageMagick，不退回主機或安裝重複映像。尚待完整效果模型實作、獨立RGBA、正常GUI、其餘圖像／動畫、DAT、音源擷取及封包；完整HD與發行未完成。
+
+## 204. 效果限定接入回歸與房間完整內容審查（2026-10-08）
+
+【confirmed，限定效果模型】新主題5910筆PBL＋78內建遮罩＋256MAZE／430PNG。17份BEAM／FIGHT新增原生、提示及48×48轉檔已留本機。240個敵人／BEAM來源組及720獨立合成frame滿秩、冷載、來源負對照与讀檔重建通過。兩條敏頓原版清單4166邊界與2083來源轉換通過，舊172真值只映射到新增255變數，不排除原始欄位。
+
+獨立RGBA v1省略負對照只涵蓋敵人小圖，新的BEAM／FIGHT樣本未被省略，失败保留。v2改為省略全部效果，720圖面差0與720負對照有效，但外層180秒收尾逾時124；v3同資料、公式及判準以相稱時限重跑，完整收據保存。重啟後逐SHA核對951份實際輸入相符。每次LoadTheme內共用唯讀PNG後，新的720 RGBA及PNG bytes與既有全部相同，沒有修改顯示公式。
+
+【confirmed，既有正常GUI範圍】第一批GUI未在10秒内建立視窗，沒有產品錯誤輸出；圖像共用後同條件36視窗、F10與自然退出0。1749效果格符合獨立原版B模板，六類敏頓來源可見；模板步數不當實際截圖時間。實際原版鍵步數重播，44機器欄位及DOS相同，CPU／port／RAM負對照有效。敵人／ALLY正常圖號仍沿30/360及#0–#2，不把受控4BEAM與新FIGHT擴成全動畫或DAT完成。
+
+效果入口都在workplace/ida/hd-ally-recruit-20261004/：hd-completion-effects-plan-v{1,2}-20261007/、hd-completion-effects-validation-v{1,2}-20261008/、hd-completion-effects-rgba-independent-v{2,3}-20261008.json、hd-completion-cache-rgba-audit-v1-20261008.json、hd-completion-minton-{old,gui}-v1-20261008/、hd-completion-gui-battle-v2-20261008/、hd-completion-gui-cells-independent-v1-20261008.json及hd-completion-gui-machine-independent-v1-20261008.json。新正式前端350來源与測試118來源完整保存，原生／PNG／state／DAT不公開。
+
+【confirmed，房間原圖及受控COPY】ROOM0實際31圖、SHA2b2f58c9b716a54bf826dbc9c90237a32458fe49abab52869d5353bbff34d111；ROOM1實際32圖、SHAebac0767717e29a6cc8760ac2bd3a57bb44aeac52823ee5274cfa05f4d1ee781，全部72×72。hd-completion-room-controlled-v1-20261008明示原版0161:8705、原始packed輸入與既有(4,124)窗格；63次全屏COPY與獨立PBL原圖相同，堆疊平衡，63單像素負對照有效。研究只證實提供此原始圖片時的原版像素輸出，不證實每圖正常路徑會選用。ROOT／schema2的完整內容條件已審查為024 §1.56 READY，其他位置與用途保留unknown。ROOM0 #14／#17唯一相同內容，其他109場景原圖相互不同，不能用不同HD藝術覆寫別名。
+
+109场景原圖及packed／RLE清單由原始PBL產生；開機七段的packed-only及補RLE觀察均0次，觀察與控制相同。此範圍沒有證明素材不使用，原版終點仍是正常初始迷宮。依診斷入口~/diagnosis-notes/docs/02-query-returned-empty/README.md保留空查詢與限制；後續回到已足夠的完整內容條件，不深挖未依賴的硬體helper。IDA9.4從固定私有archive恢復py312-v1原ID4ac62de，最小schema與輸入DB SHA通過；原DB唯讀／tmp副本，RLE18A98及封裝18A7C原始名稱、operand、bytes及xref留存，未據此猜ROOM用途。位址空間沿§202，不混作檔案offset。
+
+房間證據入口：hd-completion-scene-assets-v{1,2}-20261008/、hd-completion-scenes-boot-source-v{1,2}-20261008/、hd-completion-scenes-ida-v{1,2}-20261008.json、hd-completion-room-controlled-v1-20261008/與verify-hd-completion-room-controlled-v1-20261008.py／hd-completion-room-copy-independent-v1-20261008.json。103待接入圖的原版參照與文字留白位於hd-completion-scene-art-v1-20261008/art-plan.json；本節當時僅ROOM0 #1／#4／#6已有候選，後續結果追加§205–§206，不以候選替代交付。
+
+## 205. 全房間候選接入與獨立圖面（2026-10-08）
+
+【confirmed，限定63來源及原位圖面】沿024 §1.56 READY接入ROOM0 31與ROOM1 32來源。
+ROOM0 #14／#17相同原圖共用同一PNG，不重複註冊；六份既有房間與父主題430 PNG保留。
+主題theme-full-rooms-effects-ally31-maze-B-v1-20261008為5967 entries／486 PNG、78遮罩及256 MAZE。
+完整主題實際載入通過；迷宮優先序與效果模型保持。ROOM22隔離圖面驗原有PNG，完整主題仍用MAZE。
+
+63份候選以原版COPY後畫格作輸入。獨立比較由原PBL、HD PNG及SCREEN背景計算全域8×8、
+原黑格透明與halo，63份240×240 RGBA差0，63省略美術負對照有效。
+原生、提示、轉檔、舊候選與新版均本機保全。ROOM0 #11的格線背景改稿另存v2，未覆寫v1。
+這是隔離房間圖面的證據；新正式前端、正常GUI與DAT仍待補，不擴大正常角色圖號計數。
+
+入口均在workplace/ida/hd-ally-recruit-20261004/：prepare-hd-completion-room63-theme-v1-20261008.py、
+hd-completion-room63-art-plan-v1-20261008.json、hd-completion-room63-art-outputs-v1-20261008/、
+verify-hd-completion-room63-art-v1-20261008.py及hd-completion-room63-art-independent-v1-20261008.json。
+正式測試apps/psychicwar/theme/rooms_extended_test.go，原版來源獨立收據沿§204。
+
+## 206. MAP／OPEN／END的原位及原版像素操作（2026-10-08）
+
+【confirmed，限定受控原版輸出】26固定COPY、16開場原表XOR游標，以及END1全部19圖號
+790 COPY／76 XOR共866個完整位置，逐一與原PBL獨立重建的全畫面相同；908單像素負對照有效。
+原版0161:8705、0161:1060及原始列繪圖直接執行；研究PC、寄存器與RAM設定明示，
+不冒稱正常玩家或GUI。正式原始資料、規則及DAT未修改。
+
+MAP固定(4,4)，OPEN #0–#3固定(24,120)，#5／#6固定(56,152)，END0固定(56,80)。
+OPEN #4的16位置來自CS:0565；END1的x、工作源與32列來自原始CH／CL演算及DS:AEC6指標。
+END1 #18原檔8×16的64 bytes由原版當16×8 XOR波束畫出；HD依實際顯示形狀製作，
+原始archive尺寸仍保留，不改名成其他圖號。半列、左裁切與正常GUI仍是未驗範圍。
+
+IDA導航連續解碼跨入153B0的零填補而失敗，未改DB或產品。例外檔保留；分段v3保留
+未解碼bytes。OPEN消費端sub_10B3A／sub_10B16／sub_10A13及END1 sub_11570原名、bytes、
+operand與位址保留。2018條原始結局雙byte命令從CS:126C解碼，包含20個波束呼叫；
+只解畫面所需消費端，沒有追硬體時序或整份程式。位址基準沿§202。
+
+工具為Go1.24.13與IDA9.4 py312-v1。PW_UNP.EXE及DB SHA沿§203，正式DB唯讀，IDA用tmp副本。
+四PBL雜湊、實際圖數及尺寸登錄024 §1.57。Go探針的62實際來源及binary SHA保存於各build.json。
+剩餘103圖號的102個唯一HD候選已生成，含ROOM0別名及全部結局動作；生成紀錄v1至v18保存
+原生路径、完整提示、來源與PNG SHA。完成候選不代表正式顯示或完整HD驗收完成。
+
+入口均在workplace/ida/hd-ally-recruit-20261004/：hd-completion-scene-routing-ida-v3-20261008.json、
+hd-completion-scene-consumers-ida-v{1,2}-20261008.json、hd-completion-scene-final-nav-ida-v1-20261008.json、
+prepare-hd-completion-static-scenes-v1-20261008.py、hd-completion-static-scenes-native-v1-20261008/及
+verify-hd-completion-static-scenes-native-v1-20261008.py；結局入口hd-completion-end1-native-v{1,2}-20261008.go、
+prepare-hd-completion-end1-native-v2-20261008.py、同名輸出及verify-hd-completion-end1-native-v2-20261008.py。
+獨立收據hd-completion-static-scenes-native-independent-v1-20261008.json及hd-completion-end1-native-independent-v2-20261008.json。
+原序列hd-completion-end1-sequence-v1-20261008.json。美術入口hd-completion-scene-generation-v1至v18-20261008.json、
+normalize-hd-completion-scene-art-v3-20261008.py；原生及衍生PNG只留本機。
+
+## 207. 固定場景、親子圖面與XOR效果收尾（2026-10-08）
+
+confirmed：024 §1.57的816個完整COPY原位已接入，獨立由原PBL、原版after.frame、正式PNG及全域8×8計算的RGBA全數差0，省略美術負對照有效。完整主題theme-full-scenes-ally31-maze-B-v1-20261008，共6875個PBL原位entries、78個builtin_masks、256個MAZE slot、532張PNG；531個目標PBL圖號全數登記。兩Logo與四OPEN字幕沿既有契約；ENEMY08未知尾三格保持原版。
+
+OPEN #3本地(32,32,8,8)與#5原圖相同，#6只差7像素。原版0161:8705先COPY大圖，再COPY#5／#6的兩個全屏結果分別改0／7像素，正反對照通過。#5的HD是大圖(96,96,24,24)的精確裁切；#6取自同一構圖的局部變體。生成v19／v20保存提示與原生來源。024 §1.59 READY後接入兩個完整模板，兩個全RGBA、失配、重設及恢復通過。
+
+OPEN #4沿原版CS:0565的16原位、128-byte來源與AL=1 XOR；END1 #18沿sub_11570／0161:1060 opcode11、DS:AEC6指標與76原位，archive8×16的64 bytes實際按16×8消費。原定位、bytes、SHA及工具基準沿§206與024 §1.57。92組可丟棄Go模型通過原版before／after、雙XOR恢復及唯讀輸入檢查；獨立Python由原PBL、色盤與PNG重建HD基底及B公式，全畫面RGBA差0，省略效果負對照有效，才將§1.58升READY。
+
+正式觀察只使用oracle唯讀API。失配格不自行復活；未知來源、色盤、停用及讀檔清除模型。冷載首個XOR只能由已知COPY基底或完整黑底證明方向；恢復已知基底的撤圖及方向未知情況保持原版。正式92組輸出與已驗證模型一致，新增冷載首圖／撤圖負對照及全部產品套件通過。
+
+第一輪COPY負對照清空整個OPEN #3區域，其他合法小圖仍可匹配，改為逐來源隔離，完整主題載入另驗。首次全庫命令誤收研究Go檔且無DISPLAY，修正為Xvfb中測全部apps及cmd後通過。正常開機固定延遲落入原版COPY轉場，改沿quiet像素穩定方法後到迷宮與首場遭遇，沒有改原版時序。
+
+新版普通敏頓GUI36視窗、1827有限格通過。真正DAT512 bytes與玩家52 bytes相同，24視窗66角色區全RGBA通過；存、讀、戰鬥三條實際鍵序各44機器欄位與完整DOS精確相同，負對照有效。兩CPU、軟體OpenGL、null音訊、起跑load<7的道具抽樣，未載入／載入停用／啟用Frame均值1.522／4.491／4.646ms，繪圖45.20／39.46／29.38FPS，更新均約60次每秒。正常GUI採抽樣，不把受控來源算作全部圖號正常播放，不外推真機或音訊。
+
+收據均位於workplace/ida/hd-ally-recruit-20261004/：hd-full-scene-copy-art-independent-v1-20261008.json、hd-completion-opening-patch-source-v1-20261008.json、hd-completion-opening-parent-art-independent-v1-20261008.json、hd-completion-scene-effects-prototype-independent-v1-20261008.json、hd-full-cold-tests-v1-20261008.log、hd-full-products-tests-v1-20261008.log、hd-full-coverage-and-effects-audit-v1-20261008.json、hd-completion-gui-machine-independent-v2-20261008.json、hd-completion-gui-cells-independent-v2-20261008.json、hd-full-gui-dat-machine-independent-v1-20261008.json、hd-full-dat-gui-crops-independent-v1-20261008.json、hd-full-performance-v1-20261008/verified.json。前端build.json保存352份實際來源及binary SHA。
+
+重生入口：prepare-hd-completion-scene-copy-theme-v2-20261008.py、scenes_test.go、scene_effects_test.go及各同名verify腳本。正常開機入口tools/promo/capture-current.py。原生、提示、影像、原版、DAT與研究產物僅本機。封包及影片收尾沿CONTEXT、tools/package.sh與dist-all/<版本>/smoke/的實際收據。
