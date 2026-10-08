@@ -2461,3 +2461,9 @@ macOS首次正式打包失敗：沿用SDK image已有Go1.26，COPY Go1.24未先�
 實際v.0.3.1六封包內容／SHA／權利、Windows PE與macOS雙架構／arm64簽章／min11.0／系統相依通過；Linux兩實際AppImage在其他cwd啟動、DAT512 bytes、F10與缺字型負對照通過。Windows公開ZIP正常開機F10成功；完整版無錯誤且仍初始化，35秒期限不足，150秒有界等待後正常開機及AppData F10通過。驗證改為等待可見視窗與正常開機，保留失敗及成功收據，不宣稱真Windows驗收。
 
 最後補齊全RGBA格所有權：3×3內部HD細節不能只以採樣角判斷。92組輸出維持byte相同，子像素負對照與全部產品套件v3通過。將這兩項修正提交後定最後版號v.0.3.2-20261008；舊tag保留，v.0.3.1預檢封包保留作證據，現行交付僅新版本。
+
+## 2026-10-08：公開發行及遠端收尾
+
+使用者明示授權推送、以主機gh發布三個公開附件及更新／關閉#34。先前自动審查拒絕Issue寫入，未繞過；取得此次授權後才執行。main與最終tag原子推送成功，Release https://github.com/wicanr2/psychic_war_cht/releases/tag/v.0.3.2-20261008 正式發布，三附件API digest与本機SHA相同：Linux772f34c3ceaa9df736b020620c5027c43d05f33138cc764e20cbf6c905612a95，Windows779bf459a7a5eb0e7a529052e4abe23bdc481b29ab902a15592bdec062dfba5d，Macfd1989669beee025257f2ef4fd5537427d85a347ba068fa718af3857b55e11d7。
+
+#34更新並關閉，#44真機保持開啟。沒有上傳原版、HD、完整版、影片或音樂。正式tag固定dee03ef；本次追加文件不移動tag、不覆寫已發布附件。回讀與發布收據保存在dist-all/v.0.3.2-20261008/smoke/github-release.json及published-assets-verified.json。

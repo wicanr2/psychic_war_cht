@@ -27,7 +27,7 @@
 | 推廣片 | 67秒、多版面候選已合成及字卡目視 | workplace/promo/full-hd-v4-20261008；影音及正式交付收據見下述入口 |
 | 三平台封包 | 乾淨tag建置及逐包驗收流程已備妥 | 實際結果以dist-all版本內收據為準；公開包不得有原版或HD |
 | 平台限制 | Linux實跑、Windows Wine、macOS結構分開驗 | 真Windows／Mac仍屬#44，不能由容器代替 |
-| 發布 | push／PR仍需使用者批准 | 先準備可審閱的公開附件與Release說明；本機完整版及影片不上傳 |
+| 發布 | 使用者授權後已推送並發布v.0.3.2-20261008 | 三個公開附件遠端SHA与本機相同；#34已關閉，#44真機保持開啟；本機完整版及影片未上傳 |
 
 ## 現行入口
 
@@ -53,4 +53,4 @@
 
 推廣片：[capture-current.py](tools/promo/capture-current.py)、[make-current.py](tools/promo/make-current.py)。67秒靜態分幕已在timeline明示，需驗影音、黑幀、凍結與字幕。四總覽由[overview.py](tools/hd/overview.py)重生。工具鏈沿專案Dockerfile，Go1.24.13、IDA9.4、固定DOSBox-X来源5fcf624b；macOS revision沿既有SDK工具鏈改為同版Go，SDK只留本機。
 
-完成封包與影片收據後，公開附件及Release說明供使用者批准push／發布。#44真機驗收維持獨立未完成；不重新深挖硬體時序或已完成來源。
+正式Release：[v.0.3.2-20261008](https://github.com/wicanr2/psychic_war_cht/releases/tag/v.0.3.2-20261008)。使用者已授權推送、以主機gh發布及更新／關閉#34；全部執行後回讀確認。公開三附件SHA與本機manifest相同。本機完成與發布收據見smoke/delivery-complete.json及published-assets-verified.json。#44真機驗收仍未完成。正式tag固定dee03ef，後續文件提交不移動tag或重包。
