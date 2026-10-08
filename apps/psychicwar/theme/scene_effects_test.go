@@ -191,6 +191,20 @@ func TestSceneEffectsOriginalBoundaries(t *testing.T) {
 		if !bytes.Equal(got, want) {
 			t.Fatal("撤圖覆蓋了原版的新輸出", r)
 		}
+		if n == 0 {
+			// HD在原版像素內部也可能有細節，不能只採每個3×3區塊的左上角。
+			fine := append([]byte(nil), base...)
+			at := (960 + 1) * 4
+			fine[at] ^= 1
+			effects.reset()
+			effects.apply(source, source.packed, before, fine, palette)
+			effects.frame(after, palette)
+			actualFine := nativeRGBA(after, palette)
+			effects.draw(actualFine, 3)
+			if actualFine[at] != fine[at] {
+				t.Fatal("漏掉HD子像素細節的所有權")
+			}
+		}
 		effects.reset()
 		if effects.draw(restored, 3) {
 			t.Fatal("冷載保留上一張")

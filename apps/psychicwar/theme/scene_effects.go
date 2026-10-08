@@ -200,6 +200,15 @@ func (b *sceneEffects) apply(s *sceneEffect, packed, before, base []byte, palett
 					}
 				}
 			}
+			if !own {
+				for yy := cy * 24; yy < cy*24+24; yy++ {
+					i := (yy*960 + cx*24) * 4
+					if !bytes.Equal(base[i:i+24*4], native[i:i+24*4]) {
+						own = true
+						break
+					}
+				}
+			}
 			if !erase && ink {
 				own = true
 				for y := cy * 24; y < cy*24+24; y++ {

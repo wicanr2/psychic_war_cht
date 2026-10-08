@@ -2457,3 +2457,7 @@ CONTEXT／AGENTS／README／worklist與#34同步，#34 OPEN，#44不改；原版
 macOS首次正式打包失敗：沿用SDK image已有Go1.26，COPY Go1.24未先清空，造成standard library新舊來源混合。修正專用Dockerfile先移除image內舊Go，建立go1.24.13-15.5-r2；不改其他專案、不prune／rmi。未發布的v.0.3.0-20261008保留為失敗候選，依版號契約提升v.0.3.1-20261008；先修正提交、tag，再重新乾淨打包。
 
 修正後r2 macOS工具鏈實際编出x86_64與arm64 universal，Go1.24.13確認。基底USER1000使image清理步驟首次權限失敗，Dockerfile僅在建置image時切root，隨即恢復UID1000；第一次額外Swiss-map檔名檢查不成立而未啟動編譯，移除該錯誤假設後以實際雙架構編譯通過。新版號影片v.0.3.1-20261008重新合成與67秒影音驗收通過。失敗v.0.3.0交付資料搬至workplace/ida/hd-ally-recruit-20261004/failed-release-v.0.3.0-20261008保存，不作現行交付入口。
+
+實際v.0.3.1六封包內容／SHA／權利、Windows PE與macOS雙架構／arm64簽章／min11.0／系統相依通過；Linux兩實際AppImage在其他cwd啟動、DAT512 bytes、F10與缺字型負對照通過。Windows公開ZIP正常開機F10成功；完整版無錯誤且仍初始化，35秒期限不足，150秒有界等待後正常開機及AppData F10通過。驗證改為等待可見視窗與正常開機，保留失敗及成功收據，不宣稱真Windows驗收。
+
+最後補齊全RGBA格所有權：3×3內部HD細節不能只以採樣角判斷。92組輸出維持byte相同，子像素負對照與全部產品套件v3通過。將這兩項修正提交後定最後版號v.0.3.2-20261008；舊tag保留，v.0.3.1預檢封包保留作證據，現行交付僅新版本。

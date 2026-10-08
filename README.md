@@ -196,7 +196,7 @@ Windows 版出錯時會顯示 MessageBox，並在 `%APPDATA%/PsychicWar/psychicw
 tools/go-ebiten.sh build -o /src/workplace/bin/psychicwar ./cmd/psychicwar
 # 實跑同樣透過 tools/go-ebiten.sh 的容器與 Xvfb。
 # 完成所有提交及同名tag後，指定本機HD主題打包：
-PSYCHICWAR_RELEASE_THEME=workplace/hd/<已驗證主題> tools/package.sh v.0.3.1-20261008
+PSYCHICWAR_RELEASE_THEME=workplace/hd/<已驗證主題> tools/package.sh v.0.3.2-20261008
 ```
 
 常用旗標：`-adlib` 走 OPL2 音樂（不加就是 PC 喇叭）、`-scale` 放大倍率（預設 3）、

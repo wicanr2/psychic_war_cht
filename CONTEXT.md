@@ -1,6 +1,6 @@
 # 接手現況：中文化、完整HD與交付
 
-核對日期：2026-10-08。本次版號 `v.0.3.1-20261008`。dosgolem固定 `31242a9`；原版、規則、RAM及DAT格式不修改。唯一工作清單：[docs/worklist.json](docs/worklist.json)；歷程：[WORKLOG.md](WORKLOG.md)；研究：[038 §207](docs/re/038-hd-theme-feasibility.md)。
+核對日期：2026-10-08。本次版號 `v.0.3.2-20261008`。dosgolem固定 `31242a9`；原版、規則、RAM及DAT格式不修改。唯一工作清單：[docs/worklist.json](docs/worklist.json)；歷程：[WORKLOG.md](WORKLOG.md)；研究：[038 §207](docs/re/038-hd-theme-feasibility.md)。
 
 ## 有效決策
 
@@ -24,7 +24,7 @@
 | 成本 | 三模式Frame均值1.522／4.491／4.646ms | 繪圖45.20／39.46／29.38 FPS，更新約60次／秒；兩CPU、軟體OpenGL、load<7、null音訊 |
 | 四張總覽 | 敵人360及ALLY31的原版／HD已完成 | workplace/hd/full-overviews-v1-20261008；本機，不當作GUI驗收 |
 | 指定音源 | 原版AdLib錄音95.058秒 | 全取樣、非靜音、無削波、退出0；非dosgolem波形parity或人耳驗收 |
-| 推廣片 | 67秒、多版面候選已合成及字卡目視 | workplace/promo/full-hd-v3-20261008；影音及正式交付收據見下述入口 |
+| 推廣片 | 67秒、多版面候選已合成及字卡目視 | workplace/promo/full-hd-v4-20261008；影音及正式交付收據見下述入口 |
 | 三平台封包 | 乾淨tag建置及逐包驗收流程已備妥 | 實際結果以dist-all版本內收據為準；公開包不得有原版或HD |
 | 平台限制 | Linux實跑、Windows Wine、macOS結構分開驗 | 真Windows／Mac仍屬#44，不能由容器代替 |
 | 發布 | push／PR仍需使用者批准 | 先準備可審閱的公開附件與Release說明；本機完整版及影片不上傳 |
@@ -37,8 +37,8 @@
 
 - `hd-full-scene-copy-art-independent-v1-20261008.json`：816 COPY來源及全RGBA。
 - `hd-completion-opening-parent-art-independent-v1-20261008.json`：兩親子模板及負對照。
-- `hd-completion-scene-effects-prototype-independent-v1-20261008.json`、`hd-full-final-effect-output-audit-v2-20261008.json`：92 B圖面、正式輸出與冷載方向。
-- `hd-full-products-tests-v2-20261008.log`、`hd-full-cold-tests-v1-20261008.log`：全部產品套件與新效果fixture明示執行。
+- `hd-completion-scene-effects-prototype-independent-v1-20261008.json`、`hd-full-final-effect-output-audit-v2-20261008.json`、`hd-full-pixel-detail-audit-v1-20261008.json`：92 B圖面、正式輸出與冷載方向。
+- `hd-full-products-tests-v3-20261008.log`、`hd-full-cold-tests-v1-20261008.log`：全部產品套件與新效果fixture明示執行。
 - `hd-completion-frontend-v4-20261008-build.json`：本輪冷載階段前端的352份來源及binary SHA；最後撤圖修正的正式程式以乾淨tag封包的HEAD、SHA與產品測試v2為準。
 - `hd-completion-gui-machine-independent-v2-20261008.json`、`hd-completion-gui-cells-independent-v2-20261008.json`：普通戰鬥原版重播及有限可見格。
 - `hd-full-gui-dat-machine-independent-v1-20261008.json`、`hd-full-dat-gui-crops-independent-v1-20261008.json`：DAT與三條GUI原版對照。
@@ -47,7 +47,7 @@
 
 ## 交付與下一步
 
-唯一交付根為 `dist-all/v.0.3.1-20261008/`：公開包在 `patch/`，本機完整包在 `full-local/`，影片與影音收據在 `promo/`，實際封包驗收在 `smoke/`。`SHA256SUMS.json` 列出正式產物的大小、雜湊、建置HEAD及權利分類。產物不進Git。
+唯一交付根為 `dist-all/v.0.3.2-20261008/`：公開包在 `patch/`，本機完整包在 `full-local/`，影片與影音收據在 `promo/`，實際封包驗收在 `smoke/`。`SHA256SUMS.json` 列出正式產物的大小、雜湊、建置HEAD及權利分類。產物不進Git。
 
 重生：[tools/package.sh](tools/package.sh)、[release-stage.py](tools/release-stage.py)、[release-verify.py](tools/release-verify.py)。先完成全部commit、建立同名tag，再從乾淨輸入打包。Linux兩包驗實际GUI、DAT與缺字型負對照；Windows另驗Wine；macOS驗雙架構、簽章、最低版本與動態相依。實際結果以版本內 `smoke/package-verification.json` 及平台收據為準；不存在或失敗時不得宣稱交付驗收通過。
 
