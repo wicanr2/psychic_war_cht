@@ -346,7 +346,7 @@
       "id": "theme",
       "issue": 34,
       "title": "HD 主題",
-      "evidence": "531身份與532 PNG、816 COPY、92 XOR及獨立RGBA；正常GUI、三條原版44欄位／DOS、512-byte DAT、52-byte玩家資料、24視窗66角色區及三模式成本通過。完整交付另看dist-all/v.0.3.0-20261008/smoke及SHA256SUMS.json；#44真機獨立。",
+      "evidence": "531身份與532 PNG、816 COPY、92 XOR及獨立RGBA；正常GUI、三條原版44欄位／DOS、512-byte DAT、52-byte玩家資料、24視窗66角色區及三模式成本通過。完整交付另看dist-all/v.0.3.1-20261008/smoke及SHA256SUMS.json；#44真機獨立。",
       "date": "2026-10-08"
     }
   ],

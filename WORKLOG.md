@@ -2453,3 +2453,7 @@ CONTEXT／AGENTS／README／worklist與#34同步，#34 OPEN，#44不改；原版
 依定案將原版及全部HD限本機，公開包明確清單與leak-scan。三平台统一新版號v.0.3.0-20261008及dist-all結構，所有組裝在Docker；先提交、tag後乾淨打包。實際封包、影音及平台結果留版本內收據，缺失或失敗不可當通過。macOS沿本機SDK image改同版Go；禁止散布SDK。#34的HD限定接入與抽樣門檻完成，#44真機保持；push／發布留待使用者對具體附件批准。
 
 最後XOR撤圖審查補上：方向只比較效果原位，僅恢復仍有效的效果格；無關文字／背景更新不得被整屏舊快照蓋掉。92組新增此負對照、冷載方向與原模型RGBA一致性通過，正式結果見hd-full-erase-tests-v2、products-tests-v2及final-effect-output-audit-v2。67秒影片完成影音與九幕抽幀，metadata登錄刻意靜態分幕，沒有長黑／長靜音或整片凍結。
+
+macOS首次正式打包失敗：沿用SDK image已有Go1.26，COPY Go1.24未先清空，造成standard library新舊來源混合。修正專用Dockerfile先移除image內舊Go，建立go1.24.13-15.5-r2；不改其他專案、不prune／rmi。未發布的v.0.3.0-20261008保留為失敗候選，依版號契約提升v.0.3.1-20261008；先修正提交、tag，再重新乾淨打包。
+
+修正後r2 macOS工具鏈實際编出x86_64與arm64 universal，Go1.24.13確認。基底USER1000使image清理步驟首次權限失敗，Dockerfile僅在建置image時切root，隨即恢復UID1000；第一次額外Swiss-map檔名檢查不成立而未啟動編譯，移除該錯誤假設後以實際雙架構編譯通過。新版號影片v.0.3.1-20261008重新合成與67秒影音驗收通過。失敗v.0.3.0交付資料搬至workplace/ida/hd-ally-recruit-20261004/failed-release-v.0.3.0-20261008保存，不作現行交付入口。

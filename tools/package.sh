@@ -14,7 +14,7 @@ test -d "$THEME"; test -f "$THEME/manifest.json"
 test -d "$ROOT/workplace/original"; test -f "$ROOT/workplace/original/psychic-war/PW.EXE"
 test -d /home/anr2/go/pkg/mod
 GO_IMAGE=psychicwar-go-ebiten:latest
-MAC_IMAGE=psychicwar-osxcross:go1.24.13-15.5-r1
+MAC_IMAGE=psychicwar-osxcross:go1.24.13-15.5-r2
 APP_IMAGE=hr-appimage:runtime-recovery-r1
 docker image inspect "$GO_IMAGE" "$MAC_IMAGE" "$APP_IMAGE" >/dev/null
 COMMON=(--rm --user "$(id -u):$(id -g)" --cpus 2 --pids-limit 512 --network none --log-opt max-size=10m --log-opt max-file=3 -e HOME=/tmp -e GOMAXPROCS=2 -e GOMODCACHE=/gomod -e GOCACHE=/src/workplace/finish-gocache-20261008 -e GOPROXY=off -e GOTOOLCHAIN=local -e GOWORK=off -e "PW_VER=$VER" -e "PW_HEAD=$HEAD" -v "$ROOT:/src" -v "$ROOT/workplace/original:/src/workplace/original:ro" -v /home/anr2/go/pkg/mod:/gomod:ro -w /src)
