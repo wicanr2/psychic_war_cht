@@ -196,7 +196,7 @@ Windows 版出錯時會顯示 MessageBox，並在 `%APPDATA%/PsychicWar/psychicw
 tools/go-ebiten.sh build -o /src/workplace/bin/psychicwar ./cmd/psychicwar
 # 實跑同樣透過 tools/go-ebiten.sh 的容器與 Xvfb。
 # 完成所有提交及同名tag後，指定本機HD主題打包：
-PSYCHICWAR_RELEASE_THEME=workplace/hd/<已驗證主題> tools/package.sh v.0.3.2-20261008
+PSYCHICWAR_RELEASE_THEME=workplace/hd/<已驗證主題> tools/package.sh v.1.0.0-20261008
 ```
 
 常用旗標：`-adlib` 走 OPL2 音樂（不加就是 PC 喇叭）、`-scale` 放大倍率（預設 3）、
@@ -247,3 +247,7 @@ repo 裡為了研究與對照保留的原版片段（文本檔的原文欄位、
 是獨立的第三方保存與研究專案。
 
 Windows容器驗收使用 [release-wine-smoke.py](tools/release-wine-smoke.py)。影片影音及逐幕抽幀由 [verify-current.py](tools/promo/verify-current.py) 重生。
+
+封包驗收通過後，以 [release-manifest.py](tools/release-manifest.py) 產生該版的 `SHA256SUMS.json` 與交付收據。正式發行版為1.0.0；舊版Release保留。
+
+1.0.0實際遊玩推廣片使用 [capture-live.py](tools/promo/capture-live.py)、[make-live.py](tools/promo/make-live.py) 與 [verify-live.py](tools/promo/verify-live.py)，從實際AppImage正常開機，錄下移動、戰鬥與原版／HD切換。

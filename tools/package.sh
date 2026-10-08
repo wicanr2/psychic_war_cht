@@ -3,7 +3,7 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
-VER="${1:?請給完整版號 v.0.3.0-YYYYMMDD}"
+VER="${1:?請給完整版號 v.1.0.0-YYYYMMDD}"
 [[ "$VER" =~ ^v\.[0-9]+\.[0-9]+\.[0-9]+-[0-9]{8}$ ]] || exit 2
 [[ -z "$(git status --porcelain --untracked-files=normal)" ]] || { echo '工作樹必須乾淨' >&2; exit 2; }
 [[ "$(git describe --exact-match --tags HEAD)" = "$VER" ]] || exit 2

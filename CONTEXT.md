@@ -1,6 +1,6 @@
 # 接手現況：中文化、完整HD與交付
 
-核對日期：2026-10-08。本次版號 `v.0.3.2-20261008`。dosgolem固定 `31242a9`；原版、規則、RAM及DAT格式不修改。唯一工作清單：[docs/worklist.json](docs/worklist.json)；歷程：[WORKLOG.md](WORKLOG.md)；研究：[038 §207](docs/re/038-hd-theme-feasibility.md)。
+核對日期：2026-10-08。本次正式版號 `v.1.0.0-20261008`。dosgolem固定 `31242a9`；原版、規則、RAM及DAT格式不修改。唯一工作清單：[docs/worklist.json](docs/worklist.json)；歷程：[WORKLOG.md](WORKLOG.md)；研究：[038 §207](docs/re/038-hd-theme-feasibility.md)。
 
 ## 有效決策
 
@@ -25,7 +25,7 @@
 | 四張總覽 | 敵人360及ALLY31的原版／HD已完成 | workplace/hd/full-overviews-v1-20261008；本機，不當作GUI驗收 |
 | 指定音源 | 原版AdLib錄音95.058秒 | 全取樣、非靜音、無削波、退出0；非dosgolem波形parity或人耳驗收 |
 | 推廣片 | 67秒、多版面候選已合成及字卡目視 | workplace/promo/full-hd-v4-20261008；影音及正式交付收據見下述入口 |
-| 三平台封包 | 乾淨tag建置及逐包驗收流程已備妥 | 實際結果以dist-all版本內收據為準；公開包不得有原版或HD |
+| 三平台封包 | 使用者要求重新打包正式1.0.0 | 三平台公開／本機六包從新tag重建，逐包收據為完成依據 |
 | 平台限制 | Linux實跑、Windows Wine、macOS結構分開驗 | 真Windows／Mac仍屬#44，不能由容器代替 |
 | 發布 | 使用者授權後已推送並發布v.0.3.2-20261008 | 三個公開附件遠端SHA与本機相同；#34已關閉，#44真機保持開啟；本機完整版及影片未上傳 |
 
@@ -47,10 +47,14 @@
 
 ## 交付與下一步
 
-唯一交付根為 `dist-all/v.0.3.2-20261008/`：公開包在 `patch/`，本機完整包在 `full-local/`，影片與影音收據在 `promo/`，實際封包驗收在 `smoke/`。`SHA256SUMS.json` 列出正式產物的大小、雜湊、建置HEAD及權利分類。產物不進Git。
+現行交付根為 `dist-all/v.1.0.0-20261008/`：公開包在 `patch/`，本機完整包在 `full-local/`，影片與影音收據在 `promo/`，實際封包驗收在 `smoke/`。`SHA256SUMS.json` 列出正式產物的大小、雜湊、建置HEAD及權利分類。產物不進Git。
 
-重生：[tools/package.sh](tools/package.sh)、[release-stage.py](tools/release-stage.py)、[release-verify.py](tools/release-verify.py)。先完成全部commit、建立同名tag，再從乾淨輸入打包。Linux兩包驗實际GUI、DAT與缺字型負對照；Windows另驗Wine；macOS驗雙架構、簽章、最低版本與動態相依。實際結果以版本內 `smoke/package-verification.json` 及平台收據為準；不存在或失敗時不得宣稱交付驗收通過。
+重生：[tools/package.sh](tools/package.sh)、[release-stage.py](tools/release-stage.py)、[release-verify.py](tools/release-verify.py)、[release-manifest.py](tools/release-manifest.py)。先完成全部commit、建立同名tag，再從乾淨輸入打包。Linux兩包驗實际GUI、DAT與缺字型負對照；Windows另驗Wine；macOS驗雙架構、簽章、最低版本與動態相依。實際結果以版本內 `smoke/package-verification.json` 及平台收據為準；不存在或失敗時不得宣稱交付驗收通過。
 
 推廣片：[capture-current.py](tools/promo/capture-current.py)、[make-current.py](tools/promo/make-current.py)。67秒靜態分幕已在timeline明示，需驗影音、黑幀、凍結與字幕。四總覽由[overview.py](tools/hd/overview.py)重生。工具鏈沿專案Dockerfile，Go1.24.13、IDA9.4、固定DOSBox-X来源5fcf624b；macOS revision沿既有SDK工具鏈改為同版Go，SDK只留本機。
 
-正式Release：[v.0.3.2-20261008](https://github.com/wicanr2/psychic_war_cht/releases/tag/v.0.3.2-20261008)。使用者已授權推送、以主機gh發布及更新／關閉#34；全部執行後回讀確認。公開三附件SHA與本機manifest相同。本機完成與發布收據見smoke/delivery-complete.json及published-assets-verified.json。#44真機驗收仍未完成。正式tag固定dee03ef，後續文件提交不移動tag或重包。
+前版Release：[v.0.3.2-20261008](https://github.com/wicanr2/psychic_war_cht/releases/tag/v.0.3.2-20261008)。使用者已授權推送、以主機gh發布及更新／關閉#34；全部執行後回讀確認。公開三附件SHA與本機manifest相同。本機完成與發布收據見smoke/delivery-complete.json及published-assets-verified.json。#44真機驗收仍未完成。正式tag固定dee03ef，後續文件提交不移動tag或重包。
+
+使用者要求將本成果定為正式1.0.0，重新建立完整與公開封包；既有推送、主機gh發布授權沿本次要求續用。新的tag、程式版本、manifest、檔名與Release統一v.1.0.0-20261008，舊Release不覆寫。使用者追加要求實際遊玩錄影與原版／HD切換；1.0.0影片由實際封包正常開機重新錄影，以新timeline與影音收據驗收，舊靜態影片保留為歷史。正式1.0.0結果以版本內交付收據及遠端Release為準。
+
+實際錄影入口：[capture-live.py](tools/promo/capture-live.py)、[make-live.py](tools/promo/make-live.py)、[verify-live.py](tools/promo/verify-live.py)。沿既有Go GUI及FFmpeg兩個容器，透過專用X11 socket與有界訊號檔同步，錄影入口[record-live.py](tools/promo/record-live.py)。不混用runtime或library。預定73秒，其中65秒實際遊玩，含移動、普通戰鬥及四次Shift+F5切換；實際結果以版本內promo收據為準。

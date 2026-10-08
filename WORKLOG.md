@@ -2467,3 +2467,11 @@ macOS首次正式打包失敗：沿用SDK image已有Go1.26，COPY Go1.24未先�
 使用者明示授權推送、以主機gh發布三個公開附件及更新／關閉#34。先前自动審查拒絕Issue寫入，未繞過；取得此次授權後才執行。main與最終tag原子推送成功，Release https://github.com/wicanr2/psychic_war_cht/releases/tag/v.0.3.2-20261008 正式發布，三附件API digest与本機SHA相同：Linux772f34c3ceaa9df736b020620c5027c43d05f33138cc764e20cbf6c905612a95，Windows779bf459a7a5eb0e7a529052e4abe23bdc481b29ab902a15592bdec062dfba5d，Macfd1989669beee025257f2ef4fd5537427d85a347ba068fa718af3857b55e11d7。
 
 #34更新並關閉，#44真機保持開啟。沒有上傳原版、HD、完整版、影片或音樂。正式tag固定dee03ef；本次追加文件不移動tag、不覆寫已發布附件。回讀與發布收據保存在dist-all/v.0.3.2-20261008/smoke/github-release.json及published-assets-verified.json。
+
+## 2026-10-08：正式1.0.0重新打包
+
+使用者指定將現有成果當作正式release1.0.0，重新打包本機完整版與公開Release。沿版號契約建立v.1.0.0-20261008，不移動或覆寫既有tag／Release。程式行為與HD素材沿已驗成果；从乾淨tag重建三平台六包，再驗實際GUI、存檔、內容、平台結構與權利。新增通用release-manifest.py取代只對舊版號有效的本機收尾腳本。影片不在本次重製範圍，原v.0.3.2影片及收據保留。
+
+使用者追加：推廣片需有遊戲實際遊玩錄影，包含原版與HD theme切換。改由1.0.0實際完整版AppImage正常開機錄影，不匯入state或注入RAM。四秒片頭、65秒實際遊玩、四秒片尾，使用指定原版AdLib；新工具與錄影image来源掛回CONTEXT／README。
+
+錄影工具初次補件apt下載過慢，有界建置取消；改沿既有Go GUI與FFmpeg兩個容器，以專用X11 socket及訊號檔同步，沒有退回主機或混用library。record-live.py同時掛入CONTEXT。
