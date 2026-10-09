@@ -1,10 +1,10 @@
 # 接手現況：中文化、完整HD與交付
 
-核對日期：2026-10-08。本次正式版號 `v.1.0.0-20261008`。dosgolem固定 `31242a9`；原版、規則、RAM及DAT格式不修改。唯一工作清單：[docs/worklist.json](docs/worklist.json)；歷程：[WORKLOG.md](WORKLOG.md)；研究：[038 §207](docs/re/038-hd-theme-feasibility.md)。
+核對日期：2026-10-09。本次正式版號 `v.1.0.0-20261008`。dosgolem固定 `31242a9`；原版、規則、RAM及DAT格式不修改。唯一工作清單：[docs/worklist.json](docs/worklist.json)；歷程：[WORKLOG.md](WORKLOG.md)；研究：[038 §207](docs/re/038-hd-theme-feasibility.md)。
 
 ## 有效決策
 
-完成全部HD，再交付三平台本機完整版、公開Release與推廣片。公開包只帶程式與已確認可散布素材；原版與全部HD僅放本機，不進Git或Release。人物、效果、迷宮與場景美術已定案，不重問。原位、比例、動作、全域8×8及人物在後／框線在前保持。影片只用DOSBox-X原版實錄 `workplace/dosboxx-audio/title-adlib.wav`，含原版音樂及HD的影片僅留本機。
+完成全部HD，再交付三平台本機完整版、公開Release與推廣片。公開包只帶程式與已確認可散布素材；原版與全部HD素材包僅放本機，不進Git或Release；2026-10-09使用者另授權README引用選定的實機展示截圖，限docs/images的HD戰鬥、HD迷宮與原版對照，依024 §7 HD-RIGHTS-03。人物、效果、迷宮與場景美術已定案，不重問。原位、比例、動作、全域8×8及人物在後／框線在前保持。影片只用DOSBox-X原版實錄 `workplace/dosboxx-audio/title-adlib.wav`，含原版音樂及HD的影片僅留本機。
 
 ## 目前狀態表
 

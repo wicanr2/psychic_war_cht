@@ -217,6 +217,7 @@ OPL2 是複音 FM 抽不出音高，配對率只有 7%。**OPL2 的判準是 `do
 
 | 內建戰鬥遮罩資料表示 | 2026-10-06 | 使用者選B，新增`builtin_masks`清單；沿主題/2，以`id=battle-mask-4e36`表示唯一已證實32-byte來源，包含at／png／kind／match。舊主題省略時相容，PBL清單不造EXE圖號。入口docs/spec/024-hd-theme.md §2.0；原型workplace/ida/hd-ally-recruit-20261004/minton-effects-format-prototype-v2-20261006/B/，原版來源及合成仍依§1.42驗證。 |
 | HD公開與本機完整版 | 2026-10-07 | 公開Release只帶程式與已確認可散布素材；原版資料及全部HD素材收進本機完整版，不加入公開包、Git或Release附件。逐項權利分類與交付位置見docs/spec/024-hd-theme.md §7及Codex知識路由的retro-remake-dist-all-output.md。 |
+| README展示截圖 | 2026-10-09 | 使用者要求README放HD畫面與成果，選定的1.0.0實機HD戰鬥、HD迷宮與原版對照截圖可加入docs/images並由README展示。例外只限展示截圖；原版資料、獨立HD素材、整套主題、總覽與影片維持本機限定。入口docs/spec/024-hd-theme.md §7 HD-RIGHTS-03。 |
 
 兩條不是產品決定但同樣不要重問：
 

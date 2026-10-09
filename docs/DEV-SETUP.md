@@ -1,58 +1,66 @@
-# 開發環境與產物組織
+# 開發、驗收與打包
 
-## 產物一律放 `dist-all/`
+玩家介紹、下載與操作見 [README](../README.md)。本頁保存建置及驗收入口；現況與證據以 [CONTEXT](../CONTEXT.md) 為準，逐輪歷程見 [WORKLOG](../WORKLOG.md)。
 
-所有可交付的打包輸出到單一 `dist-all/`（整個目錄 gitignore）。
-散在 `dist/`、`dist-mac/`、專案根目錄各處會分不清哪個是最新，也吃磁碟。
+## 工作環境
 
-| 檔名 | 是什麼 |
-|---|---|
-| `PsychicWar-<版本>-x86_64.AppImage` | Linux，可散布，不含原版素材 |
-| `PsychicWar-<版本>-macos.zip` | macOS universal，可散布，不含原版素材 |
-| `PsychicWar-<版本>-with-data-x86_64.AppImage` | Linux，**含原版素材，純本機自用** |
-| `PsychicWar-<版本>-with-data-macos.zip` | macOS，**含原版素材，純本機自用** |
-| `psychic-war-<版本>-promo.mp4` | 推廣片 |
+分析、建置、測試、GUI、音訊與影片一律在 Docker 內執行。共用主機的資源、掛載、UID、原版唯讀與清理規則見 [AGENTS §10](../AGENTS.md#10-dockergit-與發行)。
 
-規則：
+- Go 1.24.13、Ebiten 前端：[tools/go-ebiten.sh](../tools/go-ebiten.sh)、[Go Dockerfile](../tools/docker/go-ebiten.Dockerfile)。
+- dosgolem：`go.mod` 使用 `worktrees/dosgolem` 的本機分支；本專案 1.0.0 所用提交見 CONTEXT。
+- 原版資料：`workplace/original/psychic-war/`，必須含完整 DOS 英文版資料。版本與雜湊見 [001](re/001-pw-exe-first-look.md)；不加入 Git。
+- 譯文：`text/*.json`。改譯文後執行 [tools/font/bake.sh](../tools/font/bake.sh)，字型來源放 `workplace/font-src/`。
 
-- **每個平台只留最新一份。** `tools/package.sh` 產出前會刪同型的舊檔。
-- **`-with-data` 絕不推 git、絕不上傳。** 它含 `PW.EXE` 與原版資料檔。
-  可散布版打包時做 leak-scan，掃到原版檔就中止。
-- **中間 staging 放 `workplace/pkg-stage/`，壓完就刪。** 別把解開的 bundle 留在磁碟。
-- 要清空間就直接刪 `dist-all/` 裡的舊檔。
-  ⚠ 這裡的「清舊版」**只限本專案 `dist-all/` 底下自己產的打包檔**。
-  **不含 docker image／volume／build cache**，那些是跨專案共用資源，
-  任何 `prune`／`rmi` 一律禁止（`rules/30-lcy-agent-boundaries`）。
+一般產品測試範圍是 `./apps/... ./cmd/...`，在 Xvfb 內執行；`workplace/` 的診斷 Go 檔不是獨立套件，不納入全庫通配測試。Go 工作使用 `GOMAXPROCS=2` 與 `-p 1` 控制程序數。
 
-指令：
+## 正式封包
+
+版號使用 `v.<主版>.<次版>.<修訂版>-YYYYMMDD`。先完成提交，再建立同名 tag，從乾淨工作樹打包。已發布 tag 與附件不移動或覆寫。
 
 ```sh
-tools/package.sh appimage                     # 只出 Linux
-tools/package.sh all                          # AppImage ＋ macOS ＋ 收推廣片
-PSYCHICWAR_WITH_DATA=1 tools/package.sh all   # 再多出兩份含原版素材的本機版
-tools/package-check.sh dist-all/<產物>        # 解開產物驗收
+PSYCHICWAR_RELEASE_THEME=workplace/hd/<已驗證主題> tools/package.sh v.1.0.0-20261008
 ```
 
-規格是 `docs/spec/021-packaging.md`。
+[package.sh](../tools/package.sh) 負責 Docker 編譯與組裝，三平台同時建立公開包與本機完整版：
 
-## Linux 用 AppImage
+| 路徑 | 內容 |
+|---|---|
+| `dist-all/<版本>/patch/` | Linux AppImage、Windows ZIP、macOS universal ZIP，只含可公開程式與已確認可散布素材 |
+| `dist-all/<版本>/full-local/` | 含原版資料與全部 HD 的三平台本機完整版，檔名有 `-with-data` |
+| `dist-all/<版本>/promo/` | 影片、源錄影、抽幀、影音檢查與權利資料，僅本機 |
+| `dist-all/<版本>/smoke/` | 實際封包啟動、存檔、平台結構與發布核對收據 |
+| `dist-all/<版本>/SHA256SUMS.json` | 正式產物大小、SHA-256、建置提交與權利分類 |
 
-Linux 只出 AppImage，不出 tar.gz。AppImage 的結構就是「type2 runtime ＋ squashfs 映像」
-串接，所以 `tools/appimagetool.sh` 只要 `mksquashfs` 與官方 runtime，不裝 appimagetool
-本身（它自己也是 AppImage，在容器裡跑要 FUSE 或先解壓）。
+`dist-all/` 不進 Git。原版與全部 HD 不附於公開包；使用者另授權的 README 實機展示截圖例外，範圍見 [024 §7](spec/024-hd-theme.md#7-授權)。保留已發布版本的可追溯資料，不以清空間為由刪除或改寫遠端 Release。
 
-`AppRun` 只轉呼叫。資料檔跟著執行檔走、存檔落在使用者資料目錄，
-兩件事都由程式自己處理（`apps/psychicwar/paths.go`），因為 squashfs 是唯讀的。
+中間檔放 `workplace/release-stage/<版本>/`；研究及擷取資料放 `workplace/`。Docker image、volume、build cache 不在產物清理範圍，不執行 `prune` 或 `rmi`。
 
-## docker image
+## 驗實際產物
 
-| image | 用途 | 建法 |
-|---|---|---|
-| `psychicwar-go-ebiten` | Go ＋ Ebiten 建置、Xvfb 實跑 | `tools/go-ebiten.sh` 第一次自動 build |
-| `psychicwar-osxcross` | macOS 交叉編譯 | `tools/macos-pack.sh` 第一次自動 build |
-| `psychicwar-appimage` | AppImage 打包 | `tools/appimagetool.sh` 第一次自動 build |
-| `psychicwar-video` | 推廣片合成 | `tools/video.sh` 第一次自動 build |
-| `psychicwar-py` | Python 工具 | `tools/py.sh` |
+以下 Python 工具在各自 Docker 環境內執行，不在主機直接執行：
 
-build 那一步要網路，之後一律 `--network none`。
-**只清理自己 `--rm` 建立的 container；任何 `docker image/system/volume/builder prune` 或 `rmi` 一律禁止。**
+| 工具 | 驗證內容 |
+|---|---|
+| [release-stage.py](../tools/release-stage.py) | 封包明確清單、授權文件、原版／HD 邊界及內部 manifest |
+| [release-verify.py](../tools/release-verify.py) | 六包內容與 SHA、Windows PE、macOS 雙架構／簽章／最低版本／相依，以及 Linux 實際 GUI、DAT、F10 與缺字型負對照 |
+| [release-wine-smoke.py](../tools/release-wine-smoke.py) | Windows 兩個實際 ZIP 正常開機、F10 與 AppData 存檔；等待可見視窗，初始化上限 150 秒 |
+| [release-manifest.py](../tools/release-manifest.py) | 六包驗收後產生 SHA 清單與交付收據；`--promo-required` 另外要求實際遊玩影片通過 |
+
+Linux 實跑、Wine 與 macOS 結構檢查分開記錄。Windows／Mac 真機驗收仍屬 [#44](https://github.com/wicanr2/psychic_war_cht/issues/44)。遊戲存檔與即時存檔都落在使用者資料目錄，不能寫進 AppImage 或 `.app`。
+
+## 實際遊玩推廣片
+
+1. [capture-live.py](../tools/promo/capture-live.py) 從實際完整版 AppImage 正常開機，以原版按鍵遊玩、移動與戰鬥，並用 `Shift+F5` 切換原版／HD。保留輸入、stats、切換截圖及源錄影。
+2. [record-live.py](../tools/promo/record-live.py) 在既有 FFmpeg 容器擷取 X11。GUI 容器使用專用 socket 及 `--ipc=shareable`；錄影器只加入該 GUI 容器的 IPC，不分享主機 IPC。
+3. [make-live.py](../tools/promo/make-live.py) 合成片頭、實際錄影與片尾，配樂只使用 `workplace/dosboxx-audio/title-adlib.wav`。
+4. [verify-live.py](../tools/promo/verify-live.py) 驗 codec、尺寸、幀數、音訊、黑幀、靜音、凍結、遊玩狀態與四次切換，再逐幕目視抽幀。
+
+原版配樂擷取：[capture-original-adlib.sh](../tools/promo/capture-original-adlib.sh)。音訊技術檢查不等於人耳驗收；起跑負載須依 [020](spec/020-audio-device-measurement.md) 的契約核對。含原版音樂與 HD 的影片只留本機。
+
+## 技術與研究入口
+
+- [規格](spec/)：中文化、HD、原版操作與資料契約。
+- [研究紀錄](re/)：原版位址、格式、音訊與對拍收據；README 不重複這些記錄。
+- [038](re/038-hd-theme-feasibility.md)：HD 原位、遮擋、動作與原版狀態驗證。
+- [未完成項](worklist.json)：工作條目與對應 Issue。
+- [HD 總覽](../tools/hd/overview.py)：重生敵人與盟友的原版／HD 四張本機總覽，不代表全部圖號正常 GUI 已驗。
