@@ -51,6 +51,16 @@
 
 1.0.0 已抽測正常開機、探索、戰鬥、道具與存讀檔，**尚未做完整通關測試**。Linux 已實跑；Windows 經 Wine 抽測，macOS 完成封包結構檢查，兩者仍待[真機驗收](https://github.com/wicanr2/psychic_war_cht/issues/44)。詳細範圍與限制集中在 [CONTEXT.md](CONTEXT.md)。
 
+## 凱拉推廣概念圖
+
+以下為 AI 生成的推廣概念插畫，沿用凱拉的 HD 設計，背景由遊戲實際畫面延伸。三張分別呈現太空站探索、超能力戰鬥與站內同行；姿勢、表情與場景構圖為概念創作。
+
+| 太空站探索 | 超能力戰鬥 | 站內同行 |
+|---|---|---|
+| [![凱拉面向鏡頭走出太空站走廊的推廣概念圖](docs/images/kayla-poster-01-station.png)](docs/images/kayla-poster-01-station.png) | [![凱拉迎戰超能戰士的推廣概念圖](docs/images/kayla-poster-02-battle.png)](docs/images/kayla-poster-02-battle.png) | [![凱拉在站內操作台前微笑伸手的推廣概念圖](docs/images/kayla-poster-03-companion.png)](docs/images/kayla-poster-03-companion.png) |
+
+每張為 1024×1536，點選圖片可查看完整尺寸。
+
 ## 開始遊玩
 
 1. 從[正式版下載頁](https://github.com/wicanr2/psychic_war_cht/releases/tag/v.1.0.0-20261008)選擇平台：Linux AppImage、Windows ZIP，或支援 Intel／Apple Silicon 的 macOS ZIP。
@@ -105,7 +115,7 @@
 
 本專案採 [RRSAL-1.0](LICENSE)：非商業使用免費，允許修改、再散布，以及實況、錄影、截圖與教學；修改後散布須附原始碼與修改說明。商業使用請聯絡 **wicanr2@gmail.com**，完整條件以授權全文為準。
 
-授權不涵蓋原版程式、美術、音樂與文字，其權利屬於原權利人。README 的實機截圖僅供成果展示，不表示原版或整套 HD 素材可以再散布。
+授權不涵蓋原版程式、美術、音樂與文字，其權利屬於原權利人。README 的實機截圖與推廣概念圖僅供成果展示，不表示原版或整套 HD 素材可以再散布。
 
 中文字模採倚天中文系統 3.53 的 24 點與 16 點字形子集，缺字由 Noto Sans CJK TC 補足，以保留接近當年代理版的閱讀感受。若字型權利人有意見，請寄 **wicanr2@gmail.com**，將移除相關子集並改用替代字型。
 

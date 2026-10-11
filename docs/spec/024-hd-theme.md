@@ -1663,6 +1663,8 @@ READY 涵蓋上述第一批及 §1.2／§1.3 的限定技術契約；完整 spri
 
 【HD-RIGHTS-03】2026-10-09使用者明示要求README放上HD畫面與成果說明。依此指示，選定的1.0.0實際遊玩展示截圖可加入`docs/images/`並由README引用，包含HD戰鬥、HD迷宮及同位置原版對照。此例外限這些展示截圖；原版資料、獨立HD素材、完整主題、角色總覽及含原版音樂影片仍依前項只留本機，不附於公開Release。截圖展示不擴張原權利人的素材授權。
 
+【HD-RIGHTS-04】2026-10-11使用者明示要求將本次凱拉三張海報放入README作推廣概念圖。限定`docs/images/kayla-poster-01-station.png`、`kayla-poster-02-battle.png`及`kayla-poster-03-companion.png`可加入repo並由README展示。標示AI生成、沿用HD角色設計及背景由實際遊戲畫面延伸；姿勢、表情與場景構圖屬概念創作，不作實機畫面或遊戲功能證據。此例外不擴張到其他獨立HD素材、完整主題、角色總覽、原版資料或影片，也不變更原權利人的素材授權。原始提示、來源與雜湊保存在本機`workplace/promo/kayla-posters-v1-20261011/prompt-receipt.json`；清晰背景重繪來源沿`workplace/promo/kayla-posters-v2-20261011/prompt-receipt.json`，現行三張沿`workplace/promo/kayla-posters-v3-20261011/prompt-receipt.json`，其中第一張依追加指示重畫整體行走姿勢。三張均為1024×1536，使用者已確認此尺寸即可。
+
 ## 8. 不做與分批接入邊界
 
 - 換配色（改色盤是另一件事，成本與風險都不同）。

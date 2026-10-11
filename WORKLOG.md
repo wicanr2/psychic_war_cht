@@ -2491,3 +2491,35 @@ macOS首次正式打包失敗：沿用SDK image已有Go1.26，COPY Go1.24未先�
 使用者最新README展示指示作為限定截圖例外，AGENTS §12、024 §7 HD-RIGHTS-03及CONTEXT同步；完整HD與原版、總覽、影片仍本機。三張圖直接取自1.0.0正式AppImage實際遊玩錄影的切換截圖，未重繪、未更改像素。來源dist-all/v.1.0.0-20261008/promo/capture，README展示檔hd-battle.png SHA50cef08214b95f345dc8d7991bd09e4eb96c4d4e09ead651306a5c40620e28c3，hd-maze.png SHA5617e3cc6946330902b7cb8ed389d3f41bce9bfbd2f0eeb6536187f33584f500，original-maze-comparison.png SHAcc8a815b34c373a3be5068f150594f916c15512c04131017990159a1a821bfdf。
 
 逆向機制、細部對拍、音訊指標、build命令與工具明細改由既有研究／CONTEXT與更新後DEV-SETUP承接；未新建重複文件。只改文件與展示截圖，不改程式、譯文、HD素材、tag或已發布封包。檢查相對連結、圖片尺寸／來源SHA、故事來源、玩家操作與diff格式。
+
+## 2026-10-11：凱拉三張推廣概念海報
+
+依使用者要求，以內建image_gen製作太空站探索、超能力戰鬥及站內同行三張概念海報。角色沿HD定稿girl-raw.png，走廊及戰鬥以1.0.0實際遊玩截圖為參考，操作台沿screen-room-after.png延伸。凱拉分別回眸微笑、低姿勢迎戰及坐姿伸手招呼。戰鬥初稿自行加入機器人敵群，修正版改為遊戲ENEMY00-03的金髮超能戰士。
+
+本機入口：[提示、來源及檔案收據](workplace/promo/kayla-posters-v1-20261011/prompt-receipt.json)。同目錄三張kayla-poster-01-station.png、kayla-poster-02-battle.png、kayla-poster-03-companion.png均為1024×1536；3/3 PNG區塊、CRC、尺寸、複製前後SHA-256及UID/GID核對通過。目視核對角色、姿勢、場景與中英標題。概念圖含生成延伸，不當作遊戲實際畫面或新增功能證據。
+
+產物與提示收據只留本機；沒有上傳、commit或改動正式封包。檔案複製與驗證沿既有Docker映像，容器使用--rm、無網路及資源限制；初次複製漏開標準輸入，補上-i後實際執行並核對全部檔案。沒有修改影像像素，保留內建生成原檔。
+
+## 2026-10-11：README加入凱拉推廣概念圖
+
+依使用者追加指示，將三張海報原樣複製到docs/images，README新增三欄展示，標明AI生成、背景由實際遊戲畫面延伸及概念構圖。AGENTS §12、024 §7 HD-RIGHTS-04與CONTEXT保存本次限定展示範圍；這三張可加入repo，其他HD素材及原版資料仍依既有邊界。原始生成圖與完整提示收據保留本機。
+
+Docker內核對三張PNG各1024×1536、SHA-256與原生成檔相同、UID/GID為1000/1000；README六筆圖片及所有本機連結有效，概念圖標示和三份決策紀錄一致。git diff --check通過，新增PNG未被gitignore排除；本次一次性容器已清除，docs/images沒有root-owned檔案或誤建的.md目錄。沒有commit、push或改動發行包。
+
+## 2026-10-11：手部修正與清晰背景重繪，原生高解析度待選擇
+
+使用者指出第一張靠牆左手手掌不自然，追加要求海報提高解析度並重新繪製模糊背景。以內建image_gen重繪三張；第一張重新畫左手、拇指及腕部，三張背景改為近遠景均清晰的面板、管線、門框與地板。保留角色、姿勢主旨及三張限定展示範圍。README圖片原位替換並加入點圖查看完整尺寸，原稿保留在v1。
+
+現行本機入口：[v2提示、來源與收據](workplace/promo/kayla-posters-v2-20261011/prompt-receipt.json)。提示要求2048×3072，但三張實際皆為1024×1536。未做插值放大，未宣稱原生解析度提高。內建工具不提供尺寸參數；依imagegen技能，API模式須使用者明確選擇。已提出原生高解析度API或維持現尺寸清晰重繪的選項；本輪尚無回覆，未啟用API。原生高解析度仍未完成。
+
+Docker內核對三張PNG結構與CRC、實際尺寸、生成原檔／v2／README三份SHA-256一致及UID/GID；原始v1雜湊未變。目視核對手指、清晰背景與標題。既有工作樹修改保留，沒有commit、push、改正式封包或啟用付費API；收尾容器與輸出目錄衛生另核對。
+
+## 2026-10-11：海報尺寸定案與提交推送
+
+使用者確認「1024 x 1536即可」，採用現行三張手部及清晰背景重繪版，原生更高解析度待選事項結束。README、AGENTS §12、CONTEXT、024 §7及v2本機收據同步；舊提示與當時輸出尺寸保留作歷史，全程未啟用API。
+
+使用者明示授權commit及push。提交範圍限上述五份文件及docs/images三張海報，提交訊息「加入凱拉推廣概念海報並重繪姿勢與背景」；實際提交及遠端核對結果記於本機[Git交付收據](workplace/promo/kayla-posters-v3-20261011/git-delivery.json)。原始資料、完整HD、封包及生成原稿未納入。核對README圖片連結、三張PNG尺寸／SHA-256、文件尺寸定案、Git差異與身分，以及Docker清理狀態。
+
+## 2026-10-11：第一張改畫整體行走姿勢
+
+提交前使用者再次指出靠牆手部不自然，明確要求第一張整個姿勢都調整。以內建image_gen將第一張改為面向鏡頭走出走廊，肩腰及腿部重心重新安排，左手在身側輕扶門框、右手低持槍。README圖片及替代文字更新；第二、三張沿v2，舊稿保留。三張現行來源入口：[v3提示與收據](workplace/promo/kayla-posters-v3-20261011/prompt-receipt.json)。三張均1024×1536，PNG CRC、尺寸、生成來源／本機定稿／README三份SHA-256及UID/GID核對通過；第一張SHA61ae0f87eee74b3c87d7be0b7363b7d3f1bfb260e17caa6cf3bcea2c23a4413b。commit及push授權沿前項，採用本版。

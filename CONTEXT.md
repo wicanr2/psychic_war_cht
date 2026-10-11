@@ -6,6 +6,10 @@
 
 完成全部HD，再交付三平台本機完整版、公開Release與推廣片。公開包只帶程式與已確認可散布素材；原版與全部HD素材包僅放本機，不進Git或Release；2026-10-09使用者另授權README引用選定的實機展示截圖，限docs/images的HD戰鬥、HD迷宮與原版對照，依024 §7 HD-RIGHTS-03。人物、效果、迷宮與場景美術已定案，不重問。原位、比例、動作、全域8×8及人物在後／框線在前保持。影片只用DOSBox-X原版實錄 `workplace/dosboxx-audio/title-adlib.wav`，含原版音樂及HD的影片僅留本機。
 
+2026-10-11使用者另授權README展示本次凱拉三張推廣概念圖，限`docs/images/kayla-poster-01-station.png`、`kayla-poster-02-battle.png`及`kayla-poster-03-companion.png`可加入repo；沿024 §7 HD-RIGHTS-04，標明AI生成及由遊戲畫面延伸。其餘素材的本機限定保持。
+
+README現用三張定稿的來源收據為`workplace/promo/kayla-posters-v3-20261011/prompt-receipt.json`；第一張依使用者追加要求改為面向鏡頭的行走姿勢，雙臂、手腕與腰腿重心一起重畫，其他兩張沿清晰背景重繪版。使用者已確認三張採1024×1536即可，原生更高解析度待選事項結束；全程使用內建圖像生成，未啟用API。
+
 ## 目前狀態表
 
 | 項目 | 現況 | 證據與限制 |
